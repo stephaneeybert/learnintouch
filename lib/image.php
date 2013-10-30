@@ -158,7 +158,7 @@ class LibImage {
 
   // Print an image
   static function printImage($filename, $width = '', $height = '', $watermark = '', $bottomWatermark = '') {
-    global $gLibPath;
+    global $gApiPath;
 
     if (!$filename) {
       return;
@@ -208,7 +208,7 @@ class LibImage {
         $fontSize = 20;
         $fontAngle = 45;
         $fontColor = imagecolorallocate($outputImage, 219, 219, 219);
-        $fontType = $gLibPath . 'LucidaTypewriterRegular.ttf';
+        $fontType = $gApiPath . 'font/LucidaTypewriterRegular.ttf';
         $textSize = imagettfbbox($fontSize, $fontAngle, $fontType, $watermark);
         $textWidth = abs($textSize[2] - $textSize[0]);
         $textHeight = abs($textSize[5] - $textSize[3]);
@@ -225,7 +225,7 @@ class LibImage {
         $fontSize = 12;
         $fontAngle = 0;
         $fontColor = imagecolorallocate($outputImage, 219, 219, 219);
-        $fontType = $gLibPath . 'LucidaTypewriterRegular.ttf';
+        $fontType = $gApiPath . 'font/LucidaTypewriterRegular.ttf';
         $textSize = imagettfbbox($fontSize, $fontAngle, $fontType, $bottomWatermark);
         $textWidth = abs($textSize[2] - $textSize[0]);
         $textHeight = abs($textSize[5] - $textSize[3]);
@@ -290,7 +290,7 @@ class LibImage {
 
   // Print a number image
   static function printTTFNumberImage($number, $securityCodeFontSize) {
-    global $gLibPath;
+    global $gApiPath;
 
     if (!$securityCodeFontSize) {
       $securityCodeFontSize = 15;
@@ -313,7 +313,7 @@ class LibImage {
     $fontColor = ImageColorAllocate($image, rand(0, 100), rand(0, 100), rand(0, 100));
 
     // Determine text size, and use dimensions to generate x & y coordinates
-    $fontType = $gLibPath . 'LucidaTypewriterRegular.ttf';
+    $fontType = $gApiPath . 'font/LucidaTypewriterRegular.ttf';
     $textSize = imagettfbbox($fontSize, $fontAngle, $fontType, $number);
     $textWidth = abs($textSize[2] - $textSize[0]);
     $textHeight = abs($textSize[5] - $textSize[3]);
