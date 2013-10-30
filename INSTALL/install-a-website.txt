@@ -3,8 +3,8 @@ To create a new website site, do the following operations:
 Register the website domain name at a registrar
 
 Create the directories and soft links
-mkdir /home/stephane/learnintouch/www/madeintouch.com;
-cd /home/stephane/learnintouch/www/madeintouch.com;
+mkdir /home/stephane/learnintouch/www/peggykeramik.com;
+cd /home/stephane/learnintouch/www/peggykeramik.com;
 mkdir account;
 mkdir account/data;
 mkdir account/setup;
@@ -16,17 +16,21 @@ ln -s /home/stephane/learnintouch/engine/cron/backup.sh backup.sh;
 ln -s /home/stephane/learnintouch/engine/cron/refresh_template_models.sh refresh_template_models.sh;
 
 Add a bind entry for the website
+/etc/bind/named.conf.custom-zones
+
+The secondary DNS registration
+https://www.ovh.com/manager/web/login.html
 
 Add the virtual host entries file
 /home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
 
-<VirtualHost madeintouch.com:80>
-  DocumentRoot /home/stephane/learnintouch/www/madeintouch.com
-  ServerName www.madeintouch.com
-  ServerAlias madeintouch.com
-  ServerAdmin stephane@madeintouch.com
+<VirtualHost peggykeramik.com:80>
+  DocumentRoot /home/stephane/learnintouch/www/peggykeramik.com
+  ServerName www.peggykeramik.com
+  ServerAlias peggykeramik.com
+  ServerAdmin stephane@peggykeramik.com
   CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/madeintouch.com">
+  <Directory "/home/stephane/learnintouch/www/peggykeramik.com">
     Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
   </Directory>
 </VirtualHost>
@@ -44,20 +48,20 @@ Restart httpd
 
 Create a .htaccess file (or a .user.ini file if in CGI mode) containing the following directives
 php_value include_path "/home/stephane/learnintouch/engine/setup"
-php_value auto_prepend_file "/home/stephane/learnintouch/www/madeintouch.com/account/setup/specific.php"
+php_value auto_prepend_file "/home/stephane/learnintouch/www/peggykeramik.com/account/setup/specific.php"
 For the .user.ini file:
-include_path="/home/stephane/learnintouch/www/madeintouch/engine/setup"
-auto_prepend_file="/home/stephane/learnintouch/www/madeintouch.com/account/setup/specific.php"
+include_path="/home/stephane/learnintouch/www/peggykeramik/engine/setup"
+auto_prepend_file="/home/stephane/learnintouch/www/peggykeramik.com/account/setup/specific.php"
 
 Create the specific.php file
 
 Create the database
-mysqladmin -u stephane -p create db_madeintouch
+mysqladmin -u stephane -p create db_peggykeramik
 
 Add a MySQL user
 mysql -u stephane -p
 use mysql;
-grant all privileges on db_madeintouch.* to madeintouch@'localhost' identified by 'mypassword';
+grant all privileges on db_peggykeramik.* to peggykeramik@'localhost' identified by 'mypassword';
 flush privileges;
 quit;
 
@@ -76,8 +80,8 @@ delete from preference;
 delete from statistics_visit;
 delete from statistics_page;
 delete from unique_token;
-bin/mysql -v -u stephane -p db_madeintouch < demo-website-data-only.sql
-\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/madeintouch.com/account/data/
+bin/mysql -v -u stephane -p db_peggykeramik < demo-website-data-only.sql
+\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/peggykeramik.com/account/data/
 
 Add some index
 alter table statistics_visit add index(visit_datetime);
