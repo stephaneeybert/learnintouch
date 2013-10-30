@@ -38,11 +38,11 @@ $gEngineDataUrl = $gEngineUrl . '/data';
 $gSetupPath = $gEnginePath . "setup/";
 $gSetupUrl = $gEngineUrl . "/setup";
 
-$gJsPath = $gEnginePath . 'js/';
-$gJsUrl = $gEngineUrl . '/js';
-
 $gApiPath = $gEnginePath . 'api/';
 $gApiUrl = $gEngineUrl . '/api';
+
+$gJsPath = $gApiPath . 'js/';
+$gJsUrl = $gApiUrl . '/js';
 
 $gPearPath = $gApiPath . 'pear/';
 $gPearUrl = $gApiUrl . '/pear';
