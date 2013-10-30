@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+Developer's Guide  |
+<a href="aspnet_start.htm">ASP.NET Developer's Guide</a>
+</h3>
+
+<ol type="I">
+<li><a href="default_start.htm">Getting Started</a></li>
+<li><a href="default_style.htm">Applying Stylesheet</a></li>
+<li><a href="default_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="default_advanced.htm">Advanced Settings</a></li>
+<li><a href="default_extending.htm">Extending the Editor</a></li>
+<li><a href="default_toolbar.htm">Toolbar</a></li>
+<li>Localization</li>
+<li><a href="default_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>VII. Localization</h2>
+
+<p>
+You can localize the Editor to be displayed in specific language
+by adding a language include file before the Editor javascript include:
+</p>
+
+<p class="code2" style="width:730px">
+&lt;html><br>
+&lt;head><br>
+<span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"></span><br><br>
+
+<span class=tab1_bold>&lt;script language="Javascript" src="scripts/language/de-DE/editor_lang.js">&lt;/script></span><br>
+<span class=tab1>&lt;script language="Javascript" src="scripts/innovaeditor.js">&lt;/script></span><br>
+&lt;/head><br>
+&lt;body><br>
+&lt;form method="post" action="post.asp" id="Form1"><br><br>
+
+<span class=tab1>&lt;textarea id="txtContent" name="txtContent" rows=4 cols=30>&lt;/textarea></span><br>
+<span class=tab1>&lt;script></span><br>
+<span class=tab2>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab2>oEdit1.REPLACE("txtContent");</span><br>
+<span class=tab1>&lt;/script></span><br>
+<span class=tab1>&lt;input type="submit" value="submit"></span><br>
+&lt;/form><br>
+&lt;/body><br>
+&lt;/html><br>
+</p>
+
+<p>
+The current available language include files are:
+</p>
+
+<ul>
+<li>
+
+Danish<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">da-DK</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Dutch<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">nl-NL</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Finnish<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">fi-FI</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+French<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">fr-FR</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+German<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">de-DE</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Norwegian<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">nn-NO</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Chinese (Simplified)<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">zh-CHS</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Chinese (Traditional)<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">zh-CHT</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Spanish<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">es-ES</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+
+</li>
+<li>
+
+Swedish<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">sv-SE</b>/editor_lang.js">&lt;/script>
+</div>
+<br>
+</li>
+
+<li>
+
+Italian<br><br>
+<div class="code2" style="width:730px;margin-left:0">
+&lt;script language="Javascript" src="scripts/language/<b style="background:#e7e7e7">it-IT</b>/editor_lang.js">&lt;/script>
+</div>
+
+</li>
+</ul>
+
+<p>
+If no language file specified, English version will be displayed.
+</p>
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+ASP.NET Developer's Guide
+</h3>
+
+<ol type="I">
+<li>Getting Started
+  <ol type="1">
+  <li>Installation</li>
+  <li>Adding InnovaStudio .NET WYSIWYGEditor to Visual Studio Toolbox</li>
+  <li>Using the Editor in a Web Form</li>
+  <li>Loading Content into the Editor</li>
+  <li>Setting the Editor Dimension</li>
+  </ol>
+</li>
+<li><a href="aspnet_style.htm">Applying Stylesheet</a></li>
+<li><a href="aspnet_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="aspnet_advanced.htm">Advanced Settings</a></li>
+<li><a href="aspnet_extending.htm">Extending the Editor</a></li>
+<li><a href="aspnet_toolbar.htm">Toolbar</a></li>
+<li><a href="aspnet_localize.htm">Localization</a></li>
+<li><a href="aspnet_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>I. Getting Started</h2>
+
+
+
+<h3>I.1. Installation</h3>
+
+<p>
+Unzip the Editor package & copy all files into your web server.
+You should have the following folders and files:
+</p>
+
+<img src="images/doc_zip.gif" style="margin-left:30px;">
+
+<p>
+Open file <span class=code>default.htm</span> to
+browse the examples and the documentation.
+According to several examples, it is recomended that you copy all files into a virtual directory named
+<span class=code>Editor</span> in your web server, so that you can access the examples by opening:
+</p>
+
+<p class="code1">http://yourserver/Editor/default.htm</p>
+
+<p class="note">
+<b>Note:</b><br>
+InnovaStudio WYSIWYG Editor script is located in <span class=code>scripts</span> folder
+and the Server Control (<span class=code>WYSIWYGEditor.dll</span>) is located in
+<span class=code>bin</span> folder. To use the Editor in ASP.NET pages,
+copy the <span class=code>scripts</span>  folder anywhere in your web server and
+copy the <span class=code>WYSIWYGEditor.dll</span> into the
+<span class=code>bin</span> folder of your website.
+</p>
+
+<a name="I2"></a>
+<h3>I.2. Adding InnovaStudio .NET WYSIWYGEditor to Visual Studio Toolbox</h3>
+
+<ol>
+<li>Copy <span class=code>WYSIWYGEditor.dll</span> to folder anywhere in your file system for example <span class=code>c:\Program Files\WYSIWYGEditor\dll</span></li>
+<li>In Visual Studio, select <span class=code>Tools - Choose Toolbox Items...</span></li>
+<li>In Choose Toolbox Items dialog click <span class=code>Browse</span> button and select the <span class=code>WYSIWYGEditor.dll</span></li>
+<li>The <span class=code>WYSIWYGEditor</span> control now available in Visual Studio Toolbox when you starts a web project.</li>
+</ol>
+
+<img src="images/editor_toolbox.gif" style="margin-left:30px;">
+
+<a name="I3"></a>
+<h3>I.3. Using the Editor in a Web Form</h3>
+
+<ol>
+<li>Copy the <span class=code>scripts</span> folder anywhere in your web server (please do not rename it).</li>
+<li>In page design mode, click WYSIWYGEditor control in toolbox and drag to page. Visual Studio will automatically creates
+<span class="code">bin</span> folder and copy the <span class="code">WYSIWYGEditor.dll</span> into the folder.
+
+You can also copy the <span class=code>WYSIWYGEditor.dll</span> (located in the
+<span class=code>bin</span> folder) into the <span class=code>bin</span> folder of your website manually.</li>
+<li>Register the Server Control in your ASP.NET page. If you drag and drop the control from toolbox, Visual Studio will automatically register the control in the page.
+  Default <span class="code">TagPrefix</span> is cc1 (or cc2, cc3 and so on). You may want change the <span class="code">TagPrefix</span>
+  to more meaningful name for example <span class="code">editor</span>. <br><br>
+
+  <div class="code2" style="width:700px;margin-left:0;"><br>
+  <span class="code_bold">&lt;%@ Register TagPrefix="editor" Assembly="WYSIWYGEditor" namespace="InnovaStudio"%></span>
+  <br><br></div>
+
+  <br><br>
+  </li>
+<li>Visual Studio also creates the editor tag in source view.<br><br>
+
+  <div class="code2" style="width:700px;margin-left:0;"><br>
+  <span class="code_bold">&lt;editor:wysiwygeditor</span><br>
+  <span class=tab1_bold>Runat="server"</span><br>
+  <span class=tab1_bold>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>ID="oEdit1" /></span>
+  <br><br></div>
+
+  <br><br>
+  The <span class=code>scriptPath</span> property specifies the location of the
+  Editor <span class=code>scripts</span> folder.
+  <br><br>
+  Below is an example:
+  <br><br>
+  <div class="code2" style="width:700px;margin-left:0;">
+    &lt;%@ Page Language="vb" ValidateRequest="false" Debug="true" %><br>
+    <span class="code_bold">&lt;%@ Register TagPrefix="editor" Assembly="WYSIWYGEditor" namespace="InnovaStudio" %></span><br>
+    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><br>
+    &lt;html><br>
+    &lt;head><br>
+    <span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"></span><br><br>
+
+    &lt;/head><br>
+    &lt;body><br><br>
+
+    &lt;form id="Form1" method="post" runat="server"><br><br>
+
+    <span class=tab1_bold>&lt;editor:wysiwygeditor</span><br>
+    <span class=tab2_bold>Runat="server"</span><br>
+    <span class=tab2_bold>scriptPath="scripts/"</span><br>
+    <span class=tab2_bold>ID="oEdit1" /></span><br><br>
+
+    &lt;/form><br><br>
+
+    &lt;/body><br>
+    &lt;/html><br>
+  </div><br><br>
+
+</li>
+<li>
+  Specify control properties. You can specify control properties from
+  Properties window or in source view.<br><br>
+
+  <img src="images/editor_properties.gif" style="margin-left:30px;"><br><br><br>
+  <img src="images/editor_source.gif" style="margin-left:30px;">
+
+</li>
+
+</ol>
+
+<h3>I.4. Loading Content into the Editor</h3>
+
+<p>
+To load content into the Editor, use <span class=code>Content</span> property.
+Below is an example:
+</p>
+
+<p class="code2" style="width:700px">
+  &lt;%@ Page Language="vb" ValidateRequest="false" Debug="true" %><br>
+  <span class="code_bold">&lt;%@ Register TagPrefix="editor" Assembly="WYSIWYGEditor" namespace="InnovaStudio" %></span><br>
+  &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><br>
+  &lt;html><br>
+  &lt;head><br>
+  <span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"></span><br><br>
+
+  <span class=tab1>&lt;script language="VB" runat="server"></span><br>
+  <span class=tab1>Sub Page_Load(Source As Object, E As EventArgs)</span><br>
+  <span class=tab2>If Not Page.IsPostBack Then</span><br>
+  <span class=tab3_bold>oEdit1.Text = "&lt;h3>Hello World!&lt;/h3>"</span><br>
+  <span class=tab2>End If</span><br>
+  <span class=tab1>End Sub</span><br>
+  <span class=tab1>&lt;/script></span><br>
+  &lt;/head><br>
+  &lt;body><br><br>
+
+  &lt;form id="Form1" method="post" runat="server"><br><br>
+
+  <span class=tab1_bold>&lt;editor:wysiwygeditor</span><br>
+  <span class=tab2_bold>Runat="server"</span><br>
+  <span class=tab2_bold>scriptPath="scripts/"</span><br>
+  <span class=tab2_bold>ID="oEdit1" /></span><br><br>
+
+  &lt;/form><br><br>
+
+  &lt;/body><br>
+  &lt;/html><br>
+</p>
+
+
+<h3>I.5. Setting the Editor Dimension</h3>
+
+<p>
+Editor dimension can be adjusted using the <span class=code>Width</span> and
+<span class=code>Height</span> properties. For example:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;editor:wysiwygeditor<br>
+<span class=tab1>Runat="server"</span><br>
+<span class=tab1>scriptPath="scripts/"</span><br>
+<span class=tab1_bold>Width="100%"</span><br>
+<span class=tab1_bold>Height="350"</span><br>
+<span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+Please note that by default, you can't set the Editor width less than 565 pixels.
+To set the Editor width less than 565 pixels, you'd need to apply toolbar line breaks using
+<span class="code">ButtonFeatures</span> property. <a href="aspnet_toolbar.htm">More info</a>
+</p>
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

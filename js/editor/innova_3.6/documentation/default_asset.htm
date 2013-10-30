@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+Developer's Guide  |
+<a href="aspnet_start.htm">ASP.NET Developer's Guide</a>
+</h3>
+
+<ol type="I">
+<li><a href="default_start.htm">Getting Started</a></li>
+<li><a href="default_style.htm">Applying Stylesheet</a></li>
+<li>Using Asset Manager Add-on
+  <ol type="1">
+  <li>Enabling the Asset Manager Add-on</li>
+  <li>Multiple Asset Base/Root Folders</li>
+  <li>Localization</li>
+  <li>Returning Absolute Path</li>
+  </ol>
+</li>
+<li><a href="default_advanced.htm">Advanced Settings</a></li>
+<li><a href="default_extending.htm">Extending the Editor</a></li>
+<li><a href="default_toolbar.htm">Toolbar</a></li>
+<li><a href="default_localize.htm">Localization</a></li>
+<li><a href="default_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>III. Using Asset Manager Add-on</h2>
+
+<h3>III.1. Enabling the Asset Manager Add-on</h3>
+
+<p>
+Included in the Editor is an Asset Manager add-on.
+Using the Asset Manager add-on, you can browse and manage your web assets
+(upload and delete files, create and delete folders).
+Asset Manager add-on is located in folder <span class=code>assetmanager</span>.
+The main file is <span class=code>assetmanager.asp</span> (for ASP) and
+<span class=code>assetmanager.php</span> (for PHP).
+To enable the Asset Manager add-on:
+</p>
+
+<ol>
+<li>Copy the <span class=code>assetmanager</span> folder anywhere in your web server.</li>
+<li>Specify a command to open the add-on using <span class=code>cmdAssetManager</span> property:
+
+<div style="width:800px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">ASP Example</div>
+<div class="code2" style="width:800px;margin-left:0;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.cmdAssetManager="modalDialogShow('/assetmanager/assetmanager.asp',640,445);";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</div>
+<br>
+or
+
+<div style="width:800px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">PHP Example</div>
+<div class="code2" style="width:800px;margin-left:0;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.cmdAssetManager="modalDialogShow('/assetmanager/assetmanager.php',640,445);";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</div>
+
+<br>
+<span class=code>modalDialogShow()</span> function is a built-in function that you can use to open
+a web page in a new window dialog. The parameters are: url, dialog width & dialog height.
+<br><br>
+
+<div class="note">
+<b>Important:</b><br>
+Please use 'relative to root' path when specifying the location of the <span class=code>assetmanager.asp</span>.
+'Relative to root' path always starts with "/".
+</div>
+<br>
+</li>
+<li>
+Specify your web assets location.
+If you're using ASP, open <span class="code">settings.asp</span> (in the <span class="code">assetmanager</span>
+folder) using your text editor & set the <span class="code">arrBaseFolder</span> variable with
+the location of your web assets folder (please use "relative to root" path).
+Then give a friendly name/caption using <span class="code">arrBaseName</span>:
+<br><br>
+<div class="code2" style="width:630px;margin-left:0;">
+arrBaseFolder(0)="/assets/"<br>
+arrBaseName(0)="Assets"
+</div>
+<br>
+
+The above settings means that your web asset files are located in
+<span class=code>"http://yourserver/assets/"</span> and the displayed name is "Assets".
+As a result, the folder selection  dropdown in Asset Manager dialog page
+will display "Assets" and all sub folders within it:
+
+<br>
+<img src="images/doc_asset_folder.gif" style="margin:8px">
+<br>
+
+If you're using PHP, <span class="code">open settings.php</span> (in the <span class="code">assetmanager</span>
+folder) & set the <span class="code">sBaseVirtual0</span> variable with the location of your web assets folder
+(please use "relative to root" path). Then specify its real/physical path using
+<span class="code">sBase0</span> variable and give a friendly name/caption using
+<span class="code">sName0</span>:
+<br><br>
+<div class="code2" style="width:630px;margin-left:0;">
+$sBaseVirtual0="/assets";<br>
+$sBase0="c:/inetpub/wwwroot/assets";<br>
+$sName0="Assets";
+</div>
+<br>
+
+<div class="note">
+<b>Important:</b><br>
+Your web asset folder must have Write Permission.
+</div>
+
+</li>
+</ol>
+
+<p>
+If you enable the Asset Manager add-on, these dialogs will automatically show a Browse button
+<img src="images/openAsset.gif">  :
+</p>
+<ul>
+<li>Hyperlink dialog</li>
+<li>Image dialog</li>
+<li>Insert Flash dialog</li>
+<li>Insert Media dialog</li>
+<li>Background Image dialog (opened from table and cell properties dialogs)</li>
+</ul>
+<p>
+The Browse button will open the Asset Manager add-on dialog so that
+you can select a file which can be inserted as hyperlink or object
+(image, flash, video, etc).
+</p>
+
+<img src="images/doc_asset.gif" style="margin-left:37px;">
+
+<h3>III.2. Multiple Asset Base/Root Folders</h3>
+
+<p>
+Asset Manager add-on allows you to specify more than one base/root folder (up to 4).
+Here are example settings in <span class="code">seetings.asp</span> or <span class="code">settings.php</span> :
+</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">seetings.asp</div>
+<p class="code2" style="width:630px;margin-top:0">
+arrBaseFolder(0)="/assets/"<br>
+arrBaseName(0)="Assets"<br><br>
+
+arrBaseFolder(1)="/public_assets/"<br>
+arrBaseName(1)="Public Assets"
+</p>
+
+<p>or</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">settings.php</div>
+<p class="code2" style="width:630px;margin-top:0">
+$sBaseVirtual0="/assets";<br>
+$sBase0="c:/inetpub/wwwroot/assets";<br>
+$sName0="Assets";<br><br>
+
+$sBaseVirtual1="/public_assets";<br>
+$sBase1="c:/inetpub/wwwroot/public_assets";<br>
+$sName1="Public Assets";
+</p>
+
+
+<h3>III.3. Localization</h3>
+
+<p>
+If required, you can localize the Asset Manager add-on to be displayed in
+specific language by setting the <span class=code>lang</span> variable in querystring:
+</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">ASP Example</div>
+<p class="code2" style="width:630px;margin-top:0">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.cmdAssetManager="modalDialogShow</span><br>
+<span class=tab1_bold><img src="images/arrow.gif"> ('/assetmanager/assetmanager.asp?lang=de-DE',640,445);";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>or</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">PHP Example</div>
+<p class="code2" style="width:630px;margin-top:0">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.cmdAssetManager="modalDialogShow</span><br>
+<span class=tab1_bold><img src="images/arrow.gif"> ('/assetmanager/assetmanager.php?lang=de-DE',640,445);";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+The current available values <span class=code>c</span> variable are:
+<span class="code">da-DK</span> (Danish), <span class="code">nl-NL</span> (Dutch),
+<span class="code">fi-FI</span> (Finnish), <span class="code">fr-FR</span> (French),
+<span class="code">de-DE</span> (German), <span class="code">zh-CHS</span> (Chinese Simplified),
+<span class="code">zh-CHT</span> (Chinese Traditional), <span class="code">nn-NO</span> (Norwegian),
+<span class="code">es-ES</span> (Spanish), <span class="code">sv-SE</span> (Swedish).
+If <span class="code">lang</span> variable is not specified, English version will be displayed.
+</p>
+
+
+<h3>III.4. Returning Absolute Path</h3>
+
+<p>
+The Asset Manager dialog will return the selected file url in the form of 'relative to root' path, for example:
+</p>
+
+<p class="code1">
+/assets/image.gif
+</p>
+
+<p>
+If required, it can be changed to return absolute path by setting.
+Here is the setting required in <span class="code">seetings.asp</span> and <span class="code">settings.php</span> :
+</p>
+
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">seetings.asp</div>
+<p class="code2" style="width:630px;margin-top:0">
+bReturnAbsolute=true
+</p>
+
+<p>or</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">settings.php</div>
+<p class="code2" style="width:630px;margin-top:0">
+$bReturnAbsolute=true;
+</p>
+
+<p>This will make the Asset Manager dialog returns:</p>
+
+<p class="code1">
+http://yourservername/assets/image.gif
+</p>
+
+<p>
+Inserting images using absolute path usually is required if you use the Editor in web-based email applications.
+</p>
+
+
+<br>
+
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>

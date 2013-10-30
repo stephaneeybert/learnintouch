@@ -1,0 +1,33 @@
+iphone:1:
+ipod:1:
+ipad:0:1
+samsung sgh:1:
+samsung-sgh:1:
+sony:1:
+ericsson:1:
+e808:1:
+mot:1:
+nokia:1:
+windows ce:1:
+symbian os:1:
+htc:1:
+palm:1:
+opera mobi:1:
+opera mini:1:
+blackberry:1:
+ipaq:1:
+160x:1:
+176x:1:
+240x:1:
+320x:1:
+480x:1:
+android:1:
+lg-:1:
+lge-:1:
+wii:1:
+iemobile:1:
+upg1:1:
+mobileexplorer:1:
+epoc:1:
+sagem-myx5:1:
+sec-sgh:1:

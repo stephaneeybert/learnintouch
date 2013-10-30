@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+Developer's Guide  |
+<a href="aspnet_start.htm">ASP.NET Developer's Guide</a>
+</h3>
+
+<ol type="I">
+<li><a href="default_start.htm">Getting Started</a></li>
+<li><a href="default_style.htm">Applying Stylesheet</a></li>
+<li><a href="default_asset.htm">Using Asset Manager Add-on</a></li>
+<li>Advanced Settings
+  <ol type="1">
+  <li>Setting the Editing Mode</li>
+  <li>Loading Content at Runtime</li>
+  <li>Getting the Current Content</li>
+  <li>Editing & Publishing Path</li>
+  <li>Line Break</li>
+  <li>Spell-Checking Integration</li>
+  <li>Setting the Editor Focus</li>
+  <li>Adding Custom Color Selection</li>
+  </ol>
+</li>
+<li><a href="default_extending.htm">Extending the Editor</a></li>
+<li><a href="default_toolbar.htm">Toolbar</a></li>
+<li><a href="default_localize.htm">Localization</a></li>
+<li><a href="default_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>IV. Advanced Settings</h2>
+
+<h3>IV.1. Setting the Editing Mode</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor has 4 editing modes:
+</p>
+
+<ol>
+<li><span class=code>HTMLBody</span>; enables the Editor to edit/return HTML BODY section only.</li>
+<li><span class=code>HTML</span>; enables the Editor to edit/return full HTML Content.</li>
+<li><span class=code>XHTMLBody</span>; enables the Editor to edit/return HTML BODY section with XHTML rules applied.</li>
+<li><span class=code>XHTML</span>; enables the Editor to edit/return full HTML Content with XHTML rules applied.</li>
+</ol>
+
+<p>
+By default, the Editing Mode is set to <span class=code>HTMLBody</span>.
+To specify the editing mode, use <span class=code>mode</span> property. For example:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.mode="HTML";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+Editing full HTML content is useful if you wish to save the content as a static html file.
+However, in many dynamic web applications today (e.g. in database-driven web applications
+or web content management systems where the ability to manage certain/specific area is required),
+the <span class=code>HTMLBody</span> or <span class=code>XHTMLBody</span> editing modes are more likely to be used.
+</p>
+
+<h3>IV.2. Loading Content at Runtime</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor allows you to load content at runtime,
+which will replace the current Editor content.
+</p>
+
+<p>
+Use <span class=code>putHTML()</span> method to load full HTML content. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.putHTML(sHTML)
+</p>
+
+<p>
+where <span class=code>sHTML</span> is the full HTML content.
+Note that <span class=code>putHTML()</span> will also replace the current content style
+defined by <span class=code>arrStyle</span> property or <span class=code>css</span> property.
+</p>
+
+<p>
+Use <span class=code>loadHTML()</span> method to load HTML Body content. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.loadHTML(sHTML)
+</p>
+
+<p>
+where <span class=code>sHTML</span> is the HTML Body content.
+</p>
+
+
+<h3>IV.3. Getting the Current Content</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor allows you to get/read the current Editor content.
+</p>
+
+<p>
+Use <span class=code>getHTML()</span> method to get full HTML content. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.getHTML()
+</p>
+
+<p>
+Use <span class=code>getXHTML()</span> method to get full HTML content with XHTML rules applied. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.getXHTML()
+</p>
+
+<p>
+Use <span class=code>getHTMLBody()</span> method to get HTML Body content. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.getHTMLBody()
+</p>
+
+<p>
+Use <span class=code>getXHTMLBody()</span> method to get HTML Body content with XHTML rules applied. The syntax is:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.getXHTMLBody()
+</p>
+
+<h3>IV.4. Editing & Publishing Path</h3>
+
+<p>
+Lets' say you embed the editor in a web page located in a folder <span class=code>admin</span> :
+</p>
+
+<p class="code1">
+http://YourServer/admin/edit.asp
+</p>
+
+<p>
+The Editor is used for editing content from a database.
+Then, to view the result, you read the edited content from the database and
+display it on another web page located in the root of your server:
+</p>
+
+<p class="code1">
+http://YourServer/view.asp
+</p>
+
+<p>
+In this case, you have different locations for editing & viewing (publishing): the
+<span class=code>admin</span> folder is the Editing path and the 'root' is the Viewing/Publishing path.
+This will raise a problem if the edited content contains an image that has a relative path, for example:
+</p>
+
+<p class="code1">
+&lt;img src="images/photo.jpg">
+</p>
+
+<p>
+The image won't be displayed when viewing the content.
+This is because, in Editing, it assumes that the image is located in:
+</p>
+
+<p class="code1">
+http://YourServer/admin/images/photo.jpg
+</p>
+
+<p>
+Whereas in Publishing, it assumes that the image is located in:
+</p>
+
+<p class="code1">
+http://YourServer/images/photo.jpg
+</p>
+
+<p>
+This shouldn't be a problem if both Editing and Viewing/Publishing have the same location.
+To make the Editing location flexible (regardless the Viewing/Publishing location), there are 2 methods:
+</p>
+
+<ol>
+<li>Specify the <span class=code>publishingPath</span> property of the Editor to point to the viewing/publishing path.
+In this way all relative urls will consistently be considered as relative to the publishing path. For example:<br><br>
+<div class="code2" style="margin-left:0;width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.publishingPath="http//YourServer/";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</div>
+<br>
+
+With this setting, if we insert an image into the content:
+<br><br>
+
+<div class="code1">
+&lt;img src="images/photo.jpg">
+</div>
+<br>
+It is considered to be located at : <span class=code>http//YourServer/images/photo.jpg</span>
+(regardless where the Editing process is).
+<br><br>
+
+</li>
+<li>
+Always insert images or any other objects using 'Relative to Root' path, for example:
+<br><br>
+
+<div class="code1">
+&lt;img src="/images/photo.jpg">
+</div>
+<br>
+
+<div class="note">
+<b>Note:</b> 'Relative to Root' always start with "/".
+</div>
+
+<br>
+
+In this way, the image is always seen from: <span class=code>http//YourServer/images/photo.jpg</span>
+(regardless where the Editing process is).
+
+</li>
+</ol>
+
+<p>
+With the above methods, the Editing location would be flexible.
+Means that you can use the Editor in any location on your web server,
+regardles where you'd like to view/publish the result.
+</p>
+
+<p class="note">
+<b>Note:</b><br>
+it's a good idea to always use 'relative to root' path when inserting an image or
+other objects as it doesn't generate a problem if you have different location
+for Editing and Publishing (and you don't need to set the <span class=code>publishingPath</span> property).<br><br>
+
+InnovaStudio WYSIWYG Editor has an Asset Manager add-on that you can use to select
+a file and return the 'relative to root' path of the file.
+By using the Asset Manager add-on you don’t need to set the
+<span class=code>publishingPath</span> property.
+</p>
+
+<h3>IV.5. Line Break</h3>
+
+<p>
+In IE browser, if you press [ENTER] for line break the Editor will apply &lt;DIV> by default.
+In Netscape, Mozilla & Firefox, &lt;BR> will be applied.
+</p>
+
+<p>
+In IE browser, you can change the behaviour to apply &lt;P> or &lt;BR> by default.
+To apply &lt;P> by default, set <span class=code>useDIV</span> property to false:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.useDIV=false;</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>To apply &lt;BR> by default, set <span class=code>useBR</span> property to true:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.useBR=true;</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+Below are the possible values for <span class=code>useDIV</span> and <span class=code>useBR</span> (in IE):
+</p>
+
+<table border="1" style="margin-left:40px">
+<tr><td><span class=code>useDIV</span></td><td><span class=code>useBR</span></td><td><span class=code>Line Break</span></td></tr>
+<tr>
+<td>True</td><td>False</td><td>&lt;DIV> *</td>
+</tr>
+<tr>
+<td>False</td><td>False</td><td>&lt;P></td>
+</tr>
+<tr>
+<td>True</td><td>True</td><td>&lt;BR></td>
+</tr>
+<tr>
+<td>False</td><td>True</td><td>&lt;BR></td>
+</tr>
+</table>
+
+<p>
+<i>* except if the current paragraph is Heading (H1-H6) or Preformatted (PRE)</i>
+</p>
+
+<p>
+You can set the <span class=code>useDIV</span> and <span class=code>useBR</span> properties programatically at runtime,
+thus allows you to change the Editor behaviour while it is running.
+Note that <span class=code>useDIV</span> and <span class=code>useBR</span> only available in IE.
+They will not take effect in Netscape, Mozilla and Firefox.
+</p>
+
+
+<h3>IV.6. Spell-Checking Integration</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor can be easily integrated with ieSpell (from www.iespell.com).
+To enable the "Spell Check" button, set <span class=code>btnSpellCheck</span> property to true:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.btnSpellCheck=true;</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+Note that this feature is available only for IE Browser.
+</p>
+
+<p>
+InnovaStudio WYSIWYG Editor can also be integrated with NetSpell (from
+sourceforge.net/projects/netspell/). <a href="aspnet_advanced.htm#IV4">More info</a>
+</p>
+
+<h3>IV.7. Setting the Editor Focus</h3>
+
+<p>
+To set focus the Editor, use <span class=code>focus()</span> method, for example:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.focus();
+</p>
+
+<h3>IV.8. Adding Custom Color Selection</h3>
+
+<p>
+You can add custom/predefined color selection to the Editor color picker dropdown.
+The color picker dropdown can be accessed through "Text Foreground Color" button, "Text Background Color" button
+and "Pick" buttons in several editing dialogs.
+</p>
+
+<p>
+To add custom color selection, set <span class=code>customColors</span> property with an array of
+the custom colors. For example:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.customColors=["#ff4500","#ffa500","#808000","#4682b4",</span><br>
+<span class=tab2_bold>"#1e90ff","#9400d3","#ff1493","#a9a9a9"];</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<br>
+
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>

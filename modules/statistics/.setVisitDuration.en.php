@@ -1,0 +1,4 @@
+[   0]The visit duration
+[   1]The visit duration is the minimum amount of time between two hits to count them as two web site visits.\n\nA 'hit' is a page request on the web site.\n\nEach and every page request is counted as a hit.\n\nBut a page reload, and an image download, and any other resources requested are also counted as hits.\n\nThus, for one page accessed by a visitor, there can be a lot of hits.\n\nIt is therefore irrelevant to count each hit as a visit of the web site.\n\nTo avoid counting all hits as web site visits, a hit is counted as a visit only if it occurs after a certain time as passed since the last visit.\n\nThis is to get a realistic number of visits.\n\nThis visit duration can be changed and is expressed in minutes.\n\nFor example, a visit duration of 15, will count at most one visit every 15 mn for a given visitor.
+[   2]Visit duration:
+[   3]minutes

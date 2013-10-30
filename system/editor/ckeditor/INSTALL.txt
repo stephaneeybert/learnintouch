@@ -1,0 +1,14 @@
+Download and unpack the CKEditor into the directory js/editor/
+
+
+For each custom plugin:
+
+Add the plugin name in the file system/editor/ckeditor/CKEditorUtils.php
+- add the button in the toolbar
+- add the plugin name in the extra plugins property
+
+Create a soft link to the plugin directory from the directory js/editor/ckeditor/plugins/
+
+ln -s ../../../../system/editor/ckeditor/plugins/imageUpload imageUpload
+
+

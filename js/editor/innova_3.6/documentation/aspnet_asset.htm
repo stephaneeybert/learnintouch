@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+ASP.NET Developer's Guide
+</h3>
+
+<ol type="I">
+<li><a href="aspnet_start.htm">Getting Started</a></li>
+<li><a href="aspnet_style.htm">Applying Stylesheet</a></li>
+<li>Using Asset Manager Add-on
+  <ol type="1">
+  <li>Enabling the Asset Manager Add-on</li>
+  <li>Localization</li>
+  <li>Returning Absolute Path</li>
+  </ol>
+</li>
+<li><a href="aspnet_advanced.htm">Advanced Settings</a></li>
+<li><a href="aspnet_extending.htm">Extending the Editor</a></li>
+<li><a href="aspnet_toolbar.htm">Toolbar</a></li>
+<li><a href="aspnet_localize.htm">Localization</a></li>
+<li><a href="aspnet_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>III. Using Asset Manager Add-on</h2>
+
+<h3>III.1. Enabling the Asset Manager Add-on</h3>
+
+<p>
+Included in the Editor is an Asset Manager add-on.
+Using the Asset Manager add-on, you can browse and manage your web assets
+(upload and delete files, create and delete folders).
+Asset Manager add-on is located in folder <span class=code>assetmanager</span>.
+The main file is <span class=code>assetmanager.aspx</span>.
+To enable the Asset Manager add-on:
+</p>
+
+<ol>
+<li>Copy the <span class=code>assetmanager</span> folder anywhere in your web server.</li>
+<li>specify <span class=code>AssetManager</span> property with the location of
+the <span class=code>assetmanager.aspx</span>. Then, specify
+<span class=code>AssetManagerWidth</span> and <span class=code>AssetManagerHeight</span>
+properties with the dimension (width & height in pixels) of the dialog to open
+the Asset Manager page (<span class=code>assetmanager.aspx</span>).
+<br><br>
+<div class="code2" style="width:800px;margin-left:0;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>AssetManager="/assetmanager/assetmanager.aspx"</span><br>
+  <span class=tab1_bold>AssetManagerWidth="570"</span><br>
+  <span class=tab1_bold>AssetManagerHeight="510"</span><br>
+  <span class=tab1>Content="Hello World!"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</div>
+<br><br>
+
+<div class="note">
+<b>Important:</b><br>
+Please use 'relative to root' path when specifying the location
+of the <span class=code>assetmanager.aspx</span>.
+'Relative to root' path always starts with "/".
+</div>
+<br>
+</li>
+<li>
+Specify your web assets location.
+Open <span class="code">assetmanager.aspx</span> (in the <span class="code">assetmanager</span>
+folder) using your text editor & set the <span class="code">sBase</span> variable with
+the location of your web assets folder (please use "relative to root" path):
+<br><br>
+<div class="code2" style="width:630px;margin-left:0;">
+Private sBase As String = "/assets"<br>
+</div>
+<br>
+
+The above settings means that your web asset files are located in
+<span class=code>"http://yourserver/assets/"</span><br><br>
+
+<div class="note">
+<b>Important:</b><br>
+Your web asset folder must have Write Permission.
+</div>
+
+</li>
+</ol>
+
+<p>
+If you enable the Asset Manager add-on, these dialogs will automatically show a Browse button
+<img src="images/openAsset.gif">  :
+</p>
+<ul>
+<li>Hyperlink dialog</li>
+<li>Image dialog</li>
+<li>Insert Flash dialog</li>
+<li>Insert Media dialog</li>
+<li>Background Image dialog (opened from table and cell properties dialogs)</li>
+</ul>
+<p>
+The Browse button will open the Asset Manager add-on dialog so that
+you can select a file which can be inserted as hyperlink or object
+(image, flash, video, etc).
+</p>
+
+<img src="images/doc_asset_net.gif" style="margin-left:37px;">
+
+<h3>III.2. Localization</h3>
+
+<p>
+If required, you can localize the Asset Manager add-on to be displayed in
+specific language by setting the <span class=code>c</span> variable in querystring:
+</p>
+
+<p class="code2" style="width:630px;margin-top:0">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>AssetManager="/assetmanager/assetmanager.aspx?c=de-DE"</span><br>
+  <span class=tab1_bold>AssetManagerWidth="570"</span><br>
+  <span class=tab1_bold>AssetManagerHeight="510"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+The current available values <span class=code>c</span> variable are:
+<span class="code">da-DK</span> (Danish), <span class="code">nl-NL</span> (Dutch),
+<span class="code">fi-FI</span> (Finnish), <span class="code">fr-FR</span> (French),
+<span class="code">de-DE</span> (German), <span class="code">zh-CHS</span> (Chinese Simplified),
+<span class="code">zh-CHT</span> (Chinese Traditional), <span class="code">nn-NO</span> (Norwegian),
+<span class="code">es-ES</span> (Spanish), <span class="code">sv-SE</span> (Swedish).
+If <span class="code">lang</span> variable is not specified, English version will be displayed.
+</p>
+
+
+<h3>III.3. Returning Absolute Path</h3>
+
+<p>
+The Asset Manager dialog will return the selected file url in the form of 'relative to root' path, for example:
+</p>
+
+<p class="code1">
+/assets/image.gif
+</p>
+
+<p>
+If required, it can be changed to return absolute path by setting <span class=code>bReturnAbsolute</span>
+variable in <span class="code">assetmanager.aspx</span> to true:
+</p>
+
+<p class="code2" style="width:630px;margin-top:0">
+Private bUseAbsoluteUrl As Boolean = True
+</p>
+
+
+<p>This will make the Asset Manager dialog returns:</p>
+
+<p class="code1">
+http://yourservername/assets/image.gif
+</p>
+
+<p>
+Inserting images using absolute path usually is required if you use the Editor in web-based email applications.
+</p>
+
+
+<br>
+
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>

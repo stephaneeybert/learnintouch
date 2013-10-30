@@ -1,0 +1,109 @@
+To create a new website site, do the following operations:
+
+Register the website domain name at a registrar
+
+Create the directories and soft links
+mkdir /home/stephane/learnintouch/www/madeintouch.com;
+cd /home/stephane/learnintouch/www/madeintouch.com;
+mkdir account;
+mkdir account/data;
+mkdir account/setup;
+ln -s /home/stephane/learnintouch/engine/admin.php admin.php;
+ln -s /home/stephane/learnintouch/engine engine;
+ln -s /home/stephane/learnintouch/engine/index.php index.php;
+ln -s /home/stephane/learnintouch/engine/cron/cleanup.sh cleanup.sh;
+ln -s /home/stephane/learnintouch/engine/cron/backup.sh backup.sh;
+ln -s /home/stephane/learnintouch/engine/cron/refresh_template_models.sh refresh_template_models.sh;
+
+Add a bind entry for the website
+
+Add the virtual host entries file
+/home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
+
+<VirtualHost madeintouch.com:80>
+  DocumentRoot /home/stephane/learnintouch/www/madeintouch.com
+  ServerName www.madeintouch.com
+  ServerAlias madeintouch.com
+  ServerAdmin stephane@madeintouch.com
+  CustomLog logs/learnintouch-access_log combined
+  <Directory "/home/stephane/learnintouch/www/madeintouch.com">
+    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
+  </Directory>
+</VirtualHost>
+
+<VirtualHost aupresent.learnintouch.com:80>
+  DocumentRoot /home/stephane/learnintouch/www/aupresent
+  ServerName aupresent.learnintouch.com
+  CustomLog logs/learnintouch-access_log combined
+  <Directory "/home/stephane/learnintouch/www/aupresent">
+    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
+  </Directory>
+</VirtualHost>
+
+Restart httpd
+
+Create a .htaccess file (or a .user.ini file if in CGI mode) containing the following directives
+php_value include_path "/home/stephane/learnintouch/engine/setup"
+php_value auto_prepend_file "/home/stephane/learnintouch/www/madeintouch.com/account/setup/specific.php"
+For the .user.ini file:
+include_path="/home/stephane/learnintouch/www/madeintouch/engine/setup"
+auto_prepend_file="/home/stephane/learnintouch/www/madeintouch.com/account/setup/specific.php"
+
+Create the specific.php file
+
+Create the database
+mysqladmin -u stephane -p create db_madeintouch
+
+Add a MySQL user
+mysql -u stephane -p
+use mysql;
+grant all privileges on db_madeintouch.* to madeintouch@'localhost' identified by 'mypassword';
+flush privileges;
+quit;
+
+Create the directories
+http://fhs.learnintouch.com/engine/setup/directories.php
+
+Create the database schema
+http://fhs.learnintouch.com/engine/setup/schema.php
+
+Restaure some date from a data only backup file
+Insert the following statements at the top of the backup file:
+set foreign_key_checks = 0;
+delete from property;
+delete from profile;
+delete from preference;
+delete from statistics_visit;
+delete from statistics_page;
+delete from unique_token;
+bin/mysql -v -u stephane -p db_madeintouch < demo-website-data-only.sql
+\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/madeintouch.com/account/data/
+
+Add some index
+alter table statistics_visit add index(visit_datetime);
+alter table statistics_visit add index(visitor_host_address);
+alter table statistics_visit add index(visitor_browser);
+alter table statistics_visit add index(visitor_referer);
+
+Add an entry in the cron/*_all.sh files
+vi /home/stephane/learnintouch/engine/cron/*_all.sh
+
+Restart the MySQL server
+/etc/init.d/mysqld restart
+
+Create the domain name in the content management system
+In the administration panel, go to 'The websites' module and create a new website
+
+Create an administrator
+In the administration panel, go to 'The administrators' module, create a new administrator and check his module rights
+http://www.learnintouch.com/engine/system/admin/list.php
+Log out and try logging in with the administrator
+http://www.learnintouch.com/engine/system/admin/login.php
+
+Create the website identity
+Go in the image set module and reset the image set.
+http://www.learnintouch.com/engine/modules/template/imageSet/admin.php
+Go in the website profile module and specify the website name, domain name and email address.
+http://www.learnintouch.com/engine/modules/website/admin.php
+Go in the language module and select the website and administrative languages.
+http://www.learnintouch.com/engine/modules/language/admin.php

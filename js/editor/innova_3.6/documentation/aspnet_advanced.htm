@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+ASP.NET Developer's Guide
+</h3>
+
+<ol type="I">
+<li><a href="aspnet_start.htm">Getting Started</a></li>
+<li><a href="aspnet_style.htm">Applying Stylesheet</a></li>
+<li><a href="aspnet_asset.htm">Using Asset Manager Add-on</a></li>
+<li>Advanced Settings
+  <ol type="1">
+  <li>Setting the Editing Mode</li>
+  <li>Editing & Publishing Path</li>
+  <li>Line Break</li>
+  <li>Spell-Checking Integration</li>
+  <li>Using Optional Save Button</li>
+  <li>Adding Custom Color Selection</li>
+  </ol>
+</li>
+<li><a href="aspnet_extending.htm">Extending the Editor</a></li>
+<li><a href="aspnet_toolbar.htm">Toolbar</a></li>
+<li><a href="aspnet_localize.htm">Localization</a></li>
+<li><a href="aspnet_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>IV. Advanced Settings</h2>
+
+<h3>IV.1. Setting the Editing Mode</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor has 4 editing modes:
+</p>
+
+<ol>
+<li><span class=code>HTMLBody</span>; enables the Editor to edit/return HTML BODY section only.</li>
+<li><span class=code>HTML</span>; enables the Editor to edit/return full HTML Content.</li>
+<li><span class=code>XHTMLBody</span>; enables the Editor to edit/return HTML BODY section with XHTML rules applied.</li>
+<li><span class=code>XHTML</span>; enables the Editor to edit/return full HTML Content with XHTML rules applied.</li>
+</ol>
+
+<p>
+By default, the Editing Mode is set to <span class=code>HTMLBody</span>.
+To specify the editing mode, use <span class=code>EditMode</span> property. For example:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>EditMode="HTML"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+Editing full HTML content is useful if you wish to save the content as a static html file.
+However, in many dynamic web applications today (e.g. in database-driven web applications
+or web content management systems where the ability to manage certain/specific area is required),
+the <span class=code>HTMLBody</span> or <span class=code>XHTMLBody</span> editing modes are more likely to be used.
+</p>
+
+<h3>IV.2. Editing & Publishing Path</h3>
+
+<p>
+Lets' say you embed the editor in a web page located in a folder <span class=code>admin</span> :
+</p>
+
+<p class="code1">
+http://YourServer/admin/edit.aspx
+</p>
+
+<p>
+The Editor is used for editing content from a database.
+Then, to view the result, you read the edited content from the database and
+display it on another web page located in the root of your server:
+</p>
+
+<p class="code1">
+http://YourServer/view.aspx
+</p>
+
+<p>
+In this case, you have different locations for editing & viewing (publishing): the
+<span class=code>admin</span> folder is the Editing path and the 'root' is the Viewing/Publishing path.
+This will raise a problem if the edited content contains an image that has a relative path, for example:
+</p>
+
+<p class="code1">
+&lt;img src="images/photo.jpg">
+</p>
+
+<p>
+The image won't be displayed when viewing the content.
+This is because, in Editing, it assumes that the image is located in:
+</p>
+
+<p class="code1">
+http://YourServer/admin/images/photo.jpg
+</p>
+
+<p>
+Whereas in Publishing, it assumes that the image is located in:
+</p>
+
+<p class="code1">
+http://YourServer/images/photo.jpg
+</p>
+
+<p>
+This shouldn't be a problem if both Editing and Viewing/Publishing have the same location.
+To make the Editing location flexible (regardless the Viewing/Publishing location), there are 2 methods:
+</p>
+
+<ol>
+<li>Specify the <span class=code>PublishingPath</span> property of the Editor to point to the viewing/publishing path.
+In this way all relative urls will consistently be considered as relative to the publishing path.
+For example:<br><br>
+
+<div class="code2" style="margin-left:0;width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>PublishingPath="http//YourServer/"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</div>
+
+<br>
+
+With this setting, if we insert an image into the content:
+<br><br>
+
+<div class="code1">
+&lt;img src="images/photo.jpg">
+</div>
+<br>
+It is considered to be located at : <span class=code>http//YourServer/images/photo.jpg</span>
+(regardless where the Editing process is).
+<br><br>
+
+</li>
+<li>
+Always insert images or any other objects using 'Relative to Root' path, for example:
+<br><br>
+
+<div class="code1">
+&lt;img src="/images/photo.jpg">
+</div>
+<br>
+
+<div class="note">
+<b>Note:</b> 'Relative to Root' always start with "/".
+</div>
+
+<br>
+
+In this way, the image is always seen from: <span class=code>http//YourServer/images/photo.jpg</span>
+(regardless where the Editing process is).
+
+</li>
+</ol>
+
+<p>
+With the above methods, the Editing location would be flexible.
+Means that you can use the Editor in any location on your web server,
+regardles where you'd like to view/publish the result.
+</p>
+
+<p class="note">
+<b>Note:</b><br>
+it's a good idea to always use 'relative to root' path when inserting an image or
+other objects as it doesn't generate a problem if you have different location
+for Editing and Publishing (and you don't need to set the <span class=code>PublishingPath</span> property).<br><br>
+
+InnovaStudio WYSIWYG Editor has an Asset Manager add-on that you can use to select
+a file and return the 'relative to root' path of the file.
+By using the Asset Manager add-on you don’t need to set the
+<span class=code>PublishingPath</span> property.
+</p>
+
+<h3>IV.3. Line Break</h3>
+
+<p>
+In IE browser, if you press [ENTER] for line break the Editor will apply &lt;DIV> by default.
+In Netscape, Mozilla & Firefox, &lt;BR> will be applied.
+</p>
+
+<p>
+In IE browser, you can change the behaviour to apply &lt;P> or &lt;BR> by default.
+To apply &lt;P> by default, set <span class=code>UseDIV</span> property to false:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>UseDIV=false</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>To apply &lt;BR> by default, set <span class=code>UseBR</span> property to true:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>UseBR=true</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+Below are the possible values for <span class=code>UseDIV</span> and <span class=code>UseBR</span> (in IE):
+</p>
+
+<table border="1" style="margin-left:40px">
+<tr><td><span class=code>UseDIV</span></td><td><span class=code>UseBR</span></td><td><span class=code>Line Break</span></td></tr>
+<tr>
+<td>True</td><td>False</td><td>&lt;DIV> *</td>
+</tr>
+<tr>
+<td>False</td><td>False</td><td>&lt;P></td>
+</tr>
+<tr>
+<td>True</td><td>True</td><td>&lt;BR></td>
+</tr>
+<tr>
+<td>False</td><td>True</td><td>&lt;BR></td>
+</tr>
+</table>
+
+<p>
+<i>* except if the current paragraph is Heading (H1-H6) or Preformatted (PRE)</i>
+</p>
+
+<p>
+Note that <span class=code>UseDIV</span> and <span class=code>UseBR</span> only available in IE.
+They will not take effect in Netscape, Mozilla and Firefox.
+</p>
+
+<a name="IV4"></a>
+<h3>IV.4. Spell-Checking Integration</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor can be easily integrated with ieSpell (from www.iespell.com).
+To enable the "Spell Check" button, set <span class=code>btnSpellCheck</span> property to true:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>btnSpellCheck=true</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+Note that this feature is available only for IE Browser.
+</p>
+
+<p>
+InnovaStudio WYSIWYG Editor can also be integrated with NetSpell (from sourceforge.net/projects/netspell/).
+Please contact our support for more info.
+</li>
+
+
+</li>
+</ul>
+</p>
+
+<a name="IV5"></a>
+<h3>IV.5. Using Optional Save Button</h3>
+
+<p>
+InnovaStudio WYSIWYG Editor provides an optional "Save" button
+that you can use to call your custom Javascript command.
+To enable the button, specify your Javascript command to call using
+<span class=code>onSave</span> property:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>onSave="Form1.btnSubmit.click()"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+As seen on the above example, if you have a web form which has id "Form1"
+and a submit button which has id "btnSubmit", when you click the "Save" button,
+the form will be submitted. You can then hide the actual submit button using:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;asp:button runat="server" <span class=code_bold>style="display:none"</span> Text="SUBMIT" ID="btnSubmit" onclick="btnSubmit_Click" />
+</p>
+
+<h3>IV.6. Adding Custom Color Selection</h3>
+
+<p>
+You can add custom/predefined color selection to the Editor color picker dropdown.
+The color picker dropdown can be accessed through "Text Foreground Color" button, "Text Background Color" button
+and "Pick" buttons in several editing dialogs.
+</p>
+
+<p>
+To add custom color selection, set <span class=code>CustomColors</span> property with an array of
+the custom colors.
+For example:
+</p>
+
+<p class="code2" style="width:630px;">
+oEdit1.CustomColors = New String() {"#ff4500","#ffa500","#808000","#4682b4","#1e90ff","#9400d3","#ff1493","#a9a9a9"}
+</p>
+
+<br>
+
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>

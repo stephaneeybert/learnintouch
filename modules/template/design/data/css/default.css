@@ -1,0 +1,59 @@
+/* The first style property is not seen by the browsers 
+Therefore define a dummy one */
+.dummy { 
+}
+
+/* Prevent a gap below images in links */
+a img {
+  font-size:0px;
+}
+
+/* No border on icons */
+.no_style_image_icon { 
+  border-width:0px;
+}
+
+/* A separating line between lists lines */
+.no_style_list_line { 
+  border-bottom-style:solid; border-width:1px; border-color:#cccccc;
+  padding-top:2px; padding-bottom:2px;
+}
+
+/* Make sure that by default, images have no margin nor border */
+img { 
+  border-width:0px; 
+  margin:0px; 
+  padding:0px; 
+}
+
+/* Do not display the system borders being generated for A tags */
+a, a:active {
+  outline:none;
+}
+
+/* Do not outline the focus object */
+:focus {
+  -moz-outline-style:none;
+}
+
+/* Have the textarea width fit their container */
+.textarea_max {
+  width: 99% !important;
+}
+
+/* Fix the IE transparency for .png images */
+img, div, span, input { behavior: url("/engine/api/image/js/iepngfix.htc") }
+
+/* Add a font as explained at http://sixrevisions.com/css/font-face-guide/ 
+with more fonts found at http://www.fontsquirrel.com/fontface */
+@font-face {
+  font-family: 'ChunkFiveRegular';
+  src: url('/engine/api/font/chunkfiveregular/Chunkfive-webfont.eot');
+  src: local('ChunkFiveRegularLocal'),
+  url('/engine/api/font/chunkfiveregular/Chunkfive-webfont.woff') format('woff'),
+  url('/engine/api/font/chunkfiveregular/Chunkfive-webfont.ttf') format('truetype'),
+  url('/engine/api/font/chunkfiveregular/Chunkfive-webfont.svg#webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

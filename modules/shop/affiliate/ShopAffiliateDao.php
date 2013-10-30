@@ -1,0 +1,103 @@
+<?php
+
+class ShopAffiliateDao extends Dao {
+
+  var $tableName;
+
+  function ShopAffiliateDao($dataSource, $tableName) {
+    $this->Dao($dataSource);
+
+    $this->tableName = $tableName;
+  }
+
+  function createTable() {
+    $sqlStatement = <<<HEREDOC
+create table if not exists $this->tableName
+(
+id int unsigned not null auto_increment,
+version int unsigned not null,
+user_account_id int unsigned not null,
+index (user_account_id), foreign key (user_account_id) references user(id),
+unique (user_account_id),
+primary key (id), unique (id)
+) type = INNODB;
+HEREDOC;
+
+    return($this->querySelect($sqlStatement));
+  }
+
+  function insert($userId) {
+    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', '$userId')";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function update($id, $userId) {
+    $sqlStatement = "UPDATE $this->tableName SET user_account_id = '$userId' WHERE id = '$id'";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function delete($id) {
+    $sqlStatement = "DELETE FROM $this->tableName WHERE id = '$id'";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function selectById($id) {
+    $sqlStatement = "SELECT * FROM $this->tableName WHERE id = '$id' LIMIT 1";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function selectAll($start = false, $rows = false) {
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS sa.* FROM $this->tableName sa, " . DB_TABLE_USER . " u WHERE sa.user_account_id = u.id ORDER BY u.firstname, u.lastname";
+    if ($rows) {
+      if (!$start) {
+        $start = 0;
+      }
+      $sqlStatement .= " LIMIT " . $start . ", " . $rows;
+    } else if ($start) {
+      $sqlStatement .= " LIMIT " . $start;
+    }
+    return($this->querySelect($sqlStatement));
+  }
+
+  function selectLikePattern($searchPattern, $start = false, $rows = false) {
+    if (strstr($searchPattern, ' ')) {
+      list($firstname, $lastname) = explode(' ', $searchPattern);
+      $OR_BOTH_NAMES = "OR (lower(u.firstname) LIKE lower('%$firstname%') AND lower(u.lastname) LIKE lower('%$lastname%'))";
+    } else {
+      $OR_BOTH_NAMES = "";
+    }
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS sa.* FROM $this->tableName sa, " . DB_TABLE_USER . " u WHERE sa.user_account_id = u.id AND (lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%') OR lower(u.email) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) ORDER BY u.firstname, u.lastname";
+    if ($rows) {
+      if (!$start) {
+        $start = 0;
+      }
+      $sqlStatement .= " LIMIT " . $start . ", " . $rows;
+    } else if ($start) {
+      $sqlStatement .= " LIMIT " . $start;
+    }
+    return($this->querySelect($sqlStatement));
+  }
+
+  // Count the number of rows of the last select statement
+  // ignoring the LIMIT keyword if any
+  // The SQL_CALC_FOUND_ROWS clause tells MySQL to calculate how many rows there would be
+  // in the result set, disregarding any LIMIT clause with the number of rows later
+  // retrieved using the SELECT FOUND_ROWS() statement
+  function countFoundRows() {
+    $sqlStatement = "SELECT FOUND_ROWS() as count";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function selectByUserId($userId) {
+    $sqlStatement = "SELECT * FROM $this->tableName WHERE user_account_id = '$userId' LIMIT 1";
+    return($this->querySelect($sqlStatement));
+  }
+
+  function countAll() {
+    $sqlStatement = "SELECT count(*) as count FROM $this->tableName";
+    return($this->querySelect($sqlStatement));
+  }
+
+}
+
+?>

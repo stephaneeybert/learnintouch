@@ -1,0 +1,33 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <script language=JavaScript src='../scripts/innovaeditor.js'></script>
+
+  <script>
+  function doSubmit()
+    {
+    alert("Validation here")
+
+    document.forms.Form1.onsubmit(); //This is required
+    document.forms.Form1.submit()
+    }
+  </script>
+</head>
+<body>
+
+<form method="post" action="default.asp" id="Form1">
+
+  <textarea id="txtContent" name="txtContent" rows=4 cols=30></textarea>
+
+  <script>
+    var oEdit1 = new InnovaEditor("oEdit1");
+    oEdit1.REPLACE("txtContent");
+  </script>
+
+  <!-- Not a submit button -->
+  <input type="button" value="Submit" onclick="doSubmit()">
+
+</form>
+
+</body>
+</html>

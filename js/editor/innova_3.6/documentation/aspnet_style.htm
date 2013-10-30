@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+ASP.NET Developer's Guide
+</h3>
+
+<ol type="I">
+<li><a href="aspnet_start.htm">Getting Started</a></li>
+<li>Applying Stylesheet
+  <ol type="1">
+  <li>Applying Stylesheet Using External Css File</li>
+  <li>Enabling the Style Selection feature</li>
+  <li>Applying Stylesheet Without Using Css File</li>
+  </ol>
+</li>
+<li><a href="aspnet_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="aspnet_advanced.htm">Advanced Settings</a></li>
+<li><a href="aspnet_extending.htm">Extending the Editor</a></li>
+<li><a href="aspnet_toolbar.htm">Toolbar</a></li>
+<li><a href="aspnet_localize.htm">Localization</a></li>
+<li><a href="aspnet_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>II. Applying Stylesheet</h2>
+
+<h3>II.1. Applying Stylesheet Using External Css File</h3>
+
+<p>To apply an external css file, specify the css file using <span class=code>Css</span> property:</p>
+
+<p class="code2" style="width:630px;">
+&lt;editor:wysiwygeditor<br>
+<span class=tab1>Runat="server"</span><br>
+<span class=tab1>scriptPath="scripts/"</span><br>
+<span class=tab1_bold>Css="style/test.css"</span><br>
+<span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>If you specify BODY style in your css file, for example:</p>
+
+<p class="code2" style="width:630px;">
+BODY&nbsp;&nbsp;{<br>
+<span class=tab1>background:steelblue;</span><br>
+<span class=tab1>color:white;</span><br>
+<span class=tab1>font-family:Verdana,Arial,Helvetica;</span><br>
+<span class=tab1>}
+</p>
+
+<p>
+This will apply a background color of "steelblue", font color of "white",
+and font family of "Verdana,Arial,Helvetica" to the Editor content as shown in the screenshot below:
+</p>
+
+<img src="images/doc_css.gif" style="margin-left:37px;">
+
+<h3>II.2. Enabling the Style Selection feature</h3>
+
+<p>
+Style Selection feature allows you to select & apply styles to the Editor content.
+To enable the style selection feature, set <span class=code>btnStyles</span> property to true.
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;editor:wysiwygeditor<br>
+<span class=tab1>Runat="server"</span><br>
+<span class=tab1>scriptPath="scripts/"</span><br>
+<span class=tab1_bold>Css="style/test.css"</span><br>
+<span class=tab1_bold>btnStyles=true</span><br>
+<span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+All class selectors defined in the css file will be listed in the Style Selection.
+For example, the class selector <span class=code>CodeInText</span> below will be included in the Style Selection.
+</p>
+
+<p class="code2" style="width:630px;">
+.CodeInText {font-family:Courier New;font-weight:bold;}
+</p>
+
+<img src="images/doc_styles.gif" style="margin-left:37px;">
+
+<p>
+Only HTML selectors will not be included in the Style Selection.
+For example, the HTML selector <span class=code>P</span> below will not be included.
+</p>
+
+<p class="code2" style="width:630px;">
+P {font-family:Verdana,Arial,Helvetica;}
+</p>
+
+<h3>II.3. Applying Stylesheet Without Using Css File</h3>
+
+<p>
+To apply stylesheet without using external css file, use <span class=code>EditingStyles</span> collection,
+for example:
+</p>
+
+<p class="code2" style="width:800px;margin-top:0">
+oEdit1.EditingStyles.add( _ <br>
+  <span class="tab1">new EditingStyle("BODY",false,"","font-family:Verdana,Arial,Helvetica;font-size:x-small;") _</span><br>
+)<br><br>
+oEdit1.EditingStyles.add( _ <br>
+  <span class="tab1">new EditingStyle(".ScreenText",true,"Screen Text","font-family:Tahoma;") _</span><br>
+)<br><br>
+oEdit1.EditingStyles.add( _<br>
+  <span class="tab1">new EditingStyle(".ImportantWords",true,"Important Words","font-weight:bold;") _</span><br>
+)<br><br>
+oEdit1.EditingStyles.add( _<br>
+  <span class="tab1">new EditingStyle(".Highlight",true,"Highlight","font-family:Arial;color:red;") _</span><br>
+)<br>
+</p>
+
+<p>
+<span class=code>EditingStyles</span> is collection of <span class="code">EditingStyle</span> object. This property allows you to specify the style rules.
+Below are properties of <span class="code">EditingStyle</span>:
+</p>
+
+<ul>
+<li>Rule, css rule name or class.</li>
+<li>ShowInSelector, True/false parameter – to specify whether the style will be included in the Style Selection list or not.</li>
+<li>Caption (the displayed text for the Style Selection list)</li>
+<li>CssText, the css text</li>
+</ul>
+
+<p>Below is a complete example:</p>
+
+<p class="code2" style="width:800px;margin-top:0">
+    &lt;%@ Page Language="vb" ValidateRequest="false" Debug="true" %><br>
+    <span class="code_bold">&lt;%@ Register TagPrefix="editor" Assembly="WYSIWYGEditor" namespace="InnovaStudio" %></span><br>
+    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><br>
+    &lt;html><br>
+    &lt;head><br>
+    <span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"></span><br><br>
+
+    <span class=tab1>&lt;script language="VB" runat="server"></span><br><br>
+    <span class=tab1>Sub Page_Load(Source As Object, E As EventArgs)</span><br><br>
+    <span class=tab2>If Not Page.IsPostBack Then</span><br><br>
+    <span class=tab3>oEdit1.Text = "&lt;h3>Hello World!&lt;/h3>"</span><br>
+
+    <span class="tab3">oEdit1.EditingStyles.add( _</span><br>
+    <span class="tab4">new EditingStyle("BODY",false,"",</span>-<br>
+    <span class="tab4">"font-family:Verdana,Arial,Helvetica;font-size:x-small;") _</span><br>
+    <span class="tab3">)</span><br>
+    <span class="tab3">oEdit1.EditingStyles.add( _</span><br>
+    <span class="tab4">new EditingStyle(".ScreenText",true,_</span><br>
+    <span class="tab4">"Screen Text","font-family:Tahoma;") _</span><br>
+    <span class="tab3">)</span><br>
+    <span class="tab3">oEdit1.EditingStyles.add( _</span><br>
+    <span class="tab4">new EditingStyle(".ImportantWords",true,_</span><br>
+    <span class="tab4">"Important Words","font-weight:bold;") _</span><br>
+    <span class="tab3">)</span><br>
+    <span class="tab3">oEdit1.EditingStyles.add( _</span><br>
+    <span class="tab4">new EditingStyle(".Highlight",true,_</span><br>
+    <span class="tab4">"Highlight","font-family:Arial;color:red;") _</span><br>
+    <span class="tab3">)</span><br>
+
+    <span class=tab3_bold>oEdit1.btnStyles = true</span><br><br>
+
+    <span class=tab2>End If</span><br><br>
+    <span class=tab1>End Sub</span><br><br>
+    <span class=tab1>&lt;/script></span><br>
+    &lt;/head><br>
+    &lt;body><br><br>
+
+    &lt;form id="Form1" method="post" runat="server"><br><br>
+
+    <span class=tab1_bold>&lt;editor:wysiwygeditor</span><br>
+    <span class=tab2_bold>Runat="server"</span><br>
+    <span class=tab2_bold>scriptPath="scripts/"</span><br>
+    <span class=tab2_bold>ID="oEdit1" /></span><br><br>
+
+    &lt;/form><br><br>
+
+    &lt;/body><br>
+    &lt;/html><br>
+
+
+
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

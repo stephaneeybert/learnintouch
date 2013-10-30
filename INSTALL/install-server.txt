@@ -1,0 +1,90 @@
+Instructions
+------------
+
+The LearnInTouch application is a content management system (CMS).
+It allows for the creation and the management of websites.
+The websites using the application are also stored on the same server.
+The application needs to be installed only once for all the websites of a server.
+The application needs the following components to function properly.
+
+
+Httpd
+-----
+
+Install the httpd server.
+
+See the file httpd.help.txt
+
+
+MySql
+-----
+
+Install the MySql server
+
+See the file mysql.help.txt
+
+
+PHP
+---
+
+Install PHP with the Apache server.
+
+See the file php.help.txt
+
+
+NodeJS
+------
+
+Install the NodeJS server to handle websockets.
+
+
+Redis
+-----
+
+Install the redis server to handle the sessions in connection with the Node.js server.
+
+See the file redis.help.txt
+
+
+Locales
+-------
+
+List the installed locales
+locale -a
+Install all the locales 
+dpkg-reconfigure locales
+
+Install the following locales
+locale-gen en_GB
+locale-gen fr_FR
+
+It should display the exact name of the locale
+
+
+Language files
+--------------
+
+Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
+
+Then assign the owner again
+chown -R apache:apache *
+
+
+Mail server
+-----------
+Install the mail server.
+The Postfix mail server is prefered for it makes it possible to manage mail boxes from the administration panel.
+Setup the bounce back email address to error@[domain name] for each domain name.
+
+
+LearnInTouch
+------------
+
+To install LearnInTouch see the file install-learnintouch.txt
+
+
+A website client
+----------------
+
+To install a website see the file install-a-website.txt
+

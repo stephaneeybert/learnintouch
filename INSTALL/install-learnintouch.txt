@@ -1,0 +1,42 @@
+Create the application directories:
+mkdir /home/stephane/learnintouch;
+mkdir /home/stephane/learnintouch/engine;
+mkdir /home/stephane/learnintouch/www;
+
+Unpack the engine archive
+cd/home/stephane/learnintouch/engine
+unzip engine.zip
+
+Add the crontab entries
+The crontab allows for the automatic execution of programs by the server.
+The programs can be run repeatedly, like every day, week, month, etc...
+Add the following entries in the crontab
+with the following command
+crontab -e
+00 01 * * * /home/stephane/learnintouch/engine/cron/backup_all.sh
+00 02 * * 6 /home/stephane/learnintouch/engine/cron/cleanup_all.sh
+30 01 * * * /home/stephane/dev/commands/backup-ftp.sh
+
+Create the engine database
+/home/stephane/programs/mysql/install;
+bin/mysqladmin -u stephane -p create db_engine
+bin/mysql -u stephane -p
+use mysql;
+grant all privileges on db_engine.* to engine@'localhost' identified by 'mypassword';
+flush privileges;
+quit;
+
+Populate the db_engine database:
+bin/mysql -u stephane -p db_engine < db_engine-structure.sql
+bin/mysql -u stephane -p db_engine < db_engine.sql
+
+Update the language table of the engine database with the displayed locale name
+locale -a
+update language set locale = 'en_GB.iso88591' where id = '1';
+update language set locale = 'fr_FR.iso88591' where id = '2';
+update language set locale = 'sv_SE.iso88591' where id = '3';
+update language set locale = 'nn_NO.iso88591' where id = '4';
+
+Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
+Then assign the owner again
+chown -R apache:apache *

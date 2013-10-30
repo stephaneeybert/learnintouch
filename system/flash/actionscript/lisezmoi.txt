@@ -1,0 +1,37 @@
+Un lien de navigation, une barre de navigation ou un menu de navigation peuvent être rendus
+dans une animation Flash.
+
+Afin que l'animation Flash puisse récupérer les données du système et ainsi éviter de coder en dur les données de l'animation Flash, des paramètres et un fichier wddx sont utilisés.
+
+Des fichiers d'exemple de Flash actionscript sont fournis pour les différents types d'éléments de navigation.
+
+Ces fichiers d'exemple ont pour nom ...Example.as
+
+Chaque fichier affiche le contenu d'un élément de navigation.
+
+Le fichier Flash reçoit deux paramètres:
+  wddxname
+  languageCode
+
+Comme dans:
+
+<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='300' height='300'> <param name='movie' value='http://www.thalasoft.com/account/data/flash/file/mp3.swf?languageCode=en&wddxname=mp3.navbar.63.wddx' /> <param name='quality' value='high' /> <param name='bgcolor' value='' /> <param name='wmode' value='transparent' /> <embed src='http://www.thalasoft.com/account/data/flash/file/mp3.swf?languageCode=en&wddxname=mp3.navbar.63.wddx' quality='high' wmode='transparent' bgcolor='' width='300' height='300' type='application/x-shockwave-flash' pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash'> </embed> </object>
+
+Les paramètres sont passés dans l'url du fichier .swf, après le nom de fichier.
+
+La série des paramètres commence après le ? et chaque paramètre est séparé du précédent par un
+&
+
+Dans l'exemple ci dessus les paramètres sont passés comme ceci:
+
+?languageCode=en&wddxname=mp3.navbar.63.wddx
+
+L'actionscript doit récupérer ces deux paramètres.
+
+En utilisant le paramètre wddx l'actionscript ouvre un fichier wddx et lis son contenu.
+
+La bibliothèque WDDX.as offre les fonctions wddx pour interpréter le contenu du fichier wddx en
+un objet actionscript.
+
+Il est ensuite possible de boucler sur l'objet actionscript.
+

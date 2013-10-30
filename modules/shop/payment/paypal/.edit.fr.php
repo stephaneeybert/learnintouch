@@ -1,0 +1,6 @@
+[   0]Compte Paypal
+[   1]Addresse email:
+[   2]Pour pouvoir recevoir des paiements sur un compte Paypal, vous devez d'abord ouvrir un compte chez Paypal.\n\nLe système Paypal utilise une adresse email pour identifier un compte de manière unique.\n\nLes paiements peuvent ensuite être reçus en utilisant l'adresse email du compte Paypal.
+[   3]Le format de l'adresse email est invalide.
+[   4]Url de Notification de Paiement Instantané:
+[   5]L'url de notification instantanée de paiement est utilisée par Paypal pour savoir vers quelle url il doit rediriger l'utilisateur après que le paiement ai été effectué.\n\nLa page web de cette url sera affichée après que l'utilisateur effectue le paiement sur le site web Paypal.\n\nCette url doit être spécifiée par le possesseur du compte Paypal.\n\nPour spécifier l'url de Notification Instantanée de Paiement, veuillez faire comme suit:\n\n - Connectez vous à votre compte Paypal\n\n - Cliquez sur l'onglet "Mon compte"\n\n - Cliquez sur l'onglet "Profil"\n\n - Dans les "Préférences de vente" cliquez sur le lien "Préférences de Notification instantanée de paiement"\n\n - A partir de là vous devez saisir une url pour le système de Notification Instantanée de Paiement.

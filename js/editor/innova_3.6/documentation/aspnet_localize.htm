@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+ASP.NET Developer's Guide
+</h3>
+
+<ol type="I">
+<li><a href="aspnet_start.htm">Getting Started</a></li>
+<li><a href="aspnet_style.htm">Applying Stylesheet</a></li>
+<li><a href="aspnet_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="aspnet_advanced.htm">Advanced Settings</a></li>
+<li><a href="aspnet_extending.htm">Extending the Editor</a></li>
+<li><a href="aspnet_toolbar.htm">Toolbar</a></li>
+<li>Localization</li>
+<li><a href="aspnet_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>VII. Localization</h2>
+
+<p>
+You can localize the Editor to be displayed in specific language
+by setting <span class=code>Language</span> property:
+</p>
+
+<p class="code2" style="width:630px;">
+  &lt;editor:wysiwygeditor<br>
+  <span class=tab1>Runat="server"</span><br>
+  <span class=tab1>scriptPath="scripts/"</span><br>
+  <span class=tab1_bold>Language="de-DE"</span><br>
+  <span class=tab1>AssetManager="/assetmanager/assetmanager.aspx?<span class=code_bold>c=de-DE</span>"</span><br>
+  <span class=tab1>AssetManagerWidth="570"</span><br>
+  <span class=tab1>AssetManagerHeight="510"</span><br>
+  <span class=tab1>Content="Hello World!"</span><br>
+  <span class=tab1>ID="oEdit1" /></span>
+</p>
+
+<p>
+The current available values for <span class=code>Language</span> property are:
+<span class=code>da-DK(Danish)</span>, <span class=code>nl-NL(Dutch)</span>,
+<span class=code>fi-FI(Finnish)</span>, <span class=code>fr-FR(French)</span>,
+<span class=code>de-DE(German)</span>, <span class=code>zh-CHS</span> (Chinese Simplified),
+<span class=code>zh-CHT</span> (Chinese Traditional),
+<span class=code>nn-NO(Norwegian)</span>, <span class=code>es-ES(Spanish)</span>,
+<span class=code>sv-SE(Swedish)</span>.
+<span class=code>it-IT(Italian)</span>.
+If <span class=code>Language</span> property is not specified, English (en-US) version will be displayed.
+</p>
+
+<p>
+The code above will also localize the Asset Manager add-on.
+</p>
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

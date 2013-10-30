@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+Developer's Guide  |
+<a href="aspnet_start.htm">ASP.NET Developer's Guide</a>
+</h3>
+
+<ol type="I">
+<li>Getting Started
+  <ol type="1">
+  <li>Installation</li>
+  <li>Textarea Replacement</li>
+  <li>Loading Content into the Editor</li>
+  <li>Setting the Editor Dimension</li>
+  </ol>
+</li>
+<li><a href="default_style.htm">Applying Stylesheet</a></li>
+<li><a href="default_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="default_advanced.htm">Advanced Settings</a></li>
+<li><a href="default_extending.htm">Extending the Editor</a></li>
+<li><a href="default_toolbar.htm">Toolbar</a></li>
+<li><a href="default_localize.htm">Localization</a></li>
+<li><a href="default_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>I. Getting Started</h2>
+
+
+
+<h3>I.1. Installation</h3>
+
+<p>
+Unzip the Editor package & copy all files into your web server.
+You should have the following folders and files:
+</p>
+
+<img src="images/doc_zip.gif" style="margin-left:30px;">
+
+<p>
+Open file <span class=code>default.htm</span> to
+browse the examples and the documentation.
+According to several examples, it is recomended that you copy all files into a virtual directory named
+<span class=code>Editor</span> in your web server, so that you can access the examples by opening:
+</p>
+
+<p class="code1">http://yourserver/Editor/default.htm</p>
+
+<p class="note">
+<b>Note:</b><br>
+InnovaStudio WYSIWYG Editor script is located in folder <span class=code>scripts</span>.
+You just need this folder to use the Editor in your web pages.
+</p>
+
+<h3>I.2. Textarea Replacement</h3>
+
+<ol>
+<li>Copy the <span class=code>scripts</span> folder anywhere in your web server (please do not rename it).</li>
+<li>Include the Editor script file (<span class=code>innovaeditor.js</span> -
+located in the <span class=code>scripts</span> folder)
+in the <span class=code>&lt;head></span> section of your web page.</li>
+<li>Initialize & embed the Editor below the &lt;textarea> you’d like to replace.</li>
+</ol>
+
+<p class="code2" style="width:630px">
+&lt;html><br>
+&lt;head><br>
+<span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"></span><br><br>
+
+<span class=tab1_bold>&lt;script language="Javascript" src="scripts/innovaeditor.js">&lt;/script></span><br>
+&lt;/head><br>
+&lt;body><br>
+&lt;form method="post" action="post.asp" id="Form1"><br><br>
+
+<span class=tab1>&lt;textarea id="txtContent" name="txtContent" rows=4 cols=30>&lt;/textarea></span><br>
+<span class=tab1>&lt;script></span><br>
+<span class=tab2_bold>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab2_bold>oEdit1.REPLACE("txtContent");</span><br>
+<span class=tab1>&lt;/script></span><br>
+<span class=tab1>&lt;input type="submit" value="submit"></span><br>
+&lt;/form><br>
+&lt;/body><br>
+&lt;/html><br>
+</p>
+
+<p>
+As seen on the above code, specify the textarea id as parameter for the <span class="code">REPLACE</span> method.
+</p>
+
+<a name="I3"></a>
+<h3>I.3. Loading Content into the Editor</h3>
+
+<p>
+The Editor automatically loads content from the textarea. You just need to set the textarea value
+(which can be from server side variable or any source, eg. from a database).
+In the previous version of the Editor, we recommended to use
+<span class="code">Server.HTMLEncode</span> (for ASP) or <span class="code">htmlentities</span> (for PHP)
+to write a value into the textarea.
+In the current version, please use our simple <span class="code">encodeHTML()</span> function as shown below :
+</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">ASP Example</div>
+<p class="code2" style="width:630px;margin-top:0">
+&lt;html><br>
+&lt;head><br>
+<span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <br>
+<span class=tab1>&lt;script language=JavaScript src="../scripts/innovaeditor.js">&lt;/script><br>
+&lt;/head><br>
+&lt;body><br>
+&lt;form method="post" action="default.asp" id="Form1"><br><br>
+
+<span class=tab1>&lt;textarea id="txtContent" name="txtContent" rows=4 cols=30></span><br>
+<span class=tab1_bold>&lt;%</span><br>
+<span class=tab1_bold>function encodeHTML(sHTML)</span><br>
+<span class=tab2_bold>sHTML=replace(sHTML,"&","&amp;amp;")</span><br>
+<span class=tab2_bold>sHTML=replace(sHTML,"&lt;","&amp;lt;")</span><br>
+<span class=tab2_bold>sHTML=replace(sHTML,">","&amp;gt;")</span><br>
+<span class=tab2_bold>encodeHTML=sHTML</span><br>
+<span class=tab1_bold>end function</span><br><br>
+
+<span class=tab1_bold>Response.Write encodeHTML(Request("txtContent"))</span><br>
+<span class=tab1_bold>%>  </span><br>
+<span class=tab1>&lt;/textarea></span><br><br>
+
+<span class=tab1>&lt;script></span><br>
+<span class=tab2>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab2>oEdit1.REPLACE("txtContent");</span><br>
+<span class=tab1>&lt;/script></span><br><br>
+
+<span class=tab1>&lt;input type="submit" value="Submit"></span><br>
+&lt;/form><br>
+&lt;/body><br>
+&lt;/html>
+</p>
+
+<div style="width:630px;margin-left:40px;font-weight:bold;font-size:18px;color:#aaaaaa" align="right">PHP Example</div>
+<p class="code2" style="width:630px;margin-top:0">
+&lt;html><br>
+&lt;head><br>
+<span class=tab1>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br>
+<span class=tab1>&lt;script language=JavaScript src='../scripts/innovaeditor.js'>&lt;/script><br>
+&lt;/head><br>
+&lt;body><br>
+&lt;form method="post" action="default.php" id="Form1"><br>
+
+<span class=tab1>&lt;textarea id="txtContent" name="txtContent" rows=4 cols=30></span><br>
+<span class=tab1_bold>&lt;?</span><br>
+<span class=tab1_bold>function encodeHTML($sHTML)</span><br>
+<span class=tab2_bold>{</span><br>
+<span class=tab2_bold>$sHTML=ereg_replace("&","&amp;amp;",$sHTML);</span><br>
+<span class=tab2_bold>$sHTML=ereg_replace("&lt;","&amp;lt;",$sHTML);</span><br>
+<span class=tab2_bold>$sHTML=ereg_replace(">","&amp;gt;",$sHTML);</span><br>
+<span class=tab2_bold>return $sHTML;</span><br>
+<span class=tab2_bold>}</span><br><br>
+
+<span class=tab1_bold>if(isset($_POST["txtContent"]))</span><br>
+<span class=tab2_bold>{</span><br>
+<span class=tab2_bold>$sContent=stripslashes($_POST['txtContent']); //Remove slashes</span><br>
+<span class=tab2_bold>echo encodeHTML($sContent);</span><br>
+<span class=tab2_bold>}</span><br>
+<span class=tab1_bold>?></span><br>
+<span class=tab1>&lt;/textarea></span><br><br>
+
+<span class=tab1>&lt;script></span><br>
+<span class=tab2>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab2>oEdit1.REPLACE("txtContent");</span><br>
+<span class=tab1>&lt;/script></span><br><br>
+
+<span class=tab1>&lt;input type="submit" value="Submit"></span><br>
+&lt;/form><br>
+&lt;/body><br>
+&lt;/html>
+</p>
+
+<h3>I.4. Setting the Editor Dimension</h3>
+
+<p>
+Editor dimension can be adjusted using the <span class=code>width</span> and <span class=code>height</span> properties. For example:
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.width="100%";</span><br>
+<span class=tab1_bold>oEdit1.height="350px";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+Please note that by default, you can't set the Editor width less than 565 pixels.
+To set the Editor width less than 565 pixels, you'd need to apply toolbar line breaks using
+<span class="code">features</span> property. <a href="default_toolbar.htm">More info</a>
+</p>
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

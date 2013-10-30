@@ -1,0 +1,23 @@
+<style type="text/css">
+
+  /* The first style is not seen by the browsers
+     Therefore define a dummy one */
+  .dummy {
+    }
+
+  body, td, th, ul {
+    background-color:#ffffff;
+    color:#2b3006; 
+    font-family:verdana, arial, helvetica, sans-serif; 
+    font-size:80%;
+    font-weight:bold;
+    margin:8px 8px 8px 8px;
+    }
+
+  a:link, a:hover, a:active, a:visited { 
+    font-family:helvetica; 
+    font-weight:bold;
+    }
+
+</style>
+

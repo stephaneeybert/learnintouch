@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>InnovaStudio WYSIWYG Editor - Developer's Guide</title>
+<style>
+  body{font:10pt verdana,arial,sans-serif;}
+  td{font:10pt verdana,arial,sans-serif;}
+  a{color:#0000cc;}
+  .code{font:10pt courier new;font-weight:bold}
+  .code1{font:10pt courier new;margin-left:30px;}
+  .code2{font:10pt courier new;margin-left:40px;background:#f7f7f7;padding:3px;border-top:#666666 1px solid;border-bottom:#666666 1px solid;}
+  .tab1{margin-left:40px}
+  .tab2{margin-left:80px}
+  .tab3{margin-left:120px}
+  .tab4{margin-left:160px}
+  .code_bold{font-weight:bold;background:#e7e7e7}
+  .tab1_bold{margin-left:40px;font-weight:bold;background:#e7e7e7}
+  .tab2_bold{margin-left:80px;font-weight:bold;background:#e7e7e7}
+  .tab3_bold{margin-left:120px;font-weight:bold;background:#e7e7e7}
+  .tab4_bold{margin-left:160px;font-weight:bold;background:#e7e7e7}
+  .note{border-top:#666666 1px solid;border-bottom:#666666 1px solid;width:500px;background:#f7f7f7;padding:5px}
+  p{margin-left:16px}
+</style>
+</head>
+<body>
+
+<h3>
+<a href="../default.htm">Examples</a>  |
+Developer's Guide  |
+<a href="aspnet_start.htm">ASP.NET Developer's Guide</a>
+</h3>
+
+<ol type="I">
+<li><a href="default_start.htm">Getting Started</a></li>
+<li>Applying Stylesheet
+  <ol type="1">
+  <li>Applying Stylesheet Using External Css File</li>
+  <li>Enabling the Style Selection feature</li>
+  <li>Applying Stylesheet Without Using Css File</li>
+  </ol>
+</li>
+<li><a href="default_asset.htm">Using Asset Manager Add-on</a></li>
+<li><a href="default_advanced.htm">Advanced Settings</a></li>
+<li><a href="default_extending.htm">Extending the Editor</a></li>
+<li><a href="default_toolbar.htm">Toolbar</a></li>
+<li><a href="default_localize.htm">Localization</a></li>
+<li><a href="default_faq.htm">FAQ</a></li>
+</ol>
+
+<div style="border-top:#cccccc 2px dotted;margin:3px"></div>
+
+<h2>II. Applying Stylesheet</h2>
+
+<h3>II.1. Applying Stylesheet Using External Css File</h3>
+
+<p>To apply an external css file, specify the css file using <span class=code>css</span> property:</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.css="style/test.css";</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>If you speciify BODY style in your css file, for example:</p>
+
+<p class="code2" style="width:630px;">
+BODY&nbsp;&nbsp;{<br>
+<span class=tab1>background:steelblue;</span><br>
+<span class=tab1>color:white;</span><br>
+<span class=tab1>font-family:Verdana,Arial,Helvetica;</span><br>
+<span class=tab1>}
+</p>
+
+<p>
+This will apply a background color of "steelblue", font color of "white",
+and font family of "Verdana,Arial,Helvetica" to the Editor content as shown in the screenshot below:
+</p>
+
+<img src="images/doc_css.gif" style="margin-left:37px;">
+
+<h3>II.2. Enabling the Style Selection feature</h3>
+
+<p>
+Style Selection feature allows you to select & apply styles to the Editor content.
+To enable the style selection feature, set <span class=code>btnStyles</span> property to true.
+</p>
+
+<p class="code2" style="width:630px;">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br>
+<span class=tab1_bold>oEdit1.css="style/test.css";</span><br>
+<span class=tab1_bold>oEdit1.btnStyles=true;</span><br>
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+All class selectors defined in the css file will be listed in the Style Selection.
+For example, the class selector <span class=code>CodeInText</span> below will be included in the Style Selection.
+</p>
+
+<p class="code2" style="width:630px;">
+.CodeInText {font-family:Courier New;font-weight:bold;}
+</p>
+
+<img src="images/doc_styles.gif" style="margin-left:37px;">
+
+<p>
+Only HTML selectors will not be included in the Style Selection.
+For example, the HTML selector <span class=code>P</span> below will not be included.
+</p>
+
+<p class="code2" style="width:630px;">
+P {font-family:Verdana,Arial,Helvetica;}
+</p>
+
+<h3>II.3. Applying Stylesheet Without Using Css File</h3>
+
+<p>
+To apply stylesheet without using external css file, use <span class=code>arrStyle</span> property, for example:
+</p>
+
+
+<p class="code2" style="width:630px;margin-top:0">
+&lt;script><br>
+<span class=tab1>var oEdit1 = new InnovaEditor("oEdit1");</span><br><br>
+
+<span class=tab1_bold>oEdit1.arrStyle = [["BODY",false,"","background:steelblue; color:white;</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> font-family:Verdana,Arial,Helvetica;"],</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> ["a:link",false,"","color:white; font-weight:bold;"],</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> ["a:active",false,"","color:white; font-weight:bold;"],</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> ["a:visited",false,"","color:whitesmoke;font-weight:bold;"],</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> [".CodeInText",true,"Code In Text",</span><br>
+<span class=tab2_bold><img src="images/arrow.gif"> "font-family:Courier New;font-weight:bold;"]];</span><br>
+<span class=tab1_bold>oEdit1.btnStyles = true;</span><br><br>
+
+<span class=tab1>oEdit1.REPLACE("txtContent");</span><br>
+&lt;/script>
+</p>
+
+<p>
+<span class=code>arrStyle</span> property allows you to specify the style rules (in the form of array).
+Each rule is constructed by:
+</p>
+
+<ul>
+<li>HTML/Class Selector</li>
+<li>True/false parameter – to specify whether the style will be included in the Style Selection list or not.</li>
+<li>Caption (the displayed text for the Style Selection list)</li>
+<li>Css Text</li>
+</ul>
+
+
+<br>
+<hr>
+<span style="font-size:10px">
+© 2008, INNOVA STUDIO (www.innovastudio.com). All rights reserved.</span>
+</body>
+</html>
+
+

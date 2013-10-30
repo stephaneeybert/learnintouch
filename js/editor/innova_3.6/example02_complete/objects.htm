@@ -1,0 +1,40 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert Object</title>
+<script>
+function insertObject(sHTML)
+  {
+  var obj=window.opener.oUtil.obj;
+
+  //Use insertHTML() function to insert your custom html
+  obj.insertHTML(sHTML);
+  }
+</script>
+<style>
+BODY {font-family:Verdana, Arial, Helvetica;font-size: x-small;margin:3 3 3 3;}
+</style>
+</head>
+<body>
+<h2>My Custom Objects</h2>
+
+<ul>
+<li onclick="insertObject(document.getElementById('divSignature').innerHTML)" style="cursor:pointer"><u>Insert Signature</u></li>
+<li onclick="insertObject(document.getElementById('divCompanyName').innerHTML)" style="cursor:pointer"><u>Insert Company Name</u></li>
+<li>...</li>
+</ul>
+
+<div id="divSignature" style="display:none">
+  Best Regards<br>
+  Support Team<br>
+  <a href="www.InsiteCreation.com">www.InsiteCreation.com</a>
+</div>
+
+<div id="divCompanyName" style="display:none">
+  <img src="images/insite.gif" margin="0" width="126" height="31"><br>
+  <a href="www.InsiteCreation.com">www.InsiteCreation.com</a><br>
+</div>
+
+</body>
+</html>

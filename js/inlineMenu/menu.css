@@ -1,0 +1,42 @@
+.navmenu {
+  }
+
+.navmenu .menu {
+  }
+
+.navmenu .menu .menuItem {
+  }
+  
+.navmenu .menu .menuItemHdr {
+  }
+
+.navmenu .menu .menuItemSep {
+  }
+
+/* Do not touch the following */
+
+dl, dt, dd, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type:none;
+  list-style:none;
+  }
+
+dl#menu dt {
+  cursor: pointer;
+  }
+
+dl#menu dd {
+  }
+
+dl#menu li {
+  text-decoration: none;
+  white-space: nowrap;
+  }
+
+dl#menu li a, dl#menu dt a {
+  display: block;
+  }
+
+dl#menu li a:hover, dl#menu dt a:hover {
+  }

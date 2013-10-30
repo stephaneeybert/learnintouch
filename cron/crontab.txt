@@ -1,0 +1,3 @@
+00 01 * * * /home/learnintouch/engine/cron/backup_all.sh
+00 02 * * 6 /home/learnintouch/engine/cron/cleanup_all.sh
+30 01 * * * /home/stephane/bin/backup-ftp.sh

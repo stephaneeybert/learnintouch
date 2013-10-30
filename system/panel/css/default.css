@@ -1,0 +1,153 @@
+/* The first style property is not seen by the browsers 
+Therefore define a dummy one */
+.dummy { 
+}
+
+html, body {
+  height:100%;
+}
+
+/* Make sure that by default, images have no margin nor border */
+img {
+  border-width:0px;
+  margin:0px;
+  padding:0px;
+}
+
+/* Do not display the system borders being generated for A tags */
+a:active {
+  outline:none;
+}
+
+/* Do not outline the focus object */
+:focus {
+  -moz-outline-style:none;
+}
+
+body { 
+  background-color:#dceef9;
+  color:#333333;
+  font-family:verdana, arial, helvetica, sans-serif;
+  font-weight:normal;
+}
+
+div, td, th, ul {
+  font-size:12px;
+}
+
+h1 {
+  color:#333333;
+  font-size:medium ;
+  font-family:helvetica;
+  font-weight:bold;
+}
+
+a:link, a:active, a:visited {
+  color:#000033;
+  font-family:helvetica;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+.admin img { 
+  border-width:0px;
+  vertical-align:bottom;
+}
+
+.admin .no_style_body {
+  background-color:#dceef9;
+  width:100%;
+  height:100%;
+  padding:10px;
+  vertical-align:top;
+}
+
+.admin .logout {
+  text-align:left;
+}
+
+.admin .parent {
+  text-align:right;
+}
+
+.admin .header {
+  font-family:verdana, helvetica, arial;
+  font-size:large;
+  font-weight:bold;
+  color:#666699;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.admin .warning, .warning {
+  color:#ff3333;
+  font-size:large;
+}
+
+
+.admin input[type="text"], .admin input[type="password"] {
+  font-family:verdana, helvetica, arial;
+  font-size:12px;
+  background-color:#efefef;
+  border-color:#999999;
+  border-style:solid;
+  border-width:1px;
+  padding:2px;
+}
+
+.admin textarea {
+  background-color:#efefef;
+  color:#000000;
+  font-family:verdana, helvetica, arial;
+  font-size:12px ;
+  border-width:1px;
+  border-color:#999999;
+  border-style:solid;
+  padding:2px;
+  scrollbar-face-color:#efefef;
+  scrollbar-shadow-color:#999999;
+  scrollbar-highlight-color:#efefef;
+  scrollbar-3dlight-color:#999999;
+  scrollbar-darkshadow-color:#efefef;
+  scrollbar-track-color:#efefef;
+  scrollbar-arrow-color:#999999;
+}
+
+.admin select {
+  background-color:#efefef;
+  color:#000000;
+  font-family:verdana, helvetica, arial;
+  font-size:12px;
+  border-width:1px;
+  border-color:#999999;
+  border-style:solid;
+  scrollbar-face-color:#efefef;
+  scrollbar-shadow-color:#999999;
+  scrollbar-highlight-color:#efefef;
+  scrollbar-3dlight-color:#999999;
+  scrollbar-darkshadow-color:#efefef;
+  scrollbar-track-color:#efefef;
+  scrollbar-arrow-color:#999999;
+}
+
+.admin .listline td {
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-bottom-color:#ffffff;
+  padding-top:2px;
+  padding-bottom:2px;
+}
+
+.admin .listline:hover {
+  background-color:#ffffaa;
+}
+
+label {
+  display:block;
+}
+
+
