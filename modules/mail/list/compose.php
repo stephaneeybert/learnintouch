@@ -261,7 +261,10 @@ $strCell3 = ''
   . "\n<input type='hidden' name='mailListId' value='$mailListId'>"
   . "\n</form>";
 
-$panelUtils->addLine($panelUtils->addCell(count($mailListUsers) . ' ' . $mlText[1], "nbr"), '', $panelUtils->addCell($mlText[2], "nb"));
+$labelUser = $popupUtils->getTipPopup($mlText[2], $mlText[8], 300, 300);
+$strCommand = "<a href='$gUserUrl/admin.php' $gJSNoStatus>"
+  . "<img border='0' src='$gCommonImagesUrl/$gImagePeople' title='$mlText[11]'></a>";
+$panelUtils->addLine($panelUtils->addCell(count($mailListUsers) . ' ' . $mlText[1], "nbr"), '', $panelUtils->addCell($labelUser . ' ' . $strCommand, "nb"));
 $panelUtils->addLine($panelUtils->addCell($strCell1, "nbr"), $panelUtils->addCell($strCell2, "nbc"), $strCell3);
 
 $strCell1 = ''
@@ -304,7 +307,10 @@ $strCountry = "<form action='$PHP_SELF' method='post'>"
   . "</form>";
 
 $panelUtils->addLine();
-$panelUtils->addLine($panelUtils->addCell(count($mailListAddresses) . ' ' . $mlText[3], "nbr"), '', $panelUtils->addCell($mlText[4], "nb"));
+$labelAddress = $popupUtils->getTipPopup($mlText[4], $mlText[9], 300, 300);
+$strCommand = "<a href='$gMailUrl/address/admin.php' $gJSNoStatus>"
+  . "<img border='0' src='$gCommonImagesUrl/$gImageEmail' title='$mlText[10]'></a>";
+$panelUtils->addLine($panelUtils->addCell(count($mailListAddresses) . ' ' . $mlText[3], "nbr"), '', $panelUtils->addCell($labelAddress . ' ' . $strCommand, "nb"));
 $panelUtils->addLine($panelUtils->addCell($strCell1, "nr"), $panelUtils->addCell($strCell2, "nc"), $strCell3);
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($labelEmail, "nbr"), '', $panelUtils->addCell($labelSearch, "nb"));
