@@ -22,18 +22,18 @@ if ( $formSubmitted == 1 ) {
   // The new password is required
   if (!$newpassword1) {
     array_push($warnings, $mlText[20]);
-    }
+  }
 
   // Check that the password contains only alphanumerical characters
   $cleanedPassword = LibString::stripNonFilenameChar($newpassword1);
   if ($cleanedPassword != $newpassword1) {
     array_push($warnings, $mlText[43] . ' ' . $cleanedPassword);
-    }
+  }
 
   // The new password must be confirmed
   if ($newpassword1 != $newpassword2) {
     array_push($warnings, $mlText[21]);
-    }
+  }
 
   // Update the new password into the database
   if ($user = $userUtils->selectById($userId)) {
@@ -50,26 +50,26 @@ if ( $formSubmitted == 1 ) {
     $email = $user->getEmail();
     $firstname = $user->getFirstname();
     $lastname = $user->getLastname();
-    }
+  }
 
   if (count($warnings) == 0) {
 
-  // Send an email to the user
-  $websiteName = $profileUtils->getProfileValue("website.name");
-  $websiteEmail = $profileUtils->getProfileValue("website.email");
-  $emailSubject = "$mlText[10] $websiteName";
-  $emailBody = "$mlText[11] <B>$newpassword1</B><br><br>$mlText[12]<br><br>$websiteName";
-  if (LibEmail::validate($email)) {
-    LibEmail::sendMail($email, "$firstname $lastname", $emailSubject, $emailBody, $websiteEmail, $websiteName);
+    // Send an email to the user
+    $websiteName = $profileUtils->getProfileValue("website.name");
+    $websiteEmail = $profileUtils->getProfileValue("website.email");
+    $emailSubject = "$mlText[10] $websiteName";
+    $emailBody = "$mlText[11] <B>$newpassword1</B><br><br>$mlText[12]<br><br>$websiteName";
+    if (LibEmail::validate($email)) {
+      LibEmail::sendMail($email, "$firstname $lastname", $emailSubject, $emailBody, $websiteEmail, $websiteName);
     }
 
-  $str = LibHtml::urlRedirect("$gUserUrl/admin.php");
-  printMessage($str);
-  return;
+    $str = LibHtml::urlRedirect("$gUserUrl/admin.php");
+    printMessage($str);
+    return;
 
   }
 
-  } else {
+} else {
 
   $userId = LibEnv::getEnvHttpGET("userId");
 
@@ -77,36 +77,36 @@ if ( $formSubmitted == 1 ) {
   if ($user = $userUtils->selectById($userId)) {
     $firstname = $user->getFirstname();
     $lastname = $user->getLastname();
-    }
-
   }
+
+}
 
 $strWarning = '';
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $strWarning .= "<br>$warning";
-    }
   }
+}
 
-  $panelUtils->setHeader($mlText[0], "$gUserUrl/admin.php");
-  $panelUtils->addLine($panelUtils->addCell($strWarning, "wb"));
-  $help = $popupUtils->getHelpPopup($mlText[3], 300, 200);
-  $panelUtils->setHelp($help);
-  $panelUtils->openForm($PHP_SELF);
-  $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "$firstname $lastname");
-  $panelUtils->addLine();
-  $label = $popupUtils->getTipPopup($mlText[4], $mlText[6], 300, 200);
-  $panelUtils->addLine($panelUtils->addCell($label, "br"), "<input type='password' name='newpassword1' size='10' maxlength='10'>");
-  $panelUtils->addLine();
-  $label = $popupUtils->getTipPopup($mlText[5], $mlText[7], 300, 200);
-  $panelUtils->addLine($panelUtils->addCell($label, "br"), "<input type='password' name='newpassword2' size='10' maxlength='10'>");
-  $panelUtils->addLine();
-  $panelUtils->addLine('', $panelUtils->getOk());
-  $panelUtils->addHiddenField('formSubmitted', 1);
-  $panelUtils->addHiddenField('userId', $userId);
-  $panelUtils->closeForm();
-  $str = $panelUtils->render();
+$panelUtils->setHeader($mlText[0], "$gUserUrl/admin.php");
+$panelUtils->addLine($panelUtils->addCell($strWarning, "wb"));
+$help = $popupUtils->getHelpPopup($mlText[3], 300, 200);
+$panelUtils->setHelp($help);
+$panelUtils->openForm($PHP_SELF);
+$panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "$firstname $lastname");
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[4], $mlText[6], 300, 200);
+$panelUtils->addLine($panelUtils->addCell($label, "br"), "<input type='password' name='newpassword1' size='10' maxlength='10'>");
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[5], $mlText[7], 300, 200);
+$panelUtils->addLine($panelUtils->addCell($label, "br"), "<input type='password' name='newpassword2' size='10' maxlength='10'>");
+$panelUtils->addLine();
+$panelUtils->addLine('', $panelUtils->getOk());
+$panelUtils->addHiddenField('formSubmitted', 1);
+$panelUtils->addHiddenField('userId', $userId);
+$panelUtils->closeForm();
+$str = $panelUtils->render();
 
-  printAdminPage($str);
+printAdminPage($str);
 
 ?>
