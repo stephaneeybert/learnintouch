@@ -27,7 +27,7 @@ if ($formSubmitted == 1) {
 
   if (count($warnings) == 0) {
 
-    if ($user = $userUtils->selectByemail($email)) {
+    if ($user = $userUtils->selectByEmail($email)) {
       // Create a new user password
       $password = LibUtils::generateUniqueId(USER_NEW_PASSWORD_LENGTH);
       $passwordSalt = LibUtils::generateUniqueId(USER_PASSWORD_SALT_LENGTH);
