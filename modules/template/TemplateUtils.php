@@ -1059,7 +1059,7 @@ HEREDOC;
   function renderCommonJavascripts() {
     global $gJsUrl;
     global $gTemplateDesignUrl;
-    global $gPlayerUrl;
+    global $gSwfPlayerUrl;
 
     $str = <<<HEREDOC
 <script src='$gJsUrl/popup.js' type='text/javascript'></script>
@@ -1113,7 +1113,7 @@ $(document).ready(function() {
     debugMode: false,
 //    debugFlash: true,
     useConsole: true,
-    url: '$gPlayerUrl'
+    url: '$gSwfPlayerUrl'
   });
 });
 </script>
