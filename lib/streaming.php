@@ -119,6 +119,7 @@ HEREDOC;
   // Render a Flash video player
   function renderFlashVideoPlayer() {
     global $gPlayerUrl;
+    global $gSwfPlayerUrl;
 
     $str = '';
 
