@@ -174,8 +174,13 @@ $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), $panelUtils->addCe
 $panelUtils->closeForm();
 $panelUtils->addLine();
 
+$strCommandNewsHeadingUrl = "$gNewsUrl/newsStory/edit.php?newsPublicationId=$newsPublicationId&newsPaperId=$newsPaperId"; 
+if ($newsHeadingId > 0) {
+  $strCommandNewsHeadingUrl .= "&newsHeadingId=$newsHeadingId";
+}
+
 $strCommand = ''
-  . " <a href='$gNewsUrl/newsStory/edit.php?newsPublicationId=$newsPublicationId&newsPaperId=$newsPaperId&newsHeadingId=$newsHeadingId' $gJSNoStatus>"
+  . " <a href='$strCommandNewsHeadingUrl' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'></a>"
   . " <a href='$gNewsUrl/newsPaper/edit.php?newsPaperId=$newsPaperId' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageEdit' title='$mlText[23]'></a>";
