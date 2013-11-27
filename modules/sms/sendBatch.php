@@ -22,16 +22,16 @@ foreach ($smsOutboxes as $smsOutbox) {
   $mobilePhone = $smsOutbox->getMobilePhone();
   $password = $smsOutbox->getPassword();
 
+  if (strstr($body, MAIL_META_USER_PASSWORD) && !$password) {
+    $password = $userUtils->setRandomPassword($email);
+  }
+
   // Replace the meta values in the body
   $smsBody = $body;
   $metaNames = $smsUtils->getMetaNames();
   foreach ($metaNames as $metaName) {
     list($name, $phpVariable, $description) = $metaName;
     eval("\$smsBody = str_replace(\$name, \$$phpVariable, \$smsBody);");
-  }
-
-  if (strstr($body, MAIL_META_USER_PASSWORD) && !$password) {
-    $password = $userUtils->setRandomPassword($email);
   }
 
   // Remove extra blank spaces in the body
