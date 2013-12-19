@@ -33,6 +33,7 @@ if ($formSubmitted == 1) {
       $passwordSalt = LibUtils::generateUniqueId(USER_PASSWORD_SALT_LENGTH);
       $hashedPassword = md5($password . $passwordSalt);
 
+      $user->setReadablePassword($password);
       $user->setPassword($hashedPassword);
       $user->setPasswordSalt($passwordSalt);
       $userUtils->updatePassword($user);

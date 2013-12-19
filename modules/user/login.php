@@ -72,9 +72,8 @@ if ($formSubmitted == 1) {
     if ($autologin == 1) {
       // Get the password as stored in the database as the source for the php encrypting
       $password = $userUtils->getUserPassword($email);
-      $cryptedPassword = crypt($password);
 
-      LibCookie::putCookie($userUtils->cookieAutoLogin, "$email:$cryptedPassword", $userUtils->getAutoLoginDuration());
+      LibCookie::putCookie($userUtils->cookieAutoLogin, "$email:$password", $userUtils->getAutoLoginDuration());
     } else {
       LibCookie::deleteCookie($userUtils->cookieAutoLogin);
     }

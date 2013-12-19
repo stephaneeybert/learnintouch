@@ -49,6 +49,7 @@ if ( $formSubmitted == 1 ) {
     if ($user = $userUtils->selectByEmail($email)) {
       $passwordSalt = LibUtils::generateUniqueId(USER_PASSWORD_SALT_LENGTH);
       $hashedPassword = md5($newpassword1 . $passwordSalt);
+      $user->setReadablePassword($newpassword1);
       $user->setPassword($hashedPassword);
       $user->setPasswordSalt($passwordSalt);
       $userUtils->updatePassword($user);

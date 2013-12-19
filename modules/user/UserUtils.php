@@ -263,10 +263,8 @@ class UserUtils extends UserDB {
     // Save the email in the session
     LibSession::putSessionValue(USER_SESSION_LOGIN, $email);
 
-    // Get the password as stored in the database as the source for the php encrypting
     $password = $this->getUserPassword($email);
-    $cryptedPassword = crypt($password);
-    LibCookie::putCookie($this->cookieAutoLogin, "$email:$cryptedPassword", $this->getAutoLoginDuration());
+    LibCookie::putCookie($this->cookieAutoLogin, "$email:$password", $this->getAutoLoginDuration());
 
     $this->openSocketSession();
   }
@@ -387,7 +385,7 @@ class UserUtils extends UserDB {
       $password = $this->getUserPassword($email);
 
       // Check the user password
-      if (crypt($password, $cookiePassword) == $cookiePassword) {
+      if ($password == $cookiePassword) {
         // Make session valid
         $session = true;
 
@@ -418,6 +416,8 @@ class UserUtils extends UserDB {
       } else {
         return(false);
       }
+    } else {
+      return(false);
     }
   }
 
