@@ -3,8 +3,8 @@ To create a new website site, do the following operations:
 Register the website domain name at a registrar
 
 Create the directories and soft links
-mkdir /home/stephane/learnintouch/www/peggykeramik.com;
-cd /home/stephane/learnintouch/www/peggykeramik.com;
+mkdir /home/stephane/learnintouch/www/echappeebelle.eu;
+cd /home/stephane/learnintouch/www/echappeebelle.eu;
 mkdir account;
 mkdir account/data;
 mkdir account/setup;
@@ -24,13 +24,13 @@ https://www.ovh.com/manager/web/login.html
 Add the virtual host entries file
 /home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
 
-<VirtualHost peggykeramik.com:80>
-  DocumentRoot /home/stephane/learnintouch/www/peggykeramik.com
-  ServerName www.peggykeramik.com
-  ServerAlias peggykeramik.com
-  ServerAdmin stephane@peggykeramik.com
+<VirtualHost echappeebelle.eu:80>
+  DocumentRoot /home/stephane/learnintouch/www/echappeebelle.eu
+  ServerName www.echappeebelle.eu
+  ServerAlias echappeebelle.eu
+  ServerAdmin stephane@echappeebelle.eu
   CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/peggykeramik.com">
+  <Directory "/home/stephane/learnintouch/www/echappeebelle.eu">
     Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
   </Directory>
 </VirtualHost>
@@ -48,26 +48,24 @@ Restart httpd
 
 Create a .htaccess file (or a .user.ini file if in CGI mode) containing the following directives
 php_value include_path "/home/stephane/learnintouch/engine/setup"
-php_value auto_prepend_file "/home/stephane/learnintouch/www/peggykeramik.com/account/setup/specific.php"
+php_value auto_prepend_file "/home/stephane/learnintouch/www/echappeebelle.eu/account/setup/specific.php"
 For the .user.ini file:
-include_path="/home/stephane/learnintouch/www/peggykeramik/engine/setup"
-auto_prepend_file="/home/stephane/learnintouch/www/peggykeramik.com/account/setup/specific.php"
+include_path="/home/stephane/learnintouch/www/echappeebelle.eu/engine/setup"
+auto_prepend_file="/home/stephane/learnintouch/www/echappeebelle.eu/account/setup/specific.php"
 
 Create the specific.php file
 
 Create the database
-cd programs/mysql;
-programs/mysql/install/bin/mysqladmin -u stephane -p create db_peggykeramik
+programs/mysql/install/bin/mysqladmin -u stephane -p create db_echappeebelle
 
 Add a MySQL user
-cd programs/mysql;
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_peggykeramik.* to peggykeramik@'localhost' identified by 'kjierken';
+grant all privileges on db_echappeebelle.* to echappeebelle@'localhost' identified by 'ujdhendk';
 select * from user;
-delete from user where User = 'peggykeramik';
+delete from user where User = 'echappeebelle';
 select * from user;
-insert into user values('localhost','peggykeramik','*59604FD51ABC0F3CEF5002A08847011702677CC5', 'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','','0','0','0','0','mysql_native_password','','N');
+insert into user values('localhost','echappeebelle','*59604FD51ABC0F3CEF5002A08847011702677CC5', 'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','','0','0','0','0','mysql_native_password','','N');
 flush privileges;
 quit;
 
@@ -76,7 +74,7 @@ http://fhs.learnintouch.com/engine/setup/directories.php
 
 Create the database schema
 http://fhs.learnintouch.com/engine/setup/schema.php
-programs/mysql/install/bin/mysql -v -u stephane -p db_peggykeramik < db_learnintouch-structure.sql
+programs/mysql/install/bin/mysql -v -u stephane -p db_echappeebelle < db_learnintouch-structure.sql
 
 Add some index
 alter table statistics_visit add index(visit_datetime);
@@ -85,8 +83,8 @@ alter table statistics_visit add index(visitor_browser);
 alter table statistics_visit add index(visitor_referer);
 
 Copy the legacy data
-scp ../learnintouch/www/peggykeramik.com/account/peggykeramik.tar stephane@vps36036.ovh.net:
-scp ../learnintouch/www/peggykeramik.com/account/db_backup/backup_db_db_peggykeramik_2013-10-23_01-05.sql stephane@vps36036.ovh.net:
+scp ../learnintouch/www/echappeebelle.eu/account/echappeebelle.tar stephane@vps36036.ovh.net:
+scp ../learnintouch/www/echappeebelle.eu/account/db_backup/backup_db_db_echappeebelle-10-23_01-05.sql stephane@vps36036.ovh.net:
 
 Restaure some date from a data only backup file
 Insert the following statements at the top of the backup file:
@@ -97,17 +95,15 @@ delete from preference;
 delete from statistics_visit;
 delete from statistics_page;
 delete from unique_token;
-programs/mysql/install/bin/mysql -v -u stephane -p db_peggykeramik < backup_db_db_peggykeramik_2013-10-23_01-05.sql
+programs/mysql/install/bin/mysql -v -u stephane -p db_echappeebelle < backup_db_db_echappeebelle-10-23_01-05.sql
 
 Copy the data files
-\cp -Rf data/* /home/stephane/learnintouch/www/peggykeramik.com/account/data/
-\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/peggykeramik.com/account/data/
+\cp -Rf data/* /home/stephane/learnintouch/www/echappeebelle.eu/account/data/
+\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/echappeebelle.eu/account/data/
+\cp -Rf data/* /home/stephane/learnintouch/www/echappeebelle.eu/account/data/
 
 Add an entry in the cron/*_all.sh files
 vi /home/stephane/learnintouch/engine/cron/*_all.sh
-
-Restart the MySQL server
-/etc/init.d/mysqld restart
 
 Create the domain name in the content management system
 In the administration panel, go to 'The websites' module and create a new website

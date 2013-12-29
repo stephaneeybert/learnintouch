@@ -39,4 +39,4 @@ update language set locale = 'nn_NO.iso88591' where id = '4';
 
 Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
 Then assign the owner again
-chown -R apache:apache *
+chown -R stephane:apache *
