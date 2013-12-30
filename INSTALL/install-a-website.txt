@@ -61,7 +61,7 @@ programs/mysql/install/bin/mysqladmin -u stephane -p create db_echappeebelle
 Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_echappeebelle.* to echappeebelle@'localhost' identified by 'ujdhendk';
+grant all privileges on db_echappeebelle.* to echappeebelle@'localhost' identified by 'mypassword';
 select * from user;
 delete from user where User = 'echappeebelle';
 select * from user;
