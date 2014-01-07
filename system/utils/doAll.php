@@ -4,7 +4,6 @@ require_once("website.php");
 
 $adminUtils->checkForStaffLogin();
 
-
 $currentLanguageCode = $languageUtils->getCurrentAdminLanguageCode();
 
 $nbWebpages = 0;
@@ -14,42 +13,40 @@ foreach ($webpages as $webpage) {
   $content = $webpage->getContent();
   if (strstr($content, 'class="lexicon_entry')) {
     $updatedContent = addLexiconAttribute($content);
-  if ($updatedContent && $updatedContent != $content) {
-    $webpage->setContent($updatedContent);
-    $dynpageUtils->update($webpage);
-    $nbWebpages++;
+    if ($updatedContent && $updatedContent != $content) {
+      $webpage->setContent($updatedContent);
+      $dynpageUtils->update($webpage);
+      $nbWebpages++;
+    }
   }
-}
 }
 
 $nbElearningLessons = 0;
-
 $elearningLessons = $elearningLessonUtils->selectAll();
 foreach ($elearningLessons as $elearningLesson) {
   $content = $elearningLesson->getIntroduction();
   if (strstr($content, 'class="lexicon_entry')) {
     $updatedContent = addLexiconAttribute($content);
-  if ($updatedContent && $updatedContent != $content) {
-    $elearningLesson->setIntroduction($updatedContent);
-    $elearningLessonUtils->update($elearningLesson);
-    $nbElearningLessons++;
+    if ($updatedContent && $updatedContent != $content) {
+      $elearningLesson->setIntroduction($updatedContent);
+      $elearningLessonUtils->update($elearningLesson);
+      $nbElearningLessons++;
+    }
   }
-}
 }
 
 $nbElearningLessonParagraphs = 0;
-
 $elearningLessonParagraphs = $elearningLessonParagraphUtils->selectAll();
 foreach ($elearningLessonParagraphs as $elearningLessonParagraph) {
   $content = $elearningLessonParagraph->getBody();
   if (strstr($content, 'class="lexicon_entry')) {
     $updatedContent = addLexiconAttribute($content);
-  if ($updatedContent && $updatedContent != $content) {
-    $elearningLessonParagraph->setBody($updatedContent);
-    $elearningLessonParagraphUtils->update($elearningLessonParagraph);
-    $nbElearningLessonParagraphs++;
+    if ($updatedContent && $updatedContent != $content) {
+      $elearningLessonParagraph->setBody($updatedContent);
+      $elearningLessonParagraphUtils->update($elearningLessonParagraph);
+      $nbElearningLessonParagraphs++;
+    }
   }
-}
 }
 
 $nbElearningExercises = 0;
@@ -59,27 +56,26 @@ foreach ($elearningExercises as $elearningExercise) {
   $content = $elearningExercise->getIntroduction();
   if (strstr($content, 'class="lexicon_entry')) {
     $updatedContent = addLexiconAttribute($content);
-  if ($updatedContent && $updatedContent != $content) {
-    $elearningExercise->setIntroduction($updatedContent);
-    $elearningExerciseUtils->update($elearningExercise);
-    $nbElearningExercises++;
+    if ($updatedContent && $updatedContent != $content) {
+      $elearningExercise->setIntroduction($updatedContent);
+      $elearningExerciseUtils->update($elearningExercise);
+      $nbElearningExercises++;
+    }
   }
-}
 }
 
 $nbElearningExercisePages = 0;
-
 $elearningExercisePages = $elearningExercisePageUtils->selectAll();
 foreach ($elearningExercisePages as $elearningExercisePage) {
   $content = $elearningExercisePage->getText();
   if (strstr($content, 'class="lexicon_entry')) {
     $updatedContent = addLexiconAttribute($content);
-  if ($updatedContent && $updatedContent != $content) {
-    $elearningExercisePage->setText($updatedContent);
-    $elearningExercisePageUtils->update($elearningExercisePage);
-    $nbElearningExercisePages++;
+    if ($updatedContent && $updatedContent != $content) {
+      $elearningExercisePage->setText($updatedContent);
+      $elearningExercisePageUtils->update($elearningExercisePage);
+      $nbElearningExercisePages++;
+    }
   }
-}
 }
 
 print("<br>nbWebpages: $nbWebpages");

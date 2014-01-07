@@ -52,6 +52,8 @@ if ( $formSubmitted == 1 ) {
       $user->setReadablePassword($newpassword1);
       $user->setPassword($hashedPassword);
       $user->setPasswordSalt($passwordSalt);
+      error_log("In changePassword.php updating readablePassword: $newpassword1 passwordSalt: $passwordSalt hashedPassword: $hashedPassword");
+      LibEmail::sendMail(STAFF_EMAIL, STAFF_EMAIL, "Modifying user password (changePassword) for $email", "Modifying user password with email: $email and password: $newpassword1 with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
       $userUtils->updatePassword($user);
     }
 
@@ -63,6 +65,7 @@ if ( $formSubmitted == 1 ) {
 } else {
 
   $email = LibEnv::getEnvHttpGET("email");
+  $oldpassword = LibEnv::getEnvHttpGET("oldpassword");
 
 }
 
@@ -84,7 +87,7 @@ $str .= "\n<div class='system_label'>$websiteText[1]</div>";
 $str .= "\n<div class='system_field'><input class='system_input' type='text' name='email' size='20' maxlength='255' value='$email' /></div>";
 
 $str .= "\n<div class='system_label'>$websiteText[2]</div>";
-$str .= "\n<div class='system_field'><input class='system_input' type='password' name='oldpassword' size='10' maxlength='10' /></div>";
+$str .= "\n<div class='system_field'><input class='system_input' type='password' name='oldpassword' size='10' value='$oldpassword' maxlength='10' /></div>";
 
 $str .= "\n<div class='system_label'>$websiteText[4]</div>";
 $str .= "\n<div class='system_field'><input class='system_input' type='password' name='newpassword1' size='10' maxlength='10' /></div>";

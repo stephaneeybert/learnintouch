@@ -125,6 +125,21 @@ class UserDB {
     return($objects);
   }
 
+  function selectWithReadablePassword($start = false, $rows = false) {
+    $this->dataSource->selectDatabase();
+
+    $objects = Array();
+    if ($result = $this->dao->selectWithReadablePassword($start, $rows)) {
+      for ($i = 0; $i < $result->getRowCount(); $i++) {
+        $row = $result->getRow($i);
+        $object = $this->getObject($row);
+        $objects[$i] = $object;
+      }
+    }
+
+    return($objects);
+  }
+
   function selectLikePattern($searchPattern, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
 

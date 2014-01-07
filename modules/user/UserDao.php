@@ -381,6 +381,11 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
+  function selectWithReadablePassword() {
+    $sqlStatement = "SELECT * FROM $this->tableName WHERE readable_password != '' ORDER BY firstname, lastname";
+    return($this->querySelect($sqlStatement));
+  }
+
   function countImported() {
     $sqlStatement = "SELECT count(*) as count FROM $this->tableName WHERE imported = '1'";
     return($this->querySelect($sqlStatement));

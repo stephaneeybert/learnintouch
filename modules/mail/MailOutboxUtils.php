@@ -91,10 +91,6 @@ class MailOutboxUtils extends MailOutboxDB {
       $email = $mailOutbox->getEmail();
       $password = $mailOutbox->getPassword();
 
-      if (strstr($body, MAIL_META_USER_PASSWORD) && !$password) {
-        $password = $this->userUtils->setRandomPassword($email);
-      }
-
       $body = str_replace(MAIL_META_USER_FIRSTNAME, $firstname, $body);
       $body = str_replace(MAIL_META_USER_LASTNAME, $lastname, $body);
       $body = str_replace(MAIL_META_USER_EMAIL, $email, $body);
