@@ -169,7 +169,7 @@ HEREDOC;
   }
 
   function selectByClassIdAndOpened($elearningClassId, $systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND es.class_id = '$elearningClassId' AND (ea.opening_date IS NULL OR DATE(ea.opening_date) <= '$systemDate') AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND es.class_id = '$elearningClassId' AND (ea.opening_date IS NULL OR DATE(ea.opening_date) <= '$systemDate') AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -182,7 +182,7 @@ HEREDOC;
   }
 
   function selectByClassIdAndClosed($elearningClassId, $systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND es.class_id = '$elearningClassId' AND (ea.closing_date IS NOT NULL AND DATE(ea.closing_date) < '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND es.class_id = '$elearningClassId' AND (ea.closing_date IS NOT NULL AND DATE(ea.closing_date) < '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -195,7 +195,7 @@ HEREDOC;
   }
 
   function selectByClassIdAndNotClosed($elearningClassId, $systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND es.class_id = '$elearningClassId' AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND es.class_id = '$elearningClassId' AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -208,7 +208,7 @@ HEREDOC;
   }
 
   function selectByClassIdAndDeferred($elearningClassId, $systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND es.class_id = '$elearningClassId' AND (ea.opening_date IS NOT NULL AND DATE(ea.opening_date) > '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND es.class_id = '$elearningClassId' AND (ea.opening_date IS NOT NULL AND DATE(ea.opening_date) > '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -221,7 +221,7 @@ HEREDOC;
   }
 
   function selectOpened($systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.opening_date IS NULL OR DATE(ea.opening_date) <= '$systemDate') AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND (ea.opening_date IS NULL OR DATE(ea.opening_date) <= '$systemDate') AND (ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate') ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -234,7 +234,7 @@ HEREDOC;
   }
 
   function selectDeferred($systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND ea.opening_date IS NOT NULL AND DATE(ea.opening_date) > '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND ea.opening_date IS NOT NULL AND DATE(ea.opening_date) > '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -247,7 +247,7 @@ HEREDOC;
   }
 
   function selectClosed($systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND ea.closing_date IS NOT NULL AND DATE(ea.closing_date) < '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND ea.closing_date IS NOT NULL AND DATE(ea.closing_date) < '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -260,7 +260,7 @@ HEREDOC;
   }
 
   function selectNotClosed($systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM ($this->tableName ea, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " es, " . DB_TABLE_USER . " u, " . DB_TABLE_ELEARNING_RESULT . " er) WHERE ea.elearning_subscription_id = es.id AND u.id = es.user_account_id AND (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND ea.closing_date IS NULL OR DATE(ea.closing_date) >= '$systemDate' ORDER BY er.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;
