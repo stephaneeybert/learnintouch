@@ -1060,6 +1060,7 @@ HEREDOC;
     global $gJsUrl;
     global $gTemplateDesignUrl;
     global $gSwfPlayerUrl;
+    global $gApiUrl;
 
     $str = <<<HEREDOC
 <script src='$gJsUrl/popup.js' type='text/javascript'></script>
