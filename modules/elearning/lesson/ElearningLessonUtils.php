@@ -843,7 +843,11 @@ class ElearningLessonUtils extends ElearningLessonDB {
             $title = $exerciseTitle;
           }
           $title = $this->websiteText[14] . ' ' . $title;
-          $elearningSubscriptionId = $elearningSubscription->getId();
+          if ($elearningSubscription) {
+            $elearningSubscriptionId = $elearningSubscription->getId();
+          } else {
+            $elearningSubscriptionId = '';
+          }
           $str .= "\n<div class='elearning_lesson_paragraph_exercise'>"
             . "<a href='$gElearningUrl/exercise/display_exercise.php?elearningExerciseId=$elearningExerciseId&elearningSubscriptionId=$elearningSubscriptionId' title='" . $this->websiteText[3] . "' onclick=\"window.open(this.href, '_blank'); return(false);\">" . $title . "</a>"
             . "</div>";

@@ -150,4 +150,7 @@ label {
   display:block;
 }
 
+strong {
+  font-weight: bold;
+}
 

@@ -57,3 +57,6 @@ with more fonts found at http://www.fontsquirrel.com/fontface */
   font-style: normal;
 }
 
+strong {
+  font-weight: bold;
+}
