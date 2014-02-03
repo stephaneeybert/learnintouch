@@ -29,7 +29,7 @@ if (!$email && $elearningExerciseUtils->displayContactPageBeforeResults($elearni
 
     $elearningResultId = $elearningExerciseUtils->saveExerciseResults($elearningExerciseId, $elearningSubscriptionId, $email, '', '', '');
     if ($elearningResultId) {
-      $elearningExerciseUtils->sendExerciseResults($elearningResultId, $email, '');
+      $elearningExerciseUtils->sendExerciseResults($elearningResultId, $elearningSubscriptionId, $elearningExerciseId, $email, '');
     }
   }
 

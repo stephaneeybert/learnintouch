@@ -79,12 +79,13 @@
 [  80]Print the exercise introduction
 [  81]The results of your exercise from
 [  82]Alert the teacher:
-[  83]When a participant, who has subscribed to a course, does an exercise, an email can be automatically sent to the teacher to alert him that an exercise has just been done.\n\nPlease note that the email will be sent only if the participant has subscribed to a course.
+[  83]When a participant, does an assignment or an exercise of a course, an email can be automatically sent to the teacher to alert him that an exercise has just been done.
 [  84]Display a contact page before the exercise results:
 [  85]When an unidentified participant does an exercise a contact page can be displayed before displaying the exercise results.\n\nThis is to offer a chance to the participant to leave an email address so as to identify himself.\n\nThis is especially interesting if the results are not displayed to unidentified participants.\n\nThe results of the exercise are then displayed after the participant has left his email address.\n\nNote that the participant can also leave a message to a teacher.\n\nBy providing an email address the exercise results are also saved in the system.\n\nNote that a participant that is already identified with a login name and password does not need to leave anything to see his exercise results.
 [  86]Subscription duration:
 [  87]You can also leave your name
 [  88]Go back to the beginning of the exercise
+[  89]For any exercise
 [  90]Send the exercise results
 [  91]Do the exercise
 [  92]Whiteboard
@@ -92,6 +93,7 @@
 [  94]Display the exercise results
 [  95]Send the exercise
 [  96]It is possible to specify a default duration for a new subscription.\n\nIn that case, when creating a new subscription, the closing date will be suggested from the opening date and the default duration.\n\nHowever, it will still be possible to choose another closing date.\n\nThe duration is expressed in days.
+[  97]Only for an assignment
 [  98]Download of the audio file:
 [  99]By default, the audio file is played by a media player.\n\nBut it can also be downloaded by the participant.\n\nThis allows the participant to keep the audio file.
 [ 100]Number of items per page:
@@ -181,7 +183,7 @@
 [ 184]Results grade scale:
 [ 185]By default, the results grades are displayed on a scale of 10.\n\nBut it is possible to change the scale.
 [ 186]Print the graph of the results
-[ 187]Contact the school if the participant has written a message:
+[ 187]Contact the school only if the participant has written a message:
 [ 188]By default the school will receive the results of the exercise and a message from the participant if any.\n\nBut it is possible not to send the exercise results to the school if the participant has not written any message.\n\nIn that case, the exercise results will be saved but the school will not receive any email.
 [ 189]The html editor:
 [ 190]There are several html editors that can be used to edit the course material.\n\nPlease select the html editor of your choice.
@@ -240,7 +242,7 @@
 [ 245]to subscribe to one of our courses.
 [ 246]Watch and assist the participant
 [ 247]Saving the results if watched live:
-[ 248]By default when a participant does an exercise being watched live by a teacher, the results are saved ior not.\n\nBut it is possible to systematically save them if the exercise is being watched live by a teacher.
+[ 248]It is possible to systematically save the results if the exercise is being watched live by a teacher.
 [ 249]Instant correction for a question without answer:
 [ 250]By default, the instant correction does not display any message if the participant has not given any answer to a question.\n\nBut it is possible to display a message indicating a question has not been answered.
 [ 251]Display the exercises of the lesson

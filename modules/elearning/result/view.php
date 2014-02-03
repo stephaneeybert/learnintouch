@@ -234,7 +234,6 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   $panelUtils->addLine($panelUtils->addCell($strDetails, "t"), $strResults, $panelUtils->addCell($strCommand, "nr"));
 }
 
-// If the exercise is an assignment then refresh the results live
 if ($watchLive) {
   $strLiveResultIds = $elearningResultId;
   $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();

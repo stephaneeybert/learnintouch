@@ -79,12 +79,13 @@
 [  80]Imprimer l'introduction de l'exercice
 [  81]Les résultats de votre exercice de
 [  82]Alerter l'enseignant:
-[  83]Lorsqu'un participant, qui s'est inscrit à un cours, fait un exercice, un email peut être envoyé à l'enseignant pour l'alerter qu'un exercice vient d'être fait.\n\nVeuillez noter que l'email n'est envoyé que si le participant s'est inscrit à un cours.
+[  83]Lorsqu'un participant, fait un devoir ou un exercice d'un cours, un email peut être envoyé à l'enseignant pour l'alerter qu'un exercice vient d'être fait.
 [  84]Afficher une page de contact avant les résultats de l'exercice:
 [  85]Lorsqu'un participant non identifié fait un exercice, une page de contact peut être affichée avant d'afficher les résultats de l'exercice.\n\nCela afin de laisser une chance au participant de laisser une adresse email afin de s'identifier.\n\nCeci est particulièrement intéressanr si les résultats ne sont pas affichés aux au participants non identifiés.\n\nLes résultats de l'exercice sont alors affichés après que le participant a laissé une adresse email.\n\nVeuillez noter que le participant peut aussi laisser un message à un enseignant.\n\nEn fournissant une adresse email le participant peut avoir les résultats de son exercice enregistrés dans le système.\n\nVeuillez noter qu'un participant qui est déjà identifié avec un nom de connexion et un mot de passe n'a pas besoin de laisser quoi que ce soit pour voir ses résultats de l'exercice.
 [  86]Durée d'inscription:
 [  87]Vous pouvez aussi laisser votre nom
 [  88]Revenir au début de l'exercice
+[  89]Pour tout exercice
 [  90]Envoyer les résultats de l'exercice
 [  91]Faire l'exercice
 [  92]Tableau
@@ -92,6 +93,7 @@
 [  94]Afficher les résultats de l'exercice
 [  95]Envoyer l'exercice
 [  96]Il est possible de spécifier une durée par défaut pour une nouvelle inscription.\n\nDans ce cas, la date de clôture sera suggérée à partir de la date d'ouverture et de la durée par défaut.\n\nCependant, it sera toujours possible de choisir une autre date de clôture.\n\nLa durée est exprimée en jours.
+[  97]Seulement pour un devoir
 [  98]Téléchargement du fichier audio:
 [  99]Par défaut, le fichier audio est joué par le lecteur audio.\n\nMais il peut aussi être téléchargé par le participant.\n\nCela permet au participant de conserver le fichier audio.
 [ 100]Nombre d'éléments par page:
@@ -181,7 +183,7 @@
 [ 184]Echelle de notes de résultats:
 [ 185]Par défaut, les notes de résultats sont affichées sur une echelle de 10.\n\nMais il est possible de changer cette echelle.
 [ 186]Imprimer le graphe des résultats
-[ 187]Contacter l'école si le participant a écrit un message:
+[ 187]Contacter l'école seulement si le participant a écrit un message:
 [ 188]Par défaut l'école recevra les résultats de l'exercice et un possible message du participant.\n\nMais il est possible de ne pas envoyer les résultats de l'exercice à l'école si le participant n'a pas écrit de message pour l'enseignant.\n\nDans ce cas, les résultats de l'exercice seront sauvegardés mais l'école ne recevra pas d'email.
 [ 189]L'éditeur html:
 [ 190]Il y a plusieurs éditeurs html qui peuvent être utilisés pour éditer le matériel de cours.\n\nVeuillez sélectionner l'éditeur html de votre choix.
@@ -241,7 +243,7 @@ arch.
 [ 245]pour vous inscrire à un de nos cours.
 [ 246]Suivre et aider le participant
 [ 247]Sauvegarder les résultats si suivi en direct:
-[ 248]Par défaut, lorsqu'un participant fait un exercice suivi en direct par un professeur, les résultats sont sauvegardés ou pas.\n\nMais il est possible de les sauvegarder systématiquement si l'exercice est suivi en direct par un professeur.
+[ 248]Il est possible de sauvegarder les résultats d'exercice systématiquement si l'exercice est suivi en direct par un professeur.
 [ 249]Correction instantanée pour une question sans réponse:
 [ 250]Par défaut, la correction instantanée n'affiche pas de message si le participant n'a pas donné de réponse à une question.\n\nMais il est possible d'afficher un message indiquant qu'une réponse n'a pas eu de réponse.
 [ 251]Afficher les exercices de la leçon

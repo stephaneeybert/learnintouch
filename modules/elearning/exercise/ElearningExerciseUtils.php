@@ -113,7 +113,7 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
       "ELEARNING_SECURED" =>
       array($this->mlText[1], $this->mlText[31], PREFERENCE_TYPE_BOOLEAN, ''),
         "ELEARNING_AUTOMATIC_ALERT" =>
-        array($this->mlText[82], $this->mlText[83], PREFERENCE_TYPE_BOOLEAN, ''),
+        array($this->mlText[82], $this->mlText[83], PREFERENCE_TYPE_SELECT, array('' => '', 'ELEARNING_AUTOMATIC_ALERT_EXERCISE' => $this->mlText[89], 'ELEARNING_AUTOMATIC_ALERT_ASSIGNMENT' => $this->mlText[97])),
           "ELEARNING_SEND_RESULT" =>
           array($this->mlText[66], $this->mlText[67], PREFERENCE_TYPE_BOOLEAN, ''),
             "ELEARNING_HIDE_RESULT_IF_NO_EMAIL" =>
@@ -1606,13 +1606,6 @@ HEREDOC;
     return($hideExerciseTimes);
   }
 
-  // When a participant, who has subscribed to a course, does an exercise, an email can be automatically sent to the school and possibly the teacher to alert them that an exercise has just been done. Note that the email will be sent only if the participant has subscribed to a course.
-  function automaticAlert() {
-    $alertTeacher = $this->preferenceUtils->getValue("ELEARNING_AUTOMATIC_ALERT");
-
-    return($alertTeacher);
-  }
-
   // A participant can leave his email address at the end of an exercise. This email address is then displayed in the exercise results so as to be able to contact the participant. But this email address can also be added to the list of email addresses used in the mailings. This allows the list of email addresses used in the mailings, to grow with the email addresses obtained during the exercises done by the participants.
   function registerEmailAddress() {
     $registerEmailAddress = $this->preferenceUtils->getValue("ELEARNING_REGISTER_EMAIL");
@@ -1856,11 +1849,12 @@ HEREDOC;
   }
 
   // Check if the exercise results are to be saved when watched live by a teacher
-  function saveResultIfWatchedLive($elearningSubscriptionId) {
+  function saveResultIfWatchedLive($elearningSubscriptionId, $elearningExerciseId) {
     $saveResult = false;
 
-    $saveResultIfWatchedLive = $this->preferenceUtils->getValue("ELEARNING_SAVE_RESULT_WATCHED_LIVE");
-    if ($saveResultIfWatchedLive) {
+    if ($elearningAssignment = $this->elearningAssignmentUtils->selectBySubscriptionIdAndExerciseId($elearningSubscriptionId, $elearningExerciseId)) {
+      $saveResult = true;
+    } else if ($this->preferenceUtils->getValue("ELEARNING_SAVE_RESULT_WATCHED_LIVE")) {
       if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
         $watchLive = $elearningSubscription->getWatchLive();
         if ($watchLive) {
@@ -2388,13 +2382,15 @@ HEREDOC;
         if ($this->noPreviousResult($elearningExerciseId, $elearningSubscriptionId, $email)) {
           $resultMustBeSaved = true;
         }
-      } else if ($this->saveResultIfWatchedLive($elearningSubscriptionId)) {
-        $resultMustBeSaved = true;
       } else {
         // Again, saving the result only if the exercise was done for the first time
         if ($this->noPreviousResult($elearningExerciseId, $elearningSubscriptionId, $email)) {
           $resultMustBeSaved = true;
         }
+      }
+
+      if ($this->saveResultIfWatchedLive($elearningSubscriptionId, $elearningExerciseId)) {
+        $resultMustBeSaved = true;
       }
     }
 
@@ -2481,10 +2477,16 @@ HEREDOC;
   }
 
   // Send the results of an exercise
-  function sendExerciseResults($elearningResultId, $email, $message) {
+  function sendExerciseResults($elearningResultId, $elearningSubscriptionId, $elearningExerciseId, $email, $message) {
     global $gElearningUrl;
     global $gAccountPath;
     global $gSetupPath;
+
+    // Send the exercise results to the participant
+    if ($this->sendExerciseResultToParticipant()) {
+      $scriptFile = $gElearningUrl . "/result/sendBatch.php?elearningResultId=$elearningResultId";
+      $this->commonUtils->execlCLIwget($scriptFile);
+    }
 
     // Check if the exercise is done by a registered user
     $userId = $this->userUtils->getLoggedUserId();
@@ -2495,7 +2497,13 @@ HEREDOC;
       // Use the email of the logged in user
       $email = $this->userUtils->getUserEmail();
 
-      if ($this->automaticAlert()) {
+      $automaticAlert = $this->preferenceUtils->getValue("ELEARNING_AUTOMATIC_ALERT");
+      if ($automaticAlert == 'ELEARNING_AUTOMATIC_ALERT_ASSIGNMENT') {
+        if ($elearningAssignment = $this->elearningAssignmentUtils->selectBySubscriptionIdAndExerciseId($elearningSubscriptionId, $elearningExerciseId)) {
+          $scriptFile = $gElearningUrl . "/result/sendExerciseAlertBatch.php?elearningResultId=$elearningResultId";
+          $this->commonUtils->execlCLIwget($scriptFile);
+        }
+      } else if ($automaticAlert == 'ELEARNING_AUTOMATIC_ALERT_EXERCISE') {
         $scriptFile = $gElearningUrl . "/result/sendExerciseAlertBatch.php?elearningResultId=$elearningResultId";
         $this->commonUtils->execlCLIwget($scriptFile);
       }
@@ -2506,18 +2514,12 @@ HEREDOC;
           $scriptFile = $gElearningUrl . "/result/sendExerciseAlertBatch.php?elearningResultId=$elearningResultId";
           $this->commonUtils->execlCLIwget($scriptFile);
         }
-      }
 
-      // Register the new email address in the mailing list
-      if ($this->registerEmailAddress() && LibEmail::validate($email)) {
-        $this->mailAddressUtils->subscribe($email);
+        // Register the new email address in the mailing list
+        if ($this->registerEmailAddress() && LibEmail::validate($email)) {
+          $this->mailAddressUtils->subscribe($email);
+        }
       }
-    }
-
-    // Send the exercise results to the participant
-    if ($this->sendExerciseResultToParticipant()) {
-      $scriptFile = $gElearningUrl . "/result/sendBatch.php?elearningResultId=$elearningResultId";
-      $this->commonUtils->execlCLIwget($scriptFile);
     }
   }
 

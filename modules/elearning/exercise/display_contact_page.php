@@ -98,7 +98,7 @@ if ($formSubmitted == 1) {
     $elearningResultId = $elearningExerciseUtils->saveExerciseResults($elearningExerciseId, $elearningSubscriptionId, $email, $firstname, $lastname, $message);
 
     if ($elearningResultId) {
-      $elearningExerciseUtils->sendExerciseResults($elearningResultId, $email, $message);
+      $elearningExerciseUtils->sendExerciseResults($elearningResultId, $elearningSubscriptionId, $elearningExerciseId, $email, $message);
     }
 
     $encodedEmail = urlencode($email);
