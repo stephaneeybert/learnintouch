@@ -33,6 +33,7 @@ class ElearningResultUtils extends ElearningResultDB {
   var $elearningClassUtils;
   var $elearningCourseItemUtils;
   var $elearningResultRangeUtils;
+  var $elearningTeacherUtils;
 
   function ElearningResultUtils() {
     $this->ElearningResultDB();
@@ -1155,8 +1156,23 @@ HEREDOC;
           $tokenName = ELEARNING_EXERCISE_ALERT_TOKEN_NAME;
           $tokenDuration = $this->adminUtils->getLoginTokenDuration();
           $tokenValue = $this->uniqueTokenUtils->create($tokenName, $tokenDuration);
+
           $websiteEmail = $this->profileUtils->getProfileValue("website.email");
           $websiteName = $this->profileUtils->getProfileValue("website.name");
+
+          $recipientEmail = $websiteEmail;
+          $recipientName = $websiteName;
+
+          if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
+            $elearningTeacherId = $elearningSubscription->getTeacherId();
+            if ($elearningTeacher = $this->elearningTeacherUtils->selectById($elearningTeacherId)) {
+              $userId = $elearningTeacher->getUserId();
+              if ($user = $this->userUtils->selectById($userId)) {
+                $recipientEmail = $user->getEmail();
+                $recipientName = $user->getFirstname() . ' ' . $user->getLastname();
+              }
+            }
+          }
 
           $exerciseLink = "<a href='$gElearningUrl/exercise/compose.php?elearningExerciseId=$elearningExerciseId&tokenName=$tokenName&tokenValue=$tokenValue&siteEmail=$websiteEmail' $gJSNoStatus>$name</a>";
 
@@ -1204,11 +1220,10 @@ HEREDOC;
           $body .= '</div></div>';
 
           $websiteName = $this->profileUtils->getProfileValue("website.name");
-          $websiteEmail = $this->profileUtils->getProfileValue("website.email");
 
           $subject = $this->mlText[5] . ' ' . $websiteName . ' ' . $this->mlText[6];
 
-          LibEmail::sendMail($websiteEmail, $websiteName, $subject, $body, $websiteEmail, $websiteName, $attachedFiles);
+          LibEmail::sendMail($recipientEmail, $recipientName, $subject, $body, $websiteEmail, $websiteName, $attachedFiles);
         }
       }
     }

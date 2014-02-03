@@ -450,6 +450,7 @@ $elearningResultUtils->elearningCourseUtils = $elearningCourseUtils;
 $elearningResultUtils->elearningClassUtils = $elearningClassUtils;
 $elearningResultUtils->elearningCourseItemUtils = $elearningCourseItemUtils;
 $elearningResultUtils->elearningResultRangeUtils = $elearningResultRangeUtils;
+$elearningResultUtils->elearningTeacherUtils = $elearningTeacherUtils;
 
 $elearningResultRangeUtils->elearningExerciseUtils = $elearningExerciseUtils;
 
