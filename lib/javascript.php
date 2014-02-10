@@ -70,7 +70,7 @@ HEREDOC;
     $noStatus = LibJavaScript::getNoStatus();
 
     $content = LibString::stripNonTextChar($content);
-    $content = htmlspecialchars(trim($content), ENT_QUOTES);
+    $content = htmlspecialchars(trim($content), ENT_QUOTES, 'ISO-8859-1');
     $content = LibString::lineBreakToSpace($content);
 
     if ($mouseOver) {
@@ -102,7 +102,7 @@ HEREDOC;
   // Display a content popup window at page load time
   static function autoOpenPopup($content, $delay, $title, $left, $top, $width, $height, $scrollbar) {
     $content = LibString::stripNonTextChar($content);
-    $content = htmlspecialchars(trim($content), ENT_QUOTES);
+    $content = htmlspecialchars(trim($content), ENT_QUOTES, 'ISO-8859-1');
     $content = LibString::lineBreakToSpace($content);
 
     $str = LibJavaScript::getJSLib();
