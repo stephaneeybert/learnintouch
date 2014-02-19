@@ -15,8 +15,8 @@
 
 case "$1" in
   start)
-#        forever start /home/stephane/learnintouch/engine/js/socket/elearning-server.js
-        /home/stephane/learnintouch/engine/js/socket/start.sh
+#        forever start /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js
+        /home/stephane/learnintouch/engine/api/js/socket/start.sh
         echo "Starting the socket server:"
         ;;
   stop)

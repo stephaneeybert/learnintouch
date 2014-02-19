@@ -238,7 +238,6 @@ if ($watchLive) {
   $strLiveResultIds = $elearningResultId;
   $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
   $panelUtils->addContent($strLiveResultJs);
-  $panelUtils->addContent("<script type='text/javascript'>updateResult('$strLiveResultIds');</script>");
 }
 
 $str = $panelUtils->render();

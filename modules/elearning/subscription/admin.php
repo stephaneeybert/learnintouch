@@ -338,9 +338,6 @@ foreach ($elearningSubscriptions as $elearningSubscription) {
 }
 $panelUtils->closeList();
 
-$strLiveResultIds = str_replace(UTILS_URL_VALUE_SEPARATOR . UTILS_URL_VALUE_SEPARATOR, '', $strLiveResultIds);
-$panelUtils->addContent("<script type='text/javascript'>updateResult('$strLiveResultIds');</script>");
-
 $strRememberScroll = LibJavaScript::rememberScroll("elearning_subscription_admin_vscroll");
 $panelUtils->addContent($strRememberScroll);
 

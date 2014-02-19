@@ -329,9 +329,6 @@ if ($elearningSubscription) {
   $panelUtils->addLine($panelUtils->addCell($mlText[145], "w"));
 }
 
-$strLiveResultIds = str_replace(UTILS_URL_VALUE_SEPARATOR . UTILS_URL_VALUE_SEPARATOR, '', $strLiveResultIds);
-$panelUtils->addContent("<script type='text/javascript'>updateResult('$strLiveResultIds');</script>");
-
 $str = $panelUtils->render();
 
 printAdminPage($str);

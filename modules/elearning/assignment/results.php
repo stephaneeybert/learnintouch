@@ -318,9 +318,6 @@ if (count($elearningAssignments) > 0) {
   }
 }
 
-$strLiveResultIds = str_replace(UTILS_URL_VALUE_SEPARATOR . UTILS_URL_VALUE_SEPARATOR, '', $strLiveResultIds);
-$panelUtils->addContent("<script type='text/javascript'>updateResult('$strLiveResultIds');</script>");
-
 $strRememberScroll = LibJavaScript::rememberScroll("elearning_assignment_class_results_vscroll");
 $panelUtils->addContent($strRememberScroll);
 

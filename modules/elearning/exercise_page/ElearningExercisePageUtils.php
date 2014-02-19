@@ -2540,11 +2540,11 @@ $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
+//      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
       elearningSocket.emit('watchLive', {'elearningSubscriptionId': '$elearningSubscriptionId'});
     });
     elearningSocket.on('message', function(message) {
-      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
+//      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
     });
   }
 });
@@ -2927,51 +2927,6 @@ $(function() {
   }
 });
 
-function copilotExerciseUpdate() {
-  var url = "$gElearningUrl/subscription/get_live_answers.php?elearningSubscriptionId=$elearningSubscriptionId&elearningExerciseId=$elearningExerciseId";
-  ajaxAsynchronousRequest(url, copilotRefreshDisplay);
-}
-
-function copilotRefreshDisplay(responseText) {
-  var response = eval('(' + responseText + ')');
-  copilotRefreshTab(response);
-  copilotRefreshAllQuestionsAnswers(response);
-}
-
-// Update the current page of questions
-function copilotRefreshTab(response) {
-  var lastExercisePageId = response.lastExercisePageId;
-  if (lastExercisePageId != '$elearningExercisePageId') {
-    var url = "$gElearningUrl/exercise/exercise_controller.php";
-    document.exercise_form.action = url;
-    document.exercise_form.elearningExercisePageId.value = lastExercisePageId;
-    document.exercise_form.submit();
-  }
-}
-
-// Update the participant answers
-function copilotRefreshAllQuestionsAnswers(response) {
-  var questionType = response.questionType;
-  var questions = response.questions;
-
-  for (i = 0; i < questions.length; i++) {
-    var elearningQuestionId = questions[i].id;
-
-    if (!allowCopilotAnswerRefresh(elearningQuestionId)) {
-      continue;
-    }
-
-    var uId = questions[i].uId;
-    var uiId = questions[i].uiId;
-    var utId = questions[i].utId;
-    var isCorrect = questions[i].isCorrect;
-    var isAnswered = questions[i].isAnswered;
-    var answers = questions[i].answers;
-
-    copilotRefreshQuestionAnswers(elearningQuestionId, questionType, uId, uiId, utId, isCorrect, isAnswered, answers);
-  }
-}
-
 function copilotRefreshQuestionAnswers(elearningQuestionId, questionType, uId, uiId, utId, isCorrect, isAnswered, answers) {
     var uniqueQuestionId = uId;
     if (questionType == 'SELECT_LIST' || questionType == 'SELECT_LIST_IN_TEXT') {
@@ -3150,12 +3105,61 @@ function copilotRefreshQuestionAnswers(elearningQuestionId, questionType, uId, u
     }
 }
 
-// Stop the refreshing after a little while as most exercises are done by that time
-// This is to avoid a refresh on pages left opened
-var intervalRefresh = window.setInterval(copilotExerciseUpdate, $ELEARNING_RESULT_REFRESH_TIME);
-setTimeout(function(){
-  clearInterval(intervalRefresh);
-}, 900000);
+function copilotExerciseUpdate() {
+  var url = "$gElearningUrl/subscription/get_live_answers.php?elearningSubscriptionId=$elearningSubscriptionId&elearningExerciseId=$elearningExerciseId";
+  ajaxAsynchronousRequest(url, copilotRefreshDisplay);
+}
+
+function copilotRefreshDisplay(responseText) {
+  var response = eval('(' + responseText + ')');
+  copilotRefreshTab(response);
+  copilotRefreshAllQuestionsAnswers(response);
+}
+
+// Update the current page of questions
+function copilotRefreshTab(response) {
+  var lastExercisePageId = response.lastExercisePageId;
+  if (lastExercisePageId != '$elearningExercisePageId') {
+    var url = "$gElearningUrl/exercise/exercise_controller.php";
+    document.exercise_form.action = url;
+    document.exercise_form.elearningExercisePageId.value = lastExercisePageId;
+    document.exercise_form.submit();
+  }
+}
+
+// Update the participant answers
+function copilotRefreshAllQuestionsAnswers(response) {
+  var questionType = response.questionType;
+  var questions = response.questions;
+
+  for (i = 0; i < questions.length; i++) {
+    var elearningQuestionId = questions[i].id;
+
+    if (!allowCopilotAnswerRefresh(elearningQuestionId)) {
+      continue;
+    }
+
+    var uId = questions[i].uId;
+    var uiId = questions[i].uiId;
+    var utId = questions[i].utId;
+    var isCorrect = questions[i].isCorrect;
+    var isAnswered = questions[i].isAnswered;
+    var answers = questions[i].answers;
+
+    copilotRefreshQuestionAnswers(elearningQuestionId, questionType, uId, uiId, utId, isCorrect, isAnswered, answers);
+  }
+}
+
+$(function() {
+if ('undefined' == typeof elearningSocket) {
+  // Stop the refreshing after a little while as most exercises are done by that time
+  // This is to avoid a refresh on pages left opened
+  var intervalRefresh = window.setInterval(copilotExerciseUpdate, $ELEARNING_RESULT_REFRESH_TIME);
+  setTimeout(function(){
+    clearInterval(intervalRefresh);
+  }, 900000);
+}
+});
 </script>
 HEREDOC;
         $str .= $strRefresh;
