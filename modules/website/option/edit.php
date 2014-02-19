@@ -6,7 +6,6 @@ $adminUtils->checkForStaffLogin();
 
 $mlText = $languageUtils->getMlText(__FILE__);
 
-
 $optionNames = $websiteOptionUtils->getExtraOptions();
 
 $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
@@ -31,21 +30,21 @@ if ($formSubmitted) {
         if ($websiteOption = $websiteOptionUtils->selectByNameAndWebsiteId($optionName, $websiteId)) {
           $websiteOption->setValue($value);
           $websiteOptionUtils->update($websiteOption);
-          } else {
+        } else {
           $websiteOption = new WebsiteOption();
           $websiteOption->setName($optionName);
           $websiteOption->setWebsiteId($websiteId);
           $websiteOption->setValue($value);
           $websiteOptionUtils->insert($websiteOption);
-          }
-        } else {
+        }
+      } else {
         // An empty value for a select option means the option is not granted
         if ($websiteOption = $websiteOptionUtils->selectByNameAndWebsiteId($optionName, $websiteId)) {
           $websiteOptionUtils->delete($websiteOption->getId());
-          }
         }
+      }
 
-      } else {
+    } else {
       $checkedOption = LibEnv::getEnvHttpPOST("option_$optionName");
 
       $checkedOption = LibString::cleanString($checkedOption);
@@ -58,29 +57,29 @@ if ($formSubmitted) {
           $websiteOption->setName($optionName);
           $websiteOption->setWebsiteId($websiteId);
           $websiteOptionUtils->insert($websiteOption);
-          }
-        } else {
+        }
+      } else {
         // If the option was already granted
         if ($websiteOption = $websiteOptionUtils->selectByNameAndWebsiteId($optionName, $websiteId)) {
           $websiteOptionUtils->removeOption($websiteOption->getId());
-          }
         }
       }
-
     }
+
+  }
 
   $str = LibHtml::urlRedirect("$gWebsiteUrl/admin.php");
   printContent($str);
   return;
 
-  } else {
+} else {
 
   $websiteId = LibEnv::getEnvHttpGET("websiteId");
 
   if ($website = $websiteUtils->selectById($websiteId)) {
     $name = $website->getName();
     $domainName = $website->getDomainName();
-    }
+  }
 
   $panelUtils->setHeader($mlText[0], "$gWebsiteUrl/admin.php");
   $help = $popupUtils->getHelpPopup($mlText[8], 300, 300);
@@ -103,22 +102,22 @@ if ($formSubmitted) {
     if ($optionValues) {
       if ($websiteUtils->isWebsiteOption($optionName, $websiteId)) {
         $value = $websiteOptionUtils->getOptionId($optionConstant, $websiteId);
-        } else {
+      } else {
         $value = '';
-        }
+      }
 
       $selectOption = LibHtml::getSelectList("value_$optionName", $optionValues, $value);
       $panelUtils->addLine($panelUtils->addCell($optionDescription, "br"), $selectOption);
-      } else {
+    } else {
       if ($websiteUtils->isWebsiteOption($optionName, $websiteId)) {
         $checkedOption = "CHECKED";
-        } else {
+      } else {
         $checkedOption = '';
-        }
+      }
 
       $panelUtils->addLine($panelUtils->addCell($optionDescription, "br"), "<input type='checkbox' name='option_$optionName' $checkedOption value='1'>");
-      }
     }
+  }
 
   $panelUtils->addLine();
   $panelUtils->addLine('', $panelUtils->getOk());
@@ -128,6 +127,6 @@ if ($formSubmitted) {
   $str = $panelUtils->render();
 
   printAdminPage($str);
-  }
+}
 
 ?>
