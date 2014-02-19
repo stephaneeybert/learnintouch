@@ -41,7 +41,6 @@
 [  40]The participant course:
 [  41]View the exercise
 [  42]The results ranges
-[  43]The shared board
 [  49]The preferences
 [  53]The lessons
 [  70]Search:

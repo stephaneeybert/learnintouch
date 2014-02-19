@@ -282,10 +282,6 @@ foreach ($elearningSubscriptions as $elearningSubscription) {
       . "<img border='0' src='$gCommonImagesUrl/$gImageCourse' title='$title'></a>";
   }
 
-  if ($watchLive) {
-    $strCommand .= ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImageWhiteboard' title='$mlText[43]'>", "$gElearningUrl/subscription/whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
-  }
-
   $strCommand .= ''
     . " <a href='$gElearningUrl/result/admin.php?elearningSubscriptionId=$elearningSubscriptionId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageCheckList' title='$mlText[8]'></a>"

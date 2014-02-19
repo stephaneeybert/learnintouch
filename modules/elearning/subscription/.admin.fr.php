@@ -41,7 +41,6 @@
 [  40]Le cours du participant:
 [  41]Voir l'exercice
 [  42]Les plages de résultats
-[  43]Le tableau partagé
 [  49]Les préférences
 [  53]Les leçons
 [  70]Chercher:
