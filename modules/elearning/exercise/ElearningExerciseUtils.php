@@ -3028,6 +3028,8 @@ HEREDOC;
     global $gJsUrl;
     global $gHostname;
 
+    $this->loadLanguageTexts();
+
     if ($gIsPhoneClient) {
       $cols = '25';
     } else {
@@ -3045,10 +3047,6 @@ HEREDOC;
     $labelClearTheWhiteboard = $this->websiteText[137];
     $labelPrint = $this->websiteText[170];
     $labelPrintTheWhiteboard = $this->websiteText[145];
-    $labelWhiteboad = $this->websiteText[92];
-    $labelHide = $this->websiteText[93];
-    $labelShowTheWhiteboard = $this->websiteText[238];
-    $labelHideTheWhiteboard = $this->websiteText[239];
 
     $firstname = '';
     $adminId = LibSession::getSessionValue(ADMIN_SESSION_ADMIN_ID);
@@ -3071,7 +3069,6 @@ HEREDOC;
       . "<div class='elearning_whiteboard_buttons'>"
       . " <span class='elearning_whiteboard_clear' id='whiteboard_clear' title='$labelClearTheWhiteboard'>$labelClear</span>"
       . " <span class='elearning_whiteboard_print' id='whiteboard_print' title='$labelPrintTheWhiteboard'>$labelPrint</span>"
-      . " <span class='elearning_whiteboard_toggle' id='whiteboard_toggle' title='$labelHideTheWhiteboard'>$labelHide</span>"
       . "</div>"
       . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard' id='whiteboard' rows='2' />$whiteboard</textarea>"
       . "<div id='whiteboard_loading' style='display:none;'><img src='$gImagesUserUrl/" . IMAGE_COMMON_LOADING . "' title='" . $this->websiteText[2] . "' alt='' /></div>"
@@ -3091,12 +3088,8 @@ HEREDOC;
   height: 99% !important;
 }
 </style>
-<script src='$gJsUrl/utilities.js' type='text/javascript'></script>
-<script src='$gJsUrl/jquery/jquery-1.7.1.min.js' type='text/javascript'></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js"></script>
 <script src='$gJsUrl/jquery/jquery.autogrowtextarea.js' type='text/javascript'></script>
 <script src="$gJsUrl/jquery/jquery.caret.js" type="text/javascript"></script>
-<script src='$gJsUrl/ajax.js' type='text/javascript'></script>
 <script type="text/javascript">
 var elearningSocket;
 $(function() {
@@ -3141,17 +3134,6 @@ function allowCopilotAnswerRefresh(elementId) {
   return !copilotSkipRefresh[elementId];
 }
 
-function copilotUpdate() {
-  var url = "$gElearningUrl/subscription/get_whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId";
-  ajaxAsynchronousRequest(url, copilotRefreshWhiteboard);
-}
-
-function copilotRefreshWhiteboard(responseText) {
-  var response = eval('(' + responseText + ')');
-  var remoteWhiteboard = response.whiteboard;
-  refreshWhiteboard(remoteWhiteboard);
-}
-
 function refreshWhiteboard(whiteboard) {
   if (allowCopilotAnswerRefresh('whiteboard')) {
     if ($('#whiteboard').val()) {
@@ -3165,11 +3147,6 @@ function refreshWhiteboard(whiteboard) {
     }
   }
 }
-
-var intervalRefresh = window.setInterval(copilotUpdate, $ELEARNING_RESULT_REFRESH_TIME);
-setTimeout(function(){
-  clearInterval(intervalRefresh);
-}, 900000);
 
 function parseWhiteboardContentUrl() {
   if ($('#whiteboard').val().indexOf('http') != -1) {
@@ -3207,19 +3184,15 @@ $("#whiteboard_print").click(function() {
 
 $("#whiteboard_toggle").click(function() {
   if ($('#whiteboard').is(':visible')) {
-    $('#whiteboard_toggle').html('$labelWhiteboad');
-    $('#whiteboard_toggle').attr('title', '$labelShowTheWhiteboard');
     $('#whiteboard_clear').hide('slow');
     $('#whiteboard_print').hide('slow');
   } else {
-    $('#whiteboard_toggle').html('$labelHide');
-    $('#whiteboard_toggle').attr('title', '$labelHideTheWhiteboard');
     $('#whiteboard_clear').show('slow');
     $('#whiteboard_print').show('slow');
   }
-  $('#whiteboard_url_iframe').attr('src', '');
   $('#whiteboard').toggle('slow');
-  $('#whiteboard_url_content').toggle('slow'); 
+  $('#whiteboard_url_iframe').attr('src', '');
+  $('#whiteboard_url_content').hide(); 
 });
 
 $('#whiteboard').bind("keyup click", function (event) {
@@ -3456,7 +3429,6 @@ HEREDOC;
     $str = "\n<div class='elearning_exercise'>An exercise"
       . "<div class='elearning_whiteboard'>The whiteboard"
       . "<div class='elearning_whiteboard_buttons'>The buttons"
-      . "<span class='elearning_whiteboard_toggle'>The show / hide toggle button</span>"
       . "</div>"
       . "<div class='elearning_whiteboard_input'>The border of the whiteboard</div>"
       . "</div>"

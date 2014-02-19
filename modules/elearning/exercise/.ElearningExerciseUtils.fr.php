@@ -89,7 +89,6 @@
 [  90]Envoyer les résultats de l'exercice
 [  91]Faire l'exercice
 [  92]Tableau
-[  93]Cacher
 [  94]Afficher les résultats de l'exercice
 [  95]Envoyer l'exercice
 [  96]Il est possible de spécifier une durée par défaut pour une nouvelle inscription.\n\nDans ce cas, la date de clôture sera suggérée à partir de la date d'ouverture et de la durée par défaut.\n\nCependant, it sera toujours possible de choisir une autre date de clôture.\n\nLa durée est exprimée en jours.
@@ -234,7 +233,6 @@ arch.
 [ 236]En numéros de pages
 [ 237]Avec des numéros de pages.
 [ 238]Afficher le tableau
-[ 239]Cacher le tableau
 [ 240]Vous pouvez vous
 [ 241]inscrire
 [ 242]à un de nos cours.
