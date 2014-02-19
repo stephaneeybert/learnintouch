@@ -35,6 +35,9 @@ $strCommand = '';
 
 $hasResults = $elearningSubscriptionUtils->hasResults($elearningSubscription);
 
+$strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
+    . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[26]' alt='' style='vertical-align:middle;' /></a>";
+
 if ($hasResults) {
   $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[186]' alt='' style='vertical-align:middle;' /></a>";
@@ -63,6 +66,9 @@ if ($elearningSubscription) {
     $elearningCourseId = $elearningSubscription->getCourseId();
     $lastActive = $elearningSubscription->getLastActive();
     $watchLive = $elearningSubscription->getWatchLive();
+
+    $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
+    $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 
     $courseName = '';
     if ($elearningCourse = $elearningCourseUtils->selectById($elearningCourseId)) {
@@ -185,7 +191,6 @@ if ($elearningSubscription) {
             }
             $strCommand = $strDisplayResult
               . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePeople' title='$mlText[24]'>", "$gElearningUrl/subscription/copilot.php?elearningSubscriptionId=$elearningSubscriptionId&elearningExerciseId=$elearningExerciseId&lastExercisePageId=$lastExercisePageId", 900, 800)
-              . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImageWhiteboard' title='$mlText[26]'>", "$gElearningUrl/subscription/whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600)
               . ' ' . $strDoExercise
               . ' ' . $strEditExercise
               . ' ' . $strComposeExercise
