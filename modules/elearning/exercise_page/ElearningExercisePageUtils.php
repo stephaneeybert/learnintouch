@@ -3150,16 +3150,16 @@ function copilotRefreshAllQuestionsAnswers(response) {
   }
 }
 
-$(function() {
-if ('undefined' == typeof elearningSocket) {
-  // Stop the refreshing after a little while as most exercises are done by that time
-  // This is to avoid a refresh on pages left opened
-  var intervalRefresh = window.setInterval(copilotExerciseUpdate, $ELEARNING_RESULT_REFRESH_TIME);
-  setTimeout(function(){
-    clearInterval(intervalRefresh);
-  }, 900000);
-}
-});
+//$(function() {
+//if ('undefined' == typeof elearningSocket) {
+//  // Stop the refreshing after a little while as most exercises are done by that time
+//  // This is to avoid a refresh on pages left opened
+//  var intervalRefresh = window.setInterval(copilotExerciseUpdate, $ELEARNING_RESULT_REFRESH_TIME);
+//  setTimeout(function(){
+//    clearInterval(intervalRefresh);
+//  }, 900000);
+//}
+//});
 </script>
 HEREDOC;
         $str .= $strRefresh;
