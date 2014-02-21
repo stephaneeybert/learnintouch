@@ -67,9 +67,6 @@ if ($elearningSubscription) {
     $lastActive = $elearningSubscription->getLastActive();
     $watchLive = $elearningSubscription->getWatchLive();
 
-    $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
-    $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
-
     $courseName = '';
     if ($elearningCourse = $elearningCourseUtils->selectById($elearningCourseId)) {
       $courseName = $elearningCourse->getName();
@@ -94,6 +91,9 @@ if ($elearningSubscription) {
         $str .= "</div>";
         $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), $panelUtils->addCell($str, "n"), '', '', '', '', '', '');
       }
+
+      $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
+      $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 
       if ($hasResults) {
         $elearningExerciseIds = $elearningCourseUtils->getCourseExercises($elearningCourseId);

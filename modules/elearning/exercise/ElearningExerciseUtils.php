@@ -536,7 +536,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
           $elearningSubscriptionId = $elearningSubscription->getId();
           $watchLive = $elearningSubscription->getWatchLive();
           if ($elearningAssignments = $this->elearningAssignmentUtils->selectBySubscriptionIdAndOpened($elearningSubscriptionId, $systemDate)) {
-            $strDisplayWhiteboard = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='" .  $this->websiteText[256] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/subscription/whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
+            $strDisplayWhiteboard = " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
+                  . "<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='$mlText[256]' alt='' style='vertical-align:middle;' /></a>";
 
             $strDisplayGraph = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_COURSE_GRAPH . "' class='no_style_image_icon' title='" .  $this->websiteText[186] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/assignment/display_graph.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
             $str .= "<tr>"
@@ -547,6 +548,9 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
              . "$strDisplayWhiteboard $strDisplayGraph"
              . "</div>"
              . "</td>"
+             . "</tr>"
+             . "<tr>"
+             . "<td colspan='3'><div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div></td>"
              . "</tr>";
             foreach ($elearningAssignments as $elearningAssignment) {
               $elearningAssignmentId = $elearningAssignment->getId();
@@ -666,8 +670,8 @@ HEREDOC;
     $labelAnswers = $this->userUtils->getTipPopup($this->websiteText[254], $this->websiteText[255], 300, 200);
     $labelPoints = $this->userUtils->getTipPopup($this->websiteText[252], $this->websiteText[253], 300, 200);
 
-    $strDisplayWhiteboard = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='" .  $this->websiteText[256] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/subscription/whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
-
+    $strDisplayWhiteboard = " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
+      . "<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='" . $this->websiteText[256] . "' alt='' style='vertical-align:middle;' /></a>";
     $strDisplayGraph = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_COURSE_GRAPH . "' class='no_style_image_icon' title='" .  $this->websiteText[186] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/result/display_graph.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
 
     $instantCorrection = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CORRECTION");
@@ -689,6 +693,9 @@ HEREDOC;
     $str .= "\n<div class='elearning_course_icons'>$strDisplayWhiteboard $strDisplayGraph</div>";
     $str .= "\n</td>";
     $str .= "\n</tr>";
+    $str .= "\n<tr>"
+          . "<td colspan='2'><div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div></td>"
+          . "</tr>";
 
     $elearningCourseItems = $this->elearningCourseItemUtils->selectByCourseId($elearningCourseId);
 
@@ -914,7 +921,7 @@ HEREDOC;
       $str .= "<div class='elearning_course_cell' style='white-space:nowrap;'>$strResultPoints</div>";
       $str .= "</td>";
     }
-    $str .= "<td style='white-space:nowrap;'><div class='elearning_course_icons'>$strDisplayWhiteboard $strDisplayGraph</div>";
+    $str .= "<td style='white-space:nowrap;'>";
     $str .= "</td>";
     $str .= "</tr>";
 
@@ -3024,17 +3031,10 @@ HEREDOC;
   function renderWhiteboard($elearningSubscriptionId) {
     global $gElearningUrl;
     global $gImagesUserUrl;
-    global $gIsPhoneClient;
     global $gJsUrl;
     global $gHostname;
 
     $this->loadLanguageTexts();
-
-    if ($gIsPhoneClient) {
-      $cols = '25';
-    } else {
-      $cols = '40';
-    }
 
     $whiteboard = '';
     if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
@@ -3070,7 +3070,7 @@ HEREDOC;
       . " <span class='elearning_whiteboard_clear' id='whiteboard_clear' title='$labelClearTheWhiteboard'>$labelClear</span>"
       . " <span class='elearning_whiteboard_print' id='whiteboard_print' title='$labelPrintTheWhiteboard'>$labelPrint</span>"
       . "</div>"
-      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard' id='whiteboard' rows='2' />$whiteboard</textarea>"
+      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard' id='whiteboard' rows='5' />$whiteboard</textarea>"
       . "<div id='whiteboard_loading' style='display:none;'><img src='$gImagesUserUrl/" . IMAGE_COMMON_LOADING . "' title='" . $this->websiteText[2] . "' alt='' /></div>"
       . "<div id='whiteboard_warning' style='display:none;'></div>"
       . "<div id='whiteboard_url_content' style='display:none;'>"
@@ -3085,7 +3085,6 @@ HEREDOC;
 }
 .elearning_whiteboard_input {
   width: 99% !important;
-  height: 99% !important;
 }
 </style>
 <script src='$gJsUrl/jquery/jquery.autogrowtextarea.js' type='text/javascript'></script>

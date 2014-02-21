@@ -130,6 +130,10 @@ foreach ($elearningAssignments as $elearningAssignment) {
   }
 }
 $strCommand = '';
+if ($elearningSubscriptionId > 0) {
+  $strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
+    . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[48]' alt='' style='vertical-align:middle;' /></a>";
+}
 if ($elearningSubscriptionId > 0 && count($elearningExerciseIds) > 0) {
   $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[40]' alt='' style='vertical-align:middle;' /></a>";
@@ -158,6 +162,11 @@ $panelUtils->addHiddenField('elearningClassId', $elearningClassId);
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), $panelUtils->addCell("<input type='text' id='className' value='$className' /> " . $panelUtils->getTinyOk(), "n"), $panelUtils->addCell($mlText[32], "nbr"), $panelUtils->addCell($strSelectRelease, "n"), '', '', '', '', '');
 $panelUtils->closeForm();
 $panelUtils->addLine();
+
+if ($elearningSubscriptionId > 0) {
+  $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
+  $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
+}
 
 if ($elearningSubscriptionId > 0 &&  count($elearningExerciseIds) > 0) {
   $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds) . "</div>";
@@ -279,7 +288,6 @@ foreach ($elearningAssignments as $elearningAssignment) {
         . "<img border='0' src='$gCommonImagesUrl/$gImageCheckList' title='$mlText[20]'></a>";
     }
     $strCommand .= ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePeople' title='$mlText[26]'>", "$gElearningUrl/assignment/copilot.php?elearningAssignmentId=$elearningAssignmentId", 900, 800)
-      . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImageWhiteboard' title='$mlText[48]'>", "$gElearningUrl/subscription/whiteboard.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600)
       . " <a href='$gElearningUrl/result/delete.php?elearningResultId=$elearningResultId' $gJSNoStatus target='_blank'>"
       . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[22]'></a>";
 
