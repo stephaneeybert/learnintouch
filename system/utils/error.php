@@ -63,9 +63,6 @@ function errorHandler($errorType, $message, $filename, $line) {
     $reportedErrorTypes = $systemErrorTypes;
 
     error_log("errorType: $errorType");
-    foreach ($systemErrorTypes as $systemErrorType) {
-      error_log("systemErrorType: " . $systemErrorType);
-    }
     if (in_array($errorType, $reportedErrorTypes)) {
       reportError($message, $errorType, $filename, $line);
     }
