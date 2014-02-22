@@ -282,8 +282,6 @@ class ElearningCourseUtils extends ElearningCourseDB {
               }
             }
 
-
-
             if ($elearningLessonParagraphs = $this->elearningLessonParagraphUtils->selectByLessonIdAndNoLessonHeading($elearningLessonId)) {
               foreach ($elearningLessonParagraphs as $elearningLessonParagraph) {
                 array_push($elearningExerciseIds, $elearningLessonParagraph->getElearningExerciseId());
