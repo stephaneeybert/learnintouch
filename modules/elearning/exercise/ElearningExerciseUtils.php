@@ -113,7 +113,7 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
       "ELEARNING_SECURED" =>
       array($this->mlText[1], $this->mlText[31], PREFERENCE_TYPE_BOOLEAN, ''),
         "ELEARNING_AUTOMATIC_ALERT" =>
-        array($this->mlText[82], $this->mlText[83], PREFERENCE_TYPE_SELECT, array('' => '', 'ELEARNING_AUTOMATIC_ALERT_EXERCISE' => $this->mlText[89], 'ELEARNING_AUTOMATIC_ALERT_ASSIGNMENT' => $this->mlText[97])),
+        array($this->mlText[82], $this->mlText[83], PREFERENCE_TYPE_SELECT, array('' => '', 'ELEARNING_AUTOMATIC_ALERT_EXERCISE' => $this->mlText[89], 'ELEARNING_AUTOMATIC_ALERT_EXERCISE_TEXT' => $this->mlText[93], 'ELEARNING_AUTOMATIC_ALERT_ASSIGNMENT' => $this->mlText[97])),
           "ELEARNING_SEND_RESULT" =>
           array($this->mlText[66], $this->mlText[67], PREFERENCE_TYPE_BOOLEAN, ''),
             "ELEARNING_HIDE_RESULT_IF_NO_EMAIL" =>
@@ -2507,6 +2507,11 @@ HEREDOC;
       $automaticAlert = $this->preferenceUtils->getValue("ELEARNING_AUTOMATIC_ALERT");
       if ($automaticAlert == 'ELEARNING_AUTOMATIC_ALERT_ASSIGNMENT') {
         if ($elearningAssignment = $this->elearningAssignmentUtils->selectBySubscriptionIdAndExerciseId($elearningSubscriptionId, $elearningExerciseId)) {
+          $scriptFile = $gElearningUrl . "/result/sendExerciseAlertBatch.php?elearningResultId=$elearningResultId";
+          $this->commonUtils->execlCLIwget($scriptFile);
+        }
+      } else if ($automaticAlert == 'ELEARNING_AUTOMATIC_ALERT_EXERCISE_TEXT') {
+        if ($this->elearningResultUtils->containsWrittenText($elearningResultId)) {
           $scriptFile = $gElearningUrl . "/result/sendExerciseAlertBatch.php?elearningResultId=$elearningResultId";
           $this->commonUtils->execlCLIwget($scriptFile);
         }

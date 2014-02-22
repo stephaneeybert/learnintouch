@@ -422,6 +422,26 @@ class ElearningResultUtils extends ElearningResultDB {
     return($answered);
   }
 
+  function containsWrittenText($elearningResultId) {
+    $containsWords = false;
+    if ($elearningQuestionResults = $this->elearningQuestionResultUtils->selectByResult($elearningResultId)) {
+      foreach ($elearningQuestionResults as $elearningQuestionResult) {
+        $elearningQuestionId = $elearningQuestionResult->getElearningQuestion();
+        if ($elearningQuestion = $this->elearningQuestionUtils->selectById($elearningQuestionId)) {
+          if ($this->elearningQuestionUtils->typeIsWriteText($elearningQuestion)) {
+            $participantAnswer = $elearningQuestionResult->getElearningAnswerText();
+            $nbParticipantAnswerWords = $this->elearningExercisePageUtils->countAnswerNbWords($participantAnswer);
+            if ($nbParticipantAnswerWords > 0) {
+              $containsWords = true;
+            }
+          }
+        }
+      }
+    }
+
+    return($containsWords);
+  }
+
   // Check if a question is correctly answered
   // IMPORTANT! Another isCorrectlyAnswered function with ALMOST the same business logic
   // is defined in the class ElearningExercisePageUtils but it is based on session data

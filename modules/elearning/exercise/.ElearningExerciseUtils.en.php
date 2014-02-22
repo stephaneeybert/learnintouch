@@ -89,6 +89,7 @@
 [  90]Send the exercise results
 [  91]Do the exercise
 [  92]Whiteboard
+[  93]For an written text exercise
 [  94]Display the exercise results
 [  95]Send the exercise
 [  96]It is possible to specify a default duration for a new subscription.\n\nIn that case, when creating a new subscription, the closing date will be suggested from the opening date and the default duration.\n\nHowever, it will still be possible to choose another closing date.\n\nThe duration is expressed in days.
