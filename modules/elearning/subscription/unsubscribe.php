@@ -67,7 +67,6 @@ if ($formSubmitted == 1) {
 $courseName = '';
 if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
   $elearningCourseId = $elearningSubscription->getCourseId();
-  error_log("elearningCourseId: $elearningCourseId");
   if ($course = $elearningCourseUtils->selectById($elearningCourseId)) {
     $courseName = $course->getName();
   }
