@@ -10,19 +10,22 @@ class ElearningQuestionResultUtils extends ElearningQuestionResultDB {
   }
 
   // Get the participant answers of a question
-  // This are the ids of the answers a participant has given for a question
+  // These are the ids of the answers a participant has given for a question
   function getParticipantAnswers($elearningResultId, $elearningQuestionId) {
-    $participantQuestionAnswers = array();
-
+    $participantQuestionAnswers = '';
     if ($elearningQuestionResults = $this->selectByResultAndQuestion($elearningResultId, $elearningQuestionId)) {
-      foreach ($elearningQuestionResults as $elearningQuestionResult) {
-        $elearningQuestion = $this->elearningQuestionUtils->selectById($elearningQuestionId);
-        if ($this->elearningQuestionUtils->isWrittenAnswer($elearningQuestion)) {
+      $elearningQuestion = $this->elearningQuestionUtils->selectById($elearningQuestionId);
+      if ($this->elearningQuestionUtils->isWrittenAnswer($elearningQuestion)) {
+        if (count($elearningQuestionResults) > 0) {
+          $elearningQuestionResult = $elearningQuestionResults[0];
           $answer = $elearningQuestionResult->getElearningAnswerText();
           if ($answer) {
-            array_push($participantQuestionAnswers, $answer);
+            $participantQuestionAnswers = $answer;
           }
-        } else {
+        }
+      } else {
+        $participantQuestionAnswers = array();
+        foreach ($elearningQuestionResults as $elearningQuestionResult) {
           $elearningAnswerId = $elearningQuestionResult->getElearningAnswerId();
           if ($elearningAnswerId) {
             array_push($participantQuestionAnswers, $elearningAnswerId);
@@ -34,7 +37,7 @@ class ElearningQuestionResultUtils extends ElearningQuestionResultDB {
   }
 
   // Render all the answers given by the participant
-  // This are the visible values of the answers a participant has given for a question
+  // These are the visible values of the answers a participant has given for a question
   function renderParticipantAnswers($elearningResultId, $elearningQuestionId, $isCorrectlyAnswered) {
     $userQuestionAnswers = '';
 

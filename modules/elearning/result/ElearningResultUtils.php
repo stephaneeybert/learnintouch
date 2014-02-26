@@ -1224,6 +1224,9 @@ HEREDOC;
 
           $body .= '<br><br>' . $this->renderResult($elearningResultId, true);
 
+          $body = LibString::stripJavascriptTags($body);
+          $body = str_replace("display:none", "display:block", $body);
+
           $attachedFiles = $this->getEmailAttachment($body);
 
           $body = $this->replaceImageTags($body);
