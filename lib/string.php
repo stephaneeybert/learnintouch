@@ -230,6 +230,13 @@ class LibString {
     return($str);
   }
 
+  // Strip all script tags, like PHP tags and Javascript tags
+  static function stripJavascriptTags($str) {
+    $str = eregi_replace("<script[^>]*>.*</script>", '', $str);
+
+    return($str);
+  }
+
   /*
   // Strip all script tags, like PHP tags and Javascript tags
   static function stripScriptTags($str) {
