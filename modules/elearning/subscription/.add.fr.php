@@ -13,3 +13,4 @@
 [  12]Les exercices d'un cours peuvent être suivis en direct par un professeur.\n\nIl est alors possible pour le professeur, de suivre sur son ordinateur, la progression de l'exercice pendant que le participant répond aux questions.\n\nLes résultats des questions seront affichés en direct au professeur pendant que le participant fait l'exercice.
 [  13]Vous êtes déjà inscrit à ce cours.
 [  14]Vous êtes déjà inscrit à ce cours pour cette session.
+[  15]Le participant est requis.

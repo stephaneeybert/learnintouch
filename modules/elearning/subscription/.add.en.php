@@ -13,3 +13,4 @@
 [  12]The exercises of a course can be watched live by a teacher.\n\nIt is then possible for the teacher, to watch on his computer, the progress of the exercise while the participant is answering the questions.\n\nThe questions results will be displayed live to the teacher while the participant is doing the exercise.
 [  13]You are already subscribed to this course.
 [  14]You are already subscribed to this course for this session.
+[  15]The participant is required.

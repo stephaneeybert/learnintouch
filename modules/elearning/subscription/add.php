@@ -47,6 +47,11 @@ if ($formSubmitted == 1) {
     }
   }
 
+  // The participant is required
+  if (!$userId){
+    array_push($warnings, $websiteText[15]);
+  }
+
   // The participant can subscribe only once to a course 
   if ($preferenceUtils->getValue("ELEARNING_REQUIRE_SESSION")) {
     if ($elearningSubscription = $elearningSubscriptionUtils->selectByUserIdAndCourseIdAndSessionId($userId, $elearningCourseId, $elearningSessionId)) {
