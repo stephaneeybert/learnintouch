@@ -52,8 +52,6 @@ if ( $formSubmitted == 1 ) {
       $user->setReadablePassword($newpassword1);
       $user->setPassword($hashedPassword);
       $user->setPasswordSalt($passwordSalt);
-      error_log("In changePassword.php updating readablePassword: $newpassword1 passwordSalt: $passwordSalt hashedPassword: $hashedPassword");
-      LibEmail::sendMail(STAFF_EMAIL, STAFF_EMAIL, "Modifying user password (changePassword) for $email", "Modifying user password with email: $email and password: $newpassword1 with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
       $userUtils->updatePassword($user);
     }
 

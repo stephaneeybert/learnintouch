@@ -48,8 +48,6 @@ if ( $formSubmitted == 1 ) {
     $user->setReadablePassword($newpassword1);
     $userUtils->updatePassword($user);
     $email = $user->getEmail();
-    error_log("In setPassword.php updating readablePassword: $newpassword1 passwordSalt: $passwordSalt hashedPassword: $hashedPassword");
-    LibEmail::sendMail(STAFF_EMAIL, STAFF_EMAIL, "Modifying user password (setPassword) for $email", "Modifying user password with email: $email and password: $newpassword1 with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
     $firstname = $user->getFirstname();
     $lastname = $user->getLastname();
   }

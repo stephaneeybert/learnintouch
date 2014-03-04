@@ -408,15 +408,12 @@ class UserUtils extends UserDB {
 
   // Check the password of the user
   function checkUserPassword($email, $password) {
-    error_log("Login with email: $email and password: $password");
     if ($user = $this->selectByEmail($email)) {
       $passwordSalt = $user->getPasswordSalt();
       $hashedPassword = md5($password . $passwordSalt);
-      error_log("with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
       if ($user = $this->selectByEmailAndPassword($email, $hashedPassword)) {
         return(true);
       } else {
-        LibEmail::sendMail(STAFF_EMAIL, STAFF_EMAIL, "Failed user login for $email", "Login with email: $email and password: $password with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
         return(false);
       }
     } else {
@@ -435,8 +432,6 @@ class UserUtils extends UserDB {
         $user->setPassword($hashedPassword);
         $user->setPasswordSalt($passwordSalt);
         $user->setReadablePassword($readablePassword);
-        error_log("In setRandomPassword updating readablePassword: $readablePassword passwordSalt: $passwordSalt hashedPassword: $hashedPassword");
-        LibEmail::sendMail(STAFF_EMAIL, STAFF_EMAIL, "Modifying user password (setRandomPassword()) for $email", "Modifying user password with email: $email and password: $readablePassword with passwordSalt: $passwordSalt and hashedPassword: $hashedPassword");
         $this->updatePassword($user);
         return($readablePassword);
       }
