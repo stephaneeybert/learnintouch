@@ -75,16 +75,6 @@ if ($elearningExercise) {
 
 $gTemplate->setPageContent($str);
 
-$preferenceUtils->init($dynpageUtils->preferences);
-if ($preferenceUtils->getValue("DYNPAGE_NAME_AS_TITLE")) {
-  if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseId)) {
-    $name = $elearningExercise->getName();
-    if ($name) {
-      $gTemplate->setPageTitle($name);
-    }
-  }
-}
-
 $elearningTemplateModelId = $elearningExerciseUtils->getTemplateModel();
 if ($elearningTemplateModelId > 0) {
   $templateModelId = $elearningTemplateModelId;

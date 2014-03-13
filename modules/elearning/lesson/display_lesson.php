@@ -21,13 +21,6 @@ if ($elearningLesson = $elearningLessonUtils->selectById($elearningLessonId)) {
   $str = $elearningLessonUtils->renderLesson($elearningLesson, $elearningSubscription);
 
   $gTemplate->setPageContent($str);
-  $preferenceUtils->init($dynpageUtils->preferences);
-  if ($preferenceUtils->getValue("DYNPAGE_NAME_AS_TITLE")) {
-    $name = $elearningLesson->getName();
-    if ($name) {
-      $gTemplate->setPageTitle($name);
-    }
-  }
 }
 
 $elearningTemplateModelId = $elearningExerciseUtils->getTemplateModel();
