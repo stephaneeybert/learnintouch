@@ -16,7 +16,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('watchLiveResult', function() {
-    socket.join('admins');
+    socket.join('liveResultRoom');
   });
 
   socket.on('updateTab', function(data) {
@@ -32,7 +32,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateQuestion', function(data) {
-    socket.broadcast.to('admins').emit('updateResult', data);
+    socket.broadcast.to('liveResultRoom').emit('updateResult', data);
 
     if ('undefined' != typeof elearningSubscriptions[data.elearningSubscriptionId]) {
       for(i = 0; i < elearningSubscriptions[data.elearningSubscriptionId].length; i++) {
@@ -60,7 +60,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('disconnect', function(data) {
     console.log("Disconnecting sessionID: " + sessionID);
 
-    socket.leave('admins');
+    socket.leave('liveResultRoom');
 
     for(i = 0; i < elearningSubscriptions.length; i++) {
       if ('undefined' != typeof elearningSubscriptions[i]) {
