@@ -1,15 +1,16 @@
 var utils = require('utils.js');
 var server = require('server.js');
 
-var elearningSubscriptions = [];
+var copilotElearningSubscriptions = [];
+var pollElearningClasses = [];
 
 server.io.of('/elearning').on('connection', function(socket) {
 
   socket.on('watchLiveCopilot', function(data) {
-    if ('undefined' == typeof elearningSubscriptions[data.elearningSubscriptionId]) {
-      elearningSubscriptions[data.elearningSubscriptionId] = [];
+    if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+      copilotElearningSubscriptions[data.elearningSubscriptionId] = [];
     }
-    elearningSubscriptions[data.elearningSubscriptionId].push(sessionID);
+    copilotElearningSubscriptions[data.elearningSubscriptionId].push(sessionID);
     socket.join(data.elearningSubscriptionId);
     socket.send("You are now able to be watched.");
     socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
@@ -20,9 +21,9 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateTab', function(data) {
-    if ('undefined' != typeof elearningSubscriptions[data.elearningSubscriptionId]) {
-      for(i = 0; i < elearningSubscriptions[data.elearningSubscriptionId].length; i++) {
-        if (elearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
+    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+      for(i = 0; i < copilotElearningSubscriptions[data.elearningSubscriptionId].length; i++) {
+        if (copilotElearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
           socket.broadcast.to(data.elearningSubscriptionId).emit('updateTab', {'elearningSubscriptionId': data.elearningSubscriptionId, 'elearningExercisePageId': data.elearningExercisePageId});
           return;
         }
@@ -34,9 +35,9 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('updateQuestion', function(data) {
     socket.broadcast.to('liveResultAdminPages').emit('updateResult', data);
 
-    if ('undefined' != typeof elearningSubscriptions[data.elearningSubscriptionId]) {
-      for(i = 0; i < elearningSubscriptions[data.elearningSubscriptionId].length; i++) {
-        if (elearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
+    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+      for(i = 0; i < copilotElearningSubscriptions[data.elearningSubscriptionId].length; i++) {
+        if (copilotElearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
           socket.broadcast.to(data.elearningSubscriptionId).emit('updateQuestion', data);
           return;
         }
@@ -46,9 +47,9 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateWhiteboard', function(data) {
-    if ('undefined' != typeof elearningSubscriptions[data.elearningSubscriptionId]) {
-      for(i = 0; i < elearningSubscriptions[data.elearningSubscriptionId].length; i++) {
-        if (elearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
+    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+      for(i = 0; i < copilotElearningSubscriptions[data.elearningSubscriptionId].length; i++) {
+        if (copilotElearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
           socket.broadcast.to(data.elearningSubscriptionId).emit('updateWhiteboard', data);
           return;
         }
@@ -57,8 +58,28 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.send("You are not being watched live yet.");
   });
 
-  socket.on('watchLivePoll', function() {
-    socket.join('livePollGroup');
+  socket.on('watchLivePoll', function(data) {
+    if ('undefined' == typeof pollElearningClasses[data.elearningClassId]) {
+      pollElearningClasses[data.elearningClassId] = [];
+    }
+    pollElearningClasses[data.elearningClassId].push(sessionID);
+    socket.join(data.elearningClassId);
+    socket.send("You are now able to do a live poll.");
+    socket.broadcast.to(data.elearningClassId).send("The class id: " + data.elearningClassId + " is now polled.");
+  });
+
+  socket.on('updatePoll', function(data) {
+    socket.broadcast.to('livePollGroup').emit('updatePoll', data);
+
+    if ('undefined' != typeof pollElearningClasses[data.elearningClassId]) {
+      for(i = 0; i < pollElearningClasses[data.elearningClassId].length; i++) {
+        if (pollElearningClasses[data.elearningClassId][i] == sessionID) {
+          socket.broadcast.to(data.elearningClassId).emit('updatePoll', data);
+          return;
+        }
+      }
+    }
+    socket.send("You are not being polled yet.");
   });
 
   socket.on('disconnect', function(data) {
@@ -67,12 +88,24 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.leave('liveResultAdminPages');
     socket.leave('livePollGroup');
 
-    for(i = 0; i < elearningSubscriptions.length; i++) {
-      if ('undefined' != typeof elearningSubscriptions[i]) {
-        for(j = 0; j < elearningSubscriptions[i].length; j++) {
-          if (elearningSubscriptions[i][j] == sessionID) {
+    for(i = 0; i < copilotElearningSubscriptions.length; i++) {
+      if ('undefined' != typeof copilotElearningSubscriptions[i]) {
+        for(j = 0; j < copilotElearningSubscriptions[i].length; j++) {
+          if (copilotElearningSubscriptions[i][j] == sessionID) {
             console.log("Leaving the live watch for the elearning subscription: " + i);          
-            elearningSubscriptions[i].splice(j, 1);
+            copilotElearningSubscriptions[i].splice(j, 1);
+            socket.leave(i);
+          }
+        }
+      }
+    }
+
+    for(i = 0; i < pollElearningClasses.length; i++) {
+      if ('undefined' != typeof pollElearningClasses[i]) {
+        for(j = 0; j < pollElearningClasses[i].length; j++) {
+          if (pollElearningClasses[i][j] == sessionID) {
+            console.log("Leaving the poll for the elearning class: " + i);          
+            pollElearningClasses[i].splice(j, 1);
             socket.leave(i);
           }
         }

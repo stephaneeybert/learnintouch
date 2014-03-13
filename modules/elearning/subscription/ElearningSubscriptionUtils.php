@@ -443,14 +443,14 @@ class ElearningSubscriptionUtils extends ElearningSubscriptionDB {
 
     $NODEJS_SOCKET_PORT = NODEJS_SOCKET_PORT;
 
-    $strLiveResultJs = <<<HEREDOC
+    $strLivePollJs = <<<HEREDOC
 <script type='text/javascript'>
-function renderOneLiveResult(responseText) {
+function renderOneLivePoll(responseText) {
   var response = eval('(' + responseText + ')');
-  renderLiveResult(response);
+  renderLivePoll(response);
 }
 
-function renderLiveResult(liveResult) {
+function renderLivePoll(liveResult) {
   var elearningResultId = liveResult.elearningResultId;
   if (elearningResultId > 0) {
     var nbQuestions = liveResult.nbQuestions;
@@ -563,20 +563,20 @@ $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-      elearningSocket.emit('watchLiveResult');
+      elearningSocket.emit('watchLivePoll');
     });
 
     if ('undefined' != typeof elearningSocket) {
-      elearningSocket.on('updateResult', function(data) {
-        updateLiveResult(data.elearningResultId);
+      elearningSocket.on('updatePoll', function(data) {
+        updatePoll(data.elearningResultId);
       });
     }
   }
 });
 
-function updateLiveResult(elearningResultId) {
+function updatePoll(elearningResultId) {
   var url = '$gElearningUrl/result/get_live_result.php?elearningResultId=' + elearningResultId;
-  ajaxAsynchronousRequest(url, renderOneLiveResult);
+  ajaxAsynchronousRequest(url, renderOneLivePoll);
 }
 
 function renderInactiveParticipantImage(subscription) {
@@ -604,7 +604,7 @@ function renderInactiveParticipantImage(subscription) {
 </script>
 HEREDOC;
 
-    return($strLiveResultJs);
+    return($strLivePollJs);
   }
 
   // Render the styling elements for the editing of the css style properties
