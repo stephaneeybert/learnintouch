@@ -806,7 +806,7 @@ $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-      elearningSocket.emit('watchLiveAdmin');
+      elearningSocket.emit('watchLiveResult');
     });
 
     if ('undefined' != typeof elearningSocket) {

@@ -5,7 +5,7 @@ var elearningSubscriptions = [];
 
 server.io.of('/elearning').on('connection', function(socket) {
 
-  socket.on('watchLive', function(data) {
+  socket.on('watchLiveCopilot', function(data) {
     if ('undefined' == typeof elearningSubscriptions[data.elearningSubscriptionId]) {
       elearningSubscriptions[data.elearningSubscriptionId] = [];
     }
@@ -15,7 +15,7 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
   });
 
-  socket.on('watchLiveAdmin', function() {
+  socket.on('watchLiveResult', function() {
     socket.join('admins');
   });
 
