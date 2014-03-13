@@ -3046,8 +3046,6 @@ HEREDOC;
       $whiteboard = $elearningSubscription->getWhiteboard();
     }
 
-    $ELEARNING_RESULT_REFRESH_TIME = ELEARNING_RESULT_REFRESH_TIME;
-
     $labelClear = $this->websiteText[122];
     $labelClearTheWhiteboard = $this->websiteText[137];
     $labelPrint = $this->websiteText[170];

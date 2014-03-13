@@ -2906,7 +2906,6 @@ HEREDOC;
         $elearningExerciseId = $elearningExercisePage->getElearningExerciseId();
         $elearningExercisePageId = $elearningExercisePage->getId();
         $ELEARNING_ANSWER_ORDER_ID = ELEARNING_ANSWER_ORDER_ID;
-        $ELEARNING_RESULT_REFRESH_TIME = ELEARNING_RESULT_REFRESH_TIME;
         $ELEARNING_ANSWERS_SEPARATOR = ELEARNING_ANSWERS_SEPARATOR;
         $strRefresh = <<<HEREDOC
 <script type="text/javascript">

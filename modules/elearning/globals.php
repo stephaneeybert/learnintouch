@@ -133,9 +133,6 @@ define('ELEARNING_PAGE_TAB_WITH_NUMBER', 2);
 define('ELEARNING_IMPORT_OTHER_EXERCISE', 1);
 define('ELEARNING_IMPORT_OTHER_LESSON', 2);
 
-// The number of milliseconds between refresh of the live results display
-define('ELEARNING_RESULT_REFRESH_TIME', 5000);
-
 // The number of seconds before a participant is considered inactive 
 // when doing an exercise watched live
 define('ELEARNING_INACTIVE_TIME', 60);

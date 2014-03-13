@@ -643,7 +643,7 @@ class ElearningResultUtils extends ElearningResultDB {
     return($resultTotals[13]);
   }
 
-  // Render the live update javascript
+  // Render the live results in admin pages javascript
   function renderLiveResultJs() {
     global $gElearningUrl;
     global $gCommonImagesUrl;
@@ -651,7 +651,6 @@ class ElearningResultUtils extends ElearningResultDB {
     global $gImageLightGreenSmall;
     global $gHostname;
 
-    $ELEARNING_RESULT_REFRESH_TIME = ELEARNING_RESULT_REFRESH_TIME;
     $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER;
     $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT;
     $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT;
@@ -678,16 +677,6 @@ class ElearningResultUtils extends ElearningResultDB {
 
     $strLiveResultJs = <<<HEREDOC
 <script type='text/javascript'>
-function renderAllLiveResults(responseText) {
-  var response = eval('(' + responseText + ')');
-  var liveResultIds = response.liveResultIds;
-  if (liveResultIds.length > 0) {
-    for (var i in liveResultIds) {
-      renderLiveResult(liveResultIds[i]);
-    }
-  }
-}
-
 function renderOneLiveResult(responseText) {
   var response = eval('(' + responseText + ')');
   renderLiveResult(response);
@@ -820,12 +809,6 @@ $(function() {
 function updateLiveResult(elearningResultId) {
   var url = '$gElearningUrl/result/get_live_result.php?elearningResultId=' + elearningResultId;
   ajaxAsynchronousRequest(url, renderOneLiveResult);
-}
-
-function updateResult(strLiveResultIds) {
-  var url = '$gElearningUrl/result/render_live_result.php?strLiveResultIds=' + strLiveResultIds;
-  var call = "ajaxAsynchronousRequest('"+url+"', renderAllLiveResults)";
-  intervalRefresh = window.setInterval(call, $ELEARNING_RESULT_REFRESH_TIME);
 }
 
 function renderInactiveParticipantImage(subscription) {
