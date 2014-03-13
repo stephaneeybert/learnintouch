@@ -21,6 +21,7 @@
 [  20]Edit the course information
 [  21]The sessions
 [  22]Duplicate the course
+[  28]Send by email
 [  29]A course is composed of a series of lessons and exercises.\n\nFor example, a course can be "English for beginners".\n\nThe courses can be sorted by matter.
 [  33]Matter:
 [  34]The matters

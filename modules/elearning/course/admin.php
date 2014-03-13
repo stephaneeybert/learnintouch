@@ -153,7 +153,9 @@ foreach ($elearningCourses as $elearningCourse) {
   $strCommand .= " <a href='$gElearningUrl/lesson/admin.php?elearningCourseId=$elearningCourseId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageLesson' title='$mlText[12]'></a>"
     . " <a href='$gElearningUrl/exercise/admin.php?elearningCourseId=$elearningCourseId' $gJSNoStatus>"
-    . "<img border='0' src='$gCommonImagesUrl/$gImageExercise' title='$mlText[13]'></a>";
+    . "<img border='0' src='$gCommonImagesUrl/$gImageExercise' title='$mlText[13]'></a>"
+    . " <a href='$gElearningUrl/course/send.php?elearningCourseId=$elearningCourseId' $gJSNoStatus>"
+    . "<img border='0' src='$gCommonImagesUrl/$gImageEmail' title='$mlText[28]'></a>";;
 
   if (!$elearningCourseUtils->isLockedForLoggedInAdmin($elearningCourseId)) {
     $strCommand .= " <a href='$gElearningUrl/course/edit.php?elearningCourseId=$elearningCourseId' $gJSNoStatus>"

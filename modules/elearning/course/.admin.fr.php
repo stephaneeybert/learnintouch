@@ -21,6 +21,7 @@
 [  20]Modifier l'information de cours
 [  21]Les sessions
 [  22]Dupliquer le cours
+[  28]Envoyer par email
 [  29]Un cours est composé d'une série de leçons et d'exercices.\n\nPar exemple, un cours peut être "Français pour débutants".\n\nLes cours peuvent être triés par matière.
 [  33]Matière:
 [  34]Les matières
