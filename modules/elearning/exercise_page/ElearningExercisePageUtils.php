@@ -3105,17 +3105,6 @@ function copilotRefreshQuestionAnswers(elearningQuestionId, questionType, uId, u
     }
 }
 
-function copilotExerciseUpdate() {
-  var url = "$gElearningUrl/subscription/get_live_answers.php?elearningSubscriptionId=$elearningSubscriptionId&elearningExerciseId=$elearningExerciseId";
-  ajaxAsynchronousRequest(url, copilotRefreshDisplay);
-}
-
-function copilotRefreshDisplay(responseText) {
-  var response = eval('(' + responseText + ')');
-  copilotRefreshTab(response);
-  copilotRefreshAllQuestionsAnswers(response);
-}
-
 // Update the current page of questions
 function copilotRefreshTab(response) {
   var lastExercisePageId = response.lastExercisePageId;
@@ -3150,16 +3139,6 @@ function copilotRefreshAllQuestionsAnswers(response) {
   }
 }
 
-//$(function() {
-//if ('undefined' == typeof elearningSocket) {
-//  // Stop the refreshing after a little while as most exercises are done by that time
-//  // This is to avoid a refresh on pages left opened
-//  var intervalRefresh = window.setInterval(copilotExerciseUpdate, $ELEARNING_RESULT_REFRESH_TIME);
-//  setTimeout(function(){
-//    clearInterval(intervalRefresh);
-//  }, 900000);
-//}
-//});
 </script>
 HEREDOC;
         $str .= $strRefresh;
