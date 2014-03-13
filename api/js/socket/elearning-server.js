@@ -16,7 +16,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('watchLiveResult', function() {
-    socket.join('liveResultGroup');
+    socket.join('liveResultAdminPages');
   });
 
   socket.on('updateTab', function(data) {
@@ -32,7 +32,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateQuestion', function(data) {
-    socket.broadcast.to('liveResultGroup').emit('updateResult', data);
+    socket.broadcast.to('liveResultAdminPages').emit('updateResult', data);
 
     if ('undefined' != typeof elearningSubscriptions[data.elearningSubscriptionId]) {
       for(i = 0; i < elearningSubscriptions[data.elearningSubscriptionId].length; i++) {
@@ -57,10 +57,15 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.send("You are not being watched live yet.");
   });
 
+  socket.on('watchLivePoll', function() {
+    socket.join('livePollGroup');
+  });
+
   socket.on('disconnect', function(data) {
     console.log("Disconnecting sessionID: " + sessionID);
 
-    socket.leave('liveResultGroup');
+    socket.leave('liveResultAdminPages');
+    socket.leave('livePollGroup');
 
     for(i = 0; i < elearningSubscriptions.length; i++) {
       if ('undefined' != typeof elearningSubscriptions[i]) {
