@@ -601,12 +601,6 @@ function renderInactiveParticipantImage(subscription) {
   }
 }
 
-// Stop the refreshing after 15mn as most exercises are done by that time
-// This is to avoid a refresh on results pages left opened
-var intervalRefresh;
-setTimeout(function(){
-  clearInterval(intervalRefresh);
-}, 900000);
 </script>
 HEREDOC;
 
