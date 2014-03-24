@@ -35,7 +35,7 @@ $strCommand = '';
 
 $hasResults = $elearningSubscriptionUtils->hasResults($elearningSubscription);
 
-$strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
+$strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); toggleParticipantWhiteboard(); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[26]' alt='' style='vertical-align:middle;' /></a>";
 
 if ($hasResults) {

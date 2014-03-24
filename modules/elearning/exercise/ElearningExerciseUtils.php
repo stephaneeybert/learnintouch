@@ -3136,6 +3136,12 @@ function allowCopilotAnswerRefresh(elementId) {
   return !copilotSkipRefresh[elementId];
 }
 
+function toggleParticipantWhiteboard() {
+  if ('undefined' != typeof elearningSocket) {
+    elearningSocket.emit('toggleParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+  }
+}
+
 function refreshWhiteboard(whiteboard) {
   if (allowCopilotAnswerRefresh('whiteboard')) {
     if ($('#whiteboard').val()) {
@@ -3219,6 +3225,9 @@ $('#whiteboard').bind("keyup click", function (event) {
 if ('undefined' != typeof elearningSocket) {
   elearningSocket.on('updateWhiteboard', function(data) {
     refreshWhiteboard(data.whiteboard);
+  });
+  elearningSocket.on('toggleParticipantWhiteboard', function(data) {
+    $('#subscriptionWhiteboard').slideToggle('fast');
   });
 }
 });
