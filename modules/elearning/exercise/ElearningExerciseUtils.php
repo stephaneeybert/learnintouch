@@ -536,8 +536,6 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
           $elearningSubscriptionId = $elearningSubscription->getId();
           $watchLive = $elearningSubscription->getWatchLive();
           if ($elearningAssignments = $this->elearningAssignmentUtils->selectBySubscriptionIdAndOpened($elearningSubscriptionId, $systemDate)) {
-            $strDisplayWhiteboard = " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
-                  . "<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='$mlText[256]' alt='' style='vertical-align:middle;' /></a>";
 
             $strDisplayGraph = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_COURSE_GRAPH . "' class='no_style_image_icon' title='" .  $this->websiteText[186] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/assignment/display_graph.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
             $str .= "<tr>"
@@ -545,7 +543,7 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
              . "</td><td>"
              . "</td><td>"
              . "<div class='elearning_course_icons' style='white-space:nowrap;'>"
-             . "$strDisplayWhiteboard $strDisplayGraph"
+             . "$strDisplayGraph"
              . "</div>"
              . "</td>"
              . "</tr>"
@@ -670,8 +668,6 @@ HEREDOC;
     $labelAnswers = $this->userUtils->getTipPopup($this->websiteText[254], $this->websiteText[255], 300, 200);
     $labelPoints = $this->userUtils->getTipPopup($this->websiteText[252], $this->websiteText[253], 300, 200);
 
-    $strDisplayWhiteboard = " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
-      . "<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_WHITEBOARD . "' class='no_style_image_icon' title='" . $this->websiteText[256] . "' alt='' style='vertical-align:middle;' /></a>";
     $strDisplayGraph = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_COURSE_GRAPH . "' class='no_style_image_icon' title='" .  $this->websiteText[186] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/result/display_graph.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
 
     $instantCorrection = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CORRECTION");
@@ -690,7 +686,7 @@ HEREDOC;
       $str .= "</td>";
     }
     $str .= "<td class='no_style_list_line'>";
-    $str .= "\n<div class='elearning_course_icons'>$strDisplayWhiteboard $strDisplayGraph</div>";
+    $str .= "\n<div class='elearning_course_icons'>$strDisplayGraph</div>";
     $str .= "\n</td>";
     $str .= "\n</tr>";
     $str .= "\n<tr>"
