@@ -25,8 +25,12 @@ class LibEmail {
 
     // Check if the domain can handle email
     list($userName, $mailDomail) = explode("@", $email);
-    if (checkdnsrr($mailDomail, "MX")) {
-      return(true);
+    if ($mailDomail) {
+      if (checkdnsrr($mailDomail, "MX")) {
+        return(true);
+      } else {
+        return(false);
+      }
     } else {
       return(false);
     }
