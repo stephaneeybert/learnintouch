@@ -110,7 +110,7 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-ru.js'></script>
 <script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-sv.js'></script>
 <link rel='stylesheet' type='text/css' href='$gJsUrl/jquery/ui/css/smoothness/jquery-ui-1.8.17.custom.css' />
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js"></script>
+<script type="text/javascript" src="$gJsUrl/socket/socket.io.min.js"></script>
 <script type="text/javascript" src="$gJsUrl/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
 <script type="text/javascript" src="$gJsUrl/jquery/jquery-ui-autocomplete-extension/scottgonzalez-jquery-ui-extensions-e34c945/autocomplete/jquery.ui.autocomplete.html.js"></script>
 <script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
