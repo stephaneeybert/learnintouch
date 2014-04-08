@@ -47,12 +47,12 @@ $panelUtils->setHeader($mlText[0], "$gElearningUrl/subscription/admin.php");
 $strSubscription = "<a target='_blank' href='$gElearningUrl/subscription/edit.php?elearningSubscriptionId=$elearningSubscriptionId'>"
   . $firstname . ' ' . $lastname
   . "</a>";
-$panelUtils->addLine($panelUtils->addCell($mlText[1], "nbr"), $strSubscription, '', '', '', '', '', $panelUtils->addCell($strCommand, "nr"));
-$panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $subscriptionDate, '', '', '', '', '', '');
+$panelUtils->addLine($panelUtils->addCell($mlText[1], "nbr"), $panelUtils->addCell($strSubscription, "n"), '', '', '', '', '', $panelUtils->addCell($strCommand, "nr"));
+$panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $panelUtils->addCell($subscriptionDate, "n"), '', '', '', '', '', '');
 $subscriptionClose = $elearningSubscriptionUtils->isClosed($elearningSubscription);
 if ($clockUtils->systemDateIsSet($subscriptionClose)) {
   $subscriptionClose = $clockUtils->systemToLocalNumericDate($subscriptionClose);
-  $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), $subscriptionClose, '', '', '', '', '', '');
+  $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), $panelUtils->addCell($subscriptionClose, "n"), '', '', '', '', '', '');
 }
 
 $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
