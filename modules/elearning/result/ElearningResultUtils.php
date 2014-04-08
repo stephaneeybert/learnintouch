@@ -643,6 +643,65 @@ class ElearningResultUtils extends ElearningResultDB {
     return($resultTotals[13]);
   }
 
+  // Render the live result for a question in admin pages javascript
+  function renderLiveQuestionResultJs() {
+    global $gElearningUrl;
+    global $gImagesUserUrl;
+
+    $ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS = ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS;
+    $ELEARNING_DOM_ID_QUESTION_RESULT_THUMB = ELEARNING_DOM_ID_QUESTION_RESULT_THUMB;
+    $ELEARNING_DOM_ID_QUESTION_RESULT_POINT = ELEARNING_DOM_ID_QUESTION_RESULT_POINT;
+    $ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS = ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS;
+
+    $imageAnswerTrue = $gImagesUserUrl . '/' . IMAGE_ELEARNING_ANSWER_TRUE;
+    $imageAnswerFalse = $gImagesUserUrl . '/' . IMAGE_ELEARNING_ANSWER_FALSE;
+
+    $strLiveResultJs = <<<HEREDOC
+<script type='text/javascript'>
+$(function() {
+  if ('undefined' != typeof elearningSocket) {
+    elearningSocket.on('updateResult', function(data) {
+      var url = '$gElearningUrl/result/get_live_question_result.php?elearningResultId=' + data.elearningResultId + '&elearningQuestionId=' + data.elearningQuestionId;
+      ajaxAsynchronousRequest(url, renderLiveQuestionResult);
+    });
+  }
+});
+
+function renderLiveQuestionResult(responseText) {
+  var liveResult = eval('(' + responseText + ')');
+  var elearningQuestionId = liveResult.elearningQuestionId;
+  if (elearningQuestionId > 0) {
+    var givenAnswersDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS" + elearningQuestionId);
+    if (givenAnswersDom) {
+      givenAnswersDom.html(liveResult.givenAnswers);
+    }
+    var thumbDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB" + elearningQuestionId);
+    if (thumbDom) {
+      if (liveResult.isCorrect) {
+        thumbDom.attr("src", "$imageAnswerTrue");
+      } else {
+        thumbDom.attr("src", "$imageAnswerFalse");
+      }
+    }
+    var pointsDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_POINT" + elearningQuestionId);
+    var solutionsDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS" + elearningQuestionId);
+    if (liveResult.isCorrect) {
+      pointsDom.show();
+      solutionsDom.hide();
+    } else {
+      pointsDom.hide();
+      solutionsDom.show();
+    }
+  }
+}
+</script>
+
+HEREDOC;
+
+    return($strLiveResultJs);
+  }
+
+
   // Render the live results in admin pages javascript
   function renderLiveResultJs() {
     global $gElearningUrl;
@@ -677,12 +736,8 @@ class ElearningResultUtils extends ElearningResultDB {
 
     $strLiveResultJs = <<<HEREDOC
 <script type='text/javascript'>
-function renderOneLiveResult(responseText) {
-  var response = eval('(' + responseText + ')');
-  renderLiveResult(response);
-}
-
-function renderLiveResult(liveResult) {
+function renderLiveResult(responseText) {
+  var liveResult = eval('(' + responseText + ')');
   var elearningResultId = liveResult.elearningResultId;
   if (elearningResultId > 0) {
     var nbQuestions = liveResult.nbQuestions;
@@ -784,7 +839,7 @@ function renderLiveResult(liveResult) {
         renderInactiveParticipantImage(subscription);
       } else {
         graphDom.style.display = 'none';
-        imageDom.style.display = 'none';
+        imageDom.style.visibility = 'none';
       }
     }
   }
@@ -800,16 +855,12 @@ $(function() {
 
     if ('undefined' != typeof elearningSocket) {
       elearningSocket.on('updateResult', function(data) {
-        updateLiveResult(data.elearningResultId);
+        var url = '$gElearningUrl/result/get_live_result.php?elearningResultId=' + data.elearningResultId;
+        ajaxAsynchronousRequest(url, renderLiveResult);
       });
     }
   }
 });
-
-function updateLiveResult(elearningResultId) {
-  var url = '$gElearningUrl/result/get_live_result.php?elearningResultId=' + elearningResultId;
-  ajaxAsynchronousRequest(url, renderOneLiveResult);
-}
 
 function renderInactiveParticipantImage(subscription) {
   var isInactive = subscription.isInactive;

@@ -33,6 +33,11 @@ $currentLanguageCode = $languageUtils->getCurrentAdminLanguageCode();
 
 $watchLive = '';
 
+$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS = ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS;
+$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB = ELEARNING_DOM_ID_QUESTION_RESULT_THUMB;
+$ELEARNING_DOM_ID_QUESTION_RESULT_POINT = ELEARNING_DOM_ID_QUESTION_RESULT_POINT;
+$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS = ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS;
+
 $panelUtils->setHeader($mlText[0], "$gElearningUrl/result/admin.php");
 
 if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
@@ -202,16 +207,8 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
       // Check if the question was correctly answered
       $isCorrect = $elearningResultUtils->isACorrectAnswer($elearningResultId, $elearningQuestionId);
       $isAnswered = $elearningResultUtils->isAnswered($elearningResultId, $elearningQuestionId);
-      $thumbImage = '';
-      if (!$elearningExercisePageUtils->typeIsWriteText($elearningExercisePage)) {
-        if ($isCorrect) {
-          $thumbImage = " <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''>";
-        } else if ($isAnswered) {
-          $thumbImage = " <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>";
-        }
-      }
 
-      $participantAnswers = "<span id='participantAnswers_$elearningQuestionId'>". $elearningQuestionResultUtils->renderParticipantAnswers($elearningResultId, $elearningQuestionId, $isCorrect) . '</span>';
+      $participantAnswers = "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS$elearningQuestionId'>". $elearningQuestionResultUtils->renderParticipantAnswers($elearningResultId, $elearningQuestionId, $isCorrect) . '</span>';
 
       if (strstr($question, ELEARNING_ANSWER_MCQ_MARKER)) {
         $question = str_replace(ELEARNING_ANSWER_MCQ_MARKER, $participantAnswers, $question);
@@ -221,13 +218,23 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
 
       $strResults .= "<br/>- " . $question;
 
-      $strResults .= ' ' . "<span id='thumbImage_$elearningQuestionId'>$thumbImage</span>";
+      if (!$elearningExercisePageUtils->typeIsWriteText($elearningExercisePage)) {
+        if ($isCorrect) {
+          $strResults .= " <img id='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''>";
+        } else if ($isAnswered) {
+          $strResults .= " <img id='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>";
+        }
+      }
 
       if ($isCorrect) {
-        $strResults .= "<br/><span id='points_$elearningQuestionId'>" . $mlText[22] . ' ' . $points . '</span>';
+        $strPointDisplayNone = '';
+        $strSolutionDisplayNone = "display: none;";
       } else {
-        $strResults .= "<br/><span id='solutions_$elearningQuestionId'>" . $mlText[21] . ' ' . $allPossibleSolutions . '</span>';
+        $strPointDisplayNone = "display: none;";
+        $strSolutionDisplayNone = '';
       }
+      $strResults .= "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_POINT$elearningQuestionId' style='$strPointDisplayNone'><br/>" . $mlText[22] . " <span class='points'>" . $points . '</span></span>';
+      $strResults .= "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS$elearningQuestionId' style='$strSolutionDisplayNone'><br/>" . $mlText[21] . ' ' . $allPossibleSolutions . '</span>';
     }
   }
 
@@ -238,6 +245,8 @@ if ($watchLive) {
   $strLiveResultIds = $elearningResultId;
   $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
   $panelUtils->addContent($strLiveResultJs);
+  $strLiveQuestionResultJs = $elearningResultUtils->renderLiveQuestionResultJs();
+  $panelUtils->addContent($strLiveQuestionResultJs);
 }
 
 $str = $panelUtils->render();
