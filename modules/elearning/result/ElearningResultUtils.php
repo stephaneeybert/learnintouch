@@ -1079,8 +1079,8 @@ HEREDOC;
       $labelRatio = $this->userUtils->getTipPopup($this->websiteText[42], $this->websiteText[43], 300, 200);
       $labelPoints = $this->userUtils->getTipPopup($this->websiteText[44], $this->websiteText[45], 300, 200);
       $str .= "<table>"
-        . "<tr><td><div class='elearning_course_header'>$labelGrade</div></td><td><div class='elearning_course_header'>$labelRatio</div></td><td><div class='elearning_course_header'>$labelPoints</div></td></tr>"
-        . "<tr><td><div class='elearning_course_points'>$strResultGrades</div></td><td><div class='elearning_course_points'>$strResultRatio</div></td><td><div class='elearning_course_points'>$strResultPoints</div></td></tr>"
+        . "<tr><td align='center'><div class='elearning_course_header'>$labelGrade</div></td><td align='center'><div class='elearning_course_header'>$labelRatio</div></td><td align='center'><div class='elearning_course_header'>$labelPoints</div></td></tr>"
+        . "<tr><td align='center'><div class='elearning_course_points'>$strResultGrades</div></td><td align='center'><div class='elearning_course_points'>$strResultRatio</div></td><td align='center'><div class='elearning_course_points'>$strResultPoints</div></td></tr>"
         . "</table>";
     }
 
