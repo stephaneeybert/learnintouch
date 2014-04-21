@@ -184,7 +184,7 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   $strResults .= $nbStars;
   $labelLiveResults = $popupUtils->getTipPopup($mlText[30], $mlText[31], 300, 300);
   $strLiveResults = "<br /><br /><b>" . $labelLiveResults . '</b> ' . $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '');
-  $strResults .= $strLiveResults . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='visibility: hidden;' />" . '<br/>';
+  $strResults .= $strLiveResults . " <img class='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />" . '<br/>';
 
   $elearningExercisePages = $elearningExercisePageUtils->selectByExerciseId($elearningExerciseId);
   foreach ($elearningExercisePages as $elearningExercisePage) {
@@ -208,7 +208,7 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
       $isCorrect = $elearningResultUtils->isACorrectAnswer($elearningResultId, $elearningQuestionId);
       $isAnswered = $elearningResultUtils->isAnswered($elearningResultId, $elearningQuestionId);
 
-      $participantAnswers = "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS$elearningQuestionId'>". $elearningQuestionResultUtils->renderParticipantAnswers($elearningResultId, $elearningQuestionId, $isCorrect) . '</span>';
+      $participantAnswers = "<span class='$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS$elearningQuestionId'>". $elearningQuestionResultUtils->renderParticipantAnswers($elearningResultId, $elearningQuestionId, $isCorrect) . '</span>';
 
       if (strstr($question, ELEARNING_ANSWER_MCQ_MARKER)) {
         $question = str_replace(ELEARNING_ANSWER_MCQ_MARKER, $participantAnswers, $question);
@@ -220,9 +220,9 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
 
       if (!$elearningExercisePageUtils->typeIsWriteText($elearningExercisePage)) {
         if ($isCorrect) {
-          $strResults .= " <img id='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''>";
+          $strResults .= " <img class='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''>";
         } else if ($isAnswered) {
-          $strResults .= " <img id='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>";
+          $strResults .= " <img class='$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB$elearningQuestionId' border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>";
         }
       }
 
@@ -233,8 +233,8 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
         $strPointDisplayNone = "display: none;";
         $strSolutionDisplayNone = '';
       }
-      $strResults .= "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_POINT$elearningQuestionId' style='$strPointDisplayNone'><br/>" . $mlText[22] . " <span class='points'>" . $points . '</span></span>';
-      $strResults .= "<span id='$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS$elearningQuestionId' style='$strSolutionDisplayNone'><br/>" . $mlText[21] . ' ' . $allPossibleSolutions . '</span>';
+      $strResults .= "<span class='$ELEARNING_DOM_ID_QUESTION_RESULT_POINT$elearningQuestionId' style='$strPointDisplayNone'><br/>" . $mlText[22] . " <span class='points'>" . $points . '</span></span>';
+      $strResults .= "<span class='$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS$elearningQuestionId' style='$strSolutionDisplayNone'><br/>" . $mlText[21] . ' ' . $allPossibleSolutions . '</span>';
     }
   }
 

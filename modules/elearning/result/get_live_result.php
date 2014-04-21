@@ -24,9 +24,12 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   $nbWritingPoints = $elearningResultUtils->getResultNbWritingPoints($resultTotals);
   $nbListeningPoints = $elearningResultUtils->getResultNbListeningPoints($resultTotals);
   $grade = $elearningResultRangeUtils->calculateGrade($nbCorrectAnswers, $nbQuestions);
-  $graphImageUrlNoAnswer = $elearningResultUtils->renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
-  $graphImageUrlIncorrect = $elearningResultUtils->renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
-  $graphImageUrlCorrect = $elearningResultUtils->renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+  $graphImageUrlNoAnswerH = $elearningResultUtils->renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+  $graphImageUrlIncorrectH = $elearningResultUtils->renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+  $graphImageUrlCorrectH = $elearningResultUtils->renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+  $graphImageUrlNoAnswerV = $elearningResultUtils->renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false);
+  $graphImageUrlIncorrectV = $elearningResultUtils->renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false);
+  $graphImageUrlCorrectV = $elearningResultUtils->renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false);
   $graphTitle = $elearningResultUtils->getExerciseResultsGraphTitle($nbQuestions, $nbCorrectAnswers);
   $strGraph = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '');
 
@@ -73,10 +76,12 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   "nbWritingPoints" : "$nbWritingPoints",
   "nbListeningPoints" : "$nbListeningPoints",
   "grade" : "$grade",
-  "graphImageUrlNoAnswer" : "$graphImageUrlNoAnswer",
-  "graphImageUrlNoAnswer" : "$graphImageUrlNoAnswer",
-  "graphImageUrlIncorrect" : "$graphImageUrlIncorrect",
-  "graphImageUrlCorrect" : "$graphImageUrlCorrect",
+  "graphImageUrlNoAnswerH" : "$graphImageUrlNoAnswerH",
+  "graphImageUrlIncorrectH" : "$graphImageUrlIncorrectH",
+  "graphImageUrlCorrectH" : "$graphImageUrlCorrectH",
+  "graphImageUrlNoAnswerV" : "$graphImageUrlNoAnswerV",
+  "graphImageUrlIncorrectV" : "$graphImageUrlIncorrectV",
+  "graphImageUrlCorrectV" : "$graphImageUrlCorrectV",
   "graphTitle" : "$graphTitle",
   "strGraph" : "$strGraph",
   "subscription" : {

@@ -186,6 +186,9 @@ $strSearch = "<form action='$PHP_SELF' method='post'>"
 
 $resultGradeScale = $elearningExerciseUtils->resultGradeScale();
 
+$strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
+$panelUtils->addContent($strLiveResultJs);
+
 $totalCorrectAnswers = 0;
 $totalIncorrectAnswers = 0;
 $totalQuestions = 0;

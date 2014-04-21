@@ -159,7 +159,7 @@ class ElearningResultUtils extends ElearningResultDB {
 
   // Render the result grades
   function renderResultGrades($elearningResultId, $grade) {
-    $str = "<span id='" . ELEARNING_DOM_ID_RESULT_GRADE . "$elearningResultId'>$grade</span>";
+    $str = "<span class='" . ELEARNING_DOM_ID_RESULT_GRADE . "$elearningResultId'>$grade</span>";
 
     return($str);
   }
@@ -172,7 +172,7 @@ class ElearningResultUtils extends ElearningResultDB {
       $strOn = '';
     }
 
-    $str = "<span id='" . ELEARNING_DOM_ID_RESULT_RATIO . "$elearningResultId'>$nbCorrectAnswers</span> $strOn $nbQuestions";
+    $str = "<span class='" . ELEARNING_DOM_ID_RESULT_RATIO . "$elearningResultId'>$nbCorrectAnswers</span> $strOn $nbQuestions";
 
     return($str);
   }
@@ -182,8 +182,8 @@ class ElearningResultUtils extends ElearningResultDB {
     global $gImagesUserUrl;
 
     if ($elearningResultId > 0) {
-      $str = "<span id='" . ELEARNING_DOM_ID_RESULT_ANSWER . "$elearningResultId'>"
-        . "<span id='result_correct_answers'>$nbCorrectAnswers</span> <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''> <span id='result_incorrect_answers'>$nbIncorrectAnswers</span> <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>"
+      $str = "<span class='" . ELEARNING_DOM_ID_RESULT_ANSWER . "$elearningResultId'>"
+        . "<span class='result_correct_answers'>$nbCorrectAnswers</span> <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_TRUE . "' title=''> <span class='result_incorrect_answers'>$nbIncorrectAnswers</span> <img border='0' src='$gImagesUserUrl/" . IMAGE_ELEARNING_ANSWER_FALSE . "' title=''>"
         . "</span>";
     } else {
       $str = '';
@@ -194,7 +194,7 @@ class ElearningResultUtils extends ElearningResultDB {
 
   // Render the result points
   function renderResultPoints($elearningResultId, $nbPoints) {
-    $str = "<span id='" . ELEARNING_DOM_ID_RESULT_POINT . "$elearningResultId'>$nbPoints</span>";
+    $str = "<span class='" . ELEARNING_DOM_ID_RESULT_POINT . "$elearningResultId'>$nbPoints</span>";
 
     return($str);
   }
@@ -671,26 +671,38 @@ function renderLiveQuestionResult(responseText) {
   var liveResult = eval('(' + responseText + ')');
   var elearningQuestionId = liveResult.elearningQuestionId;
   if (elearningQuestionId > 0) {
-    var givenAnswersDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS" + elearningQuestionId);
+    var givenAnswersDom = $(".$ELEARNING_DOM_ID_QUESTION_RESULT_ANSWERS" + elearningQuestionId);
     if (givenAnswersDom) {
-      givenAnswersDom.html(liveResult.givenAnswers);
+      givenAnswersDom.each(function() {
+        $(this).html(liveResult.givenAnswers);
+      });
     }
-    var thumbDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB" + elearningQuestionId);
+    var thumbDom = $(".$ELEARNING_DOM_ID_QUESTION_RESULT_THUMB" + elearningQuestionId);
     if (thumbDom) {
-      if (liveResult.isCorrect) {
-        thumbDom.attr("src", "$imageAnswerTrue");
-      } else {
-        thumbDom.attr("src", "$imageAnswerFalse");
-      }
+      thumbDom.each(function() {
+        if (liveResult.isCorrect) {
+          $(this).attr("src", "$imageAnswerTrue");
+        } else {
+          $(this).attr("src", "$imageAnswerFalse");
+        }
+      });
     }
-    var pointsDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_POINT" + elearningQuestionId);
-    var solutionsDom = $("#$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS" + elearningQuestionId);
+    var pointsDom = $(".$ELEARNING_DOM_ID_QUESTION_RESULT_POINT" + elearningQuestionId);
+    var solutionsDom = $(".$ELEARNING_DOM_ID_QUESTION_RESULT_SOLUTIONS" + elearningQuestionId);
     if (liveResult.isCorrect) {
-      pointsDom.show();
-      solutionsDom.hide();
+      pointsDom.each(function() {
+        $(this).show();
+      });
+      solutionsDom.each(function() {
+        $(this).hide();
+      });
     } else {
-      pointsDom.hide();
-      solutionsDom.show();
+      pointsDom.each(function() {
+        $(this).hide();
+      });
+      solutionsDom.each(function() {
+        $(this).show();
+      });
     }
   }
 }
@@ -710,9 +722,12 @@ HEREDOC;
     global $gImageLightGreenSmall;
     global $gHostname;
 
-    $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER;
-    $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT;
-    $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT;
+    $ELEARNING_DOM_ID_NO_ANSWER_H = ELEARNING_DOM_ID_NO_ANSWER_H;
+    $ELEARNING_DOM_ID_INCORRECT_H = ELEARNING_DOM_ID_INCORRECT_H;
+    $ELEARNING_DOM_ID_CORRECT_H = ELEARNING_DOM_ID_CORRECT_H;
+    $ELEARNING_DOM_ID_NO_ANSWER_V = ELEARNING_DOM_ID_NO_ANSWER_V;
+    $ELEARNING_DOM_ID_INCORRECT_V = ELEARNING_DOM_ID_INCORRECT_V;
+    $ELEARNING_DOM_ID_CORRECT_V = ELEARNING_DOM_ID_CORRECT_V;
     $ELEARNING_DOM_ID_INACTIVE = ELEARNING_DOM_ID_INACTIVE;
     $ELEARNING_DOM_ID_LIVE_RESULT = ELEARNING_DOM_ID_LIVE_RESULT;
     $ELEARNING_DOM_ID_RESULT_GRADE = ELEARNING_DOM_ID_RESULT_GRADE;
@@ -756,90 +771,167 @@ function renderLiveResult(responseText) {
     var nbWritingPoints = liveResult.nbWritingPoints;
     var nbListeningPoints = liveResult.nbListeningPoints;
     var grade = liveResult.grade;
-    var graphImageUrlNoAnswer = liveResult.graphImageUrlNoAnswer;
-    var graphImageUrlIncorrect = liveResult.graphImageUrlIncorrect;
-    var graphImageUrlCorrect = liveResult.graphImageUrlCorrect;
     var graphTitle = liveResult.graphTitle;
     var subscription = liveResult.subscription;
     if (subscription) {
       var isAbsent = subscription.isAbsent;
-      var graphDom = document.getElementById("$ELEARNING_DOM_ID_LIVE_RESULT" + elearningResultId);
+      var graphDom = $(".$ELEARNING_DOM_ID_LIVE_RESULT" + elearningResultId);
       var elearningSubscriptionId = subscription.elearningSubscriptionId;
       var elearningExerciseId = subscription.elearningExerciseId;
-      var imageDom = document.getElementById("$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
+      var imageDom = $(".$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
       if (!isAbsent) {
-        graphDom.style.display = 'inline';
-        imageDom.style.visibility = 'visible';
-        var gradeDom = $("#$ELEARNING_DOM_ID_RESULT_GRADE" + elearningResultId);
+        if (graphDom) {
+          graphDom.each(function() {
+            $(this).css("display", "inline");
+          });
+        }
+        if (imageDom) {
+          imageDom.each(function() {
+            $(this).css("display", "inline");
+          });
+        }
+        var gradeDom = $(".$ELEARNING_DOM_ID_RESULT_GRADE" + elearningResultId);
         if (gradeDom) {
-          gradeDom.html(grade);
+          gradeDom.each(function() {
+            $(this).html(grade);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_RATIO" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbCorrectAnswers);
+          ratioDom.each(function() {
+            $(this).html(nbCorrectAnswers);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_READING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_READING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbCorrectReadingAnswers);
+          ratioDom.each(function() {
+            $(this).html(nbCorrectReadingAnswers);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_WRITING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbCorrectWritingAnswers);
+          ratioDom.each(function() {
+            $(this).html(nbCorrectWritingAnswers);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbCorrectListeningAnswers);
+          ratioDom.each(function() {
+            $(this).html(nbCorrectListeningAnswers);
+          });
         }
-        var answersDom = $("#$ELEARNING_DOM_ID_RESULT_ANSWER" + elearningResultId);
+        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER" + elearningResultId);
         if (answersDom) {
-          answersDom.find('#result_correct_answers').html(nbCorrectAnswers);
-          answersDom.find('#result_incorrect_answers').html(nbIncorrectAnswers);
+          answersDom.each(function(index, answersDomValue) {
+            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+              $(that).html(nbCorrectAnswers);
+            });
+            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+              $(that).html(nbIncorrectAnswers);
+            });
+          });
         }
-        var answersDom = $("#$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_READING" + elearningResultId);
+        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_READING" + elearningResultId);
         if (answersDom) {
-          answersDom.find('#result_correct_answers').html(nbCorrectReadingAnswers);
-          answersDom.find('#result_incorrect_answers').html(nbIncorrectReadingAnswers);
+          answersDom.each(function(index, answersDomValue) {
+            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+              $(that).html(nbCorrectReadingAnswers);
+            });
+            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+              $(that).html(nbIncorrectReadingAnswers);
+            });
+          });
         }
-        var answersDom = $("#$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_WRITING" + elearningResultId);
         if (answersDom) {
-          answersDom.find('#result_correct_answers').html(nbCorrectWritingAnswers);
-          answersDom.find('#result_incorrect_answers').html(nbIncorrectWritingAnswers);
+          answersDom.each(function(index, answersDomValue) {
+            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+              $(that).html(nbCorrectWritingAnswers);
+            });
+            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+              $(that).html(nbIncorrectWritingAnswers);
+            });
+          });
         }
-        var answersDom = $("#$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
         if (answersDom) {
-          answersDom.find('#result_correct_answers').html(nbCorrectListeningAnswers);
-          answersDom.find('#result_incorrect_answers').html(nbIncorrectListeningAnswers);
+          answersDom.each(function(index, answersDomValue) {
+            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+              $(that).html(nbCorrectListeningAnswers);
+            });
+            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+              $(that).html(nbIncorrectListeningAnswers);
+            });
+          });
         }
-        var pointsDom = $("#$ELEARNING_DOM_ID_RESULT_POINT" + elearningResultId);
+        var pointsDom = $(".$ELEARNING_DOM_ID_RESULT_POINT" + elearningResultId);
         if (pointsDom) {
-          pointsDom.html(nbPoints);
+          pointsDom.each(function() {
+            $(this).html(nbPoints);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_READING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_READING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbReadingPoints);
+          ratioDom.each(function() {
+            $(this).html(nbReadingPoints);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_WRITING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbWritingPoints);
+          ratioDom.each(function() {
+            $(this).html(nbWritingPoints);
+          });
         }
-        var ratioDom = $("#$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
         if (ratioDom) {
-          ratioDom.html(nbListeningPoints);
+          ratioDom.each(function() {
+            $(this).html(nbListeningPoints);
+          });
         }
-        var graphImageDomIdNoAnswer = "$ELEARNING_DOM_ID_NO_ANSWER" + elearningResultId;
-        var graphImageDomIdIncorrect = "$ELEARNING_DOM_ID_INCORRECT" + elearningResultId;
-        var graphImageDomIdCorrect = "$ELEARNING_DOM_ID_CORRECT" + elearningResultId;
+
         var preventImageCaching = new Date();
-        $("#"+graphImageDomIdNoAnswer).attr("src", graphImageUrlNoAnswer + "&" + preventImageCaching.getTime());
-        $("#"+graphImageDomIdIncorrect).attr("src", graphImageUrlIncorrect + "&" + preventImageCaching.getTime());
-        $("#"+graphImageDomIdCorrect).attr("src", graphImageUrlCorrect + "&" + preventImageCaching.getTime());
-        $("#"+graphImageDomIdNoAnswer).attr("title", graphTitle);
-        $("#"+graphImageDomIdIncorrect).attr("title", graphTitle);
-        $("#"+graphImageDomIdCorrect).attr("title", graphTitle);
+        var graphImageDomIdNoAnswerV = "$ELEARNING_DOM_ID_NO_ANSWER_V" + elearningResultId;
+        var graphImageDomIdIncorrectV = "$ELEARNING_DOM_ID_INCORRECT_V" + elearningResultId;
+        var graphImageDomIdCorrectV = "$ELEARNING_DOM_ID_CORRECT_V" + elearningResultId;
+        var graphImageDomIdNoAnswerH = "$ELEARNING_DOM_ID_NO_ANSWER_H" + elearningResultId;
+        var graphImageDomIdIncorrectH = "$ELEARNING_DOM_ID_INCORRECT_H" + elearningResultId;
+        var graphImageDomIdCorrectH = "$ELEARNING_DOM_ID_CORRECT_H" + elearningResultId;
+        $("."+graphImageDomIdNoAnswerV).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlNoAnswerV + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
+        $("."+graphImageDomIdIncorrectV).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlIncorrectV + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
+        $("."+graphImageDomIdCorrectV).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlCorrectV + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
+        $("."+graphImageDomIdNoAnswerH).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlNoAnswerH + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
+        $("."+graphImageDomIdIncorrectH).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlIncorrectH + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
+        $("."+graphImageDomIdCorrectH).each(function() {
+          $(this).attr("src", liveResult.graphImageUrlCorrectH + "&" + preventImageCaching.getTime());
+          $(this).attr("title", graphTitle);
+        });
         renderInactiveParticipantImage(subscription);
       } else {
-        graphDom.style.display = 'none';
-        imageDom.style.visibility = 'none';
+        if (graphDom) {
+          graphDom.each(function() {
+            $(this).hide();
+          });
+        }
+        if (imageDom) {
+          imageDom.each(function() {
+            $(this).hide();
+          });
+        }
       }
     }
   }
@@ -867,20 +959,22 @@ function renderInactiveParticipantImage(subscription) {
   var completed = subscription.completed;
   var elearningSubscriptionId = subscription.elearningSubscriptionId;
   var elearningExerciseId = subscription.elearningExerciseId;
-  var imageDom = document.getElementById("$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
+  var imageDom = $(".$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
   if (imageDom) {
-    if (isInactive) {
-      imageDom.style.display = 'inline';
-      imageDom.title = "$titleInactive";
-      imageDom.src = "$gCommonImagesUrl/$gImageLightOrangeSmallBlink";
-    } else if (completed) {
-      imageDom.style.display = 'inline';
-      imageDom.title = "$titleCompleted";
-      imageDom.src = "$gCommonImagesUrl/$gImageLightGreenSmall";
-    } else {
-      imageDom.style.display = 'none';
-      imageDom.title = '';
-    }
+    imageDom.each(function() {
+      if (isInactive) {
+        $(this),show();
+        this.title = "$titleInactive";
+        this.src = "$gCommonImagesUrl/$gImageLightOrangeSmallBlink";
+      } else if (completed) {
+        $(this).show();
+        this.title = "$titleCompleted";
+        this.src = "$gCommonImagesUrl/$gImageLightGreenSmall";
+      } else {
+        $(this).hide();
+        this.title = '';
+      }
+    });
   }
 }
 
@@ -891,7 +985,7 @@ HEREDOC;
   }
 
   // Render the exercise results of the exercise of an exercise
-  function renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $hide, $live, $titlePrefix) {
+  function renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $hide, $horizontal, $titlePrefix) {
     if ($titlePrefix) {
       $title = $titlePrefix . '    -    ';
     } else {
@@ -901,29 +995,37 @@ HEREDOC;
 
     $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
-    $urlCorrectAnswers = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $live);
+    $urlCorrectAnswers = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $horizontal);
 
-    $urlIncorrectAnswers = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], $live);
+    $urlIncorrectAnswers = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], $horizontal);
 
-    $urlNoAnswers = $this->getExerciseNoAnswersImageUrl($sizes[2], $live);
+    $urlNoAnswers = $this->getExerciseNoAnswersImageUrl($sizes[2], $horizontal);
 
     if ($hide) {
-      $strDisplayNone = "display: none;";
+      $strHideStyle = "display: none;";
     } else {
-      $strDisplayNone = '';
+      $strHideStyle = '';
     }
 
-    if ($live) {
-      $correctAnswersImage = "<img id='" . ELEARNING_DOM_ID_CORRECT . "$elearningResultId' src='$urlCorrectAnswers' title='$title' alt='' />";
-      $incorrectAnswersImage = "<img id='" . ELEARNING_DOM_ID_INCORRECT . "$elearningResultId' src='$urlIncorrectAnswers' title='$title' alt='' />";
-      $noAnswerAnswersImage = "<img id='" . ELEARNING_DOM_ID_NO_ANSWER . "$elearningResultId' src='$urlNoAnswers' title='$title' alt='' />";
-      $str = "<span id='" . ELEARNING_DOM_ID_LIVE_RESULT . "$elearningResultId' style='white-space: nowrap; $strDisplayNone'>$correctAnswersImage$incorrectAnswersImage$noAnswerAnswersImage</span>";
+    if ($horizontal) {
+      $strWidthStyle = "height: " . $this->barThickness . "px;";
     } else {
-      $correctAnswersImage = "<img style='display:block;' src='$urlCorrectAnswers' title='$title' alt='' />";
-      $incorrectAnswersImage = "<img style='display:block;' src='$urlIncorrectAnswers' title='$title' alt='' />";
-      $noAnswerAnswersImage = "<img style='display:block;' src='$urlNoAnswers' title='$title' alt='' />";
-      $str = "<span style='width: " . $this->barThickness . "px; $strDisplayNone'>$noAnswerAnswersImage$incorrectAnswersImage$correctAnswersImage</span>";
+      $strWidthStyle = "width: " . $this->barThickness . "px;";
     }
+
+    $str = "<span class='" . ELEARNING_DOM_ID_LIVE_RESULT . "$elearningResultId' style='$strHideStyle $strWidthStyle'>";
+    if ($horizontal) {
+      $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT_H;
+      $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT_H;
+      $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER_H;
+      $str .= "<img class='$ELEARNING_DOM_ID_CORRECT$elearningResultId' style='white-space:nowrap;' src='$urlCorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_INCORRECT$elearningResultId' style='white-space:nowrap;' src='$urlIncorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_NO_ANSWER$elearningResultId' style='white-space:nowrap;' src='$urlNoAnswers' title='$title' alt='' />";
+    } else {
+      $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT_V;
+      $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT_V;
+      $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER_V;
+      $str .= "<img class='$ELEARNING_DOM_ID_NO_ANSWER$elearningResultId' style='display:block;' src='$urlNoAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_INCORRECT$elearningResultId' style='display:block;' src='$urlIncorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_CORRECT$elearningResultId' style='display:block;' src='$urlCorrectAnswers' title='$title' alt='' />";
+    }
+    $str .= "</span>";
 
     return($str);
   }
@@ -996,58 +1098,58 @@ HEREDOC;
     return($title);
   }
 
-  function renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers) {
+  function renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
     $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
-    $url = $this->getExerciseNoAnswersImageUrl($sizes[2], true);
+    $url = $this->getExerciseNoAnswersImageUrl($sizes[2], $horizontal);
 
     return($url);
   }
 
-  function renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers) {
+  function renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
     $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
-    $url = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], true);
+    $url = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], $horizontal);
 
     return($url);
   }
 
-  function renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers) {
+  function renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
     $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
-    $url = $this->getExerciseCorrectAnswersImageUrl($sizes[0], true);
+    $url = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $horizontal);
 
     return($url);
   }
 
-  function getExerciseIncorrectAnswersImageUrl($size, $live) {
+  function getExerciseIncorrectAnswersImageUrl($size, $horizontal) {
     $incorrectColor = urlencode($this->incorrectColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($incorrectColor, $size, $live);
+    $url = $this->getExerciseResultsGraphImageUrl($incorrectColor, $size, $horizontal);
 
     return($url);
   }
 
-  function getExerciseNoAnswersImageUrl($size, $live) {
+  function getExerciseNoAnswersImageUrl($size, $horizontal) {
     $noAnswerColor = urlencode($this->noAnswerColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($noAnswerColor, $size, $live);
+    $url = $this->getExerciseResultsGraphImageUrl($noAnswerColor, $size, $horizontal);
 
     return($url);
   }
 
-  function getExerciseCorrectAnswersImageUrl($size, $live) {
+  function getExerciseCorrectAnswersImageUrl($size, $horizontal) {
     $correctColor = urlencode($this->correctColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($correctColor, $size, $live);
+    $url = $this->getExerciseResultsGraphImageUrl($correctColor, $size, $horizontal);
 
     return($url);
   }
 
-  function getExerciseResultsGraphImageUrl($color, $size, $live) {
+  function getExerciseResultsGraphImageUrl($color, $size, $horizontal) {
     global $gUtilsUrl;
 
-    if ($live) {
+    if ($horizontal) {
       $width = $size;
       $height = $this->barThickness;
     } else {

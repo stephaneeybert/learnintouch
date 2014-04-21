@@ -163,8 +163,6 @@ $labelLiveResults = $popupUtils->getTipPopup($mlText[17], $mlText[35], 300, 300)
 $labelNextExercise = $popupUtils->getTipPopup($mlText[13], $mlText[39], 300, 300);
 $panelUtils->addLine($panelUtils->addCell($mlText[4], "nb"), $panelUtils->addCell($labelLiveResults, "nb"), $panelUtils->addCell($labelLastExercise, "nb"), $panelUtils->addCell($labelNextExercise, "nb"), $panelUtils->addCell($strCommand, "nr"));
 
-$strLiveResultIds = UTILS_URL_VALUE_SEPARATOR;
-
 $listStep = $preferenceUtils->getValue("ELEARNING_LIST_STEP");
 $listIndex = LibEnv::getEnvHttpPOST("listIndex");
 if (LibString::isEmpty($listIndex)) {
@@ -325,12 +323,11 @@ foreach ($elearningSubscriptions as $elearningSubscription) {
         $nbAnswers = $nbCorrectAnswers + $nbIncorrectAnswers;
         $strLiveResults = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '')
           . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . "_" . $lastExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
-        $strLiveResultIds .= UTILS_URL_VALUE_SEPARATOR . $elearningResultId;
       }
     }
   }
 
-  $panelUtils->addLine($panelUtils->addCell($strName, 'n'), $panelUtils->addCell($strLiveResults, 'n'), $panelUtils->addCell($lastExerciseName, 'n'), $panelUtils->addCell($nextExerciseName, 'n'), $panelUtils->addCell($strCommand, "nr"));
+  $panelUtils->addLine($panelUtils->addCell($strName, 'n'), $panelUtils->addCell($strLiveResults, 'nm'), $panelUtils->addCell($lastExerciseName, 'n'), $panelUtils->addCell($nextExerciseName, 'n'), $panelUtils->addCell($strCommand, "nr"));
 }
 $panelUtils->closeList();
 

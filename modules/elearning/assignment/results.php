@@ -98,8 +98,6 @@ $wElearningSubscriptionId = '';
 $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
 $panelUtils->addContent($strLiveResultJs);
 
-$strLiveResultIds = UTILS_URL_VALUE_SEPARATOR;
-
 $listStep = $preferenceUtils->getValue("ELEARNING_LIST_STEP");
 $listIndex = LibEnv::getEnvHttpPOST("listIndex");
 if (LibString::isEmpty($listIndex)) {
@@ -274,7 +272,7 @@ foreach ($elearningAssignments as $elearningAssignment) {
       $strResultAnswers = $elearningResultUtils->renderResultAnswers($elearningResultId, $nbCorrectAnswers, $nbIncorrectAnswers, $nbQuestions);
       $strResultPoints = $elearningResultUtils->renderResultPoints($elearningResultId, $points);
       $strLiveResults = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '')
-        . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $wElearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='visibility: hidden;' />";
+        . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $wElearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
 
     }
 
@@ -296,9 +294,7 @@ foreach ($elearningAssignments as $elearningAssignment) {
       $strExerciseDate = $popupUtils->getDialogPopup($exerciseDate, "$gElearningUrl/result/view.php?elearningResultId=$elearningResultId", 900, 800, $mlText[20]);
     }
 
-    $panelUtils->addLine($panelUtils->addCell($strParticipant, 'n'), $panelUtils->addCell($strExercise, 'n'), $panelUtils->addCell($strLiveResults, 'n'), $panelUtils->addCell($strExerciseDate, 'nc'), $panelUtils->addCell($strResultGrades, 'cn'), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, 'cn'), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell($strCommand, "mnr"));
-
-    $strLiveResultIds .= UTILS_URL_VALUE_SEPARATOR . $elearningResultId;
+    $panelUtils->addLine($panelUtils->addCell($strParticipant, 'n'), $panelUtils->addCell($strExercise, 'n'), $panelUtils->addCell($strLiveResults, 'nm'), $panelUtils->addCell($strExerciseDate, 'nc'), $panelUtils->addCell($strResultGrades, 'cn'), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, 'cn'), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell($strCommand, "mnr"));
   }
 }
 $panelUtils->closeList();

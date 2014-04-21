@@ -5,9 +5,6 @@ $gRedirectDelay = 4;
 
 $gJSNoStatus = LibJavaScript::getNoStatus();
 
-// The separator used in urls
-define('UTILS_URL_VALUE_SEPARATOR', '-');
-
 // The width of content, like a video, on a smartphone
 define('TEMPLATE_PHONE_CONTENT_WIDTH', '90%');
 

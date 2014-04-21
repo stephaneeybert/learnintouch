@@ -104,9 +104,12 @@ define('ELEARNING_EXERCISE_ALERT_TOKEN_NAME', "elearning_exercise_alert_token_na
 define('ELEARNING_IMPORT_LAST_COURSE_ID', 'elearning_import_last_course_id');
 
 // Some DOM ids
-define('ELEARNING_DOM_ID_CORRECT', 'elearning_correct_');
-define('ELEARNING_DOM_ID_INCORRECT', 'elearning_incorrect_');
-define('ELEARNING_DOM_ID_NO_ANSWER', 'elearning_no_answer_');
+define('ELEARNING_DOM_ID_CORRECT_V', 'elearning_correct_v_');
+define('ELEARNING_DOM_ID_INCORRECT_V', 'elearning_incorrect_v_');
+define('ELEARNING_DOM_ID_NO_ANSWER_V', 'elearning_no_answer_v_');
+define('ELEARNING_DOM_ID_CORRECT_H', 'elearning_correct_h_');
+define('ELEARNING_DOM_ID_INCORRECT_H', 'elearning_incorrect_h_');
+define('ELEARNING_DOM_ID_NO_ANSWER_H', 'elearning_no_answer_h_');
 define('ELEARNING_DOM_ID_INACTIVE', 'elearning_inactive_');
 define('ELEARNING_DOM_ID_LIVE_RESULT', 'elearning_live_result_');
 define('ELEARNING_DOM_ID_RESULT_GRADE', 'elearning_result_grade_');

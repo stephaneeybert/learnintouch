@@ -58,8 +58,6 @@ if ($clockUtils->systemDateIsSet($subscriptionClose)) {
 $strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
 $panelUtils->addContent($strLiveResultJs);
 
-$strLiveResultIds = UTILS_URL_VALUE_SEPARATOR;
-
 if ($elearningSubscription) {
   if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
     $elearningSessionId = $elearningSubscription->getSessionId();
@@ -181,7 +179,7 @@ if ($elearningSubscription) {
               $strPrintResult = ' ' . $popupUtils->getDialogPopup("<img src='$gCommonImagesUrl/$gImagePrinter' class='no_style_image_icon' title='" .  $mlText[10] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/result/print.php?elearningResultId=$elearningResultId", 600, 600);
               if ($watchLive) {
                 $strLiveResults = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, $exerciseName)
-                  . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='visibility: hidden;' />";
+                  . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
               }
 
               $strResultGrades = $elearningResultUtils->renderResultGrades($elearningResultId, $grade, $nbCorrectAnswers, $nbQuestions, $points);
@@ -202,11 +200,7 @@ if ($elearningSubscription) {
               $strExerciseDate = $popupUtils->getDialogPopup($exerciseDate, "$gElearningUrl/result/view.php?elearningResultId=$elearningResultId", 900, 800, $mlText[94]);
             }
 
-            $panelUtils->addLine($panelUtils->addCell($strExerciseName, "n"), $panelUtils->addCell($strLiveResults, "n"), $panelUtils->addCell($strExerciseDate, "nc"), $panelUtils->addCell($strResultGrades, "nc"), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, "nc"), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell("$strCommand", "nr"));
-            if ($elearningResult) {
-              $strLiveResultIds .= UTILS_URL_VALUE_SEPARATOR . $elearningResultId;
-            }
-
+            $panelUtils->addLine($panelUtils->addCell($strExerciseName, "n"), $panelUtils->addCell($strLiveResults, "nm"), $panelUtils->addCell($strExerciseDate, "nc"), $panelUtils->addCell($strResultGrades, "nc"), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, "nc"), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell("$strCommand", "nr"));
           }
         } else if ($elearningLessonId) {
           if ($elearningLesson = $elearningLessonUtils->selectById($elearningLessonId)) {
@@ -289,10 +283,7 @@ if ($elearningSubscription) {
                     }
                     if ($watchLive) {
                       $strLiveResults = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '')
-                        . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='visibility: hidden;' />";
-                      if ($elearningResult) {
-                        $strLiveResultIds .= UTILS_URL_VALUE_SEPARATOR . $elearningResultId;
-                      }
+                        . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
                     }
 
                     $strCommand = $strDisplayResult
@@ -308,7 +299,7 @@ if ($elearningSubscription) {
                       $strExerciseDate = $popupUtils->getDialogPopup($exerciseDate, "$gElearningUrl/result/view.php?elearningResultId=$elearningResultId", 900, 800, $mlText[94]);
                     }
 
-                    $panelUtils->addLine($panelUtils->addCell($strExerciseName, "n"), $panelUtils->addCell($strLiveResults, 'n'), $panelUtils->addCell($strExerciseDate, "nc"), $panelUtils->addCell($strResultGrades, "nc"), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, "nc"), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell($strCommand, "nr"));
+                    $panelUtils->addLine($panelUtils->addCell($strExerciseName, "n"), $panelUtils->addCell($strLiveResults, 'nm'), $panelUtils->addCell($strExerciseDate, "nc"), $panelUtils->addCell($strResultGrades, "nc"), $panelUtils->addCell($strResultRatio, "nc"), $panelUtils->addCell($strResultAnswers, "nc"), $panelUtils->addCell($strResultPoints, "nc"), $panelUtils->addCell($strCommand, "nr"));
                   }
                 }
               }
