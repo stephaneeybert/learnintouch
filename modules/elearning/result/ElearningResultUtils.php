@@ -1163,7 +1163,7 @@ HEREDOC;
   }
 
   // Render the exercise results of a subscription
-  function renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds) {
+  function renderResultsGraph($elearningResults) {
     global $gUtilsUrl;
     global $gElearningUrl;
     global $gJSNoStatus;
@@ -1180,43 +1180,42 @@ HEREDOC;
     $nbExercise = 0;
     $highestQuestionNb = 0;
 
-    if (count($elearningExerciseIds) > 0) {
+    if (count($elearningResults) > 0) {
       $str .= "<table><tr>";
 
-      foreach ($elearningExerciseIds as $elearningExerciseId) {
+      foreach ($elearningResults as $elearningResult) {
+        $elearningResultId = $elearningResult->getId();
+        $elearningExerciseId = $elearningResult->getElearningExerciseId();
+
         if ($elearningExercise = $this->elearningExerciseUtils->selectById($elearningExerciseId)) {
           $exerciseName = $elearningExercise->getName();
         } else {
           $exerciseName = '';
         }
 
-        if ($elearningResult = $this->selectBySubscriptionAndExercise($elearningSubscriptionId, $elearningExerciseId)) {
-          $elearningResultId = $elearningResult->getId();
-          $elearningExerciseId = $elearningResult->getElearningExerciseId();
-          $exerciseDate = $this->clockUtils->systemToLocalNumericDate($elearningResult->getExerciseDate());
+        $exerciseDate = $this->clockUtils->systemToLocalNumericDate($elearningResult->getExerciseDate());
 
-          $resultTotals = $this->getExerciseTotals($elearningExerciseId, $elearningResultId);
-          $nbQuestions = $this->getResultNbQuestions($resultTotals);
-          $nbCorrectAnswers = $this->getResultNbCorrectAnswers($resultTotals);
-          $nbIncorrectAnswers = $this->getResultNbIncorrectAnswers($resultTotals);
-          $points = $this->getResultNbPoints($resultTotals);
-          $grade = $this->elearningResultRangeUtils->calculateGrade($nbCorrectAnswers, $nbQuestions);
+        $resultTotals = $this->getExerciseTotals($elearningExerciseId, $elearningResultId);
+        $nbQuestions = $this->getResultNbQuestions($resultTotals);
+        $nbCorrectAnswers = $this->getResultNbCorrectAnswers($resultTotals);
+        $nbIncorrectAnswers = $this->getResultNbIncorrectAnswers($resultTotals);
+        $points = $this->getResultNbPoints($resultTotals);
+        $grade = $this->elearningResultRangeUtils->calculateGrade($nbCorrectAnswers, $nbQuestions);
 
-          $highestQuestionNb = max($highestQuestionNb, $nbQuestions);
+        $highestQuestionNb = max($highestQuestionNb, $nbQuestions);
 
-          $totalCorrectAnswers = $totalCorrectAnswers + $nbCorrectAnswers;
-          $totalIncorrectAnswers = $totalIncorrectAnswers + $nbIncorrectAnswers;
-          $totalQuestions = $totalQuestions + $nbQuestions;
-          $totalPoints = $totalPoints + $points;
-          $nbExercise++;
+        $totalCorrectAnswers = $totalCorrectAnswers + $nbCorrectAnswers;
+        $totalIncorrectAnswers = $totalIncorrectAnswers + $nbIncorrectAnswers;
+        $totalQuestions = $totalQuestions + $nbQuestions;
+        $totalPoints = $totalPoints + $points;
+        $nbExercise++;
 
-          $titlePrefix = $exerciseName . '   -   ' . $exerciseDate;
+        $titlePrefix = $exerciseName . '   -   ' . $exerciseDate;
 
-          if ($nbQuestions > 0) {
-            $str .= "<td>"
-              . $this->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false, false, $titlePrefix)
-              . "</td>";
-          }
+        if ($nbQuestions > 0) {
+          $str .= "<td>"
+            . $this->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false, false, $titlePrefix)
+            . "</td>";
         }
       }
 
@@ -1757,12 +1756,10 @@ HEREDOC;
         $str .= "\n<div class='elearning_course_list_class_name'>" . $this->websiteText[23] . ' ' . $className . "</div>";
       }
 
-      $elearningExerciseIds = $this->elearningCourseUtils->getCourseExercises($courseId);
-
-      if (count($elearningExerciseIds) > 0) {
+      if ($elearningResults = $this->selectBySubscriptionId($elearningSubscriptionId)) {
         $str .= "\n<br/>";
 
-        $str .= $this->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds);
+        $str .= $this->renderResultsGraph($elearningResults);
 
         $str = "<table style='width:100%;'><tr><td>$str</td></tr></table>";
       }

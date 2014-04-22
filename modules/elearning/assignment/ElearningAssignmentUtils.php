@@ -84,21 +84,20 @@ class ElearningAssignmentUtils extends ElearningAssignmentDB {
         $str .= "\n<div class='elearning_course_list_class_name'>" . $this->websiteText[2] . ' ' . $className . "</div>";
       }
 
-      $elearningExerciseIds = array();
+      $elearningResults = array();
       if ($elearningAssignments = $this->selectBySubscriptionId($elearningSubscriptionId)) {
         foreach ($elearningAssignments as $elearningAssignment) {
           $elearningResultId = $elearningAssignment->getElearningResultId();
           if ($elearningResult = $this->elearningResultUtils->selectById($elearningResultId)) {
-            $elearningExerciseId = $elearningResult->getElearningExerciseId();
-            array_push($elearningExerciseIds, $elearningExerciseId);
+            array_push($elearningResults, $elearningResult);
           }
         }
       }
 
-      if (count($elearningExerciseIds) > 0) {
+      if (count($elearningResults) > 0) {
         $str .= "\n<br/>";
 
-        $str .= $this->elearningResultUtils->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds);
+        $str .= $this->elearningResultUtils->renderResultsGraph($elearningResults);
 
         $str = "<table style='width:100%;'><tr><td>$str</td></tr></table>";
       }

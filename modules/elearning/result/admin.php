@@ -247,11 +247,9 @@ if ($searchPattern) {
 }
 
 $strCommand = '';
-if ($elearningSubscriptionId > 0) {
-  if (count($elearningResults) > 0) {
-    $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
-      . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[37]' alt='' style='vertical-align:middle;' /></a>";
-  }
+if (($elearningSubscriptionId > 0 || $elearningClassId > 0) && count($elearningResults) > 0) {
+  $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
+    . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[37]' alt='' style='vertical-align:middle;' /></a>";
 }
 $strCommand .= " <a href='$gElearningUrl/result/range/admin.php' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageResultRange' title='$mlText[19]'></a>";
@@ -297,12 +295,10 @@ if ($elearningSubscriptionId > 0) {
 }
 
 if ($elearningSubscriptionId > 0 && count($elearningResults) > 0) {
-  $elearningExerciseIds = array();
-  foreach ($elearningResults as $elearningResult) {
-    $wElearningExerciseId = $elearningResult->getElearningExerciseId();
-    array_push($elearningExerciseIds, $wElearningExerciseId);
-  }
-  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds) . "</div>";
+  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
+  $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
+} else if ($elearningClassId > 0 && count($elearningResults) > 0) {
+  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
   $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
 }
 

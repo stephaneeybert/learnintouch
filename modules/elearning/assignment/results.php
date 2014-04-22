@@ -119,12 +119,11 @@ if ($elearningSubscriptionId > 0) {
   $elearningAssignments = $elearningAssignmentUtils->selectByResultSinceReleaseDate($sinceDate, $listIndex, $listStep);
 }
 
-$elearningExerciseIds = array();
+$elearningResults = array();
 foreach ($elearningAssignments as $elearningAssignment) {
   $elearningResultId = $elearningAssignment->getElearningResultId();
   if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
-    $elearningExerciseId = $elearningResult->getElearningExerciseId();
-    array_push($elearningExerciseIds, $elearningExerciseId);
+    array_push($elearningResults, $elearningResult);
   }
 }
 $strCommand = '';
@@ -132,7 +131,7 @@ if ($elearningSubscriptionId > 0) {
   $strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[48]' alt='' style='vertical-align:middle;' /></a>";
 }
-if ($elearningSubscriptionId > 0 && count($elearningExerciseIds) > 0) {
+if ($elearningSubscriptionId > 0 && count($elearningResults) > 0) {
   $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[40]' alt='' style='vertical-align:middle;' /></a>";
 }
@@ -166,8 +165,8 @@ if ($elearningSubscriptionId > 0) {
   $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 }
 
-if ($elearningSubscriptionId > 0 &&  count($elearningExerciseIds) > 0) {
-  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds) . "</div>";
+if ($elearningSubscriptionId > 0 &&  count($elearningResults) > 0) {
+  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
   $panelUtils->addLine($panelUtils->addCell($resultsGraph, ''));
 }
 

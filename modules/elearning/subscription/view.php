@@ -33,12 +33,10 @@ $totalPoints = 0;
 
 $strCommand = '';
 
-$hasResults = $elearningSubscriptionUtils->hasResults($elearningSubscription);
-
 $strCommand .= " <a href=\"javascript: $('#subscriptionWhiteboard').slideToggle('fast'); toggleParticipantWhiteboard(); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[26]' alt='' style='vertical-align:middle;' /></a>";
 
-if ($hasResults) {
+if ($elearningResults = $elearningResultUtils->selectBySubscriptionId($elearningSubscriptionId)) {
   $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[186]' alt='' style='vertical-align:middle;' /></a>";
 }
@@ -93,9 +91,8 @@ if ($elearningSubscription) {
       $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
       $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 
-      if ($hasResults) {
-        $elearningExerciseIds = $elearningCourseUtils->getCourseExercises($elearningCourseId);
-        $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderSubscriptionResultsGraph($elearningSubscriptionId, $elearningExerciseIds) . "</div>";
+      if ($elearningResults) {
+        $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
         $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
       }
 
