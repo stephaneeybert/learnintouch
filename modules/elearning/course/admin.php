@@ -57,16 +57,14 @@ $strCommand = ''
   . " <a href='$gElearningUrl/matter/admin.php' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageCategory' title='$mlText[34]'></a>";
 
+$panelUtils->openForm($PHP_SELF);
+
 $label = $popupUtils->getTipPopup($mlText[70], $mlText[71], 300, 300);
-$strSearch = "<form action='$PHP_SELF' method='post'>"
-  . "<input type='text' name='searchPattern' size='20' maxlength='50' value='$searchPattern'> " . $panelUtils->getTinyOk()
-  . "<input type='hidden' name='searchSubmitted' value='1'> "
-  . "</form>";
+$strSearch = "<input type='text' name='searchPattern' size='20' maxlength='50' value='$searchPattern'> " . $panelUtils->getTinyOk()
+  . "<input type='hidden' name='searchSubmitted' value='1'> ";
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $panelUtils->addCell($strSearch, "n"), '', '', $panelUtils->addCell($strCommand, "nr"));
 
-$strMatter = "<form action='$PHP_SELF' method='post'>"
-  . "$mlText[33] " . $strSelectMatter
-  . "</form>";
+$panelUtils->addLine($panelUtils->addCell($mlText[33], "nbr"), $panelUtils->addCell($strSelectMatter . ' ' . $panelUtils->getTinyOk(), "nb"), '', '', '');
 
 if ($websiteUtils->isCurrentWebsiteOption('OPTION_ELEARNING_STORE')) {
   if ($user = $userUtils->selectById($userId)) {
@@ -76,19 +74,18 @@ if ($websiteUtils->isCurrentWebsiteOption('OPTION_ELEARNING_STORE')) {
   } else {
     $userName = '';
   }
-  $label = $popupUtils->getTipPopup($mlText[14], $mlText[15], 300, 200);
   $strJsSuggest = $commonUtils->ajaxAutocomplete("$gUserUrl/suggestUsers.php", "userName", "userId");
   $panelUtils->addContent($strJsSuggest);
   $strUser = $strJsSuggest 
-    . "<form action='$PHP_SELF' method='post'>"
-    . "$label <input type='text' name='userName' id='userName' value='$userName' size='20' /> "
+    . "<input type='text' name='userName' id='userName' value='$userName' size='20' /> "
     . $panelUtils->getTinyOk()
-    . "<input type='hidden' name='userId' id='userId' value='$userId'>"
-    . "</form>";
-} else {
-  $strUser = '';
+    . "<input type='hidden' name='userId' id='userId' value='$userId'>";
+
+  $label = $popupUtils->getTipPopup($mlText[14], $mlText[15], 300, 200);
+  $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $panelUtils->addCell($strUser, "nb"), '', '', '');
 }
-$panelUtils->addLine($panelUtils->addCell($strMatter, "nb"), $panelUtils->addCell($strUser, "nb"), '', '', '');
+
+$panelUtils->closeForm();
 
 $strCommand = "<a href='$gElearningUrl/course/edit.php' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'></a>"
