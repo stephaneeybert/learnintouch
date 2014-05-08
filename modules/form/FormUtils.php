@@ -335,8 +335,8 @@ class FormUtils extends FormDB {
           }
         }
 
-        $str .= "\n<div class='form_item_label'>$label</div>"
-          . "<div class='form_item_field'>$strField</div>";
+        $str .= " <span class='form_item_label'>$label</span>"
+          . "<span class='form_item_field'>$strField</span>";
       }
 
       $str .= "<input type='hidden' name='formSubmitted' value='1' />";
