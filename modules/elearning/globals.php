@@ -177,6 +177,7 @@ define('ELEARNING_SESSION_LESSON_SEARCH_PATTERN', "admin_elearning_lesson_search
 define('ELEARNING_SESSION_EXERCISE_SEARCH_PATTERN', "admin_elearning_exercise_search_pattern");
 define('ELEARNING_SESSION_TEACHER_SEARCH_PATTERN', "admin_elearning_teacher_search_pattern");
 define('ELEARNING_SESSION_COURSE_SEARCH_PATTERN', "admin_elearning_course_search_pattern");
+define('ELEARNING_SESSION_CLASS_SEARCH_PATTERN', "admin_elearning_class_search_pattern");
 define('ELEARNING_SESSION_RESULT_SEARCH_PATTERN', "admin_elearning_result_search_pattern");
 define('ELEARNING_SESSION_RESULT_ID', 'elearning_result_id');
 define('ELEARNING_SESSION_IMPORT_OTHER', 'elearning_import_other');
