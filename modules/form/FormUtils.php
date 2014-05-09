@@ -335,7 +335,7 @@ class FormUtils extends FormDB {
           }
         }
 
-        $str .= " <span class='form_item_label'>$label</span>"
+        $str .= " <span class='form_item_label'>$label</span> "
           . "<span class='form_item_field'>$strField</span>";
       }
 
