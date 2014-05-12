@@ -10,7 +10,6 @@ $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
 
 if ($formSubmitted == 1) {
 
-  // The values retrieved from the posted form
   $formValues = array();
 
   $formId = LibEnv::getEnvHttpPOST("formId");
@@ -27,7 +26,6 @@ if ($formSubmitted == 1) {
     $mailMessage = $form->getMailMessage();
     $mailMessage = nl2br($mailMessage);
 
-    // The email is case insensitive
     $email = strtolower($email);
 
     $formItems = $formItemUtils->selectByFormId($formId);
@@ -169,21 +167,18 @@ if ($formSubmitted == 1) {
         $name = $formItem->getName();
         $text = $languageUtils->getTextForLanguage($formItem->getText(), $currentLanguageCode);
 
-        // The submit form item has no name
         if ($name) {
           $value = $formValues[$name];
           $strFormVariables .= "<br>$text : $value";
         }
       }
 
-      // Save the form
       if ($websiteUtils->isCurrentWebsiteModule('MODULE_CONTACT')) {
         $subject = $websiteText[14] . ' ' . $formName;
         $message = $websiteText[12] . "<br />" . $strFormVariables;
         $contactUtils->registerMessage($email, $subject, $message, '', '', '', '', '');
       }
 
-      // Send the form variables to the email address of the form if any
       if (LibEmail::validate($email)) {
         $websiteName = $profileUtils->getProfileValue("website.name");
         $websiteEmail = $profileUtils->getProfileValue("website.email");
