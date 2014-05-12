@@ -30,8 +30,6 @@ if ($formSubmitted == 1) {
     // The email is case insensitive
     $email = strtolower($email);
 
-    $currentLanguageCode = $languageUtils->getCurrentAdminLanguageCode();
-
     $formItems = $formItemUtils->selectByFormId($formId);
 
     // Retrieve the firstname and lastname values, if any
