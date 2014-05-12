@@ -169,8 +169,11 @@ if ($formSubmitted == 1) {
 
         if ($name) {
           $value = $formValues[$name];
-          $strFormVariables .= "<br>$text : $value";
+        } else {
+          $value = "";
         }
+
+        $strFormVariables .= "<br>$text : $value";
       }
 
       if ($websiteUtils->isCurrentWebsiteModule('MODULE_CONTACT')) {
