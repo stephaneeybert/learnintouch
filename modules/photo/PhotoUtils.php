@@ -160,12 +160,12 @@ class PhotoUtils extends PhotoDB {
   }
 
   function noZoom($photoAlbum) {
-    $noZoom = $this->preferenceUtils->getValue("PHOTO_NO_ZOOM");
-    if (!$noZoom && $photoAlbum) {
-      $noZoom = $photoAlbum->getNoZoom();
+    $no = $this->preferenceUtils->getValue("PHOTO_NO_ZOOM");
+    if (!$no && $photoAlbum) {
+      $no = $photoAlbum->getNoZoom();
     }
 
-    return($noZoom);
+    return($no);
   }
 
   // Empty an album
@@ -473,9 +473,7 @@ class PhotoUtils extends PhotoDB {
       $title = '';
     }
 
-    $noZoom = $this->noZoom($photoAlbum);
-
-    if (!$noZoom) {
+    if (!$this->noZoom($photoAlbum)) {
       $strImg = "<div style='overflow: auto;'><a href='$this->imageUrl/$folderName/$image' class='zoomable' title='$title'>"
         . "<img class='photo_item_image_file' src='$imgSrc' width='$width' title='$title' alt='' />"
         . "</a></div>";
