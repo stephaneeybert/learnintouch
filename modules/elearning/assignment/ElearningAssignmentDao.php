@@ -285,7 +285,7 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
-  function selectByResultAndSubscriptionId($elearningSubscriptionId, $start = false, $rows = false) {
+  function selectBySubscriptionIdOrderByResult($elearningSubscriptionId, $start = false, $rows = false) {
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS ea.* FROM $this->tableName ea, " . DB_TABLE_ELEARNING_RESULT . " er WHERE (ea.elearning_result_id = er.id OR ea.elearning_result_id IS NULL) AND ea.elearning_subscription_id = '$elearningSubscriptionId' ORDER BY er.exercise_datetime DESC, er.firstname, er.lastname";
     if ($rows) {
       if (!$start) {

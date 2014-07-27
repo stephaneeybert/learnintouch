@@ -192,11 +192,11 @@ class ElearningAssignmentDB {
     return($objects);
   }
 
-  function selectByResultAndSubscriptionId($elearningSubscriptionId, $start = false, $rows = false) {
+  function selectBySubscriptionIdOrderByResult($elearningSubscriptionId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
 
     $objects = Array();
-    if ($result = $this->dao->selectByResultAndSubscriptionId($elearningSubscriptionId, $start, $rows)) {
+    if ($result = $this->dao->selectBySubscriptionIdOrderByResult($elearningSubscriptionId, $start, $rows)) {
       for ($i = 0; $i < $result->getRowCount(); $i++) {
         $row = $result->getRow($i);
         $object = $this->getObject($row);

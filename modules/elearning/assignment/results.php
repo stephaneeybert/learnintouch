@@ -106,7 +106,7 @@ if (LibString::isEmpty($listIndex)) {
 
 $elearningAssignments = array();
 if ($elearningSubscriptionId > 0) {
-  $elearningAssignments = $elearningAssignmentUtils->selectByResultAndSubscriptionId($elearningSubscriptionId, $listIndex, $listStep);
+  $elearningAssignments = $elearningAssignmentUtils->selectBySubscriptionIdOrderByResult($elearningSubscriptionId, $listIndex, $listStep);
 } else if ($elearningClassId > 0 && $elearningSessionId) {
   $elearningAssignments = $elearningAssignmentUtils->selectByClassIdAndResultWithinSessionId($elearningClassId, $elearningSessionId, $listIndex, $listStep);
 } else if ($elearningClassId > 0 && $sinceDate) {
