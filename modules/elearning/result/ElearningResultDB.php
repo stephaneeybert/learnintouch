@@ -259,6 +259,21 @@ class ElearningResultDB {
     return($objects);
   }
 
+  function selectByClassIdAndExerciseId($classId, $exerciseId, $start = false, $rows = false) {
+    $this->dataSource->selectDatabase();
+
+    $objects = Array();
+    if ($result = $this->dao->selectByClassIdAndExerciseId($classId, $exerciseId, $start, $rows)) {
+      for ($i = 0; $i < $result->getRowCount(); $i++) {
+        $row = $result->getRow($i);
+        $object = $this->getObject($row);
+        $objects[$i] = $object;
+      }
+    }
+
+    return($objects);
+  }
+
   function selectBySessionIdAndCourseIdAndClassIdAndTeacherId($sessionId, $courseId, $classId, $teacherId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
 

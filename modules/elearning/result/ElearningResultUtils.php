@@ -993,7 +993,7 @@ HEREDOC;
     }
     $title .= $this->getExerciseResultsGraphTitle($nbQuestions, $nbCorrectAnswers);
 
-    $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
+    $sizes = $this->getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
     $urlCorrectAnswers = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $horizontal);
 
@@ -1030,7 +1030,7 @@ HEREDOC;
     return($str);
   }
 
-  function getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers) {
+  function getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers) {
     $sizes = array('', '', '');
 
     if ($nbQuestions > 0) {
@@ -1098,24 +1098,24 @@ HEREDOC;
     return($title);
   }
 
-  function renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
-    $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
+  function renderExerciseResultsGraphNoAnswerImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
+    $sizes = $this->getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
     $url = $this->getExerciseNoAnswersImageUrl($sizes[2], $horizontal);
 
     return($url);
   }
 
-  function renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
-    $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
+  function renderExerciseResultsGraphIncorrectImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
+    $sizes = $this->getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
     $url = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], $horizontal);
 
     return($url);
   }
 
-  function renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
-    $sizes = $this->getExerciseResultsGraphImageSizes($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
+  function renderExerciseResultsGraphCorrectImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
+    $sizes = $this->getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
     $url = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $horizontal);
 
@@ -1164,6 +1164,84 @@ HEREDOC;
 
   // Render the exercise results of a subscription
   function renderResultsGraph($elearningResults) {
+    global $gUtilsUrl;
+    global $gElearningUrl;
+    global $gJSNoStatus;
+    global $gIsPhoneClient;
+
+    $str = '';
+
+    $this->loadLanguageTexts();
+
+    $totalCorrectAnswers = 0;
+    $totalIncorrectAnswers = 0;
+    $totalQuestions = 0;
+    $totalPoints = 0;
+    $nbExercise = 0;
+    $highestQuestionNb = 0;
+
+    if (count($elearningResults) > 0) {
+      $str .= "<table><tr>";
+
+      foreach ($elearningResults as $elearningResult) {
+        $elearningResultId = $elearningResult->getId();
+        $elearningExerciseId = $elearningResult->getElearningExerciseId();
+
+        if ($elearningExercise = $this->elearningExerciseUtils->selectById($elearningExerciseId)) {
+          $exerciseName = $elearningExercise->getName();
+        } else {
+          $exerciseName = '';
+        }
+
+        $exerciseDate = $this->clockUtils->systemToLocalNumericDate($elearningResult->getExerciseDate());
+
+        $resultTotals = $this->getExerciseTotals($elearningExerciseId, $elearningResultId);
+        $nbQuestions = $this->getResultNbQuestions($resultTotals);
+        $nbCorrectAnswers = $this->getResultNbCorrectAnswers($resultTotals);
+        $nbIncorrectAnswers = $this->getResultNbIncorrectAnswers($resultTotals);
+        $points = $this->getResultNbPoints($resultTotals);
+        $grade = $this->elearningResultRangeUtils->calculateGrade($nbCorrectAnswers, $nbQuestions);
+
+        $highestQuestionNb = max($highestQuestionNb, $nbQuestions);
+
+        $totalCorrectAnswers = $totalCorrectAnswers + $nbCorrectAnswers;
+        $totalIncorrectAnswers = $totalIncorrectAnswers + $nbIncorrectAnswers;
+        $totalQuestions = $totalQuestions + $nbQuestions;
+        $totalPoints = $totalPoints + $points;
+        $nbExercise++;
+
+        $titlePrefix = $exerciseName . '   -   ' . $exerciseDate;
+
+        if ($nbQuestions > 0) {
+          $str .= "<td>"
+            . $this->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false, false, $titlePrefix)
+            . "</td>";
+        }
+      }
+
+      $str .= "</tr></table>";
+
+      $averageCorrectAnswers = $this->calculateAverageCorrectAnswers($totalCorrectAnswers, $totalQuestions);
+      $resultGradeScale = $this->elearningExerciseUtils->resultGradeScale();
+      $grade = $this->elearningResultRangeUtils->calculateGrade($totalCorrectAnswers, $totalQuestions);
+      $strResultGrades = $this->renderResultGrades('', $grade);
+      $strResultRatio = $this->renderResultRatio('', $averageCorrectAnswers, $resultGradeScale);
+      $strResultPoints = $this->renderResultPoints('', $totalPoints);
+      $labelGrade = $this->userUtils->getTipPopup($this->websiteText[40], $this->websiteText[41], 300, 300);
+      $labelRatio = $this->userUtils->getTipPopup($this->websiteText[42], $this->websiteText[43], 300, 200);
+      $labelPoints = $this->userUtils->getTipPopup($this->websiteText[44], $this->websiteText[45], 300, 200);
+      $str .= "<table>"
+        . "<tr><td align='center'><div class='elearning_course_header'>$labelGrade</div></td><td align='center'><div class='elearning_course_header'>$labelRatio</div></td><td align='center'><div class='elearning_course_header'>$labelPoints</div></td></tr>"
+        . "<tr><td align='center'><div class='elearning_course_points'>$strResultGrades</div></td><td align='center'><div class='elearning_course_points'>$strResultRatio</div></td><td align='center'><div class='elearning_course_points'>$strResultPoints</div></td></tr>"
+        . "</table>";
+    }
+
+    return($str);
+  }
+
+  // Render the exercise results of a class with all the results being collated
+  // and spread out by the questions of the exercise
+  function renderClassCollatedResultsGraph($elearningResults) {
     global $gUtilsUrl;
     global $gElearningUrl;
     global $gJSNoStatus;

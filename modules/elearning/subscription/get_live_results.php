@@ -41,9 +41,9 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
     }
     $questions = substr($questions, 0, strlen($questions) - 1);
 
-    $graphImageUrlNoAnswer = $elearningResultUtils->renderExerciseResultsGraphNoAnswerImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
-    $graphImageUrlIncorrect = $elearningResultUtils->renderExerciseResultsGraphIncorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
-    $graphImageUrlCorrect = $elearningResultUtils->renderExerciseResultsGraphCorrectImageUrl($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+    $graphImageUrlNoAnswer = $elearningResultUtils->renderExerciseResultsGraphNoAnswerImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+    $graphImageUrlIncorrect = $elearningResultUtils->renderExerciseResultsGraphIncorrectImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
+    $graphImageUrlCorrect = $elearningResultUtils->renderExerciseResultsGraphCorrectImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true);
     $graphTitle = $elearningResultUtils->getExerciseResultsGraphTitle($nbQuestions, $nbCorrectAnswers);
     $strGraph = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '');
 

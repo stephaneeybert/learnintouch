@@ -239,6 +239,19 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
+  function selectByClassIdAndExerciseId($classId, $exerciseId, $start = false, $rows = false) {
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS r.* FROM $this->tableName r, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " s, " . DB_TABLE_USER . " u WHERE r.subscription_id = s.id AND s.class_id = '$classId' AND s.user_account_id = u.id AND r.elearning_exercise_id = '$exerciseId' ORDER BY u.firstname, u.lastname";
+    if ($rows) {
+      if (!$start) {
+        $start = 0;
+      }
+      $sqlStatement .= " LIMIT " . $start . ", " . $rows;
+    } else if ($start) {
+      $sqlStatement .= " LIMIT " . $start;
+    }
+    return($this->querySelect($sqlStatement));
+  }
+
   function selectBySessionIdAndCourseIdAndClassIdAndTeacherId($sessionId, $courseId, $classId, $teacherId, $start = false, $rows = false) {
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS r.* FROM $this->tableName r, " . DB_TABLE_ELEARNING_SUBSCRIPTION . " s, " . DB_TABLE_USER . " u WHERE r.subscription_id = s.id AND s.session_id = '$sessionId' AND s.course_id = '$courseId' AND s.class_id = '$classId' AND s.teacher_id = '$teacherId' AND s.user_account_id = u.id ORDER BY r.exercise_datetime DESC, u.firstname, u.lastname";
     if ($rows) {

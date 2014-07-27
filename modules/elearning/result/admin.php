@@ -100,12 +100,10 @@ if ($searchPattern) {
   $duration = '';
   $elearningCourseId = '';
   $elearningSessionId = '';
-  $elearningClassId = '';
   $elearningTeacherId = '';
   LibSession::putSessionValue(ELEARNING_SESSION_DURATION, '');
   LibSession::putSessionValue(ELEARNING_SESSION_COURSE, '');
   LibSession::putSessionValue(ELEARNING_SESSION_SESSION, '');
-  LibSession::putSessionValue(ELEARNING_SESSION_CLASS, '');
   LibSession::putSessionValue(ELEARNING_SESSION_TEACHER, '');
 } else if ($duration > 0) {
   $elearningCourseId = '';
@@ -210,6 +208,8 @@ if ($searchPattern) {
   $elearningResults = $elearningResultUtils->selectBySubscriptionIdAndCourseId($elearningSubscriptionId, $elearningCourseId, $listIndex, $listStep);
 } else if ($elearningSubscriptionId > 0) {
   $elearningResults = $elearningResultUtils->selectBySubscriptionId($elearningSubscriptionId, $listIndex, $listStep);
+} else if ($elearningClassId > 0 && $elearningExerciseId> 0) {
+  $elearningResults = $elearningResultUtils->selectByClassIdAndExerciseId($elearningClassId, $elearningExerciseId, $listIndex, $listStep);
 } else if ($elearningExerciseId> 0) {
   $elearningResults = $elearningResultUtils->selectByExerciseId($elearningExerciseId, $listIndex, $listStep);
 } else if ($sinceDate) {
@@ -294,10 +294,10 @@ if ($elearningSubscriptionId > 0) {
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[2]'></a>";
 }
 
-if ($elearningSubscriptionId > 0 && count($elearningResults) > 0) {
-  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
+if (($elearningClassId > 0 && $elearningExerciseId > 0) && count($elearningResults) > 0) {
+  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderClassCollatedResultsGraph($elearningResults) . "</div>";
   $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
-} else if ($elearningClassId > 0 && count($elearningResults) > 0) {
+} else if (($elearningSubscriptionId > 0 || $elearningClassId > 0) && count($elearningResults) > 0) {
   $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";
   $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
 }
