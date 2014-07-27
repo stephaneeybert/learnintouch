@@ -114,7 +114,7 @@ HEREDOC;
   }
 
   function selectByCourseIdAndReleaseDate($elearningCourseId, $sinceDate, $systemDate, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS el.* FROM $this->tableName el LEFT JOIN " . DB_TABLE_ELEARNING_COURSE_ITEM . " eci ON el.id = eci.elearning_lesson_id WHERE el.garbage != '1' AND eci.elearning_course_id = '$elearningCourseId' AND (('$sinceDate' >= '$systemDate' AND release_date > '$sinceDate') OR ('$sinceDate' < '$systemDate' AND release_date <= '$systemDate' AND release_date >= '$sinceDate')) ORDER BY eci.list_order, el.name";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS el.* FROM $this->tableName el LEFT JOIN " . DB_TABLE_ELEARNING_COURSE_ITEM . " eci ON el.id = eci.elearning_lesson_id WHERE el.garbage != '1' AND eci.elearning_course_id = '$elearningCourseId' AND (('$sinceDate' >= '$systemDate' AND el.release_date > '$sinceDate') OR ('$sinceDate' < '$systemDate' AND el.release_date <= '$systemDate' AND el.release_date >= '$sinceDate')) ORDER BY eci.list_order, el.name";
     if ($rows) {
       if (!$start) {
         $start = 0;
