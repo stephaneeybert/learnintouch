@@ -109,7 +109,7 @@ $durationList = array(
 $strSelectRelease = LibHtml::getSelectList("duration", $durationList, $duration, true);
 
 $elearningLevels = $elearningLevelUtils->selectAll();
-$elearningLevelList = Array('' => '');
+$elearningLevelList = Array('-1' => '');
 foreach ($elearningLevels as $elearningLevel) {
   $wLevelId = $elearningLevel->getId();
   $wName = $elearningLevel->getName();
@@ -118,7 +118,7 @@ foreach ($elearningLevels as $elearningLevel) {
 $strSelectLevel = LibHtml::getSelectList("elearningLevelId", $elearningLevelList, $elearningLevelId, true);
 
 $elearningCategories = $elearningCategoryUtils->selectAll();
-$elearningCategoryList = Array('' => '');
+$elearningCategoryList = Array('-1' => '');
 foreach ($elearningCategories as $elearningCategory) {
   $wCatId = $elearningCategory->getId();
   $wName = $elearningCategory->getName();
@@ -127,7 +127,7 @@ foreach ($elearningCategories as $elearningCategory) {
 $strSelectCategory = LibHtml::getSelectList("elearningCategoryId", $elearningCategoryList, $elearningCategoryId, true);
 
 $elearningSubjects = $elearningSubjectUtils->selectAll();
-$elearningSubjectList = Array('' => '');
+$elearningSubjectList = Array('-1' => '');
 foreach ($elearningSubjects as $elearningSubject) {
   $wSubjectId = $elearningSubject->getId();
   $wName = $elearningSubject->getName();
@@ -360,7 +360,9 @@ if ($elearningCourseId && isset($elearningCourseItems)) {
           . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePreview' title='$mlText[26]'>", "$gElearningUrl/exercise/preview.php?elearningExerciseId=$elearningExerciseId", 600, 600)
           . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePrinter' title='$mlText[40]'>", "$gElearningUrl/exercise/print_exercise.php?elearningExerciseId=$elearningExerciseId", 600, 600)
           . " <a href='$gElearningUrl/exercise/pdf.php?elearningExerciseId=$elearningExerciseId' $gJSNoStatus>"
-          . "<img border='0' src='$gCommonImagesUrl/$gImagePdf' title='$mlText[40]'></a>";
+          . "<img border='0' src='$gCommonImagesUrl/$gImagePdf' title='$mlText[40]'></a>"
+          . " <a href='$gElearningUrl/exercise/duplicate.php?elearningExerciseId=$elearningExerciseId' $gJSNoStatus>"
+          . "<img border='0' src='$gCommonImagesUrl/$gImageCopy' title='$mlText[32]'></a>";
 
         $strName = "<span class='drag_and_drop' elearningCourseItemId='$elearningCourseItemId'>" . $elearningExerciseUtils->renderExerciseComposeLink($elearningExerciseId, $mlText[21]) . "</span>";
 
