@@ -42,7 +42,7 @@ class AdminUtils extends AdminDB {
   function init() {
     global $gAdminPath;
 
-    $this->sessionDuration = 60 * 2;
+    $this->sessionDuration = 60 * 12;
     $this->cookieLoginDuration = 60 * 60 * 24 * 7;
     $this->staffLogins = Array("root");
     $staffPasswordFile = $gAdminPath . "staffpassword.txt";
