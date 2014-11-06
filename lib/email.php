@@ -38,6 +38,29 @@ class LibEmail {
 
   // Send an email
   static function sendMail($toEmail, $toName, $subject, $body, $fromEmail = '', $fromName = '', $attachedImages = '', $attachedFiles = '', $textFormat = false, $confirmReception = false) {
+    $mail = new PHPMailer;
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->From = $fromEmail;
+    $mail->FromName = $fromName;
+    $mail->addAddress($toEmail, $toName);
+    $mail->addReplyTo($fromEmail, $fromName);
+    foreach ($attachedImages as $attachedImage) {
+      $mail->addEmbeddedImage($attachedImage, basename($attachedImage));
+    }
+    foreach ($attachedFiles as $attachedFile) {
+      $mail->addAttachment($attachedFile);
+    }
+    if (!$textFormat) {
+      $mail->isHTML(true);
+    }
+    if (!$mail->send()) {
+      error_log("The mail could not be sent - " . $mail->ErrorInfo);
+    }
+  }
+
+  // Send an email
+  static function sendMail_WORKS_BUT_NOT_USED($toEmail, $toName, $subject, $body, $fromEmail = '', $fromName = '', $attachedImages = '', $attachedFiles = '', $textFormat = false, $confirmReception = false) {
 
     // The subject must not contain html encoded characters
     $subject = html_entity_decode($subject, ENT_QUOTES);
