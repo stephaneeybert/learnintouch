@@ -81,6 +81,10 @@ class ProfileUtils extends ProfileDB {
       array("website.email", $this->mlText[8], $this->mlText[108]),
       array("webmaster.name", $this->mlText[9], $this->mlText[109]),
       array("webmaster.email", $this->mlText[10], $this->mlText[110]),
+      array("mail.smtp.host", $this->mlText[58], $this->mlText[59]),
+      array("mail.smtp.port", $this->mlText[60], $this->mlText[61]),
+      array("mail.smtp.username", $this->mlText[62], $this->mlText[63]),
+      array("mail.smtp.password", $this->mlText[64], $this->mlText[65]),
       array("facebook.apikey", $this->mlText[3], $this->mlText[4]),
       array("facebook.secret", $this->mlText[5], $this->mlText[11]),
       array("facebook.appid", $this->mlText[13], $this->mlText[14]),
@@ -297,6 +301,42 @@ class ProfileUtils extends ProfileDB {
     $googleAnalytics = $this->preferenceUtils->getValue("PROFILE_JS_BODY_END");
 
     return($googleAnalytics);
+  }
+
+  // Get the mail SMTP hostname
+  function getSMTPHostname() {
+    if ($profile = $this->selectByName("mail.smtp.host")) {
+      $value = $profile->getValue();
+
+      return($value);
+    }
+  }
+
+  // Get the mail SMTP port number
+  function getSMTPPort() {
+    if ($profile = $this->selectByName("mail.smtp.port")) {
+      $value = $profile->getValue();
+
+      return($value);
+    }
+  }
+
+  // Get the mail SMTP username
+  function getSMTPUsername() {
+    if ($profile = $this->selectByName("mail.smtp.username")) {
+      $value = $profile->getValue();
+
+      return($value);
+    }
+  }
+
+  // Get the mail SMTP password
+  function getSMTPPassword() {
+    if ($profile = $this->selectByName("mail.smtp.password")) {
+      $value = $profile->getValue();
+
+      return($value);
+    }
   }
 
   // Get the Facebook api key

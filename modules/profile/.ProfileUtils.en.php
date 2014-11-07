@@ -55,6 +55,14 @@
 [  55]\nCopy and paste the "Twitter consumer key" and "Twitter consumer secret" values into the profile of your website.
 [  56]Javascript in the body:
 [  57]It is possible to insert some javascript at the end of the page body element.
+[  58]Mail SMTP Host:
+[  59]The hostname of the SMTP server. The mandrill.com mail provider is a possible solution.
+[  60]Mail SMTP Port:
+[  61]The port number of the SMTP server.
+[  62]Mail SMTP Username:
+[  63]The username for the SMTP server.
+[  64]Mail SMTP Password:
+[  65]The password for the SMTP server.
 [ 101]The name of the web site can be a company or an organisation name.
 [ 108]The email address of the web site is used for all the communications by email with the users and the administrators of the web site.\n\nIt is therefore important to type in a valid email address.
 [ 109]The firstname and the lastname of the webmaster.\n\nThe webmaster is the person in charge of the web site.

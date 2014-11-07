@@ -54,6 +54,14 @@
 [  54]\nDans le champ "Callback URL:" veuillez saisir l'url de connexion dans votre site web, qui est:
 [  55]\nVeuillez copier et coller les valeurs "Twitter consumer key" et "Twitter consumer secret" dans le profil de votre site web.
 [  56]Javascript dans le body:
+[  58]Mail SMTP Host:
+[  59]Le nom de host du serveur SMTP. Le fournisseur mandrill.com est une solution possible.
+[  60]Mail SMTP Port:
+[  61]Le numéro de port du serveur SMTP.
+[  62]Mail SMTP Nom d'utilisateur:
+[  63]Le nom d'utilisateur pour le serveur SMTP.
+[  64]Mail SMTP Mot de passe:
+[  65]Le mot de passe pour le serveur SMTP.
 [  57]Il est possible d'insérer du javascript à la fin de l'élément body de la page.
 [ 101]Le nom du site web peut être un nom de société ou d'organistation.
 [ 108]L'adresse email du site web est utilisée pour toute les communications par email avec les utilisateurs et les administrateurs du site web.\n\nIl est donc important de saisir une adresse email valide.

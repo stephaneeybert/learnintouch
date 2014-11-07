@@ -38,14 +38,20 @@ class LibEmail {
 
   // Send an email
   static function sendMail($toEmail, $toName, $subject, $body, $fromEmail = '', $fromName = '', $attachedImages = '', $attachedFiles = '', $textFormat = false, $confirmReception = false) {
+    global $gMailSMTPHost;
+    global $gMailSMTPPort;
+    global $gMailSMTPUsername;
+    global $gMailSMTPPassword;
+
     $mail = new PHPMailer;
-/*    $mail->isSMTP();
-    $mail->Host = 'smtp.mandrillapp.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'stephanethetechie@gmail.com';
-    $mail->Password = 'Lo-oqia8ZDEb5EI2SS5Xkg';
-//    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587; */
+    if ($gMailSMTPHost) {
+      $mail->isSMTP();
+      $mail->Host = $gMailSMTPHost;
+      $mail->Port = $gMailSMTPPort;
+      $mail->SMTPAuth = true;
+      $mail->Username = $gMailSMTPUsername;
+      $mail->Password = $gMailSMTPPassword;
+    }
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->From = $fromEmail;

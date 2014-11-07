@@ -18,6 +18,11 @@ if (LibUtils::isCLI()) {
 $gCurrentLanguageCode = $languageUtils->getCurrentLanguageCode();
 $gCurrentAdminLanguageCode = $languageUtils->getCurrentAdminLanguageCode();
 
+$gMailSMTPHost = $profileUtils->getSMTPHostname();
+$gMailSMTPPort = $profileUtils->getSMTPPort();
+$gMailSMTPUsername = $profileUtils->getSMTPUsername();
+$gMailSMTPPassword = $profileUtils->getSMTPPassword();
+
 require_once($gAdminPath . "module/modules.php");
 require_once($gAdminPath . "module/moduleNames.php");
 require_once($gFormPath . "item/types.php");
