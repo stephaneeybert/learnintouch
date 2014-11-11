@@ -70,3 +70,15 @@ module.exports.io.set('authorization', function (handshakeData, handler) {
   }
 });
 
+// Handle a POST http request sent to the Node.js server
+httpHandleServerPostRequest = function(data) {
+  console.log("Received posted data: ", data);
+  var stringified = JSON.stringify(data);
+  var postedData = JSON.parse(stringified);
+
+  // Send a message to the root namespace
+  server.io.sockets.emit('myDemoMessage', {'username': "From the NodeJS http server root namespace... firstname: " + postedData.firstname + " lastname: " + postedData.lastname});
+
+  // Send a message to the /demo namespace
+  server.io.of('/demo').emit('myNotepadMessage', {'notepad': "Some content for the notepad...", 'firstname': postedData.firstname, 'lastname': postedData.lastname});
+};
