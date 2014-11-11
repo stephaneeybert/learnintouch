@@ -1,0 +1,32 @@
+// The server sends a message to the current socket client only and not to other clients
+socket.emit('message', "Hi current socket client !");
+
+// The server sends a message to the current socket client only and not to other clients
+// The message name is 'message'.
+// socket.send(...) is equivalent to socket.emit('message', ...)
+socket.send("Hi current socket client !");
+
+// The server sends a message to all clients, including the current socket client
+io.sockets.emit('message', "Hi all socket clients (including the current) !");
+
+// The server sends a message to all clients, excluding the current socket client
+socket.broadcast.emit('message', "Hi almost all socket clients (excluding the current) !");
+
+// The server sends a message to all clients in the 'game' room, excluding the current socket client
+socket.broadcast.to('game').emit('message', 'Nice game almost you all !');
+
+// The server sends a message to all clients in the 'game' room, including the current socket client
+io.sockets.in('game').emit('message', 'Cool game you all !');
+
+// The server sends a message to an individual socket client
+io.sockets.socket(socketid).emit('message', 'For your eyes only socket: ' + socketid);
+
+// The server gets all the connected socket clients on the root namespace
+var clients = io.sockets.clients();
+// The server gets all the connected socket clients of the game room on the root namespace
+var clients = io.sockets.clients('game');
+// The server gets all the connected socket clients on the chat namespace
+var clients = io.of('/chat').clients();
+// The server gets all the connected socket clients of the game room on the chat namespace
+var clients = io.of('/chat').clients('game');
+
