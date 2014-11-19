@@ -58,11 +58,15 @@ class LibEmail {
     $mail->FromName = $fromName;
     $mail->addAddress($toEmail, $toName);
     $mail->addReplyTo($fromEmail, $fromName);
-    foreach ($attachedImages as $attachedImage) {
-      $mail->addEmbeddedImage($attachedImage, basename($attachedImage));
+    if ($attachedImages && is_array($attachedImages)) {
+      foreach ($attachedImages as $attachedImage) {
+        $mail->addEmbeddedImage($attachedImage, basename($attachedImage));
+      }
     }
-    foreach ($attachedFiles as $attachedFile) {
-      $mail->addAttachment($attachedFile);
+    if ($attachedFiles && is_array($attachedFiles)) {
+      foreach ($attachedFiles as $attachedFile) {
+        $mail->addAttachment($attachedFile);
+      }
     }
     if (!$textFormat) {
       $mail->isHTML(true);
