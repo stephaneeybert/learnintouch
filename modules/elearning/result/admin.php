@@ -248,6 +248,8 @@ if ($searchPattern) {
 
 $strCommand = '';
 if (($elearningSubscriptionId > 0 || $elearningClassId > 0) && count($elearningResults) > 0) {
+  $strCommand .= " <a href=\"javascript: $('#mixedResultsGraph').slideToggle('fast'); void(0);\">"
+    . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[37]' alt='' style='vertical-align:middle;' /></a>";
   $strCommand .= " <a href=\"javascript: $('#resultsGraph').slideToggle('fast'); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageGraph' class='no_style_image_icon' title='$mlText[37]' alt='' style='vertical-align:middle;' /></a>";
 }
@@ -295,7 +297,8 @@ if ($elearningSubscriptionId > 0) {
 }
 
 if (($elearningClassId > 0 && $elearningExerciseId > 0) && count($elearningResults) > 0) {
-  $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderClassCollatedResultsGraph($elearningResults) . "</div>";
+  $resultsGraph = "<div id='mixedResultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderClassMixedResultsGraph($elearningResults) . "</div>";
+  $resultsGraph .= " <div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderClassCollatedResultsGraph($elearningResults) . "</div>";
   $panelUtils->addLine($panelUtils->addCell($resultsGraph, ""));
 } else if (($elearningSubscriptionId > 0 || $elearningClassId > 0) && count($elearningResults) > 0) {
   $resultsGraph = "<div id='resultsGraph' style='display: none;'><br />" . $elearningResultUtils->renderResultsGraph($elearningResults) . "</div>";

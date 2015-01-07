@@ -1086,17 +1086,15 @@ HEREDOC;
       $HTTP_REFERER = LibEnv::getEnvSERVER('HTTP_REFERER');
 
       $emailBody = $this->mlText[10] . ' ' . $websiteName
-        . "<br /><br />" . $this->mlText[11] . ' ' . $HTTP_HOST . $REQUEST_URI . ' ' . $this->mlText[12] . ' ' . $templateModelId
-        . "<br /><br />" . $this->mlText[13] . ' ' . $templateModelId . ' ' . $this->mlText[14]
-        . "<br /><br />" . $this->mlText[16] . ' ' . $templateModelId . ' ' . $this->mlText[17];
+        . " " . $this->mlText[11] . ' ' . $HTTP_HOST . $REQUEST_URI . ' ' . $this->mlText[12] . ' ' . $templateModelId
+        . " " . $this->mlText[13] . ' ' . $templateModelId . ' ' . $this->mlText[14]
+        . " " . $this->mlText[16] . ' ' . $templateModelId . ' ' . $this->mlText[17];
 
       if ($HTTP_REFERER) {
-        $emailBody .= "<br /><br />" . $this->mlText[15] . ' ' . $HTTP_REFERER;
+        $emailBody .= " " . $this->mlText[15] . ' ' . $HTTP_REFERER;
       }
 
-      if (LibEmail::validate($siteEmail)) {
-        LibEmail::sendMail($siteEmail, $websiteName, $emailSubject, $emailBody, $siteEmail, $websiteName);
-      }
+      reportError($emailBody);
 
       return;
     }

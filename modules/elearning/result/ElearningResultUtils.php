@@ -987,7 +987,7 @@ HEREDOC;
   // Render the exercise results of the exercise of an exercise
   function renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $hide, $horizontal, $titlePrefix) {
     if ($titlePrefix) {
-      $title = $titlePrefix . '    -    ';
+      $title = $titlePrefix . ' - ';
     } else {
       $title = '';
     }
@@ -1024,6 +1024,52 @@ HEREDOC;
       $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT_V;
       $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER_V;
       $str .= "<img class='$ELEARNING_DOM_ID_NO_ANSWER$elearningResultId' style='display:block;' src='$urlNoAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_INCORRECT$elearningResultId' style='display:block;' src='$urlIncorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_CORRECT$elearningResultId' style='display:block;' src='$urlCorrectAnswers' title='$title' alt='' />";
+    }
+    $str .= "</span>";
+
+    return($str);
+  }
+
+  // Render the results on one question for all the class participants answers mixed together
+  function renderQuestionClassResultsGraph($elearningQuestionId, $nbParticipants, $nbCorrectAnswers, $nbIncorrectAnswers, $hide, $horizontal, $titlePrefix) {
+    if ($titlePrefix) {
+      $title = $titlePrefix . ' - ';
+    } else {
+      $title = '';
+    }
+    $title .= $this->getExerciseResultsGraphTitle($nbParticipants, $nbCorrectAnswers);
+
+    $sizes = $this->getExerciseResultsGraphImageSizes($nbParticipants, $nbCorrectAnswers, $nbIncorrectAnswers);
+
+    $urlCorrectAnswers = $this->getExerciseCorrectAnswersImageUrl($sizes[0], $horizontal);
+
+    $urlIncorrectAnswers = $this->getExerciseIncorrectAnswersImageUrl($sizes[1], $horizontal);
+
+    $urlNoAnswers = $this->getExerciseNoAnswersImageUrl($sizes[2], $horizontal);
+
+    if ($hide) {
+      $strHideStyle = "display: none;";
+    } else {
+      $strHideStyle = '';
+    }
+
+    if ($horizontal) {
+      $strWidthStyle = "height: " . $this->barThickness . "px;";
+    } else {
+      $strWidthStyle = "width: " . $this->barThickness . "px;";
+    }
+
+    $str = "<span class='" . ELEARNING_DOM_ID_LIVE_RESULT . "$elearningQuestionId' style='$strHideStyle $strWidthStyle'>";
+    if ($horizontal) {
+      $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT_H;
+      $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT_H;
+      $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER_H;
+      $str .= "<img class='$ELEARNING_DOM_ID_CORRECT$elearningQuestionId' style='white-space:nowrap;' src='$urlCorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_INCORRECT$elearningQuestionId' style='white-space:nowrap;' src='$urlIncorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_NO_ANSWER$elearningQuestionId' style='white-space:nowrap;' src='$urlNoAnswers' title='$title' alt='' />";
+    } else {
+      $ELEARNING_DOM_ID_CORRECT = ELEARNING_DOM_ID_CORRECT_V;
+      $ELEARNING_DOM_ID_INCORRECT = ELEARNING_DOM_ID_INCORRECT_V;
+      $ELEARNING_DOM_ID_NO_ANSWER = ELEARNING_DOM_ID_NO_ANSWER_V;
+      $str .= "<img class='$ELEARNING_DOM_ID_NO_ANSWER$elearningQuestionId' style='display:block;' src='$urlNoAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_INCORRECT$elearningQuestionId' style='display:block;' src='$urlIncorrectAnswers' title='$title' alt='' /><img class='$ELEARNING_DOM_ID_CORRECT$elearningQuestionId' style='display:block;' src='$urlCorrectAnswers' title='$title' alt='' />";
     }
     $str .= "</span>";
 
@@ -1186,6 +1232,7 @@ HEREDOC;
       foreach ($elearningResults as $elearningResult) {
         $elearningResultId = $elearningResult->getId();
         $elearningExerciseId = $elearningResult->getElearningExerciseId();
+        $participantName = $this->getParticipantName($elearningResult);
 
         if ($elearningExercise = $this->elearningExerciseUtils->selectById($elearningExerciseId)) {
           $exerciseName = $elearningExercise->getName();
@@ -1210,13 +1257,149 @@ HEREDOC;
         $totalPoints = $totalPoints + $points;
         $nbExercise++;
 
-        $titlePrefix = $exerciseName . '   -   ' . $exerciseDate;
+        $titlePrefix = $participantName . ' - ' . $exerciseName . ' - ' . $exerciseDate;
 
         if ($nbQuestions > 0) {
           $str .= "<td>"
             . $this->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, false, false, $titlePrefix)
             . "</td>";
         }
+      }
+
+      $str .= "</tr></table>";
+
+      $averageCorrectAnswers = $this->calculateAverageCorrectAnswers($totalCorrectAnswers, $totalQuestions);
+      $resultGradeScale = $this->elearningExerciseUtils->resultGradeScale();
+      $grade = $this->elearningResultRangeUtils->calculateGrade($totalCorrectAnswers, $totalQuestions);
+      $strResultGrades = $this->renderResultGrades('', $grade);
+      $strResultRatio = $this->renderResultRatio('', $averageCorrectAnswers, $resultGradeScale);
+      $strResultPoints = $this->renderResultPoints('', $totalPoints);
+      $labelGrade = $this->userUtils->getTipPopup($this->websiteText[40], $this->websiteText[41], 300, 300);
+      $labelRatio = $this->userUtils->getTipPopup($this->websiteText[42], $this->websiteText[43], 300, 200);
+      $labelPoints = $this->userUtils->getTipPopup($this->websiteText[44], $this->websiteText[45], 300, 200);
+      $str .= "<table>"
+        . "<tr><td align='center'><div class='elearning_course_header'>$labelGrade</div></td><td align='center'><div class='elearning_course_header'>$labelRatio</div></td><td align='center'><div class='elearning_course_header'>$labelPoints</div></td></tr>"
+        . "<tr><td align='center'><div class='elearning_course_points'>$strResultGrades</div></td><td align='center'><div class='elearning_course_points'>$strResultRatio</div></td><td align='center'><div class='elearning_course_points'>$strResultPoints</div></td></tr>"
+        . "</table>";
+    }
+
+    return($str);
+  }
+
+  // Get the participant's name of the exercise results
+  function getParticipantName($elearningResult) {
+    $firstname = $elearningResult->getFirstname();
+    $lastname = $elearningResult->getLastname();
+
+    if (!$firstname || !$lastname) {
+      $elearningSubscriptionId = $elearningResult->getSubscriptionId();
+      if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
+        $userId = $elearningSubscription->getUserId();
+        if ($user = $this->userUtils->selectById($userId)) {
+          $firstname = $user->getFirstname();
+          $lastname = $user->getLastname();
+        }
+      }
+    }
+
+    $strName = $firstname . ' ' . $lastname;
+
+    return($strName);
+  }
+
+  // Render the exercise results of a class with all the results being collated
+  // and spread out by the questions of the exercise
+  function renderClassMixedResultsGraph($elearningResults) {
+    global $gUtilsUrl;
+    global $gElearningUrl;
+    global $gJSNoStatus;
+    global $gIsPhoneClient;
+
+    $str = '';
+
+    $this->loadLanguageTexts();
+
+    $totalCorrectAnswers = 0;
+    $totalIncorrectAnswers = 0;
+    $totalQuestions = 0;
+    $totalPoints = 0;
+    $nbExercise = 0;
+    $highestQuestionNb = 0;
+
+    if (count($elearningResults) > 0) {
+      $str .= "<table><tr>";
+
+      $elearningMixedResultsForQuestions = array();
+
+      foreach ($elearningResults as $elearningResult) {
+        $elearningResultId = $elearningResult->getId();
+        $elearningExerciseId = $elearningResult->getElearningExerciseId();
+
+        $resultTotals = $this->getExerciseTotals($elearningExerciseId, $elearningResultId);
+        $nbQuestions = $this->getResultNbQuestions($resultTotals);
+        $nbCorrectAnswers = $this->getResultNbCorrectAnswers($resultTotals);
+        $nbIncorrectAnswers = $this->getResultNbIncorrectAnswers($resultTotals);
+        $points = $this->getResultNbPoints($resultTotals);
+        $grade = $this->elearningResultRangeUtils->calculateGrade($nbCorrectAnswers, $nbQuestions);
+
+        $highestQuestionNb = max($highestQuestionNb, $nbQuestions);
+
+        $totalCorrectAnswers = $totalCorrectAnswers + $nbCorrectAnswers;
+        $totalIncorrectAnswers = $totalIncorrectAnswers + $nbIncorrectAnswers;
+        $totalQuestions = $totalQuestions + $nbQuestions;
+        $totalPoints = $totalPoints + $points;
+        $nbExercise++;
+      }
+
+      foreach ($elearningResults as $elearningResult) {
+        $elearningExerciseId = $elearningResult->getElearningExerciseId();
+        if ($elearningExercisePages = $this->elearningExercisePageUtils->selectByExerciseId($elearningExerciseId)) {
+          foreach ($elearningExercisePages as $elearningExercisePage) {
+            $elearningExercisePageId = $elearningExercisePage->getId();
+            if ($elearningQuestions = $this->elearningQuestionUtils->selectByExercisePage($elearningExercisePageId)) {
+              foreach ($elearningQuestions as $elearningQuestion) {
+                $elearningQuestionId = $elearningQuestion->getId();
+                $isIncorrect = false;
+                if ($isCorrect = $this->isACorrectAnswer($elearningResultId, $elearningQuestionId)) {
+                } else if ($isAnswered = $this->isAnswered($elearningResultId, $elearningQuestionId)) {
+                  $isIncorrect = true;
+                }
+                if (!isset($elearningMixedResultsForQuestions[$elearningQuestionId])) {
+                  $elearningQuestionId = $elearningQuestion->getId();
+                  $question = $elearningQuestion->getQuestion();
+                  if ($isCorrect) {
+                    $nbCorrectAnswers = 1;
+                  }
+                  if ($isIncorrect) {
+                    $nbIncorrectAnswers = 1;
+                  }
+                  $elearningMixedResultsForQuestions[$elearningQuestionId] = array($nbCorrectAnswers, $nbIncorrectAnswers, $question);
+                } else {
+                  if ($isCorrect) {
+                    $nbCorrectAnswers = $elearningMixedResultsForQuestions[$elearningQuestionId][0];
+                    $nbCorrectAnswers++;
+                    $elearningMixedResultsForQuestions[$elearningQuestionId][0] = $nbCorrectAnswers;
+                  }
+                  if ($isIncorrect) {
+                    $nbIncorrectAnswers = $elearningMixedResultsForQuestions[$elearningQuestionId][1];
+                    $nbIncorrectAnswers++;
+                    $elearningMixedResultsForQuestions[$elearningQuestionId][1] = $nbIncorrectAnswers;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      $nbParticipants = count($elearningResults);
+
+      foreach ($elearningMixedResultsForQuestions as $elearningQuestionId => $elearningMixedResultsForQuestion) {
+        list($nbCorrectAnswers, $nbIncorrectAnswers, $question) = $elearningMixedResultsForQuestion;
+        $titlePrefix = $question;
+        $str .= "<td>"
+          . $this->renderQuestionClassResultsGraph($elearningQuestionId, $nbParticipants, $nbCorrectAnswers, $nbIncorrectAnswers, false, false, $titlePrefix)
+          . "</td>";
       }
 
       $str .= "</tr></table>";
@@ -1264,6 +1447,7 @@ HEREDOC;
       foreach ($elearningResults as $elearningResult) {
         $elearningResultId = $elearningResult->getId();
         $elearningExerciseId = $elearningResult->getElearningExerciseId();
+        $participantName = $this->getParticipantName($elearningResult);
 
         if ($elearningExercise = $this->elearningExerciseUtils->selectById($elearningExerciseId)) {
           $exerciseName = $elearningExercise->getName();
@@ -1288,7 +1472,7 @@ HEREDOC;
         $totalPoints = $totalPoints + $points;
         $nbExercise++;
 
-        $titlePrefix = $exerciseName . '   -   ' . $exerciseDate;
+        $titlePrefix = $participantName . ' - ' . $exerciseDate;
 
         if ($nbQuestions > 0) {
           $str .= "<td>"
