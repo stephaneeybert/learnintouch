@@ -53,12 +53,12 @@ HEREDOC;
   }
 
   function selectByMailListId($mailListId) {
-    $sqlStatement = "SELECT m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE mail_list_id = '$mailListId' and ma.id = m.mail_address_id order by ma.email";
+    $sqlStatement = "SELECT m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE m.mail_list_id = '$mailListId' and ma.id = m.mail_address_id order by ma.email";
     return($this->querySelect($sqlStatement));
   }
 
   function selectByMailListIdAndSubscribersLikeCountry($mailListId, $searchPattern, $start = false, $rows = false) {
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND lower(ma.country) LIKE lower('%$searchPattern%') ORDER BY ma.email";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE m.mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND lower(ma.country) LIKE lower('%$searchPattern%') ORDER BY ma.email";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -77,7 +77,7 @@ HEREDOC;
     } else {
       $OR_BOTH_NAMES = "";
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND (lower(ma.email) LIKE lower('%$searchPattern%') OR lower(ma.firstname) LIKE lower('%$searchPattern%') OR lower(ma.lastname) LIKE lower('%$searchPattern%') OR lower(ma.text_comment) LIKE lower('%$searchPattern%') OR lower(ma.country) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) order by ma.email";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE m.mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND (lower(ma.email) LIKE lower('%$searchPattern%') OR lower(ma.firstname) LIKE lower('%$searchPattern%') OR lower(ma.lastname) LIKE lower('%$searchPattern%') OR lower(ma.text_comment) LIKE lower('%$searchPattern%') OR lower(ma.country) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) order by ma.email";
     if ($rows) {
       if (!$start) {
         $start = 0;
