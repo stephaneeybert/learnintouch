@@ -338,13 +338,13 @@ class WebsiteUtils extends WebsiteDB {
     global $gAccountPath;
 
     // Delete the address if any
-    if ($address = $this->websiteAddressUtils->selectByWebsite($id)) {
+    if ($address = $this->websiteAddressUtils->selectByWebsite($websiteId)) {
       $addressId = $address->getId();
       $this->websiteAddressUtils->delete($addressId);
     }
 
     // Delete the subscription if any
-    if ($websiteSubscriptions = $this->websiteSubscriptionUtils->selectByWebsiteId($id)) {
+    if ($websiteSubscriptions = $this->websiteSubscriptionUtils->selectByWebsiteId($websiteId)) {
       foreach ($websiteSubscriptions as $websiteSubscription) {
         $websiteSubscriptionId = $websiteSubscription->getId();
         $this->websiteSubscriptionUtils->delete($websiteSubscriptionId);

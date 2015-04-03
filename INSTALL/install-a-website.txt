@@ -58,7 +58,7 @@ Create the specific.php file
 Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_learnintouch.* to stephane@'localhost' identified by 'mypassword';
+grant all privileges on db_learnintouch.* to learnintouch@'localhost' identified by 'mypassword';
 select * from user;
 insert into user values('localhost','learnintouch','*59604FD51ABC0F3CEF5002A08847011702677CC5', 'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','','0','0','0','0','mysql_native_password','','N');
 flush privileges;
@@ -68,11 +68,13 @@ Create the directories
 http://fhs.learnintouch.com/engine/setup/directories.php
 
 Create the database
-programs/mysql/install/bin/mysqladmin -u stephane -p create db_learnintouch
+cd programs/mysql/install
+bin/mysqladmin -u stephane -p create db_learnintouch
 
 Create the database schema
 http://fhs.learnintouch.com/engine/setup/schema.php
-programs/mysql/install/bin/mysql -v -u stephane -p db_learnintouch < db_learnintouch-structure.sql
+cd programs/mysql/install
+bin/mysql -v -u stephane -p db_learnintouch < db_learnintouch-structure.sql
 
 Add some index
 alter table statistics_visit add index(visit_datetime);

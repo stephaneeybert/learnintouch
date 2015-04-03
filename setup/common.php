@@ -25,7 +25,7 @@ define('NODEJS_SOCKET_PORT', 9001);
 function isLocalhost() {
   global $gSetupWebsiteUrl;
 
-  if (strstr($gSetupWebsiteUrl, "localhost")) {
+  if (strstr($gSetupWebsiteUrl, "localhost") || strstr($gSetupWebsiteUrl, "dev.")) {
     return(true);
   } else {
     return(false);
