@@ -1422,9 +1422,8 @@ HEREDOC;
     return($str);
   }
 
-  // Render the exercise results of a class with all the results being collated
-  // and spread out by the questions of the exercise
-  function renderClassCollatedResultsGraph($elearningResults) {
+  // Render the exercise results of
+  function TODO_renderClassCollatedResultsGraph($elearningResults) {
     global $gUtilsUrl;
     global $gElearningUrl;
     global $gJSNoStatus;
