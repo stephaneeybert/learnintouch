@@ -193,10 +193,8 @@ $systemDate = $clockUtils->getSystemDate();
 
 $panelUtils->addLine($panelUtils->addCell($mlText[19], "nb"), $panelUtils->addCell($mlText[8], "nb"), '', '',  $panelUtils->addCell($strCommand, "nr"));
 
-if ($newsHeadingId > 0) {
-  $sortableLinesClass = 'sortableLines_' . $newsHeadingId;
-
-  $strSortableLines = <<<HEREDOC
+$sortableLinesClass = 'sortableLines_' . $newsHeadingId;
+$strSortableLines = <<<HEREDOC
 <script type="text/javascript">
 $(document).ready(function() {
   $("tbody .$sortableLinesClass").sortable({
@@ -214,11 +212,7 @@ $(document).ready(function() {
 });
 </script>
 HEREDOC;
-  $panelUtils->addContent($strSortableLines);
-
-} else {
-  $sortableLinesClass = true;
-}
+$panelUtils->addContent($strSortableLines);
 
 $listStep = $preferenceUtils->getValue("NEWS_LIST_STEP");
 $listIndex = LibEnv::getEnvHttpPOST("listIndex");

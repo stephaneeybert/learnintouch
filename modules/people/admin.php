@@ -43,10 +43,8 @@ $panelUtils->addLine();
 
 $peoples = $peopleUtils->selectByCategoryId($categoryId);
 
-if ($categoryId) {
-  $sortableLinesClass = 'sortableLines_' . $categoryId;
-
-  $strSortableLines = <<<HEREDOC
+$sortableLinesClass = 'sortableLines_' . $categoryId;
+$strSortableLines = <<<HEREDOC
 <script type="text/javascript">
 $(document).ready(function() {
   $("tbody .$sortableLinesClass").sortable({
@@ -64,11 +62,7 @@ $(document).ready(function() {
 });
 </script>
 HEREDOC;
-  $panelUtils->addContent($strSortableLines);
-
-} else {
-  $sortableLinesClass = true;
-}
+$panelUtils->addContent($strSortableLines);
 
 $panelUtils->openList($sortableLinesClass);
 foreach ($peoples as $people) {
