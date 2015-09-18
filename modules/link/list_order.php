@@ -4,7 +4,6 @@ require_once("website.php");
 
 LibHtml::preventCaching();
 
-
 $linkIds = LibEnv::getEnvHttpPOST("linkIds");
 
 $listOrder = 1;

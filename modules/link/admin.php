@@ -40,10 +40,8 @@ $strCommand = "<a href='$gLinkUrl/edit.php' $gJSNoStatus>"
 $panelUtils->addLine($panelUtils->addCell($mlText[4], "nb"), $panelUtils->addCell($mlText[12], "nb"), $panelUtils->addCell($mlText[8], "nb"), $panelUtils->addCell($strCommand, "nr"));
 $panelUtils->addLine();
 
-if ($categoryId) {
-  $sortableLinesClass = 'sortableLines_' . $categoryId;
-
-  $strSortableLines = <<<HEREDOC
+$sortableLinesClass = 'sortableLines_' . $categoryId;
+$strSortableLines = <<<HEREDOC
 <script type="text/javascript">
 $(document).ready(function() {
   $("tbody .$sortableLinesClass").sortable({
@@ -61,10 +59,7 @@ $(document).ready(function() {
 });
 </script>
 HEREDOC;
-  $panelUtils->addContent($strSortableLines);
-} else {
-  $sortableLinesClass = true;
-}
+$panelUtils->addContent($strSortableLines);
 
 $links = $linkUtils->selectByCategoryId($categoryId);
 
