@@ -97,6 +97,94 @@ class ClientUtils extends ClientDB {
     return($isUsed);
   }
 
+  // Get the next available list order
+  function getNextListOrder() {
+    $listOrder = 1;
+    if ($clients = $this->selectAll()) {
+      $total = count($clients);
+      if ($total > 0) {
+        $client = $clients[$total - 1];
+        $listOrder = $client->getListOrder() + 1;
+      }
+    }
+
+    return($listOrder);
+  }
+
+  // Swap the curent object with the next one
+  function swapWithNext($id) {
+    $this->repairListOrder($id);
+
+    $currentObject = $this->selectById($id);
+    $currentListOrder = $currentObject->getListOrder();
+
+    // Get the next object and its list order
+    if (!$nextObject = $this->selectNext($id)) {
+      return;
+    }
+    $nextListOrder = $nextObject->getListOrder();
+
+    // Update the list orders
+    $currentObject->setListOrder($nextListOrder);
+    $this->update($currentObject);
+    $nextObject->setListOrder($currentListOrder);
+    $this->update($nextObject);
+  }
+
+  // Swap the curent object with the previous one
+  function swapWithPrevious($id) {
+    $this->repairListOrder($id);
+
+    $currentObject = $this->selectById($id);
+    $currentListOrder = $currentObject->getListOrder();
+
+    // Get the previous object and its list order
+    if (!$previousObject = $this->selectPrevious($id)) {
+      return;
+    }
+    $previousListOrder = $previousObject->getListOrder();
+
+    // Update the list orders
+    $currentObject->setListOrder($previousListOrder);
+    $this->update($currentObject);
+    $previousObject->setListOrder($currentListOrder);
+    $this->update($previousObject);
+  }
+
+  // Repair the order if some order numbers are identical
+  // If, by accident, some objects have the same list order
+  // (it shouldn't happen) then assign a new list order to each of them
+  function repairListOrder($id) {
+    if ($client = $this->selectById($id)) {
+      $listOrder = $client->getListOrder();
+      if ($clients = $this->selectByListOrder($listOrder)) {
+        if (($listOrder == 0) || (count($clients)) > 1) {
+          $this->resetListOrder();
+        }
+      }
+    }
+  }
+
+  // Get the next object
+  function selectNext($id) {
+    if ($client = $this->selectById($id)) {
+      $listOrder = $client->getListOrder();
+      if ($client = $this->selectByNextListOrder($listOrder)) {
+        return($client);
+      }
+    }
+  }
+
+  // Get the previous object
+  function selectPrevious($id) {
+    if ($client = $this->selectById($id)) {
+      $listOrder = $client->getListOrder();
+      if ($client = $this->selectByPreviousListOrder($listOrder)) {
+        return($client);
+      }
+    }
+  }
+
   // Delete a client refrerence
   function deleteClient($clientId) {
     $this->delete($clientId);

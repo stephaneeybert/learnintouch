@@ -7,6 +7,7 @@ class Client {
   var $description;
   var $image;
   var $url;
+  var $listOrder;
 
   function Client($id = '') {
   }
@@ -31,6 +32,10 @@ class Client {
     return($this->url);
   }
 
+  function getListOrder() {
+    return($this->listOrder);
+  }
+
   function setId($id) {
     $this->id = $id;
   }
@@ -49,6 +54,10 @@ class Client {
 
   function setUrl($url) {
     $this->url = $url;
+  }
+
+  function setListOrder($listOrder) {
+    $this->listOrder = $listOrder;
   }
 
 }

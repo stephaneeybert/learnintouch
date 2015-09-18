@@ -28,6 +28,7 @@ class ClientDB {
       $object->setDescription($row['description']);
       $object->setImage($row['image']);
       $object->setUrl($row['url']);
+      $object->setListOrder($row['list_order']);
 
       return($object);
       }
@@ -84,6 +85,91 @@ class ClientDB {
     return($objects);
     }
 
+  function selectByNextListOrder($id) {
+    $this->dataSource->selectDatabase();
+
+    if ($result = $this->dao->selectByNextListOrder($id)) {
+      if ($result->getRowCount() == 1) {
+        $row = $result->getRow(0);
+        $object = $this->getObject($row);
+        return($object);
+      }
+    }
+  }
+
+  function selectByPreviousListOrder($id) {
+    $this->dataSource->selectDatabase();
+
+    if ($result = $this->dao->selectByPreviousListOrder($id)) {
+      if ($result->getRowCount() == 1) {
+        $row = $result->getRow(0);
+        $object = $this->getObject($row);
+        return($object);
+      }
+    }
+  }
+
+  function selectByListOrder($listOrder) {
+    $this->dataSource->selectDatabase();
+
+    $objects = Array();
+    if ($result = $this->dao->selectByListOrder($listOrder)) {
+      for ($i = 0; $i < $result->getRowCount(); $i++) {
+        $row = $result->getRow($i);
+        $object = $this->getObject($row);
+        $objects[$i] = $object;
+      }
+    }
+
+    return($objects);
+  }
+
+  // Reset all the list orders some are mistakenly the sam
+  function resetListOrder() {
+    if ($this->countDuplicateListOrderRows() > 0) {
+      if ($clients = $this->selectAllOrderById()) {
+        if (count($clients) > 0) {
+          $listOrder = 0;
+          foreach ($clients as $client) {
+            $listOrder = $listOrder + 1;
+            $client->setListOrder($listOrder);
+            $this->update($client);
+          }
+        }
+      }
+    }
+  }
+
+  function selectAllOrderById() {
+    $this->dataSource->selectDatabase();
+
+    $objects = Array();
+    if ($result = $this->dao->selectAllOrderById()) {
+      for ($i = 0; $i < $result->getRowCount(); $i++) {
+        $row = $result->getRow($i);
+        $object = $this->getObject($row);
+        $objects[$i] = $object;
+      }
+    }
+
+    return($objects);
+  }
+
+  function countDuplicateListOrderRows() {
+    $count = 0;
+
+    $this->dataSource->selectDatabase();
+
+    $result = $this->dao->countDuplicateListOrderRows();
+
+    if ($result) {
+      $row = $result->getRow(0);
+      $count = $row['count'];
+    }
+
+    return($count);
+  }
+
   function insert($object) {
     $this->dataSource->selectDatabase();
 
@@ -91,7 +177,7 @@ class ClientDB {
       return(false);
       }
 
-    return($this->dao->insert($object->getName(), $object->getDescription(), $object->getImage(), $object->getUrl()));
+    return($this->dao->insert($object->getName(), $object->getDescription(), $object->getImage(), $object->getUrl(), $object->getListOrder()));
     }
 
   function update($object) {
@@ -101,7 +187,7 @@ class ClientDB {
       return(false);
       }
 
-    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getImage(), $object->getUrl()));
+    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getImage(), $object->getUrl(), $object->getListOrder()));
     }
 
   function delete($id) {
@@ -109,6 +195,10 @@ class ClientDB {
 
     return($this->dao->delete($id));
     }
+
+  function getLastInsertId() {
+    return($this->dataSource->getLastInsertId());
+  }
 
   }
 
