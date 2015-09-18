@@ -6,8 +6,6 @@ $adminModuleUtils->checkAdminModule(MODULE_TEMPLATE);
 
 $mlText = $languageUtils->getMlText(__FILE__);
 
-$chosen_category = LibEnv::getEnvHttpPOST("chosen_category");
-
 $panelUtils->setHeader($mlText[0], "$gAdminUrl/menu.php");
 $help = $popupUtils->getHelpPopup($mlText[10], 300, 200);
 $panelUtils->setHelp($help);
@@ -20,7 +18,28 @@ $panelUtils->addLine();
 
 $clients = $clientUtils->selectAll();
 
-$panelUtils->openList();
+$sortableLinesClass = 'sortableLines';
+$strSortableLines = <<<HEREDOC
+<script type="text/javascript">
+$(document).ready(function() {
+  $("tbody .$sortableLinesClass").sortable({
+    cursor: 'move',
+    update: function(ev, ui) {
+      var sortableItemIds = [];
+      $("tbody .$sortableLinesClass .sortableItem").each(function(index){
+        var sortableItemId = $(this).attr("sortableItemId");
+        sortableItemIds.push(sortableItemId);
+      });
+      $.post('$gClientUrl/list_order.php', {'clientIds[]' : sortableItemIds}, function(data){
+      });
+    }
+  }).disableSelection();
+});
+</script>
+HEREDOC;
+$panelUtils->addContent($strSortableLines);
+
+$panelUtils->openList($sortableLinesClass);
 foreach ($clients as $client) {
   $clientId = $client->getId();
 
@@ -31,13 +50,15 @@ foreach ($clients as $client) {
 
   $strImage = "<img src='" . $clientUtils->imageUrl . '/' . $image . "' border='0' href='' title='$image'>";
 
+  $strSortable = "<span class='sortableItem' sortableItemId='$clientId'></span>";
+
   $strCommand = "<a href='$gClientUrl/edit.php?clientId=$clientId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageEdit' title='$mlText[2]'></a>"
     . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePicture' title='$mlText[7]'>", "$gClientUrl/image.php?clientId=$clientId", 600, 600)
     . " <a href='$gClientUrl/delete.php?clientId=$clientId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
-  $panelUtils->addLine($name, $strImage, $url, $panelUtils->addCell($strCommand, "nbr"));
+  $panelUtils->addLine($strSortable . ' ' . $name, $strImage, $url, $panelUtils->addCell($strCommand, "nbr"));
 }
 $panelUtils->closeList();
 
