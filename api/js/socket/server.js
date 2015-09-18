@@ -2,7 +2,6 @@ var http = require('http');
 var connect = require('connect');
 var cookie = require('cookie');
 var socketio = require('socket.io');
-//var sessionSocketio = require('session.socket.io');
 var redis = require('redis')
 
 var utils = require('./utils.js');
@@ -26,7 +25,6 @@ module.exports.io = socketio.listen(httpServer).configure(function () {
     ]);
 });
 
-// By default configuration, socket.io uses the memory (MemoryStore) to hold open connections. Hence it is not possible to run several socket.io processes, because the processes won't know nothing about the open connections of the other processes. But it's quite easy to use redis as store, which allows to share the open connections between several socket.io processes, which run on different ports.
 var redisClient = redis.createClient();
 var pub = redis.createClient();
 var sub = redis.createClient();
@@ -43,13 +41,13 @@ httpServer.listen(portNumber, function() {
   console.log('The NodeJS http server is listening...');
 });
 
+// When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. 
 module.exports.io.set('authorization', function (handshakeData, handler) {
   if (handshakeData.headers.cookie) {
     handshakeData.cookies = cookie.parse(decodeURIComponent(handshakeData.headers.cookie));
     handshakeData.sessionID = handshakeData.cookies['PHPSESSID'];
     handshakeData.socketSessionId = handshakeData.cookies['socketSessionId'];
-    console.log("Authorization with sessionID: " + handshakeData.sessionID);
-    console.log("Authorization with socketSessionId: " + handshakeData.socketSessionId);
+    console.log("Authorization attempt with sessionID: " + handshakeData.sessionID + " and socketSessionId: " + handshakeData.socketSessionId);
     redisClient.get("PHPREDIS_SESSION:" + handshakeData.sessionID, function (error, reply) {
       if (error) {
         console.log("The redis client had an error: " + error);

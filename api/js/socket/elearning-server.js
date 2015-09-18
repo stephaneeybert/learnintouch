@@ -1,10 +1,13 @@
+// A user, be it a teacher or a participant, is identified by his PHP sessionID value, as each participant has logged in the application and received a PHP sessionID and a unique socket session id. The PHP sessionID is stored in a Redis server so that it can be accessed by the server side socket.
+
 var utils = require('utils.js');
 var server = require('server.js');
 
 var copilotElearningSubscriptions = [];
-var pollElearningClasses = [];
 
 server.io.of('/elearning').on('connection', function(socket) {
+
+  // The copilot feature allows a teacher and his participant to do an exercise together, and to see in real time the exercise being done. the two of them can provide answers to the exercise, and the other can see the provided answers live. They can also change the current page of questions. And they can use a shared whiteboard. For this feature, the teacher and his participant are confined into a socket room, with the room name being the participant's elearningSubscriptionId value.
 
   socket.on('watchLiveCopilot', function(data) {
     if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
@@ -14,10 +17,6 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.join(data.elearningSubscriptionId);
     socket.send("You are now able to be watched.");
     socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
-  });
-
-  socket.on('watchLiveResult', function() {
-    socket.join('liveResultAdminPages');
   });
 
   socket.on('updateTab', function(data) {
@@ -70,35 +69,15 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.send("You are not being watched live yet.");
   });
 
-  socket.on('watchLivePoll', function(data) {
-    if ('undefined' == typeof pollElearningClasses[data.elearningClassId]) {
-      pollElearningClasses[data.elearningClassId] = [];
-    }
-    pollElearningClasses[data.elearningClassId].push(sessionID);
-    socket.join(data.elearningClassId);
-    socket.send("You are now able to do a live poll.");
-    socket.broadcast.to(data.elearningClassId).send("The class id: " + data.elearningClassId + " is now polled.");
-  });
-
-  socket.on('updatePoll', function(data) {
-    socket.broadcast.to('livePollGroup').emit('updatePoll', data);
-
-    if ('undefined' != typeof pollElearningClasses[data.elearningClassId]) {
-      for(i = 0; i < pollElearningClasses[data.elearningClassId].length; i++) {
-        if (pollElearningClasses[data.elearningClassId][i] == sessionID) {
-          socket.broadcast.to(data.elearningClassId).emit('updatePoll', data);
-          return;
-        }
-      }
-    }
-    socket.send("You are not being polled yet.");
+  // The live results feature allows an administrator to watch the results of an exercise being done, in real time. Any administrator can watch any participant doing an exercise. Note that an administrator is not to be confused with a teacher.
+  socket.on('watchLiveResult', function() {
+    socket.join('liveResultAdminPages');
   });
 
   socket.on('disconnect', function(data) {
     console.log("Disconnecting sessionID: " + sessionID);
 
     socket.leave('liveResultAdminPages');
-    socket.leave('livePollGroup');
 
     for(i = 0; i < copilotElearningSubscriptions.length; i++) {
       if ('undefined' != typeof copilotElearningSubscriptions[i]) {
@@ -112,21 +91,9 @@ server.io.of('/elearning').on('connection', function(socket) {
       }
     }
 
-    for(i = 0; i < pollElearningClasses.length; i++) {
-      if ('undefined' != typeof pollElearningClasses[i]) {
-        for(j = 0; j < pollElearningClasses[i].length; j++) {
-          if (pollElearningClasses[i][j] == sessionID) {
-            console.log("Leaving the poll for the elearning class: " + i);          
-            pollElearningClasses[i].splice(j, 1);
-            socket.leave(i);
-          }
-        }
-      }
-    }
   });
 
-  // Store the session variables from the handshake as this data 
-  // is not available in the "disconnect" handler
+  // Store the session variables from the handshake
   var sessionID = socket.handshake.sessionID;
   socket.set('sessionID', sessionID, function() { 
     console.log('Set the sessionID: ', sessionID);
