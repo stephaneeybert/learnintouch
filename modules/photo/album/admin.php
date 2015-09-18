@@ -14,7 +14,32 @@ $strCommand = "<a href='$gPhotoUrl/album/edit.php' $gJSNoStatus>"
 $panelUtils->addLine($panelUtils->addCell($mlText[5], "nb"), $panelUtils->addCell($mlText[6], "nb"), $panelUtils->addCell($mlText[4], "nb"), $panelUtils->addCell($mlText[7], "nb"), $panelUtils->addCell($strCommand, "nbr"));
 $panelUtils->addLine();
 
+$sortableLinesClass = true;
+
 $photoAlbums = $photoAlbumUtils->selectAll();
+
+$sortableLinesClass = 'sortableLines';
+$strSortableLines = <<<HEREDOC
+<script type="text/javascript">
+$(document).ready(function() {
+  $("tbody .$sortableLinesClass").sortable({
+    cursor: 'move',
+    update: function(ev, ui) {
+      var sortableItemIds = [];
+      $("tbody .$sortableLinesClass .sortableItem").each(function(index){
+        var sortableItemId = $(this).attr("sortableItemId");
+        sortableItemIds.push(sortableItemId);
+      });
+      $.post('$gPhotoUrl/album/list_order.php', {'albumIds[]' : sortableItemIds}, function(data){
+      });
+    }
+  }).disableSelection();
+});
+</script>
+HEREDOC;
+$panelUtils->addContent($strSortableLines);
+
+$panelUtils->openList($sortableLinesClass);
 foreach ($photoAlbums as $photoAlbum) {
   $photoAlbumId = $photoAlbum->getId();
   $name = $photoAlbum->getName();
@@ -23,6 +48,8 @@ foreach ($photoAlbums as $photoAlbum) {
   $publicationDate = $photoAlbum->getPublicationDate();
 
   $publicationDate = $clockUtils->systemToLocalNumericDate($publicationDate);
+
+  $strSortable = "<span class='sortableItem' sortableItemId='$photoAlbumId'></span>";
 
   $strSwap = "<a href='$gPhotoUrl/album/swapup.php?photoAlbumId=$photoAlbumId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageUp'title='$mlText[11]'></a> <a href='$gPhotoUrl/album/swapdown.php?photoAlbumId=$photoAlbumId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageDown' title='$mlText[10]'></a>";
 
@@ -35,8 +62,9 @@ foreach ($photoAlbums as $photoAlbum) {
     . " <a href='$gPhotoUrl/album/delete.php?photoAlbumId=$photoAlbumId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
-  $panelUtils->addLine("$strSwap $name", $event, $location, $publicationDate, $panelUtils->addCell($strCommand, "nbr"));
+  $panelUtils->addLine("$strSortable $strSwap $name", $event, $location, $publicationDate, $panelUtils->addCell($strCommand, "nbr"));
 }
+$panelUtils->closeList();
 
 $str = $panelUtils->render();
 
