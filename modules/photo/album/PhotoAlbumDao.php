@@ -43,6 +43,7 @@ HEREDOC;
   function update($id, $name, $folderName, $event, $location, $publicationDate, $price, $hide, $noSlideShow, $noZoom, $listOrder) {
     $publicationDate = LibString::emptyToNULL($publicationDate);
     $sqlStatement = "UPDATE $this->tableName SET name = '$name', folder_name = '$folderName', event = '$event', location = '$location', publication_date = $publicationDate, price = '$price', hide = '$hide', no_slide_show = '$noSlideShow', no_zoom = '$noZoom', list_order = '$listOrder' WHERE id = '$id'";
+error_log($sqlStatement);
     return($this->querySelect($sqlStatement));
   }
 

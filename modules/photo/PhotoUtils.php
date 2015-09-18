@@ -356,6 +356,7 @@ class PhotoUtils extends PhotoDB {
 
     $photoId = $photo->getId();
     $image = $photo->getImage();
+    $name = $photo->getName();
     $description = $photo->getDescription();
     $photoAlbumId = $photo->getPhotoAlbum();
 
@@ -403,8 +404,8 @@ class PhotoUtils extends PhotoDB {
       $strImg = "<a href='$gPhotoUrl/display_photo.php?photoId=$photoId' $gJSNoStatus title='" .  $this->websiteText[50] . "'>"
         . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='$description' alt='' /></a>";
     } else {
-      $strImg = "<a href='$this->imageUrl/$folderName/$image' rel='no_style_colorbox' $gJSNoStatus>"
-        . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='$description' alt='' /></a>";
+      $strImg = "<a href='$this->imageUrl/$folderName/$image' title='$name' rel='no_style_colorbox' $gJSNoStatus>"
+        . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='' alt='' /></a>";
     }
 
     $str = "<div class='photo_list_image'>" . $strImg . "</div>";

@@ -152,7 +152,7 @@ for ($i = 0; $i < count($photos); $i++) {
     $strImg = "&nbsp;";
   }
 
-  $strImg = "<a href='$photoUtils->imageUrl/$folderName/$image' rel='no_style_colorbox' title='$description'>$strImg</a>";
+  $strImg = "<a href='$photoUtils->imageUrl/$folderName/$image' rel='no_style_colorbox' title='$name'>$strImg</a>";
 
   $strSwap = " <br><a href='$gPhotoUrl/swapleft.php?photoId=$photoId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageLeft' title='$mlText[11]'></a> <a href='$gPhotoUrl/swapright.php?photoId=$photoId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageRight' title='$mlText[10]'></a>";
 

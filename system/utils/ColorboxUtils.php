@@ -32,8 +32,8 @@ class ColorboxUtils {
       $width = 'width:"100%",';
       $height = 'height:"100%",';
     } else {
-      $width = '';
-      $height = '';
+      $width = 'width:"70%",';
+      $height = 'height:"70%",';
     }
 
     $jsColorbox = <<<HEREDOC
