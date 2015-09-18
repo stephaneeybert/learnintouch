@@ -741,6 +741,7 @@ class PhotoUtils extends PhotoDB {
     foreach ($photos as $photo) {
       $image = $photo->getImage();
       $url = $photo->getUrl();
+      $name = $photo->getName();
 
       if ($image && @file_exists($this->imagePath . $folderName . '/' . $image)) {
         if (!$this->fileUploadUtils->isGifImage($this->imagePath . $folderName . '/' . $image)) {
@@ -757,6 +758,7 @@ class PhotoUtils extends PhotoDB {
           . "<a onclick=\"window.open(this.href, '_blank'); return(false);\" href='$url'>"
           . "<img src='$imageSrc' border='0' title='' width='$width' height='$height' />"
           . "</a>"
+          . "<div class='photo_item_name'>$name</div>"
           . "</div>";
 
         array_push($items, $item);
