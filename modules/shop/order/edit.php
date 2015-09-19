@@ -27,6 +27,7 @@ if ($formSubmitted) {
   $invoiceNumber = LibEnv::getEnvHttpPOST("invoiceNumber");
   $invoiceNote = LibEnv::getEnvHttpPOST("invoiceNote");
   $invoiceLanguage = LibEnv::getEnvHttpPOST("invoiceLanguage");
+  $totalToPay = LibEnv::getEnvHttpPOST("totalToPay");
 
   $status = LibString::cleanString($status);
   $orderDate = LibString::cleanString($orderDate);
@@ -34,6 +35,7 @@ if ($formSubmitted) {
   $invoiceNumber = LibString::cleanString($invoiceNumber);
   $invoiceNote = LibString::cleanString($invoiceNote);
   $invoiceLanguage = LibString::cleanString($invoiceLanguage);
+  $totalToPay = LibString::cleanString($totalToPay);
 
   // Validate the due date
   if ($dueDate && !$clockUtils->isLocalNumericDateValid($dueDate)) {
@@ -91,13 +93,12 @@ if ($formSubmitted) {
     $currency = $shopOrder->getCurrency();
     $orderDate = $shopOrder->getOrderDate();
     $status = $shopOrder->getStatus();
+
+    $totalToPay = $shopOrderUtils->getTotalToPay($shopOrder);
+    $totalToPay = $shopItemUtils->decimalFormat($totalToPay);
   }
 
 }
-
-$totalToPay = $shopOrderUtils->getTotalToPay($shopOrder);
-
-$totalToPay = $shopItemUtils->decimalFormat($totalToPay);
 
 $orderStatuses = $shopItemUtils->getOrderStatuses();
 $strSelectStatus = LibHtml::getSelectList("status", $orderStatuses, $status);
@@ -171,6 +172,7 @@ $panelUtils->addLine('', $panelUtils->getOk());
 $panelUtils->addHiddenField('formSubmitted', 1);
 $panelUtils->addHiddenField('shopOrderId', $shopOrderId);
 $panelUtils->addHiddenField('orderDate', $orderDate);
+$panelUtils->addHiddenField('totalToPay', $totalToPay);
 $panelUtils->closeForm();
 
 if ($clockUtils->isUSDateFormat()) {
