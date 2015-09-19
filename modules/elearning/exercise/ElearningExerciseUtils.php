@@ -2211,7 +2211,7 @@ HEREDOC;
       LibCookie::putCookie($this->cookieVisitorEmail, $email, $this->cookieDuration);
     }
 
-    // Reset the exercise
+    // Now the exercise answers may be reset, if configured so, since the exercise is completed
     $this->allowResetExercise($elearningExerciseId);
 
     return($str);
@@ -2658,14 +2658,16 @@ HEREDOC;
     return($str);
   }
 
-  // Allow the reset of an exercise exercise
+  // Allow the reset of an exercise
   function allowResetExercise($elearningExerciseId) {
+error_log("Allowing now reset");
     LibSession::putSessionValue(ELEARNING_QUESTION_RESET_ID . $elearningExerciseId, true);
   }
 
   // Check for the reset of an exercise exercise
   function checkResetExercise($elearningExerciseId) {
     $reset = LibSession::getSessionValue(ELEARNING_QUESTION_RESET_ID . $elearningExerciseId);
+error_log("reset $reset");
 
     if ($reset) {
       $this->resetExercise($elearningExerciseId);
@@ -2673,7 +2675,7 @@ HEREDOC;
     }
   }
 
-  // Reset an exercise exercise
+  // Reset an exercise
   function resetExercise($elearningExerciseId) {
     // Reset the exercise start and end times
     $this->resetExerciseTimes($elearningExerciseId);

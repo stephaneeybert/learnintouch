@@ -151,6 +151,9 @@ if ($formSubmitted == 1) {
 
 }
 
+// Now the exercise answers may be reset, if configured so, since the exercise is completed
+$elearningExerciseUtils->allowResetExercise($elearningExerciseId);
+
 $withSocialConnect = false;
 if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseId)) {
   if ($elearningExercise->getSocialConnect()) {
