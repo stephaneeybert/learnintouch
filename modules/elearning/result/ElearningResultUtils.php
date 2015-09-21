@@ -166,13 +166,7 @@ class ElearningResultUtils extends ElearningResultDB {
 
   // Render the result ratio
   function renderResultRatio($elearningResultId, $nbCorrectAnswers, $nbQuestions) {
-    if ($elearningResultId > 0) {
-      $strOn = '/';
-    } else {
-      $strOn = '';
-    }
-
-    $str = "<span class='" . ELEARNING_DOM_ID_RESULT_RATIO . "$elearningResultId'>$nbCorrectAnswers</span> $strOn $nbQuestions";
+    $str = "<span class='" . ELEARNING_DOM_ID_RESULT_RATIO . "$elearningResultId'>$nbCorrectAnswers</span> / $nbQuestions";
 
     return($str);
   }
