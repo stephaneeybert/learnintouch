@@ -232,15 +232,6 @@ if (!$clockUtils->systemDateIsSet($releaseDate)) {
 
 $releaseDate = $clockUtils->systemToLocalNumericDate($releaseDate);
 
-$elearningCourses = $elearningCourseUtils->selectAll();
-$elearningCourseList = Array('' => '');
-foreach ($elearningCourses as $elearningCourse) {
-  $wCourseId = $elearningCourse->getId();
-  $wName = $elearningCourse->getName();
-  $elearningCourseList[$wCourseId] = $wName;
-}
-$strSelectCourse = LibHtml::getSelectList("elearningCourseId", $elearningCourseList);
-
 $elearningCategories = $elearningCategoryUtils->selectAll();
 $elearningCategoryList = Array('' => '');
 foreach ($elearningCategories as $elearningCategory) {
@@ -367,7 +358,10 @@ $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[5], "nbr"), "<textarea name='description' cols='30' rows='5'>$description</textarea>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[25], $mlText[41], 300, 300);
-$panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strSelectCourse);
+$strJsSuggestCourse = $commonUtils->ajaxAutocomplete("$gElearningUrl/course/suggest.php", "courseName", "elearningCourseId");
+$panelUtils->addContent($strJsSuggestCourse);
+$panelUtils->addHiddenField('elearningCourseId', '');
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), $panelUtils->addCell("<input type='text' id='courseName' name='' value='' />", "n"));
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[13], $mlText[15], 300, 300);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='maxDuration' value='$maxDuration' size='3' maxlength='3'>");
