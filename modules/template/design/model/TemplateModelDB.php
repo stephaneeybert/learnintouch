@@ -89,11 +89,11 @@ class TemplateModelDB {
     return($objects);
   }
 
-  function selectWithNoParent() {
+  function selectWithNoParentAndNotItself($templateModelId) {
     $this->dataSource->selectDatabase();
 
     $objects = Array();
-    if ($result = $this->dao->selectWithNoParent()) {
+    if ($result = $this->dao->selectWithNoParentAndNotItself($templateModelId)) {
       for ($i = 0; $i < $result->getRowCount(); $i++) {
         $row = $result->getRow($i);
         $object = $this->getObject($row);

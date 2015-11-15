@@ -74,8 +74,8 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
-  function selectWithNoParent() {
-    $sqlStatement = "SELECT * FROM $this->tableName WHERE parent_id IS NULL";
+  function selectWithNoParentAndNotItself($templateModelId) {
+    $sqlStatement = "SELECT * FROM $this->tableName WHERE parent_id IS NULL AND id != '$templateModelId'";
     return($this->querySelect($sqlStatement));
   }
 

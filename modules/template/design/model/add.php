@@ -123,7 +123,7 @@ for ($i = 0; $i < count($modelList); $i = $i + 3) {
 $strSelectModelType .= "</table>";
 
 $parentList = Array('' => '');
-$templateModels = $templateModelUtils->selectWithNoParent();
+$templateModels = $templateModelUtils->selectWithNoParentAndNotItself($templateModelId);
 foreach ($templateModels as $templateModel) {
   $wTemplateModelId = $templateModel->getId();
   $wName = $templateModel->getName();
