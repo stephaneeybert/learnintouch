@@ -91,7 +91,7 @@ class CKEditorUtils {
 
   function renderToolbar() {
     if ($this->imageButton) {
-      $imageButton = "['Image'],";
+      $imageButton = "['ImageUpload'],";
     } else {
       $imageButton = '';
     }
@@ -194,16 +194,15 @@ HEREDOC;
     $lexiconSelectUrl = $gSystemUrl . '/editor/ckeditor/connector/lexicon.php';
 
     $str = <<<HEREDOC
-<script type='text/javascript' src='$gJsUrl/editor/ckeditor_3.6.5/ckeditor.js'></script>
-<script type="text/javascript" src="$gJsUrl/editor/ckeditor_3.6.5/lang/_languages.js"></script>
+<script type='text/javascript' src='$gJsUrl/editor/ckeditor_4.5.6_full/ckeditor.js'></script>
 <script type="text/javascript">
-  window.CKEDITOR_BASEPATH = '$gJsUrl/editor/ckeditor_3.6.5/';
+  window.CKEDITOR_BASEPATH = '$gJsUrl/editor/ckeditor_4.5.6_full/';
 </script>
 HEREDOC;
 
     $str .= <<<HEREDOC
 <script type="text/javascript">
-CKEDITOR.config.basePath = '$gJsUrl/editor/ckeditor_3.6.5/';
+CKEDITOR.config.basePath = '$gJsUrl/editor/ckeditor_4.5.6_full/';
 CKEDITOR.config.tabSpaces = '10';
 CKEDITOR.config.currentLanguage = '$languageCode';
 CKEDITOR.config.linkSelectUrl = '$linkSelectUrl';

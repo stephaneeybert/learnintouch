@@ -15,7 +15,7 @@
       CKEDITOR.dialog.add(dialogName, this.path + 'dialogs/imageUpload.js');
       editor.addCommand(commandName, new CKEDITOR.dialogCommand(dialogName));
       editor.ui.addButton('ImageUpload', {
-        label : editor.lang.common.image,
+        title : editor.lang.imageUpload.imageUpload.toolbar_button,
         command : commandName,
         icon: CKEDITOR.plugins.getPath(pluginName) + 'images/imageUpload.png'
       });

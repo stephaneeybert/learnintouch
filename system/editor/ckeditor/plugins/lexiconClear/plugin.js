@@ -10,7 +10,7 @@
     init: function(editor) {
       var pluginName = 'lexiconClear';
       editor.ui.addButton('LexiconClear', {
-        label : editor.lang.lexiconClear.toolbar_button,
+        title : editor.lang.lexiconClear.lexiconClear.toolbar_button,
         command : 'removeFormat',
         icon: CKEDITOR.plugins.getPath(pluginName) + 'images/lexiconClearL.png'
       });

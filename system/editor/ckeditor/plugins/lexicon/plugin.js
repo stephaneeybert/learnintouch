@@ -38,7 +38,7 @@
       var commandName = 'insertLexiconEntry';
       editor.addCommand(commandName, commandFunction);
       editor.ui.addButton('Lexicon', {
-        label : editor.lang.lexicon.toolbar_button,
+        title : editor.lang.lexicon.lexicon.toolbar_button,
         command : commandName,
         icon: CKEDITOR.plugins.getPath(pluginName) + 'images/lexiconL.png'
       });

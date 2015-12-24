@@ -15,7 +15,7 @@
       CKEDITOR.dialog.add(dialogName, this.path + 'dialogs/internalLink.js');
       editor.addCommand(commandName, new CKEDITOR.dialogCommand(dialogName));
       editor.ui.addButton('InternalLink', {
-        label : editor.lang.internalLink.toolbar_button,
+        title : editor.lang.internalLink.internalLink.toolbar_button,
         command : commandName,
         icon: CKEDITOR.plugins.getPath(pluginName) + 'images/internalLink.png'
       });

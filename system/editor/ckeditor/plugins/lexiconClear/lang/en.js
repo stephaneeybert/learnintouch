@@ -1,5 +1,4 @@
-﻿
-CKEDITOR.plugins.setLang('lexiconClear', 'en',
+﻿CKEDITOR.plugins.setLang('lexiconClear', 'en',
 {
   lexiconClear :
   {
@@ -7,9 +6,3 @@ CKEDITOR.plugins.setLang('lexiconClear', 'en',
   }
 });
 
-/*
-CKEDITOR.plugins.setLang('lexiconClear', 'en',
-{
-  toolbar_button : 'Clear the selected lexicon entry pleaseeee'
-});
-*/

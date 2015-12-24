@@ -275,6 +275,12 @@ function basename(path, suffix) {
     return b;
 }
 
+function getRelativeUrl(url) {
+  var splitUrl = url.split('/');
+  var host = splitUrl[0] + "//" + splitUrl[2];
+  return url.replace(host, '');
+}
+
 function isUrl(url) {
     var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     if (RegExp.test(url)) {

@@ -1,4 +1,7 @@
-Download and unpack the CKEditor into the directory js/editor/
+As of CKEditor 4 the iframedialog plugin has to be downloaded separately from http://ckeditor.com/addon/iframedialog and unzipped into the plugins/ directory.
+
+
+Download and unpack the CKEditor into the directory api/js/editor/
 
 
 For each custom plugin:

@@ -7,9 +7,9 @@
       var metaNames = editor.config.metaNamesJs;
  
 		  editor.ui.addRichCombo('MetaName', {
-        label : editor.lang.metaName.label,
-        title : editor.lang.metaName.title,
-        voiceLabel : editor.lang.metaName.label,
+        label : editor.lang.metaName.metaName.label,
+        title : editor.lang.metaName.metaName.title,
+        voiceLabel : editor.lang.metaName.metaName.label,
         className : 'cke_format',
         multiSelect : false,
         panel : {

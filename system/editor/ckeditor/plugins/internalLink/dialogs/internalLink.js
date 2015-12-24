@@ -24,6 +24,7 @@
 
   var okListener = function(event) {  
     var linkUrl = this.getContentElement(linkTabName, selectedLinkFieldName).getValue();
+    linkUrl = getRelativeUrl(linkUrl);
     var target = this.getContentElement(linkTabName, selectedTargetFieldName).getValue();
     // Retrieve the saved selected content
     var selectedContent = this._.selectedContent;
@@ -34,7 +35,7 @@
   // The name of the dialog must be the same as the one specified in the plugin file
   CKEDITOR.dialog.add('internalLinkDialog', function( editor ) {
     return {
-    title: editor.lang.internalLink.title,
+    title: editor.lang.internalLink.internalLink.title,
     resizable: CKEDITOR.DIALOG_RESIZE_NONE,
     minWidth: 500,
     minHeight: 100,
@@ -74,13 +75,13 @@
         {
         type: 'text',
         id: selectedLinkFieldName,
-        label: editor.lang.internalLink.label_link,
+        label: editor.lang.internalLink.internalLink.label_link,
         labelLayout: 'horizontal',
         'default': '', // As a reserved keyword, default needs to be placed within quotes
         setup: function(selectedMarkup) {
           // Make sure some text has been selected
           if (selectedMarkup == '') {
-            alert(CKEDITOR.tools.htmlEncode(editor.lang.internalLink.warning_select_text));
+            alert(CKEDITOR.tools.htmlEncode(editor.lang.internalLink.internalLink.warning_select_text));
           }
           // Preset the element value with the src attribute of the content selected by the user
           if (selectedMarkup.getAttribute && selectedMarkup.getAttribute('href')) {
@@ -89,14 +90,14 @@
         },
         validate : function() {
           if (this.getValue().length == 0) {
-            return editor.lang.internalLink.warning_choose_link;
+            return editor.lang.internalLink.internalLink.warning_choose_link;
           }
         }
         },
         {
         type: 'button',
         id: 'browseLink',
-        label: editor.lang.internalLink.button_browse,
+        label: editor.lang.internalLink.internalLink.button_browse,
         filebrowser : {
           action : 'Browse',
           target: linkTabName + ':' + selectedLinkFieldName,
@@ -119,10 +120,10 @@
         {
         type: 'select',
         id: selectedTargetFieldName,
-        label: editor.lang.internalLink.label_target,
+        label: editor.lang.internalLink.internalLink.label_target,
         items: [
-            [ editor.lang.internalLink.label_target_self, '_self' ],
-            [ editor.lang.internalLink.label_target_new, '_blank' ]
+            [ editor.lang.internalLink.internalLink.label_target_self, '_self' ],
+            [ editor.lang.internalLink.internalLink.label_target_new, '_blank' ]
           ]
         }
         ]

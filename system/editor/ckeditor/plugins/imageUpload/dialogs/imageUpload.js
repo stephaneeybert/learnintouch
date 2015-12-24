@@ -2,6 +2,8 @@
 
   var imageTabName = 'imageTab';
 
+  var TAG_NAME = 'IMG';
+
   var parentEditor = window.parent.CKEDITOR;
 
   var okListener = function(event) {  
@@ -14,7 +16,7 @@
   // The name of the dialog must be the same as the one specified in the plugin file
   CKEDITOR.dialog.add('uploadImageDialog', function( editor ) {
     return {
-    title: editor.lang.imageUpload.title,
+    title: editor.lang.imageUpload.imageUpload.title,
     resizable: CKEDITOR.DIALOG_RESIZE_NONE,
     minWidth: 500,
     minHeight: 100,
@@ -35,7 +37,7 @@
     contents: [
       {
       id: imageTabName,
-      label: '',
+      label : editor.lang.common.generalTab,
       title: '',
       accessKey: '',
       elements: [
@@ -46,17 +48,19 @@
         {
         type: 'text',
         id: 'uploadedImageFile',
-        label: editor.lang.imageUpload.label_image,
+        label: editor.lang.imageUpload.imageUpload.label_image,
         labelLayout: 'horizontal',
         size: 50,
         'default': '', // As a reserved keyword, default needs to be placed within quotes
         setup: function(element) {
           // Preset the element value with the src attribute of the content selected by the user
-          this.setValue(element.getAttribute('src'));
+          if (null != element) {
+            this.setValue(element.getAttribute('src'));
+          }
         },
         validate : function() {
           if (this.getValue().length == 0) {
-            return editor.lang.imageUpload.warning_choose_image;
+            return editor.lang.imageUpload.imageUpload.warning_choose_image;
           }
         }
         },
@@ -99,14 +103,14 @@
                   type : 'text',
                   id : 'linkId',
                   label : editor.lang.common.id,
-                  setup : function( type, element )
+                  setup : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                       this.setValue( element.getAttribute( 'id' ) );
                   },
-                  commit : function( type, element )
+                  commit : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                     {
                       if ( this.getValue() || this.isChanged() )
                         element.setAttribute( 'id', this.getValue() );
@@ -125,14 +129,14 @@
                     [ editor.lang.common.langDirLtr, 'ltr' ],
                     [ editor.lang.common.langDirRtl, 'rtl' ]
                   ],
-                  setup : function( type, element )
+                  setup : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                       this.setValue( element.getAttribute( 'dir' ) );
                   },
-                  commit : function( type, element )
+                  commit : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                     {
                       if ( this.getValue() || this.isChanged() )
                         element.setAttribute( 'dir', this.getValue() );
@@ -144,14 +148,14 @@
                   id : 'txtLangCode',
                   label : editor.lang.common.langCode,
                   'default' : '',
-                  setup : function( type, element )
+                  setup : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                       this.setValue( element.getAttribute( 'lang' ) );
                   },
-                  commit : function( type, element )
+                  commit : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                     {
                       if ( this.getValue() || this.isChanged() )
                         element.setAttribute( 'lang', this.getValue() );
@@ -164,14 +168,15 @@
               type : 'text',
               id : 'txtGenLongDescr',
               label : editor.lang.common.longDescr,
-              setup : function( type, element )
+              setup : function( element )
               {
-                if ( type == IMAGE )
+                    console.log(element);
+                if ( element.tagName == TAG_NAME )
                   this.setValue( element.getAttribute( 'longDesc' ) );
               },
-              commit : function( type, element )
+              commit : function( element )
               {
-                if ( type == IMAGE )
+                if ( element.tagName == TAG_NAME )
                 {
                   if ( this.getValue() || this.isChanged() )
                     element.setAttribute( 'longDesc', this.getValue() );
@@ -188,14 +193,14 @@
                   id : 'txtGenClass',
                   label : editor.lang.common.cssClass,
                   'default' : '',
-                  setup : function( type, element )
+                  setup : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                       this.setValue( element.getAttribute( 'class' ) );
                   },
-                  commit : function( type, element )
+                  commit : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                     {
                       if ( this.getValue() || this.isChanged() )
                         element.setAttribute( 'class', this.getValue() );
@@ -211,14 +216,14 @@
                   {
                     updatePreview( this.getDialog() );
                   },
-                  setup : function( type, element )
+                  setup : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                       this.setValue( element.getAttribute( 'title' ) );
                   },
-                  commit : function( type, element )
+                  commit : function( element )
                   {
-                    if ( type == IMAGE )
+                    if ( element.tagName == TAG_NAME )
                     {
                       if ( this.getValue() || this.isChanged() )
                         element.setAttribute( 'title', this.getValue() );
@@ -240,9 +245,9 @@
               id : 'txtdlgGenStyle',
               label : editor.lang.common.cssStyle,
               'default' : '',
-              setup : function( type, element )
+              setup : function( element )
               {
-                if ( type == IMAGE )
+                if ( element.tagName == TAG_NAME )
                 {
                   var genStyle = element.getAttribute( 'style' );
                   if ( !genStyle && element.$.style.cssText )
@@ -270,9 +275,9 @@
                     'info:txtWidth', 'info:txtHeight' ] );
                 updatePreview( this );
               },
-              commit : function( type, element )
+              commit : function( element )
               {
-                if ( type == IMAGE && ( this.getValue() || this.isChanged() ) )
+                if ( element.tagName == TAG_NAME && ( this.getValue() || this.isChanged() ) )
                 {
                   element.setAttribute( 'style', this.getValue() );
                 }
