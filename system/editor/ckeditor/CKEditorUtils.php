@@ -208,6 +208,7 @@ CKEDITOR.config.currentLanguage = '$languageCode';
 CKEDITOR.config.linkSelectUrl = '$linkSelectUrl';
 CKEDITOR.config.lexiconSelectUrl = '$lexiconSelectUrl';
 CKEDITOR.config.font_names = 'Chunk Five Regular/ChunkFiveRegular;' + CKEDITOR.config.font_names;
+CKEDITOR.config.removePlugins = 'image';
 
 // When opening a dialog, its "definition" is created for it, for each editor instance. The "dialogDefinition" event is then fired. We should use this event to make customizations to the definition of existing dialogs.
 CKEDITOR.on('dialogDefinition', function(ev) {
