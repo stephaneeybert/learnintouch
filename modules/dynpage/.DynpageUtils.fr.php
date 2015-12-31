@@ -19,3 +19,8 @@
 [  18]Par défault, les pages web sont affichées dans le modèle actif.\n\nMais il est possible de spécifier un modèle dans lequel les pages web seront toujours affichées.
 [  19]Modèle (phone):
 [  20]Par défault, les pages web sont affichées dans le modèle actif, lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.\n\nMais il est possible de spécifier un modèle dans lequel les pages web seront toujours affichées.
+[  21]Largeur de l'image:
+[  22]La largeur de l'image.
+[  23]Largeur de l'image sur téléphones:
+[  24]La largeur de l'image lorsqu'elle est affichée sur un téléphone ou un appareil portable à petit écran.
+

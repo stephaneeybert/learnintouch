@@ -128,6 +128,7 @@ $documentCategoryUtils->preferenceUtils = $preferenceUtils;
 $documentCategoryUtils->documentUtils = $documentUtils;
 
 $linkUtils->languageUtils = $languageUtils;
+$linkUtils->preferenceUtils = $preferenceUtils;
 
 $contactRefererUtils->languageUtils = $languageUtils;
 $contactRefererUtils->contactUtils = $contactUtils;

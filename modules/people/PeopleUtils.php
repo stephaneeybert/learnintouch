@@ -322,10 +322,22 @@ class PeopleUtils extends PeopleDB {
     return($str);
   }
 
+  // Get the image width
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("PEOPLE_PHONE_DEFAULT_LARGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("PEOPLE_DEFAULT_LARGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the image
   function renderImage($people) {
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     if (!$people) {
       return;
@@ -338,11 +350,7 @@ class PeopleUtils extends PeopleDB {
     }
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("PEOPLE_PHONE_DEFAULT_LARGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("PEOPLE_DEFAULT_LARGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     // A gif image cannot be resized
     // No support for the gif format due to copyrights issues

@@ -66,6 +66,19 @@ class ClientUtils extends ClientDB {
     $this->preferenceUtils->init($this->preferences);
   }
 
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("CLIENT_PHONE_DEFAULT_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("CLIENT_DEFAULT_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Remove the non referenced files from the directory
   function deleteUnusedImageFiles() {
     $handle = opendir($this->imagePath);

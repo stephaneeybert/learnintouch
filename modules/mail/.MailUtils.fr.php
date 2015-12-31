@@ -19,6 +19,10 @@
 [  18]Auto connexion utilisateur:
 [  19]Lors de l'insertion d'un lien vers la page de connexion utilisateur, il est possible de prédéfinir les champs contenant le nom de connexion et le mot de passe, afin que l'utilisateur n'est pas à les saisir.\n\nEn cliquant sur le lien, l'utilisateur sera redirigé vers la page de connexion, où les champs recevant le nom de connexion et le mot de passe seront déjà remplis avec le nom de connexion et le mot de passe de l'utilisateur.
 [  21]Le prochain exercice
+[  22]Largeur de l'image:
+[  23]La largeur de l'image.
+[  24]Largeur de l'image sur téléphones:
+[  25]La largeur de l'image lorsqu'elle est affichée sur un téléphone ou un appareil portable à petit écran.
 [  30]L'éditeur html:
 [  31]Il y a plusieurs éditeurs html qui peuvent être utilisés pour éditer les mails.\n\nVeuillez sélectionner l'éditeur html de votre choix.
 [  32]Innova

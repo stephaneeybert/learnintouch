@@ -13,6 +13,7 @@ class LinkUtils extends LinkDB {
   var $preferences;
 
   var $languageUtils;
+  var $preferenceUtils;
 
   function LinkUtils() {
     $this->LinkDB();
@@ -67,6 +68,19 @@ class LinkUtils extends LinkDB {
                   "LINK_HIDE_SELECTOR" =>
                   array($this->mlText[6], $this->mlText[7], PREFERENCE_TYPE_BOOLEAN, ''),
                   );
+  }
+
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("LINK_PHONE_DEFAULT_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("LINK_DEFAULT_WIDTH");
+    }
+
+    return($width);
   }
 
   // Remove the non referenced files from the directory

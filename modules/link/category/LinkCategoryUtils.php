@@ -194,11 +194,7 @@ class LinkCategoryUtils extends LinkCategoryDB {
     $url = $link->getUrl();
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("LINK_PHONE_DEFAULT_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("LINK_DEFAULT_WIDTH");
-    }
+    $width = $this->linkUtils->getImageWidth();
 
     if ($image && @file_exists($this->linkUtils->imageFilePath . $image)) {
       // A gif image cannot be resized

@@ -44,6 +44,11 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
+    if ($fileUploadUtils->isImageType($elearningExerciseUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($elearningExerciseUtils->imageFilePath . $userfile_name)) {
+      $destWidth = $elearningExerciseUtils->getImageWidth();
+      LibImage::resizeImageToWidth($elearningExerciseUtils->imageFilePath . $userfile_name, $destWidth);
+    }
+
     // Update the image
     $image = $userfile_name;
   }

@@ -19,3 +19,8 @@
 [  18]By default, the web pages are displayed in the active template model.\n\nBut it is possible to specify a template model in which the web pages will always be displayed.
 [  19]Template model (phone):
 [  20]By default, the web pages are displayed in the active template model, when they are displayed on a phone or small screen mobile device.\n\nBut it is possible to specify a template model in which the web pages will always be displayed.
+[  21]Width of the image:
+[  22]The width of an image.
+[  23]Width of the image on phones:
+[  24]The width of an image when it is displayed on a phone or small screen mobile device.
+

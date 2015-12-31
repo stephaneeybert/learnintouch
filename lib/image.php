@@ -72,13 +72,35 @@ class LibImage {
     return($width);
   }
 
+  // Resize en image
+  static function resizeImageToWidth($sourceImage, $destWidth) {
+    if (!$destWidth) {
+      return;
+    }
+
+    $destHeight = LibImage::getHeightFromWidth($sourceImage, $destWidth);
+
+    LibImage::resizeImageToWidthAndHeight($sourceImage, $destWidth, $destHeight);
+  }
+
+  // Resize en image
+  static function resizeImageToWidthAndHeight($sourceImage, $destWidth, $destHeight) {
+    $destImage = LibImage::buildImageTempName($sourceImage);
+
+    LibImage::outputImage($sourceImage, $destImage, $destWidth, $destHeight, '', '');
+
+    if (LibImage::isImage($destImage)) {
+      LibFile::move($destImage, $sourceImage);
+    }
+  }
+
   // Duplicate an image to a jpg image if not already a jpg image
   static function getJpgImage($imagePath, $image) {
     $imageType = LibImage::getImageType($imagePath . $image);
     if (LibImage::isImage($image)) {
       if ($imageType != "jpeg" && $imageType != "jpg") {
         $jpgImage = LibImage::renameToJpg($image);
-        $result = LibImage::copyImage($imagePath . $image, $imagePath . $jpgImage);
+        LibImage::copyImage($imagePath . $image, $imagePath . $jpgImage);
         $filename = $imagePath . $jpgImage;
       } else {
         $filename = $imagePath . $image;
@@ -90,7 +112,7 @@ class LibImage {
   }
 
   // Copy an image
-  static function copyImage($sourceFilename, $destFilename, $transparent = false) {
+  static function copyImage($sourceFilename, $destFilename, $destWidth = '', $destHeight = '', $transparent = false) {
 
     if (!$sourceFilename || !$destFilename || $sourceFilename == $destFilename) {
       return(false);
@@ -120,10 +142,16 @@ class LibImage {
     // Get the image width and height
     $width = imagesx($sourceImage);
     $height = imagesy($sourceImage);
+    if (!$destWidth) {
+      $destWidth = $width;
+    }
+    if (!$destHeight) {
+      $destHeight = $height;
+    }
 
     // Create the destination image object
-    $destImage = imagecreatetruecolor($width, $height);
-    imagecopyresampled($destImage, $sourceImage, 0, 0, 0, 0, $width, $height, $width, $height);
+    $destImage = imagecreatetruecolor($destWidth, $destHeight);
+    imagecopyresampled($destImage, $sourceImage, 0, 0, 0, 0, $width, $height, $destWidth, $destHeight);
 
     // Destroy the source image object
     imagedestroy($sourceImage);
@@ -139,25 +167,49 @@ class LibImage {
     $destinationType = LibImage::getImageType($destFilename);
 
     // Create the destination image file
-    $result = false;
     if ($destinationType == "jpeg" || $destinationType == "jpg") {
-      $result = imagejpeg($destImage, $destFilename);
+      $copy = imagejpeg($destImage, $destFilename);
     } else if ($destinationType == "gif") {
-      $result = imagegif($destImage, $destFilename);
+      $copy = imagegif($destImage, $destFilename);
     } else if ($destinationType == "png") {
-      $result = imagepng($destImage, $destFilename);
+      $copy = imagepng($destImage, $destFilename);
     } elseif ($destinationType == "wbmp") {
-      $result = imagewbmp($destImage, $destFilename);
+      $copy = imagewbmp($destImage, $destFilename);
+    } else {
+      return;
     }
 
+    // Get the actual image width and height
+    $actualWidth = imagesx($copy);
+    $actualHeight = imagesy($copy);
+
+    $output = imagecreatetruecolor($width, $height);
+    imagecopyresampled($output, $copy, 0, 0, 0, 0, $width, $height, $actualWidth, $actualHeight);
+    imagedestroy($copy);
     // Destroy the destination image object
     imagedestroy($destImage);
 
-    return($result);
+    // Header indicating the image type
+    header("Content-type:image/$type");
+
+    // Create the image
+    if ($type == "jpeg" && (imagetypes() & IMG_JPEG)) {
+      imagejpeg($output);
+    } elseif ($type == "gif" && (imagetypes() & IMG_GIF)) {
+      imagegif($output);
+    } elseif ($type == "png" && (imagetypes() & IMG_PNG)) {
+      imagepng($output);
+    } elseif ($type == "wbmp" && (imagetypes() & IMG_WBMP)) {
+      image2wbmp($output);
+    }
   }
 
   // Print an image
   static function printImage($filename, $width = '', $height = '', $watermark = '', $bottomWatermark = '') {
+    LibImage::outputImage($filename, '', $width, $height, $watermark, $bottomWatermark);
+  }
+
+  static function outputImage($filename, $destFilename, $width, $height, $watermark, $bottomWatermark) {
     global $gApiPath;
 
     if (!$filename) {
@@ -190,67 +242,92 @@ class LibImage {
     // If the copy failed
     if (!$copy) {
       // Then create a blank image
-      $outputImage = imagecreate($width, $height);
-      $backgroundColor = imagecolorallocate($outputImage, 255, 255, 255);
-      imagefilledrectangle($outputImage, 0, 0, $width, $height, $backgroundColor);
+      $output = imagecreate($width, $height);
+      $backgroundColor = imagecolorallocate($output, 255, 255, 255);
+      imagefilledrectangle($output, 0, 0, $width, $height, $backgroundColor);
       $type = "png";
     } else {
       // Get the actual image width and height
       $actualWidth = imagesx($copy);
       $actualHeight = imagesy($copy);
 
-      $outputImage = imagecreatetruecolor($width, $height);
-      imagecopyresampled($outputImage, $copy, 0, 0, 0, 0, $width, $height, $actualWidth, $actualHeight);
+      $output = imagecreatetruecolor($width, $height);
+      imagecopyresampled($output, $copy, 0, 0, 0, 0, $width, $height, $actualWidth, $actualHeight);
       imagedestroy($copy);
 
       // Display a watermark if any
       if ($watermark) {
         $fontSize = 20;
         $fontAngle = 45;
-        $fontColor = imagecolorallocate($outputImage, 219, 219, 219);
+        $fontColor = imagecolorallocate($output, 219, 219, 219);
         $fontType = $gApiPath . 'font/LucidaTypewriterRegular.ttf';
         $textSize = imagettfbbox($fontSize, $fontAngle, $fontType, $watermark);
         $textWidth = abs($textSize[2] - $textSize[0]);
         $textHeight = abs($textSize[5] - $textSize[3]);
         $watermarkImage = imagecreatetruecolor($textWidth, $textHeight);
-        $x = imagesx($outputImage) / 2 - $textWidth / 2;
-        $y = imagesy($outputImage) / 2 + $textWidth / 2;
-        imagettftext($outputImage, $fontSize, $fontAngle, $x, $y, $fontColor, $fontType, $watermark);
+        $x = imagesx($output) / 2 - $textWidth / 2;
+        $y = imagesy($output) / 2 + $textWidth / 2;
+        imagettftext($output, $fontSize, $fontAngle, $x, $y, $fontColor, $fontType, $watermark);
         // The above True Type font is better
-        //        imagestring($outputImage, 5, $x, $y, $watermark, $fontColor);
+        //        imagestring($output, 5, $x, $y, $watermark, $fontColor);
       }
 
       // Display a bottom watermark if any
       if ($bottomWatermark) {
         $fontSize = 12;
         $fontAngle = 0;
-        $fontColor = imagecolorallocate($outputImage, 219, 219, 219);
+        $fontColor = imagecolorallocate($output, 219, 219, 219);
         $fontType = $gApiPath . 'font/LucidaTypewriterRegular.ttf';
         $textSize = imagettfbbox($fontSize, $fontAngle, $fontType, $bottomWatermark);
         $textWidth = abs($textSize[2] - $textSize[0]);
         $textHeight = abs($textSize[5] - $textSize[3]);
         $watermarkImage = imagecreatetruecolor($textWidth, $textHeight);
-        $x = imagesx($outputImage) - $textWidth - 10;
-        $y = imagesy($outputImage) - 10;
-        imagettftext($outputImage, $fontSize, $fontAngle, $x, $y, $fontColor, $fontType, $bottomWatermark);
+        $x = imagesx($output) - $textWidth - 10;
+        $y = imagesy($output) - 10;
+        imagettftext($output, $fontSize, $fontAngle, $x, $y, $fontColor, $fontType, $bottomWatermark);
       }
     }
 
-    // Header indicating the image type
-    header("Content-type:image/$type");
-
     // Create the image
     if ($type == "jpeg" && (imagetypes() & IMG_JPEG)) {
-      imagejpeg($outputImage);
+      if ($destFilename) {
+        imagejpeg($output, $destFilename);
+      } else {
+        // Header indicating the image type
+        header("Content-type:image/$type");
+
+        imagejpeg($output);
+      }
     } elseif ($type == "gif" && (imagetypes() & IMG_GIF)) {
-      imagegif($outputImage);
+      if ($destFilename) {
+        imagegif($output, $destFilename);
+      } else {
+        // Header indicating the image type
+        header("Content-type:image/$type");
+
+        imagegif($output);
+      }
     } elseif ($type == "png" && (imagetypes() & IMG_PNG)) {
-      imagepng($outputImage);
+      if ($destFilename) {
+        imagepng($output, $destFilename);
+      } else {
+        // Header indicating the image type
+        header("Content-type:image/$type");
+
+        imagepng($output);
+      }
     } elseif ($type == "wbmp" && (imagetypes() & IMG_WBMP)) {
-      image2wbmp($outputImage);
+      if ($destFilename) {
+        image2wbmp($output, $destFilename);
+      } else {
+        // Header indicating the image type
+        header("Content-type:image/$type");
+
+        image2wbmp($output);
+      }
     }
 
-    imagedestroy($outputImage);
+    imagedestroy($output);
   }
 
   // Print a number image
@@ -419,17 +496,23 @@ class LibImage {
     return($renamed);
   }
 
+  // Get the image basename
+  static function buildImageTempName($filename) {
+    $imageType = LibImage::getImageType($filename);
+    $suffixLess = substr($filename, 0, strlen($filename) - (strlen($imageType)));
+    $name = $suffixLess . "-tmp" . "." . $imageType;
+    return($name);
+  }
+
   // Get the image type
   static function getImageType($filename) {
     $type = '';
 
-    // Get the image suffix
     $pieces = explode(".", basename($filename));
     if (count($pieces) > 1) {
       $type = strtolower($pieces[count($pieces) - 1]);
     }
 
-    // Determine the type
     if ($type == "jpg" || $type == "jpe") {
       $type = "jpeg";
     }

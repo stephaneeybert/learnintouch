@@ -75,9 +75,26 @@ class DynpageUtils extends DynpageDB {
               array($this->mlText[1], $this->mlText[2], PREFERENCE_TYPE_BOOLEAN, ''),
                 "DYNPAGE_WEBSITE_IN_CONSTRUCTION_MESSAGE" =>
                 array($this->mlText[3], $this->mlText[4], PREFERENCE_TYPE_MLTEXT, $this->mlText[5]),
-                );
+                  "DYNPAGE_IMAGE_WIDTH" =>
+                  array($this->mlText[21], $this->mlText[22], PREFERENCE_TYPE_TEXT, 300),
+                    "DYNPAGE_PHONE_IMAGE_WIDTH" =>
+                    array($this->mlText[23], $this->mlText[24], PREFERENCE_TYPE_TEXT, 140),
+                    );
 
     $this->preferenceUtils->init($this->preferences);
+  }
+
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("DYNPAGE_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("DYNPAGE_IMAGE_WIDTH");
+    }
+
+    return($width);
   }
 
   // Add a page

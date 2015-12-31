@@ -575,12 +575,24 @@ class ElearningLessonUtils extends ElearningLessonDB {
     return($str);
   }
 
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the image of the lesson
   function renderImage($elearningLesson, $emailFormat = false) {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     $image = $elearningLesson->getImage();
 
@@ -588,11 +600,7 @@ class ElearningLessonUtils extends ElearningLessonDB {
     $imageUrl = $this->imageFileUrl;
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $str = '';
 

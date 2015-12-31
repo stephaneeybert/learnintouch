@@ -34,17 +34,22 @@ if ($formSubmitted == 1) {
   // Check if a file has been specified...
   if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
+  } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
     // Check if the image file name has a correct file type
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
+  } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
+  } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
     // Check if the file has been copied to the directory
     array_push($warnings, $str);
-    }
+  }
 
   if (count($warnings) == 0) {
+    if ($fileUploadUtils->isImageType($imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($imagePath . $userfile_name)) {
+      $destWidth = $dynpageUtils->getImageWidth();
+      LibImage::resizeImageToWidth($imagePath . $userfile_name, $destWidth);
+    }
+
     $panelUtils->setHeader($mlText[0]);
     $panelUtils->openForm($PHP_SELF);
     $panelUtils->addLine();
@@ -66,7 +71,7 @@ if ($formSubmitted == 1) {
       $str = $panelUtils->render();
       printAdminPage($str);
       return;
-      } else {
+    } else {
       $str = <<<HEREDOC
 <script language="javascript" type="text/javascript">
 var parentWindow = opener.tinyMCE.getWindowArg("window");
@@ -78,16 +83,16 @@ HEREDOC;
       $str .= LibJavascript::autoCloseWindow();
       printContent($str);
       return;
-      }
     }
-
   }
+
+}
 
 if ($formSubmitted == 2) {
   $str = LibJavascript::autoCloseWindow();
   printContent($str);
   return;
-  }
+}
 
 // Check if the script is called from an html editor
 $isHtmlEditor = LibEnv::getEnvHttpGET("isHtmlEditor");
@@ -97,8 +102,8 @@ $panelUtils->setHeader($mlText[0]);
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $panelUtils->addLine($panelUtils->addCell($warning, "w"));
-    }
   }
+}
 
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 500);
 $panelUtils->setHelp($help);

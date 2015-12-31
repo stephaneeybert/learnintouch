@@ -2531,12 +2531,24 @@ HEREDOC;
     }
   }
 
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+      if ($gIsPhoneClient) {
+        $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
+      } else {
+        $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
+      }
+
+    return $width;
+  }
+
   // Render the image of the exercise
   function renderImage($image, $emailFormat = false) {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
@@ -2544,11 +2556,7 @@ HEREDOC;
     $str = '';
 
     if ($image && @file_exists($imagePath . $image)) {
-      if ($gIsPhoneClient) {
-        $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-      } else {
-        $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-      }
+      $width = $this->getImageWidth();
 
       $str .= "<div class='elearning_exercise_image'>";
 

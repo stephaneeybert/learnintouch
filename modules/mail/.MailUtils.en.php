@@ -19,6 +19,10 @@
 [  18]User auto login:
 [  19]When inserting a link to the user login page, it is possible to predefine the fields containing the login name and the password, so that the user does not have to type them in.\n\nBy clicking on the link, the user will be redirected to the login page, where the fields receiving the login name and the password will be already filled with the user login name and password.
 [  21]The next exercise
+[  22]Width of the image:
+[  23]The width of an image.
+[  24]Width of the image on phones:
+[  25]The width of an image when it is displayed on a phone or small screen mobile device.
 [  30]The html editor:
 [  31]There are several html editors that can be used to edit the mails.\n\nPlease select the html editor of your choice.
 [  32]Innova

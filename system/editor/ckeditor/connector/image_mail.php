@@ -6,6 +6,7 @@ require_once("website.php");
 $imagePath = $mailUtils->imagePath;
 $imageUrl = $mailUtils->imageUrl;
 $imageSize = $mailUtils->imageSize;
+$imageWidth = $mailUtils->getImageWidth();
 
 // Get the path to the Flash directory
 $filePath = $flashUtils->filePath;

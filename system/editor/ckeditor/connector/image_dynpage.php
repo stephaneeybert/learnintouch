@@ -6,6 +6,7 @@ require_once("website.php");
 $imagePath = $dynpageUtils->imagePath;
 $imageUrl = $dynpageUtils->imageUrl;
 $imageSize = $dynpageUtils->imageSize;
+$imageWidth = $dynpageUtils->getImageWidth();
 
 // Get the path to the Flash directory
 $filePath = $flashUtils->filePath;

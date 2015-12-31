@@ -96,9 +96,26 @@ class MailUtils extends MailDB {
                     array($this->mlText[8], $this->mlText[4], PREFERENCE_TYPE_SELECT, array(10 => "10", 20 => "20", 50 => "50", 100 => "100")),
                       "MAIL_AUTO_DELETE" =>
                       array($this->mlText[5], $this->mlText[6], PREFERENCE_TYPE_SELECT, array(6 => "6", 12 => "12", 24 => "24", 36 => "36", 48 => "48")),
-                      );
+                        "MAIL_IMAGE_WIDTH" =>
+                        array($this->mlText[22], $this->mlText[23], PREFERENCE_TYPE_TEXT, 300),
+                          "MAIL_PHONE_IMAGE_WIDTH" =>
+                          array($this->mlText[24], $this->mlText[25], PREFERENCE_TYPE_TEXT, 140),
+                          );
 
     $this->preferenceUtils->init($this->preferences);
+  }
+
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("MAIL_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("MAIL_IMAGE_WIDTH");
+    }
+
+    return($width);
   }
 
   // Remove the non referenced images
