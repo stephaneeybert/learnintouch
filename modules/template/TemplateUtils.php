@@ -1106,13 +1106,13 @@ $(document).ready(function() {
   });
 });
 </script>
-<script type="text/javascript" src="$gJsUrl/soundmanager2.js"></script>
+<script type="text/javascript" src="$gJsUrl/soundmanagerv297a-20150601/script/soundmanager2-jsmin.js"></script>
 <script type='text/javascript'>
 $(document).ready(function() {
   soundManager.setup({
     waitForWindowLoad: true,
     debugMode: false,
-//    debugFlash: true,
+    debugFlash: false,
     useConsole: true,
     url: '$gSwfPlayerUrl'
   });

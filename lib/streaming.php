@@ -210,7 +210,7 @@ HEREDOC;
 
     if (count($bits) > 1) {
       $suffix = strtolower($bits[count($bits)-1]);
-      if ($suffix == 'mp3') {
+      if ($suffix == 'mp3' || $suffix == 'm4a') {
         $isMedia = true;
       }
     }
