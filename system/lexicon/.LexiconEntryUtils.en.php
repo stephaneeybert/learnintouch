@@ -3,3 +3,8 @@
 [   2]User login required:
 [   3]By default, if a text contains some lexicon words, then the explanations of the lexicon are displayed above the words when the mouse cursor hovers above these words.\n\nBut it is possible to display the lexicon explanations only if the reader is a user who has logged in.\n\nIn that case, the reader with be able to read the text with its lexicon explanations.\n\nIf the reader is not a logged in user, then he will only be able to read the text, but will not see any lexicon explanations.
 [   4]Search the lexicon
+[  21]Width of the image:
+[  22]The width of an image.
+[  23]Width of the image on phones:
+[  24]The width of an image when it is displayed on a phone or small screen mobile device.
+

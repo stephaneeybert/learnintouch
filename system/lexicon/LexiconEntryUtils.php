@@ -57,9 +57,26 @@ class LexiconEntryUtils extends LexiconEntryDB {
       array($this->mlText[0], $this->mlText[1], PREFERENCE_TYPE_BOOLEAN, ''),
         "LEXICON_USER_LOGIN_REQUIRED" =>
         array($this->mlText[2], $this->mlText[3], PREFERENCE_TYPE_BOOLEAN, ''),
-        );
+          "LEXIKON_IMAGE_WIDTH" =>
+          array($this->mlText[21], $this->mlText[22], PREFERENCE_TYPE_TEXT, 300),
+            "LEXIKON_PHONE_IMAGE_WIDTH" =>
+            array($this->mlText[23], $this->mlText[24], PREFERENCE_TYPE_TEXT, 140),
+            );
 
     $this->preferenceUtils->init($this->preferences);
+  }
+
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("LEXIKON_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("LEXIKON_IMAGE_WIDTH");
+    }
+
+    return($width);
   }
 
   // Check if some definitions are to be suggested from an external dictionary
@@ -210,10 +227,10 @@ $(document).ready(function() {
         context: document.body,
         success: function(data){
           $(tooltip).html(data); 
-	        $(tooltip).fadeIn();
-	        setTimeout(function() {
-	          $(tooltip).fadeOut();
-	        }, 10000);
+          $(tooltip).fadeIn();
+          setTimeout(function() {
+            $(tooltip).fadeOut();
+          }, 10000);
         }
       });
 

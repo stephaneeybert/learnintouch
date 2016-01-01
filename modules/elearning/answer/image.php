@@ -20,7 +20,7 @@ if ($formSubmitted == 1) {
 
   if ($deleteImage == 1) {
     $image = '';
-    } else {
+  } else {
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
     $uploaded_file = LibEnv::getEnvHttpFILE("userfile");
@@ -35,52 +35,57 @@ if ($formSubmitted == 1) {
     // Check if a file has been specified...
     if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
+    } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
       // Check if the image file name has a correct file type
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $elearningAnswerUtils->imageFileSize)) {
+    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $elearningAnswerUtils->imageFileSize)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $elearningAnswerUtils->imageFilePath)) {
+    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $elearningAnswerUtils->imageFilePath)) {
       // Check if the file has been copied to the directory
       array_push($warnings, $str);
-      }
+    }
+
+    if ($fileUploadUtils->isImageType($elearningAnswerUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($elearningAnswerUtils->imageFilePath . $userfile_name)) {
+      $destWidth = $elearningQuestionUtils->getImageWidth();
+      LibImage::resizeImageToWidth($elearningAnswerUtils->imageFilePath . $userfile_name, $destWidth);
+    }
 
     // Update the image
     $image = $userfile_name;
-    }
+  }
 
   if (count($warnings) == 0) {
 
     if ($elearningAnswer = $elearningAnswerUtils->selectById($elearningAnswerId)) {
       $elearningAnswer->setImage($image);
       $elearningAnswerUtils->update($elearningAnswer);
-      }
+    }
 
     $str = LibJavascript::reloadParentWindow() . LibJavascript::autoCloseWindow();
     printContent($str);
     return;
 
-    }
-
   }
+
+}
 
 $elearningAnswerId = LibEnv::getEnvHttpGET("elearningAnswerId");
 if (!$elearningAnswerId) {
   $elearningAnswerId = LibEnv::getEnvHttpPOST("elearningAnswerId");
-  }
+}
 
 $image = '';
 if ($elearningAnswer = $elearningAnswerUtils->selectById($elearningAnswerId)) {
   $image = $elearningAnswer->getImage();
-  }
+}
 
 $panelUtils->setHeader($mlText[0]);
 
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $panelUtils->addLine($panelUtils->addCell($warning, "w"));
-    }
   }
+}
 
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 200);
 $panelUtils->setHelp($help);
@@ -91,16 +96,16 @@ if ($image) {
     $filename = urlencode($elearningAnswerUtils->imageFilePath . $image);
     $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), "<img src='$url' border='0' title='' href=''>");
-    } else {
+  } else {
     $fileUrl = "$elearningAnswerUtils->imageFileUrl/$image";
     $strImage = "<a href='$fileUrl' $gJSNoStatus title=''>$image</a>";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), $strImage);
-    }
+  }
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "br"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "br"), "<input type='checkbox' name='deleteImage' value='1'>");
-  }
+}
 
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "<input type=file name='userfile' size='15' maxlength='50'>");

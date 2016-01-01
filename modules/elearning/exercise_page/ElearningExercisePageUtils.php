@@ -91,6 +91,20 @@ class ElearningExercisePageUtils extends ElearningExercisePageDB {
     closedir($handle);
   }
 
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_PAGE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_PAGE_IMAGE_WIDTH");
+    }
+
+    return $width;
+  }
+
+
   // Check if an image is being used
   function imageIsUsed($image) {
     $isUsed = true;
@@ -1243,8 +1257,6 @@ HEREDOC;
 
   // Render the exercise page for print
   function renderForPrint($elearningExercise, $elearningExercisePage, $showSolutions) {
-    global $gIsPhoneClient;
-
     $elearningExercisePageId = $elearningExercisePage->getId();
     $name = $elearningExercisePage->getName();
     $description = $elearningExercisePage->getDescription();
@@ -2532,9 +2544,9 @@ HEREDOC;
     }
 
     if ($watchLive) {
-        $NODEJS_SOCKET_PORT = NODEJS_SOCKET_PORT;
+      $NODEJS_SOCKET_PORT = NODEJS_SOCKET_PORT;
 
-        $str .= <<<HEREDOC
+      $str .= <<<HEREDOC
 <script type="text/javascript">
 $(function() {
   if ('undefined' != typeof io) {
@@ -3428,7 +3440,6 @@ HEREDOC;
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     $image = $elearningExercisePage->getImage();
 
@@ -3440,11 +3451,7 @@ HEREDOC;
     $imageUrl = $this->imageFileUrl;
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_PAGE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_PAGE_IMAGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $str = '';
 

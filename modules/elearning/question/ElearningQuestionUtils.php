@@ -893,12 +893,24 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
     return($str);
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_QUESTION_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("ELEARNING_QUESTION_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the image of a question
   function renderImage($elearningQuestion, $emailFormat = false) {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     $image = $elearningQuestion->getImage();
 
@@ -906,11 +918,7 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
     $imageUrl = $this->imageFileUrl;
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_QUESTION_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_QUESTION_IMAGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $str = '';
 

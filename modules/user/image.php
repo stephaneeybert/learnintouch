@@ -23,7 +23,7 @@ if ($formSubmitted == 1) {
 
   if ($deleteImage == 1) {
     $image = '';
-    } else {
+  } else {
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
     $uploaded_file = LibEnv::getEnvHttpFILE("userfile");
@@ -38,41 +38,46 @@ if ($formSubmitted == 1) {
     // Check if a file has been specified...
     if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkImageFileType($userfile_name)) {
+    } else if ($str = $fileUploadUtils->checkImageFileType($userfile_name)) {
       // Check if the image file name has a correct file type
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
+    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
+    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
       // Check if the file has been copied to the directory
       array_push($warnings, $str);
-      }
+    }
+
+    if ($fileUploadUtils->isImageType($userUtils->imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($userUtils->imagePath . $userfile_name)) {
+      $destWidth = $userUtils->getImageWidth();
+      LibImage::resizeImageToWidth($userUtils->imagePath . $userfile_name, $destWidth);
+    }
 
     // Update the image
     $image = $userfile_name;
-    }
+  }
 
   if (count($warnings) == 0) {
 
     if ($user = $userUtils->selectById($userId)) {
       $user->setImage($image);
       $userUtils->update($user);
-      }
+    }
 
     $str = LibHtml::urlRedirect("$gUserUrl/editProfile.php");
     printContent($str);
     return;
-    }
   }
+}
 
 $userId = LibEnv::getEnvHttpGET("userId");
 if (!$userId) {
   $userId = LibEnv::getEnvHttpPOST("userId");
-  }
+}
 
 if ($user = $userUtils->selectById($userId)) {
   $image = $user->getImage();
-  }
+}
 
 $str = '';
 
@@ -99,7 +104,7 @@ if ($image) {
     $str .= "\n</tr>";
 
     $str .= "\n<tr><td><br /></td><td></td></tr>";
-    }
+  }
 
   $str .= "\n<tr>";
   $str .= "\n<td class='system_label'>$mlText[3]</td>";
@@ -112,7 +117,7 @@ if ($image) {
   $str .= "\n<td class='system_label'>$mlText[7]</td>";
   $str .= "\n<td class='system_field'><input type='checkbox' name='deleteImage' value='1' /></td>";
   $str .= "\n</tr>";
-  }
+}
 
 $str .= "\n<tr><td><br /></td><td></td></tr>";
 

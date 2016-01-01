@@ -65,6 +65,11 @@ if ($formSubmitted == 1) {
     array_push($warnings, $str);
   }
 
+  if ($fileUploadUtils->isImageType($imagePath . $folderName . '/' . $userfile_name) && !$fileUploadUtils->isGifImage($imagePath . $folderName . '/' . $userfile_name)) {
+    $destWidth = $photoUtils->getImageWidth();
+    LibImage::resizeImageToWidth($imagePath . $folderName . '/' . $userfile_name, $destWidth);
+  }
+
   // Update the image
   $image = $userfile_name;
 

@@ -94,14 +94,14 @@ class PhotoUtils extends PhotoDB {
                                   array($this->mlText[14], $this->mlText[15], PREFERENCE_TYPE_SELECT, array('IMAGE_LENGTH_IS_HEIGHT' => $this->mlText[42], 'IMAGE_LENGTH_IS_WIDTH' => $this->mlText[43])),
                                     "PHOTO_LIST_STEP" =>
                                     array($this->mlText[51], $this->mlText[52], PREFERENCE_TYPE_SELECT, array(10 => "10", 20 => "20", 50 => "50", 100 => "100")),
-                                      "PHOTO_DEFAULT_MINI_WIDTH" =>
-                                      array($this->mlText[30], $this->mlText[31], PREFERENCE_TYPE_TEXT, 100),
                                         "PHOTO_DEFAULT_LARGE_WIDTH" =>
                                         array($this->mlText[34], $this->mlText[35], PREFERENCE_TYPE_TEXT, 400),
-                                          "PHOTO_PHONE_DEFAULT_MINI_WIDTH" =>
-                                          array($this->mlText[10], $this->mlText[11], PREFERENCE_TYPE_TEXT, 100),
                                             "PHOTO_PHONE_DEFAULT_LARGE_WIDTH" =>
                                             array($this->mlText[12], $this->mlText[13], PREFERENCE_TYPE_TEXT, 200),
+                                      "PHOTO_DEFAULT_MINI_WIDTH" =>
+                                      array($this->mlText[30], $this->mlText[31], PREFERENCE_TYPE_TEXT, 100),
+                                          "PHOTO_PHONE_DEFAULT_MINI_WIDTH" =>
+                                          array($this->mlText[10], $this->mlText[11], PREFERENCE_TYPE_TEXT, 100),
                                               "PHOTO_CYCLE_WIDTH_TEMPLATE" =>
                                               array($this->mlText[44], $this->mlText[45], PREFERENCE_TYPE_TEXT, 100),
                                                 "PHOTO_CYCLE_WIDTH_PAGE" =>
@@ -133,6 +133,19 @@ class PhotoUtils extends PhotoDB {
       }
     }
     closedir($handle);
+  }
+
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("PHOTO_PHONE_DEFAULT_LARGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("PHOTO_DEFAULT_LARGE_WIDTH");
+    }
+
+    return($width);
   }
 
   // Check if an image is being used
@@ -417,7 +430,6 @@ class PhotoUtils extends PhotoDB {
   function renderBigPhoto($photo) {
     global $gPhotoUrl;
     global $gJSNoStatus;
-    global $gIsPhoneClient;
 
     if (!$photo) {
       return;
@@ -444,11 +456,7 @@ class PhotoUtils extends PhotoDB {
       return;
     }
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("PHOTO_PHONE_DEFAULT_LARGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("PHOTO_DEFAULT_LARGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     // A gif image cannot be resized
     // No support for the gif format due to copyright issues

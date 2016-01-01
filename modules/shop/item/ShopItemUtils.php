@@ -171,6 +171,19 @@ class ShopItemUtils extends ShopItemDB {
     $this->preferenceUtils->init($this->preferences);
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("SHOP_PHONE_DEFAULT_LARGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("SHOP_DEFAULT_LARGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Get the next available list order
   function getNextListOrder($categoryId) {
     $listOrder = 1;
@@ -1015,11 +1028,11 @@ HEREDOC;
         . "</tr>";
 
       if ($discountAmount) {
-      $str .= "\n<tr>"
-        . "<td colspan='3' style='white-space:nowrap; text-align:right; vertical-align:top;'>" . $this->websiteText[148] . "</td>"
-        . "<td style='white-space:nowrap; text-align:right; vertical-align:top;'>" . $discountAmount . ' ' . $currencySymbol . "</td>"
-        . "<td>&nbsp;</td>"
-        . "</tr>";
+        $str .= "\n<tr>"
+          . "<td colspan='3' style='white-space:nowrap; text-align:right; vertical-align:top;'>" . $this->websiteText[148] . "</td>"
+          . "<td style='white-space:nowrap; text-align:right; vertical-align:top;'>" . $discountAmount . ' ' . $currencySymbol . "</td>"
+          . "<td>&nbsp;</td>"
+          . "</tr>";
 
       }
 
@@ -1286,7 +1299,6 @@ HEREDOC;
     global $gJSNoStatus;
     global $gImagesUserUrl;
     global $gContactUrl;
-    global $gIsPhoneClient;
 
     $this->loadLanguageTexts();
 
@@ -1328,11 +1340,7 @@ HEREDOC;
       }
     }
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("SHOP_PHONE_DEFAULT_LARGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("SHOP_DEFAULT_LARGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $strPreviousImage = '';
     if ($previousShopItemImage = $this->shopItemImageUtils->selectPrevious($shopItemImageId)) {
@@ -1464,11 +1472,7 @@ HEREDOC;
     $imageFilePath = $this->shopItemImageUtils->imageFilePath;
     $imageFileUrl = $this->shopItemImageUtils->imageFileUrl;
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("SHOP_PHONE_DEFAULT_LARGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("SHOP_DEFAULT_LARGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     if ($image && @file_exists($imageFilePath . $image)) {
       if (!LibImage::isGif($image)) {

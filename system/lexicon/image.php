@@ -46,6 +46,11 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
+    if ($fileUploadUtils->isImageType($lexiconEntryUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($lexiconEntryUtils->imageFilePath . $userfile_name)) {
+      $destWidth = $lexiconEntryUtils->getImageWidth();
+      LibImage::resizeImageToWidth($lexiconEntryUtils->imageFilePath . $userfile_name, $destWidth);
+    }
+
     // Update the image
     $image = $userfile_name;
   }
@@ -62,7 +67,7 @@ if ($formSubmitted == 1) {
       $lexiconEntryId = $lexiconEntryUtils->getLastInsertId();
     }
 
-    $str = LibHtml::urlRedirect("$gLexiconUrl/edit.php?lexiconEntryId=$lexiconEntryId");
+    $str = LibJavascript::reloadParentWindow() . LibJavascript::autoCloseWindow();
     printContent($str);
     return;
   }

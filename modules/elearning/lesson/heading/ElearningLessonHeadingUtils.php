@@ -215,7 +215,7 @@ class ElearningLessonHeadingUtils extends ElearningLessonHeadingDB {
     return($imageUrl);
   }
 
-  // Render the images of a elearningLesson story
+  // Render the images of a lesson heading
   function renderImage($elearningLessonHeadingId) {
     global $gUtilsUrl;
     global $gElearningLessonUrl;
@@ -228,9 +228,9 @@ class ElearningLessonHeadingUtils extends ElearningLessonHeadingDB {
     }
 
     if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("NEWS_HEADING_PHONE_IMAGE_WIDTH");
+      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
     } else {
-      $width = $this->preferenceUtils->getValue("NEWS_HEADING_IMAGE_WIDTH");
+      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
     }
 
     $imageUrl = $this->getImageUrl($elearningLessonHeadingId, $width);

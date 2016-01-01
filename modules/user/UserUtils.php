@@ -953,6 +953,19 @@ class UserUtils extends UserDB {
     }
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("USER_PHONE_DEFAULT_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("USER_DEFAULT_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Get the list of secured pages
   function getSecuredPages() {
     $strSecuredPages = $this->propertyUtils->retrieve($this->propertySecuredPages);
@@ -996,7 +1009,6 @@ class UserUtils extends UserDB {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     if (!$user = $this->selectById($userId)) {
       return;
@@ -1007,11 +1019,7 @@ class UserUtils extends UserDB {
     $imagePath  = $this->imagePath;
     $imageUrl  = $this->imageUrl;
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("USER_PHONE_DEFAULT_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("USER_DEFAULT_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $str = '';
 

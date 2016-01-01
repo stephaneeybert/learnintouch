@@ -3,3 +3,8 @@
 [   2]Connexion utilisateur requise:
 [   3]Par défaut, si un texte contient des mots du lexique, alors les explications du lexique sont affichées au dessus des mots lorsque le curseur de la souris passe sur ces mots.\n\nMais il est possible de n'afficher les explications du lexique seulement si le lecteur est un utilisateur qui s'est connecté.\n\nDans ce cas, le lecteur sera capable de lire le texte avec les explications du lexique.\n\nSi le lecteur n'est pas un utilisateur connecté, alors il pourra seulement lire le texte, mais ne pourra pas voir les explications du lexique.
 [   4]Chercher dans le lexique
+[  21]Largeur de l'image:
+[  22]La largeur de l'image.
+[  23]Largeur de l'image sur téléphones:
+[  24]La largeur de l'image lorsqu'elle est affichée sur un téléphone ou un appareil portable à petit écran.
+

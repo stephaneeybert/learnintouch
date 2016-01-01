@@ -6,6 +6,7 @@ require_once("website.php");
 $imagePath = $elearningExercisePageUtils->imageFilePath;
 $imageUrl = $elearningExercisePageUtils->imageFileUrl;
 $imageSize = $elearningExercisePageUtils->imageFileSize;
+$imageWidth = $elearningExercisePageUtils->getImageWidth();
 
 // Get the path to the Flash directory
 $filePath = $flashUtils->filePath;

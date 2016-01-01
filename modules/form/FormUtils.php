@@ -66,6 +66,19 @@ class FormUtils extends FormDB {
     $this->preferenceUtils->init($this->preferences);
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("FORM_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("FORM_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Duplicate a form
   function duplicate($formId, $name) {
     if ($form = $this->selectById($formId)) {
@@ -132,7 +145,6 @@ class FormUtils extends FormDB {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     $str = '';
 
@@ -140,11 +152,7 @@ class FormUtils extends FormDB {
     $imageUrl = $this->imageFileUrl;
 
     // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("FORM_PHONE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("FORM_IMAGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     if ($image && @file_exists($imagePath . $image)) {
       $str .= "<div class='form_image'>";
