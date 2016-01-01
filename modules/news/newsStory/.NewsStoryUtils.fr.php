@@ -28,7 +28,6 @@
 [  32]Largeur des images moyennes d'un article:
 [  33]La largeur des images d'un article lorsqu'elles sont affichées dans un format moyen.
 [  34]Largeur des grandes images d'un article:
-[  35]La largeur des images d'un article lorsqu'elles sont affichées dans un grand format.
 [  36]La largeur des images d'un journal.
 [  37]Largeur des images d'un journal (téléphone):
 [  38]La largeur des images d'un journal lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.

@@ -6,6 +6,7 @@ require_once("website.php");
 $imagePath = $newsPaperUtils->imagePath;
 $imageUrl = $newsPaperUtils->imageUrl;
 $imageSize = $newsPaperUtils->imageSize;
+$imageWidth = $newsPaperUtils->getImageWidth();
 
 include($gSystemPath . "editor/ckeditor/connector/image.php");
 

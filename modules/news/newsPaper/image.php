@@ -23,7 +23,7 @@ if ($formSubmitted == 1) {
 
   if ($deleteImage == 1) {
     $image = '';
-    } else {
+  } else {
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
     $uploaded_file = LibEnv::getEnvHttpFILE("userfile");
@@ -38,50 +38,55 @@ if ($formSubmitted == 1) {
     // Check if a file has been specified...
     if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
+    } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
       // Check if the image file name has a correct file type
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
+    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
+    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
       // Check if the file has been copied to the directory
       array_push($warnings, $str);
-      }
+    }
+
+    if ($fileUploadUtils->isImageType($newsPaperUtils->imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($newsPaperUtils->imagePath . $userfile_name)) {
+      $destWidth = $newsPaperUtils->getImageWidth();
+      LibImage::resizeImageToWidth($newsPaperUtils->imagePath . $userfile_name, $destWidth);
+    }
 
     // Update the image
     $image = $userfile_name;
-    }
+  }
 
   if (count($warnings) == 0) {
 
     if ($newsPaper = $newsPaperUtils->selectById($newsPaperId)) {
       $newsPaper->setImage($image);
       $newsPaperUtils->update($newsPaper);
-      }
+    }
 
     $str = LibJavascript::reloadParentWindow() . LibJavascript::autoCloseWindow();
     printContent($str);
     return;
-    }
-
   }
+
+}
 
 $newsPaperId = LibEnv::getEnvHttpGET("newsPaperId");
 if (!$newsPaperId) {
   $newsPaperId = LibEnv::getEnvHttpPOST("newsPaperId");
-  }
+}
 
 if ($newsPaper = $newsPaperUtils->selectById($newsPaperId)) {
   $image = $newsPaper->getImage();
-  }
+}
 
 $panelUtils->setHeader($mlText[0]);
 
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $panelUtils->addLine($panelUtils->addCell($warning, "w"));
-    }
   }
+}
 
 $panelUtils->openMultipartForm($PHP_SELF);
 
@@ -90,12 +95,12 @@ if ($image) {
     $filename = urlencode($imagePath . $image);
     $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), "<img src='$url' border='0' title='' href=''>");
-    }
+  }
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), "<input type='checkbox' name='deleteImage' value='1'>");
-  }
+}
 
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");

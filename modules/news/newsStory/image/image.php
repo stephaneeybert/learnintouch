@@ -35,15 +35,20 @@ if ($formSubmitted == 1) {
   // Check if a file has been specified...
   if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
+  } else if ($str = $fileUploadUtils->checkMediaFileType($userfile_name)) {
     // Check if the image file name has a correct file type
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageFileSize)) {
+  } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageFileSize)) {
     array_push($warnings, $str);
-    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imageFilePath)) {
+  } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imageFilePath)) {
     // Check if the file has been copied to the directory
     array_push($warnings, $str);
-    }
+  }
+
+  if ($fileUploadUtils->isImageType($newsStoryImageUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($newsStoryImageUtils->imageFilePath . $userfile_name)) {
+    $destWidth = $newsStoryUtils->getImageWidth();
+    LibImage::resizeImageToWidth($newsStoryImageUtils->imageFilePath . $userfile_name, $destWidth);
+  }
 
   // Update the image
   $image = $userfile_name;
@@ -54,8 +59,8 @@ if ($formSubmitted == 1) {
       if ($newsStoryImage = $newsStoryImageUtils->selectById($newsStoryImageId)) {
         $newsStoryImage->setImage($image);
         $newsStoryImageUtils->update($newsStoryImage);
-        }
-      } else if ($newsStoryId && !$newsStoryImageId) {
+      }
+    } else if ($newsStoryId && !$newsStoryImageId) {
       $newsStoryImage = new NewsStoryImage();
       $newsStoryImage->setImage($image);
       $newsStoryImage->setNewsStoryId($newsStoryId);
@@ -65,37 +70,37 @@ if ($formSubmitted == 1) {
       $newsStoryImage->setListOrder($listOrder);
 
       $newsStoryImageUtils->insert($newsStoryImage);
-      }
+    }
 
     $str = LibJavascript::reloadParentWindow() . LibJavascript::autoCloseWindow();
     printContent($str);
     return;
-    }
-
   }
+
+}
 
 $newsStoryImageId = LibEnv::getEnvHttpGET("newsStoryImageId");
 if (!$newsStoryImageId) {
   $newsStoryImageId = LibEnv::getEnvHttpPOST("newsStoryImageId");
-  }
+}
 
 $newsStoryId = LibEnv::getEnvHttpGET("newsStoryId");
 if (!$newsStoryId) {
   $newsStoryId = LibEnv::getEnvHttpPOST("newsStoryId");
-  }
+}
 
 $image = '';
 if ($newsStoryImage = $newsStoryImageUtils->selectById($newsStoryImageId)) {
   $image = $newsStoryImage->getImage();
-  }
+}
 
 $panelUtils->setHeader($mlText[0]);
 
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $panelUtils->addLine($panelUtils->addCell($warning, "w"));
-    }
   }
+}
 
 $panelUtils->openMultipartForm($PHP_SELF);
 
@@ -104,16 +109,16 @@ if ($image) {
     $filename = urlencode($imageFilePath . $image);
     $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), "<img src='$url' border='0' title='' href=''>");
-    } else {
+  } else {
     $fileUrl = "$imageFileUrl/$image";
     $strImage = "<a href='$fileUrl' $gJSNoStatus title=''>$image</a>";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), $strImage);
-    }
+  }
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), "<input type='checkbox' name='deleteImage' value='1'>");
-  }
+}
 
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");

@@ -1224,10 +1224,22 @@ HEREDOC;
     return($newsHeadings);
   }
 
+  // Get the width of the image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("NEWS_PAPER_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("NEWS_PAPER_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the image
   function renderImage($newsPaper) {
     global $gUtilsUrl;
-    global $gIsPhoneClient;
 
     if (!$newsPaper) {
       return;
@@ -1239,11 +1251,7 @@ HEREDOC;
     $imageFileUrl = $this->imageUrl;
 
     if ($image && @file_exists($imageFilePath . $image)) {
-      if ($gIsPhoneClient) {
-        $width = $this->preferenceUtils->getValue("NEWS_PAPER_PHONE_IMAGE_WIDTH");
-      } else {
-        $width = $this->preferenceUtils->getValue("NEWS_PAPER_IMAGE_WIDTH");
-      }
+      $width = $this->getImageWidth();
 
       $libFlash = new LibFlash();
       if (LibImage::isImage($image)) {

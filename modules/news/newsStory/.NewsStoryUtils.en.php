@@ -28,7 +28,6 @@
 [  32]Width of the news story medium images:
 [  33]The width for the images of a news story when they are displayed in a medium format.
 [  34]Width of the news story large images:
-[  35]The width for the images of a news story when they are displayed in a large format.
 [  36]The width for the images of a newspaper.
 [  37]Width of the newspaper images (phone):
 [  38]The width for the images of a newspaper when they are displayed on a phone or small screen mobile device.

@@ -205,13 +205,25 @@ class NewsHeadingUtils extends NewsHeadingDB {
     return($imageUrl);
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("NEWS_HEADING_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("NEWS_HEADING_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the images of a news story
   function renderImage($newsHeadingId) {
     global $gUtilsUrl;
     global $gNewsUrl;
     global $gJSNoStatus;
     global $gImagesUserUrl;
-    global $gIsPhoneClient;
 
     $str = '';
 
@@ -219,11 +231,7 @@ class NewsHeadingUtils extends NewsHeadingDB {
       return;
     }
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("NEWS_HEADING_PHONE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("NEWS_HEADING_IMAGE_WIDTH");
-    }
+    $width = $this->getImageWidth();
 
     $imageUrl = $this->getImageUrl($newsHeadingId, $width);
 

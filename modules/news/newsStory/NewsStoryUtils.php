@@ -129,8 +129,6 @@ class NewsStoryUtils extends NewsStoryDB {
                                                     array($this->mlText[32], $this->mlText[33], PREFERENCE_TYPE_TEXT, 140),
                                                       "NEWS_STORY_PHONE_IMAGE_WIDTH" =>
                                                       array($this->mlText[9], $this->mlText[10], PREFERENCE_TYPE_TEXT, 100),
-                                                        "NEWS_STORY_IMAGE_LARGE_WIDTH" =>
-                                                        array($this->mlText[34], $this->mlText[35], PREFERENCE_TYPE_TEXT, 240),
                                                           "NEWS_PAPER_IMAGE_WIDTH" =>
                                                           array($this->mlText[29], $this->mlText[36], PREFERENCE_TYPE_TEXT, 140),
                                                             "NEWS_PAPER_PHONE_IMAGE_WIDTH" =>
@@ -514,12 +512,24 @@ class NewsStoryUtils extends NewsStoryDB {
     }
   }
 
+  // Get the width of an image
+  function getImageWidth() {
+    global $gIsPhoneClient;
+
+    if ($gIsPhoneClient) {
+      $width = $this->preferenceUtils->getValue("NEWS_STORY_PHONE_IMAGE_WIDTH");
+    } else {
+      $width = $this->preferenceUtils->getValue("NEWS_STORY_IMAGE_WIDTH");
+    }
+
+    return($width);
+  }
+
   // Render the image
   function renderImage($newsStory, $newsStoryParagraphId = '') {
     global $gNewsUrl;
     global $gUtilsUrl;
     global $gJSNoStatus;
-    global $gIsPhoneClient;
 
     if (!$newsStory) {
       return;
@@ -554,11 +564,7 @@ class NewsStoryUtils extends NewsStoryDB {
 
     if ($image && @file_exists($imageFilePath . $image)) {
       if (LibImage::isImage($image)) {
-        if ($gIsPhoneClient) {
-          $width = $this->preferenceUtils->getValue("NEWS_STORY_PHONE_IMAGE_WIDTH");
-        } else {
-          $width = $this->preferenceUtils->getValue("NEWS_STORY_IMAGE_WIDTH");
-        }
+        $width = $this->getImageWidth();
 
         if (!LibImage::isGif($image)) {
           // Resize the image
