@@ -1163,25 +1163,35 @@ HEREDOC;
   }
 
   function getExerciseIncorrectAnswersImageUrl($size, $horizontal) {
-    $incorrectColor = urlencode($this->incorrectColor);
+    $color = urlencode($this->incorrectColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($incorrectColor, $size, $horizontal);
+    // Avoid a 1 pixel wide answer color
+    if ($size == 1) {
+      $color = urlencode($this->noAnswerColor);
+    }
+
+    $url = $this->getExerciseResultsGraphImageUrl($color, $size, $horizontal);
 
     return($url);
   }
 
   function getExerciseNoAnswersImageUrl($size, $horizontal) {
-    $noAnswerColor = urlencode($this->noAnswerColor);
+    $color = urlencode($this->noAnswerColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($noAnswerColor, $size, $horizontal);
+    $url = $this->getExerciseResultsGraphImageUrl($color, $size, $horizontal);
 
     return($url);
   }
 
   function getExerciseCorrectAnswersImageUrl($size, $horizontal) {
-    $correctColor = urlencode($this->correctColor);
+    $color = urlencode($this->correctColor);
 
-    $url = $this->getExerciseResultsGraphImageUrl($correctColor, $size, $horizontal);
+    // Avoid a 1 pixel wide answer color
+    if ($size == 1) {
+      $color = urlencode($this->noAnswerColor);
+    }
+
+    $url = $this->getExerciseResultsGraphImageUrl($color, $size, $horizontal);
 
     return($url);
   }
