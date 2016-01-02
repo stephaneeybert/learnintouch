@@ -23,12 +23,12 @@
 [  23]Class:
 [  24]Participant:
 [  25]Do the exercise
-[  26]correct answers out of
+[  26]correct answer(s) out of
 [  27]questions
 [  28]Comment:
 [  29]You have not answered
 [  30]You have answered
-[  31]correct answer(s) out of
+[  31]participant(s)
 [  32]You can
 [  33]send a results comment
 [  34]to the participant.
@@ -38,7 +38,7 @@
 [  38]The participant is inactive
 [  39]The participant has completed the exercise
 [  40]Grade
-[  41]The grade is a letter or some text that represents the performance of the participant.
+[  41]The grade is a letter or some text that represents the performance of the participant.\n\nEach grade corresponds to a range of percentages.
 [  42]Results
 [  43]The results is the number of correct answers by the number of questions.
 [  44]Points

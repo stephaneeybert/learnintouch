@@ -1031,7 +1031,7 @@ HEREDOC;
     } else {
       $title = '';
     }
-    $title .= $this->getExerciseResultsGraphTitle($nbParticipants, $nbCorrectAnswers);
+    $title .= $this->getClassResultsGraphTitle($nbParticipants, $nbCorrectAnswers);
 
     $sizes = $this->getExerciseResultsGraphImageSizes($nbParticipants, $nbCorrectAnswers, $nbIncorrectAnswers);
 
@@ -1138,6 +1138,14 @@ HEREDOC;
     return($title);
   }
 
+  function getClassResultsGraphTitle($nbParticipants, $nbCorrectAnswers) {
+    $this->loadLanguageTexts();
+
+    $title = $nbCorrectAnswers . ' ' . $this->websiteText[26] . ' ' . $nbParticipants. ' ' . $this->websiteText[31];
+
+    return($title);
+  }
+
   function renderExerciseResultsGraphNoAnswerImageUrl($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, $horizontal) {
     $sizes = $this->getExerciseResultsGraphImageSizes($nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers);
 
@@ -1212,7 +1220,7 @@ HEREDOC;
     return($url);
   }
 
-  // Render the exercise results of a subscription
+  // Render the exercise results of a subscription or of a class
   function renderResultsGraph($elearningResults) {
     global $gUtilsUrl;
     global $gElearningUrl;
@@ -1898,7 +1906,7 @@ HEREDOC;
         . $this->websiteText[15] . " " . $elapsedTime . "</div>";
 
       $str .= "\n<div class='elearning_exercise_comment'><span class='elearning_exercise_label'>"
-        . $this->websiteText[1] . '</span> ' . $points . " <span class='elearning_exercise_label'>" . $this->websiteText[22] . "</span> " . $nbCorrectAnswers . " <span class='elearning_exercise_label'>" . $this->websiteText[31] . "</span> " . $nbQuestions . " <span class='elearning_exercise_label'>" . $this->websiteText[27]
+        . $this->websiteText[1] . '</span> ' . $points . " <span class='elearning_exercise_label'>" . $this->websiteText[22] . "</span> " . $nbCorrectAnswers . " <span class='elearning_exercise_label'>" . $this->websiteText[26] . "</span> " . $nbQuestions . " <span class='elearning_exercise_label'>" . $this->websiteText[27]
         . "</div>";
 
       if ($nbNotAnswered > 0) {

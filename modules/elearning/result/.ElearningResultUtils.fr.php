@@ -23,12 +23,12 @@
 [  23]Classe:
 [  24]Participant:
 [  25]Faire l'exercice
-[  26]réponses correctes sur
+[  26]réponse(s) correcte(s) sur
 [  27]questions
 [  28]Commentaire:
 [  29]Vous n'avez pas répondu à
 [  30]Vous avez répondu à
-[  31]réponse(s) correcte(s) sur
+[  31]participant(s)
 [  32]Vous pouvez
 [  33]envoyer un commentaire de résultats
 [  34]au participant.
@@ -38,7 +38,7 @@
 [  38]Le participant est inactif
 [  39]Le participant a fini l'exercice
 [  40]Note
-[  41]La note est une lettre ou un texte qui représente la performance du participant.
+[  41]La note est une lettre ou un texte qui représente la performance du participant.\n\nChaque note correspond à une plage de pourcentages.
 [  42]Résultats
 [  43]Les résultats sont le nombre de réponses correctes par le nombre de questions.
 [  44]Points
