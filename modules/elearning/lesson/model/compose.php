@@ -273,28 +273,7 @@ if ($elearningLessonHeadings = $elearningLessonHeadingUtils->selectByElearningLe
   }
 }
 
-$TODO_strAddDelete = <<<HEREDOC
-<script type='text/javascript'>
-$(document).ready(function() {
-
-$("#addButton").click(function() {
-  var url = '$gElearningUrl/lesson/heading/add.php?elearningLessonModelId=$elearningLessonModelId';
-  ajaxAsynchronousRequest(url, displayAddedHeading);
-});
-
-function displayAddedHeading(responseText) {
-  var response = eval('(' + responseText + ')');
-  var elearningLessonHeadingId = response.elearningLessonHeadingId;
-  if (elearningLessonHeadingId) {
-  }
-}
-
-});
-</script>
-HEREDOC;
-
-$strAddLessonHeading = "<a href='$PHP_SELF?elearningLessonModelId=$elearningLessonModelId&addLessonHeading=1' $gJSNoStatus>"
-  . "<img border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'> $mlText[1]</a>";
+$strAddLessonHeading = "<img id='addButton' border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'> $mlText[1]";
 $panelUtils->addLine('', $panelUtils->addCell($strAddLessonHeading, "nb"));
 $panelUtils->addLine();
 $panelUtils->addLine('', $panelUtils->getOk());
