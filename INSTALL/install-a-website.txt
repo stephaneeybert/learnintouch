@@ -92,7 +92,7 @@ delete from preference;
 delete from statistics_visit;
 delete from statistics_page;
 delete from unique_token;
-programs/mysql/install/bin/mysql -v -u stephane -p db_learnintouch < backup_db_db_learnintouch-10-23_01-05.sql
+programs/mysql/install/bin/mysql -v -u stephane -p db_folkuniversitet < backup_db_db_folkuniversitet
 
 Copy some data files
 \cp -Rf /home/stephane/learnintouch/www/blackebergs/account/data/* /home/stephane/learnintouch/www/folkuniversitet/account/data/
