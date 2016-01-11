@@ -96,8 +96,8 @@ function reportError($message, $errorType = '', $filename = '', $line = '') {
     }
   } else {
     if ($fileName) {
-      $str .= "Filename: $filePath/<span style='color:red; font-size:x-large;'>$fileName</span>\n"
-        . "Line: <span style='color: red; font-size: xx-large'>$line</span>\n";
+      $str .= "Filename: $filePath/$fileName\n"
+        . "Line: $line\n";
     }
   }
 
