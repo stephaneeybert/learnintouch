@@ -6,7 +6,6 @@ $adminModuleUtils->checkAdminModule(MODULE_TEMPLATE);
 
 $mlText = $languageUtils->getMlText(__FILE__);
 
-
 $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
 
 if ($formSubmitted) {
@@ -40,7 +39,7 @@ if ($formSubmitted) {
     $templateUtils->setComputerEntryPage($languageCode, $url);
   }
 
-  $str = LibHtml::urlRedirect("$gTemplateDesignUrl/model/entryAdmin.php");
+  $str = LibHtml::urlRedirect("$gDynpageUrl/entry.php");
   printContent($str);
   return;
 
@@ -65,7 +64,7 @@ if ($formSubmitted) {
     $webpageId = '';
   }
 
-  $panelUtils->setHeader($mlText[0], "$gTemplateDesignUrl/model/entryAdmin.php");
+  $panelUtils->setHeader($mlText[0], "$gDynpageUrl/entry.php");
   $help = $popupUtils->getHelpPopup($mlText[3], 300, 300);
   $panelUtils->setHelp($help);
   $panelUtils->openForm($PHP_SELF, "edit");

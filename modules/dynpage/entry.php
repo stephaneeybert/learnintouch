@@ -7,7 +7,7 @@ $adminModuleUtils->checkAdminModule(MODULE_TEMPLATE);
 $mlText = $languageUtils->getMlText(__FILE__);
 
 
-$panelUtils->setHeader($mlText[0], "$gTemplateDesignUrl/model/admin.php");
+$panelUtils->setHeader($mlText[0], "$gDynpageUrl/admin.php");
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 300);
 $panelUtils->setHelp($help);
 $panelUtils->addLine($panelUtils->addCell("$mlText[3]", "nb"), $panelUtils->addCell("$mlText[4]", "nb"), '');
@@ -32,7 +32,7 @@ foreach ($languages as $language) {
   }
 
   $strCommand = ''
-    . " <a href='$gTemplateDesignUrl/model/entryEdit.php?languageCode=$languageCode' $gJSNoStatus>"
+    . " <a href='$gDynpageUrl/entryEdit.php?languageCode=$languageCode' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageEdit' title='$mlText[2]'></a>";
 
   $strComputerImage = "<img border='0' src='$gCommonImagesUrl/$gImageComputer' title='$mlText[5]'>";
@@ -49,7 +49,7 @@ foreach ($languages as $language) {
     }
 
     $strCommand = ''
-      . " <a href='$gTemplateDesignUrl/model/entryEdit.php?languageCode=$languageCode&amp;isPhone=1' $gJSNoStatus>"
+      . " <a href='$gDynpageUrl/entryEdit.php?languageCode=$languageCode&amp;isPhone=1' $gJSNoStatus>"
       . "<img border='0' src='$gCommonImagesUrl/$gImageEdit' title='$mlText[2]'></a>";
 
     $strPhoneImage = "<img border='0' src='$gCommonImagesUrl/$gImagePda' title='$mlText[6]'>";

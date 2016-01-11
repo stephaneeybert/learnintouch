@@ -30,6 +30,7 @@
 [  37]Deactivate the page secured access
 [  38]The page is secured
 [  39]The secured access to the predefined pages
+[  40]Specify the entry page
 [  41]Assign to an administrator
 [  43]Print the page
 [  44]Go to the page

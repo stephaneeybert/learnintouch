@@ -5,7 +5,6 @@
 [   4]Nom
 [   5]Description
 [   6]Composer le modèle
-[   7]Spécifier la page d'entrée
 [   8]Défaut
 [   9]Dupliquer le modèle
 [  10]Exporter le modèle

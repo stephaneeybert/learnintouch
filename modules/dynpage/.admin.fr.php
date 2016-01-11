@@ -31,6 +31,7 @@
 [  37]Désactiver l'accès sécurisé à la page
 [  38]La page est sécurisée
 [  39]L'accès sécurisé aux pages prédéfinies
+[  40]Spécifier la page d'entrée
 [  41]Assigner à un administrateur
 [  43]Impriner la page
 [  44]Aller à la page

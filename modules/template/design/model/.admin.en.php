@@ -5,7 +5,6 @@
 [   4]Name
 [   5]Description
 [   6]Compose the model
-[   7]Specify the entry page
 [   8]Default
 [   9]Duplicate the model
 [  10]Export the model

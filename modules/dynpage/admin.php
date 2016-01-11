@@ -27,7 +27,9 @@ if ($moduleSecuredPages) {
     . "<img border='0' src='$gCommonImagesUrl/$gImageLock' title='$mlText[39]'></a>";
 }
 $strCommand .= " <a href='$gDynpageUrl/garbage.php' $gJSNoStatus>"
-. "<img border='0' src='$gCommonImagesUrl/$gImageGarbage' title='$mlText[32]'></a>"
+  . "<img border='0' src='$gCommonImagesUrl/$gImageGarbage' title='$mlText[32]'></a>"
+  . " <a href='$gDynpageUrl/entry.php' $gJSNoStatus>"
+  . "<img border='0' src='$gCommonImagesUrl/$gImageHome' title='$mlText[40]'></a>"
   . " <a href='$gDynpageUrl/preference.php' $gJSNoStatus>"
   . "<img border='0' src='$gCommonImagesUrl/$gImageSetup' title='$mlText[27]'></a>";
 
