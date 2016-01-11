@@ -91,7 +91,7 @@ if (count($warnings) > 0) {
 
 $panelUtils->openMultipartForm($PHP_SELF);
 
-if (@file_exists($filePath . $filename)) {
+if (file_exists($filePath . $filename)) {
   $strFile = "<a href='$fileUrl/$filename' $gJSNoStatus title=''>$filename</a>";
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $strFile);

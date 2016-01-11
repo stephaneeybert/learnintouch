@@ -46,7 +46,7 @@ for ($i = 0; $i < count($newsStoryImages); $i++) {
     . " <a href='$gNewsUrl/newsStory/image/delete.php?newsStoryImageId=$newsStoryImageId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
-  if ($image && @file_exists($newsStoryImageUtils->imageFilePath . $image)) {
+  if ($image && file_exists($newsStoryImageUtils->imageFilePath . $image)) {
     $fileUploadUtils->loadLanguageTexts();
     if (!$fileUploadUtils->isGifImage($newsStoryImageUtils->imageFilePath . $image)) {
       // The image is created on the fly

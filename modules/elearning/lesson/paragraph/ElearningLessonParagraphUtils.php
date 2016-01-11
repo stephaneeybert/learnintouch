@@ -67,8 +67,8 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -102,8 +102,8 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->audioIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->audioFilePath . $oneFile)) {
-            @unlink($this->audioFilePath . $oneFile);
+          if (file_exists($this->audioFilePath . $oneFile)) {
+            unlink($this->audioFilePath . $oneFile);
           }
         }
       }
@@ -341,7 +341,7 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "<div class='elearning_lesson_paragraph_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {
@@ -389,7 +389,7 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
 
       $this->playerUtils->setAutostart($autoStartAudioPlayer);
 
-      if (@is_file($gDataPath . "elearning/lesson/paragraph/audio/$audio")) {
+      if (is_file($gDataPath . "elearning/lesson/paragraph/audio/$audio")) {
         if ($this->elearningExerciseUtils->displayDownloadAudioFileIcon()) {
           $str .= ' ' . $this->renderDownload($audio);
         }
@@ -410,7 +410,7 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
     $str = '';
 
     if ($audio) {
-      if (@is_file($gDataPath . "elearning/lesson/paragraph/audio/$audio")) {
+      if (is_file($gDataPath . "elearning/lesson/paragraph/audio/$audio")) {
         $str = $this->playerUtils->renderDownload($gDataPath . "elearning/lesson/paragraph/audio/$audio");
       }
     }

@@ -137,8 +137,8 @@ class BackupUtils extends BackupDB {
   function backupTables($filename, $dbName, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret) {
 
     // If the file aready exists, delete it before creating a new empty one
-    if (@file_exists($filename)) {
-      @unlink($filename);
+    if (file_exists($filename)) {
+      unlink($filename);
     }
 
     $options = '--default-character-set=latin1 --skip-extended-insert ';
@@ -168,15 +168,15 @@ class BackupUtils extends BackupDB {
     $dataFormat = strtoupper($dataFormat);
 
     // If the file aready exists, delete it before creating a new empty one
-    if (@file_exists($filename)) {
-      @unlink($filename);
+    if (file_exists($filename)) {
+      unlink($filename);
     }
 
     // Open the file
-    $fp = @fopen($filename, "w");
+    $fp = fopen($filename, "w");
 
     // Check that the file pointer is valid
-    if (!@is_resource($fp)) {
+    if (!is_resource($fp)) {
       return(false);
     }
 
@@ -405,15 +405,15 @@ class BackupUtils extends BackupDB {
     $this->dataSource->selectDatabase();
 
     // If the file aready exists, delete it before creating a new empty one
-    if (@file_exists($filename)) {
-      @unlink($filename);
+    if (file_exists($filename)) {
+      unlink($filename);
     }
 
     // Open the file
-    $fp = @fopen($filename, "w");
+    $fp = fopen($filename, "w");
 
     // Check that the file pointer is valid
-    if (!@is_resource($fp)) {
+    if (!is_resource($fp)) {
       return(false);
     }
 

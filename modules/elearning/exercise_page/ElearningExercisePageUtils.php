@@ -82,8 +82,8 @@ class ElearningExercisePageUtils extends ElearningExercisePageDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -131,8 +131,8 @@ class ElearningExercisePageUtils extends ElearningExercisePageDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->audioIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->audioFilePath . $oneFile)) {
-            @unlink($this->audioFilePath . $oneFile);
+          if (file_exists($this->audioFilePath . $oneFile)) {
+            unlink($this->audioFilePath . $oneFile);
           }
         }
       }
@@ -3455,7 +3455,7 @@ HEREDOC;
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "\n<div class='elearning_exercise_page_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {

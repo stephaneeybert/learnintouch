@@ -116,8 +116,8 @@ class FormUtils extends FormDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -154,7 +154,7 @@ class FormUtils extends FormDB {
     // Resize the image to the following width
     $width = $this->getImageWidth();
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "<div class='form_image'>";
       if (LibImage::isImage($imagePath . $image)) {
         if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {

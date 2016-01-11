@@ -387,7 +387,7 @@ class TemplateModelUtils extends TemplateModelDB {
       // If a model is already exported under the same name
       // alter the name of the model to be exported
       $filename = $gTemplateDataPath . "export/xml/$name";
-      if (@is_file($filename)) {
+      if (is_file($filename)) {
         $randomNumber = LibUtils::generateUniqueId();
         $name = $name . TEMPLATE_DUPLICATA . '_' . $randomNumber;
         $templateModel->setName($name);
@@ -441,7 +441,7 @@ class TemplateModelUtils extends TemplateModelDB {
       // If a model is already exported under the same name
       // alter the name of the model to be exported
       $filename = $gTemplateDataPath . "export/xml/$name";
-      if (@is_file($filename)) {
+      if (is_file($filename)) {
         $randomNumber = LibUtils::generateUniqueId();
         $name = $name . TEMPLATE_DUPLICATA . '_' . $randomNumber;
         $templateModel->setName($name);

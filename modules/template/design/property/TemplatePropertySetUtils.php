@@ -407,8 +407,8 @@ class TemplatePropertySetUtils extends TemplatePropertySetDB {
 
       // Copy the images if any
       if ($name == 'BACKGROUND_IMAGE') {
-        if (@is_file($gTemplateDataPath . "export/image/$value")) {
-          @copy($gTemplateDataPath . "export/image/$value", $this->templatePropertyUtils->imagePath . $value);
+        if (is_file($gTemplateDataPath . "export/image/$value")) {
+          copy($gTemplateDataPath . "export/image/$value", $this->templatePropertyUtils->imagePath . $value);
         }
       }
     }

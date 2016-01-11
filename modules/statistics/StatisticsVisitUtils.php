@@ -241,7 +241,7 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
       $iconFilename = "referer" . $refererName . ".png";
       $iconFile = $gStatisticsImagePath . $iconFilename;
       $iconUrl = $gStatisticsImageUrl . "/" . $iconFilename;
-      if (@is_file($iconFile)) {
+      if (is_file($iconFile)) {
         $srcIcon = "<img src='$iconUrl"
           . "' title='' alt='' />";
       } else {
@@ -996,7 +996,7 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
       $iconFilename = "browser" . $browserName . ".png";
       $iconFile = $gStatisticsImagePath . $iconFilename;
       $iconUrl = $gStatisticsImageUrl . "/" . $iconFilename;
-      if (@is_file($iconFile)) {
+      if (is_file($iconFile)) {
         $srcIcon = "<img src='$iconUrl" . "' title='' alt='' />";
       } else {
         $srcIcon = '';
@@ -1114,7 +1114,7 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
       $iconFilename = "phone" . $phoneName . ".png";
       $iconFile = $gStatisticsImagePath . $iconFilename;
       $iconUrl = $gStatisticsImageUrl . "/" . $iconFilename;
-      if (@is_file($iconFile)) {
+      if (is_file($iconFile)) {
         $srcIcon = "<img src='$iconUrl"
           . "' title='' alt='' />";
       } else {
@@ -1227,7 +1227,7 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
       $iconFilename = "robot" . $robotName . ".png";
       $iconFile = $gStatisticsImagePath . $iconFilename;
       $iconUrl = $gStatisticsImageUrl . "/" . $iconFilename;
-      if (@is_file($iconFile)) {
+      if (is_file($iconFile)) {
         $srcIcon = "<img src='$iconUrl"
           . "' title='' alt='' />";
       } else {
@@ -1463,7 +1463,7 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
       $iconFilename = "os" . $osName . ".png";
       $iconFile = $gStatisticsImagePath . $iconFilename;
       $iconUrl = $gStatisticsImageUrl . "/" . $iconFilename;
-      if (@is_file($iconFile)) {
+      if (is_file($iconFile)) {
         $srcIcon = "<img src='$iconUrl"
           . "' title='' alt='' />";
       } else {

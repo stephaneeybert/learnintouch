@@ -86,7 +86,7 @@ $panelUtils->openMultipartForm($PHP_SELF);
 if ($audio) {
   $filePath = "$newsStoryUtils->audioFilePath$audio";
   $fileUrl = "$newsStoryUtils->audioFileUrl/$audio";
-  if (@file_exists($filePath)) {
+  if (file_exists($filePath)) {
     $strAudio = "<a href='$fileUrl' $gJSNoStatus title=''>$audio</a>";
     $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), $strAudio);
     $panelUtils->addLine();

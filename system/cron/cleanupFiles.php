@@ -7,7 +7,7 @@ if ($argc == 2) {
   die("Some arguments are missing for the file $PHP_SELF");
 }
 
-if (!@is_file($specific)) {
+if (!is_file($specific)) {
   die("The file $specific is missing for the file $PHP_SELF");
 }
 include($specific);

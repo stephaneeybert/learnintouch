@@ -13,7 +13,7 @@ class SocialUserUtils {
 
     $logo = $this->profileUtils->getLogoFilename();
 
-    if ($logo && @is_file($this->profileUtils->filePath . $logo)) {
+    if ($logo && is_file($this->profileUtils->filePath . $logo)) {
       $logoUrl = $this->profileUtils->fileUrl . '/' . $logo;
     } else {
       $logoUrl = '';

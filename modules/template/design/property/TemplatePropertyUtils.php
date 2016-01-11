@@ -36,8 +36,8 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
         // Check if the image is not present in the database table
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }
@@ -68,12 +68,12 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
       $name = $templateProperty->getName();
       if ($name == 'BACKGROUND_IMAGE') {
         $value = $templateProperty->getValue();
-        if (@is_file($this->imagePath . $value)) {
+        if (is_file($this->imagePath . $value)) {
           $prefix = LibFile::getFilePrefix($value);
           $suffix = LibFile::getFileSuffix($value);
           $randomNumber = LibUtils::generateUniqueId();
           $imageDuplicata = $prefix . '_' . $randomNumber . '.' . $suffix;
-          @copy($this->imagePath . $value, $this->imagePath . $imageDuplicata);
+          copy($this->imagePath . $value, $this->imagePath . $imageDuplicata);
           $templateProperty->setValue($imageDuplicata);
         }
       }
@@ -94,8 +94,8 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
 
       // Copy the images if any
       if ($name == 'BACKGROUND_IMAGE') {
-        if (@is_file($this->imagePath . $value)) {
-          @copy($this->imagePath . $value, $gTemplateDataPath . "export/image/$value");
+        if (is_file($this->imagePath . $value)) {
+          copy($this->imagePath . $value, $gTemplateDataPath . "export/image/$value");
         }
       }
     }

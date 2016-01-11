@@ -497,7 +497,7 @@ class ProfileUtils extends ProfileDB {
 
     $filename = $this->getIPhoneIconFilename();
 
-    if (@is_file($this->filePath . $filename)) {
+    if (is_file($this->filePath . $filename)) {
       $str .= "\n<link rel='apple-touch-icon' href='$this->fileUrl/$filename' />";
     }
 
@@ -510,7 +510,7 @@ class ProfileUtils extends ProfileDB {
 
     $filename = $this->getFaviconFilename();
 
-    if (@is_file($this->filePath . $filename)) {
+    if (is_file($this->filePath . $filename)) {
       $str .= "\n<link rel='shortcut icon' href='$this->fileUrl/$filename' />";
     }
 
@@ -524,8 +524,8 @@ class ProfileUtils extends ProfileDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->fileIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->filePath . $oneFile)) {
-            @unlink($this->filePath . $oneFile);
+          if (file_exists($this->filePath . $oneFile)) {
+            unlink($this->filePath . $oneFile);
           }
         }
       }

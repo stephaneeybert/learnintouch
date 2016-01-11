@@ -214,8 +214,8 @@ class NavbarItemUtils extends NavbarItemDB {
         // Check if the image is not present in the database table
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }

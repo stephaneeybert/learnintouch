@@ -10,8 +10,8 @@ $backupFilePath = $backupUtils->renderBackupFilePath();
 $fileName = basename($backupFilePath);
 
 if (is_readable($backupFilePath)) {
-  $fileTimestamp = @filemtime($backupFilePath);
-  $fileSize = @filesize($backupFilePath);
+  $fileTimestamp = filemtime($backupFilePath);
+  $fileSize = filesize($backupFilePath);
   $fileTime = date("d/m/Y H:i:s", $fileTimestamp);
   $fileUrl = $backupFileUrl;
 } else {

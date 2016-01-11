@@ -47,8 +47,8 @@ class NewsStoryImageUtils extends NewsStoryImageDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@is_file($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (is_file($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -216,7 +216,7 @@ class NewsStoryImageUtils extends NewsStoryImageDB {
     $imageFilePath = $this->imageFilePath;
     $imageFileUrl = $this->imageFileUrl;
 
-    if ($image && @file_exists($imageFilePath . $image)) {
+    if ($image && file_exists($imageFilePath . $image)) {
       if (!LibImage::isGif($image)) {
         $filename = $imageFilePath . $image;
 

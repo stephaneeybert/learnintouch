@@ -95,8 +95,8 @@ class FlashUtils extends FlashDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*') && !stristr($oneFile, FLASH_WDDX_SUFFIX)) {
         if (!$this->fileIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->filePath . $oneFile)) {
-            @unlink($this->filePath . $oneFile);
+          if (file_exists($this->filePath . $oneFile)) {
+            unlink($this->filePath . $oneFile);
           }
         }
       }
@@ -137,8 +137,8 @@ class FlashUtils extends FlashDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*') && stristr($oneFile, FLASH_WDDX_SUFFIX)) {
         if (!$this->wddxFileIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($filePath . $oneFile)) {
-            @unlink($filePath . $oneFile);
+          if (file_exists($filePath . $oneFile)) {
+            unlink($filePath . $oneFile);
           }
         }
       }

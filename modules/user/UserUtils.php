@@ -140,8 +140,8 @@ class UserUtils extends UserDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }
@@ -977,13 +977,13 @@ class UserUtils extends UserDB {
   // Export the users into a csv file
   function exportCSV($filename) {
     // If the file aready exists, delete it before creating a new empty one
-    if (@file_exists($filename)) {
-      @unlink($filename);
+    if (file_exists($filename)) {
+      unlink($filename);
     }
 
-    $fp = @fopen($filename, "w");
+    $fp = fopen($filename, "w");
 
-    if (!@is_resource($fp)) {
+    if (!is_resource($fp)) {
       return(false);
     }
 
@@ -1023,7 +1023,7 @@ class UserUtils extends UserDB {
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "<div class='user_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {

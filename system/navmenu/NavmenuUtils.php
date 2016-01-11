@@ -99,22 +99,22 @@ class NavmenuUtils extends NavmenuDB {
         $image = $navmenuItem->getImage();
         $imageOver = $navmenuItem->getImageOver();
         if ($image) {
-          if ($image && @is_file($imagePath . $image)) {
+          if ($image && is_file($imagePath . $image)) {
             $randomNumber = LibUtils::generateUniqueId();
             $imagePrefix = LibFile::getFilePrefix($image);
             $imageSuffix = LibFile::getFileSuffix($image);
             $imageDuplicata = $imagePrefix . '_' . $randomNumber . '.' . $imageSuffix;
-            @copy($imagePath . $image, $imagePath . $imageDuplicata);
+            copy($imagePath . $image, $imagePath . $imageDuplicata);
             $duplicatedNavmenuItem->setImage($imageDuplicata);
           }
         }
         if ($imageOver) {
-          if ($imageOver && @is_file($imagePath . $imageOver)) {
+          if ($imageOver && is_file($imagePath . $imageOver)) {
             $randomNumber = LibUtils::generateUniqueId();
             $imagePrefix = LibFile::getFilePrefix($imageOver);
             $imageSuffix = LibFile::getFileSuffix($imageOver);
             $imageDuplicata = $imagePrefix . '_' . $randomNumber . '.' . $imageSuffix;
-            @copy($imagePath . $imageOver, $imagePath . $imageDuplicata);
+            copy($imagePath . $imageOver, $imagePath . $imageDuplicata);
             $duplicatedNavmenuItem->setImageOver($imageDuplicata);
           }
         }

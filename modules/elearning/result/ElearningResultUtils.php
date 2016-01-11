@@ -1729,7 +1729,7 @@ HEREDOC;
     $strLogo = '';
 
     $logo = $this->profileUtils->getLogoFilename();
-    if ($logo && @is_file($this->profileUtils->filePath . $logo) && $this->elearningExerciseUtils->displayWebsiteLogo()) {
+    if ($logo && is_file($this->profileUtils->filePath . $logo) && $this->elearningExerciseUtils->displayWebsiteLogo()) {
       $strLogo = "<img src='$this->profileUtils->fileUrl/$logo' title='' alt='' />";
     }
 

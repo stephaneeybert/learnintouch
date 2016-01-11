@@ -54,9 +54,9 @@ $backupFileUrl = $backupUtils->renderBackupFileUrl();
 $backupFilePath = $backupUtils->renderBackupFilePath();
 if (is_readable($backupFilePath)) {
   // Get the file creation time
-  $fileTimestamp = @filemtime($backupFilePath);
+  $fileTimestamp = filemtime($backupFilePath);
   $fileTime = date("d/m/Y H:i:s", $fileTimestamp);
-  $fileSize = @filesize($backupFilePath);
+  $fileSize = filesize($backupFilePath);
   $strFile = "<span id='backupFile'><a href='$backupFileUrl' $gJSNoStatus title='$mlText[8]'>" . basename($backupFilePath) . "</a> $mlText[15] <span id='backupFileSize' style='color:red;'>$fileSize</span></span>";
 } else {
   $strFile = "<span id='backupFile'></span>";
@@ -107,18 +107,18 @@ $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell("$mlText[4]", "nb"), $panelUtils->addCell("$mlText[2]", "nb"), $panelUtils->addCell($mlText[5], "nbc"), '');
 $panelUtils->addLine();
 
-$backupDir = @opendir($backupUtils->previousBackupFilePath);
+$backupDir = opendir($backupUtils->previousBackupFilePath);
 
 $fileTimestamps = Array();
 $fileSizes = Array();
-while (($fileName = @readdir($backupDir)) !== false) {
+while (($fileName = readdir($backupDir)) !== false) {
   // Do not list the current and parent directories
-  if (!@is_dir($fileName)) {
+  if (!is_dir($fileName)) {
     // Get the file size
-    $fileSize = @filesize("$backupUtils->previousBackupFilePath$fileName");
+    $fileSize = filesize("$backupUtils->previousBackupFilePath$fileName");
 
     // Get the file creation time
-    $fileTimestamp = @filemtime("$backupUtils->previousBackupFilePath$fileName");
+    $fileTimestamp = filemtime("$backupUtils->previousBackupFilePath$fileName");
 
     $fileTimestamps[$fileName] = $fileTimestamp;
     $fileSizes[$fileName] = $fileSize;
@@ -146,7 +146,7 @@ foreach ($fileTimestamps as $fileName => $fileTimestamp) {
 }
 $panelUtils->closeList();
 
-@closedir($backupDir);
+closedir($backupDir);
 
 $str = $panelUtils->render();
 

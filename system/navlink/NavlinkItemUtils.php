@@ -43,8 +43,8 @@ class NavlinkItemUtils extends NavlinkItemDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }
@@ -128,7 +128,7 @@ class NavlinkItemUtils extends NavlinkItemDB {
 
     $str .= "\n<div class='navlink' $strNoGap>";
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       if ($imageOver && is_file($imagePath . $imageOver)) {
         $strOnMouseOver = "onmouseover=\"src='$imageUrl/$imageOver'\" onmouseout=\"src='$imageUrl/$image'\"";
       } else {

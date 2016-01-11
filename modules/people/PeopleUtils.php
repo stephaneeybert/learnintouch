@@ -94,8 +94,8 @@ class PeopleUtils extends PeopleDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -386,7 +386,7 @@ class PeopleUtils extends PeopleDB {
 
     // If no image is specified then render nothing
     $imageFilePath = $this->imageFilePath;
-    if (!$image || !@is_file($imageFilePath . $image)) {
+    if (!$image || !is_file($imageFilePath . $image)) {
       return;
     }
 

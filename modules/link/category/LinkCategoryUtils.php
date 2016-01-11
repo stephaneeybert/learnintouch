@@ -196,7 +196,7 @@ class LinkCategoryUtils extends LinkCategoryDB {
     // Resize the image to the following width
     $width = $this->linkUtils->getImageWidth();
 
-    if ($image && @file_exists($this->linkUtils->imageFilePath . $image)) {
+    if ($image && file_exists($this->linkUtils->imageFilePath . $image)) {
       // A gif image cannot be resized
       // No support for the gif format due to copyrights issues
       if (!$this->fileUploadUtils->isGifImage($this->linkUtils->imageFilePath . $image)) {
@@ -276,7 +276,7 @@ class LinkCategoryUtils extends LinkCategoryDB {
       $image = $link->getImage();
       $url = $link->getUrl();
 
-      if ($image && @file_exists($this->linkUtils->imageFilePath . $image)) {
+      if ($image && file_exists($this->linkUtils->imageFilePath . $image)) {
         if (!$this->fileUploadUtils->isGifImage($this->linkUtils->imageFilePath . $image)) {
           $filename = $this->linkUtils->imageFilePath . $image;
           $filename = urlencode($filename);

@@ -46,7 +46,7 @@ for ($i = 0; $i < count($shopItemImages); $i++) {
     . " <a href='$gShopUrl/item/image/delete.php?shopItemImageId=$shopItemImageId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
-  if ($image && @file_exists($shopItemImageUtils->imageFilePath . $image)) {
+  if ($image && file_exists($shopItemImageUtils->imageFilePath . $image)) {
     // Resize the image to the following width
     $preferenceUtils->init($shopItemUtils->preferences);
     $width = $preferenceUtils->getValue("SHOP_DEFAULT_MINI_WIDTH");

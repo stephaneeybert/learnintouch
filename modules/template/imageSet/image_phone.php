@@ -80,7 +80,7 @@ if (count($warnings) > 0) {
 
 $panelUtils->openMultipartForm($PHP_SELF);
 
-if (@is_file($imagePath . $standardImage)) {
+if (is_file($imagePath . $standardImage)) {
   $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), "<img src='$imageUrl/$standardImage' border='0' title='' href=''>");
 
   $panelUtils->addLine();

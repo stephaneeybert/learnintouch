@@ -125,8 +125,8 @@ class MailUtils extends MailDB {
       if ($imageFile != "." && $imageFile != ".." && !strstr($imageFile, '*')) {
         if (!$this->imageIsUsed($imageFile)) {
           $imageFile = str_replace(" ", "\\ ", $imageFile);
-          if (@file_exists($this->imagePath . $imageFile)) {
-            @unlink($this->imagePath . $imageFile);
+          if (file_exists($this->imagePath . $imageFile)) {
+            unlink($this->imagePath . $imageFile);
           }
         }
       }
@@ -141,8 +141,8 @@ class MailUtils extends MailDB {
       if ($attachedFile != "." && $attachedFile != ".." && !strstr($attachedFile, '*')) {
         if (!$this->attachedFileIsUsed($attachedFile)) {
           $attachedFile = str_replace(" ", "\\ ", $attachedFile);
-          if (@file_exists($this->filePath . $attachedFile)) {
-            @unlink($this->filePath . $attachedFile);
+          if (file_exists($this->filePath . $attachedFile)) {
+            unlink($this->filePath . $attachedFile);
           }
         }
       }
@@ -187,7 +187,7 @@ class MailUtils extends MailDB {
     $handle = opendir($this->filePath);
     while ($attachedFile = readdir($handle)) {
       if ($attachedFile != "." && $attachedFile != ".." && !strstr($attachedFile, '*')) {
-        if (@file_exists($this->filePath . $attachedFile)) {
+        if (file_exists($this->filePath . $attachedFile)) {
           array_push($attachedFiles, $attachedFile);
         }
       }
@@ -200,8 +200,8 @@ class MailUtils extends MailDB {
   // Delete an attached file
   function deleteAttachedFile($filename) {
     $filename = str_replace(" ", "\\ ", $filename);
-    if (@file_exists($this->filePath . $filename)) {
-      @unlink($this->filePath . $filename);
+    if (file_exists($this->filePath . $filename)) {
+      unlink($this->filePath . $filename);
     }
   }
 
@@ -356,7 +356,7 @@ class MailUtils extends MailDB {
 
       // If a file is listed in a mail but does not exist then remove it from the list
       foreach ($filenames as $key => $filename) {
-        if (!@file_exists($this->filePath . $filename)) {
+        if (!file_exists($this->filePath . $filename)) {
           unset($filenames[$key]);
           // If a file is missing then remove it from the mail attachments list
           $this->removeAttachment($mailId, $filename);

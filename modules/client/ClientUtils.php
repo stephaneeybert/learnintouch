@@ -86,8 +86,8 @@ class ClientUtils extends ClientDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }
@@ -232,7 +232,7 @@ class ClientUtils extends ClientDB {
       $image = $client->getImage();
       $url = $client->getUrl();
 
-      if ($image && @file_exists($this->imagePath . $image)) {
+      if ($image && file_exists($this->imagePath . $image)) {
         // A gif image cannot be resized
         // No support for the gif format due to copyrights issues
         if (!$this->fileUploadUtils->isGifImage($this->imagePath . $image)) {
@@ -301,7 +301,7 @@ class ClientUtils extends ClientDB {
       $image = $client->getImage();
       $url = $client->getUrl();
 
-      if ($image && @file_exists($this->imagePath . $image)) {
+      if ($image && file_exists($this->imagePath . $image)) {
         if (!$this->fileUploadUtils->isGifImage($this->imagePath . $image)) {
           $filename = $this->imagePath . $image;
           $filename = urlencode($filename);

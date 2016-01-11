@@ -71,8 +71,8 @@ class ElearningAnswerUtils extends ElearningAnswerDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -102,8 +102,8 @@ class ElearningAnswerUtils extends ElearningAnswerDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->audioIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->audioFilePath . $oneFile)) {
-            @unlink($this->audioFilePath . $oneFile);
+          if (file_exists($this->audioFilePath . $oneFile)) {
+            unlink($this->audioFilePath . $oneFile);
           }
         }
       }
@@ -386,7 +386,7 @@ class ElearningAnswerUtils extends ElearningAnswerDB {
     $str = '';
 
     if ($audio) {
-      if (@is_file($gDataPath . "elearning/answer/audio/$audio")) {
+      if (is_file($gDataPath . "elearning/answer/audio/$audio")) {
         $str = $this->playerUtils->renderDownload($gDataPath . "elearning/answer/audio/$audio");
       }
     }
@@ -443,7 +443,7 @@ class ElearningAnswerUtils extends ElearningAnswerDB {
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "\n<span class='elearning_question_answer_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {

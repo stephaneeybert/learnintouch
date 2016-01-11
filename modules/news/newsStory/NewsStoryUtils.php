@@ -201,8 +201,8 @@ class NewsStoryUtils extends NewsStoryDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->audioIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->audioFilePath . $oneFile)) {
-            @unlink($this->audioFilePath . $oneFile);
+          if (file_exists($this->audioFilePath . $oneFile)) {
+            unlink($this->audioFilePath . $oneFile);
           }
         }
       }
@@ -562,7 +562,7 @@ class NewsStoryUtils extends NewsStoryDB {
     $imageFilePath = $this->newsStoryImageUtils->imageFilePath;
     $imageFileUrl = $this->newsStoryImageUtils->imageFileUrl;
 
-    if ($image && @file_exists($imageFilePath . $image)) {
+    if ($image && file_exists($imageFilePath . $image)) {
       if (LibImage::isImage($image)) {
         $width = $this->getImageWidth();
 
@@ -834,7 +834,7 @@ class NewsStoryUtils extends NewsStoryDB {
     $audio = $newsStory->getAudio();
 
     if ($audio) {
-      if (@is_file($gDataPath . "news/newsStory/audio/$audio")) {
+      if (is_file($gDataPath . "news/newsStory/audio/$audio")) {
         $str = $this->playerUtils->renderDownload($gDataPath . "news/newsStory/audio/$audio");
       }
     }

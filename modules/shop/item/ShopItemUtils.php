@@ -1121,7 +1121,7 @@ HEREDOC;
 
     $str = "\n<div class='shop_item_images'>";
     foreach ($images as $image) {
-      if ($image && @file_exists($imageFilePath . $image)) {
+      if ($image && file_exists($imageFilePath . $image)) {
         if (!LibImage::isGif($image)) {
           $filename = $imageFilePath . $image;
 
@@ -1474,7 +1474,7 @@ HEREDOC;
 
     $width = $this->getImageWidth();
 
-    if ($image && @file_exists($imageFilePath . $image)) {
+    if ($image && file_exists($imageFilePath . $image)) {
       if (!LibImage::isGif($image)) {
         $filename = $imageFilePath . $image;
 

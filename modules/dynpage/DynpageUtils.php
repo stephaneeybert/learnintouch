@@ -166,8 +166,8 @@ class DynpageUtils extends DynpageDB {
       if ($imageFile != "." && $imageFile != ".." && !strstr($imageFile, '*')) {
         if (!$this->imageIsUsed($imageFile)) {
           $imageFile = str_replace(" ", "\\ ", $imageFile);
-          if (@file_exists($this->imagePath . $imageFile)) {
-            @unlink($this->imagePath . $imageFile);
+          if (file_exists($this->imagePath . $imageFile)) {
+            unlink($this->imagePath . $imageFile);
           }
         }
       }

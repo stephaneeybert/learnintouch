@@ -47,9 +47,9 @@ if ($formSubmitted == 1) {
   }
 
   // Create the album directory if it does not yet exist
-  if (!@file_exists($imagePath . $folderName)) {
+  if (!file_exists($imagePath . $folderName)) {
     $folderName = LibString::stripNonFilenameChar($albumName);
-    @mkdir($imagePath . $folderName);
+    mkdir($imagePath . $folderName);
   }
 
   // Check if a file has been specified...
@@ -145,7 +145,7 @@ if (count($warnings) > 0) {
 
 $panelUtils->openMultipartForm($PHP_SELF);
 
-if ($image && @file_exists($imagePath . $folderName . '/' . $image)) {
+if ($image && file_exists($imagePath . $folderName . '/' . $image)) {
   if (!LibImage::isGif($image)) {
     $filename = urlencode($imagePath . $folderName . '/' . $image);
     $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";

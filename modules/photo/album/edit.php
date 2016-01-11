@@ -62,10 +62,10 @@ if ($formSubmitted) {
     if (!$currentFolderName) {
       $currentFolderName = $folderName;
     }
-    if ($currentFolderName && @file_exists($imagePath . $currentFolderName)) {
-      @rename($imagePath . $currentFolderName, $imagePath . $folderName);
-    } else if (!@file_exists($imagePath . $folderName)) {
-      @mkdir($imagePath . $folderName);
+    if ($currentFolderName && file_exists($imagePath . $currentFolderName)) {
+      rename($imagePath . $currentFolderName, $imagePath . $folderName);
+    } else if (!file_exists($imagePath . $folderName)) {
+      mkdir($imagePath . $folderName);
     }
 
     if ($photoAlbum = $photoAlbumUtils->selectById($photoAlbumId)) {

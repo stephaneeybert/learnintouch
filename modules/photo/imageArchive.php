@@ -74,7 +74,7 @@ if ($formSubmitted == 1) {
       $photoAlbumId = $photoAlbum->getId();
       if ($replaceOrAddToAlbum == PHOTO_REPLACE_ALBUM) {
         // Delete the directory of the already existing album if any
-        if (@file_exists($imagePath . $folderName)) {
+        if (file_exists($imagePath . $folderName)) {
           if ($folderName) {
             LibDir::deleteDirectory($imagePath . $folderName);
           }
@@ -88,7 +88,7 @@ if ($formSubmitted == 1) {
 
     // Unzip the file
     chdir($imagePath);
-    @shell_exec("unzip -o -j -d $folderName $archiveFilename");
+    shell_exec("unzip -o -j -d $folderName $archiveFilename");
 
     if ($photoAlbum = $photoAlbumUtils->selectByFolderName($folderName)) {
       $photoAlbumId = $photoAlbum->getId();
@@ -105,9 +105,9 @@ if ($formSubmitted == 1) {
 
     // If the archive file did not create a directory
     // like a series of images instead of a directory containing images
-    if (!@file_exists($imagePath . $folderName)) {
+    if (!file_exists($imagePath . $folderName)) {
       // Create a directory
-      @mkdir($imagePath . $folderName);
+      mkdir($imagePath . $folderName);
     }
 
     // Make the directory accessible
@@ -120,7 +120,7 @@ if ($formSubmitted == 1) {
     $handle = opendir($imagePath);
     while ($imageFilename = readdir($handle)) {
       if ($imageFilename != "." && $imageFilename != ".." && $fileUploadUtils->isImageType($imageFilename)) {
-        @rename($imagePath . $oneFile, $imagePath . $folderName . '/' . $oneFile);
+        rename($imagePath . $oneFile, $imagePath . $folderName . '/' . $oneFile);
       }
     }
 
@@ -129,15 +129,15 @@ if ($formSubmitted == 1) {
     while ($imageFilename = readdir($handle)) {
       if ($imageFilename != "." && $imageFilename != "..") {
         $cleanPhotoFilename = LibString::stripNonFilenameChar($imageFilename);
-        @rename($imagePath . $folderName . '/' . $imageFilename, $imagePath . $folderName . '/' . $cleanPhotoFilename);
+        rename($imagePath . $folderName . '/' . $imageFilename, $imagePath . $folderName . '/' . $cleanPhotoFilename);
       }
     }
 
     // Clean up the main photo directory, which should only contain albums directories
     $handle = opendir($imagePath);
     while ($oneFile = readdir($handle)) {
-      if (!@is_dir($oneFile)) {
-        @unlink($oneFile);
+      if (!is_dir($oneFile)) {
+        unlink($oneFile);
       }
     }
 

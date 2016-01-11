@@ -217,7 +217,7 @@ class SmsGatewayUtils {
     $header .= $accessRequest . "\r\n";
 
     // Open the connection
-    $socket = @fsockopen($host, 80, $errno, $errstr);
+    $socket = fsockopen($host, 80, $errno, $errstr);
 
     if ($socket) {
       fputs($socket, $header); // Send the header

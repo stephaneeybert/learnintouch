@@ -99,8 +99,8 @@ class NewsPaperUtils extends NewsPaperDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imagePath . $oneFile)) {
-            @unlink($this->imagePath . $oneFile);
+          if (file_exists($this->imagePath . $oneFile)) {
+            unlink($this->imagePath . $oneFile);
           }
         }
       }
@@ -802,7 +802,7 @@ class NewsPaperUtils extends NewsPaperDB {
     $imageFilePath = $this->newsStoryImageUtils->imageFilePath;
     $imageFileUrl = $this->newsStoryImageUtils->imageFileUrl;
 
-    if ($image && @file_exists($imageFilePath . $image)) {
+    if ($image && file_exists($imageFilePath . $image)) {
       if (LibImage::isImage($image)) {
         $width = $this->preferenceUtils->getValue("NEWS_STORY_IMAGE_SMALL_WIDTH");
 
@@ -1250,7 +1250,7 @@ HEREDOC;
     $imageFilePath = $this->imagePath;
     $imageFileUrl = $this->imageUrl;
 
-    if ($image && @file_exists($imageFilePath . $image)) {
+    if ($image && file_exists($imageFilePath . $image)) {
       $width = $this->getImageWidth();
 
       $libFlash = new LibFlash();

@@ -68,8 +68,8 @@ class ElearningCourseUtils extends ElearningCourseDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($filePath . $oneFile)) {
-            @unlink($filePath . $oneFile);
+          if (file_exists($filePath . $oneFile)) {
+            unlink($filePath . $oneFile);
           }
         }
       }
@@ -378,7 +378,7 @@ class ElearningCourseUtils extends ElearningCourseDB {
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $str .= "<div class='elearning_course_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {

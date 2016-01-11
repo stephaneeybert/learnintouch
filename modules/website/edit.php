@@ -68,7 +68,7 @@ if ($formSubmitted) {
 
   // Create the account directories and setup files
   $accountPath = $gAccountPath . '/';
-  if (!@is_dir($accountPath)) {
+  if (!is_dir($accountPath)) {
   }
 
   if (count($warnings) == 0) {

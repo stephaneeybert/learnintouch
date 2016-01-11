@@ -74,8 +74,8 @@ class LanguageUtils extends LanguageDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($filePath . $oneFile)) {
-            @unlink($filePath . $oneFile);
+          if (file_exists($filePath . $oneFile)) {
+            unlink($filePath . $oneFile);
           }
         }
       }
@@ -467,7 +467,7 @@ class LanguageUtils extends LanguageDB {
     // Used only if the resource file for the chosen language is not found
     $pageMessageFileEnglish = $pagePath . '/' . $pageName . '.en.php';
 
-    if (@file_exists($pageMessageFile)) {
+    if (file_exists($pageMessageFile)) {
       $mlText = $this->getMlTextStrings($pageMessageFile, $htmlConvert);
 
       // Add the english version for the missing array values
@@ -479,7 +479,7 @@ class LanguageUtils extends LanguageDB {
           $mlText[$key] = $mlTextEnglish[$key];
         }
       }
-    } else if (@file_exists($pageMessageFileEnglish)) {
+    } else if (file_exists($pageMessageFileEnglish)) {
       $mlText = $this->getMlTextStrings($pageMessageFileEnglish, $htmlConvert);
     } else {
       $mlText = array();
@@ -492,8 +492,8 @@ class LanguageUtils extends LanguageDB {
   function getMlTextStrings($languageFile, $htmlConvert = true) {
     $mlText = array();
 
-    if (@is_file($languageFile)) {
-      $lines = @file($languageFile);
+    if (is_file($languageFile)) {
+      $lines = file($languageFile);
       foreach ($lines as $line) {
         $key = trim(substr($line, 1, 4));
         $value = substr($line, 6, strlen($line) - 6);
@@ -523,15 +523,15 @@ class LanguageUtils extends LanguageDB {
   // Set the text message strings from the file
   function setMlTextStrings($languageFile, $mlText) {
     if (count($mlText) > 0) {
-      $fp = @fopen($languageFile, 'w');
+      $fp = fopen($languageFile, 'w');
       foreach ($mlText as $key => $value) {
         $key = vsprintf("[%4s]",  $key);
         $value = str_replace("\r\n", "\\n", $value);
         $value = str_replace("\n", "\\n", $value);
         $value = str_replace("\r", "\\n", $value);
-        @fwrite($fp, "$key$value\n");
+        fwrite($fp, "$key$value\n");
       }
-      @fclose($fp);
+      fclose($fp);
     }
   }
 
@@ -568,7 +568,7 @@ class LanguageUtils extends LanguageDB {
         if (!strstr($file, '..') && strstr($file, '.en.php')) {
           $nameBits = explode(".", $file);
           $languageFile = "." . $nameBits[1] . ".$languageCode.php";
-          if (@is_file("$currentDirectory$languageFile")) {
+          if (is_file("$currentDirectory$languageFile")) {
             array_push($languageFiles, $currentDirectory . $languageFile);
           }
         }

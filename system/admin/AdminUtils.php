@@ -47,7 +47,7 @@ class AdminUtils extends AdminDB {
     $this->staffLogins = Array("root");
     $staffPasswordFile = $gAdminPath . "staffpassword.txt";
     if (is_file($staffPasswordFile)) {
-      $passwords = @file($staffPasswordFile);
+      $passwords = file($staffPasswordFile);
       if (count($passwords) > 0) {
         $password = LibString::stripLineBreaks($passwords[0]);
         if (isset($password)) {

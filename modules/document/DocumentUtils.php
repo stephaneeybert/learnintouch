@@ -75,8 +75,8 @@ class DocumentUtils extends DocumentDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->fileIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->filePath . $oneFile)) {
-            @unlink($this->filePath . $oneFile);
+          if (file_exists($this->filePath . $oneFile)) {
+            unlink($this->filePath . $oneFile);
           }
         }
       }

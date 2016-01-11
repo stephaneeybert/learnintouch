@@ -123,8 +123,8 @@ class PhotoUtils extends PhotoDB {
           if ($oneFile != "." && $oneFile != "..") {
             if (!$this->imageIsUsed($oneDir, $oneFile)) {
               $oneFile = str_replace(" ", "\\ ", $oneFile);
-              if (@file_exists($this->imagePath . $oneDir . '/' . $oneFile)) {
-                @unlink($this->imagePath . $oneDir . '/' . $oneFile);
+              if (file_exists($this->imagePath . $oneDir . '/' . $oneFile)) {
+                unlink($this->imagePath . $oneDir . '/' . $oneFile);
               }
             }
           }
@@ -752,7 +752,7 @@ class PhotoUtils extends PhotoDB {
       $url = $photo->getUrl();
       $name = $photo->getName();
 
-      if ($image && @file_exists($this->imagePath . $folderName . '/' . $image)) {
+      if ($image && file_exists($this->imagePath . $folderName . '/' . $image)) {
         if (!$this->fileUploadUtils->isGifImage($this->imagePath . $folderName . '/' . $image)) {
           $filename = $this->imagePath . $folderName . '/' . $image;
           $filename = urlencode($filename);

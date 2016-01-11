@@ -25,7 +25,7 @@ foreach ($dirNames as $dirName) {
 
 //    rmdir("data/container");
 //    rename("data/news/newsletter", "data/news/newsPaper");
-//    @unlink("data/template/image/file.txt");
+//    unlink("data/template/image/file.txt");
     }
   }
 

@@ -258,8 +258,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->imageIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->imageFilePath . $oneFile)) {
-            @unlink($this->imageFilePath . $oneFile);
+          if (file_exists($this->imageFilePath . $oneFile)) {
+            unlink($this->imageFilePath . $oneFile);
           }
         }
       }
@@ -293,8 +293,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
       if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*')) {
         if (!$this->audioIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($this->audioFilePath . $oneFile)) {
-            @unlink($this->audioFilePath . $oneFile);
+          if (file_exists($this->audioFilePath . $oneFile)) {
+            unlink($this->audioFilePath . $oneFile);
           }
         }
       }
@@ -1265,7 +1265,7 @@ HEREDOC;
     $str = "\n<div class='elearning_exercise'>";
 
     $logo = $this->profileUtils->getLogoFilename();
-    if ($logo && @is_file($this->profileUtils->filePath . $logo) && $this->displayWebsiteLogo()) {
+    if ($logo && is_file($this->profileUtils->filePath . $logo) && $this->displayWebsiteLogo()) {
       $str .= "<div><img src='$this->profileUtils->fileUrl/$logo' title='' alt='' style='vertical-align:middle;' /></div>";
     }
 
@@ -2555,7 +2555,7 @@ HEREDOC;
 
     $str = '';
 
-    if ($image && @file_exists($imagePath . $image)) {
+    if ($image && file_exists($imagePath . $image)) {
       $width = $this->getImageWidth();
 
       $str .= "<div class='elearning_exercise_image'>";

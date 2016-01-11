@@ -122,8 +122,8 @@ class TemplateUtils {
 
     $this->userAgents = array();
     $userAgentFile = $gTemplatePath . "mobileUserAgents.txt";
-    if (@is_file($userAgentFile)) {
-      $lines = @file($userAgentFile);
+    if (is_file($userAgentFile)) {
+      $lines = file($userAgentFile);
       if (count($lines) > 0) {
         foreach ($lines as $line) {
           $line = LibString::stripLineBreaks($line);
@@ -769,11 +769,11 @@ HEREDOC;
     $filePath = $this->modelPath;
     $handle = opendir($filePath);
     while ($oneFile = readdir($handle)) {
-      if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*') && !@is_dir($filePath . $oneFile)) {
+      if ($oneFile != "." && $oneFile != ".." && !strstr($oneFile, '*') && !is_dir($filePath . $oneFile)) {
         if (!$this->cacheFileIsUsed($oneFile)) {
           $oneFile = str_replace(" ", "\\ ", $oneFile);
-          if (@file_exists($filePath . $oneFile)) {
-            @unlink($filePath . $oneFile);
+          if (file_exists($filePath . $oneFile)) {
+            unlink($filePath . $oneFile);
           }
         }
       }
@@ -828,8 +828,8 @@ HEREDOC;
 
     $filename = $this->getModelFilename($templateModelId);
 
-    if (@is_file($filename)) {
-      $time = @filemtime($filename);
+    if (is_file($filename)) {
+      $time = filemtime($filename);
     }
 
     return($time);

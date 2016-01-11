@@ -129,7 +129,7 @@ for ($i = 0; $i < count($photos); $i++) {
     $strName .= '<br><b>' . $mlText[14] . '</b> ' . $name;
   }
 
-  if ($folderName && $image && @file_exists($photoUtils->imagePath . $folderName . '/' . $image)) {
+  if ($folderName && $image && file_exists($photoUtils->imagePath . $folderName . '/' . $image)) {
 
     $fileUploadUtils->loadLanguageTexts();
     if (!$fileUploadUtils->isGifImage($photoUtils->imagePath . $folderName . '/' . $image)) {

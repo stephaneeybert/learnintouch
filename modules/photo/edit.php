@@ -73,11 +73,11 @@ if ($formSubmitted) {
           $photoAlbumName = $photoAlbum->getName();
           $folderName = $photoAlbum->getFolderName();
           // If the destination directory does not exist for whatever reason then create it
-          if (!@file_exists($imagePath . $folderName)) {
-            @mkdir($imagePath . $folderName);
+          if (!file_exists($imagePath . $folderName)) {
+            mkdir($imagePath . $folderName);
           }
-          if (@file_exists($imagePath . $currentFolderName . '/' . $image)) {
-            @rename($imagePath . $currentFolderName . '/' . $image, $imagePath . $folderName . '/' . $image);
+          if (file_exists($imagePath . $currentFolderName . '/' . $image)) {
+            rename($imagePath . $currentFolderName . '/' . $image, $imagePath . $folderName . '/' . $image);
           }
         }
       }
