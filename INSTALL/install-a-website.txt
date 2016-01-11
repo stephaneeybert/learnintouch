@@ -3,8 +3,8 @@ To create a new website site, do the following operations:
 Register the website domain name at a registrar
 
 Create the directories and soft links
-mkdir -p /home/stephane/learnintouch/www/learnintouch.com;
-cd /home/stephane/learnintouch/www/learnintouch.com;
+mkdir -p /home/stephane/learnintouch/www/folkuniversitet;
+cd /home/stephane/learnintouch/www/folkuniversitet;
 mkdir account;
 mkdir account/data;
 mkdir account/setup;
@@ -21,6 +21,10 @@ Add a bind entry for the website
 The secondary DNS registration
 https://www.ovh.com/manager/web/login.html
 
+Restart the DNS service
+/etc/init.d/bind9 restart;
+/etc/init.d/bind9 reload
+
 Add the virtual host entries file
 /home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
 
@@ -35,57 +39,51 @@ Add the virtual host entries file
   </Directory>
 </VirtualHost>
 
-<VirtualHost aupresent.learnintouch.com:80>
-  DocumentRoot /home/stephane/learnintouch/www/aupresent
-  ServerName aupresent.learnintouch.com
+<VirtualHost folkuniversitet.learnintouch.com:80>
+  DocumentRoot /home/stephane/learnintouch/www/folkuniversitet
+  ServerName folkuniversitet.learnintouch.com
   CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/aupresent">
+  <Directory "/home/stephane/learnintouch/www/folkuniversitet">
     Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
   </Directory>
 </VirtualHost>
 
 Restart httpd
 
-Create a .htaccess file (or a .user.ini file if in CGI mode) containing the following directives
+Create a /home/stephane/learnintouch/www/folkuniversitet/.htaccess file containing the following directives
 php_value include_path "/home/stephane/learnintouch/engine/setup"
 php_value auto_prepend_file "/home/stephane/learnintouch/www/learnintouch.com/account/setup/specific.php"
-For the .user.ini file:
-include_path="/home/stephane/learnintouch/www/learnintouch.com/engine/setup"
-auto_prepend_file="/home/stephane/learnintouch/www/learnintouch.com/account/setup/specific.php"
 
-Create the specific.php file
+Create the /home/stephane/learnintouch/www/folkuniversitet/account/setup/specific.php file
 
 Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_learnintouch.* to learnintouch@'localhost' identified by 'mypassword';
-select * from user;
-insert into user values('localhost','learnintouch','*59604FD51ABC0F3CEF5002A08847011702677CC5', 'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','','0','0','0','0','mysql_native_password','','N');
+grant all privileges on db_folkuniversitet.* to folkuniversitet@'localhost' identified by 'kjffirjfenj';
 flush privileges;
 quit;
 
 Create the directories
-http://fhs.learnintouch.com/engine/setup/directories.php
+http://folkuniversitet.learnintouch.com/engine/setup/directories.php
 
 Create the database
 cd programs/mysql/install
-bin/mysqladmin -u stephane -p create db_learnintouch
+bin/mysqladmin -u stephane -p create db_folkuniversitet
 
 Create the database schema
-http://fhs.learnintouch.com/engine/setup/schema.php
 cd programs/mysql/install
-bin/mysql -v -u stephane -p db_learnintouch < db_learnintouch-structure.sql
+bin/mysql -v -u stephane -p db_folkuniversitet < ~/learnintouch/db_learnintouch-structure.sql
 
 Add some index
+cd programs/mysql/install
+bin/mysql -v -u stephane -p
+use db_folkuniversitet;
 alter table statistics_visit add index(visit_datetime);
 alter table statistics_visit add index(visitor_host_address);
 alter table statistics_visit add index(visitor_browser);
 alter table statistics_visit add index(visitor_referer);
 
-Copy the legacy data
-scp ../learnintouch/www/learnintouch.com/account/learnintouch.tar stephane@vps36036.ovh.net:
-
-Restaure some date from a data only backup file
+Restaure some data from a data only backup file
 Insert the following statements at the top of the backup file:
 set foreign_key_checks = 0;
 delete from property;
@@ -96,10 +94,9 @@ delete from statistics_page;
 delete from unique_token;
 programs/mysql/install/bin/mysql -v -u stephane -p db_learnintouch < backup_db_db_learnintouch-10-23_01-05.sql
 
-Copy the data files
-\cp -Rf data/* /home/stephane/learnintouch/www/learnintouch.com/account/data/
-\cp -Rf /home/stephane/learnintouch/www/learnintouch.com/account/data/* /home/stephane/learnintouch/www/learnintouch.com/account/data/
-\cp -Rf data/* /home/stephane/learnintouch/www/learnintouch.com/account/data/
+Copy some data files
+\cp -Rf /home/stephane/learnintouch/www/blackebergs/account/data/* /home/stephane/learnintouch/www/folkuniversitet/account/data/
+\cp -Rf data/* /home/stephane/learnintouch/www/folkuniversitet/account/data/
 
 Add an entry in the cron/*_all.sh files
 vi /home/stephane/learnintouch/engine/cron/*_all.sh
@@ -109,14 +106,15 @@ In the administration panel, go to 'The websites' module and create a new websit
 
 Create an administrator
 In the administration panel, go to 'The administrators' module, create a new administrator and check his module rights
-http://www.learnintouch.com/engine/system/admin/list.php
+http://folkuniversitet.learnintouch.com/engine/system/admin/list.php
 Log out and try logging in with the administrator
-http://www.learnintouch.com/engine/system/admin/login.php
+http://folkuniversitet.learnintouch.com/engine/system/admin/login.php
 
 Create the website identity
 Go in the image set module and reset the image set.
-http://www.learnintouch.com/engine/modules/template/imageSet/admin.php
+http://folkuniversitet.learnintouch.com/engine/modules/template/imageSet/admin.php
 Go in the website profile module and specify the website name, domain name and email address.
-http://www.learnintouch.com/engine/modules/website/admin.php
+http://folkuniversitet.learnintouch.com/engine/modules/website/admin.php
 Go in the language module and select the website and administrative languages.
-http://www.learnintouch.com/engine/modules/language/admin.php
+http://folkuniversitet.learnintouch.com/engine/modules/language/admin.php
+
