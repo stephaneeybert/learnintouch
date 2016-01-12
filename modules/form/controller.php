@@ -56,9 +56,8 @@ if ($formSubmitted == 1) {
       $formItemWarnings = array();
       $warningPrefix = $websiteText[0] . " '" . strtolower($name) . "' ";
 
-      $formValues[$name] = LibEnv::getEnvHttpPOST($name);
-      $formValues[$name] = LibString::cleanString($formValues[$name]);
-      $value = $formValues[$name];
+      $value = LibString::cleanString(LibEnv::getEnvHttpPOST($name));
+      $formValues[$name] = $value;
 
       $formValids = $formValidUtils->selectByFormItemId($formItemId);
       foreach ($formValids as $formValid) {
@@ -164,6 +163,7 @@ if ($formSubmitted == 1) {
 
       $strFormVariables = '';
       foreach ($formItems as $formItem) {
+        $itemType = $formItem->getType();
         $name = $formItem->getName();
         $text = $languageUtils->getTextForLanguage($formItem->getText(), $currentLanguageCode);
 
@@ -173,7 +173,9 @@ if ($formSubmitted == 1) {
           $value = "";
         }
 
-        $strFormVariables .= "<br>$text : $value";
+        if ($itemType != 'FORM_ITEM_CHECKBOX' || $value || $formUtils->emailEmptyFields()) {
+          $strFormVariables .= "<br>$text : $value";
+        }
       }
 
       if ($websiteUtils->isCurrentWebsiteModule('MODULE_CONTACT')) {

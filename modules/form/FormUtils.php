@@ -61,9 +61,16 @@ class FormUtils extends FormDB {
       array($this->mlText[40], $this->mlText[41], PREFERENCE_TYPE_TEXT, 300),
         "FORM_PHONE_IMAGE_WIDTH" =>
         array($this->mlText[42], $this->mlText[43], PREFERENCE_TYPE_TEXT, 140),
+          "FORM_EMAIL_EMPTY_FIELDS" =>
+            array($this->mlText[2], $this->mlText[3], PREFERENCE_TYPE_BOOLEAN, ''),
         );
 
     $this->preferenceUtils->init($this->preferences);
+  }
+
+  function emailEmptyFields() {
+    $submitEmptyFields = $this->preferenceUtils->getValue("FORM_EMAIL_EMPTY_FIELDS");
+    return($submitEmptyFields);
   }
 
   // Get the width of an image
@@ -193,7 +200,6 @@ class FormUtils extends FormDB {
     if ($form = $this->selectById($formId)) {
       $description = $form->getDescription();
       $image = $form->getImage();
-      $email = $form->getEmail();
       $currentLanguageCode = $this->languageUtils->getCurrentLanguageCode();
       $title = $this->languageUtils->getTextForLanguage($form->getTitle(), $currentLanguageCode);
       $instructions = $this->languageUtils->getTextForLanguage($form->getInstructions(), $currentLanguageCode);
