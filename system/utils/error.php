@@ -42,11 +42,10 @@ function errorHandler($errorType, $message, $filename, $line) {
     E_USER_NOTICE =>  "User Notice"
   );
 
-  // Subset of errors that are reported
-  $userErrorTypes = array(E_ERROR, E_WARNING, E_PARSE);
-  $systemErrorTypes = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE, E_ERROR, E_WARNING, E_PARSE, E_NOTICE);
-
   if (!isDebug()) {
+    // Subset of errors that are reported
+    $userErrorTypes = array(E_ERROR, E_PARSE);
+
     // Display a maintenance message when the user is not the developer
     $reportedErrorTypes = $userErrorTypes;
 
@@ -59,6 +58,9 @@ function errorHandler($errorType, $message, $filename, $line) {
       exit;
     }
   } else {
+    // Subset of errors that are reported
+    $systemErrorTypes = array(E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE, E_ERROR, E_WARNING, E_PARSE, E_NOTICE);
+
     // Report even minor errors when the user is the developer
     $reportedErrorTypes = $systemErrorTypes;
 
