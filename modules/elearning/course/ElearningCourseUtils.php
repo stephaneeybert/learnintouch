@@ -370,12 +370,6 @@ class ElearningCourseUtils extends ElearningCourseDB {
     $imagePath  = $this->imageFilePath;
     $imageUrl  = $this->imageFileUrl;
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-    }
-
     $str = '';
 
     if ($image && file_exists($imagePath . $image)) {
@@ -389,8 +383,9 @@ class ElearningCourseUtils extends ElearningCourseDB {
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if (!$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width . "&amp;height=";
@@ -399,7 +394,7 @@ class ElearningCourseUtils extends ElearningCourseDB {
           }
         }
 
-        $str .= "<img class='elearning_course_image_file' src='$url' title='' alt='' width='$width' />";
+        $str .= "<img class='elearning_course_image_file' src='$url' title='' alt='' />";
       } else {
         $libFlash = new LibFlash();
         if ($libFlash->isFlashFile($imageFile)) {

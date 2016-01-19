@@ -3440,6 +3440,7 @@ HEREDOC;
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     $image = $elearningExercisePage->getImage();
 
@@ -3450,24 +3451,21 @@ HEREDOC;
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
 
-    // Resize the image to the following width
-    $width = $this->getImageWidth();
-
     $str = '';
 
     if ($image && file_exists($imagePath . $image)) {
       $str .= "\n<div class='elearning_exercise_page_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {
-
         // Check if the images are to be rendered in an email format
         // If so the image file path will be replaced bi 'cid' sequences
         // and no on-the-fly image resizing should take place
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_PAGE_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl .  "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width .  "&amp;height=";
@@ -3476,13 +3474,7 @@ HEREDOC;
           }
         }
 
-        if ($width) {
-          $strWidth = "width = '$width'";
-        } else {
-          $strWidth = "";
-        }
-
-        $str .= "<img class='elearning_exercise_page_image_file' src='$url' title='' alt='' $strWidth />";
+        $str .= "<img class='elearning_exercise_page_image_file' src='$url' title='' alt='' />";
       } else {
         $libFlash = new LibFlash();
         if ($libFlash->isFlashFile($image)) {

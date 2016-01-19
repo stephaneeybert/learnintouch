@@ -909,6 +909,7 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
   // Render the image of a question
   function renderImage($elearningQuestion, $emailFormat = false) {
     global $gDataPath;
+    global $gIsPhoneClient;
     global $gDataUrl;
     global $gUtilsUrl;
 
@@ -916,9 +917,6 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
 
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
-
-    // Resize the image to the following width
-    $width = $this->getImageWidth();
 
     $str = '';
 
@@ -933,8 +931,9 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_QUESTION_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl .  "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width .  "&amp;height=";
@@ -943,13 +942,7 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
           }
         }
 
-        if ($width) {
-          $strWidth = "width = '$width'";
-        } else {
-          $strWidth = '';
-        }
-
-        $str .= "<img class='elearning_question_image_file' src='$url' title='' alt='' $strWidth />";
+        $str .= "<img class='elearning_question_image_file' src='$url' title='' alt='' />";
       } else {
         $libFlash = new LibFlash();
         if ($libFlash->isFlashFile($image)) {

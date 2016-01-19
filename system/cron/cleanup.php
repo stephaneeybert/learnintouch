@@ -16,9 +16,9 @@ require_once("cli.php");
 
 $websiteUtils->checkWebsiteSize();
 
-$templatePropertySetUtils->cleanup();
-
 $templatePropertyUtils->cleanup();
+
+$templatePropertySetUtils->cleanup();
 
 $statisticsVisitUtils->deleteOldVisits();
 

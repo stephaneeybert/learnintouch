@@ -1145,10 +1145,10 @@ HEREDOC;
 
         if ($gIsPhoneClient || $this->preferenceUtils->getValue("SHOP_NO_SLIDESHOW")) {
           $str .= " <a href='$gShopUrl/display.php?shopItemId=$shopItemId' $gJSNoStatus>"
-            . "<span class='shop_item_image'><img class='shop_item_image_file' src='$imageUrl' class='no_style_image_icon' title='" . $this->websiteText[56] . "' alt='' width='$width' /></span></a>";
+            . "<span class='shop_item_image'><img class='shop_item_image_file' src='$imageUrl' class='no_style_image_icon' title='" . $this->websiteText[56] . "' alt='' /></span></a>";
         } else {
           $str .= " <a href='$imageFileUrl/$image' rel='no_style_colorbox' $gJSNoStatus>"
-            . "<span class='shop_item_image'><img class='shop_item_image_file' src='$imageUrl' class='no_style_image_icon' title='" . $this->websiteText[56] . "' alt='' width='$width' /></span></a>";
+            . "<span class='shop_item_image'><img class='shop_item_image_file' src='$imageUrl' class='no_style_image_icon' title='" . $this->websiteText[56] . "' alt='' /></span></a>";
         }
       }
     }
@@ -1340,8 +1340,6 @@ HEREDOC;
       }
     }
 
-    $width = $this->getImageWidth();
-
     $strPreviousImage = '';
     if ($previousShopItemImage = $this->shopItemImageUtils->selectPrevious($shopItemImageId)) {
       $previousShopItemImageId = $previousShopItemImage->getId();
@@ -1472,30 +1470,15 @@ HEREDOC;
     $imageFilePath = $this->shopItemImageUtils->imageFilePath;
     $imageFileUrl = $this->shopItemImageUtils->imageFileUrl;
 
-    $width = $this->getImageWidth();
-
     if ($image && file_exists($imageFilePath . $image)) {
-      if (!LibImage::isGif($image)) {
-        $filename = $imageFilePath . $image;
-
-        $imageLengthIsHeight = $this->imageLengthIsHeight();
-        if ($imageLengthIsHeight) {
-          $width = LibImage::getWidthFromHeight($filename, $width);
-        }
-
-        $filename = urlencode($filename);
-
-        $imageUrl = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&amp;width=$width&amp;height=";
-      } else {
-        $imageUrl = "$imageFileUrl/$image";
-      }
+      $imageUrl = "$imageFileUrl/$image";
 
       if (!$gIsPhoneClient && !$this->preferenceUtils->getValue("SHOP_NO_ZOOM")) {
         $strImg = "<div style='overflow: auto;'><a href='$imageFileUrl/$image' class='zoomable' title='$description'>"
-          . "<img class='shop_item_image_file' src='$imageUrl' title='$description' alt='' width='$width' />"
+          . "<img class='shop_item_image_file' src='$imageUrl' title='$description' alt='' />"
           . "</a></div>";
       } else {
-        $strImg = "<img class='shop_item_image_file' src='$imageUrl' title='' alt='' width='$width' />";
+        $strImg = "<img class='shop_item_image_file' src='$imageUrl' title='' alt='' />";
       }
     } else {
       $strImg = "&nbsp;";

@@ -21,7 +21,7 @@ class FileUploadUtils {
   }
 
   function init() {
-    $this->maximumFileSize = 8192000;
+    $this->maximumFileSize = 21000000;
     $this->allowedImageTypes = array('jpg', 'jpeg', 'jpe', 'png', 'gif');
     $this->gifImageType = array('gif');
     $this->allowedArchiveTypes = array('zip');

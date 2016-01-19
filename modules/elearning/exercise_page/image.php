@@ -16,6 +16,7 @@ if ($formSubmitted == 1) {
 
   $elearningExercisePageId = LibEnv::getEnvHttpPOST("elearningExercisePageId");
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   if ($deleteImage == 1) {
     $image = '';
@@ -44,16 +45,17 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
-    if ($fileUploadUtils->isImageType($elearningExercisePageUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($elearningExercisePageUtils->imageFilePath . $userfile_name)) {
-      $destWidth = $elearningExercisePageUtils->getImageWidth();
-      LibImage::resizeImageToWidth($elearningExercisePageUtils->imageFilePath . $userfile_name, $destWidth);
-    }
-
     // Update the image
     $image = $userfile_name;
   }
 
   if (count($warnings) == 0) {
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($elearningExercisePageUtils->imageFilePath . $image) && !$fileUploadUtils->isGifImage($elearningExercisePageUtils->imageFilePath . $image)) {
+        LibImage::resizeImageToWidth($elearningExercisePageUtils->imageFilePath . $image, $imageWidth);
+      }
+    }
 
     if ($elearningExercisePage = $elearningExercisePageUtils->selectById($elearningExercisePageId)) {
       $elearningExercisePage->setImage($image);
@@ -65,6 +67,9 @@ if ($formSubmitted == 1) {
     return;
   }
 
+} else {
+
+  $imageWidth = $elearningExercisePageUtils->getImageWidth();
 }
 
 $elearningExercisePageId = LibEnv::getEnvHttpGET("elearningExercisePageId");
@@ -89,21 +94,18 @@ $panelUtils->setHelp($help);
 $panelUtils->openMultipartForm($PHP_SELF);
 
 if ($image) {
-  if (LibImage::isImage($image) && !LibImage::isGif($image)) {
-    $filename = urlencode($elearningExercisePageUtils->imageFilePath . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), "<img src='$url' border='0' title='' href=''>");
-  } else {
-    $fileUrl = "$elearningExercisePageUtils->imageFileUrl/$image";
-    $strImage = "<a href='$fileUrl' $gJSNoStatus title=''>$image</a>";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), $strImage);
-  }
+  $fileUrl = "$elearningExercisePageUtils->imageFileUrl/$image";
+  $strImage = "<img src='$fileUrl' $gJSNoStatus title=''></img>";
+  $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), $strImage);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "br"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "br"), "<input type='checkbox' name='deleteImage' value='1'>");
 }
 
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[4], $mlText[5], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($elearningExercisePageUtils->imageFileSize));

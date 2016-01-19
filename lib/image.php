@@ -125,11 +125,26 @@ class LibImage {
     if ($sourceType == "jpeg" || $sourceType == "jpg") {
       $sourceImage = LibImage::createImageFromJpg($sourceFilename);
     } elseif ($sourceType == "gif") {
-      $sourceImage = imagecreatefromgif($sourceFilename);
+      try {
+        $sourceImage = imagecreatefromgif($sourceFilename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefromgif() to create an image from the $sourceFilename file. " . $e->getMessage());
+        exit();
+      }
     } else if ($sourceType == "png") {
-      $sourceImage = imagecreatefrompng($sourceFilename);
+      try {
+        $sourceImage = imagecreatefrompng($sourceFilename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefrompng() to create an image from the $sourceFilename file. " . $e->getMessage());
+        exit();
+      }
     } elseif ($sourceType == "wbmp") {
-      $sourceImage = imagecreatefromwbmp($sourceFilename);
+      try {
+        $sourceImage = imagecreatefromwbmp($sourceFilename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefromwbmp() to create an image from the $sourceFilename file. " . $e->getMessage());
+        exit();
+      }
     } else {
       return(false);
     }
@@ -193,7 +208,7 @@ class LibImage {
     header("Content-type:image/$type");
 
     // Create the image
-    if ($type == "jpeg" && (imagetypes() & IMG_JPEG)) {
+    if (($type == "jpeg" || $type == "jpg") && (imagetypes() & IMG_JPEG)) {
       imagejpeg($output);
     } elseif ($type == "gif" && (imagetypes() & IMG_GIF)) {
       imagegif($output);
@@ -230,11 +245,26 @@ class LibImage {
     if (($type == "jpeg" || $type == "jpg") && (imagetypes() & IMG_JPEG)) {
       $copy = LibImage::createImageFromJpg($filename);
     } else if ($type == "gif" && (imagetypes() & IMG_GIF)) {
-      $copy = imagecreatefromgif($filename);
+      try {
+        $copy = imagecreatefromgif($filename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefromgif() to create an image from the $filename file. " . $e->getMessage());
+        exit();
+      }
     } else if ($type == "png" && (imagetypes() & IMG_PNG)) {
-      $copy = imagecreatefrompng($filename);
+      try {
+        $copy = imagecreatefrompng($filename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefrompng() to create an image from the $filename file. " . $e->getMessage());
+        exit();
+      }
     } else if ($type == "wbmp" && (imagetypes() & IMG_WBMP)) {
-      $copy = imagecreatefromwbmp($filename);
+      try {
+        $copy = imagecreatefromwbmp($filename);
+      } catch (Exception $e) {
+        reportError("Could not use imagecreatefromwbmp() to create an image from the $filename file. " . $e->getMessage());
+        exit();
+      }
     } else {
       return;
     }
@@ -289,7 +319,7 @@ class LibImage {
     }
 
     // Create the image
-    if ($type == "jpeg" && (imagetypes() & IMG_JPEG)) {
+    if (($type == "jpeg" || $type == "jpg") && (imagetypes() & IMG_JPEG)) {
       if ($destFilename) {
         imagejpeg($output, $destFilename);
       } else {
@@ -513,10 +543,6 @@ class LibImage {
       $type = strtolower($pieces[count($pieces) - 1]);
     }
 
-    if ($type == "jpg" || $type == "jpe") {
-      $type = "jpeg";
-    }
-
     return($type);
   }
 
@@ -578,7 +604,12 @@ class LibImage {
   function createImageFromJpg($file) {
     LibImage::checkAndFixJpg($file, true);
 
-    $image = imagecreatefromjpeg($file);
+    try {
+      $image = imagecreatefromjpeg($file);
+    } catch (Exception $e) {
+      reportError("Could not use imagecreatefromjpeg() to create an image from the $file file. " . $e->getMessage());
+      exit();
+    }
 
     if (!$image) {
       $image  = imagecreatetruecolor(150, 30);

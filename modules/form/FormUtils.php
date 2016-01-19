@@ -152,20 +152,19 @@ class FormUtils extends FormDB {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     $str = '';
 
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
 
-    // Resize the image to the following width
-    $width = $this->getImageWidth();
-
     if ($image && file_exists($imagePath . $image)) {
       $str .= "<div class='form_image'>";
       if (LibImage::isImage($imagePath . $image)) {
-        if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+        if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
           // The image is created on the fly
+          $width = $this->preferenceUtils->getValue("FORM_PHONE_IMAGE_WIDTH");
           $filename = urlencode($imagePath . $image);
           $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
             . "&amp;width=" . $width . "&amp;height=";

@@ -19,6 +19,7 @@ if ($formSubmitted == 1) {
 
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
   $isHtmlEditor = LibEnv::getEnvHttpPOST("isHtmlEditor");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   // Get the file characteristics
   // Note how the form parameter "userfile" creates several variables
@@ -45,9 +46,11 @@ if ($formSubmitted == 1) {
   }
 
   if (count($warnings) == 0) {
-    if ($fileUploadUtils->isImageType($imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($imagePath . $userfile_name)) {
-      $destWidth = $dynpageUtils->getImageWidth();
-      LibImage::resizeImageToWidth($imagePath . $userfile_name, $destWidth);
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($imagePath . $userfile_name)) {
+        LibImage::resizeImageToWidth($imagePath . $userfile_name, $imageWidth);
+      }
     }
 
     $panelUtils->setHeader($mlText[0]);
@@ -86,6 +89,10 @@ HEREDOC;
     }
   }
 
+} else {
+
+    $imageWidth = $dynpageUtils->getImageWidth();
+
 }
 
 if ($formSubmitted == 2) {
@@ -110,6 +117,9 @@ $panelUtils->setHelp($help);
 $strCommand = $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[5]'>", "$gDynpageUrl/deleteImages.php", 600, 600);
 $panelUtils->addLine($panelUtils->addCell($strCommand, "nbr"));
 $panelUtils->openMultipartForm($PHP_SELF);
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[6], $mlText[7], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($imageSize));

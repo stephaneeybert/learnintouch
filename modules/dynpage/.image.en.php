@@ -4,3 +4,6 @@
 [   3]To use this image in a web page, insert the following link:
 [   4]You can select the link and do a copy/paste using a mouse right click.
 [   5]Delete the unused images
+[   6]Resize to width:
+[   7]When being uploaded to the server, an image can be resized to the specified width.\n\nIf no width is specified then the image is not resized.\n\nThe default width is taken from the larger image width in the preferences.
+

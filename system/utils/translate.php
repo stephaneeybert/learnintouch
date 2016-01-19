@@ -2,7 +2,6 @@
 
 require_once("website.php");
 
-
 $fromLanguageCode = 'en';
 $toLanguageCode = 'se';
 $toGoogleLanguageCode = 'sv';

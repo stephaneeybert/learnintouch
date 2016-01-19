@@ -48,21 +48,8 @@ for ($i = 0; $i < count($newsStoryImages); $i++) {
 
   if ($image && file_exists($newsStoryImageUtils->imageFilePath . $image)) {
     $fileUploadUtils->loadLanguageTexts();
-    if (!$fileUploadUtils->isGifImage($newsStoryImageUtils->imageFilePath . $image)) {
-      // The image is created on the fly
-      $filename = $newsStoryImageUtils->imageFilePath . $image;
-
-      // Resize the image to the following width
-      $preferenceUtils->init($newsStoryUtils->preferences);
-      $width = $preferenceUtils->getValue("NEWS_STORY_IMAGE_SMALL_WIDTH");
-
-      $filename = urlencode($filename);
-
-      $imageSrc = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=" . $width . "&height=";
-    } else {
-      $imageSrc = "$newsStoryImageUtils->imageFileUrl/$image";
-    }
-    $strImg = "<img src='$imageSrc' border='0' width='$width' href='' title='$image'>";
+    $imageSrc = "$newsStoryImageUtils->imageFileUrl/$image";
+    $strImg = "<img src='$imageSrc' border='0' href='' title='$image'>";
   } else {
     $strImg = "&nbsp;";
   }

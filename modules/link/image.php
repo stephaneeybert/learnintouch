@@ -20,6 +20,7 @@ if ($formSubmitted == 1) {
 
   $linkId = LibEnv::getEnvHttpPOST("linkId");
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   if ($deleteImage == 1) {
     $image = '';
@@ -48,16 +49,17 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
-    if ($fileUploadUtils->isImageType($linkUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($linkUtils->imageFilePath . $userfile_name)) {
-      $destWidth = $linkUtils->getImageWidth();
-      LibImage::resizeImageToWidth($linkUtils->imageFilePath . $userfile_name, $destWidth);
-    }
-
     // Update the image
     $image = $userfile_name;
   }
 
   if (count($warnings) == 0) {
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($linkUtils->imageFilePath . $image) && !$fileUploadUtils->isGifImage($linkUtils->imageFilePath . $image)) {
+        LibImage::resizeImageToWidth($linkUtils->imageFilePath . $image, $imageWidth);
+      }
+    }
 
     if ($link = $linkUtils->selectById($linkId)) {
       $link->setImage($image);
@@ -68,6 +70,11 @@ if ($formSubmitted == 1) {
     printContent($str);
     return;
   }
+
+} else {
+
+  $imageWidth = $linkUtils->getImageWidth();
+
 }
 
 $linkId = LibEnv::getEnvHttpGET("linkId");
@@ -90,17 +97,18 @@ if (count($warnings) > 0) {
 $panelUtils->openMultipartForm($PHP_SELF);
 
 if ($image) {
-  if (!LibImage::isGif($image)) {
-    $filename = urlencode($imageFilePath . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), "<img src='$url' border='0' title='' href=''>");
-  }
+  $fileUrl = $imageFileUrl . "/" . $image;
+  $strImage = "<img src='$fileUrl' $gJSNoStatus title=''></img>";
+  $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), $strImage);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "br"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "br"), "<input type='checkbox' name='deleteImage' value='1'>");
 }
 
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[4], $mlText[5], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($imageFileSize));

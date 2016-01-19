@@ -214,12 +214,6 @@ class ClientUtils extends ClientDB {
       return;
     }
 
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("CLIENT_PHONE_DEFAULT_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("CLIENT_DEFAULT_WIDTH");
-    }
-
     $str = '';
 
     $str .= "\n<div class='client_list'>";
@@ -235,8 +229,9 @@ class ClientUtils extends ClientDB {
       if ($image && file_exists($this->imagePath . $image)) {
         // A gif image cannot be resized
         // No support for the gif format due to copyrights issues
-        if (!$this->fileUploadUtils->isGifImage($this->imagePath . $image)) {
+        if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($this->imagePath . $image)) {
           // The image is created on the fly
+          $width = $this->preferenceUtils->getValue("CLIENT_PHONE_DEFAULT_WIDTH");
           $filename = $this->imagePath . $image;
           $filename = urlencode($filename);
           $imageUrl = $gUtilsUrl . "/printImage.php?filename="
@@ -315,7 +310,7 @@ class ClientUtils extends ClientDB {
 
         $item = "<div class='client_cycle_image'>"
           . "<a onclick=\"window.open(this.href, '_blank'); return(false);\" href='$url'>"
-          . "<img src='$imageSrc' border='0' title='' width='$width' height='$height' />"
+          . "<img src='$imageSrc' border='0' title='' />"
           . "</a>"
           . "</div>";
 

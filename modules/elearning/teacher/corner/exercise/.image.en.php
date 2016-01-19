@@ -8,3 +8,6 @@
 [   7]Cancel the operation
 [  11]You have no right to use this exercise.
 [  27]No image has been specified.
+[   8]Resize to width:
+[   9]When being uploaded to the server, an image can be resized to the specified width.\n\nIf no width is specified then the image is not resized.\n\nThe default width is taken from the larger image width in the preferences.
+

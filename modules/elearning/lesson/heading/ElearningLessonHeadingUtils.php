@@ -185,9 +185,13 @@ class ElearningLessonHeadingUtils extends ElearningLessonHeadingDB {
     $this->delete($elearningLessonHeadingId);
   }
 
-  // Get the url for an image
-  function getImageUrl($elearningLessonHeadingId, $width) {
+  // Render the images of a lesson heading
+  function renderImage($elearningLessonHeadingId) {
     global $gUtilsUrl;
+    global $gElearningLessonUrl;
+    global $gJSNoStatus;
+    global $gImagesUserUrl;
+    global $gIsPhoneClient;
 
     if (!$elearningLessonHeading = $this->selectById($elearningLessonHeadingId)) {
       return;
@@ -201,39 +205,15 @@ class ElearningLessonHeadingUtils extends ElearningLessonHeadingDB {
     $imageFileUrl = $this->imageFileUrl;
 
     if ($image && file_exists($imageFilePath . $image)) {
-      if (!LibImage::isGif($image)) {
+      if ($gIsPhoneClient && !LibImage::isGif($image)) {
+        $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
         $filename = $imageFilePath . $image;
-
         $filename = urlencode($filename);
-
         $imageUrl = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&amp;width=$width&amp;height=";
       } else {
         $imageUrl = "$imageFileUrl/$image";
       }
     }
-
-    return($imageUrl);
-  }
-
-  // Render the images of a lesson heading
-  function renderImage($elearningLessonHeadingId) {
-    global $gUtilsUrl;
-    global $gElearningLessonUrl;
-    global $gJSNoStatus;
-    global $gImagesUserUrl;
-    global $gIsPhoneClient;
-
-    if (!$elearningLessonHeading = $this->selectById($elearningLessonHeadingId)) {
-      return;
-    }
-
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-    }
-
-    $imageUrl = $this->getImageUrl($elearningLessonHeadingId, $width);
 
     if ($imageUrl) {
       $strImg = "<img class='elearning_lesson_heading_image_file' src='$imageUrl' title='' alt='' />";

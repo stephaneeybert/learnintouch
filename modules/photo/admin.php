@@ -132,22 +132,8 @@ for ($i = 0; $i < count($photos); $i++) {
   if ($folderName && $image && file_exists($photoUtils->imagePath . $folderName . '/' . $image)) {
 
     $fileUploadUtils->loadLanguageTexts();
-    if (!$fileUploadUtils->isGifImage($photoUtils->imagePath . $folderName . '/' . $image)) {
-      // The image is created on the fly
-      $filename = $photoUtils->imagePath . $folderName . '/' . $image;
-
-      // Resize the image to the following width
-      $width = $preferenceUtils->getValue("PHOTO_DEFAULT_MINI_WIDTH");
-      $width = min($width, 200);
-
-      $filename = urlencode($filename);
-      $imageSrc = $gUtilsUrl . "/printImage.php?filename=" . $filename
-        . "&width=" . $width . "&height=";
-      $strImg = "<img src='$imageSrc' border='0' width='$width' href='' title='$image'>";
-    } else {
-      $imageSrc = "$photoUtils->imageUrl/$folderName/$image";
-      $strImg = "<img src='$imageSrc' border='0' href='' title='$image'>";
-    }
+    $imageSrc = "$photoUtils->imageUrl/$folderName/$image";
+    $strImg = "<img src='$imageSrc' border='0' href='' title='$image'>";
   } else {
     $strImg = "&nbsp;";
   }

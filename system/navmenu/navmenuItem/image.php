@@ -22,7 +22,7 @@ if ($formSubmitted == 1) {
 
   if ($deleteImage == 1) {
     $image = '';
-    } else {
+  } else {
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
     $uploaded_file = LibEnv::getEnvHttpFILE("userfile");
@@ -37,50 +37,50 @@ if ($formSubmitted == 1) {
     // Check if a file has been specified...
     if ($str = $fileUploadUtils->checkFileName($userfile_name)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkImageFileType($userfile_name)) {
+    } else if ($str = $fileUploadUtils->checkImageFileType($userfile_name)) {
       // Check if the image file name has a correct file type
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
+    } else if ($str = $fileUploadUtils->checkFileSize($userfile_size, $imageSize)) {
       array_push($warnings, $str);
-      } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
+    } else if ($str = $fileUploadUtils->uploadFile($userfile, $userfile_name, $imagePath)) {
       // Check if the file has been copied to the directory
       array_push($warnings, $str);
-      }
+    }
 
     // Update the image
     $image = $userfile_name;
-    }
+  }
 
   if (count($warnings) == 0) {
 
     if ($navmenuItem = $navmenuItemUtils->selectById($navmenuItemId)) {
       $navmenuItem->setImage($image);
       $navmenuItemUtils->update($navmenuItem);
-      }
+    }
 
     $str = LibJavascript::reloadParentWindow() . LibJavascript::autoCloseWindow();
     printContent($str);
     return;
-    }
-
   }
+
+}
 
 $navmenuItemId = LibEnv::getEnvHttpGET("navmenuItemId");
 if (!$navmenuItemId) {
   $navmenuItemId = LibEnv::getEnvHttpPOST("navmenuItemId");
-  }
+}
 
 if ($navmenuItem = $navmenuItemUtils->selectById($navmenuItemId)) {
   $image = $navmenuItem->getImage();
-  }
+}
 
 $panelUtils->setHeader($mlText[0]);
 
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $panelUtils->addLine($panelUtils->addCell($warning, "w"));
-    }
   }
+}
 
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 300);
 $panelUtils->setHelp($help);
@@ -92,7 +92,7 @@ if ($image) {
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), "<input type='checkbox' name='deleteImage' value='1'>");
-  }
+}
 
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");

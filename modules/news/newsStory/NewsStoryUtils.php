@@ -123,12 +123,12 @@ class NewsStoryUtils extends NewsStoryDB {
                                                   )),
                                                 "NEWS_IMAGE_LENGTH_AXIS" =>
                                                 array($this->mlText[64], $this->mlText[65], PREFERENCE_TYPE_SELECT, array('IMAGE_LENGTH_IS_HEIGHT' => $this->mlText[66], 'IMAGE_LENGTH_IS_WIDTH' => $this->mlText[67])),
-                                                  "NEWS_STORY_IMAGE_SMALL_WIDTH" =>
-                                                  array($this->mlText[30], $this->mlText[31], PREFERENCE_TYPE_TEXT, 100),
                                                     "NEWS_STORY_IMAGE_WIDTH" =>
                                                     array($this->mlText[32], $this->mlText[33], PREFERENCE_TYPE_TEXT, 140),
                                                       "NEWS_STORY_PHONE_IMAGE_WIDTH" =>
                                                       array($this->mlText[9], $this->mlText[10], PREFERENCE_TYPE_TEXT, 100),
+                                                  "NEWS_STORY_IMAGE_SMALL_WIDTH" =>
+                                                  array($this->mlText[30], $this->mlText[31], PREFERENCE_TYPE_TEXT, 100),
                                                           "NEWS_PAPER_IMAGE_WIDTH" =>
                                                           array($this->mlText[29], $this->mlText[36], PREFERENCE_TYPE_TEXT, 140),
                                                             "NEWS_PAPER_PHONE_IMAGE_WIDTH" =>
@@ -530,6 +530,7 @@ class NewsStoryUtils extends NewsStoryDB {
     global $gNewsUrl;
     global $gUtilsUrl;
     global $gJSNoStatus;
+    global $gIsPhoneClient;
 
     if (!$newsStory) {
       return;
@@ -566,7 +567,7 @@ class NewsStoryUtils extends NewsStoryDB {
       if (LibImage::isImage($image)) {
         $width = $this->getImageWidth();
 
-        if (!LibImage::isGif($image)) {
+        if ($gIsPhoneClient && !LibImage::isGif($image)) {
           // Resize the image
           $filename = $imageFilePath . $image;
 
@@ -584,7 +585,7 @@ class NewsStoryUtils extends NewsStoryDB {
 
         $str .= "<div class='newsstory_image'>"
           . "<a href='$imageFileUrl/$image' rel='no_style_colorbox' $gJSNoStatus>"
-          . "<img class='newsstory_image_file' src='$strUrl' width='$width' title='"
+          . "<img class='newsstory_image_file' src='$strUrl' title='"
           . $this->websiteText[8] . "' alt='' /></a>"
           . "</div>";
 

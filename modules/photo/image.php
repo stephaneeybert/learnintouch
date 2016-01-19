@@ -25,6 +25,7 @@ if ($formSubmitted == 1) {
 
   $photoId = LibEnv::getEnvHttpPOST("photoId");
   $photoAlbumId = LibEnv::getEnvHttpPOST("photoAlbumId");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   // Get the file characteristics
   // Note how the form parameter "userfile" creates several variables
@@ -65,15 +66,16 @@ if ($formSubmitted == 1) {
     array_push($warnings, $str);
   }
 
-  if ($fileUploadUtils->isImageType($imagePath . $folderName . '/' . $userfile_name) && !$fileUploadUtils->isGifImage($imagePath . $folderName . '/' . $userfile_name)) {
-    $destWidth = $photoUtils->getImageWidth();
-    LibImage::resizeImageToWidth($imagePath . $folderName . '/' . $userfile_name, $destWidth);
-  }
-
   // Update the image
   $image = $userfile_name;
 
   if (count($warnings) == 0) {
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($imagePath . $folderName . '/' . $image) && !$fileUploadUtils->isGifImage($imagePath . $folderName . '/' . $image)) {
+        LibImage::resizeImageToWidth($imagePath . $folderName . '/' . $image, $imageWidth);
+      }
+    }
 
     if ($photo = $photoUtils->selectById($photoId)) {
       $photo->setImage($image);
@@ -107,6 +109,8 @@ if ($formSubmitted == 1) {
 
   // Get the chosen album from the session
   $photoAlbumId = LibSession::getSessionValue(PHOTO_SESSION_ALBUM);
+
+  $imageWidth = $photoUtils->getImageWidth();
 
 }
 
@@ -146,15 +150,16 @@ if (count($warnings) > 0) {
 $panelUtils->openMultipartForm($PHP_SELF);
 
 if ($image && file_exists($imagePath . $folderName . '/' . $image)) {
-  if (!LibImage::isGif($image)) {
-    $filename = urlencode($imagePath . $folderName . '/' . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), "<img src='$url' border='0' title='' href=''>");
-  }
+  $fileUrl = $imageUrl . "/" . $folderName . '/' . $image;
+  $strImage = "<img src='$fileUrl' $gJSNoStatus title=''></img>";
+  $panelUtils->addLine($panelUtils->addCell($mlText[6], "br"), $strImage);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "br"), $image);
 }
 
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[4], $mlText[5], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($imageSize));

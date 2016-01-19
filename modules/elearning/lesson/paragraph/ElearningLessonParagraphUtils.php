@@ -332,13 +332,6 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
 
-    // Resize the image to the following width
-    if ($gIsPhoneClient) {
-      $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-    } else {
-      $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-    }
-
     $str = '';
 
     if ($image && file_exists($imagePath . $image)) {
@@ -352,8 +345,9 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width . "&amp;height=";

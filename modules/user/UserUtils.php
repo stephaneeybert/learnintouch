@@ -1009,6 +1009,7 @@ class UserUtils extends UserDB {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     if (!$user = $this->selectById($userId)) {
       return;
@@ -1019,8 +1020,6 @@ class UserUtils extends UserDB {
     $imagePath  = $this->imagePath;
     $imageUrl  = $this->imageUrl;
 
-    $width = $this->getImageWidth();
-
     $str = '';
 
     if ($image && file_exists($imagePath . $image)) {
@@ -1028,8 +1027,9 @@ class UserUtils extends UserDB {
 
       if (LibImage::isImage($imagePath . $image)) {
 
-        if (!$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+        if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
           // The image is created on the fly
+          $width = $this->preferenceUtils->getValue("USER_PHONE_DEFAULT_WIDTH");
           $filename = urlencode($imagePath . $image);
           $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
             . "&amp;width=" . $width . "&amp;height=";
@@ -1037,7 +1037,7 @@ class UserUtils extends UserDB {
           $url = "$imageUrl/$image";
         }
 
-        $str .= "<img class='user_image_file' src='$url' title='' alt='' width='$width' />";
+        $str .= "<img class='user_image_file' src='$url' title='' alt='' />";
       }
       $str .= "</div>";
     }

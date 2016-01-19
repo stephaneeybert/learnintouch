@@ -52,15 +52,8 @@ for ($i = 0; $i < count($shopItemImages); $i++) {
     $width = $preferenceUtils->getValue("SHOP_DEFAULT_MINI_WIDTH");
 
     $fileUploadUtils->loadLanguageTexts();
-    if (!$fileUploadUtils->isGifImage($shopItemImageUtils->imageFilePath . $image)) {
-      // The image is created on the fly
-      $filename = urlencode($shopItemImageUtils->imageFilePath . $image);
-      $imageSrc = $gUtilsUrl . "/printImage.php?filename=" . $filename
-        . "&width=" . $width . "&height=";
-    } else {
-      $imageSrc = "$shopItemImageUtils->imageFileUrl/$image";
-    }
-    $strImg = "<img src='$imageSrc' border='0' width='$width' href='' title='$image'>";
+    $imageSrc = "$shopItemImageUtils->imageFileUrl/$image";
+    $strImg = "<img src='$imageSrc' border='0' href='' title='$image'>";
   } else {
     $strImg = "&nbsp;";
   }

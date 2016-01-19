@@ -20,6 +20,7 @@ if ($formSubmitted == 1) {
 
   $newsStoryImageId = LibEnv::getEnvHttpPOST("newsStoryImageId");
   $newsStoryId = LibEnv::getEnvHttpPOST("newsStoryId");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   // Get the file characteristics
   // Note how the form parameter "userfile" creates several variables
@@ -45,15 +46,16 @@ if ($formSubmitted == 1) {
     array_push($warnings, $str);
   }
 
-  if ($fileUploadUtils->isImageType($newsStoryImageUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($newsStoryImageUtils->imageFilePath . $userfile_name)) {
-    $destWidth = $newsStoryUtils->getImageWidth();
-    LibImage::resizeImageToWidth($newsStoryImageUtils->imageFilePath . $userfile_name, $destWidth);
-  }
-
   // Update the image
   $image = $userfile_name;
 
   if (count($warnings) == 0) {
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($newsStoryImageUtils->imageFilePath . $image) && !$fileUploadUtils->isGifImage($newsStoryImageUtils->imageFilePath . $image)) {
+        LibImage::resizeImageToWidth($newsStoryImageUtils->imageFilePath . $image, $imageWidth);
+      }
+    }
 
     if ($newsStoryImageId) {
       if ($newsStoryImage = $newsStoryImageUtils->selectById($newsStoryImageId)) {
@@ -76,6 +78,10 @@ if ($formSubmitted == 1) {
     printContent($str);
     return;
   }
+
+} else {
+
+  $imageWidth = $newsStoryUtils->getImageWidth();
 
 }
 
@@ -105,21 +111,18 @@ if (count($warnings) > 0) {
 $panelUtils->openMultipartForm($PHP_SELF);
 
 if ($image) {
-  if (LibImage::isImage($image) && !LibImage::isGif($image)) {
-    $filename = urlencode($imageFilePath . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), "<img src='$url' border='0' title='' href=''>");
-  } else {
-    $fileUrl = "$imageFileUrl/$image";
-    $strImage = "<a href='$fileUrl' $gJSNoStatus title=''>$image</a>";
-    $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), $strImage);
-  }
+  $fileUrl = "$imageFileUrl/$image";
+  $strImage = "<img src='$fileUrl' $gJSNoStatus title=''></img>";
+  $panelUtils->addLine($panelUtils->addCell($mlText[6], "nbr"), $strImage);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[3], "nbr"), $image);
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), "<input type='checkbox' name='deleteImage' value='1'>");
 }
 
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[4], $mlText[5], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($imageFileSize));

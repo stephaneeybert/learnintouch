@@ -412,13 +412,13 @@ class PhotoUtils extends PhotoDB {
 
     if ($linktoAlbums) {
       $strImg = "<a href='$gPhotoUrl/display_album.php?photoAlbumId=$photoAlbumId' $gJSNoStatus title='" .  $this->websiteText[59] . "'>"
-        . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='$description' alt='' /></a>";
+        . "<img class='photo_list_image_file' src='$imgSrc' title='$description' alt='' /></a>";
     } else if ($gIsPhoneClient || $noSlideShow) {
       $strImg = "<a href='$gPhotoUrl/display_photo.php?photoId=$photoId' $gJSNoStatus title='" .  $this->websiteText[50] . "'>"
-        . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='$description' alt='' /></a>";
+        . "<img class='photo_list_image_file' src='$imgSrc' title='$description' alt='' /></a>";
     } else {
       $strImg = "<a href='$this->imageUrl/$folderName/$image' title='$name' rel='no_style_colorbox' $gJSNoStatus>"
-        . "<img class='photo_list_image_file' src='$imgSrc' width='$width' title='' alt='' /></a>";
+        . "<img class='photo_list_image_file' src='$imgSrc' title='' alt='' /></a>";
     }
 
     $str = "<div class='photo_list_image'>" . $strImg . "</div>";
@@ -430,6 +430,7 @@ class PhotoUtils extends PhotoDB {
   function renderBigPhoto($photo) {
     global $gPhotoUrl;
     global $gJSNoStatus;
+    global $gIsPhoneClient;
 
     if (!$photo) {
       return;
@@ -456,12 +457,11 @@ class PhotoUtils extends PhotoDB {
       return;
     }
 
-    $width = $this->getImageWidth();
-
     // A gif image cannot be resized
     // No support for the gif format due to copyright issues
-    if (!$this->fileUploadUtils->isGifImage($this->imagePath . $folderName . '/' . $image)) {
+    if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($this->imagePath . $folderName . '/' . $image)) {
       // The image is created on the fly
+      $width = $this->preferenceUtils->getValue("PHOTO_PHONE_DEFAULT_LARGE_WIDTH");
       $filename = $this->imagePath . $folderName . '/' . $image;
 
       $imageLengthIsHeight = $this->imageLengthIsHeight();
@@ -484,10 +484,10 @@ class PhotoUtils extends PhotoDB {
 
     if (!$this->noZoom($photoAlbum)) {
       $strImg = "<div style='overflow: auto;'><a href='$this->imageUrl/$folderName/$image' class='zoomable' title='$title'>"
-        . "<img class='photo_item_image_file' src='$imgSrc' width='$width' title='$title' alt='' />"
+        . "<img class='photo_item_image_file' src='$imgSrc' title='$title' alt='' />"
         . "</a></div>";
     } else {
-      $strImg = "<img class='photo_item_image_file' src='$imgSrc' width='$width' title='$title' alt='' />";
+      $strImg = "<img class='photo_item_image_file' src='$imgSrc' title='$title' alt='' />";
     }
 
     if ($url) {
@@ -765,7 +765,7 @@ class PhotoUtils extends PhotoDB {
 
         $item = "<div class='photo_cycle_image'>"
           . "<a onclick=\"window.open(this.href, '_blank'); return(false);\" href='$url'>"
-          . "<img src='$imageSrc' border='0' title='' width='$width' height='$height' />"
+          . "<img src='$imageSrc' border='0' title='' />"
           . "</a>"
           . "<div class='photo_item_name'>$name</div>"
           . "</div>";

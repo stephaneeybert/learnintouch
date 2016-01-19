@@ -17,6 +17,7 @@ if ($formSubmitted == 1) {
 
   $elearningExerciseId = LibEnv::getEnvHttpPOST("elearningExerciseId");
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   if ($deleteImage == 1) {
     $image = '';
@@ -45,11 +46,6 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
-    if ($fileUploadUtils->isImageType($elearningExerciseUtils->imageFilePath . $userfile_name) && !$fileUploadUtils->isGifImage($elearningExerciseUtils->imageFilePath . $userfile_name)) {
-      $destWidth = $elearningExerciseUtils->getImageWidth();
-      LibImage::resizeImageToWidth($elearningExerciseUtils->imageFilePath . $userfile_name, $destWidth);
-    }
-
     // Update the image
     $image = $userfile_name;
   }
@@ -61,6 +57,12 @@ if ($formSubmitted == 1) {
 
   if (count($warnings) == 0) {
 
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($elearningExerciseUtils->imageFilePath . $image) && !$fileUploadUtils->isGifImage($elearningExerciseUtils->imageFilePath . $image)) {
+        LibImage::resizeImageToWidth($elearningExerciseUtils->imageFilePath . $image, $imageWidth);
+      }
+    }
+
     if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseId)) {
       $elearningExercise->setImage($image);
       $elearningExerciseUtils->update($elearningExercise);
@@ -71,6 +73,10 @@ if ($formSubmitted == 1) {
     return;
 
   }
+
+} else {
+
+  $imageWidth = $elearningQuestionUtils->getImageWidth();
 
 }
 
@@ -98,21 +104,18 @@ $str .= $commonUtils->renderWarningMessages($warnings);
 $str .= "\n<form name='edit' id='edit' action='$gElearningUrl/teacher/corner/exercise/image.php' method='post' enctype='multipart/form-data'>";
 
 if ($image) {
-  if (LibImage::isImage($image) && !LibImage::isGif($image)) {
-    $filename = urlencode($elearningExerciseUtils->imageFilePath . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
-    $str .= "\n<div class='system_label'>$websiteText[6]</div>";
-    $str .= "\n<div class='system_field'><img src='$url' border='0' title='' href=''></div>";
-  } else {
-    $fileUrl = "$elearningExerciseUtils->imageFileUrl/$image";
-    $str .= "\n<div class='system_label'>$websiteText[6]</div>";
-    $str .= "\n<div class='system_field'><a href='$fileUrl' $gJSNoStatus title=''>$image</a></div>";
-  }
+  $fileUrl = "$elearningExerciseUtils->imageFileUrl/$image";
+  $str .= "\n<div class='system_label'>$websiteText[6]</div>";
+  $str .= "\n<div class='system_field'><img src='$fileUrl' $gJSNoStatus title=''></img></div>";
   $str .= "\n<div class='system_label'>$websiteText[3]</div>";
   $str .= "\n<div class='system_field'>$image</div>";
   $str .= "\n<div class='system_label'>$websiteText[5]</div>";
   $str .= "\n<div class='system_field'><input type='checkbox' name='deleteImage' value='1'></div>";
 }
+
+$label = $popupUtils->getTipPopup($websiteText[8], $websiteText[9], 300, 300);
+$str .= "\n<div class='system_label'>$label</div>";
+$str .= "\n<div class='system_field'><input type=text name='imageWidth' value='$imageWidth' size='5' maxlength='5'></div>";
 
 $str .= "\n<div class='system_label'>$websiteText[2]</div>";
 $str .= "\n<div class='system_field'><input type=file name='userfile' size='15' maxlength='50'></div>";

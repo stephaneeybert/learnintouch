@@ -2533,13 +2533,7 @@ HEREDOC;
 
   // Get the width of the image
   function getImageWidth() {
-    global $gIsPhoneClient;
-
-      if ($gIsPhoneClient) {
-        $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
-      } else {
-        $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
-      }
+    $width = $this->preferenceUtils->getValue("ELEARNING_EXERCISE_IMAGE_WIDTH");
 
     return $width;
   }
@@ -2549,6 +2543,7 @@ HEREDOC;
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
@@ -2556,8 +2551,6 @@ HEREDOC;
     $str = '';
 
     if ($image && file_exists($imagePath . $image)) {
-      $width = $this->getImageWidth();
-
       $str .= "<div class='elearning_exercise_image'>";
 
       if (LibImage::isImage($imagePath . $image)) {
@@ -2567,8 +2560,9 @@ HEREDOC;
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width . "&amp;height=";

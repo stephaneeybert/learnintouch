@@ -787,6 +787,7 @@ class NewsPaperUtils extends NewsPaperDB {
     global $gNewsUrl;
     global $gUtilsUrl;
     global $gJSNoStatus;
+    global $gIsPhoneClient;
 
     $str = '';
 
@@ -806,7 +807,7 @@ class NewsPaperUtils extends NewsPaperDB {
       if (LibImage::isImage($image)) {
         $width = $this->preferenceUtils->getValue("NEWS_STORY_IMAGE_SMALL_WIDTH");
 
-        if (!LibImage::isGif($image)) {
+        if ($gIsPhoneClient && !LibImage::isGif($image)) {
           $filename = $imageFilePath . $image;
 
           $imageLengthIsHeight = $this->newsStoryUtils->imageLengthIsHeight();
@@ -829,7 +830,7 @@ class NewsPaperUtils extends NewsPaperDB {
           $strImageAlign = "align='$imageAlign'";
         }
 
-        $strImg = "<img class='newspaper_story_image_file' src='$strUrl' title='' alt='' width='$width' $strImageAlign />";
+        $strImg = "<img class='newspaper_story_image_file' src='$strUrl' title='' alt='' $strImageAlign />";
 
         $strImg = "<a href='$imageFileUrl/$image' rel='no_style_colorbox' $gJSNoStatus>$strImg</a>";
 
@@ -1240,6 +1241,7 @@ HEREDOC;
   // Render the image
   function renderImage($newsPaper) {
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     if (!$newsPaper) {
       return;
@@ -1251,12 +1253,11 @@ HEREDOC;
     $imageFileUrl = $this->imageUrl;
 
     if ($image && file_exists($imageFilePath . $image)) {
-      $width = $this->getImageWidth();
-
       $libFlash = new LibFlash();
       if (LibImage::isImage($image)) {
-        if ($width && !LibImage::isGif($image)) {
+        if ($gIsPhoneClient && !LibImage::isGif($image)) {
           // Resize the image
+          $width = $this->preferenceUtils->getValue("NEWS_PAPER_PHONE_IMAGE_WIDTH");
           $filename = urlencode($imageFilePath . $image);
           $strUrl = $gUtilsUrl . "/printImage.php?filename=" . $filename
             . "&amp;width=$width&amp;height=";

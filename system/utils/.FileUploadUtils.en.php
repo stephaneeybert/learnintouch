@@ -4,4 +4,5 @@
 [   3]The file must have one of the following types:
 [   4]Failed to upload the file
 [  22]This file type is unauthorised.
+[  23]The file size is larger than the allowed maximum file size.
 [  27]No file has been specified.

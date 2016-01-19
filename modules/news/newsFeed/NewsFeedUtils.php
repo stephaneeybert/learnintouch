@@ -177,6 +177,7 @@ class NewsFeedUtils extends NewsFeedDB {
     global $gNewsUrl;
     global $gUtilsUrl;
     global $gJSNoStatus;
+    global $gIsPhoneClient;
 
     $this->loadLanguageTexts();
 
@@ -214,7 +215,7 @@ class NewsFeedUtils extends NewsFeedDB {
       if (LibImage::isImage($image)) {
         $width = $newsFeed->getImageWidth();
 
-        if (!LibImage::isGif($image)) {
+        if ($gIsPhoneClient && !LibImage::isGif($image)) {
           $filename = $imageFilePath . $image;
 
           $imageLengthIsHeight = $this->newsStoryUtils->imageLengthIsHeight();
@@ -236,7 +237,7 @@ class NewsFeedUtils extends NewsFeedDB {
           $strImageAlign = "align='$imageAlign'";
         }
 
-        $strImg = "<img class='news_feed_story_image_file' src='$strUrl' title='" .  $this->websiteText[55] . "' alt='' width='$width' $strImageAlign />";
+        $strImg = "<img class='news_feed_story_image_file' src='$strUrl' title='" .  $this->websiteText[55] . "' alt='' $strImageAlign />";
 
         if ($strLink) {
           $strImg = "<a href='$strLink' $target $gJSNoStatus>$strImg</a>";

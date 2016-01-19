@@ -14,6 +14,7 @@ if ($formSubmitted == 1) {
 
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
   $CKEditorFuncNum = LibEnv::getEnvHttpPOST("CKEditorFuncNum");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   // Get the file characteristics
   // Note how the form parameter "userfile" creates several variables
@@ -107,6 +108,9 @@ if (count($warnings) > 0) {
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 500);
 $panelUtils->setHelp($help);
 $panelUtils->openMultipartForm($PHP_SELF);
+$panelUtils->addLine();
+$label = $popupUtils->getTipPopup($mlText[5], $mlText[6], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='imageWidth' value='$imageWidth' size='5' maxlength='5'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($imageSize));

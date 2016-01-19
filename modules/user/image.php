@@ -4,13 +4,13 @@ require_once("website.php");
 
 $adminModuleUtils->checkAdminModule(MODULE_USER);
 
-$mlText = $languageUtils->getWebsiteText(__FILE__);
-
 $imageSize = $userUtils->imageSize;
 $imagePath = $userUtils->imagePath;
 $imageUrl = $userUtils->imageUrl;
 
 $fileUploadUtils->loadLanguageTexts();
+
+$websiteText = $languageUtils->getWebsiteText(__FILE__);
 
 $warnings = array();
 
@@ -20,6 +20,7 @@ if ($formSubmitted == 1) {
 
   $userId = LibEnv::getEnvHttpPOST("userId");
   $deleteImage = LibEnv::getEnvHttpPOST("deleteImage");
+  $imageWidth = LibEnv::getEnvHttpPOST("imageWidth");
 
   if ($deleteImage == 1) {
     $image = '';
@@ -48,16 +49,17 @@ if ($formSubmitted == 1) {
       array_push($warnings, $str);
     }
 
-    if ($fileUploadUtils->isImageType($userUtils->imagePath . $userfile_name) && !$fileUploadUtils->isGifImage($userUtils->imagePath . $userfile_name)) {
-      $destWidth = $userUtils->getImageWidth();
-      LibImage::resizeImageToWidth($userUtils->imagePath . $userfile_name, $destWidth);
-    }
-
     // Update the image
     $image = $userfile_name;
   }
 
   if (count($warnings) == 0) {
+
+    if ($imageWidth) {
+      if ($fileUploadUtils->isImageType($userUtils->imagePath . $image) && !$fileUploadUtils->isGifImage($userUtils->imagePath . $image)) {
+        LibImage::resizeImageToWidth($userUtils->imagePath . $image, $imageWidth);
+      }
+    }
 
     if ($user = $userUtils->selectById($userId)) {
       $user->setImage($image);
@@ -68,6 +70,11 @@ if ($formSubmitted == 1) {
     printContent($str);
     return;
   }
+
+} else {
+
+  $imageWidth = $userUtils->getImageWidth();
+
 }
 
 $userId = LibEnv::getEnvHttpGET("userId");
@@ -83,7 +90,7 @@ $str = '';
 
 $str .= "\n<div class='system'>";
 
-$str .= "\n<div class='system_title'>$mlText[0]</div>";
+$str .= "\n<div class='system_title'>$websiteText[0]</div>";
 
 $str .= "\n<br />";
 
@@ -94,35 +101,37 @@ $str .= "\n<form enctype='multipart/form-data' action='$PHP_SELF' method='post'>
 $str .= "\n<table border='0' width='100%' cellpadding='0' cellspacing='0'>";
 
 if ($image) {
-  if (!LibImage::isGif($image)) {
-    $filename = urlencode($imagePath . $image);
-    $url = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&width=120&height=";
+  $url = $imageUrl . "/" . $image;
+  $str .= "\n<tr>";
+  $str .= "\n<td class='system_label'>$websiteText[6]</td>";
+  $str .= "\n<td class='system_field'><img src='$url' title='' alt='' /></td>";
+  $str .= "\n</tr>";
 
-    $str .= "\n<tr>";
-    $str .= "\n<td class='system_label'>$mlText[6]</td>";
-    $str .= "\n<td class='system_field'><img src='$url' title='' alt='' /></td>";
-    $str .= "\n</tr>";
-
-    $str .= "\n<tr><td><br /></td><td></td></tr>";
-  }
+  $str .= "\n<tr><td><br /></td><td></td></tr>";
 
   $str .= "\n<tr>";
-  $str .= "\n<td class='system_label'>$mlText[3]</td>";
+  $str .= "\n<td class='system_label'>$websiteText[3]</td>";
   $str .= "\n<td class='system_field'>$image</td>";
   $str .= "\n</tr>";
 
   $str .= "\n<tr><td><br /></td><td></td></tr>";
 
   $str .= "\n<tr>";
-  $str .= "\n<td class='system_label'>$mlText[7]</td>";
+  $str .= "\n<td class='system_label'>$websiteText[7]</td>";
   $str .= "\n<td class='system_field'><input type='checkbox' name='deleteImage' value='1' /></td>";
   $str .= "\n</tr>";
 }
 
 $str .= "\n<tr><td><br /></td><td></td></tr>";
 
+$label = $popupUtils->getTipPopup($websiteText[8], $websiteText[9], 300, 300);
 $str .= "\n<tr>";
-$str .= "\n<td class='system_label'>$mlText[2]</td>";
+$str .= "\n<td class='system_label'>$label</td>";
+$str .= "\n<td class='system_field'><input type='text' name='imageWidth' value= '$imageWidth' size='5' maxlength='5' /></td>";
+$str .= "\n</tr>";
+
+$str .= "\n<tr>";
+$str .= "\n<td class='system_label'>$websiteText[2]</td>";
 $str .= "\n<td class='system_field'><input type='file' name='userfile' size='15' maxlength='50' /></td>";
 $str .= "\n</tr>";
 

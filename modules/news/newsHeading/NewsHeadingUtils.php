@@ -171,9 +171,7 @@ class NewsHeadingUtils extends NewsHeadingDB {
   }
 
   // Get the url for an image
-  function getImageUrl($newsHeadingId, $width) {
-    global $gUtilsUrl;
-
+  function getImageUrl($newsHeadingId) {
     if (!$newsHeading = $this->selectById($newsHeadingId)) {
       return;
     }
@@ -186,20 +184,7 @@ class NewsHeadingUtils extends NewsHeadingDB {
     $imageFileUrl = $this->imageFileUrl;
 
     if ($image && file_exists($imageFilePath . $image)) {
-      if (!LibImage::isGif($image)) {
-        $filename = $imageFilePath . $image;
-
-        $imageLengthIsHeight = $this->newsStoryUtils->imageLengthIsHeight();
-        if ($imageLengthIsHeight) {
-          $width = LibImage::getWidthFromHeight($filename, $width);
-        }
-
-        $filename = urlencode($filename);
-
-        $imageUrl = $gUtilsUrl . "/printImage.php?filename=" . $filename . "&amp;width=$width&amp;height=";
-      } else {
-        $imageUrl = "$imageFileUrl/$image";
-      }
+      $imageUrl = "$imageFileUrl/$image";
     }
 
     return($imageUrl);
@@ -220,7 +205,6 @@ class NewsHeadingUtils extends NewsHeadingDB {
 
   // Render the images of a news story
   function renderImage($newsHeadingId) {
-    global $gUtilsUrl;
     global $gNewsUrl;
     global $gJSNoStatus;
     global $gImagesUserUrl;
@@ -231,9 +215,7 @@ class NewsHeadingUtils extends NewsHeadingDB {
       return;
     }
 
-    $width = $this->getImageWidth();
-
-    $imageUrl = $this->getImageUrl($newsHeadingId, $width);
+    $imageUrl = $this->getImageUrl($newsHeadingId);
 
     if ($imageUrl) {
       $str .= "<div class='newspaper_heading_image' style='float:left;'>"

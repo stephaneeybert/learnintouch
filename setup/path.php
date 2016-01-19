@@ -227,9 +227,6 @@ $gMailUrl = $gModulesUrl . '/mail';
 $gSmsPath = $gModulesPath . 'sms/';
 $gSmsUrl = $gModulesUrl . '/sms';
 
-$gDatingPath = $gModulesPath . 'dating/';
-$gDatingUrl = $gModulesUrl . '/dating';
-
 $gPeoplePath = $gModulesPath . 'people/';
 $gPeopleUrl = $gModulesUrl . '/people';
 

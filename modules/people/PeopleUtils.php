@@ -338,6 +338,7 @@ class PeopleUtils extends PeopleDB {
   // Render the image
   function renderImage($people) {
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     if (!$people) {
       return;
@@ -349,13 +350,11 @@ class PeopleUtils extends PeopleDB {
       return;
     }
 
-    // Resize the image to the following width
-    $width = $this->getImageWidth();
-
     // A gif image cannot be resized
     // No support for the gif format due to copyrights issues
-    if (!$this->fileUploadUtils->isGifImage($this->imageFilePath . $image)) {
+    if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($this->imageFilePath . $image)) {
       // The image is created on the fly
+      $width = $this->preferenceUtils->getValue("PEOPLE_PHONE_DEFAULT_LARGE_WIDTH");
       $imageFilePath = $this->imageFilePath;
       $filename = urlencode($imageFilePath . $image);
 
@@ -365,7 +364,7 @@ class PeopleUtils extends PeopleDB {
       $url = "$this->imageFileUrl/$image";
     }
 
-    $str = "<img class='people_item_image_file' src='$url' title='' alt='' width='$width' />";
+    $str = "<img class='people_item_image_file' src='$url' title='' alt='' />";
 
     return($str);
   }
@@ -410,10 +409,10 @@ class PeopleUtils extends PeopleDB {
 
     $nonClickable = $this->preferenceUtils->getValue("PEOPLE_NON_CLICKABLE_IMAGE");
     if ($nonClickable) {
-      $str = "<img class='people_list_image_file' src='$url' title='' alt='' width='$width' />";
+      $str = "<img class='people_list_image_file' src='$url' title='' alt='' />";
     } else {
       $str = "<a href='$gPeopleUrl/display_person.php?peopleId=$peopleId' $gJSNoStatus>"
-        . "<img class='people_list_image_file' src='$url' title='' alt='' width='$width' />"
+        . "<img class='people_list_image_file' src='$url' title='' alt='' />"
         . "</a>";
     }
 
@@ -430,7 +429,7 @@ class PeopleUtils extends PeopleDB {
       . "<img src='$gImagesUserUrl/" . IMAGE_COMMON_UP . "' class='no_style_image_icon' title='The back button' alt='' />"
       . "</div>"
       . "<div class='people_item_image'>The photo of the person"
-      . "<img class='people_item_image_file' src='$gStylingImage' title='The border of the photo of the person' alt='' width='' />"
+      . "<img class='people_item_image_file' src='$gStylingImage' title='The border of the photo of the person' alt='' />"
       . "</div>"
       . "<div class='people_item_name'>The name</div>"
       . "<div class='people_item_email'>The email address</div>"

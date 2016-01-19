@@ -5,3 +5,6 @@
 [   7]Delete the image?
 [  27]No image has been specified.
 [   1]A question can have an image.
+[   4]Resize to width:
+[   5]When being uploaded to the server, an image can be resized to the specified width.\n\nIf no width is specified then the image is not resized.\n\nThe default width is taken from the larger image width in the preferences.
+

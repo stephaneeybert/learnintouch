@@ -4,3 +4,6 @@
 [   3]Pour utiliser cette image dans une page web, veuillez utiliser le lien suivant:
 [   4]Vous pouvez sélectionner le lien et faire un copier/coller à l'aide d'un clic droit de la souris.
 [   5]Effacer les images non utilisées
+[   6]Redimensioner à la largeur:
+[   7]Lors du téléchargement vers le serveur, une image peut être redimensionée à une certaine largeur.\n\nSi aucune largeur n'est spécifiée. alors l'image n'est pas redimensionée.\n\nLa largeur par défaut est prise de la plus grande largeur d'image dans les préférences.
+

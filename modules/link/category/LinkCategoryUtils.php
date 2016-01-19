@@ -193,14 +193,12 @@ class LinkCategoryUtils extends LinkCategoryDB {
     $image = $link->getImage();
     $url = $link->getUrl();
 
-    // Resize the image to the following width
-    $width = $this->linkUtils->getImageWidth();
-
     if ($image && file_exists($this->linkUtils->imageFilePath . $image)) {
       // A gif image cannot be resized
       // No support for the gif format due to copyrights issues
-      if (!$this->fileUploadUtils->isGifImage($this->linkUtils->imageFilePath . $image)) {
+      if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($this->linkUtils->imageFilePath . $image)) {
         // The image is created on the fly
+        $width = $this->preferenceUtils->getValue("LINK_PHONE_DEFAULT_WIDTH");
         $filename = $this->linkUtils->imageFilePath . $image;
         $filename = urlencode($filename);
 
@@ -210,7 +208,7 @@ class LinkCategoryUtils extends LinkCategoryDB {
         $imageUrl = $this->linkUtils->imageFileUrl . '/' . $image;
       }
       $strImg = "<a onclick=\"window.open(this.href, '_blank'); return(false);\" href='$url'>"
-        . "<img class='link_list_image_file' src='$imageUrl' title='$description' alt='' width='$width' />"
+        . "<img class='link_list_image_file' src='$imageUrl' title='$description' alt='' />"
         . "</a>";
     } else {
       $strImg = "&nbsp;";
@@ -290,7 +288,7 @@ class LinkCategoryUtils extends LinkCategoryDB {
 
         $item = "<div class='link_cycle_image'>"
           . "<a onclick=\"window.open(this.href, '_blank'); return(false);\" href='$url'>"
-          . "<img src='$imageSrc' border='0' title='' width='$width' height='$height' />"
+          . "<img src='$imageSrc' border='0' title='' />"
           . "</a>"
           . "</div>";
 

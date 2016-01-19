@@ -593,14 +593,12 @@ class ElearningLessonUtils extends ElearningLessonDB {
     global $gDataPath;
     global $gDataUrl;
     global $gUtilsUrl;
+    global $gIsPhoneClient;
 
     $image = $elearningLesson->getImage();
 
     $imagePath = $this->imageFilePath;
     $imageUrl = $this->imageFileUrl;
-
-    // Resize the image to the following width
-    $width = $this->getImageWidth();
 
     $str = '';
 
@@ -615,8 +613,9 @@ class ElearningLessonUtils extends ElearningLessonDB {
         if ($emailFormat) {
           $url = $imageUrl . '/' . $image;
         } else {
-          if ($width && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
+          if ($gIsPhoneClient && !$this->fileUploadUtils->isGifImage($imagePath . $image)) {
             // The image is created on the fly
+            $width = $this->preferenceUtils->getValue("ELEARNING_PHONE_EXERCISE_IMAGE_WIDTH");
             $filename = urlencode($imagePath . $image);
             $url = $gUtilsUrl . "/printImage.php?filename=" . $filename
               . "&amp;width=" . $width . "&amp;height=";

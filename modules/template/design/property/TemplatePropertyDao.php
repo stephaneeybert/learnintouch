@@ -63,7 +63,7 @@ HEREDOC;
   }
 
   function cleanup() {
-    $sqlStatement = "delete from template_property where template_property_set_id not in (select id from template_property_set)";
+    $sqlStatement = "delete from template_property where template_property_set_id not in (select template_property_set_id from template_model) and template_property_set_id not in (select inner_template_property_set_id from template_model) and template_property_set_id not in (select template_property_set_id from template_container) and template_property_set_id not in (select template_property_set_id from template_page_tag) and template_property_set_id not in (select template_property_set_id from template_element_tag)";
     return($this->querySelect($sqlStatement));
   }
 
