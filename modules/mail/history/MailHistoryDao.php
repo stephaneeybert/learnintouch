@@ -52,6 +52,11 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
+  function delete($id) {
+    $sqlStatement = "DELETE FROM $this->tableName WHERE id = '$id'";
+    return($this->querySelect($sqlStatement));
+  }
+
   function countAll() {
     $sqlStatement = "SELECT count(*) as count FROM $this->tableName";
     return($this->querySelect($sqlStatement));

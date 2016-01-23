@@ -176,6 +176,12 @@ class MailHistoryDB {
     return($this->dao->deleteAll());
   }
 
+  function delete($id) {
+    $this->dataSource->selectDatabase();
+
+    return($this->dao->delete($id));
+  }
+
   // Get the id of the last inserted object
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
