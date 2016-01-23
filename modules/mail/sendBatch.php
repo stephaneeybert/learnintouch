@@ -2,6 +2,8 @@
 
 require_once("website.php");
 
+error_log("Starting a mailing batch.");
+
 $mailId = LibEnv::getEnvHttpGET("mailId");
 $senderEmail = LibEnv::getEnvHttpGET("senderEmail");
 $senderName = LibEnv::getEnvHttpGET("senderName");
@@ -79,6 +81,7 @@ foreach ($mailOutboxes as $mailOutbox) {
     $mailOutboxUtils->update($mailOutbox);
   } else {
     // Send to the email addresses
+error_log("Calling LibEmail::sendMail for $email $firstname $lastname");
     LibEmail::sendMail($email, "$firstname $lastname", $subject, $mailBody, $senderEmail, $senderName, $attachedImages, $attachedFiles, $inTextFormat);
 
     // Mark the email address as having been sent the email to
@@ -87,9 +90,12 @@ foreach ($mailOutboxes as $mailOutbox) {
       // as updating the object being looped on appears to make the loop having missteps
       $cloneMailOutbox->setSent(1);
       $mailOutboxUtils->update($cloneMailOutbox);
+error_log("The mail to $email $firstname $lastname has been marked as sent.");
     }
   }
 }
+
+emailStaff("A mailing has been completed. Search the log for duplicates. Search for: 'Calling LibEmail::sendMail'. Website $websiteName");
 
 // Activate a semaphore to tell the mailing has ended
 $mailOutboxUtils->mailingEnded();
