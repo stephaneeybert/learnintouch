@@ -5,7 +5,7 @@ require_once($gSqlPath . "SqlToolsDao.php");
 require_once($gSqlPath . "SqlToolsDB.php");
 require_once($gSqlPath . "SqlToolsUtils.php");
 require_once($gPdfPath . "includes.php");
-require_once($gApiPath . "PHPMailer-5.2.9/PHPMailerAutoload.php");
+require_once($gApiPath . "PHPMailer-5.2.14/PHPMailerAutoload.php");
 require_once($gUtilsPath . "globals.php");
 require_once($gUtilsPath . "error.php");
 require_once($gUtilsPath . "CommonUtils.php");
