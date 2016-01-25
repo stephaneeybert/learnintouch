@@ -20,7 +20,7 @@ $backupSuccess = $backupUtils->backupDatabase($dbFilename, false);
 if ($backupSuccess) {
   $backupFilePath = $backupUtils->renderBackupFilePath();
   $backupSuccess = $backupUtils->backupDataPath($backupFilePath);
-  }
+}
 
 $webmasterEmail = $profileUtils->getProfileValue("webmaster.email");
 $webmasterName = $profileUtils->getProfileValue("webmaster.name");
@@ -28,7 +28,7 @@ $websiteName = $profileUtils->getProfileValue("website.name");
 
 if (!$webmasterName) {
   $webmasterName = $webmasterEmail;
-  }
+}
 
 // Check for the backup success
 if ($backupSuccess == false) {
@@ -41,8 +41,8 @@ if ($backupSuccess == false) {
 
   if ($webmasterEmail) {
     LibEmail::sendMail($webmasterEmail, $webmasterName, $strSubject, $strBody, $webmasterEmail, $webmasterName);
-    }
-  } else {
+  }
+} else {
   // Generate a unique token and keep it for later use
   $tokenName = BACKUP_TOKEN_NAME;
   $tokenDuration = $adminUtils->getLoginTokenDuration();
@@ -56,7 +56,7 @@ if ($backupSuccess == false) {
 
   if ($backupUtils->mailOnBackup()) {
     LibEmail::sendMail($webmasterEmail, $webmasterName, $strSubject, $strBody, $webmasterEmail, $webmasterName);
-    }
   }
+}
 
 ?>
