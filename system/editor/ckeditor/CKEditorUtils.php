@@ -225,18 +225,7 @@ CKEDITOR.on('dialogDefinition', function(ev) {
     var infoTab = dialogDefinition.getContents('info');
 
     // Remove the "Link Type" combo and the "Browser Server" button from the "info" tab.
-    infoTab.remove('linkType');
     infoTab.remove('browse');
-
-    // Rewrite the 'onFocus' handler to always focus 'url' field.
-    dialogDefinition.onFocus = function() {
-      var urlField = this.getContentElement( 'info', 'url' );
-      urlField.select();
-    };
-
-    // Set the default value for the URL field.
-    var urlField = infoTab.get('url');
-//    urlField['default'] = 'www.example.com';
   }
 
   if (dialogName == 'image') {
