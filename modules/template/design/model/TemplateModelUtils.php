@@ -981,6 +981,8 @@ class TemplateModelUtils extends TemplateModelDB {
       $strCssLinks .= "\n<link href='$strPropertyUrl' rel='stylesheet' type='text/css' />";
     }
 
+    $strCssLinks .= "<link href='$gTemplateDesignUrl/data/css/default.css' rel='stylesheet' type='text/css' />";
+
     return($strCssLinks);
   }
 
@@ -1076,7 +1078,6 @@ $strTooltip
 $strLexiconTooltip
 $strElementHeader
 <base href='$gHomeUrl' />
-<link href='$gTemplateDesignUrl/data/css/default.css' rel='stylesheet' type='text/css' />
 </head>
 HEREDOC;
 
