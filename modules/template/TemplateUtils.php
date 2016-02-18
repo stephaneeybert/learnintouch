@@ -1063,41 +1063,41 @@ HEREDOC;
     global $gApiUrl;
 
     $str = <<<HEREDOC
-<script src='$gJsUrl/popup.js' type='text/javascript'></script>
-<script src='$gJsUrl/utilities.js' type='text/javascript'></script>
-<script src='$gJsUrl/ajax.js' type='text/javascript'></script>
-<script src='$gJsUrl/jquery/jquery-1.7.1.min.js' type='text/javascript'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-da.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-de.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-en-GB.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-es.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-fi.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-fr.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-it.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-nl.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-no.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-ru.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-sv.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-da.js'></script>
+<script async src='$gJsUrl/popup.js' type='text/javascript'></script>
+<script async src='$gJsUrl/utilities.js' type='text/javascript'></script>
+<script async src='$gJsUrl/ajax.js' type='text/javascript'></script>
+<script async src='$gJsUrl/jquery/jquery-1.7.1.min.js' type='text/javascript'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-da.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-de.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-en-GB.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-es.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-fi.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-fr.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-it.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-nl.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-no.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-ru.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-sv.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-da.js'></script>
 <link rel='stylesheet' type='text/css' href='$gJsUrl/jquery/ui/css/smoothness/jquery-ui-1.8.17.custom.css' />
-<script type="text/javascript" src="$gJsUrl/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
-<script type="text/javascript" src="$gJsUrl/jquery/jquery-ui-autocomplete-extension/scottgonzalez-jquery-ui-extensions-e34c945/autocomplete/jquery.ui.autocomplete.html.js"></script>
-<script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/jquery-ui-autocomplete-extension/scottgonzalez-jquery-ui-extensions-e34c945/autocomplete/jquery.ui.autocomplete.html.js"></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
 <link rel='stylesheet' type='text/css' href='$gJsUrl/jquery/tipsy-0.1.7/src/stylesheets/tipsy.css' />
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<script type="text/javascript" src="$gJsUrl/socket/socket.io.min.js"></script>
-<script type='text/javascript' src='$gJsUrl/jquery/tipsy-0.1.7/src/javascripts/jquery.tipsy.js'></script>
-<script type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
-<script type="text/javascript" src="$gJsUrl/jquery/jquery.progressbar.2.0/js/jquery.progressbar.min.js"></script>
-<script type='text/javascript' src='$gJsUrl/jquery/jquery.corner.js'></script>
-<script type='text/javascript' src='$gJsUrl/jquery/jquery.corner.config.js'></script>
-<script type="text/javascript" src="$gJsUrl/jquery/ui/furf-jquery-ui-touch-punch-766dcf9/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="$gJsUrl/jquery/jquery.caret.js"></script>
-<script type="text/javascript" src="$gJsUrl/jquery/print.js"></script>
-<script type='text/javascript' src='$gJsUrl/jquery/jqzoom_ev-2.3/js/jquery.jqzoom-core-pack.js'></script>  
+<script async type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script async type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script async type="text/javascript" src="$gJsUrl/socket/socket.io.min.js"></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/tipsy-0.1.7/src/javascripts/jquery.tipsy.js'></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/jquery.progressbar.2.0/js/jquery.progressbar.min.js"></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/jquery.corner.js'></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/jquery.corner.config.js'></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/ui/furf-jquery-ui-touch-punch-766dcf9/jquery.ui.touch-punch.min.js"></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/jquery.caret.js"></script>
+<script async type="text/javascript" src="$gJsUrl/jquery/print.js"></script>
+<script async type='text/javascript' src='$gJsUrl/jquery/jqzoom_ev-2.3/js/jquery.jqzoom-core-pack.js'></script>  
 <link rel="stylesheet" type="text/css" href="$gJsUrl/jquery/jqzoom_ev-2.3/css/jquery.jqzoom.css"> 
-<script type='text/javascript'>
+<script async type='text/javascript'>
 $(document).ready(function() {
   $(document).ready(function(){
     $('.zoomable').jqzoom({
@@ -1106,8 +1106,8 @@ $(document).ready(function() {
   });
 });
 </script>
-<script type="text/javascript" src="$gJsUrl/soundmanagerv297a-20150601/script/soundmanager2-jsmin.js"></script>
-<script type='text/javascript'>
+<script async type="text/javascript" src="$gJsUrl/soundmanagerv297a-20150601/script/soundmanager2-jsmin.js"></script>
+<script async type='text/javascript'>
 $(document).ready(function() {
   soundManager.onready(function() {
     soundManager.setup({
@@ -1120,8 +1120,8 @@ $(document).ready(function() {
   });
 });
 </script>
-<script type='text/javascript' src='$gJsUrl/jquery/jquery.autoresize.js'></script>
-<script type='text/javascript'>
+<script async type='text/javascript' src='$gJsUrl/jquery/jquery.autoresize.js'></script>
+<script async type='text/javascript'>
 $(document).ready(function() {
   $('input.auto_grow').autoResize({
     comfortZone: 30
