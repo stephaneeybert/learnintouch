@@ -938,6 +938,8 @@ class TemplateModelUtils extends TemplateModelDB {
   function previewContainer($templateModelId, $templateContainerId) {
     $str = $this->renderModelHeader($templateModelId);
 
+    $str .= $this->renderModelCss($templateModelId);
+
     $str .= $this->templateUtils->renderCommonJavascripts();
 
     $str .= $this->getContainerContent($templateContainerId);
@@ -949,6 +951,8 @@ class TemplateModelUtils extends TemplateModelDB {
   function previewElement($templateModelId, $templateElementId, $forcePreview = false) {
     $str = $this->renderModelHeader($templateModelId);
 
+    $str .= $this->renderModelCss($templateModelId);
+
     $str .= $this->templateUtils->renderCommonJavascripts();
 
     if ($templateElement = $this->templateElementUtils->selectById($templateElementId)) {
@@ -958,6 +962,26 @@ class TemplateModelUtils extends TemplateModelDB {
     }
 
     return($str);
+  }
+
+  // Render the css for the model
+  function renderModelCss($templateModelId) {
+    $strCssLinks = '';
+
+    if ($templateModel = $this->selectById($templateModelId)) {
+      $parentId = $templateModel->getParentId();
+
+      // The parent css link, if any, must be rendered before the child's one
+      // This is to ensure the css properties of the child model overwrite the ones of the parent model if any
+      if ($parentId) {
+        $strPropertyUrl = $this->templateUtils->getModelCssUrl($parentId);
+        $strCssLinks .= "\n<link href='$strPropertyUrl' rel='stylesheet' type='text/css' />";
+      }
+      $strPropertyUrl = $this->templateUtils->getModelCssUrl($templateModelId);
+      $strCssLinks .= "\n<link href='$strPropertyUrl' rel='stylesheet' type='text/css' />";
+    }
+
+    return($strCssLinks);
   }
 
   // Render the header for the model
@@ -1038,16 +1062,6 @@ HEREDOC;
           }
         }
       }
-
-      // The parent css link, if any, must be rendered before the child's one
-      // This is to ensure the css properties of the child model overwrite the ones of the parent model if any
-      $strCssLinks = '';
-      if ($parentId) {
-        $strPropertyUrl = $this->templateUtils->getModelCssUrl($parentId);
-        $strCssLinks .= "\n<link href='$strPropertyUrl' rel='stylesheet' type='text/css' />";
-      }
-      $strPropertyUrl = $this->templateUtils->getModelCssUrl($templateModelId);
-      $strCssLinks .= "\n<link href='$strPropertyUrl' rel='stylesheet' type='text/css' />";
     }
 
     $strMeta = $this->renderMetaDataTags();
@@ -1063,7 +1077,6 @@ $strLexiconTooltip
 $strElementHeader
 <base href='$gHomeUrl' />
 <link href='$gTemplateDesignUrl/data/css/default.css' rel='stylesheet' type='text/css' />
-$strCssLinks
 </head>
 HEREDOC;
 
@@ -1211,6 +1224,10 @@ HEREDOC;
 
     $strBody .= $this->profileUtils->getJsBodyEnd();
 
+    $strBody .= $this->templateUtils->renderCommonJavascripts();
+
+    $strBody .= $this->renderModelCss($templateModelId);
+
     $strBody .= "\n</body>";
 
     // Note that the first line of the page must be the doctype one
@@ -1226,8 +1243,6 @@ HEREDOC;
     $str .= "\n" . $this->renderModelHeader($templateModelId);
 
     $str .= $strBody;
-
-    $str .= "\n" . $this->templateUtils->renderCommonJavascripts();
 
     $str .= "\n</html>";
 

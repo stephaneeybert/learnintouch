@@ -34,7 +34,6 @@ function formatMessageContent($message) {
 
   $str = ''
     . "\n<html>\n<head>"
-    . "\n<link href='$gPanelUrl/css/default.css' rel='stylesheet' type='text/css' />"
     . "\n</head>"
     . "\n<body>"
     . "\n<table border='0' width='100%' cellpadding='0' cellspacing='0'>"
@@ -42,6 +41,7 @@ function formatMessageContent($message) {
     . $message
     . "</div></td></tr>"
     . "</table>"
+    . "\n<link href='$gPanelUrl/css/default.css' rel='stylesheet' type='text/css' />"
     . "\n</body></html>";
 
   return($str);
@@ -91,7 +91,32 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <head>
 <title>$gAdminSessionLogin $gWebsiteTitle</title>
 <meta http-equiv='content-type' content='text/html; charset=iso-8859-1'>
-<link rel='stylesheet' type='text/css' href='$gPanelUrl/css/default.css' />
+$head
+</head>
+<body onLoad="setPageTitle(); formFocus(); $bodyOnLoad">
+ $body &nbsp;
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".tooltip").wTooltip({
+    follow: false,
+    fadeIn: 300,
+    fadeOut: 500,
+    delay: 500,
+    style: {
+      width: "500px", // Required to avoid the tooltip being displayed off the right
+      background: "#ffffff",
+      color: "#000",
+      fontSize: 14
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+function setPageTitle() {
+  parent.document.title = "$gAdminSessionLogin $gWebsiteTitle";
+}
+</script>
 <script type='text/javascript' src='$gJsUrl/popup.js'></script>
 <script type='text/javascript' src='$gJsUrl/ajax.js'></script>
 <script type='text/javascript' src='$gJsUrl/utilities.js'></script>
@@ -115,32 +140,7 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <script type="text/javascript" src="$gJsUrl/jquery/jquery-ui-autocomplete-extension/scottgonzalez-jquery-ui-extensions-e34c945/autocomplete/jquery.ui.autocomplete.html.js"></script>
 <script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
 <script type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
-$head
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".tooltip").wTooltip({
-    follow: false,
-    fadeIn: 300,
-    fadeOut: 500,
-    delay: 500,
-    style: {
-      width: "500px", // Required to avoid the tooltip being displayed off the right
-      background: "#ffffff",
-      color: "#000",
-      fontSize: 14
-    }
-  });
-});
-</script>
-
-<script type="text/javascript">
-function setPageTitle() {
-  parent.document.title = "$gAdminSessionLogin $gWebsiteTitle";
-}
-</script>
-</head>
-<body onLoad="setPageTitle(); formFocus(); $bodyOnLoad">
- $body &nbsp;
+<link rel='stylesheet' type='text/css' href='$gPanelUrl/css/default.css' />
 </body>
 </html>
 HEREDOC;
