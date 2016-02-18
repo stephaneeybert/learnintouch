@@ -938,6 +938,8 @@ class TemplateModelUtils extends TemplateModelDB {
   function previewContainer($templateModelId, $templateContainerId) {
     $str = $this->renderModelHeader($templateModelId);
 
+    $str .= $this->templateUtils->renderCommonJavascripts();
+
     $str .= $this->getContainerContent($templateContainerId);
 
     return($str);
@@ -946,6 +948,8 @@ class TemplateModelUtils extends TemplateModelDB {
   // Preview an element
   function previewElement($templateModelId, $templateElementId, $forcePreview = false) {
     $str = $this->renderModelHeader($templateModelId);
+
+    $str .= $this->templateUtils->renderCommonJavascripts();
 
     if ($templateElement = $this->templateElementUtils->selectById($templateElementId)) {
       if ($forcePreview || !$templateElement->getHide()) {
@@ -980,8 +984,6 @@ HEREDOC;
     }
 
     $iPhoneicon = $this->profileUtils->renderIPhoneIcon();
-
-    $strCommonJavascript = $this->templateUtils->renderCommonJavascripts();
 
     if (!$isPhoneModel) {
       $strLexiconTooltip = $this->lexiconEntryUtils->renderLexiconJsLibrary();
@@ -1056,7 +1058,6 @@ $strMeta
 $favicon
 $iPhoneFormatting
 $iPhoneicon
-$strCommonJavascript
 $strTooltip
 $strLexiconTooltip
 $strElementHeader
@@ -1225,6 +1226,8 @@ HEREDOC;
     $str .= "\n" . $this->renderModelHeader($templateModelId);
 
     $str .= $strBody;
+
+    $str .= "\n" . $this->templateUtils->renderCommonJavascripts();
 
     $str .= "\n</html>";
 
