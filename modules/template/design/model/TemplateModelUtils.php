@@ -1164,6 +1164,8 @@ HEREDOC;
 
     $strBody = "<body class='$modelTagID $parentModelTagID'>";
 
+    $strBody .= $this->templateUtils->renderCommonJavascripts();
+
     $facebookApplicationId = $this->profileUtils->getFacebookApplicationId();
     if ($facebookApplicationId) {
       $strBody .= $this->facebookUtils->renderLibrary();
@@ -1224,8 +1226,6 @@ HEREDOC;
     $strBody .= $this->documentUtils->getIssuuSmartlook();
 
     $strBody .= $this->profileUtils->getJsBodyEnd();
-
-    $strBody .= $this->templateUtils->renderCommonJavascripts();
 
     $strBody .= $this->renderModelCss($templateModelId);
 
