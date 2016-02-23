@@ -1011,6 +1011,8 @@ HEREDOC;
 
     $iPhoneicon = $this->profileUtils->renderIPhoneIcon();
 
+    $strCommonJavascript = $this->templateUtils->renderCommonJavascripts();
+
     if (!$isPhoneModel) {
       $strLexiconTooltip = $this->lexiconEntryUtils->renderLexiconJsLibrary();
 
@@ -1074,6 +1076,7 @@ $strMeta
 $favicon
 $iPhoneFormatting
 $iPhoneicon
+$strCommonJavascript
 $strTooltip
 $strLexiconTooltip
 $strElementHeader
