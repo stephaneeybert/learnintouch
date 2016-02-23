@@ -11,22 +11,13 @@ cd $basedir/entre-lac-et-lumiere.ch
 cd $basedir/europasprak.com
 ./refresh_template_models.sh
 
-cd $basedir/guidesaventure.com
-./refresh_template_models.sh
-
 cd $basedir/learnintouch.com
 ./refresh_template_models.sh
 
 cd $basedir/peggykeramik.com
 ./refresh_template_models.sh
 
-cd $basedir/pixam.fr
-./refresh_template_models.sh
-
 cd $basedir/thalasoft.com
-./refresh_template_models.sh
-
-cd $basedir/ud
 ./refresh_template_models.sh
 
 cd $basedir/woolsey

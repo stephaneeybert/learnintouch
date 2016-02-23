@@ -34,6 +34,7 @@ function formatMessageContent($message) {
 
   $str = ''
     . "\n<html>\n<head>"
+    . "\n<link href='$gPanelUrl/css/default.css' rel='stylesheet' type='text/css' />"
     . "\n</head>"
     . "\n<body>"
     . "\n<table border='0' width='100%' cellpadding='0' cellspacing='0'>"
@@ -41,7 +42,6 @@ function formatMessageContent($message) {
     . $message
     . "</div></td></tr>"
     . "</table>"
-    . "\n<link href='$gPanelUrl/css/default.css' rel='stylesheet' type='text/css' />"
     . "\n</body></html>";
 
   return($str);
@@ -92,8 +92,6 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <title>$gAdminSessionLogin $gWebsiteTitle</title>
 <meta http-equiv='content-type' content='text/html; charset=iso-8859-1'>
 $head
-</head>
-<body onLoad="setPageTitle(); formFocus(); $bodyOnLoad">
 <script type="text/javascript">
 $(document).ready(function() {
   $(".tooltip").wTooltip({
@@ -140,6 +138,8 @@ function setPageTitle() {
 <script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
 <script type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
 <link rel='stylesheet' type='text/css' href='$gPanelUrl/css/default.css' />
+</head>
+<body onLoad="setPageTitle(); formFocus(); $bodyOnLoad">
  $body &nbsp;
 </body>
 </html>

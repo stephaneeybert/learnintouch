@@ -938,10 +938,6 @@ class TemplateModelUtils extends TemplateModelDB {
   function previewContainer($templateModelId, $templateContainerId) {
     $str = $this->renderModelHeader($templateModelId);
 
-    $str .= $this->renderModelCss($templateModelId);
-
-    $str .= $this->templateUtils->renderCommonJavascripts();
-
     $str .= $this->getContainerContent($templateContainerId);
 
     return($str);
@@ -950,10 +946,6 @@ class TemplateModelUtils extends TemplateModelDB {
   // Preview an element
   function previewElement($templateModelId, $templateElementId, $forcePreview = false) {
     $str = $this->renderModelHeader($templateModelId);
-
-    $str .= $this->renderModelCss($templateModelId);
-
-    $str .= $this->templateUtils->renderCommonJavascripts();
 
     if ($templateElement = $this->templateElementUtils->selectById($templateElementId)) {
       if ($forcePreview || !$templateElement->getHide()) {
