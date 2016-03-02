@@ -312,7 +312,7 @@ class LibString {
 
   // Strip all non alpha numerical and non dot and non underscore characters from the string
   static function stripNonFilenameChar($str) {
-    return(preg_replace('/[^[:alnum:]._]/iU', '', $str));
+    return(preg_replace('/[[:^print:]]/iU', '', $str));
   }
 
   /*
