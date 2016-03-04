@@ -92,28 +92,6 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <title>$gAdminSessionLogin $gWebsiteTitle</title>
 <meta http-equiv='content-type' content='text/html; charset=iso-8859-1'>
 $head
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".tooltip").wTooltip({
-    follow: false,
-    fadeIn: 300,
-    fadeOut: 500,
-    delay: 500,
-    style: {
-      width: "500px", // Required to avoid the tooltip being displayed off the right
-      background: "#ffffff",
-      color: "#000",
-      fontSize: 14
-    }
-  });
-});
-</script>
-
-<script type="text/javascript">
-function setPageTitle() {
-  parent.document.title = "$gAdminSessionLogin $gWebsiteTitle";
-}
-</script>
 <script type='text/javascript' src='$gJsUrl/popup.js'></script>
 <script type='text/javascript' src='$gJsUrl/ajax.js'></script>
 <script type='text/javascript' src='$gJsUrl/utilities.js'></script>
@@ -137,6 +115,28 @@ function setPageTitle() {
 <script type="text/javascript" src="$gJsUrl/jquery/jquery-ui-autocomplete-extension/scottgonzalez-jquery-ui-extensions-e34c945/autocomplete/jquery.ui.autocomplete.html.js"></script>
 <script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
 <script type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".tooltip").wTooltip({
+    follow: false,
+    fadeIn: 300,
+    fadeOut: 500,
+    delay: 500,
+    style: {
+      width: "500px", // Required to avoid the tooltip being displayed off the right
+      background: "#ffffff",
+      color: "#000",
+      fontSize: 14
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+function setPageTitle() {
+  parent.document.title = "$gAdminSessionLogin $gWebsiteTitle";
+}
+</script>
 <link rel='stylesheet' type='text/css' href='$gPanelUrl/css/default.css' />
 </head>
 <body onLoad="setPageTitle(); formFocus(); $bodyOnLoad">
