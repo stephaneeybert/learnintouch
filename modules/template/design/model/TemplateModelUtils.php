@@ -958,8 +958,9 @@ class TemplateModelUtils extends TemplateModelDB {
 
   // Render the css for the model
   function renderModelCss($templateModelId) {
+    global $gTemplateDesignUrl;
+
     $strCssLinks = '';
-    $gTemplateDesignUrl = '';
 
     if ($templateModel = $this->selectById($templateModelId)) {
       $parentId = $templateModel->getParentId();
