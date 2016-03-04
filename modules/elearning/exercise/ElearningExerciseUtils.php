@@ -2925,6 +2925,10 @@ HEREDOC;
 
     $str .= $this->renderPlayer($audio);
 
+    if ($elearningSubscriptionId) {
+      $str .= "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div>";
+    }
+
     $str .= "<div class='elearning_exercise_introduction'>";
     if ($this->hideIntroduction($elearningExerciseId)) {
       $str .= <<<HEREDOC
@@ -3262,8 +3266,11 @@ HEREDOC;
 
     $str .= "\n<div class='elearning_exercise'>";
 
-    $isLast = $this->elearningExercisePageUtils->isLastExercisePage($elearningExercisePages, $elearningExercisePageId);
+    if ($elearningSubscriptionId) {
+      $str .= "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div>";
+    }
 
+    $isLast = $this->elearningExercisePageUtils->isLastExercisePage($elearningExercisePages, $elearningExercisePageId);
     if ($isLast) {
       $str .= "<form name='exercise_form' id='exercise_form' action='$gElearningUrl/exercise/last_exercise_page_controller.php' method='post'>";
     } else {
