@@ -1159,8 +1159,6 @@ HEREDOC;
 
     $strBody = "<body class='$modelTagID $parentModelTagID'>";
 
-    $strBody .= $this->templateUtils->renderCommonJavascripts();
-
     $facebookApplicationId = $this->profileUtils->getFacebookApplicationId();
     if ($facebookApplicationId) {
       $strBody .= $this->facebookUtils->renderLibrary();
