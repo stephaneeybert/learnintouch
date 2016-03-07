@@ -272,11 +272,11 @@ foreach ($elearningSubscriptions as $elearningSubscription) {
 
   $lastExerciseName = $elearningExerciseUtils->renderExerciseComposeLink($lastExerciseId, $mlText[16]);
 
-  $strCommand = " <a href='$gElearningUrl/assignment/admin.php?&elearningSubscriptionId=$elearningSubscriptionId' $gJSNoStatus>"
+  $strCommand = " <a href='$gElearningUrl/assignment/admin.php?elearningSubscriptionId=$elearningSubscriptionId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageAssignment' title='$mlText[31]'></a>";
   if ($courseName) {
     $title = $mlText[40] . ' ' . $courseName;
-    $strCommand .= " <a href='$gElearningUrl/subscription/view.php?&elearningSubscriptionId=$elearningSubscriptionId' $gJSNoStatus>"
+    $strCommand .= " <a href='$gElearningUrl/subscription/view.php?elearningSubscriptionId=$elearningSubscriptionId' $gJSNoStatus>"
       . "<img border='0' src='$gCommonImagesUrl/$gImageCourse' title='$title'></a>";
   }
 
