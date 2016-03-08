@@ -33,8 +33,8 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   $graphTitle = $elearningResultUtils->getExerciseResultsGraphTitle($nbQuestions, $nbCorrectAnswers);
   $strGraph = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, '');
 
-  $isAbsent = 1;
-  $isInactive = 1;
+  $isAbsent = '';
+  $isInactive = '';
   $completed = '';
   $elearningSubscriptionId = $elearningResult->getSubscriptionId();
   if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
@@ -42,14 +42,20 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
     $lastExerciseId = $elearningSubscription->getLastExerciseId();
     $lastExercisePageId = $elearningSubscription->getLastExercisePageId();
 
+    $last = $clockUtils->systemDateTimeToTimeStamp($lastActive);
+
+    if ($last) {
+      $isAbsent = 1;
+      $isInactive = 1;
+    }
+
     if ($lastExerciseId == $elearningExerciseId) {
-      $last = $clockUtils->systemDateTimeToTimeStamp($lastActive);
       $now = $clockUtils->systemDateTimeToTimeStamp($clockUtils->getSystemDateTime());
 
       if ($last && (($now - $last) < ELEARNING_ABSENT_TIME)) {
         $isAbsent = '';
       }
-      if ($last && (($now - $last) < ELEARNING_INACTIVE_TIME)) {
+      if ($last && (($now - $last) < $elearningExerciseUtils->getInactiveDuration())) {
         $isInactive = '';
       }
       if (!$lastExercisePageId) {

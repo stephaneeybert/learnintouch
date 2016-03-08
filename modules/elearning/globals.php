@@ -140,10 +140,6 @@ define('ELEARNING_PAGE_TAB_WITH_NUMBER', 2);
 define('ELEARNING_IMPORT_OTHER_EXERCISE', 1);
 define('ELEARNING_IMPORT_OTHER_LESSON', 2);
 
-// The number of seconds before a participant is considered inactive 
-// when doing an exercise watched live
-define('ELEARNING_INACTIVE_TIME', 60);
-
 // The number of seconds before a participant is considered absent 
 // when doing an exercise watched live
 define('ELEARNING_ABSENT_TIME', 60 * 30);

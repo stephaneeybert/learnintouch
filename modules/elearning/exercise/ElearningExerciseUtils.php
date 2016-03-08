@@ -134,6 +134,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
                               array($this->mlText[201], $this->mlText[202], PREFERENCE_TYPE_SELECT, array('' => '', 'ELEARNING_SAVE_RESULT_FIRST' => $this->mlText[203], 'ELEARNING_SAVE_RESULT_EVERY_TIME' => $this->mlText[204], 'ELEARNING_SAVE_RESULT_LAST_ONLY' => $this->mlText[231], 'ELEARNING_SAVE_RESULT_BETTER' => $this->mlText[205])),
                         "ELEARNING_SAVE_RESULT_WATCHED_LIVE" =>
                         array($this->mlText[247], $this->mlText[248], PREFERENCE_TYPE_BOOLEAN, ''),
+                                                        "ELEARNING_INACTIVE_DURATION" =>
+                                                         array($this->mlText[34], $this->mlText[9], PREFERENCE_TYPE_TEXT, '1'),
                                 "ELEARNING_MULTIPLE_ANSWERS" =>
                                 array($this->mlText[117], $this->mlText[118], PREFERENCE_TYPE_BOOLEAN, ''),
                                   "ELEARNING_INSTANT_CORRECTION" =>
@@ -1553,6 +1555,13 @@ HEREDOC;
     $display = $this->preferenceUtils->getValue("ELEARNING_DISPLAY_CONTACT_PAGE_BUTTON");
 
     return($display);
+  }
+
+  // Duration after which a participant who does not answer a question is considered as being inactive
+  function getInactiveDuration() {
+    $duration = $this->preferenceUtils->getValue("ELEARNING_INACTIVE_DURATION");
+
+    return($duration);
   }
 
   // By default the school will receive the results of the exercise and a message from the participant if any. But it is possible not to contact the school and send it the exercise results if the participant has not written any message. In that case, the exercise results will be saved but the school will not receive any email with the exercise results.
@@ -3100,11 +3109,11 @@ $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
+//      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});
     });
     elearningSocket.on('message', function(message) {
-      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
+//      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
     });
   }
 });

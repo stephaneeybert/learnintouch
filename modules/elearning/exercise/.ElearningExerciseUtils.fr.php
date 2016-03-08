@@ -7,6 +7,7 @@
 [   6]Session
 [   7]Imprimer le texte
 [   8]Une leçon
+[   9]Lorsqu'un participant fait un exercice suivi en direct par un professeur, le participant est considéré comme étant actif car il répond aux questions.\n\nSi le participant arrête de répondre aux questions pendant un trop long moment, alors il est considéré comme étant inactif.\n\nCela est le cas quand le moment durant lequel le participant ne répond pas aux question est supérieur à la durée minimale.\n\nLe participant sera de nouveau actif lorsqu'il recommencera à répondre à de nouvelles questions.\n\nCette durée minimale est exprimée en minutes.
 [  10]Imprimer les résultats
 [  11]Afficher le texte
 [  12]Voir le cours
@@ -31,6 +32,7 @@
 [  31]Par défault, les participants ne sont pas obligés de se connecter pour faire un exercice.\n\nMais les exercices peuvent être protégés et leur accès réservé aux utilisateurs enregistrés du site web.\n\nDans ce cas, un participant sera obligé de se connecter avant de pouvoir faire un exercice.
 [  32]Un exercice de langue à
 [  33]{*actor*} vient de terminer un exercice de langues.
+[  34]Participant inactif après:
 [  35]Vérifier si le logo du site web doit être affiché devant le texte de l'exercice.
 [  36]Vérifier si la notice des droits d'auteur doit être affichée après le texte de l'exercice.
 [  37]Par défaut, l'adresse du site web est affichée après le texte de l'exercice.
@@ -226,7 +228,6 @@
 [ 229]mais vous n'avez eu que
 [ 230]Vous avez un score de
 [ 231]Seulement la dernière fois
-arch.
 [ 232]Cacher le niveau:
 [ 233]Par défaut, lors de l'affichage d'une leçon ou d'un exercice, le niveau est affiché.\n\nMais il est possible de ne pas l'afficher.
 [ 234]Onglets des pages d'exercices:
@@ -251,3 +252,4 @@ arch.
 [ 254]Réponses
 [ 255]Le nombre de réponses correctes et le nombre de réponses incorrectes.
 [ 256]Afficher le tableau partagé
+arch.

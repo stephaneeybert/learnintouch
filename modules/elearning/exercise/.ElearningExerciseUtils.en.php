@@ -7,6 +7,7 @@
 [   6]Session
 [   7]Print the text
 [   8]A lesson
+[   9]When a participant does an exercise followed live by a teacher, the participant is considered as being active because he answers the questions.\n\nIf the participant stops answering questions for too long a time, then he is considered as being inactive.\n\nThis is the case when the time during which the participant does not answer questions is greater than the minimum duration.\n\nThe participant will be active again when he starts answering questions.\n\nThis minimum duration is expressed in minutes.
 [  10]Print the results
 [  11]Display the text
 [  12]View the course
@@ -31,6 +32,7 @@
 [  31]By default, the participants are not required to log in, in order to do an exercise.\n\nBut the exercises can be protected and their access reserved to the registered participants of the website.\n\nIn that case, a participant will have to log in before being able to do an exercise.
 [  32]A language exercise at
 [  33]{*actor*} just completed his language exercise.
+[  34]Participant inactive after:
 [  35]Check if the web site logo should be displayed before the text of the exercise.
 [  36]Check if the copyrights notice should be displayed after the text of the exercise.
 [  37]By default, the website address is displayed after the text of the exercise.
