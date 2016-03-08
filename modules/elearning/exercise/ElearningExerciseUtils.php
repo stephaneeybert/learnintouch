@@ -3147,9 +3147,23 @@ function allowCopilotAnswerRefresh(elementId) {
   return !copilotSkipRefresh[elementId];
 }
 
-function toggleParticipantWhiteboard() {
+function hideParticipantWhiteboard() {
   if ('undefined' != typeof elearningSocket) {
-    elearningSocket.emit('toggleParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+    $('#subscriptionWhiteboard').slideUp('fast');
+    elearningSocket.emit('hideParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+  }
+}
+function showParticipantWhiteboard() {
+  if ('undefined' != typeof elearningSocket) {
+    $('#subscriptionWhiteboard').slideDown('fast');
+    elearningSocket.emit('showParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+  }
+}
+function toggleParticipantWhiteboard() {
+  if ($('#subscriptionWhiteboard').is(':visible')) {
+    hideParticipantWhiteboard();
+  } else {
+    showParticipantWhiteboard();
   }
 }
 
@@ -3201,6 +3215,7 @@ $("#whiteboard_print").click(function() {
   $('#whiteboard').print();
 });
 
+/*
 $("#whiteboard_toggle").click(function() {
   if ($('#whiteboard').is(':visible')) {
     $('#whiteboard_clear').hide('slow');
@@ -3213,7 +3228,7 @@ $("#whiteboard_toggle").click(function() {
   $('#whiteboard_url_iframe').attr('src', '');
   $('#whiteboard_url_content').hide(); 
 });
-
+*/
 $('#whiteboard').bind("keyup click", function (event) {
   skipCopilotAnswerRefresh('whiteboard');
   // Update only on additional words
@@ -3237,8 +3252,11 @@ if ('undefined' != typeof elearningSocket) {
   elearningSocket.on('updateWhiteboard', function(data) {
     refreshWhiteboard(data.whiteboard);
   });
-  elearningSocket.on('toggleParticipantWhiteboard', function(data) {
-    $('#subscriptionWhiteboard').slideToggle('fast');
+  elearningSocket.on('showParticipantWhiteboard', function(data) {
+    $('#subscriptionWhiteboard').slideDown('fast');
+  });
+  elearningSocket.on('hideParticipantWhiteboard', function(data) {
+    $('#subscriptionWhiteboard').slideUp('fast');
   });
 }
 });

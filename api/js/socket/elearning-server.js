@@ -57,11 +57,23 @@ server.io.of('/elearning').on('connection', function(socket) {
     socket.send("You are not being watched live yet.");
   });
 
-  socket.on('toggleParticipantWhiteboard', function(data) {
+  socket.on('showParticipantWhiteboard', function(data) {
     if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
       for(i = 0; i < copilotElearningSubscriptions[data.elearningSubscriptionId].length; i++) {
         if (copilotElearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
-          socket.broadcast.to(data.elearningSubscriptionId).emit('toggleParticipantWhiteboard', data);
+          socket.broadcast.to(data.elearningSubscriptionId).emit('showParticipantWhiteboard', data);
+          return;
+        }
+      }
+    }
+    socket.send("You are not being watched live yet.");
+  });
+
+  socket.on('hideParticipantWhiteboard', function(data) {
+    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+      for(i = 0; i < copilotElearningSubscriptions[data.elearningSubscriptionId].length; i++) {
+        if (copilotElearningSubscriptions[data.elearningSubscriptionId][i] == sessionID) {
+          socket.broadcast.to(data.elearningSubscriptionId).emit('hideParticipantWhiteboard', data);
           return;
         }
       }
