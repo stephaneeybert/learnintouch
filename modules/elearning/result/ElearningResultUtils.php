@@ -769,20 +769,16 @@ function renderLiveResult(responseText) {
     var subscription = liveResult.subscription;
     if (subscription) {
       var isAbsent = subscription.isAbsent;
-      var graphDom = $(".$ELEARNING_DOM_ID_LIVE_RESULT" + elearningResultId);
+      var graphDom = $("#$ELEARNING_DOM_ID_LIVE_RESULT" + elearningResultId);
       var elearningSubscriptionId = subscription.elearningSubscriptionId;
       var elearningExerciseId = subscription.elearningExerciseId;
-      var imageDom = $(".$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
+      var imageDom = $("#$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
       if (!isAbsent) {
         if (graphDom) {
-          graphDom.each(function() {
-            $(this).css("display", "inline");
-          });
+          graphDom.css("display", "inline");
         }
         if (imageDom) {
-          imageDom.each(function() {
-            $(this).css("display", "inline");
-          });
+          imageDom.css("display", "inline");
         }
         var gradeDom = $(".$ELEARNING_DOM_ID_RESULT_GRADE" + elearningResultId);
         if (gradeDom) {
@@ -953,7 +949,7 @@ function renderInactiveParticipantImage(subscription) {
   var completed = subscription.completed;
   var elearningSubscriptionId = subscription.elearningSubscriptionId;
   var elearningExerciseId = subscription.elearningExerciseId;
-  var imageDom = $(".$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
+  var imageDom = $("#$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
   if (imageDom) {
     imageDom.each(function() {
       if (isInactive) {
@@ -967,6 +963,7 @@ function renderInactiveParticipantImage(subscription) {
       } else {
         $(this).hide();
         this.title = '';
+        this.src = '';
       }
     });
   }
