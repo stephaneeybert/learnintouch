@@ -214,6 +214,8 @@
 [ 213]By default, the questions of a page of an exercise are always displayed in the same order.\n\nBut it is possible to shuffle the questions of the page of an exercise.\n\nEvery time the exercise is done, the questions appear in a random order and every participant gets the questions in a different order.\n\nThis makes a bit more difficult a potential cheating by participants.
 [ 214]Shuffle the answers:
 [ 215]By default, the answers of a question are always displayed in the same order.\n\nBut it is possible to shuffle the answers of a question.\n\nEvery time the exercise is done, the answers appear in a random order and every participant gets the answers in a different order.\n\nThis makes a bit more difficult a potential cheating by participants.
+[ 216]Participant absent after:
+[ 217]When a participant does an exercise followed live by a teacher, the participant is considered as being present because he answers the questions.\n\nIf the participant stops answering questions for too long a time, then he is considered as being absent.\n\nThis is the case when the time during which the participant does not answer questions is greater than the minimum duration.\n\nThe participant will be present again when he starts answering questions.\n\nThis minimum duration is expressed in minutes.
 [ 218]Hide the special letters keyboard:
 [ 219]By default, when displaying a page of questions that require the participant to type in the answers, a series of letters is displayed on top of the page.\n\nThese letters are the ones that may be missing from the keyboard of the computer used by the participant.\n\nIt is possible to hide this on-screen keyboard.
 [ 220]This answer is correct!

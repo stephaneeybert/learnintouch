@@ -136,6 +136,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
                         array($this->mlText[247], $this->mlText[248], PREFERENCE_TYPE_BOOLEAN, ''),
                                                         "ELEARNING_INACTIVE_DURATION" =>
                                                          array($this->mlText[34], $this->mlText[9], PREFERENCE_TYPE_TEXT, '1'),
+                                                        "ELEARNING_ABSENT_DURATION" =>
+                                                         array($this->mlText[216], $this->mlText[217], PREFERENCE_TYPE_TEXT, '15'),
                                 "ELEARNING_MULTIPLE_ANSWERS" =>
                                 array($this->mlText[117], $this->mlText[118], PREFERENCE_TYPE_BOOLEAN, ''),
                                   "ELEARNING_INSTANT_CORRECTION" =>
@@ -1560,6 +1562,13 @@ HEREDOC;
   // Duration after which a participant who does not answer a question is considered as being inactive
   function getInactiveDuration() {
     $duration = $this->preferenceUtils->getValue("ELEARNING_INACTIVE_DURATION") * 60;
+
+    return($duration);
+  }
+
+  // Duration after which a participant who does not answer a question is considered as being absent
+  function getAbsentDuration() {
+    $duration = $this->preferenceUtils->getValue("ELEARNING_ABSENT_DURATION") * 60 * 15;
 
     return($duration);
   }

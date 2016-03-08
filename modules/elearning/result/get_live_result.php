@@ -52,7 +52,7 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
     if ($lastExerciseId == $elearningExerciseId) {
       $now = $clockUtils->systemDateTimeToTimeStamp($clockUtils->getSystemDateTime());
 
-      if ($last && (($now - $last) < ELEARNING_ABSENT_TIME)) {
+      if ($last && (($now - $last) < $elearningExerciseUtils->getAbsentDuration())) {
         $isAbsent = '';
       }
       if ($last && (($now - $last) < $elearningExerciseUtils->getInactiveDuration())) {
