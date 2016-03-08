@@ -178,4 +178,7 @@ define('ELEARNING_SESSION_RESULT_SEARCH_PATTERN', "admin_elearning_result_search
 define('ELEARNING_SESSION_RESULT_ID', 'elearning_result_id');
 define('ELEARNING_SESSION_IMPORT_OTHER', 'elearning_import_other');
 
+// The cookies
+define('ELEARNING_WHITEBOARD_DISPLAY_STATE', 'whiteboardDisplayState');
+
 ?>

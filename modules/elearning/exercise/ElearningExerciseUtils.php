@@ -3082,7 +3082,12 @@ HEREDOC;
 
     $NODEJS_SOCKET_PORT = NODEJS_SOCKET_PORT;
 
-    $display = "none";
+    $whiteboardDisplayState = LibCookie::getCookie(ELEARNING_WHITEBOARD_DISPLAY_STATE);
+    if ($whiteboardDisplayState) {
+      $display = "block";
+    } else {
+      $display = "none";
+    }
 
     $str = "<div id='subscriptionWhiteboard' style='display: $display;'><br />"
       . "<div class='elearning_whiteboard'>"
@@ -3098,6 +3103,8 @@ HEREDOC;
       . "</div>" 
       . "</div>"
       . "</div>";
+
+    $ELEARNING_WHITEBOARD_DISPLAY_STATE = ELEARNING_WHITEBOARD_DISPLAY_STATE;
 
     $str .= <<<HEREDOC
 <style type="text/css">
@@ -3255,15 +3262,11 @@ if ('undefined' != typeof elearningSocket) {
   });
   elearningSocket.on('showParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideDown('fast');
-//    $('#whiteboard').attr('displayState', '1');
-//    elearningSocket.set('whiteboardDisplayState', true, function() {
-//      console.log('Set the whiteboard display state to true');
-//    });
-
+    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, (60 * 60));
   });
   elearningSocket.on('hideParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideUp('fast');
-//    $('#whiteboard').attr('displayState', '');
+    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 0, (60 * 60));
   });
 }
 });

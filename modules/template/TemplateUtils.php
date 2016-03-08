@@ -1065,6 +1065,7 @@ HEREDOC;
     $str = <<<HEREDOC
 <script src='$gJsUrl/popup.js' type='text/javascript'></script>
 <script src='$gJsUrl/utilities.js' type='text/javascript'></script>
+<script src='$gJsUrl/cookies.js' type='text/javascript'></script>
 <script src='$gJsUrl/ajax.js' type='text/javascript'></script>
 <script src='$gJsUrl/jquery/jquery-1.7.1.min.js' type='text/javascript'></script>
 <script type='text/javascript' src='$gJsUrl/jquery/datepicker/language/jquery.ui.datepicker-da.js'></script>
