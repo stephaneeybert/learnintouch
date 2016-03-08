@@ -1559,7 +1559,7 @@ HEREDOC;
 
   // Duration after which a participant who does not answer a question is considered as being inactive
   function getInactiveDuration() {
-    $duration = $this->preferenceUtils->getValue("ELEARNING_INACTIVE_DURATION");
+    $duration = $this->preferenceUtils->getValue("ELEARNING_INACTIVE_DURATION") * 60;
 
     return($duration);
   }
