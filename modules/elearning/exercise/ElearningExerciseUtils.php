@@ -3044,7 +3044,7 @@ HEREDOC;
   }
 
   // Render the whiteboard
-  function renderWhiteboard($elearningSubscriptionId) {
+  function renderWhiteboard($elearningSubscriptionId, $isAdmin) {
     global $gElearningUrl;
     global $gImagesUserUrl;
     global $gJsUrl;
@@ -3063,16 +3063,19 @@ HEREDOC;
     $labelPrintTheWhiteboard = $this->websiteText[145];
 
     $firstname = '';
-    $adminId = LibSession::getSessionValue(ADMIN_SESSION_ADMIN_ID);
+    $adminId = $this->adminUtils->getLoggedAdminId();
     if ($adminId) {
       if ($admin = $this->adminUtils->selectById($adminId)) {
         $firstname = $admin->getFirstname();
       }
     } else {
-      $userId = $this->userUtils->getLoggedUserId();
-      if ($userId) {
-        if ($user = $this->userUtils->selectById($userId)) {
-          $firstname = $user->getFirstname();
+      // It may happen that the admin is also logged in as a user with the same firstname
+      if (!$isAdmin) {
+        $userId = $this->userUtils->getLoggedUserId();
+        if ($userId) {
+          if ($user = $this->userUtils->selectById($userId)) {
+            $firstname = $user->getFirstname();
+          }
         }
       }
     }
@@ -3137,12 +3140,15 @@ function postSaveWhiteboardLive(responseText) {
 
 // Skip the automatic refresh of the whiteboard
 var copilotSkipRefresh = [];
+
 function skipCopilotAnswerRefresh(elementId) {
   copilotSkipRefresh[elementId] = 1;
 }
+
 function unskipCopilotAnswerRefresh(elementId) {
   copilotSkipRefresh[elementId] = '';
 }
+
 function allowCopilotAnswerRefresh(elementId) {
   return !copilotSkipRefresh[elementId];
 }
@@ -3153,12 +3159,14 @@ function hideParticipantWhiteboard() {
     elearningSocket.emit('hideParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
   }
 }
+
 function showParticipantWhiteboard() {
   if ('undefined' != typeof elearningSocket) {
     $('#subscriptionWhiteboard').slideDown('fast');
     elearningSocket.emit('showParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
   }
 }
+
 function toggleParticipantWhiteboard() {
   if ($('#subscriptionWhiteboard').is(':visible')) {
     hideParticipantWhiteboard();
@@ -3215,20 +3223,6 @@ $("#whiteboard_print").click(function() {
   $('#whiteboard').print();
 });
 
-/*
-$("#whiteboard_toggle").click(function() {
-  if ($('#whiteboard').is(':visible')) {
-    $('#whiteboard_clear').hide('slow');
-    $('#whiteboard_print').hide('slow');
-  } else {
-    $('#whiteboard_clear').show('slow');
-    $('#whiteboard_print').show('slow');
-  }
-  $('#whiteboard').toggle('slow');
-  $('#whiteboard_url_iframe').attr('src', '');
-  $('#whiteboard_url_content').hide(); 
-});
-*/
 $('#whiteboard').bind("keyup click", function (event) {
   skipCopilotAnswerRefresh('whiteboard');
   // Update only on additional words
@@ -3238,9 +3232,12 @@ $('#whiteboard').bind("keyup click", function (event) {
       var content = $('#whiteboard').val();
       var prefix = content.substring(0, caretPosition - 1);
       var suffix = content.substring(caretPosition, content.length);
-      var writerLabel = "\\n$firstname:";
+      var writerLabel = "\\n";
+      if ("$firstname") {
+        writerLabel += "$firstname:";
+      }
       $('#whiteboard').val(prefix + writerLabel + suffix);
-      $('#whiteboard').caret(caretPosition + writerLabel.length);
+      $('#whiteboard').caret(caretPosition + writerLabel.length - 1);
     }
 
     parseWhiteboardContentUrl();

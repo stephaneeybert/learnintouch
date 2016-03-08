@@ -117,7 +117,6 @@ class AdminUtils extends AdminDB {
   function closeSession() {
     LibSession::delSessionValue(ADMIN_SESSION_ACCESS_TIME);
     LibSession::delSessionValue(ADMIN_SESSION_LOGIN);
-    LibSession::delSessionValue(ADMIN_SESSION_ADMIN_ID);
   }
 
   // Check the validity of an admin session

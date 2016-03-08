@@ -28,7 +28,6 @@ if ($elearningAssignment = $elearningAssignmentUtils->selectById($elearningAssig
           $userUtils->openUserSession($email);
 
           $adminId = $adminUtils->getLoggedAdminId();
-          LibSession::putSessionValue(ADMIN_SESSION_ADMIN_ID, $adminId);
 
           $str = LibHtml::urlRedirect("$gElearningUrl/exercise/display_exercise.php?elearningExerciseId=$elearningExerciseId&elearningSubscriptionId=$elearningSubscriptionId&elearningExercisePageId=$lastExercisePageId");
           printContent($str);
