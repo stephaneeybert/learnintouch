@@ -783,6 +783,10 @@ class ElearningLessonUtils extends ElearningLessonDB {
 
     $str .= $this->renderPlayer($audio);
 
+    if ($elearningSubscription) {
+      $str .= "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->elearningExerciseUtils->renderWhiteboard($elearningSubscription->getId()) . "</div>";
+    }
+
     if ($this->elearningExerciseUtils->displayDownloadAudioFileIcon()) {
       $str .= ' ' . $this->renderDownload($audio);
     }
