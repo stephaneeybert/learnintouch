@@ -550,7 +550,7 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
              . "</td>"
              . "</tr>"
              . "<tr>"
-             . "<td colspan='3'><div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div></td>"
+             . "<td colspan='3'>" . $this->renderWhiteboard($elearningSubscriptionId) . "</td>"
              . "</tr>";
             foreach ($elearningAssignments as $elearningAssignment) {
               $elearningAssignmentId = $elearningAssignment->getId();
@@ -692,7 +692,7 @@ HEREDOC;
     $str .= "\n</td>";
     $str .= "\n</tr>";
     $str .= "\n<tr>"
-          . "<td colspan='2'><div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div></td>"
+          . "<td colspan='2'>" . $this->renderWhiteboard($elearningSubscriptionId) . "</td>"
           . "</tr>";
 
     $elearningCourseItems = $this->elearningCourseItemUtils->selectByCourseId($elearningCourseId);
@@ -2935,7 +2935,7 @@ HEREDOC;
     $str .= $this->renderPlayer($audio);
 
     if ($elearningSubscriptionId) {
-      $str .= "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div>";
+      $str .= $this->renderWhiteboard($elearningSubscriptionId);
     }
 
     $str .= "<div class='elearning_exercise_introduction'>";
@@ -3044,7 +3044,7 @@ HEREDOC;
   }
 
   // Render the whiteboard
-  function renderWhiteboard($elearningSubscriptionId, $isAdmin) {
+  function renderWhiteboard($elearningSubscriptionId, $isAdmin = false) {
     global $gElearningUrl;
     global $gImagesUserUrl;
     global $gJsUrl;
@@ -3082,7 +3082,10 @@ HEREDOC;
 
     $NODEJS_SOCKET_PORT = NODEJS_SOCKET_PORT;
 
-    $str = "<div class='elearning_whiteboard'>"
+    $display = "none";
+
+    $str = "<div id='subscriptionWhiteboard' style='display: $display;'><br />"
+      . "<div class='elearning_whiteboard'>"
       . "<div class='elearning_whiteboard_buttons'>"
       . " <span class='elearning_whiteboard_clear' id='whiteboard_clear' title='$labelClearTheWhiteboard'>$labelClear</span>"
       . " <span class='elearning_whiteboard_print' id='whiteboard_print' title='$labelPrintTheWhiteboard'>$labelPrint</span>"
@@ -3093,6 +3096,7 @@ HEREDOC;
       . "<div id='whiteboard_url_content' style='display:none;'>"
       . "<iframe id='whiteboard_url_iframe' name='whiteboard_url_iframe' type='text/html' frameborder='0' width='370' height='300'></iframe>"
       . "</div>" 
+      . "</div>"
       . "</div>";
 
     $str .= <<<HEREDOC
@@ -3251,9 +3255,15 @@ if ('undefined' != typeof elearningSocket) {
   });
   elearningSocket.on('showParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideDown('fast');
+//    $('#whiteboard').attr('displayState', '1');
+//    elearningSocket.set('whiteboardDisplayState', true, function() {
+//      console.log('Set the whiteboard display state to true');
+//    });
+
   });
   elearningSocket.on('hideParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideUp('fast');
+//    $('#whiteboard').attr('displayState', '');
   });
 }
 });
@@ -3291,7 +3301,7 @@ HEREDOC;
     $str .= "\n<div class='elearning_exercise'>";
 
     if ($elearningSubscriptionId) {
-      $str .= "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $this->renderWhiteboard($elearningSubscriptionId) . "</div>";
+      $str .= $this->renderWhiteboard($elearningSubscriptionId);
     }
 
     $isLast = $this->elearningExercisePageUtils->isLastExercisePage($elearningExercisePages, $elearningExercisePageId);

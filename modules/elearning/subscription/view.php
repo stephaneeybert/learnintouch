@@ -88,7 +88,7 @@ if ($elearningSubscription) {
         $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), $panelUtils->addCell($str, "n"), '', '', '', '', '', '');
       }
 
-      $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId, true) . "</div>";
+      $strWhiteboard = $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId, true);
       $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 
       if ($elearningResults) {

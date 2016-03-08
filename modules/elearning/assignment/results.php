@@ -161,7 +161,7 @@ $panelUtils->closeForm();
 $panelUtils->addLine();
 
 if ($elearningSubscriptionId > 0) {
-  $strWhiteboard = "<div id='subscriptionWhiteboard' style='display: none;'><br />" . $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId) . "</div>";
+  $strWhiteboard = $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId);
   $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 }
 
