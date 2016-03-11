@@ -3247,6 +3247,7 @@ $('#whiteboard').bind("keyup click", function (event) {
   skipCopilotAnswerRefresh('whiteboard');
   // Update only on additional words
   if (event.which == 32 || event.which == 188 || event.which == 190 || event.which == 8 || event.which == 13 || event.which == 59 || event.which == 191 || event.which == 86) {
+/*
     if ($('#whiteboard').val() == '' || event.which == 13) {
       var caretPosition = $('#whiteboard').caret();
       var content = $('#whiteboard').val();
@@ -3259,7 +3260,7 @@ $('#whiteboard').bind("keyup click", function (event) {
       $('#whiteboard').val(prefix + writerLabel + suffix);
       $('#whiteboard').caret(caretPosition + writerLabel.length - 1);
     }
-
+*/
     parseWhiteboardContentUrl();
     saveWhiteboardLive('$elearningSubscriptionId');
   }
