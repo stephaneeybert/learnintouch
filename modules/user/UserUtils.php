@@ -266,17 +266,17 @@ class UserUtils extends UserDB {
     $password = $this->getUserPassword($email);
     LibCookie::putCookie($this->cookieAutoLogin, "$email:$password", $this->getAutoLoginDuration());
 
-    $this->openSocketSession();
+    $this->openSocketSession($this->sessionDuration * 60);
   }
 
   // Open a socket session so as to allow the socket to be authenticated
-  function openSocketSession() {
+  function openSocketSession($duration) {
     // Save an hashed session id to be used by the web socket
     $socketSessionId = md5(UTILS_WEB_SOCKET_SECRET_KEY . session_id());
     // The redis server is given the hashed session id for later authorization
     LibSession::putSessionValue($this->cookieSocketSessionId, $socketSessionId);
     // The socket request will later on need to send the hashed session id in its header cookie
-    LibCookie::putCookie($this->cookieSocketSessionId, $socketSessionId, $this->sessionDuration * 60);
+    LibCookie::putCookie($this->cookieSocketSessionId, $socketSessionId, $duration);
   }
 
   // Close a user session

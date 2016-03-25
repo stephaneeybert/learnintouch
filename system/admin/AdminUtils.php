@@ -17,6 +17,8 @@ class AdminUtils extends AdminDB {
   // Property names
   var $propertyLastUpdate;
 
+  var $sessionDuration;
+
   var $preferences;
 
   var $languageUtils;
@@ -131,7 +133,7 @@ class AdminUtils extends AdminDB {
     // Open a new session
     $this->openSession($login);
 
-    $this->userUtils->openSocketSession();
+    $this->userUtils->openSocketSession($this->sessionDuration);
 
     // Save the login name in a cookie
     LibCookie::putCookie(ADMIN_SESSION_LOGIN, $login, $this->cookieLoginDuration);
