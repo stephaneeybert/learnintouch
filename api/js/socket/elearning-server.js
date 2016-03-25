@@ -1,7 +1,7 @@
 // A user, be it a teacher or a participant, is identified by his PHP sessionID value, as each participant has logged in the application and received a PHP sessionID and a unique socket session id. The PHP sessionID is stored in a Redis server so that it can be accessed by the server side socket.
 
-var utils = require('utils.js');
-var server = require('server.js');
+var utils = require('./utils.js');
+var server = require('./server.js');
 
 var copilotElearningSubscriptions = [];
 
