@@ -41,6 +41,6 @@ Once the language files have been copied onto the server, convert them to iso885
 Then assign the owner again
 chown -R stephane:apache *
 
-Setup the NodeJS server
-See the api/js/socket/learnintouchsocket file
+Setup the NodeJS socket server
+See the api/js/socket/learnintouch-nodejs file
 
