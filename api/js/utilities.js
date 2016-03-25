@@ -200,6 +200,24 @@ function addLoadListener(func) {
     } 
 }
 
+// Send some content to the printer
+// var printer = new Printer("<h1>Example</h1>"); printer.print();
+function Printer($c) {
+  var h = $c;
+  return {
+    print: function(){
+      var d = $("<div>").html(h).appendTo("html");
+      $("body").hide();
+      window.print();
+      d.remove();
+      $("body").show();
+    },
+    setContent: function($c) {
+      h = $c;
+    }
+  };
+}
+
 // Print a browser page
 function printPage() {
     if (window.print) {

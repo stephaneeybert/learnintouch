@@ -3104,7 +3104,8 @@ HEREDOC;
       . " <span class='elearning_whiteboard_clear' id='whiteboard_clear' title='$labelClearTheWhiteboard'>$labelClear</span>"
       . " <span class='elearning_whiteboard_print' id='whiteboard_print' title='$labelPrintTheWhiteboard'>$labelPrint</span>"
       . "</div>"
-      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard' id='whiteboard' rows='5' />$whiteboard</textarea>"
+      . "<div class='elearning_whiteboard_output' id='whiteboard_output'>$whiteboard</div>"
+      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard_input' id='whiteboard_input' rows='1'></textarea>"
       . "<div id='whiteboard_loading' style='display:none;'><img src='$gImagesUserUrl/" . IMAGE_COMMON_LOADING . "' title='" . $this->websiteText[2] . "' alt='' /></div>"
       . "<div id='whiteboard_warning' style='display:none;'></div>"
       . "<div id='whiteboard_url_content' style='display:none;'>"
@@ -3118,16 +3119,33 @@ HEREDOC;
     $str .= <<<HEREDOC
 <style type="text/css">
 .elearning_whiteboard_buttons {
+  width: 99% !important;
   cursor:pointer;
+  text-align: right;
+}
+.elearning_whiteboard_output {
+  width: 99% !important;
+  min-height: 100px;
+  height: auto;
+  background-color: #556B2F;
+  color: white;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #000000;
+  text-align: left;
 }
 .elearning_whiteboard_input {
   width: 99% !important;
+  text-align: left;
 }
 </style>
 <script src='$gJsUrl/jquery/jquery.autogrowtextarea.js' type='text/javascript'></script>
 <script src="$gJsUrl/jquery/jquery.caret.js" type="text/javascript"></script>
 <script type="text/javascript">
+var whiteboadDisplayStatusCookieDuration = 24 * 360;
+
 var elearningSocket;
+
 $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
@@ -3141,36 +3159,34 @@ $(function() {
   }
 });
 
-function saveWhiteboardLive(elearningSubscriptionId) {
-  var whiteboard = $('#whiteboard').val();
-
+function sendWhiteboardContent(elearningSubscriptionId, content) {
   if ('undefined' != typeof elearningSocket) {
-    elearningSocket.emit('updateWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'whiteboard': whiteboard});
-  }
+    // Publish the content locally
+    $('#whiteboard_output').append(content);
 
-  whiteboard = encodeURIComponent(whiteboard);
+    // Send the content
+    elearningSocket.emit('updateWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'whiteboard': content});
+
+    // Save the content in the subscription
+    saveWhiteboardContent(elearningSubscriptionId, $('#whiteboard_output').html());
+  }
+}
+
+function clearOtherWhiteboardContent() {
+  if ('undefined' != typeof elearningSocket) {
+    // Send the content
+    elearningSocket.emit('clearWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+  }
+}
+
+function saveWhiteboardContent(elearningSubscriptionId, content) {
+  content = encodeURIComponent(content);
   var url = "$gElearningUrl/subscription/save_whiteboard_live.php";
-  var params = []; params["elearningSubscriptionId"] = elearningSubscriptionId; params["whiteboard"] = whiteboard;
+  var params = []; params["elearningSubscriptionId"] = elearningSubscriptionId; params["whiteboard"] = content;
   ajaxAsynchronousPOSTRequest(url, params, postSaveWhiteboardLive);
 }
 
 function postSaveWhiteboardLive(responseText) {
-  unskipCopilotAnswerRefresh('whiteboard');
-}
-
-// Skip the automatic refresh of the whiteboard
-var copilotSkipRefresh = [];
-
-function skipCopilotAnswerRefresh(elementId) {
-  copilotSkipRefresh[elementId] = 1;
-}
-
-function unskipCopilotAnswerRefresh(elementId) {
-  copilotSkipRefresh[elementId] = '';
-}
-
-function allowCopilotAnswerRefresh(elementId) {
-  return !copilotSkipRefresh[elementId];
 }
 
 function hideParticipantWhiteboard() {
@@ -3193,25 +3209,28 @@ function toggleParticipantWhiteboard() {
   } else {
     showParticipantWhiteboard();
   }
+  setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, whiteboadDisplayStatusCookieDuration);
 }
 
-function refreshWhiteboard(whiteboard) {
-  if (allowCopilotAnswerRefresh('whiteboard')) {
-    if ($('#whiteboard').val()) {
-      if (whiteboard != $('#whiteboard').val()) {
-        $('#whiteboard').val(whiteboard);
-      }
-    } else {
-      if (whiteboard) {
-        $('#whiteboard').val(whiteboard);
-      }
-    }
-  }
+function refreshWhiteboard(content) {
+  $('#whiteboard_output').append(content);
 }
 
-function parseWhiteboardContentUrl() {
-  if ($('#whiteboard').val().indexOf('http') != -1) {
-    var media = testUrlForMedia($('#whiteboard').val());
+function clearLocalWhiteboard() {
+  $('#whiteboard_url_iframe').attr('src', '');
+  $('#whiteboard_output').html('');
+  $('#whiteboard_input').val('');
+  $('#whiteboard_url_content').fadeOut('slow'); 
+
+  // Save the content in the subscription
+  saveWhiteboardContent('$elearningSubscriptionId', '');
+
+  $('#whiteboard_input').focus();
+}
+
+function parseWhiteboardContentUrl(content) {
+  if (content.indexOf('http') != -1) {
+    var media = testUrlForMedia(content);
     if (media.type == 'youtube') {
       $('#whiteboard_url_iframe').attr('class', 'youtube-player');
       $('#whiteboard_url_iframe').attr('src', renderYouTubeVideoUrl(media.id));
@@ -3232,37 +3251,24 @@ $(document).ready(function() {
 $("#whiteboard").autoGrow();
 
 $("#whiteboard_clear").click(function() {
-  skipCopilotAnswerRefresh('whiteboard');
-  $('#whiteboard_url_iframe').attr('src', '');
-  $('#whiteboard').val('');
-  $('#whiteboard_url_content').fadeOut('slow'); 
-  saveWhiteboardLive('$elearningSubscriptionId');
+  clearLocalWhiteboard();
+  clearOtherWhiteboardContent();
 });
 
 $("#whiteboard_print").click(function() {
-  $('#whiteboard').print();
+  var printer = new Printer($('#whiteboard_output').html());
+  printer.print();
+
+  $('#whiteboard_input').focus();
 });
 
-$('#whiteboard').bind("keyup click", function (event) {
-  skipCopilotAnswerRefresh('whiteboard');
+$('#whiteboard_input').bind("keyup click", function (event) {
   // Update only on additional words
-  if (event.which == 32 || event.which == 188 || event.which == 190 || event.which == 8 || event.which == 13 || event.which == 59 || event.which == 191 || event.which == 86) {
-/*
-    if ($('#whiteboard').val() == '' || event.which == 13) {
-      var caretPosition = $('#whiteboard').caret();
-      var content = $('#whiteboard').val();
-      var prefix = content.substring(0, caretPosition - 1);
-      var suffix = content.substring(caretPosition, content.length);
-      var writerLabel = "\\n";
-      if ("$firstname") {
-        writerLabel += "$firstname:";
-      }
-      $('#whiteboard').val(prefix + writerLabel + suffix);
-      $('#whiteboard').caret(caretPosition + writerLabel.length - 1);
-    }
-*/
-    parseWhiteboardContentUrl();
-    saveWhiteboardLive('$elearningSubscriptionId');
+  if (event.which == 13) {
+    var content = $('#whiteboard_input').val() + '<br/>';
+    parseWhiteboardContentUrl(content);
+    sendWhiteboardContent('$elearningSubscriptionId', content);
+    $('#whiteboard_input').val('');
   }
 });
 
@@ -3270,13 +3276,16 @@ if ('undefined' != typeof elearningSocket) {
   elearningSocket.on('updateWhiteboard', function(data) {
     refreshWhiteboard(data.whiteboard);
   });
+  elearningSocket.on('clearWhiteboard', function(data) {
+    clearLocalWhiteboard();
+  });
   elearningSocket.on('showParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideDown('fast');
-    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, (60 * 60));
+    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, whiteboadDisplayStatusCookieDuration);
   });
   elearningSocket.on('hideParticipantWhiteboard', function(data) {
     $('#subscriptionWhiteboard').slideUp('fast');
-    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 0, (60 * 60));
+    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 0, whiteboadDisplayStatusCookieDuration);
   });
 }
 });
@@ -3493,7 +3502,8 @@ HEREDOC;
       . "<div class='elearning_whiteboard'>The whiteboard"
       . "<div class='elearning_whiteboard_buttons'>The buttons"
       . "</div>"
-      . "<div class='elearning_whiteboard_input'>The border of the whiteboard</div>"
+      . "<div class='elearning_whiteboard_output'>The border of the whiteboard output</div>"
+      . "<div class='elearning_whiteboard_input'>The border of the whiteboard input</div>"
       . "</div>"
       . "<div class='elearning_exercise_name'>The name of the exercise</div>"
       . "<div class='elearning_exercise_description'>The description of the exercise</div>"

@@ -768,161 +768,143 @@ function renderLiveResult(responseText) {
     var graphTitle = liveResult.graphTitle;
     var subscription = liveResult.subscription;
     if (subscription) {
-      var isAbsent = subscription.isAbsent;
+      var lastActive = subscription.lastActive;
       var graphDom = $("#$ELEARNING_DOM_ID_LIVE_RESULT" + elearningResultId);
       var elearningSubscriptionId = subscription.elearningSubscriptionId;
       var elearningExerciseId = subscription.elearningExerciseId;
-      var imageDom = $("#$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
-      if (!isAbsent) {
-        if (graphDom) {
-          graphDom.css("display", "inline");
-        }
-        if (imageDom) {
-          imageDom.css("display", "inline");
-        }
-        var gradeDom = $(".$ELEARNING_DOM_ID_RESULT_GRADE" + elearningResultId);
-        if (gradeDom) {
-          gradeDom.each(function() {
-            $(this).html(grade);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbCorrectAnswers);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_READING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbCorrectReadingAnswers);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_WRITING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbCorrectWritingAnswers);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbCorrectListeningAnswers);
-          });
-        }
-        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER" + elearningResultId);
-        if (answersDom) {
-          answersDom.each(function(index, answersDomValue) {
-            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
-              $(that).html(nbCorrectAnswers);
-            });
-            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
-              $(that).html(nbIncorrectAnswers);
-            });
-          });
-        }
-        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_READING" + elearningResultId);
-        if (answersDom) {
-          answersDom.each(function(index, answersDomValue) {
-            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
-              $(that).html(nbCorrectReadingAnswers);
-            });
-            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
-              $(that).html(nbIncorrectReadingAnswers);
-            });
-          });
-        }
-        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_WRITING" + elearningResultId);
-        if (answersDom) {
-          answersDom.each(function(index, answersDomValue) {
-            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
-              $(that).html(nbCorrectWritingAnswers);
-            });
-            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
-              $(that).html(nbIncorrectWritingAnswers);
-            });
-          });
-        }
-        var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
-        if (answersDom) {
-          answersDom.each(function(index, answersDomValue) {
-            $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
-              $(that).html(nbCorrectListeningAnswers);
-            });
-            $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
-              $(that).html(nbIncorrectListeningAnswers);
-            });
-          });
-        }
-        var pointsDom = $(".$ELEARNING_DOM_ID_RESULT_POINT" + elearningResultId);
-        if (pointsDom) {
-          pointsDom.each(function() {
-            $(this).html(nbPoints);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_READING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbReadingPoints);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_WRITING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbWritingPoints);
-          });
-        }
-        var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
-        if (ratioDom) {
-          ratioDom.each(function() {
-            $(this).html(nbListeningPoints);
-          });
-        }
-
-        var preventImageCaching = new Date();
-        var graphImageDomIdNoAnswerV = "$ELEARNING_DOM_ID_NO_ANSWER_V" + elearningResultId;
-        var graphImageDomIdIncorrectV = "$ELEARNING_DOM_ID_INCORRECT_V" + elearningResultId;
-        var graphImageDomIdCorrectV = "$ELEARNING_DOM_ID_CORRECT_V" + elearningResultId;
-        var graphImageDomIdNoAnswerH = "$ELEARNING_DOM_ID_NO_ANSWER_H" + elearningResultId;
-        var graphImageDomIdIncorrectH = "$ELEARNING_DOM_ID_INCORRECT_H" + elearningResultId;
-        var graphImageDomIdCorrectH = "$ELEARNING_DOM_ID_CORRECT_H" + elearningResultId;
-        $("."+graphImageDomIdNoAnswerV).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlNoAnswerV + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        $("."+graphImageDomIdIncorrectV).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlIncorrectV + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        $("."+graphImageDomIdCorrectV).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlCorrectV + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        $("."+graphImageDomIdNoAnswerH).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlNoAnswerH + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        $("."+graphImageDomIdIncorrectH).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlIncorrectH + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        $("."+graphImageDomIdCorrectH).each(function() {
-          $(this).attr("src", liveResult.graphImageUrlCorrectH + "&" + preventImageCaching.getTime());
-          $(this).attr("title", graphTitle);
-        });
-        renderInactiveParticipantImage(subscription);
-      } else {
-        if (graphDom) {
-          graphDom.each(function() {
-            $(this).hide();
-          });
-        }
-        if (imageDom) {
-          imageDom.each(function() {
-            $(this).hide();
-          });
-        }
+      if (graphDom) {
+        graphDom.css("display", "inline");
       }
+      var gradeDom = $(".$ELEARNING_DOM_ID_RESULT_GRADE" + elearningResultId);
+      if (gradeDom) {
+        gradeDom.each(function() {
+          $(this).html(grade);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbCorrectAnswers);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_READING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbCorrectReadingAnswers);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbCorrectWritingAnswers);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_RATIO$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbCorrectListeningAnswers);
+        });
+      }
+      var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER" + elearningResultId);
+      if (answersDom) {
+        answersDom.each(function(index, answersDomValue) {
+          $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+            $(that).html(nbCorrectAnswers);
+          });
+          $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+            $(that).html(nbIncorrectAnswers);
+          });
+        });
+      }
+      var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_READING" + elearningResultId);
+      if (answersDom) {
+        answersDom.each(function(index, answersDomValue) {
+          $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+            $(that).html(nbCorrectReadingAnswers);
+          });
+          $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+            $(that).html(nbIncorrectReadingAnswers);
+          });
+        });
+      }
+      var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+      if (answersDom) {
+        answersDom.each(function(index, answersDomValue) {
+          $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+            $(that).html(nbCorrectWritingAnswers);
+          });
+          $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+            $(that).html(nbIncorrectWritingAnswers);
+          });
+        });
+      }
+      var answersDom = $(".$ELEARNING_DOM_ID_RESULT_ANSWER$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+      if (answersDom) {
+        answersDom.each(function(index, answersDomValue) {
+          $(answersDomValue).find('.result_correct_answers').each(function(index, that) {
+            $(that).html(nbCorrectListeningAnswers);
+          });
+          $(answersDomValue).find('.result_incorrect_answers').each(function(index, that) {
+            $(that).html(nbIncorrectListeningAnswers);
+          });
+        });
+      }
+      var pointsDom = $(".$ELEARNING_DOM_ID_RESULT_POINT" + elearningResultId);
+      if (pointsDom) {
+        pointsDom.each(function() {
+          $(this).html(nbPoints);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_READING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbReadingPoints);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_WRITING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbWritingPoints);
+        });
+      }
+      var ratioDom = $(".$ELEARNING_DOM_ID_RESULT_POINT$ELEARNING_DOM_ID_LISTENING" + elearningResultId);
+      if (ratioDom) {
+        ratioDom.each(function() {
+          $(this).html(nbListeningPoints);
+        });
+      }
+
+      var preventImageCaching = new Date();
+      var graphImageDomIdNoAnswerV = "$ELEARNING_DOM_ID_NO_ANSWER_V" + elearningResultId;
+      var graphImageDomIdIncorrectV = "$ELEARNING_DOM_ID_INCORRECT_V" + elearningResultId;
+      var graphImageDomIdCorrectV = "$ELEARNING_DOM_ID_CORRECT_V" + elearningResultId;
+      var graphImageDomIdNoAnswerH = "$ELEARNING_DOM_ID_NO_ANSWER_H" + elearningResultId;
+      var graphImageDomIdIncorrectH = "$ELEARNING_DOM_ID_INCORRECT_H" + elearningResultId;
+      var graphImageDomIdCorrectH = "$ELEARNING_DOM_ID_CORRECT_H" + elearningResultId;
+      $("."+graphImageDomIdNoAnswerV).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlNoAnswerV + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
+      $("."+graphImageDomIdIncorrectV).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlIncorrectV + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
+      $("."+graphImageDomIdCorrectV).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlCorrectV + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
+      $("."+graphImageDomIdNoAnswerH).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlNoAnswerH + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
+      $("."+graphImageDomIdIncorrectH).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlIncorrectH + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
+      $("."+graphImageDomIdCorrectH).each(function() {
+        $(this).attr("src", liveResult.graphImageUrlCorrectH + "&" + preventImageCaching.getTime());
+        $(this).attr("title", graphTitle);
+      });
     }
   }
 }
@@ -945,21 +927,38 @@ $(function() {
 });
 
 function renderInactiveParticipantImage(subscription) {
-  var isInactive = subscription.isInactive;
-  var completed = subscription.completed;
   var elearningSubscriptionId = subscription.elearningSubscriptionId;
   var elearningExerciseId = subscription.elearningExerciseId;
   var imageDom = $("#$ELEARNING_DOM_ID_INACTIVE" + elearningSubscriptionId + "_" + elearningExerciseId);
   if (imageDom) {
-    imageDom.each(function() {
+    imageDom.lastActive = subscription.lastActive;
+  }
+}
+
+function checkInactiveParticipants() {
+/*
+  var imagesDom = $(".inactiveParticipant");
+  if (imagesDom) {
+    imagesDom.each(function() {
+      var lastActive = $(this).lastActive;
+      now = clockUtils->systemDateTimeToTimeStamp(clockUtils->getSystemDateTime());
+      if (last && ((now - last) < elearningExerciseUtils->getAbsentDuration())) {
+        isAbsent = '';
+      }
+      if (last && ((now - last) < elearningExerciseUtils->getInactiveDuration())) {
+        isInactive = '';
+      }
+      if (!lastExercisePageId) {
+        completed = '1';
+      }
       if (isInactive) {
-        $(this),show();
-        this.title = "$titleInactive";
-        this.src = "$gCommonImagesUrl/$gImageLightOrangeSmallBlink";
+        $(this).show();
+        this.title = "titleInactive";
+        this.src = "gCommonImagesUrl/gImageLightOrangeSmallBlink";
       } else if (completed) {
         $(this).show();
-        this.title = "$titleCompleted";
-        this.src = "$gCommonImagesUrl/$gImageLightGreenSmall";
+        this.title = "titleCompleted";
+        this.src = "gCommonImagesUrl/gImageLightGreenSmall";
       } else {
         $(this).hide();
         this.title = '';
@@ -967,7 +966,9 @@ function renderInactiveParticipantImage(subscription) {
       }
     });
   }
+*/
 }
+window.setInterval("checkInactiveParticipants()", 5000);
 
 </script>
 HEREDOC;

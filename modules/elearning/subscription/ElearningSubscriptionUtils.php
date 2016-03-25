@@ -228,6 +228,16 @@ class ElearningSubscriptionUtils extends ElearningSubscriptionDB {
     $this->delete($elearningSubscriptionId);
   }
 
+  // Render the light for the participant activity state
+  function renderParticipantLight($elearningSubscriptionId, $elearningExerciseId) {
+    global $gCommonImagesUrl;
+    global $gImageLightOrangeSmallBlink;
+
+    $str = "<img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
+
+    return($str);
+  }
+
   // Render the list of subscriptions of a teacher
   function renderTeacherSubscriptions() {
     global $gElearningUrl;

@@ -35,33 +35,10 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
 
   $isAbsent = '';
   $isInactive = '';
-  $completed = '';
   $elearningSubscriptionId = $elearningResult->getSubscriptionId();
   if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
-    $lastActive = $elearningSubscription->getLastActive();
     $lastExerciseId = $elearningSubscription->getLastExerciseId();
     $lastExercisePageId = $elearningSubscription->getLastExercisePageId();
-
-    $last = $clockUtils->systemDateTimeToTimeStamp($lastActive);
-
-    if ($last) {
-      $isAbsent = 1;
-      $isInactive = 1;
-    }
-
-    if ($lastExerciseId == $elearningExerciseId) {
-      $now = $clockUtils->systemDateTimeToTimeStamp($clockUtils->getSystemDateTime());
-
-      if ($last && (($now - $last) < $elearningExerciseUtils->getAbsentDuration())) {
-        $isAbsent = '';
-      }
-      if ($last && (($now - $last) < $elearningExerciseUtils->getInactiveDuration())) {
-        $isInactive = '';
-      }
-      if (!$lastExercisePageId) {
-        $completed = '1';
-      }
-    }
   }
 
   $responseText = <<<HEREDOC
@@ -92,11 +69,7 @@ if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   "strGraph" : "$strGraph",
   "subscription" : {
     "elearningSubscriptionId" : "$elearningSubscriptionId",
-    "elearningExerciseId" : "$elearningExerciseId",
-    "lastActive" : "$lastActive",
-    "isAbsent" : "$isAbsent",
-    "isInactive" : "$isInactive",
-    "completed" : "$completed"
+    "elearningExerciseId" : "$elearningExerciseId"
   }
 }
 HEREDOC;

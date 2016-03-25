@@ -176,7 +176,7 @@ if ($elearningSubscription) {
               $strPrintResult = ' ' . $popupUtils->getDialogPopup("<img src='$gCommonImagesUrl/$gImagePrinter' class='no_style_image_icon' title='" .  $mlText[10] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/result/print.php?elearningResultId=$elearningResultId", 600, 600);
               if ($watchLive) {
                 $strLiveResults = $elearningResultUtils->renderExerciseResultsGraph($elearningResultId, $nbQuestions, $nbCorrectAnswers, $nbIncorrectAnswers, true, true, $exerciseName)
-                  . " <img id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
+                  . " <img class='inactiveParticipant' id='" . ELEARNING_DOM_ID_INACTIVE . $elearningSubscriptionId . '_' . $elearningExerciseId . "' src='$gCommonImagesUrl/$gImageLightOrangeSmallBlink' title='' alt='' style='display: none;' />";
               }
 
               $strResultGrades = $elearningResultUtils->renderResultGrades($elearningResultId, $grade, $nbCorrectAnswers, $nbQuestions, $points);
