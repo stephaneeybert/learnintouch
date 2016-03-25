@@ -3140,7 +3140,6 @@ HEREDOC;
 }
 </style>
 <script src='$gJsUrl/jquery/jquery.autogrowtextarea.js' type='text/javascript'></script>
-<script src="$gJsUrl/jquery/jquery.caret.js" type="text/javascript"></script>
 <script type="text/javascript">
 var whiteboadDisplayStatusCookieDuration = 24 * 360;
 
@@ -3189,7 +3188,17 @@ function saveWhiteboardContent(elearningSubscriptionId, content) {
 function postSaveWhiteboardLive(responseText) {
 }
 
-function hideParticipantWhiteboard() {
+function hideLocalParticipantWhiteboard() {
+  $('#subscriptionWhiteboard').slideUp('fast');
+  setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 0, whiteboadDisplayStatusCookieDuration);
+}
+
+function showLocalParticipantWhiteboard() {
+  $('#subscriptionWhiteboard').slideDown('fast');
+  setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, whiteboadDisplayStatusCookieDuration);
+}
+
+function hideOtherParticipantWhiteboard() {
   if ('undefined' != typeof elearningSocket) {
     $('#subscriptionWhiteboard').slideUp('fast');
     elearningSocket.emit('hideParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
@@ -3205,14 +3214,15 @@ function showParticipantWhiteboard() {
 
 function toggleParticipantWhiteboard() {
   if ($('#subscriptionWhiteboard').is(':visible')) {
-    hideParticipantWhiteboard();
+    hideLocalParticipantWhiteboard();
+    hideOtherParticipantWhiteboard();
   } else {
+    showLocalParticipantWhiteboard();
     showParticipantWhiteboard();
   }
-  setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, whiteboadDisplayStatusCookieDuration);
 }
 
-function refreshWhiteboard(content) {
+function refreshLocalWhiteboard(content) {
   $('#whiteboard_output').append(content);
 }
 
@@ -3274,18 +3284,16 @@ $('#whiteboard_input').bind("keyup click", function (event) {
 
 if ('undefined' != typeof elearningSocket) {
   elearningSocket.on('updateWhiteboard', function(data) {
-    refreshWhiteboard(data.whiteboard);
+    refreshLocalWhiteboard(data.whiteboard);
   });
   elearningSocket.on('clearWhiteboard', function(data) {
     clearLocalWhiteboard();
   });
   elearningSocket.on('showParticipantWhiteboard', function(data) {
-    $('#subscriptionWhiteboard').slideDown('fast');
-    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 1, whiteboadDisplayStatusCookieDuration);
+    showLocalParticipantWhiteboard();
   });
   elearningSocket.on('hideParticipantWhiteboard', function(data) {
-    $('#subscriptionWhiteboard').slideUp('fast');
-    setCookie("$ELEARNING_WHITEBOARD_DISPLAY_STATE", 0, whiteboadDisplayStatusCookieDuration);
+    hideLocalParticipantWhiteboard();
   });
 }
 });
