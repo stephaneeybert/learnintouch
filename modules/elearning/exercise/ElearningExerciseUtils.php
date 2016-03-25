@@ -3133,6 +3133,7 @@ HEREDOC;
   border-width: 3px;
   border-color: #000000;
   text-align: left;
+  padding-left: 4px;
 }
 .elearning_whiteboard_input {
   width: 99% !important;
