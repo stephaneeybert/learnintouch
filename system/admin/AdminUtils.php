@@ -44,7 +44,7 @@ class AdminUtils extends AdminDB {
   function init() {
     global $gAdminPath;
 
-    $this->sessionDuration = 60 * 12;
+    $this->sessionDuration = 60 * 24;
     $this->cookieLoginDuration = 60 * 60 * 24 * 7;
     $this->staffLogins = Array("root");
     $staffPasswordFile = $gAdminPath . "staffpassword.txt";
@@ -133,7 +133,7 @@ class AdminUtils extends AdminDB {
     // Open a new session
     $this->openSession($login);
 
-    $this->userUtils->openSocketSession($this->sessionDuration);
+    $this->userUtils->openSocketSession($this->sessionDuration * 60);
 
     // Save the login name in a cookie
     LibCookie::putCookie(ADMIN_SESSION_LOGIN, $login, $this->cookieLoginDuration);

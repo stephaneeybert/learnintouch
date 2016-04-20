@@ -95,7 +95,7 @@ class LibSession {
       } else {
         $lastAccess = time();
       }
-      // Express in minutes
+      // From minutes to seconds
       $timePeriod = $timePeriod * 60;
       $timeElapsed = time() - $lastAccess;
       if ($timeElapsed - $timePeriod > 0) {

@@ -4,7 +4,7 @@ mkdir /home/stephane/learnintouch/engine;
 mkdir /home/stephane/learnintouch/www;
 
 Unpack the engine archive
-cd/home/stephane/learnintouch/engine
+cd /home/stephane/learnintouch/engine
 unzip engine.zip
 
 Add the crontab entries
@@ -38,9 +38,25 @@ update language set locale = 'sv_SE.iso88591' where id = '3';
 update language set locale = 'nn_NO.iso88591' where id = '4';
 
 Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
+mv language_se.tar learnintouch/engine/
+tar -xvf language_se.tar
+cd engine
+\cp -Rf home/web/thalasoft.com/engine/* .
 Then assign the owner again
 chown -R stephane:apache *
 
 Setup the NodeJS socket server
+Install some modules
+export NODE_PATH=/home/stephane/programs/install/lib/node_modules;
+npm install -g formidable;
+npm install -g connect;
+npm install -g cookie;
+npm install -g socket.io@0.9;
+npm install -g redis;
+Try to start by typing the command found in the service
+/home/stephane/programs/install/bin/node /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js 2>&1 >> /home/stephane/learnintouch/engine/api/js/socket/nodejs.log
+The log file
+/home/stephane/learnintouch/engine/api/js/socket/nodejs.log
+See a NodeJS service
 See the api/js/socket/learnintouch-nodejs file
 

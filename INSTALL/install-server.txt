@@ -57,6 +57,7 @@ dpkg-reconfigure locales
 Install the following locales
 locale-gen en_GB
 locale-gen fr_FR
+locale-gen sv_SE
 
 It should display the exact name of the locale
 
@@ -64,10 +65,10 @@ It should display the exact name of the locale
 Language files
 --------------
 
-Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
+Once the language files have been copied onto the server, convert them to utf-8 using the command iso88591Toutf8.sh
 
 Then assign the owner again
-chown -R apache:apache *
+chown -R stephane:apache *
 
 
 Mail server

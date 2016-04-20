@@ -52,6 +52,8 @@ class BackupUtils extends BackupDB {
     $this->backupFilePrefix = 'backup_db_';
 
     $this->backupDataFormats = array("INSERT", "CSV");
+
+    $this-> createDirectories();
   }
 
   function createDirectories() {

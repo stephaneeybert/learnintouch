@@ -90,7 +90,7 @@ function  printAdminPage($body, $head = '', $bodyOnLoad = '') {
 <html>
 <head>
 <title>$gAdminSessionLogin $gWebsiteTitle</title>
-<meta http-equiv='content-type' content='text/html; charset=iso-8859-1'>
+<meta http-equiv='content-type' content='text/html; charset=utf-8'>
 $head
 <script type='text/javascript' src='$gJsUrl/popup.js'></script>
 <script type='text/javascript' src='$gJsUrl/ajax.js'></script>

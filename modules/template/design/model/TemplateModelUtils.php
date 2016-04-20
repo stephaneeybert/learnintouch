@@ -1362,7 +1362,7 @@ HEREDOC;
 
     $str = <<<HEREDOC
 <title>TEMPLATE_CONTENT_TITLE</title>
-<meta http-equiv='content-type' content='text/html; charset=iso-8859-1' />
+<meta http-equiv='content-type' content='text/html; charset=utf-8' />
 <meta http-equiv='content-script-type' content='text/javascript' />
 <meta http-equiv='content-style-type' content='text/css' />
 <meta http-equiv='imagetoolbar' content='false' />

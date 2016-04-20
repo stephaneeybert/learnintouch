@@ -51,7 +51,7 @@ class DataSource {
 
   // Check if a connection is established with the database
   function isConnected() {
-    return($this->dbConnection != 0);
+    return(!is_null($this->dbConnection));
     }
 
   // Connect to the database

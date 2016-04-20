@@ -128,6 +128,7 @@ HEREDOC;
     $encodedString = $englishString;
 
     $translate = "<a href='javascript:void(0);'><span class='translate' encodedString='$encodedString' toLanguageCode='$toLanguageCode' textKey='text_string_$key'><img border='0' src='$gCommonImagesUrl/$gImageReset' title='$mlText[3]'></span></a>";
+    $translate = ''; // Google has shut the door
 
     $panelUtils->addLine($panelUtils->addCell($englishString, "r"), $panelUtils->addCell($strInputField . ' ' . $translate, ""));
     $panelUtils->addLine();

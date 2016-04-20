@@ -11,9 +11,9 @@ class DataSourceMySQL extends DataSource {
   function connect($username, $password, $type = DB_NON_PERSISTENT) {
     // Connect to the databse
     if ($type == DB_PERSISTENT) {
-      $this->setDbConnection(mysql_pconnect($this->getHost(), $username, $password));
+      $this->setDbConnection(mysqli_pconnect($this->getHost(), $username, $password));
     } else {
-      $this->setDbConnection(mysql_connect($this->getHost(), $username, $password));
+      $this->setDbConnection(mysqli_connect($this->getHost(), $username, $password));
     }
 
     $this->selectDatabase();
@@ -23,14 +23,14 @@ class DataSourceMySQL extends DataSource {
   }
 
   function selectDatabase() {
-    $success = mysql_select_db($this->getDatabaseName(), $this->getDbConnection());
+    $success = mysqli_select_db($this->getDbConnection(), $this->getDatabaseName());
 
     return($success);
   }
 
   function disconnect() {
     // Close the database
-    mysql_close($this->getDbConnection());
+    mysqli_close($this->getDbConnection());
 
     // Reset the database connection
     $this->setDbConnection(0);
@@ -41,7 +41,7 @@ class DataSourceMySQL extends DataSource {
     $this->sqlStatement = $sqlStatement;
 
     // Create a result object
-    $result = new DataResultMySQL($this, mysql_query($sqlStatement, $this->getDbConnection()));
+    $result = new DataResultMySQL($this, mysqli_query($this->getDbConnection(), $sqlStatement));
 
     return($result);
   }
@@ -49,7 +49,7 @@ class DataSourceMySQL extends DataSource {
   function getErrorMessage() {
     global $skipReportError;
 
-    $sqlErrorMessage = $this->sqlStatement . "<br><br>" . mysql_error($this->getDbConnection());
+    $sqlErrorMessage = $this->sqlStatement . "<br><br>" . mysqli_error($this->getDbConnection());
 
     if (!isset($skipReportError)) {
       reportError("The sql statement failed. " . $sqlErrorMessage);
@@ -59,13 +59,13 @@ class DataSourceMySQL extends DataSource {
   }
 
   function listTables() {
-    $result = new DataResultMySQL($this, mysql_list_tables($this->getDatabaseName()));
+    $result = new DataResultMySQL($this, mysqli_list_tables($this->getDatabaseName()));
 
     return($result);
   }
 
   function getLastInsertId() {
-    $id = mysql_insert_id($this->getDbConnection());
+    $id = mysqli_insert_id($this->getDbConnection());
 
     return($id);
   }

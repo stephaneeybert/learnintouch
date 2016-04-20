@@ -66,7 +66,7 @@ class UserUtils extends UserDB {
 
     $this->cookieAutoLogin = "userAutoLogin";
     $this->cookieSocketSessionId = "socketSessionId";
-    $this->sessionDuration = 120;
+    $this->sessionDuration = 60 * 24;
     $this->propertyComputerPostLoginPage = "TEMPLATE_COMPUTER_POST_LOGIN_PAGE_";
     $this->propertyPhonePostLoginPage = "TEMPLATE_PHONE_POST_LOGIN_PAGE_";
     $this->propertyComputerExpiredLoginPage = "TEMPLATE_COMPUTER_EXPIRED_LOGIN_PAGE_";
