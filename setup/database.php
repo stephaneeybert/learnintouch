@@ -9,14 +9,14 @@ if (isLocalhost()) {
   define('DB_SYSTEM_DB_NAME', "mysql");
   define('DB_COMMON_USER', "engine");
   define('DB_COMMON_PASS', "mignet");
-  define('DB_COMMON_DB_NAME', "db_engine");
+  define('DB_COMMON_DB_NAME', "engine");
 } else {
   // The database used by the engine and common to all websites
   define('DB_COMMON_HOST', "localhost");
   define('DB_SYSTEM_DB_NAME', "mysql");
   define('DB_COMMON_USER', "engine");
   define('DB_COMMON_PASS', "mignet");
-  define('DB_COMMON_DB_NAME', "db_engine");
+  define('DB_COMMON_DB_NAME', "engine");
 }
 
 ?>
