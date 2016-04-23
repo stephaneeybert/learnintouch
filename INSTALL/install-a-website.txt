@@ -55,23 +55,22 @@ php_value auto_prepend_file "/home/stephane/learnintouch/www/europasprak.com/acc
 
 Create the /home/stephane/learnintouch/www/europasprak/account/setup/specific.php file
 
-Add a MySQL user
-programs/mysql/install/bin/mysql -u stephane -p
-use mysql;
-grant all privileges on db_europasprak.* to europasprak@'localhost' identified by 'kjffirjfenj';
-flush privileges;
-quit;
-
 Create the directories
 http://europasprak.learnintouch.com/engine/setup/directories.php
 
 Create the database
 cd programs/mysql/install
-bin/mysqladmin -u stephane -p create db_europasprak
+bin/mysql -u stephane -p
+create database db_europasprak character set utf8mb4 collate utf8mb4_unicode_ci;
 
 Create the database schema
+Make sure the db_learnintouch-structure.sql has an ascii/unknown charset 
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+Make sure the db_learnintouch.sql files has a utf-8 charset
+uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
 cd programs/mysql/install
-bin/mysql -v -u stephane -p db_europasprak < ~/learnintouch/db_learnintouch-structure.sql
+bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
 
 Add some index
 cd programs/mysql/install
@@ -81,6 +80,33 @@ alter table statistics_visit add index(visit_datetime);
 alter table statistics_visit add index(visitor_host_address);
 alter table statistics_visit add index(visitor_browser);
 alter table statistics_visit add index(visitor_referer);
+
+Export latin1 data into a utf-8 database:
+Make sure the db_learnintouch-structure.sql has an ascii/unknown charset
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+Dump the data specifying its original charset
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --skip-extended-insert db_learnintouch > ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
+Ignore foreign keys
+set foreign_key_checks = 0;
+Remove the comments in vi
+:g/--/d
+:g/*!/d
+Remove the engine names in vi
+:s/ ENGINE.*/;/99999
+Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
+iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sql
+mv ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sq ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
+Make sure the data file has a utf-8 charset
+uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
+bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
+
+Add a MySQL user
+programs/mysql/install/bin/mysql -u stephane -p
+use mysql;
+grant all privileges on db_europasprak.* to europasprak@'localhost' identified by 'kjffirjfenj';
+flush privileges;
+quit;
 
 Restaure some data from a data only backup file
 Insert the following statements at the top of the backup file:

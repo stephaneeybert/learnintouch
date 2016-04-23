@@ -102,7 +102,7 @@ $filePaths = array_merge($filePaths,
     $gSystemPath . "utils/.google_search.en.php"
   ));
 
-$panelUtils->setHeader($mlText[0]);
+$panelUtils->setHeader($mlText[0], "$gAdminUrl/menu.php");
 $help = $popupUtils->getHelpPopup($mlText[1], 300, 300);
 $panelUtils->setHelp($help);
 $panelUtils->addLine();

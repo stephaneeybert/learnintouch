@@ -28,7 +28,7 @@ address varchar(255),
 zip_code varchar(10),
 city varchar(255),
 country varchar(255),
-email varchar(255),
+email varchar(100),
 profile text,
 post_login_url varchar(255),
 primary key (id), unique (id)

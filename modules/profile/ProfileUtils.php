@@ -491,14 +491,14 @@ class ProfileUtils extends ProfileDB {
     return($filename);
   }
 
-  // Render the favicon
+  // Render the iPhone icon
   function renderIPhoneIcon() {
     $str = '';
 
     $filename = $this->getIPhoneIconFilename();
 
     if (is_file($this->filePath . $filename)) {
-      $str .= "\n<link rel='apple-touch-icon' href='$this->fileUrl/$filename' />";
+      $str .= "\n<link rel='apple-touch-icon' href='" . $this->fileUrl . "/" . $filename . "' />";
     }
 
     return($str);
@@ -511,7 +511,7 @@ class ProfileUtils extends ProfileDB {
     $filename = $this->getFaviconFilename();
 
     if (is_file($this->filePath . $filename)) {
-      $str .= "\n<link rel='shortcut icon' href='$this->fileUrl/$filename' />";
+      $str .= "\n<link rel='shortcut icon' href='" . $this->fileUrl . "/" . $filename . "' />";
     }
 
     return($str);

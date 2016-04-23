@@ -16,8 +16,8 @@ create table if not exists $this->tableName
 (
 id int unsigned not null auto_increment,
 version int unsigned not null,
-name varchar(255) not null,
-unique (name),
+name varchar(100) not null,
+unique(name),
 description text,
 instructions text,
 introduction text,

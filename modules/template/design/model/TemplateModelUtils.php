@@ -1228,7 +1228,7 @@ HEREDOC;
 
     // Note that the first line of the page must be the doctype one
     // Otherwise IE 6 turns into quirks mode with its well known "IE box model bug"
-    // So no such line as xml version="1.0" encoding="ISO-8859-1"
+    // So no such line as xml version="1.0" encoding="UTF-8"
     // shall be the first line
     $str = <<<HEREDOC
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

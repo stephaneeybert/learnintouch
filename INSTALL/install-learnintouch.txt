@@ -19,25 +19,43 @@ crontab -e
 
 Create the engine database
 /home/stephane/programs/mysql/install;
-bin/mysqladmin -u stephane -p create db_engine
+bin/mysql -u stephane -p
+create database db_engine character set utf8mb4 collate utf8mb4_unicode_ci;
 bin/mysql -u stephane -p
 use mysql;
 grant all privileges on db_engine.* to engine@'localhost' identified by 'mypassword';
 flush privileges;
 quit;
 
-Populate the db_engine database:
-bin/mysql -u stephane -p db_engine < db_engine-structure.sql
-bin/mysql -u stephane -p db_engine < db_engine.sql
+Export latin1 data into a utf-8 database:
+Make sure the db_engine-structure.sql has an ascii/unknown charset
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql
+Dump the data specifying its original charset
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --skip-extended-insert db_engine > ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql
+Ignore foreign keys
+set foreign_key_checks = 0;
+Remove the comments in vi
+:g/--/d
+:g/*!/d
+Remove the engine names in vi
+:s/ ENGINE.*/;/99999
+Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
+iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_engine.utf8.sql
+mv ~/dev/php/learnintouch/engine/INSTALL/db_engine.utf8.sq ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql
+Make sure the data file has a utf-8 charset
+uchardet ~/dev/php/learnintouch/backup/db_engine.sql
+bin/mysql -u stephane -p db_engine -v < ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql 
+bin/mysql -u stephane -p db_engine -v < ~/dev/php/learnintouch/backup/db_engine.sql
 
 Update the language table of the engine database with the displayed locale name
 locale -a
-update language set locale = 'en_GB.iso88591' where id = '1';
-update language set locale = 'fr_FR.iso88591' where id = '2';
-update language set locale = 'sv_SE.iso88591' where id = '3';
-update language set locale = 'nn_NO.iso88591' where id = '4';
+update language set locale = 'en_GB.utf8' where id = '1';
+update language set locale = 'fr_FR.utf8' where id = '2';
+update language set locale = 'sv_SE.utf8' where id = '3';
+update language set locale = 'nn_NO.utf8' where id = '4';
 
-Once the language files have been copied onto the server, convert them to iso88591 using the command utf8Toiso88591.sh
+Once the language files have been copied onto the server, cmake sure they are in utf8 encoding
+See the command dev/commands/iso88591Toutf8.sh
 mv language_se.tar learnintouch/engine/
 tar -xvf language_se.tar
 cd engine

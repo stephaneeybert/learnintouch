@@ -25,13 +25,13 @@ if ($language = $languageUtils->selectByCode($toLanguageCode)) {
   $filename = basename($filePath);
   $nameBits = explode(".", $filename);
   if (is_array($nameBits) && count($nameBits) > 0) {
-    $englishFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . 'en' . '.php';
+    $fromFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . 'fr' . '.php';
     $translatedFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . $toLanguageCode . '.php';
   }
 }
 
-if (!is_file($englishFilePath)) {
-  reportError("The file $englishFilePath or the file $translatedFilePath could not be found for translation.");
+if (!is_file($fromFilePath)) {
+  reportError("The file $fromFilePath or the file $translatedFilePath could not be found for translation.");
 }
 
 $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
@@ -39,7 +39,7 @@ $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
 if ($formSubmitted) {
 
   // Get the text string keys from the english language file
-  $textStrings = $languageUtils->getMlTextStrings($englishFilePath);
+  $textStrings = $languageUtils->getMlTextStrings($fromFilePath);
 
   $editedTextStrings = array();
   foreach ($textStrings as $key => $textString) {
@@ -59,13 +59,13 @@ if ($formSubmitted) {
 
 } else {
 
-  $englishStrings = $languageUtils->getMlTextStrings($englishFilePath);
+  $fromStrings = $languageUtils->getMlTextStrings($fromFilePath);
   $textStrings = $languageUtils->getMlTextStrings($translatedFilePath);
 
   // Add the english version for the missing array values
   // This is needed if new array values are added after the language
   // file has already been translated
-  foreach ($englishStrings as $key => $value) {
+  foreach ($fromStrings as $key => $value) {
     if (!isset($textStrings[$key])) {
       $textStrings[$key] = $value;
     }
@@ -73,10 +73,10 @@ if ($formSubmitted) {
 
   $strGoogleTranslate = <<<HEREDOC
 <script type='text/javascript'>
-function getGoogleTranslation(englishString, toLanguageCode, inputFieldId) {
-  englishString = encodeURIComponent(englishString);
+function getGoogleTranslation(fromString, toLanguageCode, inputFieldId) {
+  fromString = encodeURIComponent(fromString);
   toLanguageCode = encodeURIComponent(toLanguageCode);
-  var url = '$gLanguageUrl/get_google_translation.php?text='+englishString+'&fromLanguageCode=en&toLanguageCode='+toLanguageCode+'&inputFieldId='+inputFieldId;
+  var url = '$gLanguageUrl/get_google_translation.php?text='+fromString+'&fromLanguageCode=en&toLanguageCode='+toLanguageCode+'&inputFieldId='+inputFieldId;
   ajaxAsynchronousRequest(url, displayTranslation);
 }
 
@@ -103,18 +103,18 @@ HEREDOC;
   $panelUtils->openForm($PHP_SELF, 'edit');
 
   foreach ($textStrings as $key => $textString) {
-    if (!array_key_exists($key, $englishStrings)) {
+    if (!array_key_exists($key, $fromStrings)) {
       reportError("The language resource key $key \n" . $textStrings[$key] . "\nfound in $filePath exists in $toLanguageCode but could not be found in english.");
       continue;
     }
 
-    $englishString = $englishStrings[$key];
+    $fromString = $fromStrings[$key];
 
     // Protect the single quotes
     $textString = str_replace("'", "&#039;", $textString);
 
     // Input the text string
-    if (strstr($englishString, "<br />") || strstr($englishString, "<br>")) {
+    if (strstr($fromString, "<br />") || strstr($fromString, "<br>")) {
 
       // Transform the '\n' strings into line breaks
       $textString = str_replace("<br>", "\n", $textString);
@@ -125,12 +125,12 @@ HEREDOC;
       $strInputField = "<input type='text' id='text_string_$key' name='text_string_$key' value='$textString' size='62'>";
     }
 
-    $encodedString = $englishString;
+    $encodedString = $fromString;
 
     $translate = "<a href='javascript:void(0);'><span class='translate' encodedString='$encodedString' toLanguageCode='$toLanguageCode' textKey='text_string_$key'><img border='0' src='$gCommonImagesUrl/$gImageReset' title='$mlText[3]'></span></a>";
     $translate = ''; // Google has shut the door
 
-    $panelUtils->addLine($panelUtils->addCell($englishString, "r"), $panelUtils->addCell($strInputField . ' ' . $translate, ""));
+    $panelUtils->addLine($panelUtils->addCell($fromString, "r"), $panelUtils->addCell($strInputField . ' ' . $translate, ""));
     $panelUtils->addLine();
   }
 

@@ -16,7 +16,7 @@ create table if not exists $this->tableName
 (
 id int unsigned not null auto_increment,
 version int unsigned not null,
-page varchar(255) not null,
+page varchar(100) not null,
 hits int unsigned not null,
 month int unsigned not null,
 year int unsigned not null,
