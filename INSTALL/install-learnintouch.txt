@@ -35,9 +35,9 @@ bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --s
 Ignore foreign keys
 set foreign_key_checks = 0;
 Remove the comments in vi
-:g/--/d
-:g/*!/d
-Remove the engine names in vi
+:g/^--/d
+:g,^\/\*\!,d
+Remove the ENGINE names in vi
 :s/ ENGINE.*/;/99999
 Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
 iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_engine.utf8.sql
