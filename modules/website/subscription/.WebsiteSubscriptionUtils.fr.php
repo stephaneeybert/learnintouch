@@ -1,5 +1,5 @@
-[   0]Inscription à la plate-forme de elearning et au système de gestion de site web de Thalasoft.com pour la période du
+[   0]Inscription Ã  la plate-forme de elearning et au systÃ¨me de gestion de site web de Thalasoft.com pour la pÃ©riode du
 [   1]au
 [   2]pour un tarif mensuel de
-[   3]et une durée de
+[   3]et une durÃ©e de
 [   4]mois.

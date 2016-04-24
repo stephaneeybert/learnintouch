@@ -1,10 +1,10 @@
-[   0]Créer ou modifier une information sur le cours
-[   1]Vos cours, vos leçons, vos exercices...
+[   0]CrÃ©er ou modifier une information sur le cours
+[   1]Vos cours, vos leÃ§ons, vos exercices...
 [   2]Ajouter une information sur le cours
 [   3]Le titre est requis.
 [   6]Titre: *
-[   7]Valider l'opération
+[   7]Valider l'opÃ©ration
 [   8]Information:
 [  10]Vous n'avez pas le droit de modifier ce cours.
-[  13]Annuler l'opération
+[  13]Annuler l'opÃ©ration
 

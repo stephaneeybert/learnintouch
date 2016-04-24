@@ -137,7 +137,8 @@ foreach ($fileTimestamps as $fileName => $fileTimestamp) {
 
   $fileName = urlencode($fileName);
 
-  $strFile = "<a href='$gUtilsUrl/download.php?filename=$backupUtils->previousBackupFilePath$fileName' $gJSNoStatus title='$mlText[8]'>$fileName</a>";
+  $url = $backupUtils->renderSqlFileUrl($fileName);
+  $strFile = "<a href='$url' $gJSNoStatus title='$mlText[8]'>$fileName</a>";
 
   $strCommand = "<a href='$gBackupUrl/delete.php?fileName=$fileName' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";

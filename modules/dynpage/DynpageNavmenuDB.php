@@ -7,7 +7,9 @@ class DynpageNavmenuDB {
   var $dao;
 
   function DynpageNavmenuDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_DYNPAGE_NAVMENU;
 

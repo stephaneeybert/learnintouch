@@ -1,18 +1,18 @@
-[   0]Les numéros de téléphones portables
-[   1]Créer un numéro numéro de téléphone portable
-[   2]Modifier le numéro numéro de téléphone portable
-[   3]Effacer le numéro numéro de téléphone portable
-[   4]Ces numéros sont ceux des visiteurs du site web.\n\nNotez qu'un visiteur n'est pas un utilisateur enregistré dans le site web.\n\nTandis qu'un utilisateur est enregistré dans le site web et peut se connecter en utilisant un mot de passe, un visiteur n'est pas enregistré et ne peut pas se connecter.\n\nIl ne faut pas confondre les simples visiteurs et les utilisateurs enregistrés.
-[   5]Importer une liste de numéros
-[   6]Nombre total de numéros:
-[   7]Effacer les numéros du dernier import
-[   8]Numéro
+[   0]Les numÃ©ros de tÃ©lÃ©phones portables
+[   1]CrÃ©er un numÃ©ro numÃ©ro de tÃ©lÃ©phone portable
+[   2]Modifier le numÃ©ro numÃ©ro de tÃ©lÃ©phone portable
+[   3]Effacer le numÃ©ro numÃ©ro de tÃ©lÃ©phone portable
+[   4]Ces numÃ©ros sont ceux des visiteurs du site web.\n\nNotez qu'un visiteur n'est pas un utilisateur enregistrÃ© dans le site web.\n\nTandis qu'un utilisateur est enregistrÃ© dans le site web et peut se connecter en utilisant un mot de passe, un visiteur n'est pas enregistrÃ© et ne peut pas se connecter.\n\nIl ne faut pas confondre les simples visiteurs et les utilisateurs enregistrÃ©s.
+[   5]Importer une liste de numÃ©ros
+[   6]Nombre total de numÃ©ros:
+[   7]Effacer les numÃ©ros du dernier import
+[   8]NumÃ©ro
 [   9]Chercher:
-[  10]Il peut devenir fastidieux d'avoir à naviguer dans la liste des numéros pour retrouver un numéro particulier.\n\nPour éviter cela, il est possible de faire une recherche d'un numéro basée sur un texte saisi.\n\nLe résultat de la recherche affichera tous les numéros correspondant au texte recherché.
-[  11]Exporter tous les numéros
-[  12]Prénom
-[  13]Abonné
-[  14]Non abonné
+[  10]Il peut devenir fastidieux d'avoir Ã  naviguer dans la liste des numÃ©ros pour retrouver un numÃ©ro particulier.\n\nPour Ã©viter cela, il est possible de faire une recherche d'un numÃ©ro basÃ©e sur un texte saisi.\n\nLe rÃ©sultat de la recherche affichera tous les numÃ©ros correspondant au texte recherchÃ©.
+[  11]Exporter tous les numÃ©ros
+[  12]PrÃ©nom
+[  13]AbonnÃ©
+[  14]Non abonnÃ©
 [  15]Nom
 [  17]Abonnement:
-[  18]Certains utilisateurs préfèrent ne pas recevoir de messages SMS.\n\nIls ne se sont pas abonnés aux messages SMS.\n\nL'abonnement indique si oui ou non leur numéro de téléphone portable peut être utilisé dans les listes de SMS.
+[  18]Certains utilisateurs prÃ©fÃ¨rent ne pas recevoir de messages SMS.\n\nIls ne se sont pas abonnÃ©s aux messages SMS.\n\nL'abonnement indique si oui ou non leur numÃ©ro de tÃ©lÃ©phone portable peut Ãªtre utilisÃ© dans les listes de SMS.

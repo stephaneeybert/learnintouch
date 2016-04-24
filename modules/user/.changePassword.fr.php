@@ -5,7 +5,7 @@
 [   4]Nouveau mot de passe: *
 [   5]Confirmez le mot de passe: *
 [   6]Changer le mot de passe
-[   9]Votre mot de passe a été mis à jour!
+[   9]Votre mot de passe a Ã©tÃ© mis Ã  jour!
 [  20]Le nouveau mot de passe est requis.
 [  21]Les deux mots de passe ne sont pas identiques.\n\nVous devez saisir des mots de passe identiques dans les deux champs.
 [  25]L'adresse email est requise.

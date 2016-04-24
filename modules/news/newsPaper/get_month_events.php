@@ -9,11 +9,6 @@ $newsPaperId = LibEnv::getEnvHttpGET("newsPaperId");
 $newsFeedId = LibEnv::getEnvHttpGET("newsFeedId");
 $eventStartDate = LibEnv::getEnvHttpGET("eventStartDate");
 
-// An ajax request parameter value is UTF-8 encoded
-$newsPaperId = utf8_decode($newsPaperId);
-$newsFeedId = utf8_decode($newsFeedId);
-$eventStartDate = utf8_decode($eventStartDate);
-
 if ($eventStartDate) {
   $newsStories = $newsPaperUtils->collectNewsStoriesForEventsForAMonth($newsPaperId, $eventStartDate);
 }

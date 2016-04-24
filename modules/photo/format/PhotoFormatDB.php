@@ -7,7 +7,9 @@ class PhotoFormatDB {
   var $dao;
 
   function PhotoFormatDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_PHOTO_FORMAT;
 

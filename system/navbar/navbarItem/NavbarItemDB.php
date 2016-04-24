@@ -7,7 +7,9 @@ class NavbarItemDB {
   var $dao;
 
   function NavbarItemDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_NAVBAR_ITEM;
 

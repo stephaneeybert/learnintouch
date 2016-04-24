@@ -1,3 +1,3 @@
-[   0]Effacer une référence
-[   2]Effacer la référence?
+[   0]Effacer une rÃ©fÃ©rence
+[   2]Effacer la rÃ©fÃ©rence?
 [   4]Description:

@@ -1,6 +1,6 @@
-[   0]Sécuriser un répertoire
-[   1]Répertoire:
-[   2]Activer l'accès sécurisé au répertoire?
-[   5]Désactiver l'accès sécurisé au répertoire?
-[   3]Activer l'accès sécurisé au répertoire
-[   4]Désactiver l'accès sécurisé au répertoire
+[   0]SÃ©curiser un rÃ©pertoire
+[   1]RÃ©pertoire:
+[   2]Activer l'accÃ¨s sÃ©curisÃ© au rÃ©pertoire?
+[   5]DÃ©sactiver l'accÃ¨s sÃ©curisÃ© au rÃ©pertoire?
+[   3]Activer l'accÃ¨s sÃ©curisÃ© au rÃ©pertoire
+[   4]DÃ©sactiver l'accÃ¨s sÃ©curisÃ© au rÃ©pertoire

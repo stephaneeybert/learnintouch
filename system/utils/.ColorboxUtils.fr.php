@@ -1,6 +1,6 @@
-[   2]Précédent
+[   2]PrÃ©cÃ©dent
 [   3]Suivant
 [  44]Fermer
-[  45]Démarrer
-[  46]Arréter
+[  45]DÃ©marrer
+[  46]ArrÃ©ter
 [  47]sur

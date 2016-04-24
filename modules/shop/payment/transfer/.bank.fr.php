@@ -1,7 +1,7 @@
-[   0]Les pages de coordonnées bancaires
-[   1]Pour chaque langue, une page peut être spécifiée comme étant la page de coordonnées bancaires.\n\nLa page sera affichée après qu'un visiteur envoi une commande et paye manuellement par une banque extérieure à la boutique.
-[   2]Spécifier la page de coordonnées bancaires pour la langue
+[   0]Les pages de coordonnÃ©es bancaires
+[   1]Pour chaque langue, une page peut Ãªtre spÃ©cifiÃ©e comme Ã©tant la page de coordonnÃ©es bancaires.\n\nLa page sera affichÃ©e aprÃ¨s qu'un visiteur envoi une commande et paye manuellement par une banque extÃ©rieure Ã  la boutique.
+[   2]SpÃ©cifier la page de coordonnÃ©es bancaires pour la langue
 [   3]Langue
 [   4]Page web
-[   5]La page de coordonnées bancaires pour les ordinateurs
-[   6]La page de coordonnées bancaires pour les téléphones
+[   5]La page de coordonnÃ©es bancaires pour les ordinateurs
+[   6]La page de coordonnÃ©es bancaires pour les tÃ©lÃ©phones

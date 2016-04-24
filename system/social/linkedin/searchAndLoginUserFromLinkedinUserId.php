@@ -8,10 +8,6 @@ LibHtml::preventCaching();
 $linkedinUserId = LibEnv::getEnvHttpGET("linkedinUserId");
 $noRedirect = LibEnv::getEnvHttpGET("noRedirect");
 
-// An ajax request parameter value is UTF-8 encoded
-$linkedinUserId = utf8_decode($linkedinUserId);
-$noRedirect = utf8_decode($noRedirect);
-
 $userId = '';
 $postUserLoginUrl = '';
 $email = '';

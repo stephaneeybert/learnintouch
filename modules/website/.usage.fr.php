@@ -1,5 +1,5 @@
 [   0]L'espace disque des sites web
 [   4]Nom de domaine
 [   5]Espace disque
-[   7]Espace utilisé
+[   7]Espace utilisÃ©
 [   9]Utilisation

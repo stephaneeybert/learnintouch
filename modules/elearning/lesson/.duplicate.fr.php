@@ -1,6 +1,6 @@
-[   0]Dupliquer une leÁon
+[   0]Dupliquer une le√ßon
 [   1]Nom:
 [   5]Description:
-[   7]Dupliquer la leÁon?
+[   7]Dupliquer la le√ßon?
 [   6]Le nom est requis.
-[   9]Une leÁon avec ce nom existe dÈj‡.
+[   9]Une le√ßon avec ce nom existe d√©j√†.

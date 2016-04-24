@@ -7,7 +7,9 @@ class TemplateTagDB {
   var $dao;
 
   function TemplateTagDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_TEMPLATE_ELEMENT_TAG;
 

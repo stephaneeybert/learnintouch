@@ -1,7 +1,7 @@
 [   0]Modifier un lien
-[   5]Catégorie:
+[   5]CatÃ©gorie:
 [   6]Nom:
 [   7]Description:
 [   8]Url:
-[   9]La catégorie du lien est requise.
+[   9]La catÃ©gorie du lien est requise.
 [  21]L'url est invalide.

@@ -7,7 +7,9 @@ class TemplatePageDB {
   var $dao;
 
   function TemplatePageDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_TEMPLATE_PAGE;
 

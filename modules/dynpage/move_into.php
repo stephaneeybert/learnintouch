@@ -8,10 +8,6 @@ LibHtml::preventCaching();
 $dynpageId = LibEnv::getEnvHttpGET("dynpageId");
 $parentId = LibEnv::getEnvHttpGET("parentId");
 
-// An ajax request parameter value is UTF-8 encoded
-$dynpageId = utf8_decode($dynpageId);
-$parentId = utf8_decode($parentId);
-
 $moved = false;
 
 if ($dynpage = $dynpageUtils->selectById($dynpageId)) {

@@ -1,8 +1,8 @@
-[   0]Les préférences
+[   0]Les prÃ©fÃ©rences
 [   2]Modifier la valeur
-[   1]Les préférences offrent des options de paramétrage pour le site web.\n\nElles permettent de personaliser le contenu et le fonctionnement du site web.
-[   3]Sélectionner une couleur
-[   4]Réinitialiser la valeur par défaut
-[   5]Sélectionner une page du site web
-[   6]Seul un super administrateur peut éditer les préférences.
-[   7]Modifier la préférence dans toutes les langues
+[   1]Les prÃ©fÃ©rences offrent des options de paramÃ©trage pour le site web.\n\nElles permettent de personaliser le contenu et le fonctionnement du site web.
+[   3]SÃ©lectionner une couleur
+[   4]RÃ©initialiser la valeur par dÃ©faut
+[   5]SÃ©lectionner une page du site web
+[   6]Seul un super administrateur peut Ã©diter les prÃ©fÃ©rences.
+[   7]Modifier la prÃ©fÃ©rence dans toutes les langues

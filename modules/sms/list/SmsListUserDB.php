@@ -7,7 +7,9 @@ class SmsListUserDB {
   var $dao;
 
   function SmsListUserDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SMS_LIST_USER;
 

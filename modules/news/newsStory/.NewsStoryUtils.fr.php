@@ -4,70 +4,70 @@
 [   4]Envoyer l'article
 [   7]Ecouter l'article
 [   8]Veuillez cliquer pour voir d'autres photos
-[   9]Largeur des images d'un article (téléphone):
-[  10]La largeur des images d'un article lorsqu'elles sont affichées dans un format moyen sur un téléphone ou un appareil portable à petit écran.
+[   9]Largeur des images d'un article (tÃ©lÃ©phone):
+[  10]La largeur des images d'un article lorsqu'elles sont affichÃ©es dans un format moyen sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.
 [  11]Cacher le logo RSS:
-[  12]Cacher l'adresse email de l'éditeur:
-[  13]Cacher le profil de l'éditeur:
-[  14]Cacher la date de publication dans le fil d'actualités:
-[  16]Nombre maximum d'articles dans un fil d'actualités:
+[  12]Cacher l'adresse email de l'Ã©diteur:
+[  13]Cacher le profil de l'Ã©diteur:
+[  14]Cacher la date de publication dans le fil d'actualitÃ©s:
+[  16]Nombre maximum d'articles dans un fil d'actualitÃ©s:
 [  17]Lecture audio automatique:
 [  18]Cacher la date de publication:
-[  19]Modèle:
-[  20]Le lecteur audio peut démarrer automatiquement après que la page soit affichée.\n\nOu bien il peut ne démarrer que si le visiteur clique sur le bouton 'Play' du lecteur.
-[  21]Par défault, les journaux et les articles sont affichés dans le modèle actif.\n\nMais il est possible de spécifier un modèle dans lequel les journaux et les articles seront toujours affichés.
-[  22]Par défaut, la date de publication d'un article est affichée sous le titre de chaque article dans le journal.\n\nMais cette date de publication peut être cachée.
-[  24]Par défaut, le profil de l'éditeur est affiché en bas de l'article.\n\nMais ce profil peut être caché.
-[  25]Par défaut, l'adresse email de l'éditeur est affichée pour permettre aux lecteurs de contacter l'éditeur.\n\nMais cette adresse email peut être cachée pour protéger l'identité de l'éditeur.
-[  26]Dans un fil d'actualités, par défaut, la date de publication d'un article est affichée sous le titre de chaque article.\n\nMais cette date de publication peut être cachée.
-[  27]Dans un fil d'actualités, par défaut, le logo RSS est affiché.\n\nMais ce logo RSS peut être caché.
-[  28]Par défaut, tous les articles d'un journal sont affichés dans un fil d'actualités.\n\nMais il est possible de limiter le nombre d'articles affichés.
+[  19]ModÃ¨le:
+[  20]Le lecteur audio peut dÃ©marrer automatiquement aprÃ¨s que la page soit affichÃ©e.\n\nOu bien il peut ne dÃ©marrer que si le visiteur clique sur le bouton 'Play' du lecteur.
+[  21]Par dÃ©fault, les journaux et les articles sont affichÃ©s dans le modÃ¨le actif.\n\nMais il est possible de spÃ©cifier un modÃ¨le dans lequel les journaux et les articles seront toujours affichÃ©s.
+[  22]Par dÃ©faut, la date de publication d'un article est affichÃ©e sous le titre de chaque article dans le journal.\n\nMais cette date de publication peut Ãªtre cachÃ©e.
+[  24]Par dÃ©faut, le profil de l'Ã©diteur est affichÃ© en bas de l'article.\n\nMais ce profil peut Ãªtre cachÃ©.
+[  25]Par dÃ©faut, l'adresse email de l'Ã©diteur est affichÃ©e pour permettre aux lecteurs de contacter l'Ã©diteur.\n\nMais cette adresse email peut Ãªtre cachÃ©e pour protÃ©ger l'identitÃ© de l'Ã©diteur.
+[  26]Dans un fil d'actualitÃ©s, par dÃ©faut, la date de publication d'un article est affichÃ©e sous le titre de chaque article.\n\nMais cette date de publication peut Ãªtre cachÃ©e.
+[  27]Dans un fil d'actualitÃ©s, par dÃ©faut, le logo RSS est affichÃ©.\n\nMais ce logo RSS peut Ãªtre cachÃ©.
+[  28]Par dÃ©faut, tous les articles d'un journal sont affichÃ©s dans un fil d'actualitÃ©s.\n\nMais il est possible de limiter le nombre d'articles affichÃ©s.
 [  29]Largeur des images d'un journal:
 [  30]Largeur des petites images d'un article:
-[  31]La largeur des images d'un article lorsqu'elles sont affichées dans un petit format.
+[  31]La largeur des images d'un article lorsqu'elles sont affichÃ©es dans un petit format.
 [  32]Largeur des images moyennes d'un article:
-[  33]La largeur des images d'un article lorsqu'elles sont affichées dans un format moyen.
+[  33]La largeur des images d'un article lorsqu'elles sont affichÃ©es dans un format moyen.
 [  34]Largeur des grandes images d'un article:
 [  36]La largeur des images d'un journal.
-[  37]Largeur des images d'un journal (téléphone):
-[  38]La largeur des images d'un journal lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.
+[  37]Largeur des images d'un journal (tÃ©lÃ©phone):
+[  38]La largeur des images d'un journal lorsqu'elles sont affichÃ©es sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.
 [  39]Par
 [  40]Vitesse du cycle d'articles:
-[  41]La vitesse à laquelle les articles du cycle sont affichés est exprimée en secondes.
-[  42]Modèle (téléphone):
-[  43]Par défault, les journaux et les articles sont affichés dans le modèle actif, lorsqu'ils sont affichés sur un téléphone ou un appareil portable à petit écran.\n\nMais il est possible de spécifier un modèle dans lequel les journaux et les articles seront toujours affichés.
+[  41]La vitesse Ã  laquelle les articles du cycle sont affichÃ©s est exprimÃ©e en secondes.
+[  42]ModÃ¨le (tÃ©lÃ©phone):
+[  43]Par dÃ©fault, les journaux et les articles sont affichÃ©s dans le modÃ¨le actif, lorsqu'ils sont affichÃ©s sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.\n\nMais il est possible de spÃ©cifier un modÃ¨le dans lequel les journaux et les articles seront toujours affichÃ©s.
 [  44]Veuillez cliquer pour voir la photo
 [  45]Grouper les paragraphes:
-[  46]Un article peut être composé de plusieurs paragraphes.\n\nPar défaut, les paragraphes sont affichés un par page.\n\nMais il est possible de grouper tous les paragraphes d'un article et de les afficher ensemble sur une page.
-[  47]Paragraphe précédent
+[  46]Un article peut Ãªtre composÃ© de plusieurs paragraphes.\n\nPar dÃ©faut, les paragraphes sont affichÃ©s un par page.\n\nMais il est possible de grouper tous les paragraphes d'un article et de les afficher ensemble sur une page.
+[  47]Paragraphe prÃ©cÃ©dent
 [  48]Paragraphe suivant
-[  49]Cacher l'éditeur dans les journaux:
-[  50]Par défaut, l'éditeur est affichée dans les journaux.\n\nMais l'éditeur peut être caché.
-[  51]Cacher l'éditeur dans les articles:
-[  52]Par défaut, l'éditeur est affichée dans les articles.\n\nMais l'éditeur peut être caché.
-[  53]Cacher les boutons des réseaux sociaux:
-[  54]Lors de l'affichage d'un journal, par défaut les boutons des réseaux sociaux sont affichés pour chaque article.\n\nMais il est possible de cacher ces boutons.\n\nVeuillez noter que ces boutons sont aussi affichés lors de l'affichage d'un article.
+[  49]Cacher l'Ã©diteur dans les journaux:
+[  50]Par dÃ©faut, l'Ã©diteur est affichÃ©e dans les journaux.\n\nMais l'Ã©diteur peut Ãªtre cachÃ©.
+[  51]Cacher l'Ã©diteur dans les articles:
+[  52]Par dÃ©faut, l'Ã©diteur est affichÃ©e dans les articles.\n\nMais l'Ã©diteur peut Ãªtre cachÃ©.
+[  53]Cacher les boutons des rÃ©seaux sociaux:
+[  54]Lors de l'affichage d'un journal, par dÃ©faut les boutons des rÃ©seaux sociaux sont affichÃ©s pour chaque article.\n\nMais il est possible de cacher ces boutons.\n\nVeuillez noter que ces boutons sont aussi affichÃ©s lors de l'affichage d'un article.
 [  55]Veuillez cliquer pour lire l'article
 [  58]Cacher le lecteur dans le journal:
-[  59]Lors de l'affichage d'un journal, par défaut un lecteur audio est affiché pour chaque article qui a un fichier audio.\n\nIl est possible de cacher le lecteur audio dans le journal.\n\nVeuillez noter que le lecteur audio est aussi affiché lors de l'affichage d'un article.
+[  59]Lors de l'affichage d'un journal, par dÃ©faut un lecteur audio est affichÃ© pour chaque article qui a un fichier audio.\n\nIl est possible de cacher le lecteur audio dans le journal.\n\nVeuillez noter que le lecteur audio est aussi affichÃ© lors de l'affichage d'un article.
 [  60]Cacher le lecteur dans l'article:
-[  61]Lors de l'affichage d'un article, par défaut un lecteur audio est affiché si l'article a un fichier audio.\n\nIl est possible de cacher le lecteur audio dans l'article.\n\nVeuillez noter que le lecteur audio est aussi affiché lors de l'affichage d'un journal.
+[  61]Lors de l'affichage d'un article, par dÃ©faut un lecteur audio est affichÃ© si l'article a un fichier audio.\n\nIl est possible de cacher le lecteur audio dans l'article.\n\nVeuillez noter que le lecteur audio est aussi affichÃ© lors de l'affichage d'un journal.
 [  64]Axe de longueur d'image:
-[  65]Par défaut, la longueur des images est utilisée comme une hauteur afin d'avoir toutes les images d'une rangée avec la même hauteur, avec éventuellement des largeurs différentes.\n\nMais il est possible d'utiliser la longueur des images comme une largeur.\n\nDans ce cas, toutes les photos auront la même largeur, avec éventuellement des hauteurs différentes.
+[  65]Par dÃ©faut, la longueur des images est utilisÃ©e comme une hauteur afin d'avoir toutes les images d'une rangÃ©e avec la mÃªme hauteur, avec Ã©ventuellement des largeurs diffÃ©rentes.\n\nMais il est possible d'utiliser la longueur des images comme une largeur.\n\nDans ce cas, toutes les photos auront la mÃªme largeur, avec Ã©ventuellement des hauteurs diffÃ©rentes.
 [  66]Hauteur
 [  67]Largeur
-[  68]Cacher l'en-tête:
-[  69]Par défaut, l'en-tête du journal, comprenant le titre, une image et un texte, est affiché en haut du journal.\n\nMais cet en-tête peut être caché.
+[  68]Cacher l'en-tÃªte:
+[  69]Par dÃ©faut, l'en-tÃªte du journal, comprenant le titre, une image et un texte, est affichÃ© en haut du journal.\n\nMais cet en-tÃªte peut Ãªtre cachÃ©.
 [  70]Partager les rubriques entre journaux:
-[  71]Une rubrique appartient à une publication.\n\nPar défaut, lors de la création d'un article, seules les rubriques de la publication sélectionnée sont disponibles.\n\nMais il est possible d'avoir les rubriques de toutes les publications disponible pour l'article.
+[  71]Une rubrique appartient Ã  une publication.\n\nPar dÃ©faut, lors de la crÃ©ation d'un article, seules les rubriques de la publication sÃ©lectionnÃ©e sont disponibles.\n\nMais il est possible d'avoir les rubriques de toutes les publications disponible pour l'article.
 [  72]Largeur des images d'une rubrique:
-[  73]Largeur des images d'une rubrique (téléphone):
+[  73]Largeur des images d'une rubrique (tÃ©lÃ©phone):
 [  74]La largeur des images d'une rubrique.
-[  75]La largeur des images d'une rubrique lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.
+[  75]La largeur des images d'une rubrique lorsqu'elles sont affichÃ©es sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.
 [  76]Editeur de contenu html:
-[  77]Par défaut, le contenu des articles et des journaux est du texte.\n\nMais cela peut aussi être du contenu html.\n\nDans ce cas, un éditeur html simple peut être utilisé pour rédiger le contenu.
+[  77]Par dÃ©faut, le contenu des articles et des journaux est du texte.\n\nMais cela peut aussi Ãªtre du contenu html.\n\nDans ce cas, un Ã©diteur html simple peut Ãªtre utilisÃ© pour rÃ©diger le contenu.
 [  78]Innova
 [  79]CKEditor
 [  80]Nombre de journaux ou articles par page:
 [  81]La liste des journaux dans l'interface d'administration permet d'afficher un nombre choisit de journaux par page.
-[  81]Quand une page contient beaucoup de journaux ou d'articles, il est possible d'en n'afficher qu'un certain nombre par page, les autres étant affichés dans les pages suivantes et précédentes.
+[  81]Quand une page contient beaucoup de journaux ou d'articles, il est possible d'en n'afficher qu'un certain nombre par page, les autres Ã©tant affichÃ©s dans les pages suivantes et prÃ©cÃ©dentes.

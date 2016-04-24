@@ -1,9 +1,9 @@
-[   0]Importer une leçon
+[   0]Importer une leÃ§on
 [   1]Nom:
 [   2]Description:
-[   3]Une leçon avec ce nom existe déjà.
-[   4]La leçon n'a pas pu être accédée.
-[   5]La leçon a été importée avec succès.
-[   6]La leçon n'a pas pu ëtre importée.
-[   7]Leçon:
-[   8]Voir la leçon importée
+[   3]Une leÃ§on avec ce nom existe dÃ©jÃ .
+[   4]La leÃ§on n'a pas pu Ãªtre accÃ©dÃ©e.
+[   5]La leÃ§on a Ã©tÃ© importÃ©e avec succÃ¨s.
+[   6]La leÃ§on n'a pas pu Ã«tre importÃ©e.
+[   7]LeÃ§on:
+[   8]Voir la leÃ§on importÃ©e

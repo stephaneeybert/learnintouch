@@ -1,10 +1,10 @@
-[   0]Les modèles de leçons
-[   1]Créer un modèle de leçon
-[   2]Modifier le modèle de leçon
-[   3]Effacer le modèle de leçon
-[   4]Composer le modèle de leçon
+[   0]Les modÃ¨les de leÃ§ons
+[   1]CrÃ©er un modÃ¨le de leÃ§on
+[   2]Modifier le modÃ¨le de leÃ§on
+[   3]Effacer le modÃ¨le de leÃ§on
+[   4]Composer le modÃ¨le de leÃ§on
 [   5]Nom
 [   6]Description
-[   7]Un modèle de leçon est un ensemble de rubriques composant un cadre dans lequel des leçons peuvent être affichées.\n\nSi une leçon a un modèle alors les paragraphes de la leçon sont affichés au sein des rubriques du modèle.\n\nCela permet d'avoir un cadre commun partagé par plusieurs leçons.\n\nUn modèle de leçon aide aussi le créateur de contenu lors de la création d'une nouvelle leçon.\n\nLa création d'une nouvelle leçon est plus facile en suivant un modèle.
-[   8]Vérouiller le modèle de leçon
-[   9]Dévérouiller le modèle de leçon
+[   7]Un modÃ¨le de leÃ§on est un ensemble de rubriques composant un cadre dans lequel des leÃ§ons peuvent Ãªtre affichÃ©es.\n\nSi une leÃ§on a un modÃ¨le alors les paragraphes de la leÃ§on sont affichÃ©s au sein des rubriques du modÃ¨le.\n\nCela permet d'avoir un cadre commun partagÃ© par plusieurs leÃ§ons.\n\nUn modÃ¨le de leÃ§on aide aussi le crÃ©ateur de contenu lors de la crÃ©ation d'une nouvelle leÃ§on.\n\nLa crÃ©ation d'une nouvelle leÃ§on est plus facile en suivant un modÃ¨le.
+[   8]VÃ©rouiller le modÃ¨le de leÃ§on
+[   9]DÃ©vÃ©rouiller le modÃ¨le de leÃ§on

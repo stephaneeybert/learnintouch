@@ -1,10 +1,10 @@
-[   0]Les pages système sécurisées
-[   1]Comme pour les pages web, l'accès aux pages système peut aussi être sécurisé.\n\nUne page système sécurisée ne sera plus accessible par les visiteurs.\n\nElle sera uniquement accessible par les utilisateurs qui se seront connecté au site web.
-[   2]Spécifier la page d'entrée pour la langue
+[   0]Les pages systÃ¨me sÃ©curisÃ©es
+[   1]Comme pour les pages web, l'accÃ¨s aux pages systÃ¨me peut aussi Ãªtre sÃ©curisÃ©.\n\nUne page systÃ¨me sÃ©curisÃ©e ne sera plus accessible par les visiteurs.\n\nElle sera uniquement accessible par les utilisateurs qui se seront connectÃ© au site web.
+[   2]SpÃ©cifier la page d'entrÃ©e pour la langue
 [   3]Page
-[   4]Sécurisée
-[   5]La page d'entrée pour les ordinateurs
-[   6]La page d'entrée pour les téléphones
-[   7]Activer l&#039;accès sécurisé à la page
-[   8]Désactiver l&#039;accès sécurisé à la page répertoire
-[   9]La page est sécurisée
+[   4]SÃ©curisÃ©e
+[   5]La page d'entrÃ©e pour les ordinateurs
+[   6]La page d'entrÃ©e pour les tÃ©lÃ©phones
+[   7]Activer l&#039;accÃ¨s sÃ©curisÃ© Ã  la page
+[   8]DÃ©sactiver l&#039;accÃ¨s sÃ©curisÃ© Ã  la page rÃ©pertoire
+[   9]La page est sÃ©curisÃ©e

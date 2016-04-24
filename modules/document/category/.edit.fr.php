@@ -1,4 +1,4 @@
-[   0]Modifier une catégorie
+[   0]Modifier une catÃ©gorie
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.

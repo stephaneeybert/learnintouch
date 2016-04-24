@@ -1,9 +1,9 @@
-[   0]Modifier un numéro
-[   1]Numéro:
-[   2]Prénom:
+[   0]Modifier un numÃ©ro
+[   1]NumÃ©ro:
+[   2]PrÃ©nom:
 [   3]Nom:
 [   4]Inscription aux messages:
-[  10]Le numéro est requis.
-[  11]Le format du numéro est invalide.
-[   5]Un téléphone portable avec ce numéro existe déjà.
-[   6]Un numéro doit être inscrit pour être disponible pour les listes de numéros de téléphones.\n\nSi le numéro n'est pas inscrit alors il ne sera pas disponible pour les listes.
+[  10]Le numÃ©ro est requis.
+[  11]Le format du numÃ©ro est invalide.
+[   5]Un tÃ©lÃ©phone portable avec ce numÃ©ro existe dÃ©jÃ .
+[   6]Un numÃ©ro doit Ãªtre inscrit pour Ãªtre disponible pour les listes de numÃ©ros de tÃ©lÃ©phones.\n\nSi le numÃ©ro n'est pas inscrit alors il ne sera pas disponible pour les listes.

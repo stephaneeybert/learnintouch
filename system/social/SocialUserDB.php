@@ -7,7 +7,9 @@ class SocialUserDB {
   var $dao;
 
   function SocialUserDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SOCIAL_USER;
 

@@ -7,7 +7,9 @@ class DocumentCategoryDB {
   var $dao;
 
   function DocumentCategoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_DOCUMENT_CATEGORY;
 

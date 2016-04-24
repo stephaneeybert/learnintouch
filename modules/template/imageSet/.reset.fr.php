@@ -1,2 +1,2 @@
-[   0]Réinitialiser les images
-[   1]Réinitialiser les images?
+[   0]RÃ©initialiser les images
+[   1]RÃ©initialiser les images?

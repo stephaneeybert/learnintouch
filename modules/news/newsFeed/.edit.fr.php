@@ -1,17 +1,17 @@
 [   0]Modifier une liste d'articles
 [   1]Journal:
 [   6]Publication:
-[   2]Veuillez sélectionner un journal comme source de la liste des articles.
+[   2]Veuillez sÃ©lectionner un journal comme source de la liste des articles.
 [   3]Image:
-[   4]La liste des articles peut avoir une image affichée dans l'en-tête.
-[   5]Insérer ou effacer une image
+[   4]La liste des articles peut avoir une image affichÃ©e dans l'en-tÃªte.
+[   5]InsÃ©rer ou effacer une image
 [   7]Le journal esr requis.
 [   8]Nombre maximum d'articles:
-[   9]Par défaut, tous les articles d'un journal sont affichés dans un fil d'actualités.\n\nMais il est possible de limiter le nombre d'articles affichés.
+[   9]Par dÃ©faut, tous les articles d'un journal sont affichÃ©s dans un fil d'actualitÃ©s.\n\nMais il est possible de limiter le nombre d'articles affichÃ©s.
 [  10]Avec extrait:
-[  11]Par défaut, seuls les titres des articles sont affichés.\n\nMais il est possible d'aussi afficher les extraits des articles.
+[  11]Par dÃ©faut, seuls les titres des articles sont affichÃ©s.\n\nMais il est possible d'aussi afficher les extraits des articles.
 [  12]Alignement des images du journal:
-[  13]Lors de l'affichage d'un journal, par défaut la première image de chaque article n'est pas affichée.\n\nMais il est possible de l'afficher au dessus ou dans un coin du titre ou de l'extrait.
+[  13]Lors de l'affichage d'un journal, par dÃ©faut la premiÃ¨re image de chaque article n'est pas affichÃ©e.\n\nMais il est possible de l'afficher au dessus ou dans un coin du titre ou de l'extrait.
 [  14]Gauche dans le coin du titre
 [  15]Droite dans le coin du titre
 [  16]Au dessus du titre
@@ -19,16 +19,16 @@
 [  18]Droite dans le coin de l'extrait
 [  19]Au dessus de l'extrait
 [  20]Largeur d'image:
-[  21]Si un article a une image, alors cette image sera affichée avec la largeur spécifiée pour le fil d'actualités.\n\nLa largeur de l'image est exprimée en pixels.
-[  22]Titre de recherche d'évènements:
-[  23]Si un titre de recherche est spécifié alors seul le titre est affiché, et un clic dessus affiche les options de recherche d'évènements ou le calendrier de recherche d'évènements.\n\nAutrement, les options de recherche d'évènements ou le calendrier de recherche d'évènements sont affichés directement.\n\nCe titre n'est utilisé que si les options de recherche d'évènements ou le calendrier de recherche d'évènements est activé.
-[  24]Options de recherche d'évènements:
-[  25]Par défaut, un journal affiche tous ses articles publiés.\n\nMais il est possible de filtrer ces articles et seulement afficher ceux qui ont des dates d'évènements dans une période donnée.\n\nDes options de recherche sont affichées pour rechercher les évènements d'une période.
-[  26]Calendrier de recherche d'évènements:
-[  27]Par défaut, un journal affiche tous ses articles publiés.\n\nMais il est possible de filtrer ces articles et seulement afficher ceux qui ont des dates d'évènements à une date donnée.\n\nUn calendrier est affiché pour rechercher les évènements d'une date.
-[  28]Affichage en page de recherche d'évènements:
-[  29]Par défaut, une recherche affiche les articles sous les critères de recherche.\n\nMais il est possible d'afficher les articles dans une page web.
+[  21]Si un article a une image, alors cette image sera affichÃ©e avec la largeur spÃ©cifiÃ©e pour le fil d'actualitÃ©s.\n\nLa largeur de l'image est exprimÃ©e en pixels.
+[  22]Titre de recherche d'Ã©vÃ¨nements:
+[  23]Si un titre de recherche est spÃ©cifiÃ© alors seul le titre est affichÃ©, et un clic dessus affiche les options de recherche d'Ã©vÃ¨nements ou le calendrier de recherche d'Ã©vÃ¨nements.\n\nAutrement, les options de recherche d'Ã©vÃ¨nements ou le calendrier de recherche d'Ã©vÃ¨nements sont affichÃ©s directement.\n\nCe titre n'est utilisÃ© que si les options de recherche d'Ã©vÃ¨nements ou le calendrier de recherche d'Ã©vÃ¨nements est activÃ©.
+[  24]Options de recherche d'Ã©vÃ¨nements:
+[  25]Par dÃ©faut, un journal affiche tous ses articles publiÃ©s.\n\nMais il est possible de filtrer ces articles et seulement afficher ceux qui ont des dates d'Ã©vÃ¨nements dans une pÃ©riode donnÃ©e.\n\nDes options de recherche sont affichÃ©es pour rechercher les Ã©vÃ¨nements d'une pÃ©riode.
+[  26]Calendrier de recherche d'Ã©vÃ¨nements:
+[  27]Par dÃ©faut, un journal affiche tous ses articles publiÃ©s.\n\nMais il est possible de filtrer ces articles et seulement afficher ceux qui ont des dates d'Ã©vÃ¨nements Ã  une date donnÃ©e.\n\nUn calendrier est affichÃ© pour rechercher les Ã©vÃ¨nements d'une date.
+[  28]Affichage en page de recherche d'Ã©vÃ¨nements:
+[  29]Par dÃ©faut, une recherche affiche les articles sous les critÃ¨res de recherche.\n\nMais il est possible d'afficher les articles dans une page web.
 [  30]Avec image:
-[  31]Par défaut, seuls les titres des articles sont affichés.\n\nMais il est possible d'aussi afficher la première image de chaque article.
-[  32]Affichage des évènements à venir:
-[  33]Par défaut, les évènements ne sont affichés qu'après une recherche.\n\nMais il est possible d'afficher les évènements à venir, ceci sans qu'une recherche n'ai encore été faite.
+[  31]Par dÃ©faut, seuls les titres des articles sont affichÃ©s.\n\nMais il est possible d'aussi afficher la premiÃ¨re image de chaque article.
+[  32]Affichage des Ã©vÃ¨nements Ã  venir:
+[  33]Par dÃ©faut, les Ã©vÃ¨nements ne sont affichÃ©s qu'aprÃ¨s une recherche.\n\nMais il est possible d'afficher les Ã©vÃ¨nements Ã  venir, ceci sans qu'une recherche n'ai encore Ã©tÃ© faite.

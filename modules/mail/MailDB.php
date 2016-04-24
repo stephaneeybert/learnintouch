@@ -7,7 +7,9 @@ class MailDB {
   var $dao;
 
   function MailDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_MAIL;
 

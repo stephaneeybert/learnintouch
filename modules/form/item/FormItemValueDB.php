@@ -7,7 +7,9 @@ class FormItemValueDB {
   var $dao;
 
   function FormItemValueDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_FORM_ITEM_VALUE;
 

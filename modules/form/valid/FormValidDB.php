@@ -7,7 +7,9 @@ class FormValidDB {
   var $dao;
 
   function FormValidDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_FORM_VALID;
 

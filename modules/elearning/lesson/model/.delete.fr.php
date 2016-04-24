@@ -1,4 +1,4 @@
-[   0]Effacer un modèle de leçon
+[   0]Effacer un modÃ¨le de leÃ§on
 [   1]Nom:
 [   5]Description:
-[   2]Effacer le modèle de leçon?
+[   2]Effacer le modÃ¨le de leÃ§on?

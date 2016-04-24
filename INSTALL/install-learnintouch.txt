@@ -7,9 +7,15 @@ Unpack the engine archive
 cd /home/stephane/learnintouch/engine
 unzip engine.zip
 
-Make sure the charset of the APIS are all utf-8
+Make sure the charset of the APIs are all utf-8
 api/PHPMailer-5.2.14/class.phpmailer.php
 api/pear/PEAR-1.3.1/pear/Common.php
+api/OpenInviter/plugins/fastmail.plg.php
+Remove utf8_decode calls from the APIs
+api/OpenInviter/plugins/multiply.plg.php
+api/OpenInviter/plugins/freemail.plg.php
+api/OpenInviter/plugins/freemail.plg.php
+api/OpenInviter/plugins/hyves.plg.php
 
 Add the crontab entries
 The crontab allows for the automatic execution of programs by the server.
@@ -58,14 +64,10 @@ update language set locale = 'fr_FR.utf8' where id = '2';
 update language set locale = 'sv_SE.utf8' where id = '3';
 update language set locale = 'nn_NO.utf8' where id = '4';
 
-Once the language files have been copied onto the server, cmake sure they are in utf8 encoding
+Once the language files have been copied onto the server, make sure they are in utf8 encoding
 See the command dev/commands/iso88591Toutf8.sh
-mv language_se.tar learnintouch/engine/
-tar -xvf language_se.tar
-cd engine
-\cp -Rf home/web/thalasoft.com/engine/* .
+Extract the INSTALL/language-*.tar.gz files
 Then assign the owner again
-chown -R stephane:apache *
 
 Setup the NodeJS socket server
 Install some modules

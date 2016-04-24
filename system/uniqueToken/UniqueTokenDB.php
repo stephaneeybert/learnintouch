@@ -7,7 +7,9 @@ class UniqueTokenDB {
   var $dao;
 
   function UniqueTokenDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_UNIQUE_TOKEN;
 

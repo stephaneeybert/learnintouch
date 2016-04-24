@@ -1,5 +1,5 @@
-[   0]Sélectionner un journal
+[   0]SÃ©lectionner un journal
 [   1]Publication:
 [   2]Journal:
 [   3]Chercher:
-[   4]Le journal est requis.\n\nLe journal doit être publié avant d'être sélectionné.
+[   4]Le journal est requis.\n\nLe journal doit Ãªtre publiÃ© avant d'Ãªtre sÃ©lectionnÃ©.

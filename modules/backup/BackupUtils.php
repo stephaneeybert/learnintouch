@@ -39,10 +39,12 @@ class BackupUtils extends BackupDB {
     global $gDataPath;
     global $gDataUrl;
     global $gAccountPath;
+    global $gAccountUrl;
 
     $this->backupFilePath = $gDataPath . 'backup/file/';
     $this->backupFileUrl = $gDataUrl . '/backup/file';
     $this->previousBackupFilePath = $gAccountPath . 'db_backup/';
+    $this->previousBackupFileUrl = $gAccountUrl . '/db_backup';
     $this->exportFilePath = $gDataPath . 'backup/export/';
     $this->exportFileUrl = $gDataUrl . '/backup/export';
 
@@ -145,13 +147,13 @@ class BackupUtils extends BackupDB {
 
     $options = '--default-character-set=latin1 --skip-extended-insert ';
 
-    if (!$tableStructure) {
+    if ($tableStructure != 1) {
       $options .= ' --no-create-info';
     } else {
       $options .= ' --add-drop-table';
     }
 
-    if (!$tableData) {
+    if ($tableData != 1) {
       $options .= ' --no-data';
     }
 
@@ -274,13 +276,20 @@ class BackupUtils extends BackupDB {
     $this->deleteAccountBackup($accountName);
   }
 
+  // Render sql file url
+  function renderSqlFileUrl($filename) {
+    $url = $this->previousBackupFileUrl . '/' . $filename;
+
+    return($url);
+  }
+
   // Render data file url
   function renderBackupFileUrl() {
     global $gAccountUrl;
 
-    $backupFileUrl = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar";
+    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar";
 
-    return($backupFileUrl);
+    return($url);
   }
 
   // Render data file path

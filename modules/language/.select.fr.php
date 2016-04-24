@@ -1,2 +1,2 @@
-[   0]Sélectionner une langue
+[   0]SÃ©lectionner une langue
 [   2]Langue:

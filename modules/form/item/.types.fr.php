@@ -3,12 +3,12 @@
 [   2]Liste descendante
 [   3]Liste
 [   4]Boutons radio
-[   5]Cases à cocher
-[   6]Caché
+[   5]Cases Ã  cocher
+[   6]CachÃ©
 [   7]Mot de passe
 [   8]Bouton d'envoi
-[   9]Code de sécurité
+[   9]Code de sÃ©curitÃ©
 [  10]Adresse email
-[  11]Prénom:
+[  11]PrÃ©nom:
 [  12]Nom:
 [  13]Commentaire

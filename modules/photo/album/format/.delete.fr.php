@@ -3,4 +3,4 @@
 [   1]Prix:
 [   2]Effacer le format de l'album?
 [   5]Format:
-[   8]Le format choisi est dÈj‡ utilisÈ par un autre album.\n\nVeuillez choisir un autre format.
+[   8]Le format choisi est d√©j√† utilis√© par un autre album.\n\nVeuillez choisir un autre format.

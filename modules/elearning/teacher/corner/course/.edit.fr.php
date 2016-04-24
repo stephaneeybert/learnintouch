@@ -1,25 +1,25 @@
-[   0]Créer ou modifier un cours
-[   1]Vos cours, vos leçons, vos exercices...
+[   0]CrÃ©er ou modifier un cours
+[   1]Vos cours, vos leÃ§ons, vos exercices...
 [   2]Ajouter un cours
 [   3]Le nom est requis.
-[   4]La matière est requise.
-[   5]Un cours avec ce nom existe déjà.
+[   4]La matiÃ¨re est requise.
+[   5]Un cours avec ce nom existe dÃ©jÃ .
 [   6]Nom: *
-[   7]Valider l'opération
+[   7]Valider l'opÃ©ration
 [   8]Description:
-[   9]Matière: *
+[   9]MatiÃ¨re: *
 [  10]Vous n'avez pas le droit de modifier ce cours.
 [  11]Auto inscription:
-[  12]Par défaut, un participant ne peut pas s'inscrire à un cours par lui même.\n\nMais il est possible de permettre l'auto inscription des participants pour un cours.\n\nDans ce cas, ils auront accès à un formulaire d'inscription dans lequel ils pourront choisir un cours, et un administrateur n'aura pas à inscrire les participants au cours.
-[  13]Annuler l'opération
+[  12]Par dÃ©faut, un participant ne peut pas s'inscrire Ã  un cours par lui mÃªme.\n\nMais il est possible de permettre l'auto inscription des participants pour un cours.\n\nDans ce cas, ils auront accÃ¨s Ã  un formulaire d'inscription dans lequel ils pourront choisir un cours, et un administrateur n'aura pas Ã  inscrire les participants au cours.
+[  13]Annuler l'opÃ©ration
 [  14]Echantillons gratuits:
-[  15]Un echantillon gratuit est un élément de cours qui est offert gratuitement et n'impose pas une connexion utilisateur.\n\nIl est possible de spécifier un nombre d'éléments gratuits.\n\nDans ce cas, les premières leçons et/ou les premiers exercices du cours seront offerts gratuitement comme echantillons du cours.
+[  15]Un echantillon gratuit est un Ã©lÃ©ment de cours qui est offert gratuitement et n'impose pas une connexion utilisateur.\n\nIl est possible de spÃ©cifier un nombre d'Ã©lÃ©ments gratuits.\n\nDans ce cas, les premiÃ¨res leÃ§ons et/ou les premiers exercices du cours seront offerts gratuitement comme echantillons du cours.
 [  16]Information sur le cours:
-[  17]Un cours a un nom et une description afin de décrire le cours au participant.\n\nIl est possible de fournir au participant une information supplémentaire sur le contenu du cours.\n\nCette information sur le cours est affichée au participant afin de lui fournir plus de détails sur le contenu du cours.
+[  17]Un cours a un nom et une description afin de dÃ©crire le cours au participant.\n\nIl est possible de fournir au participant une information supplÃ©mentaire sur le contenu du cours.\n\nCette information sur le cours est affichÃ©e au participant afin de lui fournir plus de dÃ©tails sur le contenu du cours.
 [  18]Modifier l'information sur le contenu du cours
-[  20]Afficher une correction instantanée:
-[  21]Par défaut, lorsqu'un exercice est fait, la correction est seulement affichée dans la page des résultats, à la fin de l'exercice.\n\nMais il est possible d'afficher une correction instantanée.\n\nDans ce cas, un message est affiché immédiatement lorsqu'à une question, est donné une mauvaise réponse. 
-[  22]Afficher une félicitation instantanée:
-[  23]Par défaut, lors de l'affichage d'une correction instantanée, un message est affiché seulement si la réponse du participant est incorrecte.\n\nMais il est possible d'afficher un message de congratulation pour une réponse correcte.
-[  24]Afficher la solution instantanée:
-[  25]Par défaut, lors de l'affichage de la correction instantanée, la solution n'est pas affichée.\n\nMais il est possible d'afficher la solution avec la correction instantanée.
+[  20]Afficher une correction instantanÃ©e:
+[  21]Par dÃ©faut, lorsqu'un exercice est fait, la correction est seulement affichÃ©e dans la page des rÃ©sultats, Ã  la fin de l'exercice.\n\nMais il est possible d'afficher une correction instantanÃ©e.\n\nDans ce cas, un message est affichÃ© immÃ©diatement lorsqu'Ã  une question, est donnÃ© une mauvaise rÃ©ponse. 
+[  22]Afficher une fÃ©licitation instantanÃ©e:
+[  23]Par dÃ©faut, lors de l'affichage d'une correction instantanÃ©e, un message est affichÃ© seulement si la rÃ©ponse du participant est incorrecte.\n\nMais il est possible d'afficher un message de congratulation pour une rÃ©ponse correcte.
+[  24]Afficher la solution instantanÃ©e:
+[  25]Par dÃ©faut, lors de l'affichage de la correction instantanÃ©e, la solution n'est pas affichÃ©e.\n\nMais il est possible d'afficher la solution avec la correction instantanÃ©e.

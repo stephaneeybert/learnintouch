@@ -1,8 +1,8 @@
-[   0]Ajouter un exercice à un cours
-[   1]Un cours est composé d'une série d'exercices et/ou de leçons.\n\nUn cours peut avoir un nombre illimité d'exercices et/ou de leçon.
+[   0]Ajouter un exercice Ã  un cours
+[   1]Un cours est composÃ© d'une sÃ©rie d'exercices et/ou de leÃ§ons.\n\nUn cours peut avoir un nombre illimitÃ© d'exercices et/ou de leÃ§on.
 [   2]Cours:
-[   3]L'exercice est déjà assigné à ce cours.
+[   3]L'exercice est dÃ©jÃ  assignÃ© Ã  ce cours.
 [   4]Nom:
 [   5]Description:
 [   6]Le cours est requis.
-[   9]Le cours est vérouillé est ne peut pas être mis à jour.
+[   9]Le cours est vÃ©rouillÃ© est ne peut pas Ãªtre mis Ã  jour.

@@ -1,4 +1,4 @@
-[   0]Exécute un ordre SQL sur toutes les bases de données
+[   0]ExÃ©cute un ordre SQL sur toutes les bases de donnÃ©es
 [   1]Ordre:
 [   2]Recherche:
 [   3]Remplace:

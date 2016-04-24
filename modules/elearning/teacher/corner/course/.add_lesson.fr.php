@@ -1,11 +1,11 @@
-[   0]Ajouter une leçon à un cours
-[   1]Un cours est composé d'une série de leçons et/ou exercices.\n\nUn cours peut avoir un nombre illimité de leçons et/ou exercices.
+[   0]Ajouter une leÃ§on Ã  un cours
+[   1]Un cours est composÃ© d'une sÃ©rie de leÃ§ons et/ou exercices.\n\nUn cours peut avoir un nombre illimitÃ© de leÃ§ons et/ou exercices.
 [   2]Cours:
-[   3]La leçon est déjà assignée à ce cours.
+[   3]La leÃ§on est dÃ©jÃ  assignÃ©e Ã  ce cours.
 [   4]Nom:
 [   5]Description:
 [   6]Le cours est requis.
-[   7]Valider l'opération
-[   8]Annuler l'opération
+[   7]Valider l'opÃ©ration
+[   8]Annuler l'opÃ©ration
 [  10]Vous n'avez pas le droit d'utiliser ce cours.
-[  11]Vous n'avez pas le droit d'utiliser cette leçon.
+[  11]Vous n'avez pas le droit d'utiliser cette leÃ§on.

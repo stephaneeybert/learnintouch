@@ -7,7 +7,9 @@ class ElearningSubscriptionDB {
   var $dao;
 
   function ElearningSubscriptionDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ELEARNING_SUBSCRIPTION;
 

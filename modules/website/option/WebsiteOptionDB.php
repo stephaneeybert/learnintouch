@@ -7,7 +7,9 @@ class WebsiteOptionDB {
   var $dao;
 
   function WebsiteOptionDB() {
-    $this->dataSource = Sql::initCommonDataSource();
+    global $gSqlCommonDataSource;
+
+    $this->dataSource = $gSqlCommonDataSource;
 
     $this->tableName = DB_TABLE_WEBSITE_OPTION;
 

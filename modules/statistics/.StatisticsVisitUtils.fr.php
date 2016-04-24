@@ -3,36 +3,36 @@
 [   2]visites, depuis
 [   3]Visiteurs
 [   4]Visites
-[   5]Nombre total de visiteurs et de visites pour l'année
+[   5]Nombre total de visiteurs et de visites pour l'annÃ©e
 [   6]Mois
 [   7]Nombre total de hits par page pour le mois de
 [   8]Page
 [   9]Hits
-[  10]Date de début du décompte des visiteurs (AAAA-MM-JJ):
+[  10]Date de dÃ©but du dÃ©compte des visiteurs (AAAA-MM-JJ):
 [  11]Nombre minimum de secondes entre deux visites:
-[  12]Temps de différence:
+[  12]Temps de diffÃ©rence:
 [  13]Jour
 [  14]Nombre total de visiteurs et de visites pour le mois de
-[  15]Nombre total de visites par jour de semaine pour l'année
-[  16]Nombre total de visites par heure pour l'année
+[  15]Nombre total de visites par jour de semaine pour l'annÃ©e
+[  16]Nombre total de visites par heure pour l'annÃ©e
 [  17]Heure
-[  18]Nombre total de visites par navigateur pour l'année
+[  18]Nombre total de visites par navigateur pour l'annÃ©e
 [  19]Navigateur
 [  20]Pourcentage
-[  21]Nombre total de visites par système d'exploitation pour l'année
-[  22]Système
-[  23]Nombre total de visites pour les robots pour l'année
+[  21]Nombre total de visites par systÃ¨me d'exploitation pour l'annÃ©e
+[  22]SystÃ¨me
+[  23]Nombre total de visites pour les robots pour l'annÃ©e
 [  24]Robot
 [  25]Mois:
-[  26]Nombre total de visites par site web affilié pour le mois de
+[  26]Nombre total de visites par site web affiliÃ© pour le mois de
 [  27]Referer
 [  28]Inconnu
 [  29]Afficher les visites des robots de moteurs de recherche
 [  30]Afficher les visites par navigateur:
-[  31]Afficher les visites par système d'exploitation:
+[  31]Afficher les visites par systÃ¨me d'exploitation:
 [  32]Afficher les visites par jour de semaine:
 [  33]Afficher les visites par heure:
-[  34]Nombre total de visites par téléphone pour l'année
-[  35]Téléphone
+[  34]Nombre total de visites par tÃ©lÃ©phone pour l'annÃ©e
+[  35]TÃ©lÃ©phone
 [  36]Longueur de la liste des pages:
-[  37]Les statistiques par pages sont affichées dans une liste.\n\nIl est possible de changer la longueur de la liste en spécifiant le nombre de pages à afficher.
+[  37]Les statistiques par pages sont affichÃ©es dans une liste.\n\nIl est possible de changer la longueur de la liste en spÃ©cifiant le nombre de pages Ã  afficher.

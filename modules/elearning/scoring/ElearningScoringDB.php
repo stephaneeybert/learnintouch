@@ -7,7 +7,9 @@ class ElearningScoringDB {
   var $dao;
 
   function ElearningScoringDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ELEARNING_SCORING;
 

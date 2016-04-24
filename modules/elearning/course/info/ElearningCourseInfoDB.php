@@ -7,7 +7,9 @@ class ElearningCourseInfoDB {
   var $dao;
 
   function ElearningCourseInfoDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ELEARNING_COURSE_INFO;
 

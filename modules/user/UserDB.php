@@ -7,7 +7,9 @@ class UserDB {
   var $dao;
 
   function UserDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_USER;
 

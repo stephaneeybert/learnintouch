@@ -1,10 +1,10 @@
-[   0]Renommer un modèle
-[   1]Le type de modèle est requis.
-[   2]Type de modèle:
+[   0]Renommer un modÃ¨le
+[   1]Le type de modÃ¨le est requis.
+[   2]Type de modÃ¨le:
 [   3]Le nom ne doit avoir qu'un seul mot.\n\nIl ne peut contenir d'espaces blancs.
 [   4]Le nom est requis.
 [   6]Nom:
 [   7]Description:
-[   8]Modèle parent:
-[   9]Un modèle avec ce nom existe déjà.
-[  10]Il est possible pour un modèle, d'hériter d'un autre modèle.\n\nL'autre modèle devient le parent du modèle.\n\nLe modèle enfant hérite de tout le contenu du modèle parent.\n\nLe modèle enfant peut cependant styler le contenu de son modèle parent.
+[   8]ModÃ¨le parent:
+[   9]Un modÃ¨le avec ce nom existe dÃ©jÃ .
+[  10]Il est possible pour un modÃ¨le, d'hÃ©riter d'un autre modÃ¨le.\n\nL'autre modÃ¨le devient le parent du modÃ¨le.\n\nLe modÃ¨le enfant hÃ©rite de tout le contenu du modÃ¨le parent.\n\nLe modÃ¨le enfant peut cependant styler le contenu de son modÃ¨le parent.

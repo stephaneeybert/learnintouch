@@ -1,3 +1,3 @@
-[   0]Effacer un modèle exporté
+[   0]Effacer un modÃ¨le exportÃ©
 [   1]Fichier:
-[   2]Effacer le modèle exporté?
+[   2]Effacer le modÃ¨le exportÃ©?

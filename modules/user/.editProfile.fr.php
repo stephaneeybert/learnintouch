@@ -1,20 +1,20 @@
 [   0]Profil utilisateur
 [   1]Mailings:
-[   2]Télécharger une nouvelle photo
+[   2]TÃ©lÃ©charger une nouvelle photo
 [   3]Profil:
 [   4]Photo:
 [   5]Email:
-[   7]Téléphone portable:
-[   8]Téléphone domicile:
+[   7]TÃ©lÃ©phone portable:
+[   8]TÃ©lÃ©phone domicile:
 [   9]Fax:
-[  10]Téléphone bureau:
+[  10]TÃ©lÃ©phone bureau:
 [  11]Organisation:
 [  12]Boite postale:
 [  13]Adresse:
 [  14]Adresse:
 [  15]Code postal:
 [  16]Ville:
-[  17]Département:
+[  17]DÃ©partement:
 [  18]Pays:
 [  19]Sms:
 [  20](Cochez pour recevoir nos messages sms)
@@ -22,7 +22,7 @@
 [  22]Changer le mot de passe
 [  23]Les champs avec une etoile * sont obligatoires.
 [  24](Cochez pour recevoir nos mailings)
-[  25]Prénom: *
+[  25]PrÃ©nom: *
 [  26]Nom: *
 [  30]L'adresse est requise.
 [  31]Le code postal est requis.

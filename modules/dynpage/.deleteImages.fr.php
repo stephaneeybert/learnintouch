@@ -1,3 +1,3 @@
-[   0]Effacer les images non utilisées
+[   0]Effacer les images non utilisÃ©es
 [   2]Effacer les images?
-[   1]Les images non utilisées dans les pages web peuvent être effacées.\n\nIl est préférable de ne pas encombrer le serveur avec des images qui ne sont plus utilisées par le site web.
+[   1]Les images non utilisÃ©es dans les pages web peuvent Ãªtre effacÃ©es.\n\nIl est prÃ©fÃ©rable de ne pas encombrer le serveur avec des images qui ne sont plus utilisÃ©es par le site web.

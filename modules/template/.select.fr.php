@@ -1,24 +1,24 @@
-[   0]Sélectionner une page web
-[   1]Pour sélectionner une page web, veuillez cliquer sur un type de contenu et choisir une page.
-[  10]Les pages web créées à l'aide d'un éditeur html
+[   0]SÃ©lectionner une page web
+[   1]Pour sÃ©lectionner une page web, veuillez cliquer sur un type de contenu et choisir une page.
+[  10]Les pages web crÃ©Ã©es Ã  l'aide d'un Ã©diteur html
 [  11]Les pages web
 [  12]Vendez des articles et des biens dans la boutique
 [  13]La boutique
-[  14]Les cours, leçons et exercices
+[  14]Les cours, leÃ§ons et exercices
 [  15]Les cours
 [  18]Les journaux
 [  19]Les journaux et leurs articles, rubriques et auteurs
 [  20]Les albums de photos
-[  21]Les photos stockées dans des albums
+[  21]Les photos stockÃ©es dans des albums
 [  22]Les gens
-[  23]Les gens de la société/organisation
+[  23]Les gens de la sociÃ©tÃ©/organisation
 [  24]Les liens favoris
 [  25]Les liens vers vos sites web favoris
-[  26]Les pages préformatées
-[  27]Les pages préformatées offertes par le système
+[  26]Les pages prÃ©formatÃ©es
+[  27]Les pages prÃ©formatÃ©es offertes par le systÃ¨me
 [  28]Les documents
-[  29]La bibliothèque des documents offer en téléchargement
+[  29]La bibliothÃ¨que des documents offer en tÃ©lÃ©chargement
 [  30]Les langues
-[  31]Les langues utilisées par le site web
+[  31]Les langues utilisÃ©es par le site web
 [  32]Les formulaires
 [  33]Les formulaires

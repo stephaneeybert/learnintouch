@@ -1,1 +1,1 @@
-[   9]Catégorie:
+[   9]CatÃ©gorie:

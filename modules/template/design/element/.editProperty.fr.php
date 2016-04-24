@@ -1,4 +1,4 @@
-[   0]Composer le style d'un élément
+[   0]Composer le style d'un Ã©lÃ©ment
 [   1]Effacer le style du tag
 [   3]Fermer la page
 [   4]Compose the style

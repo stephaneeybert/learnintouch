@@ -7,9 +7,6 @@ LibHtml::preventCaching();
 $elearningQuestionId = LibEnv::getEnvHttpGET("elearningQuestionId");
 $givenParticipantAnswer = LibEnv::getEnvHttpGET("participantAnswer");
 
-// An ajax request parameter value is UTF-8 encoded
-$givenParticipantAnswer = utf8_decode($givenParticipantAnswer);
-
 // Remove backslashes before quotes if any
 // A type in answer may contain some
 // The backslashes must be removed only if the sent value is coming from an ajax request

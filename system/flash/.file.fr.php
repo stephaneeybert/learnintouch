@@ -1,4 +1,4 @@
-[   0]Télécharger un fichier
+[   0]TÃ©lÃ©charger un fichier
 [   3]Nom du fichier:
-[   2]Sélectionner un fichier:
+[   2]SÃ©lectionner un fichier:
 [   7]Effacer le fichier?

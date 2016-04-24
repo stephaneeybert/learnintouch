@@ -117,7 +117,7 @@ class multiply extends openinviter_base
 			{
 			$href=$node->firstChild->getAttribute('href');
 			$name=trim($this->getElementString($href,'http://','.multiply.com'));
-			if (!empty($href)) $contacts[$href]=utf8_decode($name);
+			if (!empty($href)) $contacts[$href]=$name;
 			} 
 		return $contacts;
 		}

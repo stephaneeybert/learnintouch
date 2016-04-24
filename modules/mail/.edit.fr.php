@@ -1,6 +1,6 @@
 [   0]Modifier un mailing
 [   1]Sujet:
 [   2]Description:
-[   3]Le mailing est vérouillé est ne peut pas être modifié.
-[   4]Catégorie:
+[   3]Le mailing est vÃ©rouillÃ© est ne peut pas Ãªtre modifiÃ©.
+[   4]CatÃ©gorie:
 [   8]Le sujet du mail est requis.

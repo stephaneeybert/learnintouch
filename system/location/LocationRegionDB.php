@@ -7,7 +7,9 @@ class LocationRegionDB {
   var $dao;
 
   function LocationRegionDB() {
-    $this->dataSource = Sql::initCommonDataSource();
+    global $gSqlCommonDataSource;
+
+    $this->dataSource = $gSqlCommonDataSource;
 
     $this->tableName = DB_TABLE_LOCATION_REGION;
 

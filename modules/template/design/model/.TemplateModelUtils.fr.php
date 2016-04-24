@@ -5,13 +5,13 @@
 [   5]'Deux lignes'
 [   6]'Deux colonnes'
 [   7]'Un conteneur'
-[   8]Le modèle
+[   8]Le modÃ¨le
 [   9]n'existe pas dans le site web
 [  10]Une erreur est apparu sur le site web:
 [  11]Un lien avec l'adresse
-[  12]utilise le modèle
-[  13]Mais le modèle
+[  12]utilise le modÃ¨le
+[  13]Mais le modÃ¨le
 [  14]n'existe pas dans le site web.
-[  15]La page web contenant le lien fautif peut être:
+[  15]La page web contenant le lien fautif peut Ãªtre:
 [  16]Vous devriez supprimer le &templateModelId=
 [  17]de l'adresse web du lien ci-dessus.

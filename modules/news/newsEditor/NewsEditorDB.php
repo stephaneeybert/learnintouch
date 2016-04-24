@@ -7,7 +7,9 @@ class NewsEditorDB {
   var $dao;
 
   function NewsEditorDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_NEWS_EDITOR;
 

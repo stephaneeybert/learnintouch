@@ -1,1 +1,1 @@
-[   0]Nous vous remercions de votre paiement. Votre transaction est terminée et vous allez recevoir par email un avis accusant réception de votre achat.
+[   0]Nous vous remercions de votre paiement. Votre transaction est terminÃ©e et vous allez recevoir par email un avis accusant rÃ©ception de votre achat.

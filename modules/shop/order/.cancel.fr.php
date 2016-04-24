@@ -1,5 +1,5 @@
 [   0]Annuler une commande
-[   1]Prénom:
+[   1]PrÃ©nom:
 [   3]Organisation:
 [   4]Adresse email:
 [   5]Annuler la commande

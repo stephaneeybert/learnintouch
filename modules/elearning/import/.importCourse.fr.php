@@ -1,14 +1,14 @@
 [   0]Importer un cours
 [   1]Nom:
 [   2]Description:
-[   3]Un cours avec ce nom existe déjà.
-[   4]Une matière doit être choisie pour importer le cours.
-[   5]Importer dans la matière:
-[   6]Une matière doit être choisie pour importer le cours.\n\nLe cours importé aura la matière choisie.
+[   3]Un cours avec ce nom existe dÃ©jÃ .
+[   4]Une matiÃ¨re doit Ãªtre choisie pour importer le cours.
+[   5]Importer dans la matiÃ¨re:
+[   6]Une matiÃ¨re doit Ãªtre choisie pour importer le cours.\n\nLe cours importÃ© aura la matiÃ¨re choisie.
 [   7]Exercice:
-[   8]Le cours n'a pas pu être accédé.
-[   9]Leçon:
-[  10]Le cours a été importé avec succès.
-[  11]Le cours n'a pas pu ëtre importé.
+[   8]Le cours n'a pas pu Ãªtre accÃ©dÃ©.
+[   9]LeÃ§on:
+[  10]Le cours a Ã©tÃ© importÃ© avec succÃ¨s.
+[  11]Le cours n'a pas pu Ã«tre importÃ©.
 [  13]Cours:
-[  14]Voir le cours importé
+[  14]Voir le cours importÃ©

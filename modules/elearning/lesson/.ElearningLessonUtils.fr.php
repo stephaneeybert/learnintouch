@@ -1,15 +1,15 @@
-[   0]Rechercher une leçon
-[   3]Aller à la leçon
+[   0]Rechercher une leÃ§on
+[   3]Aller Ã  la leÃ§on
 [   5]Le cours
 [   6]pour la session de
-[  10]Imprimer les résultats
+[  10]Imprimer les rÃ©sultats
 [  12]Regarder la video
 [  13]Cliquer pour regarder la video
 [  14]Exercice:
-[  80]Envoyer la leçon
-[  91]Faire la leçon
-[ 112]Imprimer la leçon
-[ 135]Résultats
+[  80]Envoyer la leÃ§on
+[  91]Faire la leÃ§on
+[ 112]Imprimer la leÃ§on
+[ 135]RÃ©sultats
 [ 136]Points
-[ 145]Aucune inscription n'a été trouvée.
-[ 186]Imprimer le graphe des résultats du cours
+[ 145]Aucune inscription n'a Ã©tÃ© trouvÃ©e.
+[ 186]Imprimer le graphe des rÃ©sultats du cours

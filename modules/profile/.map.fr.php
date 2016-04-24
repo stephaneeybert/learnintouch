@@ -1,6 +1,6 @@
-[   0]Télécharger une carte
+[   0]TÃ©lÃ©charger une carte
 [   3]Nom de l'image:
 [   1]Image:
-[   2]Sélectionner une image:
+[   2]SÃ©lectionner une image:
 [   7]Effacer l'image?
-[  10]La carte d'accès est utilisée pour aider les gens à localiser les locaux de la société ou de l'organisation.\n\nHabituelement, une telle carte peut être trouvée dans le site web du répertoire téléphonique.
+[  10]La carte d'accÃ¨s est utilisÃ©e pour aider les gens Ã  localiser les locaux de la sociÃ©tÃ© ou de l'organisation.\n\nHabituelement, une telle carte peut Ãªtre trouvÃ©e dans le site web du rÃ©pertoire tÃ©lÃ©phonique.

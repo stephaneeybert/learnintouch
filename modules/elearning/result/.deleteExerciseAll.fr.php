@@ -1,5 +1,5 @@
-[   0]Effacer les résultats d'un exercice
+[   0]Effacer les rÃ©sultats d'un exercice
 [   1]Nom
 [   5]Exercice:
-[   2]Effacer les résultats de l'exercice?
+[   2]Effacer les rÃ©sultats de l'exercice?
 [   3]Email

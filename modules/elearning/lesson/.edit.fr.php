@@ -1,24 +1,24 @@
-[   0]Modifier une leçon
+[   0]Modifier une leÃ§on
 [   1]Instructions:
-[   2]Modèle:
+[   2]ModÃ¨le:
 [   3]Niveau:
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.
-[   7]Le matériel de cours peut être protégé des visiteurs du site web.\n\nDans ce cas, un participant devra se connecter pour faire les leçons.\n\nCependant, si une leçon est public, alors il n'est plus protégé et n'importe quel visiteur peut y accéder.\n\nPar exemple, une leçon public peut être une leçon de démonstration offer à tous les visiteurs du site web.
+[   7]Le matÃ©riel de cours peut Ãªtre protÃ©gÃ© des visiteurs du site web.\n\nDans ce cas, un participant devra se connecter pour faire les leÃ§ons.\n\nCependant, si une leÃ§on est public, alors il n'est plus protÃ©gÃ© et n'importe quel visiteur peut y accÃ©der.\n\nPar exemple, une leÃ§on public peut Ãªtre une leÃ§on de dÃ©monstration offer Ã  tous les visiteurs du site web.
 [   8]Date de publication:
-[   9]Une leçon avec ce nom existe déjà.
+[   9]Une leÃ§on avec ce nom existe dÃ©jÃ .
 [  10]Public:
-[  11]Des instructions sur comment faire la leçon peuvent être affichées au début d'une leçon.\n\nCes instructions sont ici pour aider le participant à faire la leçon.\n\nElles ne sont pas supposées faire partie du contenu de la leçon.
+[  11]Des instructions sur comment faire la leÃ§on peuvent Ãªtre affichÃ©es au dÃ©but d'une leÃ§on.\n\nCes instructions sont ici pour aider le participant Ã  faire la leÃ§on.\n\nElles ne sont pas supposÃ©es faire partie du contenu de la leÃ§on.
 [  12]Sujet:
-[  13]Un modèle de leçon est un ensemble de rubriques composant un cadre dans lequel des leçons peuvent être affichées.\n\nSi un modèle est choisit alors les paragraphes de la leçon seront affichés au sein des rubriques du modèle.
-[  14]Une leçon a une date de publication.\n\nLa date de publication est requise.\n\nPar défaut, la date de publication est la date du jour de création de la leçon.
-[  15]Catégorie:
-[  16]La leçon est vérouillée est ne peut pas être modifiée.
-[  17]Le cours est vérouillé est ne peut pas être mis à jour.
+[  13]Un modÃ¨le de leÃ§on est un ensemble de rubriques composant un cadre dans lequel des leÃ§ons peuvent Ãªtre affichÃ©es.\n\nSi un modÃ¨le est choisit alors les paragraphes de la leÃ§on seront affichÃ©s au sein des rubriques du modÃ¨le.
+[  14]Une leÃ§on a une date de publication.\n\nLa date de publication est requise.\n\nPar dÃ©faut, la date de publication est la date du jour de crÃ©ation de la leÃ§on.
+[  15]CatÃ©gorie:
+[  16]La leÃ§on est vÃ©rouillÃ©e est ne peut pas Ãªtre modifiÃ©e.
+[  17]Le cours est vÃ©rouillÃ© est ne peut pas Ãªtre mis Ã  jour.
 [  18]Cours:
-[  19]Il est possible d'ajouter la leçon à un cours.
+[  19]Il est possible d'ajouter la leÃ§on Ã  un cours.
 [  21]Une date doit avoir le format
-[  26]Sécuriser l'accès:
-[  29]Une leçon peut être associé à un modèle, un sujet et un niveau.\n\nCela est pour faciliter la recherche d'une leçon.
-[ 27]Par défault, les participants ne sont pas obligés de se connecter pour faire une leçon.\n\nMais les leçons peuvent être protégés et leur accès réservé aux utilisateurs enregistrés du site web.\n\nDans ce cas, un participant sera obligé de se connecter avant de pouvoir faire une leçon.
+[  26]SÃ©curiser l'accÃ¨s:
+[  29]Une leÃ§on peut Ãªtre associÃ© Ã  un modÃ¨le, un sujet et un niveau.\n\nCela est pour faciliter la recherche d'une leÃ§on.
+[ 27]Par dÃ©fault, les participants ne sont pas obligÃ©s de se connecter pour faire une leÃ§on.\n\nMais les leÃ§ons peuvent Ãªtre protÃ©gÃ©s et leur accÃ¨s rÃ©servÃ© aux utilisateurs enregistrÃ©s du site web.\n\nDans ce cas, un participant sera obligÃ© de se connecter avant de pouvoir faire une leÃ§on.

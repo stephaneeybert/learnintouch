@@ -1,11 +1,11 @@
-[   0]Les références clients
-[   1]Créer un client
+[   0]Les rÃ©fÃ©rences clients
+[   1]CrÃ©er un client
 [   2]Modifier le client
 [   3]Effacer le client
 [   4]Nom
 [   5]Description
-[   7]Insérer ou effacer une image
+[   7]InsÃ©rer ou effacer une image
 [   8]Url
-[  20]Les préférences
+[  20]Les prÃ©fÃ©rences
 [   9]Image
-[  10]Les références clients sont les noms et adresses web de vos clients que vous souhaitez afficher sur votre site web comme une référence de votre service ou activité.\n\nUne référence client peut éventuellement avoir une image.
+[  10]Les rÃ©fÃ©rences clients sont les noms et adresses web de vos clients que vous souhaitez afficher sur votre site web comme une rÃ©fÃ©rence de votre service ou activitÃ©.\n\nUne rÃ©fÃ©rence client peut Ã©ventuellement avoir une image.

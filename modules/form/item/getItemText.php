@@ -7,10 +7,6 @@ LibHtml::preventCaching();
 $formItemId = LibEnv::getEnvHttpGET("formItemId");
 $languageCode = LibEnv::getEnvHttpGET("languageCode");
 
-// An ajax request parameter value is UTF-8 encoded
-$formItemId = utf8_decode($formItemId);
-$languageCode = utf8_decode($languageCode);
-
 if ($formItem = $formItemUtils->selectById($formItemId)) {
   $text = $languageUtils->getTextForLanguage($formItem->getText(), $languageCode);
   $text = LibString::jsonEscapeLinebreak($text);

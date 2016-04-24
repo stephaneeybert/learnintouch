@@ -3,5 +3,5 @@
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.
-[   7]Une page avec ce nom existe déjà.
-[   3]Veuillez saisir le nom et éventuellement la description de la page web.\n\nLe nom est requis et doit être un simple mot en lettres minuscules.
+[   7]Une page avec ce nom existe dÃ©jÃ .
+[   3]Veuillez saisir le nom et Ã©ventuellement la description de la page web.\n\nLe nom est requis et doit Ãªtre un simple mot en lettres minuscules.

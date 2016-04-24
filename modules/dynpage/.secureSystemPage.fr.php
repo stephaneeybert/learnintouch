@@ -1,6 +1,6 @@
-[   0]Sécuriser une page système répertoire
-[   1]Page système:
-[   2]Sécuriser la page système?
-[   5]Désécuriser la page système?
-[   3]Sécuriser la page système
-[   4]Désécuriser la page système
+[   0]SÃ©curiser une page systÃ¨me rÃ©pertoire
+[   1]Page systÃ¨me:
+[   2]SÃ©curiser la page systÃ¨me?
+[   5]DÃ©sÃ©curiser la page systÃ¨me?
+[   3]SÃ©curiser la page systÃ¨me
+[   4]DÃ©sÃ©curiser la page systÃ¨me

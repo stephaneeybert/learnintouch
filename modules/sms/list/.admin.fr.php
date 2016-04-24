@@ -1,8 +1,8 @@
-[   0]Les listes de numéros de téléphones portables
-[   1]Créer une liste
+[   0]Les listes de numÃ©ros de tÃ©lÃ©phones portables
+[   1]CrÃ©er une liste
 [   2]Renomer la liste
 [   5]Composer la liste
 [   3]Effacer la liste
 [   6]Envoyer un sms
 [   8]Nom
-[   4]Un message SMS peut être envoyé à tous les numéros de téléphone portable du site web, ou bien à une liste de numéros.\n\nIl peut aussi n'être envoyé qu'à un numéro de téléphone portable spécifié manuellement au moment de l'envoi du message.\n\nUne liste de numéros est un ensemble de numéros regroupés au sein d'une liste créée par un administrateur.\n\nCela permet d'envoyer des message non pas à tous les numéros du site web, mais à des groupes de numéros ciblés.\n\nSauf dans le cas où le numéroe de téléphone portable est manuellement spécifié lors de l'envoi du message, les utilisateurs n'ayant pas choisit de recevoir des message n'en recevront pas.
+[   4]Un message SMS peut Ãªtre envoyÃ© Ã  tous les numÃ©ros de tÃ©lÃ©phone portable du site web, ou bien Ã  une liste de numÃ©ros.\n\nIl peut aussi n'Ãªtre envoyÃ© qu'Ã  un numÃ©ro de tÃ©lÃ©phone portable spÃ©cifiÃ© manuellement au moment de l'envoi du message.\n\nUne liste de numÃ©ros est un ensemble de numÃ©ros regroupÃ©s au sein d'une liste crÃ©Ã©e par un administrateur.\n\nCela permet d'envoyer des message non pas Ã  tous les numÃ©ros du site web, mais Ã  des groupes de numÃ©ros ciblÃ©s.\n\nSauf dans le cas oÃ¹ le numÃ©roe de tÃ©lÃ©phone portable est manuellement spÃ©cifiÃ© lors de l'envoi du message, les utilisateurs n'ayant pas choisit de recevoir des message n'en recevront pas.

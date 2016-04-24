@@ -9,16 +9,14 @@ class DataSourceMySQL extends DataSource {
   }
 
   function connect($username, $password, $type = DB_NON_PERSISTENT) {
-    // Connect to the databse
     if ($type == DB_PERSISTENT) {
-      $this->setDbConnection(mysqli_pconnect($this->getHost(), $username, $password));
+      $this->setDbConnection(mysqli_connect("p:". $this->getHost(), $username, $password));
     } else {
       $this->setDbConnection(mysqli_connect($this->getHost(), $username, $password));
     }
 
     $this->selectDatabase();
 
-    // Return the connection status
     return($this->isConnected());
   }
 
@@ -29,18 +27,14 @@ class DataSourceMySQL extends DataSource {
   }
 
   function disconnect() {
-    // Close the database
     mysqli_close($this->getDbConnection());
 
-    // Reset the database connection
     $this->setDbConnection(0);
   }
 
   function query($sqlStatement) {
-    // Keep the sql statement for the error message
     $this->sqlStatement = $sqlStatement;
 
-    // Create a result object
     $result = new DataResultMySQL($this, mysqli_query($this->getDbConnection(), $sqlStatement));
 
     return($result);

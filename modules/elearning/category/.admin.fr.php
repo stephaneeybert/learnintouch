@@ -1,6 +1,6 @@
-[   0]Les catégories
-[   1]Créer une catégorie
-[   2]Modifier la catégorie
-[   3]Effacer la catégorie
+[   0]Les catÃ©gories
+[   1]CrÃ©er une catÃ©gorie
+[   2]Modifier la catÃ©gorie
+[   3]Effacer la catÃ©gorie
 [   5]Nom
 [   6]Description

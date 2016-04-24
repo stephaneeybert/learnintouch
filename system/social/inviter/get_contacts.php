@@ -11,11 +11,6 @@ $email = LibEnv::getEnvHttpGET("email");
 $password = LibEnv::getEnvHttpGET("password");
 $selectedProvider = LibEnv::getEnvHttpGET("selectedProvider");
 
-// An ajax request parameter value is UTF-8 encoded
-$email = utf8_decode($email);
-$password = utf8_decode($password);
-$selectedProvider = utf8_decode($selectedProvider);
-
 $openInviter = new OpenInviter();
 $openInviterServices = $openInviter->getPlugins();
 $openInviter->startPlugin($selectedProvider);
@@ -29,7 +24,6 @@ if (!$openInviter->login($email, $password)) {
   $error = LibString::decodeHtmlspecialchars($error);
 } else {
   foreach ($contacts as $email => $name) {
-    $name = utf8_decode($name);
     $strContacts .= "{email : \"$email\", name : \"$name\"},";
   }
 }

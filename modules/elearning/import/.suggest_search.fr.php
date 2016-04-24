@@ -1,3 +1,3 @@
 [   0]Cours:
-[   1]Leçon:
+[   1]LeÃ§on:
 [   2]Exercice:

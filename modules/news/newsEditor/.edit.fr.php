@@ -1,5 +1,5 @@
 [   0]Modifier un auteur
-[   1]Cet administrateur est déjà assigné à un autre auteur.
-[   2]Un auteur est un administrateur du système.\n\nPour créer un nouvel auteur, veuillez d'abord créer un administrateur.\n\nEnsuite veuillez choisir un administrateur pour être un auteur.
+[   1]Cet administrateur est dÃ©jÃ  assignÃ© Ã  un autre auteur.
+[   2]Un auteur est un administrateur du systÃ¨me.\n\nPour crÃ©er un nouvel auteur, veuillez d'abord crÃ©er un administrateur.\n\nEnsuite veuillez choisir un administrateur pour Ãªtre un auteur.
 [   3]Administrateur:
 [   4]L'administrateur est requis.

@@ -1,13 +1,13 @@
 [   0]Modifier un document
 [   1]Cacher:
-[   2]Un document peut être rangé dans une catégorie.\n\nCela offre un rangement plus facile des documents.
-[   3]Une courte description du document.\n\nCela peut être un court mémo sur le document.
-[   4]Par défaut, un document est publié.\n\nUn document doit être publié pour être affiché sur le site web.\n\nUn document publié peut être téléchargé par les visiteurs du site web.\n\nMais un document peut être caché.\n\nUn document caché n'est pas affiché sur le site web et ne peut pas être téléchargé par les visiteurs du site web.
-[   5]Catégorie:
-[   6]Référence:
+[   2]Un document peut Ãªtre rangÃ© dans une catÃ©gorie.\n\nCela offre un rangement plus facile des documents.
+[   3]Une courte description du document.\n\nCela peut Ãªtre un court mÃ©mo sur le document.
+[   4]Par dÃ©faut, un document est publiÃ©.\n\nUn document doit Ãªtre publiÃ© pour Ãªtre affichÃ© sur le site web.\n\nUn document publiÃ© peut Ãªtre tÃ©lÃ©chargÃ© par les visiteurs du site web.\n\nMais un document peut Ãªtre cachÃ©.\n\nUn document cachÃ© n'est pas affichÃ© sur le site web et ne peut pas Ãªtre tÃ©lÃ©chargÃ© par les visiteurs du site web.
+[   5]CatÃ©gorie:
+[   6]RÃ©fÃ©rence:
 [   7]Description:
-[   8]Une référence pour identifier le document.\n\nCela peut être un nom ou une séquence de chiffres et/ou de lettres.
+[   8]Une rÃ©fÃ©rence pour identifier le document.\n\nCela peut Ãªtre un nom ou une sÃ©quence de chiffres et/ou de lettres.
 [   9]Fichier:
 [  10]Le nom de fichier du document.
-[  11]Sécuriser l'accès:
-[  12]Par défaut, les utilisateurs ne sont pas tenus de se connecter, pour télécharger un document.\n\nMais un document peut être protégé et son accès réservé aux utilisateurs enregistrés dans le site web.\n\nDans ce cas, un utilisateur devra se connecter avant de pouvoir télécharger ce document.
+[  11]SÃ©curiser l'accÃ¨s:
+[  12]Par dÃ©faut, les utilisateurs ne sont pas tenus de se connecter, pour tÃ©lÃ©charger un document.\n\nMais un document peut Ãªtre protÃ©gÃ© et son accÃ¨s rÃ©servÃ© aux utilisateurs enregistrÃ©s dans le site web.\n\nDans ce cas, un utilisateur devra se connecter avant de pouvoir tÃ©lÃ©charger ce document.

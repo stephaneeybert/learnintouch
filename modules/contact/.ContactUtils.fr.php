@@ -1,33 +1,33 @@
-[   1]Envoyer un email à la réception d'un message:
-[  31]Lorsqu'un message est reçu d'un visiteur, un email peut être envoyé à l'adresse email du site web.\n\nCeci afin de notifier le gérant du site web qu'un message de contact a été reçu.
+[   1]Envoyer un email Ã  la rÃ©ception d'un message:
+[  31]Lorsqu'un message est reÃ§u d'un visiteur, un email peut Ãªtre envoyÃ© Ã  l'adresse email du site web.\n\nCeci afin de notifier le gÃ©rant du site web qu'un message de contact a Ã©tÃ© reÃ§u.
 [   2]Message de confirmation:
-[  32]Après qu'un visiteur ai envoyé un message, un message de confirmation lui est affiché.\n\nLe texte de ce message peut être édité.
+[  32]AprÃ¨s qu'un visiteur ai envoyÃ© un message, un message de confirmation lui est affichÃ©.\n\nLe texte de ce message peut Ãªtre Ã©ditÃ©.
 [   3]Message de commentaire:
-[   4]Un message de commentaire personnalisé peut être affiché au dessus du formulaire.
+[   4]Un message de commentaire personnalisÃ© peut Ãªtre affichÃ© au dessus du formulaire.
 [   5]Enregistrer l'adresse email:
-[   6]Lorsqu'un visiteur écrit un message, il doit laisser une adresse email.\n\nL'adresse email peut être alors vue avec le message du visiteur.\n\nMais il est aussi possible d'ajouter l'adresse email à la liste des adresses email utilisées dans les mailings.\n\nToutes les adresses email laissées par les visiteurs sont alors enregistrées dans la liste des adresses email et peuvent être utilisées ensuite lors de l'envoi de mailings.\n\nCela permet à la liste des adresses email utilisées dans les mailings, de grossir avec les adresses email obtenues lorsque les visiteurs écrivent un message.
-[   7]Durée des messages:
-[   8]Les anciens messages peuvent être automatiquement effacés après une certaine période.\n\nCela pour éviter d'engorger le système de messages de contact avec de vieux messages qui ont été traités depuis longtemps.\n\nUn message de contact, quel que soit son statut, est automatiquement et définitivement effacé à la fin de cette durée.\n\nLa durée est exprimée en mois.
+[   6]Lorsqu'un visiteur Ã©crit un message, il doit laisser une adresse email.\n\nL'adresse email peut Ãªtre alors vue avec le message du visiteur.\n\nMais il est aussi possible d'ajouter l'adresse email Ã  la liste des adresses email utilisÃ©es dans les mailings.\n\nToutes les adresses email laissÃ©es par les visiteurs sont alors enregistrÃ©es dans la liste des adresses email et peuvent Ãªtre utilisÃ©es ensuite lors de l'envoi de mailings.\n\nCela permet Ã  la liste des adresses email utilisÃ©es dans les mailings, de grossir avec les adresses email obtenues lorsque les visiteurs Ã©crivent un message.
+[   7]DurÃ©e des messages:
+[   8]Les anciens messages peuvent Ãªtre automatiquement effacÃ©s aprÃ¨s une certaine pÃ©riode.\n\nCela pour Ã©viter d'engorger le systÃ¨me de messages de contact avec de vieux messages qui ont Ã©tÃ© traitÃ©s depuis longtemps.\n\nUn message de contact, quel que soit son statut, est automatiquement et dÃ©finitivement effacÃ© Ã  la fin de cette durÃ©e.\n\nLa durÃ©e est exprimÃ©e en mois.
 [   9]Inclure le message:
-[  10]Par défaut, l'email envoyé à l'adresse email du site web ne contient pas le message qui à été reçu du visiteur.\n\nL'email ne contient qu'un lien vers le message qui est conservé dans le système.\n\nMais il est possible d'inclure dans le contenu de l'email, le message du visiteur.\n\nCela permet de lire immédiatement le message du visiteur.
+[  10]Par dÃ©faut, l'email envoyÃ© Ã  l'adresse email du site web ne contient pas le message qui Ã  Ã©tÃ© reÃ§u du visiteur.\n\nL'email ne contient qu'un lien vers le message qui est conservÃ© dans le systÃ¨me.\n\nMais il est possible d'inclure dans le contenu de l'email, le message du visiteur.\n\nCela permet de lire immÃ©diatement le message du visiteur.
 [  11]Page de confirmation:
-[  12]Lorsqu'un utilisateur envoi un message, un message de confirmation est affiché.\n\nMais il est possible d'afficher une page web à la place.\n\nDans ce cas, la page web sera affichée à la place du message de confirmation.\n\nLa page web peut ainsi contenir plus qu'un simple message de confirmation.\n\nElle peut, par exemple, afficher une adresse, un plan d'accès...
-[  13]Ne pas demander un code de sécurité:
-[  14]Lorsqu'un visiteur poste un message de contact, il peut lui être demandé de saisir un code de sécurité.\n\nParce que ce code est affiché dans une image, il peut seulement être lu par une personne.\n\nCe mécanisme de sécurité permet d'éviter les écritures automatiques de message de contact par des robots du web.\n\nCela n'est pas une bonne idée de désactiver cette fonctionalité.
+[  12]Lorsqu'un utilisateur envoi un message, un message de confirmation est affichÃ©.\n\nMais il est possible d'afficher une page web Ã  la place.\n\nDans ce cas, la page web sera affichÃ©e Ã  la place du message de confirmation.\n\nLa page web peut ainsi contenir plus qu'un simple message de confirmation.\n\nElle peut, par exemple, afficher une adresse, un plan d'accÃ¨s...
+[  13]Ne pas demander un code de sÃ©curitÃ©:
+[  14]Lorsqu'un visiteur poste un message de contact, il peut lui Ãªtre demandÃ© de saisir un code de sÃ©curitÃ©.\n\nParce que ce code est affichÃ© dans une image, il peut seulement Ãªtre lu par une personne.\n\nCe mÃ©canisme de sÃ©curitÃ© permet d'Ã©viter les Ã©critures automatiques de message de contact par des robots du web.\n\nCela n'est pas une bonne idÃ©e de dÃ©sactiver cette fonctionalitÃ©.
 [  15]Adresse email de formulaire:
-[  16]Il est possible d'envoyer le contenu d'un formulaire à une adresse email.\n\nL'adresse email spécifiée recevra un email à chaque fois qu'un formulaire est posté par un visiteur.\n\nSi aucune adresse email n'est spécifiée alors l'adresse email du site web sera utilisée.\n\nPour correctement connecter un formulaire à la boite de réception de formulaires, l'attribut 'action' de l'élément 'form' doit avoir la valeur:
+[  16]Il est possible d'envoyer le contenu d'un formulaire Ã  une adresse email.\n\nL'adresse email spÃ©cifiÃ©e recevra un email Ã  chaque fois qu'un formulaire est postÃ© par un visiteur.\n\nSi aucune adresse email n'est spÃ©cifiÃ©e alors l'adresse email du site web sera utilisÃ©e.\n\nPour correctement connecter un formulaire Ã  la boite de rÃ©ception de formulaires, l'attribut 'action' de l'Ã©lÃ©ment 'form' doit avoir la valeur:
 [  17]Comme dans:
-[  18]\n\noù les variable optionelles contactRecipientEmail et contactAcknowledgementMessage sont l'adresse email à laquelle le formulaire est envoyé et le message de confirmation affiché au visiteur du site web.
+[  18]\n\noÃ¹ les variable optionelles contactRecipientEmail et contactAcknowledgementMessage sont l'adresse email Ã  laquelle le formulaire est envoyÃ© et le message de confirmation affichÃ© au visiteur du site web.
 [  22]Message de contact de
 [  21]pour
-[  23]Un message de contact a été envoyé à
+[  23]Un message de contact a Ã©tÃ© envoyÃ© Ã 
 [  24]par
 [  25]Cliquez ici
 [  26]pour lire le message.
 [  27]Message:
-[   0]Référence:
+[   0]RÃ©fÃ©rence:
 [  28]Nombre de messages de contact par page:
 [  29]La liste des messages de contact dans l'interface d'administration permet d'afficher un nombre choisit de messages de contact par page.
-[  19]Commentaire du référent:
-[  30]Le commentaire affiché au dessus de la liste des référents peut être personalisé.\n\nCela permet d'afficher dans le formulaire de contact, un commentaire plus explicite.
+[  19]Commentaire du rÃ©fÃ©rent:
+[  30]Le commentaire affichÃ© au dessus de la liste des rÃ©fÃ©rents peut Ãªtre personalisÃ©.\n\nCela permet d'afficher dans le formulaire de contact, un commentaire plus explicite.
 [  33]Comment vous nous avez connu?

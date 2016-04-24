@@ -7,7 +7,9 @@ class MailCategoryDB {
   var $dao;
 
   function MailCategoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_MAIL_CATEGORY;
 

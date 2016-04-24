@@ -7,7 +7,9 @@ class DocumentDB {
   var $dao;
 
   function DocumentDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_DOCUMENT;
 

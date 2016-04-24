@@ -1,5 +1,5 @@
-[   0]Modifier une catégorie
-[   2]Nommer la catégorie
+[   0]Modifier une catÃ©gorie
+[   2]Nommer la catÃ©gorie
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.

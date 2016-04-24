@@ -1,7 +1,7 @@
-[   0]Désinscription
-[   1]Désinscription d'un cours
-[   2]Il est possible de se désinscrire d'un cours.\n\nDans ce cas, tous les résultats des exercices du cours seront définitivement effacés.
-[   3]Désinscrire
+[   0]DÃ©sinscription
+[   1]DÃ©sinscription d'un cours
+[   2]Il est possible de se dÃ©sinscrire d'un cours.\n\nDans ce cas, tous les rÃ©sultats des exercices du cours seront dÃ©finitivement effacÃ©s.
+[   3]DÃ©sinscrire
 [   4]L'inscription est requise.
-[   5]Le cours de l'inscription ne permet pas la désinscription.
-[   6]Veuillez cocher la case pour confirmer la désinscription.
+[   5]Le cours de l'inscription ne permet pas la dÃ©sinscription.
+[   6]Veuillez cocher la case pour confirmer la dÃ©sinscription.

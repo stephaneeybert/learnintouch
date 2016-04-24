@@ -1,4 +1,4 @@
-[   0]Effacer un en-tête de leçon
+[   0]Effacer un en-tÃªte de leÃ§on
 [   1]Nom:
 [   5]Description:
-[   2]Effacer l'en-tête de leçon?
+[   2]Effacer l'en-tÃªte de leÃ§on?

@@ -1,6 +1,6 @@
 [   0]Recherche...
 [   1]Un journal
-[   2]Les documents offerts en téléchargement
+[   2]Les documents offerts en tÃ©lÃ©chargement
 [   3]Une personne
 [   4]Un article de journal
 [   5]Une page web
@@ -9,24 +9,24 @@
 [   8]Le cycle des liens favoris
 [   9]Le cycle de photos d'un album
 [  10]L'enregistrement de l'adresse email d'un visiteur
-[  11]Les références clients
+[  11]Les rÃ©fÃ©rences clients
 [  12]Le livre d'or
 [  13]Les gens
 [  14]Les liens favoris
-[  15]L'enregistrement du numéro SMS d'un visiteur
+[  15]L'enregistrement du numÃ©ro SMS d'un visiteur
 [  16]La recherche de photos
 [  17]Les photos d'un album
 [  18]Un document
 [  19]Le formulaire de contact
 [  20]Le coin du prof
-[  21]L'édition du profil de l'utilisateur
+[  21]L'Ã©dition du profil de l'utilisateur
 [  22]Un exercice
 [  23]La connexion de l'utilisateur
 [  24]Le changement du mot de passe de l'utilisateur
 [  25]Le formulaire du livre d'or
-[  26]Le désabonnement de l'utilisateur
+[  26]Le dÃ©sabonnement de l'utilisateur
 [  27]L'enregistrement de l'utilisateur
-[  28]La déconnexion de l'utilisateur
+[  28]La dÃ©connexion de l'utilisateur
 [  29]Les publications
 [  30]Les journaux
 [  31]Les langues
@@ -39,29 +39,29 @@
 [  38]La liste des enseignants
 [  39]Le panier d'achats
 [  40]La recherche des articles de la boutique
-[  41]La sélection d'articles de l'utilisateur
+[  41]La sÃ©lection d'articles de l'utilisateur
 [  42]Les albums de photos
 [  43]Un formulaire
-[  44]Les résultats d'un exercice
-[  45]L'entrée du site web
+[  44]Les rÃ©sultats d'un exercice
+[  45]L'entrÃ©e du site web
 [  46]La post-connexion utilisateur
-[  47]Modèle des fenètres popup:
-[  48]Les fenètres popup peuvent être affichées dans leur propre modèle.\n\nCela permet un affichage qui est différent du modèle principal du site web.
-[  49]Aperçu du modèle avec du contenu brouillon:
-[  50]Rafraîchir le modèle
-[  51]Lors de l'affichage de l'aperçu du modèle, par défaut le modèle est vide et n'affiche pas de page web.\n\nMais il est possible d'afficher du contenu brouillon dans l'aperçu du modèle.\n\nCela permet d'avoir un aperçu du modèle plus réaliste.
-[  52]Le modèle a été rafraîchi!
-[  53]Rafraîchissement du modèle en cours...
+[  47]ModÃ¨le des fenÃ¨tres popup:
+[  48]Les fenÃ¨tres popup peuvent Ãªtre affichÃ©es dans leur propre modÃ¨le.\n\nCela permet un affichage qui est diffÃ©rent du modÃ¨le principal du site web.
+[  49]AperÃ§u du modÃ¨le avec du contenu brouillon:
+[  50]RafraÃ®chir le modÃ¨le
+[  51]Lors de l'affichage de l'aperÃ§u du modÃ¨le, par dÃ©faut le modÃ¨le est vide et n'affiche pas de page web.\n\nMais il est possible d'afficher du contenu brouillon dans l'aperÃ§u du modÃ¨le.\n\nCela permet d'avoir un aperÃ§u du modÃ¨le plus rÃ©aliste.
+[  52]Le modÃ¨le a Ã©tÃ© rafraÃ®chi!
+[  53]RafraÃ®chissement du modÃ¨le en cours...
 [  54]Les participants d'un enseignant
-[  55]Une leçon
+[  55]Une leÃ§on
 [  56]Les devoirs d'un participant
 [  57]Les inscriptions au cours d'un participant
 [  58]La notice des termes du service
 [  59]Enregistrer
 [  60]Inscription
-[  61]Laissez nous votre numéro de téléphone portable (SMS)
-[  63]Numéro:
+[  61]Laissez nous votre numÃ©ro de tÃ©lÃ©phone portable (SMS)
+[  63]NumÃ©ro:
 [  64]L'invitation d'amis
-[  65]Modèle des fenètres popup (téléphone):
+[  65]ModÃ¨le des fenÃ¨tres popup (tÃ©lÃ©phone):
 [  66]Nos exercices et nos cours
-[  67]Nos leçons et nos cours
+[  67]Nos leÃ§ons et nos cours

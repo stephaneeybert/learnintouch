@@ -7,7 +7,9 @@ class PropertyDB {
   var $dao;
 
   function PropertyDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_PROPERTY;
 

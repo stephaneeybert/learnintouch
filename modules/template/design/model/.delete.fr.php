@@ -1,6 +1,6 @@
-[   0]Effacer un modèle
+[   0]Effacer un modÃ¨le
 [   1]Nom:
-[   2]Effacer le modèle?
+[   2]Effacer le modÃ¨le?
 [   3]Description:
-[   4]Le modèle ne peut pas être effacé parce que c'est le modèle par défaut du site web.
-[   5]Le modèle ne peut pas être effacé parce que c'est le modèle d'entrée du site web.
+[   4]Le modÃ¨le ne peut pas Ãªtre effacÃ© parce que c'est le modÃ¨le par dÃ©faut du site web.
+[   5]Le modÃ¨le ne peut pas Ãªtre effacÃ© parce que c'est le modÃ¨le d'entrÃ©e du site web.

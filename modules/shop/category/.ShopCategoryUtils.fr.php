@@ -1,2 +1,2 @@
-[   0]Boutique - Catégorie:
+[   0]Boutique - CatÃ©gorie:
 [   1]Menu

@@ -5,5 +5,5 @@
 [   5]Format:
 [   6]Le prix est requis.
 [   7]Le format est requis.
-[   2]Le prix doit être numérique.
-[   8]Le format choisi est déjà utilisé par un autre album.\n\nVeuillez choisir un autre format.
+[   2]Le prix doit Ãªtre numÃ©rique.
+[   8]Le format choisi est dÃ©jÃ  utilisÃ© par un autre album.\n\nVeuillez choisir un autre format.

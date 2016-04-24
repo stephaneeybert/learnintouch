@@ -7,7 +7,9 @@ class ElearningSessionDB {
   var $dao;
 
   function ElearningSessionDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ELEARNING_SESSION;
 

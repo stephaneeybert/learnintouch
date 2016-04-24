@@ -1,5 +1,5 @@
-[   0]La page que vous demandez n'a pas pu être trouvée.
-[   1]Un email à été envoyé au webmaster.
+[   0]La page que vous demandez n'a pas pu Ãªtre trouvÃ©e.
+[   1]Un email Ã  Ã©tÃ© envoyÃ© au webmaster.
 [   2]Erreur 404
-[   3]Une page demandée n'a pas été trouvée.
-[   4]La page demandée est
+[   3]Une page demandÃ©e n'a pas Ã©tÃ© trouvÃ©e.
+[   4]La page demandÃ©e est

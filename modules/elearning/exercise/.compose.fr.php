@@ -1,62 +1,62 @@
 [   0]Composer l'exercice
 [   1]Intervertir avec la page de questions suivante
 [   2]Pages de questions
-[   3]Ajouter une page de questions à l'exercice
+[   3]Ajouter une page de questions Ã  l'exercice
 [   4]Exercice:
 [   5]Effacer la page et toutes ses questions
 [   6]Modifier la page de questions
-[   7]Télécharger ou effacer une image ou un fichier Flash
+[   7]TÃ©lÃ©charger ou effacer une image ou un fichier Flash
 [   8]Modifier les instructions de l'exercice
-[   9]Intervertir avec la page de questions précédente
+[   9]Intervertir avec la page de questions prÃ©cÃ©dente
 [  10]Modifier le texte de la page de questions
-[  11]Question à choix multiple 
-[  12]Saisissez une réponse
+[  11]Question Ã  choix multiple 
+[  12]Saisissez une rÃ©ponse
 [  13]Ecoute audio
 [  14]Dupliquer la question
-[  15]Ajouter une question à la page de questions
+[  15]Ajouter une question Ã  la page de questions
 [  16]Modifier les instructions de la page de questions
 [  17]Voir la page de questions
-[  18]Intervertir avec la réponse suivante
-[  19]Intervertir avec la réponse précédente
+[  18]Intervertir avec la rÃ©ponse suivante
+[  19]Intervertir avec la rÃ©ponse prÃ©cÃ©dente
 [  20]Modifier la question
-[  21]Effacer la question et toutes ses réponses
-[  22]Ajouter une réponse à la question
-[  23]Modifier la réponse
-[  24]Effacer la réponse
-[  25]Spécifier comme une solution à la question
+[  21]Effacer la question et toutes ses rÃ©ponses
+[  22]Ajouter une rÃ©ponse Ã  la question
+[  23]Modifier la rÃ©ponse
+[  24]Effacer la rÃ©ponse
+[  25]SpÃ©cifier comme une solution Ã  la question
 [  26]Imprimer l'exercice
-[  27]Télécharger ou effacer un fichier audio ou Flash
-[  28]Spécifier les pages de questions suivantes
-[  29]Un exercice peut être composé d'une introduction suivie de plusieurs pages de questions.\n\nUne page de questions peut être composée d'un texte, d'une image ou d'une animation Flash, d'un fichier audio et d'une série de questions.\n\nLors d'un exercice, par défaut, chaque page de questions est affiché sur une page séparée, l'une après l'autre.
+[  27]TÃ©lÃ©charger ou effacer un fichier audio ou Flash
+[  28]SpÃ©cifier les pages de questions suivantes
+[  29]Un exercice peut Ãªtre composÃ© d'une introduction suivie de plusieurs pages de questions.\n\nUne page de questions peut Ãªtre composÃ©e d'un texte, d'une image ou d'une animation Flash, d'un fichier audio et d'une sÃ©rie de questions.\n\nLors d'un exercice, par dÃ©faut, chaque page de questions est affichÃ© sur une page sÃ©parÃ©e, l'une aprÃ¨s l'autre.
 [  30]Intervertir avec la question suivante
-[  31]Intervertir avec la question précédente
+[  31]Intervertir avec la question prÃ©cÃ©dente
 [  32]Points
-[  33]Spécifier comme PAS une solution à la question
+[  33]SpÃ©cifier comme PAS une solution Ã  la question
 [  34]Voir l'exercice
 [  35]Indice
-[  36]Compréhension écrite
-[  37]Expression écrite
-[  38]Compréhension orale
+[  36]ComprÃ©hension Ã©crite
+[  37]Expression Ã©crite
+[  38]ComprÃ©hension orale
 [  39]Type
 [  40]Modifier l'exercice
-[  41]Télécharger ou effacer une image ou un fichier Flash
-[  42]Télécharger ou effacer un fichier audio ou Flash
+[  41]TÃ©lÃ©charger ou effacer une image ou un fichier Flash
+[  42]TÃ©lÃ©charger ou effacer un fichier audio ou Flash
 [  43]Modifier l'introduction
-[  44]Le nombre de questions est inférieur au nombre de marqueurs d'emplacements dans le texte de la page.
+[  44]Le nombre de questions est infÃ©rieur au nombre de marqueurs d'emplacements dans le texte de la page.
 [  45]Le nombre de marqueurs d'emplacements
 [  46]Conserver l'ordre existant des questions
-[  47]Réordonnner les questions dans l'ordre chronologique de leur création
+[  47]RÃ©ordonnner les questions dans l'ordre chronologique de leur crÃ©ation
 [  48]Dupliquer la page de l'exercice
-[  49]Les réponses ordonnées sont différentes de la question.
-[  50]Pour une phrase à ordonner, toutes les réponses doivent être des solutions.
-[  51]La question a besoin de plus d'une réponse.
+[  49]Les rÃ©ponses ordonnÃ©es sont diffÃ©rentes de la question.
+[  50]Pour une phrase Ã  ordonner, toutes les rÃ©ponses doivent Ãªtre des solutions.
+[  51]La question a besoin de plus d'une rÃ©ponse.
 [  52]Imprimer la page de l'exercice
-[  53]Déplacer dans la question
-[  54]Déplacer après la réponse
-[  55]Déplacer avant la réponse
-[  56]Déplacer dans la page de questions
-[  57]Déplacer après la question
-[  58]Déplacer avant la question
-[  59]Déplacer après la page de questions
-[  60]Déplacer avant la page de questions
-[  61]dans le texte de la page est inférieur au nombre de questions
+[  53]DÃ©placer dans la question
+[  54]DÃ©placer aprÃ¨s la rÃ©ponse
+[  55]DÃ©placer avant la rÃ©ponse
+[  56]DÃ©placer dans la page de questions
+[  57]DÃ©placer aprÃ¨s la question
+[  58]DÃ©placer avant la question
+[  59]DÃ©placer aprÃ¨s la page de questions
+[  60]DÃ©placer avant la page de questions
+[  61]dans le texte de la page est infÃ©rieur au nombre de questions

@@ -1,4 +1,4 @@
-[   0]Modifier un modèle de leçon
+[   0]Modifier un modÃ¨le de leÃ§on
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.

@@ -1,3 +1,3 @@
-[   1]Le bureau du professeur à
-[   2]Bienvenu {*actor*} à LearnInTouch. Vous pouvez maintenant offrir vos propres cours, leçons et exercices à vos participants.
+[   1]Le bureau du professeur Ã 
+[   2]Bienvenu {*actor*} Ã  LearnInTouch. Vous pouvez maintenant offrir vos propres cours, leÃ§ons et exercices Ã  vos participants.
 [   3]Je souhaite m'enregistrer comme enseignant

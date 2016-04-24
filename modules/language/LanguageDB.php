@@ -7,7 +7,9 @@ class LanguageDB {
   var $dao;
 
   function LanguageDB() {
-    $this->dataSource = Sql::initCommonDataSource();
+    global $gSqlCommonDataSource;
+
+    $this->dataSource = $gSqlCommonDataSource;
 
     $this->tableName = DB_TABLE_LANGUAGE;
 

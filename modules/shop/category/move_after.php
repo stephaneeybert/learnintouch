@@ -8,10 +8,6 @@ LibHtml::preventCaching();
 $shopCategoryId = LibEnv::getEnvHttpGET("shopCategoryId");
 $targetId = LibEnv::getEnvHttpGET("targetId");
 
-// An ajax request parameter value is UTF-8 encoded
-$shopCategoryId = utf8_decode($shopCategoryId);
-$targetId = utf8_decode($targetId);
-
 $moved = false;
 
 if ($shopCategory = $shopCategoryUtils->selectById($shopCategoryId)) {

@@ -6,14 +6,18 @@ class BackupDB {
   var $dao;
 
   function BackupDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->dao = new BackupDao($this->dataSource);
     }
 
   // Select the data source to save the common database
   function selectCommonDataSource() {
-    $this->dataSource = Sql::initCommonDataSource();
+    global $gSqlCommonDataSource;
+
+    $this->dataSource = $gSqlCommonDataSource;
 
     $this->dao = new BackupDao($this->dataSource);
     }

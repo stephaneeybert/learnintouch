@@ -79,8 +79,6 @@ class RssFeedLanguageUtils extends RssFeedLanguageDB {
 //        $guid = $xmlNode->getElementsByTagName('guid')->item(0)->nodeValue;
 //        $date = $xmlNode->getElementsByTagName('date')->item(0)->nodeValue;
 
-        $title = utf8_decode($title);
-
         $str .= "<div class='rss_feed_newsstory'>"
           . "<div class='rss_feed_headline'>"
           . "<a href='$link' $gJSNoStatus>$title</a>"

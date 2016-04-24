@@ -1,2 +1,2 @@
 [   0]Journal:
-[   1]La dernière édition
+[   1]La derniÃ¨re Ã©dition

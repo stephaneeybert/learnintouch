@@ -7,7 +7,9 @@ class LexiconEntryDB {
   var $dao;
 
   function LexiconEntryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_LEXICON_ENTRY;
 

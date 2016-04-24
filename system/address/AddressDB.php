@@ -7,7 +7,9 @@ class AddressDB {
   var $dao;
 
   function AddressDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ADDRESS;
 

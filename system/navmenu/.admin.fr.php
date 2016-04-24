@@ -5,19 +5,19 @@
 [   4]Langue
 [   5]Langue
 [   6]Description
-[   7]Les menus de navigation offrent aux utilisateurs visitant le site web un moyen de naviguer au sein du site web.\n\nUne barre de navigation est composée d'une série d'éléments, chaque élément pointant vers une page web ou vers un site web.\n\nChaque élément est représenté par du texte ou par une image.\n\nUn élément qui est représenté par une image peut avoir une seconde image.\n\nCette seconde image s'affiche lorsque le curseur de la souris passe sur la première image de l'élément.
-[   8]Insérer ou effacer une image
+[   7]Les menus de navigation offrent aux utilisateurs visitant le site web un moyen de naviguer au sein du site web.\n\nUne barre de navigation est composÃ©e d'une sÃ©rie d'Ã©lÃ©ments, chaque Ã©lÃ©ment pointant vers une page web ou vers un site web.\n\nChaque Ã©lÃ©ment est reprÃ©sentÃ© par du texte ou par une image.\n\nUn Ã©lÃ©ment qui est reprÃ©sentÃ© par une image peut avoir une seconde image.\n\nCette seconde image s'affiche lorsque le curseur de la souris passe sur la premiÃ¨re image de l'Ã©lÃ©ment.
+[   8]InsÃ©rer ou effacer une image
 [   9]Changer la langue
-[  10]Elément
+[  10]ElÃ©ment
 [  11]Url
-[  12]Ajouter un élément
+[  12]Ajouter un Ã©lÃ©ment
 [  13]Pour toutes les langues
-[  14]Fermez la fenètre
+[  14]Fermez la fenÃ¨tre
 [  15]pour la langue
-[  16]Ajouter un séparateur
+[  16]Ajouter un sÃ©parateur
 [  17]Langue:
-[  19]Insérer ou effacer une seconde image
-[  22]Modifier l'élément
-[  23]Effacer l'élément
+[  19]InsÃ©rer ou effacer une seconde image
+[  22]Modifier l'Ã©lÃ©ment
+[  23]Effacer l'Ã©lÃ©ment
 [  30]Intervertir avec le suivant
-[  31]Intervertir avec le précédent
+[  31]Intervertir avec le prÃ©cÃ©dent

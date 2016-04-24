@@ -7,7 +7,9 @@ class SmsDB {
   var $dao;
 
   function SmsDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SMS;
 

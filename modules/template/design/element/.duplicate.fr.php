@@ -1,6 +1,6 @@
-[   0]Dupliquer un élément
+[   0]Dupliquer un Ã©lÃ©ment
 [   1]Type:
-[   2]Veuillez choisir un conteneur dans lequel dupliquer l'élément.
+[   2]Veuillez choisir un conteneur dans lequel dupliquer l'Ã©lÃ©ment.
 [   3]Conteneur:
-[   4]Le conteneur de destination qui va recevoir l'élément.
-[   7]Dupliquer l'élément?
+[   4]Le conteneur de destination qui va recevoir l'Ã©lÃ©ment.
+[   7]Dupliquer l'Ã©lÃ©ment?

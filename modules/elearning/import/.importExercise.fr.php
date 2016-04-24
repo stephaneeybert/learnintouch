@@ -1,9 +1,9 @@
 [   0]Importer un exercice
 [   1]Nom:
 [   2]Description:
-[   3]Un exercice avec ce nom existe déjà.
-[   4]L'exercice n'a pas pu être accédé.
-[   5]L'exercice a été importé avec succès.
-[   6]L'exercice n'a pas pu ëtre importé.
+[   3]Un exercice avec ce nom existe dÃ©jÃ .
+[   4]L'exercice n'a pas pu Ãªtre accÃ©dÃ©.
+[   5]L'exercice a Ã©tÃ© importÃ© avec succÃ¨s.
+[   6]L'exercice n'a pas pu Ã«tre importÃ©.
 [   7]Exercice:
-[   8]Voir l'exercice importé
+[   8]Voir l'exercice importÃ©

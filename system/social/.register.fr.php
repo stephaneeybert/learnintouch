@@ -5,11 +5,11 @@
 [   4]L'adresse email est requise.
 [   5]Le format de l'adresse email est invalide.
 [   6]S'enregistrer...
-[   7]Le prénom est requis.
+[   7]Le prÃ©nom est requis.
 [   8]Le nom de famille est requis.
-[   9]Prénom: *
+[   9]PrÃ©nom: *
 [  10]Nom: *
-[  11]Vous ëtes connecté avec votre compte Facebook.
-[  12]Vous ëtes connecté avec votre compte LinkedIn.
-[  13]Vous ëtes connecté avec votre compte Google.
-[  14]Vous ëtes connecté avec votre compte Twitter.
+[  11]Vous Ã«tes connectÃ© avec votre compte Facebook.
+[  12]Vous Ã«tes connectÃ© avec votre compte LinkedIn.
+[  13]Vous Ã«tes connectÃ© avec votre compte Google.
+[  14]Vous Ã«tes connectÃ© avec votre compte Twitter.

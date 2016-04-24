@@ -106,11 +106,6 @@ class LexiconImportUtils extends ContentImportUtils {
       $explanation = $lexiconEntryNode->getAttribute("explanation");
       $image = $lexiconEntryNode->getAttribute("image");
 
-      $lexiconEntryId = utf8_decode($lexiconEntryId);
-      $name = utf8_decode($name);
-      $explanation = utf8_decode($explanation);
-      $image = utf8_decode($image);
-
       // Create the lexicon entry
       $lexiconEntry = new LexiconEntry();
       $lexiconEntry->setName($name);

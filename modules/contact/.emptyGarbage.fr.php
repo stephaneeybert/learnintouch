@@ -1,2 +1,2 @@
 [   0]Vider la corbeille
-[   2]Effacer définitivement tous les messages de la corbeille?
+[   2]Effacer dÃ©finitivement tous les messages de la corbeille?

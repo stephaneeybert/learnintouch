@@ -8,10 +8,6 @@ LibHtml::preventCaching();
 $elearningQuestionId = LibEnv::getEnvHttpGET("elearningQuestionId");
 $elearningExercisePageId = LibEnv::getEnvHttpGET("elearningExercisePageId");
 
-// An ajax request parameter value is UTF-8 encoded
-$elearningQuestionId = utf8_decode($elearningQuestionId);
-$elearningExercisePageId = utf8_decode($elearningExercisePageId);
-
 $moved = false;
 
 if ($elearningQuestion = $elearningQuestionUtils->selectById($elearningQuestionId)) {

@@ -1,28 +1,28 @@
 [   0]Les cours du professeur
-[   1]Ajouter une leçon
+[   1]Ajouter une leÃ§on
 [   2]Ajouter un cours
 [   3]Modifier l'exercice
 [   4]Composer l'exercice
-[   5]Modifier la leçon
-[   6]Composer la leçon
+[   5]Modifier la leÃ§on
+[   6]Composer la leÃ§on
 [   7]Modifier le cours
 [   8]Ajouter un exercice
 [   9]Enlever du cours
 [  10]Effacer l'exercice
-[  11]Effacer la leçon
+[  11]Effacer la leÃ§on
 [  12]Voir l'exercice
-[  13]Voir la leçon
+[  13]Voir la leÃ§on
 [  14]Imprimer l'exercice
-[  15]Imprimer la leçon
+[  15]Imprimer la leÃ§on
 [  16]Envoyer par email
-[  17]Ajouter la leçon à un cours
-[  18]Ajouter l'exercice à un cours
-[  19]Déplacer après
+[  17]Ajouter la leÃ§on Ã  un cours
+[  18]Ajouter l'exercice Ã  un cours
+[  19]DÃ©placer aprÃ¨s
 [  20]Un cours
-[  21]Une leçon du cours
+[  21]Une leÃ§on du cours
 [  22]Un exercice du cours
-[  23]Un exercice de la leçon
-[  24]Un cours est composé d'une série de leçons et exercices.\n\nPar exemple, un cours peut être "Français pour débutants".\n\nAvant d'ajouter des leçons et des exercices à un cours, le cours doit être créé.\n\nVeuillez cliquer sur l'icône pour ajouter un cours.
-[  25]Vous n'avez pas encore créé de cours.
+[  23]Un exercice de la leÃ§on
+[  24]Un cours est composÃ© d'une sÃ©rie de leÃ§ons et exercices.\n\nPar exemple, un cours peut Ãªtre "FranÃ§ais pour dÃ©butants".\n\nAvant d'ajouter des leÃ§ons et des exercices Ã  un cours, le cours doit Ãªtre crÃ©Ã©.\n\nVeuillez cliquer sur l'icÃ´ne pour ajouter un cours.
+[  25]Vous n'avez pas encore crÃ©Ã© de cours.
 [  26]Vous pouvez
-[  27]créer un cours.
+[  27]crÃ©er un cours.

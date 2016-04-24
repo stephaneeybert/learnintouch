@@ -13,9 +13,6 @@ if (!$lexiconEntryId) {
   return;
 }
 
-// Ajax treats its data as UTF-8
-$pageUrl = utf8_decode($pageUrl);
-
 if (!$lexiconEntry = $lexiconEntryUtils->selectById($lexiconEntryId)) {
   $websiteName = $profileUtils->getProfileValue("website.name");
   $websiteEmail = $profileUtils->getProfileValue("website.email");

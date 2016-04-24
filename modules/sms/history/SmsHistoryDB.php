@@ -7,7 +7,9 @@ class SmsHistoryDB {
   var $dao;
 
   function SmsHistoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SMS_HISTORY;
 

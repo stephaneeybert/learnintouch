@@ -1,1 +1,1 @@
-[   0]Le participant n'a pas encore commencé l'exercice.
+[   0]Le participant n'a pas encore commencÃ© l'exercice.

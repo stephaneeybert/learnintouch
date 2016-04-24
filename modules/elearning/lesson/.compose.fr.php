@@ -1,26 +1,26 @@
-[   0]Composer une leçon
+[   0]Composer une leÃ§on
 [   1]Intervertir avec le paragraphe suivant
 [   2]Paragraphe
 [   3]Exercice
-[   4]Leçon:
+[   4]LeÃ§on:
 [   5]Titre
-[   6]Modèle:
+[   6]ModÃ¨le:
 [   7]Choisir une rubrique pour le paragraphe...
-[   8]Effacer le paragraphe de leçon
-[   9]Intervertir avec le paragraphe précédent
+[   8]Effacer le paragraphe de leÃ§on
+[   9]Intervertir avec le paragraphe prÃ©cÃ©dent
 [  10]Rubrique
-[  11]Imprimer la leçon
-[  12]Composer le modèle de leçon
-[  13]Ajouter un paragraphe de leçon
-[  14]Modifier les instructions de la leçon
-[  15]Etes vous sur de vouloir EFFACER ce paragraphe de leçon ?
-[  16]Ajouter un paragraphe à la rubrique
+[  11]Imprimer la leÃ§on
+[  12]Composer le modÃ¨le de leÃ§on
+[  13]Ajouter un paragraphe de leÃ§on
+[  14]Modifier les instructions de la leÃ§on
+[  15]Etes vous sur de vouloir EFFACER ce paragraphe de leÃ§on ?
+[  16]Ajouter un paragraphe Ã  la rubrique
 [  17]Ajouter un paragraphe
-[  18]Modifier la leçon
-[  19]Modifier l'instroduction de la leçon
+[  18]Modifier la leÃ§on
+[  19]Modifier l'instroduction de la leÃ§on
 [  20]Modifier le paragraphe
 [  21]Modifier le texte du paragraphe
-[  29]Une leçon est composée d'une introduction et d'une série de paragraphes.\n\nUn paragraphe de leçon peut être composé d'un titre, d'un en-tête, d'un corps, et d'un pied de paragraphe et d'un lien vers un exercice.\n\nLors d'une leçon, par défaut, tous les paragraphes sont affichés sur une page.
-[  34]Voir la leçon
-[  41]Télécharger ou effacer une image ou un fichier Flash
-[  42]Télécharger ou effacer un fichier audio ou Flash
+[  29]Une leÃ§on est composÃ©e d'une introduction et d'une sÃ©rie de paragraphes.\n\nUn paragraphe de leÃ§on peut Ãªtre composÃ© d'un titre, d'un en-tÃªte, d'un corps, et d'un pied de paragraphe et d'un lien vers un exercice.\n\nLors d'une leÃ§on, par dÃ©faut, tous les paragraphes sont affichÃ©s sur une page.
+[  34]Voir la leÃ§on
+[  41]TÃ©lÃ©charger ou effacer une image ou un fichier Flash
+[  42]TÃ©lÃ©charger ou effacer un fichier audio ou Flash

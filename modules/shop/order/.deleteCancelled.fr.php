@@ -1,6 +1,6 @@
-[   0]Effacer les commandes annulées
+[   0]Effacer les commandes annulÃ©es
 [   1]Effacer ces commandes
-[   2]Seules les commandes avec un statut annulé peuvent être effacées.\n\nToutes les autres commandes ne seront pas effacées.
+[   2]Seules les commandes avec un statut annulÃ© peuvent Ãªtre effacÃ©es.\n\nToutes les autres commandes ne seront pas effacÃ©es.
 [   3]Nom
 [   4]Date de commande
-[   5]Numéro de commande
+[   5]NumÃ©ro de commande

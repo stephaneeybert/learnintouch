@@ -1,6 +1,6 @@
-[   0]Sélectionner un lieu
+[   0]SÃ©lectionner un lieu
 [   6]Pays:
-[   3]Région:
-[   4]Département
+[   3]RÃ©gion:
+[   4]DÃ©partement
 [   5]Code postal:
-[   1]Pour sélectionner un lieu, veuillez choisir un pays, puis une région, puis un département et enfin un code postal.
+[   1]Pour sÃ©lectionner un lieu, veuillez choisir un pays, puis une rÃ©gion, puis un dÃ©partement et enfin un code postal.

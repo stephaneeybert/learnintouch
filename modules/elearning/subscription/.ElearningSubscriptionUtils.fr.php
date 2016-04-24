@@ -1,5 +1,5 @@
 [   0]Mes participants
-[   1]Imprimer le graphe des résultats
+[   1]Imprimer le graphe des rÃ©sultats
 [   2]Il n'y a pas d'inscriptions de participants.
 [   3]Session:
 [   4]Cours:

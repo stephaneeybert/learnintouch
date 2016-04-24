@@ -1,10 +1,10 @@
-[   0]Créer un mailing pour le journal
+[   0]CrÃ©er un mailing pour le journal
 [   1]Titre:
-[   2]Créer le mailing?
+[   2]CrÃ©er le mailing?
 [   3]Emission:
-[   4]Si vous avez des difficultés à lire cet email veuillez
+[   4]Si vous avez des difficultÃ©s Ã  lire cet email veuillez
 [   5]cliquer ici
-[   6]Pour envoyer en journal par mailing, un nouveau mailing doit d'abord être créé.\n\nEnsuite le mailing nouvellement créé peut être envoyé.
-[   7]Pour arrêter de recevoir nos mailings
-[   8]Lien de désinscription:
-[   9]Lors de la création du contenu du mailing, il est possible d'ajouter en bas du contenu, un lien vers une page permettant au destinataire de se désinscrire du système de mailing.\n\nDans ce cas, si le récipient clic sur ce lien, alors il sera désinscrit et ne recevra plus de mailings.
+[   6]Pour envoyer en journal par mailing, un nouveau mailing doit d'abord Ãªtre crÃ©Ã©.\n\nEnsuite le mailing nouvellement crÃ©Ã© peut Ãªtre envoyÃ©.
+[   7]Pour arrÃªter de recevoir nos mailings
+[   8]Lien de dÃ©sinscription:
+[   9]Lors de la crÃ©ation du contenu du mailing, il est possible d'ajouter en bas du contenu, un lien vers une page permettant au destinataire de se dÃ©sinscrire du systÃ¨me de mailing.\n\nDans ce cas, si le rÃ©cipient clic sur ce lien, alors il sera dÃ©sinscrit et ne recevra plus de mailings.

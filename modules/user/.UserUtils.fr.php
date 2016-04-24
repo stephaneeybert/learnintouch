@@ -1,40 +1,40 @@
 [   0]Connexion
-[   1]Déconnexion
+[   1]DÃ©connexion
 [   2]Auto inscription:
 [   3]Mot de passe
 [   4]Mon profil
-[   5]Par défaut un utilisateur ne peut pas s'inscrire dans le système.\n\nSeul un administrateur peut inscrire un utilisateur.\n\nMais pour faciliter la gestion des utilisateurs du site web, il est possible de laisser les utilisateurs s'inscrire, et cela sans l'intervention d'un administrateur.
+[   5]Par dÃ©faut un utilisateur ne peut pas s'inscrire dans le systÃ¨me.\n\nSeul un administrateur peut inscrire un utilisateur.\n\nMais pour faciliter la gestion des utilisateurs du site web, il est possible de laisser les utilisateurs s'inscrire, et cela sans l'intervention d'un administrateur.
 [   6]Inscription
-[   7]Validité du compte (semaines):
-[   8]Envoyer les paramètres de connexion:
-[   9]Lorsqu'un utilisateur s'inscrit dans le système, un email contenant son nom de connexion et son mot de passe peut lui être envoyé.\n\nCela permet à l'utilisateur de conserver ses paramètres de connexion.
-[  10]Code de sécurité d'enregistrement:
-[  11]Lorsqu'un utilisateur s'enregistre dans le système, il peut lui être demandé de saisir un code.\n\nParce que ce code est affiché dans une image, il peut seulement être lu par une personne.\n\nCe mécanisme de sécurité permet d'éviter les inscriptions automatiques des robots du web.
+[   7]ValiditÃ© du compte (semaines):
+[   8]Envoyer les paramÃ¨tres de connexion:
+[   9]Lorsqu'un utilisateur s'inscrit dans le systÃ¨me, un email contenant son nom de connexion et son mot de passe peut lui Ãªtre envoyÃ©.\n\nCela permet Ã  l'utilisateur de conserver ses paramÃ¨tres de connexion.
+[  10]Code de sÃ©curitÃ© d'enregistrement:
+[  11]Lorsqu'un utilisateur s'enregistre dans le systÃ¨me, il peut lui Ãªtre demandÃ© de saisir un code.\n\nParce que ce code est affichÃ© dans une image, il peut seulement Ãªtre lu par une personne.\n\nCe mÃ©canisme de sÃ©curitÃ© permet d'Ã©viter les inscriptions automatiques des robots du web.
 [  12]Nombre d'utilisateurs par page:
-[  13]Pour éviter une liste d'utilisateurs trop longue, un nombre fixe d'utilisateurs est affiché par page.
-[  14]Il est possible de spécifier une période de validité des nouveaux comptes utilisateurs.\n\nLorsqu'un utilisateur S'EST ENREGISTRÉ LUI MÊME, il peut se connecter avec son mot de passe durant une certaine période seulement.\n\nDurant cette période un administrateur pourra confirmer l'enregistrement de l'utilisateur et la connexion de l'utilisateur ne sera ainsi plus limitée dans le temps.\n\nMais si le compte de l'utilisateur n'est pas confirmé par un administrateur à temps alors l'utilisateur ne pourra plus se connecter lorsque cette période prendra fin.\n\nSi cette période est nulle alors l'utilisateur qui s'est enregistré lui même ne pourra pas se connecter immédiatement après son enregistrement et devra attendra la confirmation de son compte par un administrateur avant de pouvoir se connecter.\n\nCette période est exprimée en semaines.
+[  13]Pour Ã©viter une liste d'utilisateurs trop longue, un nombre fixe d'utilisateurs est affichÃ© par page.
+[  14]Il est possible de spÃ©cifier une pÃ©riode de validitÃ© des nouveaux comptes utilisateurs.\n\nLorsqu'un utilisateur S'EST ENREGISTRÃ‰ LUI MÃŠME, il peut se connecter avec son mot de passe durant une certaine pÃ©riode seulement.\n\nDurant cette pÃ©riode un administrateur pourra confirmer l'enregistrement de l'utilisateur et la connexion de l'utilisateur ne sera ainsi plus limitÃ©e dans le temps.\n\nMais si le compte de l'utilisateur n'est pas confirmÃ© par un administrateur Ã  temps alors l'utilisateur ne pourra plus se connecter lorsque cette pÃ©riode prendra fin.\n\nSi cette pÃ©riode est nulle alors l'utilisateur qui s'est enregistrÃ© lui mÃªme ne pourra pas se connecter immÃ©diatement aprÃ¨s son enregistrement et devra attendra la confirmation de son compte par un administrateur avant de pouvoir se connecter.\n\nCette pÃ©riode est exprimÃ©e en semaines.
 [  15]Affichage du lien profil:
-[  16]Par défaut, le nom d'utilisateur est le lien vers la page du profil utilisateur.\n\nMais un lien spécifique peut aussi être affiché.
+[  16]Par dÃ©faut, le nom d'utilisateur est le lien vers la page du profil utilisateur.\n\nMais un lien spÃ©cifique peut aussi Ãªtre affichÃ©.
 [  17]Affichage du lien mot de passe:
-[  18]Par défaut, aucun lien vers la page de changement du mot de passe de l'utilisateur n'est affiché.\n\nMais un lien peut être affiché.
+[  18]Par dÃ©faut, aucun lien vers la page de changement du mot de passe de l'utilisateur n'est affichÃ©.\n\nMais un lien peut Ãªtre affichÃ©.
 [  19]Valider le nom de domaine:
-[  20]Par défaut, le nom de domaine de l'email n'est pas validé lors de l'inscription d'un utilisateur.\n\nValider le nom de domaine assure que l'adresse email est hébergée par un serveur connecté à l'internet et enregistré avec un nom de domaine.
+[  20]Par dÃ©faut, le nom de domaine de l'email n'est pas validÃ© lors de l'inscription d'un utilisateur.\n\nValider le nom de domaine assure que l'adresse email est hÃ©bergÃ©e par un serveur connectÃ© Ã  l'internet et enregistrÃ© avec un nom de domaine.
 [  21]Largeur des images:
-[  22]La largeur d'image lorsqu'elles sont affichées sur un ordinateur.
-[  23]Durée de connexion automatique (semaines):
+[  22]La largeur d'image lorsqu'elles sont affichÃ©es sur un ordinateur.
+[  23]DurÃ©e de connexion automatique (semaines):
 [  24]Email:
 [  25]Mot de passe:
-[  26]Lorsqu'un utilisateur choisit de rester connecté, ses paramètres de connexion sont conservés pour une certaine période.\n\nCette période est exprimée en semaines.\n\nAprès la fin de cette période, l'utilisateur doit de nouveau se connecter manuellement.\n\nIl peut bien sûr de nouveau choisir de rester connecté pour une nouvelle période.
-[  27]Largeur des images (téléphone):
-[  28]La largeur d'image lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.
-[  29]Période de connexion par jeton (semaines):
-[  30]Certaines pages du site web peuvent être accedées par l'utilisateur en cliquant sur un lien contenant un jeton.\n\nPar exemple un email envoyé à un utilisateur peut contenir un lien pour voir une page protégée du site web.\n\nPour offrir un accès instantané à une telle page il est possible de ne pas obliger l'utilisateur à se connecter au site web avant d'accéder à la page.\n\nUne connexion est ainsi offerte dans le lien vers la page.\n\nPour des raisons de sécurité, il est possible de spécifier une période de validité pour cette connexion.\n\nAprès la fin de cette période la connexion expire et l'utilisateur doit se connecter manuellement pour accéder à la page.\n\nCette période est exprimée en semaines.\n\nSi aucune période n'est spécifiée alors la connexion dans le lien n'expirera jamais.
-[  31]Bloqué
+[  26]Lorsqu'un utilisateur choisit de rester connectÃ©, ses paramÃ¨tres de connexion sont conservÃ©s pour une certaine pÃ©riode.\n\nCette pÃ©riode est exprimÃ©e en semaines.\n\nAprÃ¨s la fin de cette pÃ©riode, l'utilisateur doit de nouveau se connecter manuellement.\n\nIl peut bien sÃ»r de nouveau choisir de rester connectÃ© pour une nouvelle pÃ©riode.
+[  27]Largeur des images (tÃ©lÃ©phone):
+[  28]La largeur d'image lorsqu'elles sont affichÃ©es sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.
+[  29]PÃ©riode de connexion par jeton (semaines):
+[  30]Certaines pages du site web peuvent Ãªtre accedÃ©es par l'utilisateur en cliquant sur un lien contenant un jeton.\n\nPar exemple un email envoyÃ© Ã  un utilisateur peut contenir un lien pour voir une page protÃ©gÃ©e du site web.\n\nPour offrir un accÃ¨s instantanÃ© Ã  une telle page il est possible de ne pas obliger l'utilisateur Ã  se connecter au site web avant d'accÃ©der Ã  la page.\n\nUne connexion est ainsi offerte dans le lien vers la page.\n\nPour des raisons de sÃ©curitÃ©, il est possible de spÃ©cifier une pÃ©riode de validitÃ© pour cette connexion.\n\nAprÃ¨s la fin de cette pÃ©riode la connexion expire et l'utilisateur doit se connecter manuellement pour accÃ©der Ã  la page.\n\nCette pÃ©riode est exprimÃ©e en semaines.\n\nSi aucune pÃ©riode n'est spÃ©cifiÃ©e alors la connexion dans le lien n'expirera jamais.
+[  31]BloquÃ©
 [  32]Permanent
 [  33]Votre mot de passe de
 [  34]Votre mot de passe est:
 [  35]Votre adresse email est:
-[  36]Un utilisateur s'est enregistré à
+[  36]Un utilisateur s'est enregistrÃ© Ã 
 [  37]Son compte utilisateur est valide jusqu'au
 [  38]Son compte utilisateur n'est pas encore valide.
 [  39]Inscription utilisateur
@@ -45,15 +45,15 @@
 [  44]cliquer ici
 [  45]pour rendre le compte utilisateur permanent.
 [  46]Connexion automatique:
-[  47]Lorsqu'un utilisateur s'inscrit dans le système, il doit ensuite se connecter pour accéder au contenu protégé.\n\nMais il peut aussi éviter cette demande de connexion après son inscription et profiter d'une connexion automatique.\n\nBien sûr, cette connexion automatique ne s'applique que lorsque l'utilisateur vient de s'enregistrer.
+[  47]Lorsqu'un utilisateur s'inscrit dans le systÃ¨me, il doit ensuite se connecter pour accÃ©der au contenu protÃ©gÃ©.\n\nMais il peut aussi Ã©viter cette demande de connexion aprÃ¨s son inscription et profiter d'une connexion automatique.\n\nBien sÃ»r, cette connexion automatique ne s'applique que lorsque l'utilisateur vient de s'enregistrer.
 [  48]Ou vous pouvez
 [  49]pour annuler le compte utilisateur.
 [  50]Mini formulaire de connexion:
-[  51]Par défaut, la mini connexion est affichée comme un lien vers la page de connexion.\n\nMais il est possible de l'afficher comme un mini formulaire avec deux champs de saisie, un pour l'adresse email et l'autre pour le mot de passe.
-[  52]Autoriser la connexion expirée:
-[  53]Par défaut, lorsque la connexion d'un utilisateur a une date d'expiration et que cette date est passée, l'utilisateur ne peut plus se connecter.\n\nDans ce cas, l'utilisateur n'est pas identifié et il ne peut pas accéder aux pages sécurisées du site web.\n\nMais il est possible d'autoriser l'utilisateur à se connecter même si la date d'expiration est passée.\n\nDans ce cas, l'utilisateur est identifié mais il ne peut toujours pas accéder aux pages sécurisées du site web.\n\nDans les deux cas, l'utilisateur ne peut pas accéder aux pages sécurisées du site web.
+[  51]Par dÃ©faut, la mini connexion est affichÃ©e comme un lien vers la page de connexion.\n\nMais il est possible de l'afficher comme un mini formulaire avec deux champs de saisie, un pour l'adresse email et l'autre pour le mot de passe.
+[  52]Autoriser la connexion expirÃ©e:
+[  53]Par dÃ©faut, lorsque la connexion d'un utilisateur a une date d'expiration et que cette date est passÃ©e, l'utilisateur ne peut plus se connecter.\n\nDans ce cas, l'utilisateur n'est pas identifiÃ© et il ne peut pas accÃ©der aux pages sÃ©curisÃ©es du site web.\n\nMais il est possible d'autoriser l'utilisateur Ã  se connecter mÃªme si la date d'expiration est passÃ©e.\n\nDans ce cas, l'utilisateur est identifiÃ© mais il ne peut toujours pas accÃ©der aux pages sÃ©curisÃ©es du site web.\n\nDans les deux cas, l'utilisateur ne peut pas accÃ©der aux pages sÃ©curisÃ©es du site web.
 [  54]Confirmer l'inscription par email:
-[  55]Par défaut, l'adresse email saisie par l'utilisateur lors de son inscription, est considérée comme valide.\n\nMais il est possible de demander à l'utilisateur de confirmer son adresse email, afin de s'assurer que l'adresse email donnée est la sienne et non pas une fausse.\n\nDans ce cas, un email est envoyé à l'utilisateur après son inscription, contenant un lien qu'il doit cliquer pour confirmer son adresse email.
-[  56]Vous venez de vous inscrire à
-[  57]Veuillez cliquer sur le lien suivant pour confirmer votre adresse email et compléter votre inscription:
+[  55]Par dÃ©faut, l'adresse email saisie par l'utilisateur lors de son inscription, est considÃ©rÃ©e comme valide.\n\nMais il est possible de demander Ã  l'utilisateur de confirmer son adresse email, afin de s'assurer que l'adresse email donnÃ©e est la sienne et non pas une fausse.\n\nDans ce cas, un email est envoyÃ© Ã  l'utilisateur aprÃ¨s son inscription, contenant un lien qu'il doit cliquer pour confirmer son adresse email.
+[  56]Vous venez de vous inscrire Ã 
+[  57]Veuillez cliquer sur le lien suivant pour confirmer votre adresse email et complÃ©ter votre inscription:
 [  58]Auto connexion:

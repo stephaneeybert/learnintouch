@@ -1,9 +1,9 @@
 [   0]Les sites web
 [   1]Effacer le site web
-[   2]Créer un site web
+[   2]CrÃ©er un site web
 [   3]Nom
 [   4]Site web
-[   5]Durée
+[   5]DurÃ©e
 [   6]Modifier les informations
 [   7]Date d'ouverture
 [   8]Permissions d'utilisation des modules

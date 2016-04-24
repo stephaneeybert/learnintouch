@@ -1,11 +1,11 @@
 [   0]Formulaire:
 [   1]Ceci est un message factice de validation utilisateur.
 [   2]Email champs vides:
-[   3]Par défaut, les champs laissés vides, ne sont pas affichés dans la réponse email.\n\nMais il est possible de les afficher.
-[  23]Code de sécurité: *
-[  24]Veuillez saisir le code de sécurité affiché.\n\nUn code de sécurité est requis pour s'assurer que l'écriture d'un message de contact est faite par une personne et non pas par un programme.\n\nParce qu'un programme ne peut pas lire un nombre affiché sous forme graphique, seul une vrai personne peut ecrire un message de contact.
-[  22]Veuillez saisir ce code de sécurité
+[   3]Par dÃ©faut, les champs laissÃ©s vides, ne sont pas affichÃ©s dans la rÃ©ponse email.\n\nMais il est possible de les afficher.
+[  23]Code de sÃ©curitÃ©: *
+[  24]Veuillez saisir le code de sÃ©curitÃ© affichÃ©.\n\nUn code de sÃ©curitÃ© est requis pour s'assurer que l'Ã©criture d'un message de contact est faite par une personne et non pas par un programme.\n\nParce qu'un programme ne peut pas lire un nombre affichÃ© sous forme graphique, seul une vrai personne peut ecrire un message de contact.
+[  22]Veuillez saisir ce code de sÃ©curitÃ©
 [  40]Largeur de l'image d'un formulaire:
 [  41]La largeur de l'image d'un formulaire.
-[  42]Largeur de l'image d'un formulaire sur téléphones:
-[  43]La largeur de l'image d'un formulaire lorsqu'elle est affichée sur un téléphone ou un appareil portable à petit écran.
+[  42]Largeur de l'image d'un formulaire sur tÃ©lÃ©phones:
+[  43]La largeur de l'image d'un formulaire lorsqu'elle est affichÃ©e sur un tÃ©lÃ©phone ou un appareil portable Ã  petit Ã©cran.

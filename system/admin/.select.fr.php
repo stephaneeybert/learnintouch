@@ -1,4 +1,4 @@
-[   0]Sélectionner un administrateur
-[   1]Si la liste des administrateurs est trop longue alors il est nécéssaire de faire une recherche afin de réduire la liste.
+[   0]SÃ©lectionner un administrateur
+[   1]Si la liste des administrateurs est trop longue alors il est nÃ©cÃ©ssaire de faire une recherche afin de rÃ©duire la liste.
 [   2]Administrateur:
 [   3]Chercher:

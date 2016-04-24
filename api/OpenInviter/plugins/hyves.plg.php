@@ -121,7 +121,7 @@ class hyves extends openinviter_base
 			$doc=new DOMDocument();libxml_use_internal_errors(true);if (!empty($res)) $doc->loadHTML($res);libxml_use_internal_errors(false);
 			$xpath=new DOMXPath($doc);$query="//a[@class='memberlistname'][not(contains(@href,'".$this->service_user."'))]";$data=$xpath->query($query);
 			foreach($data as $node) 
-				{$href=$node->getAttribute('href');$name=(string)$node->nodeValue;if (!empty($name)) $name=$name[0].$this->getElementString($name,$name[0],'(');if (!empty($href)) {$contacts[$href]=!empty($name)?utf8_decode($name):false;$hasContacts=true;}}
+				{$href=$node->getAttribute('href');$name=(string)$node->nodeValue;if (!empty($name)) $name=$name[0].$this->getElementString($name,$name[0],'(');if (!empty($href)) {$contacts[$href]=!empty($name)?$name:false;$hasContacts=true;}}
 			$page=$page+10;
 			$urlNext="http://www.hyves.nl/mini/hyver/{$this->service_user}/friends/?&startpos={$page}";
 			$res=$this->get($urlNext,true);

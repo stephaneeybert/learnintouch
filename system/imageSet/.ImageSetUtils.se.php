@@ -1,0 +1,2 @@
+[   0]Bakgrundsfärg för bild
+[   1]Alla bilder i de olika bildgrupperna har transparant bakgrund.\n\nEn del webbläsare, exempelvis Internet Explorer visar inte transparant bakgrundsbilder korrekt.\n\nFör att lösa detta problem, så kan bilderna ändras för att korrekt visa bakgrundsbilder.\n\nDu kan välja vilken färg du vill.\n\nFärgkoden kan väljas in färgpaletten.\n\nFärgpaletten erbjuder olika uppsättningar med färg, men vilken annan färg kan användas.\n\nFärgkoden kan matas in manuellt.\n\nMata in korrekt färgkod, färgkoden består av 6 tecken mellan 0 till 9 och A till F.

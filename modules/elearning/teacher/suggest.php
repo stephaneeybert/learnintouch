@@ -10,8 +10,6 @@ if (!$typedInString) {
   return;
 }
 
-$typedInString = utf8_decode($typedInString);
-
 // The name is stored in the database in a html encoded format
 $typedInString = LibString::cleanString($typedInString);
 

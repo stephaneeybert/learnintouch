@@ -7,7 +7,9 @@ class TemplateElementLanguageDB {
   var $dao;
 
   function TemplateElementLanguageDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_TEMPLATE_ELEMENT_LANGUAGE;
 

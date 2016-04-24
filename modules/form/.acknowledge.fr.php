@@ -1,1 +1,1 @@
-[   0]Le formulaire a été reçu.\n\nMerci pour votre participation!
+[   0]Le formulaire a Ã©tÃ© reÃ§u.\n\nMerci pour votre participation!

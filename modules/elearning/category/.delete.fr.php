@@ -1,4 +1,4 @@
-[   0]Effacer une catégorie
+[   0]Effacer une catÃ©gorie
 [   1]Nom:
 [   5]Description:
-[   2]Effacer la catégorie?
+[   2]Effacer la catÃ©gorie?

@@ -1,6 +1,6 @@
-[   8]Un problème est apparut et la base de données n'a PAS pu être sauvegardé.
+[   8]Un problÃ¨me est apparut et la base de donnÃ©es n'a PAS pu Ãªtre sauvegardÃ©.
 [   9]Contactez le responsable du site web
 [   1]Sauvegarde du site web
-[   2]Une sauvegarde du site web a été faite.
-[   3]La sauvegarde peut être téléchargée à
+[   2]Une sauvegarde du site web a Ã©tÃ© faite.
+[   3]La sauvegarde peut Ãªtre tÃ©lÃ©chargÃ©e Ã 
 [   4]cette page

@@ -11,9 +11,6 @@ if (!$searchText) {
   return;
 }
 
-// Ajax treats its data as UTF-8
-$searchText = utf8_decode($searchText);
-
 // The name is stored in the database in a html encoded format
 $searchText = LibString::cleanString($searchText);
 $lexiconSearchId = LibString::cleanString($lexiconSearchId);

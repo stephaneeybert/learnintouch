@@ -7,7 +7,9 @@ class PhotoDB {
   var $dao;
 
   function PhotoDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_PHOTO;
 

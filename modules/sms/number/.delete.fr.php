@@ -1,3 +1,3 @@
-[   0]Effacer un numéro
-[   1]Numéro:
-[   2]Effacer le numéro?
+[   0]Effacer un numÃ©ro
+[   1]NumÃ©ro:
+[   2]Effacer le numÃ©ro?

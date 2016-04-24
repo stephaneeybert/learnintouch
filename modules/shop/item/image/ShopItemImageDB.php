@@ -7,7 +7,9 @@ class ShopItemImageDB {
   var $dao;
 
   function ShopItemImageDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SHOP_ITEM_IMAGE;
 

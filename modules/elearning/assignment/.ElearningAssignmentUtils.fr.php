@@ -1,3 +1,3 @@
-[   0]Résultats des devoirs
+[   0]RÃ©sultats des devoirs
 [   1]Participant:
 [   2]Classe:

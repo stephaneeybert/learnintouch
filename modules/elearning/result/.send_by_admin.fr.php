@@ -1,11 +1,11 @@
-[   0]Envoyer les résultats d'exercice
+[   0]Envoyer les rÃ©sultats d'exercice
 [   1]De l'exercice:
 [   3]Fait par:
 [   4]Le:
-[   5]À:
-[   2]Envoyer les résultats de l'exercice?
+[   5]Ã€:
+[   2]Envoyer les rÃ©sultats de l'exercice?
 [   8]Exercice
-[   6]Les résultats de l'exercice vous ont été envoyé.
+[   6]Les rÃ©sultats de l'exercice vous ont Ã©tÃ© envoyÃ©.
 [   9]Pour faire l'exercice, veuillez cliquer sur son nom:
 [   7]Salutations
 [  40]L'adresse email est requise.

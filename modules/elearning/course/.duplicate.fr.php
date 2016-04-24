@@ -3,4 +3,4 @@
 [   5]Description:
 [   7]Dupliquer le cours?
 [   6]Le nom est requis.
-[   9]Un cours avec ce nom existe dÈj‡.
+[   9]Un cours avec ce nom existe d√©j√†.

@@ -1,2 +1,2 @@
-[   0]Catégorie de liens:
-[   1]Liens favoris - Catégorie:
+[   0]CatÃ©gorie de liens:
+[   1]Liens favoris - CatÃ©gorie:

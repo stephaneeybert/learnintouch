@@ -1,5 +1,5 @@
-[   0]Sauvegarder la base de données
-[   7]La base de données commune n'a PAS été sauvegardée
-[   8]Un problème est apparut et la base de données commune n'a PAS été sauvegardée.
+[   0]Sauvegarder la base de donnÃ©es
+[   7]La base de donnÃ©es commune n'a PAS Ã©tÃ© sauvegardÃ©e
+[   8]Un problÃ¨me est apparut et la base de donnÃ©es commune n'a PAS Ã©tÃ© sauvegardÃ©e.
 [   9]Contactez le responsable du site web
-[  10]Seul un super administrateur peut sauvegarder la base de données commune.
+[  10]Seul un super administrateur peut sauvegarder la base de donnÃ©es commune.

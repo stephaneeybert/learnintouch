@@ -7,10 +7,6 @@ LibHtml::preventCaching();
 $facebookUserId = LibEnv::getEnvHttpGET("facebookUserId");
 $noRedirect = LibEnv::getEnvHttpGET("noRedirect");
 
-// An ajax request parameter value is UTF-8 encoded
-$facebookUserId = utf8_decode($facebookUserId);
-$noRedirect = utf8_decode($noRedirect);
-
 $userId = '';
 $postUserLoginUrl = '';
 $email = '';

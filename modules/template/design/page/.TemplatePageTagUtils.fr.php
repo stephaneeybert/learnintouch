@@ -2,7 +2,7 @@
 [   1]Le titre
 [   2]Une ligne de commentaire
 [   3]Un message d'avertissement
-[   4]Un libellé pour un champ de formulaire
+[   4]Un libellÃ© pour un champ de formulaire
 [   5]Le contenu d'une bulle d'aide
 [   6]Le bouton de validation
 [   7]Le bouton d'annulation

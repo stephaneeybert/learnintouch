@@ -1,4 +1,4 @@
-[   0]Sélectionner une leçon ou un exercice
-[   1]La leçon ou l'exercice est requis.
+[   0]SÃ©lectionner une leÃ§on ou un exercice
+[   1]La leÃ§on ou l'exercice est requis.
 [   2]Exercice:
-[   3]Leçon:
+[   3]LeÃ§on:

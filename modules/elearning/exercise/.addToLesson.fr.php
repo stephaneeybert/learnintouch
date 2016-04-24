@@ -1,6 +1,6 @@
-[   0]Ajouter un exercice à une leçon
-[   1]Une leçon est composée d'une série de paragraphes.\n\nChaque paragraphe d'une leçon peut afficher un lien vers un exercice.
-[   2]Paragraphe de leçon:
+[   0]Ajouter un exercice Ã  une leÃ§on
+[   1]Une leÃ§on est composÃ©e d'une sÃ©rie de paragraphes.\n\nChaque paragraphe d'une leÃ§on peut afficher un lien vers un exercice.
+[   2]Paragraphe de leÃ§on:
 [   4]Nom:
 [   5]Description:
-[   6]Le paragraphe de la leçon est requis.
+[   6]Le paragraphe de la leÃ§on est requis.

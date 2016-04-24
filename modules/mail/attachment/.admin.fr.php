@@ -1,4 +1,4 @@
-[   0]Les fichiers attachés
+[   0]Les fichiers attachÃ©s
 [   1]Sujet:
 [   2]Description:
 [   3]Attacher un fichier...

@@ -1,17 +1,17 @@
 [   0]Les albums de photos
-[   1]Créer une photo
+[   1]CrÃ©er une photo
 [   2]Modifier la photo
 [   3]Effacer la photo
-[   4]Télécharger un album complet
+[   4]TÃ©lÃ©charger un album complet
 [   5]Les formats de photos
 [   6]Les albums
 [   7]Changer l'image
 [   9]Album:
 [  10]Intervertir avec le suivant
-[  11]Intervertir avec le précédent
-[  12]Référence:
-[  13]Les albums de photos permettent l'affichage de photos.\n\nLes photos sont rangées dans des albums et elles peuvent être affichées dans des diaporamas.
+[  11]Intervertir avec le prÃ©cÃ©dent
+[  12]RÃ©fÃ©rence:
+[  13]Les albums de photos permettent l'affichage de photos.\n\nLes photos sont rangÃ©es dans des albums et elles peuvent Ãªtre affichÃ©es dans des diaporamas.
 [  14]Nom:
-[  20]Les préférences
+[  20]Les prÃ©fÃ©rences
 [  70]Chercher:
-[  71]Il peut devenir fastidieux d'avoir à naviguer dans la liste des photos pour retrouver une photo particulière.\n\nPour éviter cela, il est possible de saisir tout ou partie de la référence, du nom, de la description, du commentaire, du prix d'une photo et de faire une recherche basée sur le texte saisi.\n\nLe résultat de la recherche affichera toutes les photos correspondant au texte recherché.
+[  71]Il peut devenir fastidieux d'avoir Ã  naviguer dans la liste des photos pour retrouver une photo particuliÃ¨re.\n\nPour Ã©viter cela, il est possible de saisir tout ou partie de la rÃ©fÃ©rence, du nom, de la description, du commentaire, du prix d'une photo et de faire une recherche basÃ©e sur le texte saisi.\n\nLe rÃ©sultat de la recherche affichera toutes les photos correspondant au texte recherchÃ©.

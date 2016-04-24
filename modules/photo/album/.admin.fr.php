@@ -1,5 +1,5 @@
 [   0]Les albums de photos
-[   1]Créer un album
+[   1]CrÃ©er un album
 [   2]Modifier l'album
 [   3]Effacer l'album
 [   4]Lieu
@@ -9,5 +9,5 @@
 [   8]Les formats de photos de l'album
 [   9]Les photos de l'album
 [  10]Intervertir avec le suivant
-[  11]Intervertir avec le précédent
-[  12]Télécharger un album complet
+[  11]Intervertir avec le prÃ©cÃ©dent
+[  12]TÃ©lÃ©charger un album complet

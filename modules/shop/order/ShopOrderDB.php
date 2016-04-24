@@ -7,7 +7,9 @@ class ShopOrderDB {
   var $dao;
 
   function ShopOrderDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_SHOP_ORDER;
 

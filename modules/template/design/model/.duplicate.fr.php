@@ -1,7 +1,7 @@
-[   0]Dupliquer un modèle
+[   0]Dupliquer un modÃ¨le
 [   1]Nom:
 [   5]Description:
-[   7]Dupliquer le modèle?
-[   2]Le nom ne doit pas être un nombre.
+[   7]Dupliquer le modÃ¨le?
+[   2]Le nom ne doit pas Ãªtre un nombre.
 [   3]Le nom est requis.
-[   4]Un modèle avec ce nom existe déjà.
+[   4]Un modÃ¨le avec ce nom existe dÃ©jÃ .

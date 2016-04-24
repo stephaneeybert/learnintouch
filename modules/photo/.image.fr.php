@@ -1,11 +1,11 @@
-[   0]Télécharger une image
+[   0]TÃ©lÃ©charger une image
 [   6]Image:
 [   5]Album:
 [   3]Nom de l'image:
-[   2]Sélectionner une image:
-[   8]Il n'y a actuellement pas d'albums de photos.\n\nVeuillez créer un album de photo avant d'insérer des photos.
-[   4]Veuillez sélectionner un album de photos pour télécharger la photo.\n\nUne photo doit appartenir à un album de photos.\n\nSi aucun album de photos n'est sélectionné alors la photo ne peut pas être téléchargée.
-[   1]Les images 'gif' ne sont pas supportées.\n\nCe format d'image est protégé par un brevet.\n\nVeuillez transformer vos images 'gif' en images 'jpg'.
-[   7]Redimensioner à la largeur:
-[   9]Lors du téléchargement vers le serveur, une image peut être redimensionée à une certaine largeur.\n\nSi aucune largeur n'est spécifiée. alors l'image n'est pas redimensionée.\n\nLa largeur par défaut est prise de la plus grande largeur d'image dans les préférences.
+[   2]SÃ©lectionner une image:
+[   8]Il n'y a actuellement pas d'albums de photos.\n\nVeuillez crÃ©er un album de photo avant d'insÃ©rer des photos.
+[   4]Veuillez sÃ©lectionner un album de photos pour tÃ©lÃ©charger la photo.\n\nUne photo doit appartenir Ã  un album de photos.\n\nSi aucun album de photos n'est sÃ©lectionnÃ© alors la photo ne peut pas Ãªtre tÃ©lÃ©chargÃ©e.
+[   1]Les images 'gif' ne sont pas supportÃ©es.\n\nCe format d'image est protÃ©gÃ© par un brevet.\n\nVeuillez transformer vos images 'gif' en images 'jpg'.
+[   7]Redimensioner Ã  la largeur:
+[   9]Lors du tÃ©lÃ©chargement vers le serveur, une image peut Ãªtre redimensionÃ©e Ã  une certaine largeur.\n\nSi aucune largeur n'est spÃ©cifiÃ©e. alors l'image n'est pas redimensionÃ©e.\n\nLa largeur par dÃ©faut est prise de la plus grande largeur d'image dans les prÃ©fÃ©rences.
 

@@ -1,7 +1,7 @@
-[   0]Les matières
-[   1]Créer une matière
-[   2]Modifier la matière
-[   3]Effacer la matière
+[   0]Les matiÃ¨res
+[   1]CrÃ©er une matiÃ¨re
+[   2]Modifier la matiÃ¨re
+[   3]Effacer la matiÃ¨re
 [   5]Nom
 [   6]Description
-[   7]Une matière est le type de contenu des cours.\n\nPar exemple, une matière peut être Français ou Anglais, etc...
+[   7]Une matiÃ¨re est le type de contenu des cours.\n\nPar exemple, une matiÃ¨re peut Ãªtre FranÃ§ais ou Anglais, etc...

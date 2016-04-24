@@ -1,4 +1,4 @@
-[   1]Fermer la fenètre
-[   5]Photo précédente
+[   1]Fermer la fenÃ¨tre
+[   5]Photo prÃ©cÃ©dente
 [   4]Photo suivante
 [   2]Description:

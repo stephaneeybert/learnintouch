@@ -1,2 +1,2 @@
-[   0]Désinscription des mailings
-[   1]Votre inscription aux mailings a été désactivée.\n\nVous ne recevrez plus de mailings de notre part tant que vous ne ré-activerez pas votre inscription.\n\nVous pouvez néanmoins à tout moment ré-activer votre inscription.
+[   0]DÃ©sinscription des mailings
+[   1]Votre inscription aux mailings a Ã©tÃ© dÃ©sactivÃ©e.\n\nVous ne recevrez plus de mailings de notre part tant que vous ne rÃ©-activerez pas votre inscription.\n\nVous pouvez nÃ©anmoins Ã  tout moment rÃ©-activer votre inscription.

@@ -1,2 +1,2 @@
-[   0]Sélectionner un formulaire
+[   0]SÃ©lectionner un formulaire
 [   2]Formulaire:

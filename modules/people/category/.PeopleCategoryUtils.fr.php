@@ -1,2 +1,2 @@
-[   0]Catégorie de gens:
-[   1]Les gens - Catégorie:
+[   0]CatÃ©gorie de gens:
+[   1]Les gens - CatÃ©gorie:

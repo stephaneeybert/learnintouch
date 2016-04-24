@@ -4,6 +4,6 @@
 [   3]A une valeur max de
 [   4]A une valeur min de
 [   5]Est une adresse email
-[   6]Est un numéro de carte bancaire
+[   6]Est un numÃ©ro de carte bancaire
 [   7]Est une date
 [   8]Est un nombre

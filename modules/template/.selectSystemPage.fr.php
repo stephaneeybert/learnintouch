@@ -1,2 +1,2 @@
-[   0]Sélectionner une page préformatée
+[   0]SÃ©lectionner une page prÃ©formatÃ©e
 [   2]Page:

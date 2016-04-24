@@ -1,7 +1,7 @@
 [   0]Administration du Site Web
 [   1]Le profil
 [   4]Les administrateurs
-[   5]Les références clients
+[   5]Les rÃ©fÃ©rences clients
 [   6]Le livre d'or
 [   7]Les utilisateurs
 [   9]Les liens favoris
@@ -19,35 +19,35 @@
 [  26]Les messages de contact
 [  28]Les documents
 [  30]La boutique
-[  33]Les modèles
+[  33]Les modÃ¨les
 [  34]L'intro Flash
 [  35]Les statistiques visiteurs
 [  36]La date et l'heure
-[  51]Cette page présente le menu principal de l'outil d'administration du site web.\n\nLe site web est composé de plusieurs modules\n\nChaque module est représenté dans cette page par une icône.
-[ 102]Les administrateurs sont les personnes qui créent et mettent à jour le site web.\n\nLe site web est composé de modules. Un administrateur ne peut opérer sur un module que si il en a la permission.
-[ 103]Les utilisateurs sont les visiteurs pouvant se connecter au site web.\n\nIls se sont enregistré eux-même ou ont été enregistré par un administrateur.\n\nIls peuvent se connecter au site web avec un nom de connexion et un mot de passe.\n\nUne fois qu'un utilisateur s'est connecté, il peut accéder au contenu protégé du site web.
-[ 105]Les pages web créées à l'aide d'un éditeur html sont affichées au sein des modèles.\n\nUne page web peut être composée de texte et d'images.\n\nLes pages web peuvent être rangées dans une arborescence de répertoires.
-[ 107]Le contenu du site web peut être affiché dans différentes langues.\n\nUn utilisateur visitant le site web peut choisir une langue dans laquelle les pages sont affichées.\n\nUne langue peut être désactivée si elle n'est pas utilisée.
-[ 108]Le profil du site web est un ensemble d'informations utilisées pour décrire et identifier le site web.\n\nCes informations sont aussi utilisées pour identifier le site web en cas de communication avec les utilisateurs visitant le site web.
-[ 109]Les gens sont les personnes membres de votre société ou organisation.\n\nCes gens ne sont pas nécessairement administrateurs du site web.\n\nIls peuvent être qui bon vous semble, comme des partenaires, des sponsors, des amis...\n\nChacun a un profil et peut avoir une photo.
-[ 110]Le livre d'or est la liste des messages écrits par les utilisateurs visitant le site web.\n\nSeuls les utilisateurs peuvent écrire dans le livre d'or.\n\nPour écrire un message dans le livre d'or, un utilisateur doit d'abord être connecté au site web.
-[ 111]Les liens favoris sont les adresses de vos sites web préférés.\n\nChaque lien a un nom et une adresse web.\n\nUn lien peut éventuellement avoir une image.
-[ 112]Les références clients sont les noms et adresses web de vos clients que vous souhaitez afficher sur votre site web comme une référence de votre service ou activité.\n\nUne référence client peut éventuellement avoir une image.
-[ 113]La plate-forme de cours est utilisée pour créer des cours, leçons et exercices.\n\nElle permet aux participants de réviser leurs leçons et de faire des exercices.\n\nLeurs résultats sont automatiquement enregistrés.\n\nElle facilite la communication entre les participants et leurs enseignants.
-[ 114]Le système d'envois d'emails peut envoyer un email à un ou plusieurs utilisateurs du site web.\n\nUn mailing peut être envoyé à une liste d'utilisateurs ou bien à tous les utilisateurs du site web.\n\nLe contenu du mailing peut présenter des informations spécifiques à chaque utilisateur, comme le nom, l'adresse email, etc...
-[ 115]Les albums de photos permettent l'affichage de photos.\n\nLes photos sont rangées dans des albums et elles peuvent être affichées dans des diaporamas.
-[ 116]Les journaux permettent la publication d'articles.\n\nUn journal est composé d'une série d'articles affichés au sein de rubriques.\n\nLa publication des journaux et des articles peut être programmée dans le temps.
+[  51]Cette page prÃ©sente le menu principal de l'outil d'administration du site web.\n\nLe site web est composÃ© de plusieurs modules\n\nChaque module est reprÃ©sentÃ© dans cette page par une icÃ´ne.
+[ 102]Les administrateurs sont les personnes qui crÃ©ent et mettent Ã  jour le site web.\n\nLe site web est composÃ© de modules. Un administrateur ne peut opÃ©rer sur un module que si il en a la permission.
+[ 103]Les utilisateurs sont les visiteurs pouvant se connecter au site web.\n\nIls se sont enregistrÃ© eux-mÃªme ou ont Ã©tÃ© enregistrÃ© par un administrateur.\n\nIls peuvent se connecter au site web avec un nom de connexion et un mot de passe.\n\nUne fois qu'un utilisateur s'est connectÃ©, il peut accÃ©der au contenu protÃ©gÃ© du site web.
+[ 105]Les pages web crÃ©Ã©es Ã  l'aide d'un Ã©diteur html sont affichÃ©es au sein des modÃ¨les.\n\nUne page web peut Ãªtre composÃ©e de texte et d'images.\n\nLes pages web peuvent Ãªtre rangÃ©es dans une arborescence de rÃ©pertoires.
+[ 107]Le contenu du site web peut Ãªtre affichÃ© dans diffÃ©rentes langues.\n\nUn utilisateur visitant le site web peut choisir une langue dans laquelle les pages sont affichÃ©es.\n\nUne langue peut Ãªtre dÃ©sactivÃ©e si elle n'est pas utilisÃ©e.
+[ 108]Le profil du site web est un ensemble d'informations utilisÃ©es pour dÃ©crire et identifier le site web.\n\nCes informations sont aussi utilisÃ©es pour identifier le site web en cas de communication avec les utilisateurs visitant le site web.
+[ 109]Les gens sont les personnes membres de votre sociÃ©tÃ© ou organisation.\n\nCes gens ne sont pas nÃ©cessairement administrateurs du site web.\n\nIls peuvent Ãªtre qui bon vous semble, comme des partenaires, des sponsors, des amis...\n\nChacun a un profil et peut avoir une photo.
+[ 110]Le livre d'or est la liste des messages Ã©crits par les utilisateurs visitant le site web.\n\nSeuls les utilisateurs peuvent Ã©crire dans le livre d'or.\n\nPour Ã©crire un message dans le livre d'or, un utilisateur doit d'abord Ãªtre connectÃ© au site web.
+[ 111]Les liens favoris sont les adresses de vos sites web prÃ©fÃ©rÃ©s.\n\nChaque lien a un nom et une adresse web.\n\nUn lien peut Ã©ventuellement avoir une image.
+[ 112]Les rÃ©fÃ©rences clients sont les noms et adresses web de vos clients que vous souhaitez afficher sur votre site web comme une rÃ©fÃ©rence de votre service ou activitÃ©.\n\nUne rÃ©fÃ©rence client peut Ã©ventuellement avoir une image.
+[ 113]La plate-forme de cours est utilisÃ©e pour crÃ©er des cours, leÃ§ons et exercices.\n\nElle permet aux participants de rÃ©viser leurs leÃ§ons et de faire des exercices.\n\nLeurs rÃ©sultats sont automatiquement enregistrÃ©s.\n\nElle facilite la communication entre les participants et leurs enseignants.
+[ 114]Le systÃ¨me d'envois d'emails peut envoyer un email Ã  un ou plusieurs utilisateurs du site web.\n\nUn mailing peut Ãªtre envoyÃ© Ã  une liste d'utilisateurs ou bien Ã  tous les utilisateurs du site web.\n\nLe contenu du mailing peut prÃ©senter des informations spÃ©cifiques Ã  chaque utilisateur, comme le nom, l'adresse email, etc...
+[ 115]Les albums de photos permettent l'affichage de photos.\n\nLes photos sont rangÃ©es dans des albums et elles peuvent Ãªtre affichÃ©es dans des diaporamas.
+[ 116]Les journaux permettent la publication d'articles.\n\nUn journal est composÃ© d'une sÃ©rie d'articles affichÃ©s au sein de rubriques.\n\nLa publication des journaux et des articles peut Ãªtre programmÃ©e dans le temps.
 Les journaux et leurs articles, rubriques et auteurs
-[ 118]Une sauvegarde totale du contenu du site web peut être créee et téléchargée.\n\nCela permet la conservation en lieu sûr du contenu du site web.\n\nUne sauvegarde automatique des données du site web est faite tous les jours.
-[ 119]Les documents sont des fichiers de n'importe quels types qui sont stockés dans le site web pour être offerts en téléchargement.\n\nQuand un document est stocké dans le site web, il peut ensuite être référencé par un lien.\n\nLes visiteurs du site web peuvent alors télécharger le document en cliquant sur le lien.
-[ 120]Les sites webs utilisant ce système de gestion de contenu.
+[ 118]Une sauvegarde totale du contenu du site web peut Ãªtre crÃ©ee et tÃ©lÃ©chargÃ©e.\n\nCela permet la conservation en lieu sÃ»r du contenu du site web.\n\nUne sauvegarde automatique des donnÃ©es du site web est faite tous les jours.
+[ 119]Les documents sont des fichiers de n'importe quels types qui sont stockÃ©s dans le site web pour Ãªtre offerts en tÃ©lÃ©chargement.\n\nQuand un document est stockÃ© dans le site web, il peut ensuite Ãªtre rÃ©fÃ©rencÃ© par un lien.\n\nLes visiteurs du site web peuvent alors tÃ©lÃ©charger le document en cliquant sur le lien.
+[ 120]Les sites webs utilisant ce systÃ¨me de gestion de contenu.
 [ 121]Monitorer un site web
-[ 123]Les messages de contact sont les messages reçus par les utilisateurs de votre site web.\n\nCes messages sont souvent des messages de premier contact.\n\nIl est préférable que vos utilisateurs vous contactent à l'aide de ce formulaire, que de publier votre adresse email sur le site web.
-[ 124]Les modèles du site web décrivent le contenu et la disposition générale du site web.\n\nLes modèles contiennent les éléments de navigation, comme les boutons, menus et barres d'outis.\n\nLes modèles peuvent être en plusieurs langues.\n\nUn site web peut utiliser plusieurs modèles activés par la navigaton de l'utilisateur.
-[ 125]Un site web peut avoir une introduction Flash.\n\nL'introduction Flash est affichée avant les pages du site web.\n\nL'introduction Flash peut aussi être affichée dans une fenêtre popup.
-[ 126]Les statistiques du site web gardent trace du nombre de visiteurs et du nombre de visites.\n\nUn visiteur peut faire plusieurs visites sur le site web dans un temps donné.\n\nLes statistiques peuvent afficher les pages du site web les plus visitées.\n\nElles peuvent aussi indiquer d'où viennent les visiteurs, permettant ainsi un évaluation d'affiliés ou de bannières publicitaires.
-[ 127]La date et l'heure du site web peuvent être affichés dans différents formats.\n\nThe format de date choisit est utilisé pour afficher la date sur les pages du site web.
-[ 133]La boutique permet la vente en ligne d'articles.\n\nLes visiteurs du site web peuvent passer commande d'articles et effectuer un paiement en ligne sécurisé.
-[ 134]Le système de SMS peut envoyer des messages à un ou plusieurs utilisateurs du site web.\n\nUn message SMS peut être envoyé à une liste d'utilisateurs ou à tous les utilisateurs du site web.\n\nLe contenu du message peut présenter des informations spécifiques à chaque utilisateur, comme le nom, l'adresse email, etc...
+[ 123]Les messages de contact sont les messages reÃ§us par les utilisateurs de votre site web.\n\nCes messages sont souvent des messages de premier contact.\n\nIl est prÃ©fÃ©rable que vos utilisateurs vous contactent Ã  l'aide de ce formulaire, que de publier votre adresse email sur le site web.
+[ 124]Les modÃ¨les du site web dÃ©crivent le contenu et la disposition gÃ©nÃ©rale du site web.\n\nLes modÃ¨les contiennent les Ã©lÃ©ments de navigation, comme les boutons, menus et barres d'outis.\n\nLes modÃ¨les peuvent Ãªtre en plusieurs langues.\n\nUn site web peut utiliser plusieurs modÃ¨les activÃ©s par la navigaton de l'utilisateur.
+[ 125]Un site web peut avoir une introduction Flash.\n\nL'introduction Flash est affichÃ©e avant les pages du site web.\n\nL'introduction Flash peut aussi Ãªtre affichÃ©e dans une fenÃªtre popup.
+[ 126]Les statistiques du site web gardent trace du nombre de visiteurs et du nombre de visites.\n\nUn visiteur peut faire plusieurs visites sur le site web dans un temps donnÃ©.\n\nLes statistiques peuvent afficher les pages du site web les plus visitÃ©es.\n\nElles peuvent aussi indiquer d'oÃ¹ viennent les visiteurs, permettant ainsi un Ã©valuation d'affiliÃ©s ou de banniÃ¨res publicitaires.
+[ 127]La date et l'heure du site web peuvent Ãªtre affichÃ©s dans diffÃ©rents formats.\n\nThe format de date choisit est utilisÃ© pour afficher la date sur les pages du site web.
+[ 133]La boutique permet la vente en ligne d'articles.\n\nLes visiteurs du site web peuvent passer commande d'articles et effectuer un paiement en ligne sÃ©curisÃ©.
+[ 134]Le systÃ¨me de SMS peut envoyer des messages Ã  un ou plusieurs utilisateurs du site web.\n\nUn message SMS peut Ãªtre envoyÃ© Ã  une liste d'utilisateurs ou Ã  tous les utilisateurs du site web.\n\nLe contenu du message peut prÃ©senter des informations spÃ©cifiques Ã  chaque utilisateur, comme le nom, l'adresse email, etc...
 [ 135]Les formulaires
-[ 136]Les formulaires personalisables permettent la création de formulaires pour des besoins spécifiques.\n\nIl est ainsi possible de créer des formulaires pour requérir des informations précises des visiteurs du site web.
+[ 136]Les formulaires personalisables permettent la crÃ©ation de formulaires pour des besoins spÃ©cifiques.\n\nIl est ainsi possible de crÃ©er des formulaires pour requÃ©rir des informations prÃ©cises des visiteurs du site web.

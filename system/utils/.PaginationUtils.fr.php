@@ -1,2 +1,2 @@
-[   1]Précédent
+[   1]PrÃ©cÃ©dent
 [   2]Suivant

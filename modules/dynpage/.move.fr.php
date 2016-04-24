@@ -1,5 +1,5 @@
-[   0]Déplacer une page web
-[   1]Une page web peut être déplacée sous une autre page.\n\nPour déplacer une page web, veuillez sélectionner la page de destination.
-[   2]Déplacer sous la page web
-[   3]Déplacer sous la racine
-[   7]Déplacer la page:
+[   0]DÃ©placer une page web
+[   1]Une page web peut Ãªtre dÃ©placÃ©e sous une autre page.\n\nPour dÃ©placer une page web, veuillez sÃ©lectionner la page de destination.
+[   2]DÃ©placer sous la page web
+[   3]DÃ©placer sous la racine
+[   7]DÃ©placer la page:

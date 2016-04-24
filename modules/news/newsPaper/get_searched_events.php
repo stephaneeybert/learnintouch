@@ -12,14 +12,6 @@ $period = LibEnv::getEnvHttpGET("period");
 $localEventStartDate = LibEnv::getEnvHttpGET("eventStartDate");
 $localEventEndDate = LibEnv::getEnvHttpGET("eventEndDate");
 
-// An ajax request parameter value is UTF-8 encoded
-$newsPaperId = utf8_decode($newsPaperId);
-$newsFeedId = utf8_decode($newsFeedId);
-$newsHeadingId = utf8_decode($newsHeadingId);
-$period = utf8_decode($period);
-$localEventStartDate = utf8_decode($localEventStartDate);
-$localEventEndDate = utf8_decode($localEventEndDate);
-
 if ($localEventStartDate) {
   $eventStartDate = $clockUtils->localToSystemDate($localEventStartDate);
 } else {

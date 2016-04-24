@@ -1,7 +1,7 @@
-[   0]Télécharger une image
-[   1]Une barre de navigation peut utiliser des images.\n\nSi un élément d'une barre de navigation possède une image, alors l'image sera affichée à la place du nom de l'élément.\n\nDes images de petites dimensions peuvent ainsi être utilisées pour créer des barres d'icones.
-[   2]Sélectionner une image:
+[   0]TÃ©lÃ©charger une image
+[   1]Une barre de navigation peut utiliser des images.\n\nSi un Ã©lÃ©ment d'une barre de navigation possÃ¨de une image, alors l'image sera affichÃ©e Ã  la place du nom de l'Ã©lÃ©ment.\n\nDes images de petites dimensions peuvent ainsi Ãªtre utilisÃ©es pour crÃ©er des barres d'icones.
+[   2]SÃ©lectionner une image:
 [   3]Nom de l'image
 [   6]Image:
 [   7]Effacer l'image
-[  27]Aucune image n'a été spécifiée.
+[  27]Aucune image n'a Ã©tÃ© spÃ©cifiÃ©e.

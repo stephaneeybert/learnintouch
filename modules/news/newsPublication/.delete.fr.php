@@ -3,4 +3,4 @@
 [   3]Description:
 [   2]Effacer la publication?
 [   5]Effacer les journaux de la publication?
-[  10]En effacant une publication, les journaux peuvent être effacés ou gardés de coté.\n\nEffacer les journaux signifie que les journaux vont être définitivement effacés.
+[  10]En effacant une publication, les journaux peuvent Ãªtre effacÃ©s ou gardÃ©s de cotÃ©.\n\nEffacer les journaux signifie que les journaux vont Ãªtre dÃ©finitivement effacÃ©s.

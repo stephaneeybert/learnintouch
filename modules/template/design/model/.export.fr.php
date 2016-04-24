@@ -1,3 +1,3 @@
-[   0]Exporter un modèle
+[   0]Exporter un modÃ¨le
 [   6]Nom:
 [   7]Description:

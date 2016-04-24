@@ -1,10 +1,10 @@
-[   0]Télécharger une image
+[   0]TÃ©lÃ©charger une image
 [   6]Image:
 [   3]Nom de l'image:
-[   2]Sélectionner une image:
+[   2]SÃ©lectionner une image:
 [   7]Effacer l'image?
-[  27]Aucune image n'a été spécifiée.
-[   1]Un en-tête de leçon peut avoir une image.\n\nL'image est affichée à coté de l'en-tête de leçon.
-[   4]Redimensioner à la largeur:
-[   5]Lors du téléchargement vers le serveur, une image peut être redimensionée à une certaine largeur.\n\nSi aucune largeur n'est spécifiée. alors l'image n'est pas redimensionée.\n\nLa largeur par défaut est prise de la plus grande largeur d'image dans les préférences.
+[  27]Aucune image n'a Ã©tÃ© spÃ©cifiÃ©e.
+[   1]Un en-tÃªte de leÃ§on peut avoir une image.\n\nL'image est affichÃ©e Ã  cotÃ© de l'en-tÃªte de leÃ§on.
+[   4]Redimensioner Ã  la largeur:
+[   5]Lors du tÃ©lÃ©chargement vers le serveur, une image peut Ãªtre redimensionÃ©e Ã  une certaine largeur.\n\nSi aucune largeur n'est spÃ©cifiÃ©e. alors l'image n'est pas redimensionÃ©e.\n\nLa largeur par dÃ©faut est prise de la plus grande largeur d'image dans les prÃ©fÃ©rences.
 

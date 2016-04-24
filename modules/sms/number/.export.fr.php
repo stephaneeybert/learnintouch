@@ -1,2 +1,2 @@
-[   0]Exporter les numéros
-[   1]Exporter tous les numéros dans un fichier texte?
+[   0]Exporter les numÃ©ros
+[   1]Exporter tous les numÃ©ros dans un fichier texte?

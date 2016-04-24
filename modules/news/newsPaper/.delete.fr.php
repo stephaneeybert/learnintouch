@@ -3,4 +3,4 @@
 [   3]Emission:
 [   2]Effacer le journal?
 [   5]Effacer les articles du journal?
-[  10]En effacant un journal, les articles qu'il contient peuvent être effacés ou gardés de coté. \n\nEffacer les articles signifie que les articles listés dans le journal vont être définitivement effacés.
+[  10]En effacant un journal, les articles qu'il contient peuvent Ãªtre effacÃ©s ou gardÃ©s de cotÃ©. \n\nEffacer les articles signifie que les articles listÃ©s dans le journal vont Ãªtre dÃ©finitivement effacÃ©s.

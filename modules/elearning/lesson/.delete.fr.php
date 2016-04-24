@@ -1,10 +1,10 @@
-[   0]Effacer une leçon
+[   0]Effacer une leÃ§on
 [   1]Nom:
-[   2]Effacer la leçon?
-[   3]Cette leçon a des exercices qui ont déjà été utilisé et ont des résultats.\n\nEffacer la leçon ne va PAS effacer les exercices.\n\nLes exercices et les résultats seront conservés.
+[   2]Effacer la leÃ§on?
+[   3]Cette leÃ§on a des exercices qui ont dÃ©jÃ  Ã©tÃ© utilisÃ© et ont des rÃ©sultats.\n\nEffacer la leÃ§on ne va PAS effacer les exercices.\n\nLes exercices et les rÃ©sultats seront conservÃ©s.
 [   4]Effacer les exercices:
 [   5]Description:
-[   6]Les paragraphes de la leçon peuvent avoir des exercices.\n\nIl est possible d'effacer ces exercices avec la leçon.
+[   6]Les paragraphes de la leÃ§on peuvent avoir des exercices.\n\nIl est possible d'effacer ces exercices avec la leÃ§on.
 [   7]Un exercice
 [   8]Les exercices:
-[   9]La leçon est vérouillée est ne peut pas être effacée.
+[   9]La leÃ§on est vÃ©rouillÃ©e est ne peut pas Ãªtre effacÃ©e.

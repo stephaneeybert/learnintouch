@@ -7,7 +7,9 @@ class NavmenuLanguageDB {
   var $dao;
 
   function NavmenuLanguageDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_NAVMENU_LANGUAGE;
 

@@ -7,7 +7,9 @@ class ElearningResultDB {
   var $dao;
 
   function ElearningResultDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ELEARNING_RESULT;
 

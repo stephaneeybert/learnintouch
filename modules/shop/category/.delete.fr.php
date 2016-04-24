@@ -1,5 +1,5 @@
-[   0]Effacer une catégorie d'article
+[   0]Effacer une catÃ©gorie d'article
 [   1]Nom:
 [   5]Description:
-[   2]Effacer la catégorie?
-[   3]La catégorie ne peut être effacée car elle est utilisée par des articles.
+[   2]Effacer la catÃ©gorie?
+[   3]La catÃ©gorie ne peut Ãªtre effacÃ©e car elle est utilisÃ©e par des articles.

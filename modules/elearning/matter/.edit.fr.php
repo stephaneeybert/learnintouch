@@ -1,4 +1,4 @@
-[   0]Modifier une matière
+[   0]Modifier une matiÃ¨re
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.

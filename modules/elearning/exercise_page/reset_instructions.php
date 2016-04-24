@@ -8,11 +8,6 @@ $elearningExercisePageId = LibEnv::getEnvHttpGET("elearningExercisePageId");
 $languageCode = LibEnv::getEnvHttpGET("languageCode");
 $questionType = LibEnv::getEnvHttpGET("questionType");
 
-// An ajax request parameter value is UTF-8 encoded
-$elearningExercisePageId = utf8_decode($elearningExercisePageId);
-$languageCode = utf8_decode($languageCode);
-$questionType = utf8_decode($questionType);
-
 $websiteText = $languageUtils->getText(__FILE__, $languageCode);
 
 if ($questionType == 'SELECT_LIST' || $questionType == 'RADIO_BUTTON_LIST_H' || $questionType == 'RADIO_BUTTON_LIST_V') {

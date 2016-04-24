@@ -1,2 +1,2 @@
-[   0]Sélectionner une catégorie de gens
-[   2]Catégorie:
+[   0]SÃ©lectionner une catÃ©gorie de gens
+[   2]CatÃ©gorie:

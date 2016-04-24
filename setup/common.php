@@ -38,9 +38,6 @@ if (isLocalhost()) {
   $gHostname = $gSetupWebsiteUrl;
 }
 
-// Include the database setup file
-require_once("database.php");
-
 // Include the paths to the engine modules
 require_once("path.php");
 
@@ -49,6 +46,9 @@ require_once("library.php");
 
 // Include the services
 require_once("includes.php");
+
+// Include the database setup file
+require_once("database.php");
 
 // Instantiate the services
 require_once("services.php");

@@ -1,11 +1,11 @@
-[   0]Les catégories d'articles
-[   1]Déplacer dans la page
-[   2]Modifier la catégorie
-[   3]Effacer la catégorie
-[   4]Ajouter une catégorie
+[   0]Les catÃ©gories d'articles
+[   1]DÃ©placer dans la page
+[   2]Modifier la catÃ©gorie
+[   3]Effacer la catÃ©gorie
+[   4]Ajouter une catÃ©gorie
 [   5]Nom
 [   6]Description
-[   7]Déplacer après la page
-[   8]Déplacer avant la page
+[   7]DÃ©placer aprÃ¨s la page
+[   8]DÃ©placer avant la page
 [  10]Intervertir avec la suivante
-[  11]Intervertir avec la précédente
+[  11]Intervertir avec la prÃ©cÃ©dente

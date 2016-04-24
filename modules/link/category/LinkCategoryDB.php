@@ -7,7 +7,9 @@ class LinkCategoryDB {
   var $dao;
 
   function LinkCategoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_LINK_CATEGORY;
 

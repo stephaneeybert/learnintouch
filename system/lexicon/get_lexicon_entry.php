@@ -10,9 +10,6 @@ if (!$lexiconEntryId) {
   return;
 }
 
-// Ajax treats its data as UTF-8
-$lexiconEntryId = utf8_decode($lexiconEntryId);
-
 if ($lexiconEntry = $lexiconEntryUtils->selectById($lexiconEntryId)) {
   $name = $lexiconEntry->getName();
   $explanation = $lexiconEntry->getExplanation();

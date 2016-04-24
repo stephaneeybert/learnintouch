@@ -1,11 +1,11 @@
-[   0]Un élément de modèle
+[   0]Un Ã©lÃ©ment de modÃ¨le
 [   1]Ajouter une langue 
 [   2]en
-[   3]Effacer l'élément
+[   3]Effacer l'Ã©lÃ©ment
 [   4]Langue
-[   7]Un élément de modèle est du contenu affiché dans un modèle de site web.
+[   7]Un Ã©lÃ©ment de modÃ¨le est du contenu affichÃ© dans un modÃ¨le de site web.
 [  10]Image/Texte
 [  13]Pour toutes les langues
-[  14]Fermez la fenètre
+[  14]Fermez la fenÃ¨tre
 [  15]pour la langue
-[  22]Modifier l'élément
+[  22]Modifier l'Ã©lÃ©ment

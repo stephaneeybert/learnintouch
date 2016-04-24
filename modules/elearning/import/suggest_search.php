@@ -9,10 +9,6 @@ LibHtml::preventCaching();
 $contentImportId = LibEnv::getEnvHttpGET("contentImportId");
 $searchPattern = LibEnv::getEnvHttpGET("term");
 
-// Ajax treats its data as UTF-8
-$searchPattern = utf8_decode($searchPattern);
-$contentImportId = utf8_decode($contentImportId);
-
 $searchPattern = LibString::cleanString($searchPattern);
 
 if ($contentImportId) {

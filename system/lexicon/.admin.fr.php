@@ -1,12 +1,12 @@
-[   0]Les entrées du lexique
-[   1]Entrée
+[   0]Les entrÃ©es du lexique
+[   1]EntrÃ©e
 [   2]Explication
-[   3]Modifier l'entrée dans le lexique
-[   4]Effacer l'entrée du lexique
-[   5]Le lexique est global pour tout le site web et ses entrées peuvent être utilisées sur différents types de contenus.\n\nL'entrée est un mot ou une phrase courte.\n\nUne entrée peut ainsi être utilisée plusieurs fois sur différents contenus.\n\nLors de la modification ou la suppression d'une entrée, veuillez noter que l'entrée peut déjà être utilisée sur un ou plusieurs contenus du site web.\n\nLors de la modification ou la suppression d'une entrée, veuillez noter que l'entrée peut déjà être utilisée sur un ou plusieurs contenus du site web.\n\nVeuillez gérer le lexique avec soin car ses entrées sont communes à tout le site web.
-[   6]Ajouter une entrée dans le lexique
+[   3]Modifier l'entrÃ©e dans le lexique
+[   4]Effacer l'entrÃ©e du lexique
+[   5]Le lexique est global pour tout le site web et ses entrÃ©es peuvent Ãªtre utilisÃ©es sur diffÃ©rents types de contenus.\n\nL'entrÃ©e est un mot ou une phrase courte.\n\nUne entrÃ©e peut ainsi Ãªtre utilisÃ©e plusieurs fois sur diffÃ©rents contenus.\n\nLors de la modification ou la suppression d'une entrÃ©e, veuillez noter que l'entrÃ©e peut dÃ©jÃ  Ãªtre utilisÃ©e sur un ou plusieurs contenus du site web.\n\nLors de la modification ou la suppression d'une entrÃ©e, veuillez noter que l'entrÃ©e peut dÃ©jÃ  Ãªtre utilisÃ©e sur un ou plusieurs contenus du site web.\n\nVeuillez gÃ©rer le lexique avec soin car ses entrÃ©es sont communes Ã  tout le site web.
+[   6]Ajouter une entrÃ©e dans le lexique
 [   7]Chercher:
-[   8]Il peut devenir fastidieux d'avoir à naviguer dans le lexique pour retrouver une entrée.\n\nPour éviter cela, il est possible de saisir tout ou partie d'une entrée et de faire une recherche basée sur le texte saisi.\n\nLe résultat de la recherche affichera toutes les entrées correspondant au texte saisi.
+[   8]Il peut devenir fastidieux d'avoir Ã  naviguer dans le lexique pour retrouver une entrÃ©e.\n\nPour Ã©viter cela, il est possible de saisir tout ou partie d'une entrÃ©e et de faire une recherche basÃ©e sur le texte saisi.\n\nLe rÃ©sultat de la recherche affichera toutes les entrÃ©es correspondant au texte saisi.
 [   9]Image
-[  14]Insérer ou effacer une image
-[  15]Les préférences
+[  14]InsÃ©rer ou effacer une image
+[  15]Les prÃ©fÃ©rences

@@ -1,13 +1,13 @@
 [   0]Les gens
-[   1]Créer une personne
+[   1]CrÃ©er une personne
 [   2]Modifier la personne
 [   3]Effacer la personne
-[   4]Insérer ou effacer une image
-[   5]Catégorie:
-[   6]Les catégories
-[   7]Les préférences
+[   4]InsÃ©rer ou effacer une image
+[   5]CatÃ©gorie:
+[   6]Les catÃ©gories
+[   7]Les prÃ©fÃ©rences
 [   8]Nom
 [   9]Email
 [  10]Intervertir avec le suivant
-[  11]Intervertir avec le précédent
-[  12]Les gens sont toutes les personnes membres de votre société ou organisation.\n\nCes gens ne sont pas nécessairement administrateurs du site web.\n\nIls peuvent être qui bon vous semble, comme des partenaires, des sponsors, des amis...\n\nChacun a un profil et peut avoir une photo.\n\nLes gens sont rangés dans des catégories.\n\nIl doit y avoir au moins une catégorie.
+[  11]Intervertir avec le prÃ©cÃ©dent
+[  12]Les gens sont toutes les personnes membres de votre sociÃ©tÃ© ou organisation.\n\nCes gens ne sont pas nÃ©cessairement administrateurs du site web.\n\nIls peuvent Ãªtre qui bon vous semble, comme des partenaires, des sponsors, des amis...\n\nChacun a un profil et peut avoir une photo.\n\nLes gens sont rangÃ©s dans des catÃ©gories.\n\nIl doit y avoir au moins une catÃ©gorie.

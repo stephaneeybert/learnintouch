@@ -1,4 +1,4 @@
-[   0]Effacer une plage de résultats
+[   0]Effacer une plage de rÃ©sultats
 [   1]Max:
 [   5]Note:
-[   2]Effacer la plage de résultats?
+[   2]Effacer la plage de rÃ©sultats?

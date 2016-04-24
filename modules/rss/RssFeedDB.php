@@ -7,7 +7,9 @@ class RssFeedDB {
   var $dao;
 
   function RssFeedDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_RSS_FEED;
 

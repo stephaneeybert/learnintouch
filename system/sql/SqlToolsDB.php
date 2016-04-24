@@ -5,8 +5,8 @@ class SqlToolsDB {
   var $dataSource;
   var $dao;
 
-  function SqlToolsDB($dbName = '') {
-    $this->dataSource = Sql::initCommonDataSource($dbName);
+  function SqlToolsDB($dbName) {
+    $this->dataSource = Sql::initDataSource($dbName);
 
     $this->dao = new SqlToolsDao($this->dataSource);
   }
@@ -53,6 +53,7 @@ class SqlToolsDB {
     $this->dataSource->selectDatabase();
 
     $names = Array();
+    /* TODO Not used
     if ($result = $this->dao->getDatabaseNames()) {
       for ($i = 0; $i < $result->getRowCount(); $i++) {
         $row = $result->getRow($i);
@@ -66,6 +67,8 @@ class SqlToolsDB {
         }
       }
     }
+    */
+    array_push($names, "europasprak");
 
     return($names);
   }

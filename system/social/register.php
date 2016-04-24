@@ -145,10 +145,6 @@ if ($lastname == 'null' || $lastname == 'undefined') {
   $lastname = '';
 }
 
-$email = utf8_decode($email);
-$firstname = utf8_decode($firstname);
-$lastname = utf8_decode($lastname);
-
 $str = '';
 
 $str .= "\n<div class='system'>";

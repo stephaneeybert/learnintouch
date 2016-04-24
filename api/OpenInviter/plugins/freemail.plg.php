@@ -117,8 +117,8 @@ class freemail extends openinviter_base
 		$xpath=new DOMXPath($doc);$query="//tr[@class='data']";$data=$xpath->query($query);
 		foreach($data as $node)
 			{
-			$names=trim(preg_replace('/[^(\x20-\x7F)]*/','',utf8_decode((string)$node->childNodes->item(2)->nodeValue)));
-			$emails=trim(preg_replace('/[^(\x20-\x7F)]*/','',(utf8_decode((string)$node->childNodes->item(4)->nodeValue))));
+			$names=trim(preg_replace('/[^(\x20-\x7F)]*/','',(string)$node->childNodes->item(2)->nodeValue));
+			$emails=trim(preg_replace('/[^(\x20-\x7F)]*/','',((string)$node->childNodes->item(4)->nodeValue)));
 			if (!empty($emails)) $contacts[$emails]=array('first_name'=>(!empty($name)?$name:false),'email_1'=>$emails);
 			}
 		foreach ($contacts as $email=>$name) if (!$this->isEmail($email)) unset($contacts[$email]);

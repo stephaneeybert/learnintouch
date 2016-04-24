@@ -7,7 +7,9 @@ class NavmenuDB {
   var $dao;
 
   function NavmenuDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_NAVMENU;
 

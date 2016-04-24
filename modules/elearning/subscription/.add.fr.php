@@ -8,9 +8,9 @@
 [   7]Le cours est requis.
 [   8]La classe est requise.
 [   9]L'enseignant est requis.
-[  10]Le nombre maximum d'inscriptions a été atteint.\n\nVeuillez contacter l'école pour créer votre inscription.
+[  10]Le nombre maximum d'inscriptions a Ã©tÃ© atteint.\n\nVeuillez contacter l'Ã©cole pour crÃ©er votre inscription.
 [  11]Suivre en direct:
-[  12]Les exercices d'un cours peuvent être suivis en direct par un professeur.\n\nIl est alors possible pour le professeur, de suivre sur son ordinateur, la progression de l'exercice pendant que le participant répond aux questions.\n\nLes résultats des questions seront affichés en direct au professeur pendant que le participant fait l'exercice.
-[  13]Vous êtes déjà inscrit à ce cours.
-[  14]Vous êtes déjà inscrit à ce cours pour cette session.
+[  12]Les exercices d'un cours peuvent Ãªtre suivis en direct par un professeur.\n\nIl est alors possible pour le professeur, de suivre sur son ordinateur, la progression de l'exercice pendant que le participant rÃ©pond aux questions.\n\nLes rÃ©sultats des questions seront affichÃ©s en direct au professeur pendant que le participant fait l'exercice.
+[  13]Vous Ãªtes dÃ©jÃ  inscrit Ã  ce cours.
+[  14]Vous Ãªtes dÃ©jÃ  inscrit Ã  ce cours pour cette session.
 [  15]Le participant est requis.

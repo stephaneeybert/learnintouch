@@ -1,2 +1,2 @@
-[   0]Importer un modèle
+[   0]Importer un modÃ¨le
 [   6]Nom:

@@ -1,10 +1,10 @@
-[   0]Télécharger une image
+[   0]TÃ©lÃ©charger une image
 [   1]La taille maximum de fichier est
 [   6]Image:
 [   7]Effacer l'image?
-[  27]Aucune image n'a été spécifiée.
-[   2]Sélectionner une image:
+[  27]Aucune image n'a Ã©tÃ© spÃ©cifiÃ©e.
+[   2]SÃ©lectionner une image:
 [   3]Nom de l'image:
-[   4]Redimensioner à la largeur:
-[   5]Lors du téléchargement vers le serveur, une image peut être redimensionée à une certaine largeur.\n\nSi aucune largeur n'est spécifiée. alors l'image n'est pas redimensionée.\n\nLa largeur par défaut est prise de la plus grande largeur d'image dans les préférences.
+[   4]Redimensioner Ã  la largeur:
+[   5]Lors du tÃ©lÃ©chargement vers le serveur, une image peut Ãªtre redimensionÃ©e Ã  une certaine largeur.\n\nSi aucune largeur n'est spÃ©cifiÃ©e. alors l'image n'est pas redimensionÃ©e.\n\nLa largeur par dÃ©faut est prise de la plus grande largeur d'image dans les prÃ©fÃ©rences.
 

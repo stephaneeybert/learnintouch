@@ -1,9 +1,9 @@
 [   0]Facture
 [   1]Description
-[   2]Quantité
+[   2]QuantitÃ©
 [   3]Prix Unitaire
 [   4]Montant
-[   5]Payable à:
+[   5]Payable Ã :
 [   6]Banque:
 [   7]Compte bancaire:
 [   8]IBAN:
@@ -11,16 +11,16 @@
 [  10]Montant total:
 [  11]Frais d'envoi et de gestion:
 [  12]BIC:
-[  13]Numéro de facture:
+[  13]NumÃ©ro de facture:
 [  14]Payable le:
 [  15]Le
-[  16]Numéro de TVA:
+[  16]NumÃ©ro de TVA:
 [  17]Client:
-[  18]Téléphone:
-[  19]Téléphone portable:
+[  18]TÃ©lÃ©phone:
+[  19]TÃ©lÃ©phone portable:
 [  20]Email:
-[  21]Référence:
-[  22]Numéro de TVA du client:
-[  23]Réduction:
+[  21]RÃ©fÃ©rence:
+[  22]NumÃ©ro de TVA du client:
+[  23]RÃ©duction:
 [  24]TVA
 [  25]Total TVA:

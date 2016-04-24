@@ -1,10 +1,10 @@
 [   0]Les statistiques des visiteurs
-[   1]Les statistiques du site web gardent trace du nombre de visiteurs et du nombre de visites.\n\nUn visiteur peut faire plusieurs visites sur le site web dans un temps donné.\n\nLe nombre de visites est donc toujours supérieur ou égal au nombre de visiteurs.\n\nLes statistiques peuvent afficher les pages du site web les plus visitées.\n\nElles peuvent aussi indiquer d'où viennent les visiteurs, permettant ainsi un évaluation d'affiliés ou de bannières publicitaires.
-[   2] le site web a été visité
-[   3]Changer la durée d'une visite
+[   1]Les statistiques du site web gardent trace du nombre de visiteurs et du nombre de visites.\n\nUn visiteur peut faire plusieurs visites sur le site web dans un temps donnÃ©.\n\nLe nombre de visites est donc toujours supÃ©rieur ou Ã©gal au nombre de visiteurs.\n\nLes statistiques peuvent afficher les pages du site web les plus visitÃ©es.\n\nElles peuvent aussi indiquer d'oÃ¹ viennent les visiteurs, permettant ainsi un Ã©valuation d'affiliÃ©s ou de banniÃ¨res publicitaires.
+[   2] le site web a Ã©tÃ© visitÃ©
+[   3]Changer la durÃ©e d'une visite
 [   4]fois par
-[   5]Ré-initialise le compteur
+[   5]RÃ©-initialise le compteur
 [   6]Depuis le
 [   7]visiteurs.
-[   8]La liste des sites web affiliés
-[   9]Les préférences
+[   8]La liste des sites web affiliÃ©s
+[   9]Les prÃ©fÃ©rences

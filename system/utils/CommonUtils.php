@@ -108,7 +108,6 @@ HEREDOC;
       if ($objectResponse->responseStatus == 200 || !$objectResponse->responseStatus) {
         $translation = $objectResponse->data->translations[0]->translatedText;
         if ($translation) {
-          $translation = utf8_decode($translation);
           $translation = LibString::br2nl($translation);
           // For whatever reason Google leaves a blank space after the line break
           $translation = str_replace("\n ", "\n", $translation);

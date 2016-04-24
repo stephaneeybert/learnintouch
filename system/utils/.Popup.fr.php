@@ -1,3 +1,3 @@
-[   1]Fermer la fenètre
+[   1]Fermer la fenÃ¨tre
 [   2]Besoin d&#039;aide..?
 [   5]Aide

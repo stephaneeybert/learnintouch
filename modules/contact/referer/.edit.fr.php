@@ -1,2 +1,2 @@
-[   0]Modifier une référence
+[   0]Modifier une rÃ©fÃ©rence
 [   2]Description:

@@ -1,66 +1,66 @@
 [   0]Les exercices
-[   1]Créer un exercice
-[   2]Modifier la leçon
-[   3]Mettre l'exercice à la corbeille
+[   1]CrÃ©er un exercice
+[   2]Modifier la leÃ§on
+[   3]Mettre l'exercice Ã  la corbeille
 [   4]Nom
-[   5]Composer la leçon
-[   6]Les catégories
-[   7]Insérer ou effacer une image ou un fichier multimédia
-[   8]Ajouter l'exercice à un cours
-[   9]Catégorie:
+[   5]Composer la leÃ§on
+[   6]Les catÃ©gories
+[   7]InsÃ©rer ou effacer une image ou un fichier multimÃ©dia
+[   8]Ajouter l'exercice Ã  un cours
+[   9]CatÃ©gorie:
 [  10]Intervertir avec le suivant
-[  11]Intervertir avec le précédent
+[  11]Intervertir avec le prÃ©cÃ©dent
 [  12]Composer l'exercice
 [  13]Niveau:
 [  14]Les niveaux
 [  15]Enlever du cours
-[  16]Une leçon
+[  16]Une leÃ§on
 [  17]Description
 [  18]Exercices
 [  19]Enseignant:
-[  20]Une leçon peut avoid un exercice dans chacun de ses paragraphes
+[  20]Une leÃ§on peut avoid un exercice dans chacun de ses paragraphes
 [  21]Un exercice
 [  22]Les cours
-[  23]Ajouter l'exercice à une leçon
-[  24]Vérouiller l'exercice
-[  25]Dévérouiller l'exercice
+[  23]Ajouter l'exercice Ã  une leÃ§on
+[  24]VÃ©rouiller l'exercice
+[  25]DÃ©vÃ©rouiller l'exercice
 [  26]Voir l'exercice
-[  27]Voir la leçon
+[  27]Voir la leÃ§on
 [  28]Envoyer par email
-[  29]La plate-forme de cours est utilisée pour créer des cours, les offrir aux participants, enregistrer leurs résultats et faciliter la communication entre les participants et leurs enseignants.\n\nUn exercice peut être composé d'un texte, d'une image ou d'une animation Flash, d'un fichier audio et d'une série de pages de questions.\n\nUn exercice peut aussi être inclus dans un cours.
-[  31]Effacer le dernier cours importé
+[  29]La plate-forme de cours est utilisÃ©e pour crÃ©er des cours, les offrir aux participants, enregistrer leurs rÃ©sultats et faciliter la communication entre les participants et leurs enseignants.\n\nUn exercice peut Ãªtre composÃ© d'un texte, d'une image ou d'une animation Flash, d'un fichier audio et d'une sÃ©rie de pages de questions.\n\nUn exercice peut aussi Ãªtre inclus dans un cours.
+[  31]Effacer le dernier cours importÃ©
 [  32]Dupliquer l'exercice
 [  33]Cours:
-[  34]Les exercices jetées à la corbeille
+[  34]Les exercices jetÃ©es Ã  la corbeille
 [  35]Afficher l'adresse web de l'exercice
 [  36]L'adresse web de l'exercice est :
-[  37]Pour créer un lien pointant vers cet exercice, copier et coller l'adresse ci-dessus dans l'attribut href d'un lien.
+[  37]Pour crÃ©er un lien pointant vers cet exercice, copier et coller l'adresse ci-dessus dans l'attribut href d'un lien.
 [  38]Donner un devoir
 [  39]Les sujets
 [  40]Imprimer l'exercice
-[  41]Imprimer la leçon
+[  41]Imprimer la leÃ§on
 [  42]Modifier l'exercice
 [  43]Une semaine
 [  44]Un mois
 [  45]Trois mois
 [  46]Six mois
 [  47]Un an
-[  48]Créé depuis:
+[  48]CrÃ©Ã© depuis:
 [  50]Public
-[  51]Protégé
-[  52]Les leçons
+[  51]ProtÃ©gÃ©
+[  52]Les leÃ§ons
 [  53]Importer un cours ou un exercice
 [  55]Sujet:
-[  56]Pas encore publié
-[  57]Précédant
+[  56]Pas encore publiÃ©
+[  57]PrÃ©cÃ©dant
 [  58]Suivant
-[  59]Sélectionner les exercices d'un certain niveau.
+[  59]SÃ©lectionner les exercices d'un certain niveau.
 [  60]Statut:
-[  61]Sélectionner les exercices d'une certaine catégorie.
-[  62]Sélectionner les exercices d'un certain sujet.
-[  63]Sélectionner les exercices d'un certain cours.
-[  64]Sélectionner les exercices d'un certain statut.
-[  65]Sélectionner les exercices d'une certaine période.
-[  66]Déplacer après
+[  61]SÃ©lectionner les exercices d'une certaine catÃ©gorie.
+[  62]SÃ©lectionner les exercices d'un certain sujet.
+[  63]SÃ©lectionner les exercices d'un certain cours.
+[  64]SÃ©lectionner les exercices d'un certain statut.
+[  65]SÃ©lectionner les exercices d'une certaine pÃ©riode.
+[  66]DÃ©placer aprÃ¨s
 [  70]Chercher:
-[  71]Il peut devenir fastidieux d'avoir à naviguer dans la liste des exercices pour retrouver un exercice particulière.\n\nPour éviter cela, il est possible de saisir tout ou partie du nom d'un exercice et de faire une recherche basée sur le texte saisi.\n\nLe résultat de la recherche affichera tous les exercices correspondant au texte recherché.
+[  71]Il peut devenir fastidieux d'avoir Ã  naviguer dans la liste des exercices pour retrouver un exercice particuliÃ¨re.\n\nPour Ã©viter cela, il est possible de saisir tout ou partie du nom d'un exercice et de faire une recherche basÃ©e sur le texte saisi.\n\nLe rÃ©sultat de la recherche affichera tous les exercices correspondant au texte recherchÃ©.

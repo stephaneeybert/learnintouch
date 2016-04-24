@@ -1,12 +1,12 @@
 [   0]Les formulaires
-[   1]Créer un formulaire
+[   1]CrÃ©er un formulaire
 [   2]Modifier le formulaire
 [   3]Effacer le formulaire
 [   5]Nom
 [   6]Description
 [   4]Email
-[   7]Les éléments du formulaire
+[   7]Les Ã©lÃ©ments du formulaire
 [   8]Dupliquer le formulaire
-[   9]Afficher l'aperçu du formulaire
-[  10]Insérer ou effacer une image
-[  20]Les préférences
+[   9]Afficher l'aperÃ§u du formulaire
+[  10]InsÃ©rer ou effacer une image
+[  20]Les prÃ©fÃ©rences

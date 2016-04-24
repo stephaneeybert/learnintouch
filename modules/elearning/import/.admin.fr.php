@@ -1,23 +1,23 @@
 [   0]Import de cours
 [   1]Cours
 [   2]Description
-[   3]Les sites web d'où vous pouvez importer du contenu
-[   4]Importer le cours et toutes ses leçons et exercices
+[   3]Les sites web d'oÃ¹ vous pouvez importer du contenu
+[   4]Importer le cours et toutes ses leÃ§ons et exercices
 [   5]Site web exportateur:
 [   6]Les sites web qui peuvent importer votre contenu
-[   7]Matière:
-[   8]Enregistrez un site web d'où vous pouvez importer du contenu
-[   9]Sélectionnez un site web d'où vous pouvez importer du contenu
-[  10]Il est possible d'importer des cours d'un site web.\n\nLa liste affiche tous les cours qui peuvent être importés depuis un site web.\n\nLe site web doit d'abord être enregistré comme un site web exportateur.\n\nLors de l'import d'un cours, le cours lui même et tout son contenu est importé.
+[   7]MatiÃ¨re:
+[   8]Enregistrez un site web d'oÃ¹ vous pouvez importer du contenu
+[   9]SÃ©lectionnez un site web d'oÃ¹ vous pouvez importer du contenu
+[  10]Il est possible d'importer des cours d'un site web.\n\nLa liste affiche tous les cours qui peuvent Ãªtre importÃ©s depuis un site web.\n\nLe site web doit d'abord Ãªtre enregistrÃ© comme un site web exportateur.\n\nLors de l'import d'un cours, le cours lui mÃªme et tout son contenu est importÃ©.
 [  11]Element de cours
-[  12]Importer la leçon ou l'exercice
+[  12]Importer la leÃ§on ou l'exercice
 [  13]Cours:
 [  14]Chercher:
-[  15]Au lieu de sélectionner une matière et un cours, il est possible de saisir tout ou partie du nom d'un cours, d'une leçon ou d'un exercice, et de faire une recherche basée sur le texte saisi.\n\nLe résultat de la recherche affichera tous les cours, leçons et exercices correspondant au texte recherché.
-[  16]Sélectionnez une matière pour afficher ses cours.
-[  17]Sélectionnez un cours pour afficher ses leçons et exercices.
+[  15]Au lieu de sÃ©lectionner une matiÃ¨re et un cours, il est possible de saisir tout ou partie du nom d'un cours, d'une leÃ§on ou d'un exercice, et de faire une recherche basÃ©e sur le texte saisi.\n\nLe rÃ©sultat de la recherche affichera tous les cours, leÃ§ons et exercices correspondant au texte recherchÃ©.
+[  16]SÃ©lectionnez une matiÃ¨re pour afficher ses cours.
+[  17]SÃ©lectionnez un cours pour afficher ses leÃ§ons et exercices.
 [  18]Exercice
-[  19]Leçon
-[  20]Le texte recherché doit contenir au moins 4 caractères.
+[  19]LeÃ§on
+[  20]Le texte recherchÃ© doit contenir au moins 4 caractÃ¨res.
 [  21]Autres:
-[  22]Il est possible de consulter les autres exercices et leçons, y compris ceux et celles qui n'appartiennent pas à un cours.
+[  22]Il est possible de consulter les autres exercices et leÃ§ons, y compris ceux et celles qui n'appartiennent pas Ã  un cours.

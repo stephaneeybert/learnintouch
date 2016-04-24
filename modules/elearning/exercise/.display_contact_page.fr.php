@@ -1,13 +1,13 @@
 [   0]L'adresse email est requise.
-[   1]Le prénom est requis.
+[   1]Le prÃ©nom est requis.
 [   2]Le nom est requis.
 [   4]Email: *
-[   5]Prénom: *
+[   5]PrÃ©nom: *
 [   6]Nom: *
 [   7]Message:
 [   8]Continuer
-[   9]Téléphone:
-[  10]Je peux être joint au numéro de téléphone:
+[   9]TÃ©lÃ©phone:
+[  10]Je peux Ãªtre joint au numÃ©ro de tÃ©lÃ©phone:
 [  11]Disponible le:
 [  12]Lundi
 [  13]Mardi
@@ -18,11 +18,11 @@
 [  18]Dimanche
 [  19]Matin
 [  20]Repas
-[  21]Après-midi
+[  21]AprÃ¨s-midi
 [  22]Soir
 [  23]Le:
 [  24]Je suis disponible les
 [  25]le
-[  26]Les champs obligatoires sont marqués d'une étoile *
+[  26]Les champs obligatoires sont marquÃ©s d'une Ã©toile *
 [  27]L'adresse email est requise
 [  28]Le format de l'adresse email est invalide.

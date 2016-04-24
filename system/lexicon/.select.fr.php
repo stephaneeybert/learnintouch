@@ -1,8 +1,8 @@
-[   0]Choisir une entrée dans le lexique
-[   1]L'entrée est requise.
+[   0]Choisir une entrÃ©e dans le lexique
+[   1]L'entrÃ©e est requise.
 [   2]Nom:
-[   3]Ajouter une entrée
-[   4]Effacer l'entrée du lexique
-[   5]Modifier l'entrée
-[   7]Pour choisir une entrée, veuillez commencer à saisir l'entrée. Si le lexique contient des entrées correspondant aux lettres saisies alors ces entrées seront suggérées.\n\nSi aucune entrée n'est suggérée alors il est possible d'ajouter l'entrée au lexique.\n\nOu bien, si l'entrée suggérée doit être modifiée avant d'être utilisée, alors l'entrée peut être modifiée dans le lexique.\n\nVeuillez vous assurer de ne pas insérer une entrée sur un mot qui en contient déjà une.
-[   8]Toutes les entrées du lexique
+[   3]Ajouter une entrÃ©e
+[   4]Effacer l'entrÃ©e du lexique
+[   5]Modifier l'entrÃ©e
+[   7]Pour choisir une entrÃ©e, veuillez commencer Ã  saisir l'entrÃ©e. Si le lexique contient des entrÃ©es correspondant aux lettres saisies alors ces entrÃ©es seront suggÃ©rÃ©es.\n\nSi aucune entrÃ©e n'est suggÃ©rÃ©e alors il est possible d'ajouter l'entrÃ©e au lexique.\n\nOu bien, si l'entrÃ©e suggÃ©rÃ©e doit Ãªtre modifiÃ©e avant d'Ãªtre utilisÃ©e, alors l'entrÃ©e peut Ãªtre modifiÃ©e dans le lexique.\n\nVeuillez vous assurer de ne pas insÃ©rer une entrÃ©e sur un mot qui en contient dÃ©jÃ  une.
+[   8]Toutes les entrÃ©es du lexique

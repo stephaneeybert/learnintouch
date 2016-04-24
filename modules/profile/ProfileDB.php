@@ -7,7 +7,9 @@ class ProfileDB {
   var $dao;
 
   function ProfileDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_PROFILE;
 

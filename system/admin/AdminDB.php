@@ -7,7 +7,9 @@ class AdminDB {
   var $dao;
 
   function AdminDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_ADMIN;
 

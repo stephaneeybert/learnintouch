@@ -1,17 +1,17 @@
-[   0]Les leçons
+[   0]Les leÃ§ons
 [   1]Chercher:
-[   2]Il peut devenir fastidieux d'avoir à naviguer dans la liste des leçons pour retrouver une leçon particulière.\n\nPour éviter cela, il est possible de saisir tout ou partie du nom d'une leçon et de faire une recherche basée sur le texte saisi.\n\nLe résultat de la recherche affichera toutes les leçons correspondant au texte recherché.
+[   2]Il peut devenir fastidieux d'avoir Ã  naviguer dans la liste des leÃ§ons pour retrouver une leÃ§on particuliÃ¨re.\n\nPour Ã©viter cela, il est possible de saisir tout ou partie du nom d'une leÃ§on et de faire une recherche basÃ©e sur le texte saisi.\n\nLe rÃ©sultat de la recherche affichera toutes les leÃ§ons correspondant au texte recherchÃ©.
 [   3]Niveau:
-[   4]Sélectionner les leçons d'un certain niveau.
+[   4]SÃ©lectionner les leÃ§ons d'un certain niveau.
 [   5]Cours:
-[   6]Sélectionner les leçons d'un certain cours.
-[   7]Catégorie:
-[   8]Sélectionner les leçons d'une certaine catégorie.
+[   6]SÃ©lectionner les leÃ§ons d'un certain cours.
+[   7]CatÃ©gorie:
+[   8]SÃ©lectionner les leÃ§ons d'une certaine catÃ©gorie.
 [   9]Sujet:
-[  10]Sélectionner les leçons d'un certain sujet.
-[  11]Rechercher des leçons...
-[  12]Une leçon du cours
+[  10]SÃ©lectionner les leÃ§ons d'un certain sujet.
+[  11]Rechercher des leÃ§ons...
+[  12]Une leÃ§on du cours
 [  13]Un exercice du cours
-[  14]Une leçon
-[  15]Un exercice de la leçon
-[  16]Les leçons et exercices d'un cours
+[  14]Une leÃ§on
+[  15]Un exercice de la leÃ§on
+[  16]Les leÃ§ons et exercices d'un cours

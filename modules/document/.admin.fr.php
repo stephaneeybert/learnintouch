@@ -1,14 +1,14 @@
 [   0]Les documents
-[   1]Télécharger un document
+[   1]TÃ©lÃ©charger un document
 [   2]Renommer le document
 [   3]Effacer le document
 [   4]Nom
 [   5]Description
-[   6]Les catégories
-[   7]Télécharger un document
-[   8]Télécharger le fichier
-[   9]Catégorie:
+[   6]Les catÃ©gories
+[   7]TÃ©lÃ©charger un document
+[   8]TÃ©lÃ©charger le fichier
+[   9]CatÃ©gorie:
 [  10]Intervertir avec le suivant
-[  11]Intervertir avec le précédent
-[  13]Les documents sont des fichiers de n'importe quels types qui sont stockés dans le site web pour être offerts en téléchargement.\n\nQuand un document est stocké dans le site web, il peut ensuite être référencé par un lien.\n\nLes visiteurs du site web peuvent alors télécharger le document en cliquant sur le lien.
-[  20]Les préférences
+[  11]Intervertir avec le prÃ©cÃ©dent
+[  13]Les documents sont des fichiers de n'importe quels types qui sont stockÃ©s dans le site web pour Ãªtre offerts en tÃ©lÃ©chargement.\n\nQuand un document est stockÃ© dans le site web, il peut ensuite Ãªtre rÃ©fÃ©rencÃ© par un lien.\n\nLes visiteurs du site web peuvent alors tÃ©lÃ©charger le document en cliquant sur le lien.
+[  20]Les prÃ©fÃ©rences

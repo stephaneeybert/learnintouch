@@ -7,7 +7,9 @@ class PeopleCategoryDB {
   var $dao;
 
   function PeopleCategoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_PEOPLE_CATEGORY;
 

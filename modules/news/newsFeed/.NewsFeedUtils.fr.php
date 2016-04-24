@@ -6,11 +6,11 @@
 [  16]Ce mois ci
 [  17]Le mois prochain
 [  18]Afficher...
-[  19]Afficher les résultats de la recherche
-[  20]Par période:
+[  19]Afficher les rÃ©sultats de la recherche
+[  20]Par pÃ©riode:
 [  21]Du
 [  22]Au
 [  23]Par dates:
 [  27]Par rubrique:
-[  28]Afficher les évènements du jour
+[  28]Afficher les Ã©vÃ¨nements du jour
 [  55]Veuillez cliquer pour lire l'article

@@ -7,7 +7,9 @@ class TemplateElementDB {
   var $dao;
 
   function TemplateElementDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_TEMPLATE_ELEMENT;
 

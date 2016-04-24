@@ -1,3 +1,3 @@
-[   0]Réinitialiser une image (téléphone)
+[   0]RÃ©initialiser une image (tÃ©lÃ©phone)
 [   6]Image:
-[   7]Réinitialiser l'image?
+[   7]RÃ©initialiser l'image?

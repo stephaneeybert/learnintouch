@@ -1,12 +1,12 @@
 [  11]Ecrivez un texte.
-[  12]Choisissez une réponse pour chaque question.
-[  13]Choisissez une ou plusieurs réponses pour chaque question.
-[  14]Choisissez toutes les réponses correctes pour chaque question.
-[  15]Saisissez une réponse pour chaque question.
-[  16]Choisissez une réponse pour chaque trou dans le texte.
-[  17]Saisissez une réponse pour chaque trou dans le texte.
-[  18]Déplacez une réponse dans sa question.\nCliquer pour effacer la réponse.
-[  19]Déplacez une réponse dans les questions.\nCliquer pour effacer la réponse.
-[  20]Déplacer les réponses pour assembler une phrase.
-[  21]Déplacez une réponse dans chaque trou du texte.\nCliquer pour effacer la réponse.
-[  22]Déplacez une réponse ou une image sous les questions.\nCliquer pour effacer la réponse.
+[  12]Choisissez une rÃ©ponse pour chaque question.
+[  13]Choisissez une ou plusieurs rÃ©ponses pour chaque question.
+[  14]Choisissez toutes les rÃ©ponses correctes pour chaque question.
+[  15]Saisissez une rÃ©ponse pour chaque question.
+[  16]Choisissez une rÃ©ponse pour chaque trou dans le texte.
+[  17]Saisissez une rÃ©ponse pour chaque trou dans le texte.
+[  18]DÃ©placez une rÃ©ponse dans sa question.\nCliquer pour effacer la rÃ©ponse.
+[  19]DÃ©placez une rÃ©ponse dans les questions.\nCliquer pour effacer la rÃ©ponse.
+[  20]DÃ©placer les rÃ©ponses pour assembler une phrase.
+[  21]DÃ©placez une rÃ©ponse dans chaque trou du texte.\nCliquer pour effacer la rÃ©ponse.
+[  22]DÃ©placez une rÃ©ponse ou une image sous les questions.\nCliquer pour effacer la rÃ©ponse.

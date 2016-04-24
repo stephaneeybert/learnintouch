@@ -1,19 +1,19 @@
-[   0]Envoyer une leçon
+[   0]Envoyer une leÃ§on
 [   1]Nom:
-[   2]Envoyer la leçon?
+[   2]Envoyer la leÃ§on?
 [   3]Description:
-[   4]En-tête:
+[   4]En-tÃªte:
 [   5]Email:
-[   6]Une leçon vous a été envoyée.
+[   6]Une leÃ§on vous a Ã©tÃ© envoyÃ©e.
 [   7]Salutations
-[   8]Une leçon de
-[   9]Pour lire la leçon, veuillez cliquer sur son nom:
-[  10]Voir le contenu de la leçon...
+[   8]Une leÃ§on de
+[   9]Pour lire la leÃ§on, veuillez cliquer sur son nom:
+[  10]Voir le contenu de la leÃ§on...
 [  11]Participant:
-[  12]Le destinataire peut-être un participant, une classe de participants, ou une simple adresse email.
+[  12]Le destinataire peut-Ãªtre un participant, une classe de participants, ou une simple adresse email.
 [  13]Classe de participants:
 [  14]Il n'y a pas de participants dans la classe.
 [  15]Bonjour
-[  16]Veuillez sélectionner une classe de participants, un participant ou saisir une adresse email.
+[  16]Veuillez sÃ©lectionner une classe de participants, un participant ou saisir une adresse email.
 [  38]Le format de l'adresse email est invalide.
 [  40]Un destinataire est requis.

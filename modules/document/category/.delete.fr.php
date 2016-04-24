@@ -1,5 +1,5 @@
-[   0]Effacer une catégorie
+[   0]Effacer une catÃ©gorie
 [   1]Nom:
 [   5]Description:
-[   2]Effacer la catégorie?
-[   3]La catégorie contient des documents.\n\nVeuillez effacer les documents ou les retirer de leur catégorie, pour pouvoir ensuite effacer la catégorie.
+[   2]Effacer la catÃ©gorie?
+[   3]La catÃ©gorie contient des documents.\n\nVeuillez effacer les documents ou les retirer de leur catÃ©gorie, pour pouvoir ensuite effacer la catÃ©gorie.

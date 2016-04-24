@@ -1,2 +1,2 @@
-[   0]Confirmer et valider l&#039;opération
-[   1]Fermer la fenètre
+[   0]Confirmer et valider l&#039;opÃ©ration
+[   1]Fermer la fenÃ¨tre

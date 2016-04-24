@@ -1,10 +1,10 @@
 [   0]Effacer un exercice
 [   1]Nom:
 [   2]Effacer l'exercice?
-[   3]Cette exercice a déjà été utilisée et a des résultats.\n\nEffacer l'exercice va aussi effacer les résultats détaillés de chaque question.\n\nMais les notes et les points de l'exercice seront conservés.
-[   4]L'exercice est vérouillé est ne peut pas être effacé.
+[   3]Cette exercice a dÃ©jÃ  Ã©tÃ© utilisÃ©e et a des rÃ©sultats.\n\nEffacer l'exercice va aussi effacer les rÃ©sultats dÃ©taillÃ©s de chaque question.\n\nMais les notes et les points de l'exercice seront conservÃ©s.
+[   4]L'exercice est vÃ©rouillÃ© est ne peut pas Ãªtre effacÃ©.
 [   5]Description:
-[   6]L'exercice est utilisé dans les cours suivants:
-[   7]L'exercice doit être supprimé de ces cours avant de pouvoir être effacé.
-[   8]L'exercice est utilisé dans les leçons suivantes:
-[   9]L'exercice doit être supprimé de ces leçons avant de pouvoir être effacé.
+[   6]L'exercice est utilisÃ© dans les cours suivants:
+[   7]L'exercice doit Ãªtre supprimÃ© de ces cours avant de pouvoir Ãªtre effacÃ©.
+[   8]L'exercice est utilisÃ© dans les leÃ§ons suivantes:
+[   9]L'exercice doit Ãªtre supprimÃ© de ces leÃ§ons avant de pouvoir Ãªtre effacÃ©.

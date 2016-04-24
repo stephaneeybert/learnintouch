@@ -49,12 +49,10 @@ class LibMailbox {
           $mailDate = date("d/m/Y", $header->udate);
           $mailSubject = $header->fetchsubject;
           $mailSubject = imap_utf8($mailSubject);
-          $mailSubject = utf8_decode($mailSubject);
           $from = $header->from;
           $mailFrom = $from[0]->mailbox . "@" . $from[0]->host;
           $mailBody = LibMailbox::getEmailBody($mailbox, $mailNumber, "TEXT/PLAIN");
           $mailBody = imap_utf8($mailBody);
-          $mailBody = utf8_decode($mailBody);
 
           $mail = array("number" => $mailNumber, "date" => $mailDate, "from" => $mailFrom, "subject" => $mailSubject, "body" => $mailBody);
           array_push($mails, $mail);

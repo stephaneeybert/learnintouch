@@ -7,7 +7,9 @@ class NewsStoryDB {
   var $dao;
 
   function NewsStoryDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_NEWS_STORY;
 

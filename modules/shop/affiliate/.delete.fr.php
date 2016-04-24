@@ -1,4 +1,4 @@
-[   0]Effacer un affilié
+[   0]Effacer un affiliÃ©
 [   1]Email:
-[   2]Effacer l'affilié?
+[   2]Effacer l'affiliÃ©?
 [   3]Nom:

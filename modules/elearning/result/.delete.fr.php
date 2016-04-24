@@ -1,4 +1,4 @@
-[   0]Effacer les résultats de l'exercice
+[   0]Effacer les rÃ©sultats de l'exercice
 [   1]Participant:
 [   5]Exercice:
-[   2]Effacer le résultat de l'exercice?
+[   2]Effacer le rÃ©sultat de l'exercice?

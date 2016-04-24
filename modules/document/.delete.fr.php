@@ -1,5 +1,5 @@
 [   0]Effacer un document
-[   1]Référence:
+[   1]RÃ©fÃ©rence:
 [   3]Description:
 [   2]Effacer le document?
 [   6]Fichier:

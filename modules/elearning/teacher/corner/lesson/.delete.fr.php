@@ -1,11 +1,11 @@
-[   0]Effacer une leÁon
+[   0]Effacer une le√ßon
 [   1]Nom:
-[   2]Effacer la leÁon?
-[   3]Cette leÁon a des exercices qui ont dÈj‡ ÈtÈ utilisÈ et ont des rÈsultats.\n\nEffacer la leÁon ne va PAS effacer les exercices.\n\nLes exercices et les rÈsultats seront conservÈs.
+[   2]Effacer la le√ßon?
+[   3]Cette le√ßon a des exercices qui ont d√©j√† √©t√© utilis√© et ont des r√©sultats.\n\nEffacer la le√ßon ne va PAS effacer les exercices.\n\nLes exercices et les r√©sultats seront conserv√©s.
 [   4]Effacer les exercices:
 [   5]Description:
-[   6]Les paragraphes de la leÁon peuvent avoir des exercices.\n\nIl est possible d'effacer ces exercices avec la leÁon.
+[   6]Les paragraphes de la le√ßon peuvent avoir des exercices.\n\nIl est possible d'effacer ces exercices avec la le√ßon.
 [   7]Un exercice
 [   8]Les exercices:
-[  10]Annuler l'opÈration
-[  11]Vous n'avez pas le droit d'effacer cette leÁon
+[  10]Annuler l'op√©ration
+[  11]Vous n'avez pas le droit d'effacer cette le√ßon

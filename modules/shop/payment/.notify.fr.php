@@ -1,22 +1,22 @@
-[   0]Le paiement a été effectué.\n\nVotre commande a été acceptée!
-[  19]Le paiement n'a PAS été effectué.\n\nVotre commande est toujours en cours.
+[   0]Le paiement a Ã©tÃ© effectuÃ©.\n\nVotre commande a Ã©tÃ© acceptÃ©e!
+[  19]Le paiement n'a PAS Ã©tÃ© effectuÃ©.\n\nVotre commande est toujours en cours.
 [   1]Une nouvelle commande de
-[  20]a été payée à
-[   2]Une commande a été payée par
+[  20]a Ã©tÃ© payÃ©e Ã 
+[   2]Une commande a Ã©tÃ© payÃ©e par
 [   4]voir la commande
-[   5]a reçu votre commande!
+[   5]a reÃ§u votre commande!
 [   6]Cher(e)
-[   7]Nous avons reçu votre commande avec la référence:
+[   7]Nous avons reÃ§u votre commande avec la rÃ©fÃ©rence:
 [   9]Nous vous remercions pour vos achats.
-[  10]Sincères Salutations,
+[  10]SincÃ¨res Salutations,
 [  12]Vous pouvez consulter le statut de votre commande en utilisant l'adresse email et le mot de passe suivants:
 [  13]Email:
 [  14]Mot de passe:
 [  15]voir le statut de votre commande
-[  17]Le numéro de référence de la commande est:
+[  17]Le numÃ©ro de rÃ©fÃ©rence de la commande est:
 [  18]Votre commande va s'afficher dans quelques secondes...
-[  21]Le client peut être contacté à
+[  21]Le client peut Ãªtre contactÃ© Ã 
 [   3]Vous pouvez
-[   8]vous connectez à votre compte.
-[  11]Une fois connecté, vous pouvez
+[   8]vous connectez Ã  votre compte.
+[  11]Une fois connectÃ©, vous pouvez
 [  16]changer votre mot de passe

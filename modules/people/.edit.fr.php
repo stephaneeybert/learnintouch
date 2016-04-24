@@ -1,11 +1,11 @@
 [   0]Modifier une personne
-[   1]Téléphone bureau:
-[   2]Téléphone portable:
-[   5]Catégorie:
+[   1]TÃ©lÃ©phone bureau:
+[   2]TÃ©lÃ©phone portable:
+[   5]CatÃ©gorie:
 [   6]Nom:
-[   7]Prénom:
+[   7]PrÃ©nom:
 [   8]Email:
 [   9]Profile:
 [  38]Le format de l'adresse email est invalide.
-[  39]Le prénom est requis.
+[  39]Le prÃ©nom est requis.
 [  40]Le nom de famille est requis.

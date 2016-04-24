@@ -1,5 +1,5 @@
-[   0]Effacer une catégorie
+[   0]Effacer une catÃ©gorie
 [   1]Nom:
 [   5]Description:
-[   2]Effacer la catégorie?
-[   3]La catégorie ne peut être effacée car elle contient des liens.
+[   2]Effacer la catÃ©gorie?
+[   3]La catÃ©gorie ne peut Ãªtre effacÃ©e car elle contient des liens.

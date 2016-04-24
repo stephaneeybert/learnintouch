@@ -1,6 +1,6 @@
 [   0]La corbeille
 [   1]Vider la corbeille
-[  11]Récupérer l'exercice
+[  11]RÃ©cupÃ©rer l'exercice
 [   7]Name
 [   6]Description
-[   9]Lorsqu'un exercice est effacé, il est en fait stocké dans la corbeille.\n\nLes exercices peuvent être récupérés de la corbeille.\n\nVider la corbeille efface définitivement les exercices qui y sont stockés.
+[   9]Lorsqu'un exercice est effacÃ©, il est en fait stockÃ© dans la corbeille.\n\nLes exercices peuvent Ãªtre rÃ©cupÃ©rÃ©s de la corbeille.\n\nVider la corbeille efface dÃ©finitivement les exercices qui y sont stockÃ©s.

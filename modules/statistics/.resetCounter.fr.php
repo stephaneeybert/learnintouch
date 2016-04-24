@@ -1,3 +1,3 @@
 [   0]La date du compteur
-[   1]Ré-initialise la date du compteur à:
+[   1]RÃ©-initialise la date du compteur Ã :
 [   2]La date du compteur est actuellement:

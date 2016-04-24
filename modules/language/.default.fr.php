@@ -1,5 +1,5 @@
-[   0]Spécifier la langue par défaut
-[   2]Spécifier la langue comme étant celle par défaut?
+[   0]SpÃ©cifier la langue par dÃ©faut
+[   2]SpÃ©cifier la langue comme Ã©tant celle par dÃ©faut?
 [   1]Nom:
 [   3]Code:
 [   5]Image:

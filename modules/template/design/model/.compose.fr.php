@@ -1,35 +1,35 @@
-[   0]Composer un modèle
-[   1]Supprimer un élément
-[   2]Type de modèle:
-[   3]Ajouter un élément
+[   0]Composer un modÃ¨le
+[   1]Supprimer un Ã©lÃ©ment
+[   2]Type de modÃ¨le:
+[   3]Ajouter un Ã©lÃ©ment
 [   4]Intervertir avec le suivant
-[   5]Intervertir avec le précédent
-[   6]Modèle:
+[   5]Intervertir avec le prÃ©cÃ©dent
+[   6]ModÃ¨le:
 [   7]Styler le conteneur
-[   8]Un modèle est composé de conteneurs, chacun contenant une série d'éléments.\n\nUn conteneur est ici représenté par un carré noir.\n\nLes éléments sont les objets de base servant à la construction du modèle.\n\nIl y a différents types d'éléments.\n\nCertains éléments sont des liens de navigations.\n\nD'autres affichent du contenu.\n\nPour composer un modèle, veuillez simplement ajouter des éléments dans les conteneurs.\n\nEnsuite, veuillez éditer le contenu des éléments.\n\nEnfin, veuillez composer le style des éléments.
-[   9]Styler l'élément
-[  10]Styler le modèle
-[  11]Composer l'élément
-[  12]Afficher l'aperçu du modèle
+[   8]Un modÃ¨le est composÃ© de conteneurs, chacun contenant une sÃ©rie d'Ã©lÃ©ments.\n\nUn conteneur est ici reprÃ©sentÃ© par un carrÃ© noir.\n\nLes Ã©lÃ©ments sont les objets de base servant Ã  la construction du modÃ¨le.\n\nIl y a diffÃ©rents types d'Ã©lÃ©ments.\n\nCertains Ã©lÃ©ments sont des liens de navigations.\n\nD'autres affichent du contenu.\n\nPour composer un modÃ¨le, veuillez simplement ajouter des Ã©lÃ©ments dans les conteneurs.\n\nEnsuite, veuillez Ã©diter le contenu des Ã©lÃ©ments.\n\nEnfin, veuillez composer le style des Ã©lÃ©ments.
+[   9]Styler l'Ã©lÃ©ment
+[  10]Styler le modÃ¨le
+[  11]Composer l'Ã©lÃ©ment
+[  12]Afficher l'aperÃ§u du modÃ¨le
 [  13]Etes vous sur de vouloir SUPPRIMER ?
-[  14]Styler les pages pré-formatées
-[  15]Styler l'intérieur du modèle
+[  14]Styler les pages prÃ©-formatÃ©es
+[  15]Styler l'intÃ©rieur du modÃ¨le
 [  16]Intervertir avec le suivant
-[  17]Les conteneurs doivent tous avoir une largeur exprimée dans la même unité, soit en pixels, soit en pourcentage.
-[  18]Intervertir avec le précédent
+[  17]Les conteneurs doivent tous avoir une largeur exprimÃ©e dans la mÃªme unitÃ©, soit en pixels, soit en pourcentage.
+[  18]Intervertir avec le prÃ©cÃ©dent
 [  19]Supprimer un conteneur
 [  20]Ajouter un conteneur
-[  21]Ajouter une rangée de conteneurs
-[  22]Déplacer vers la rangée suivante
-[  23]Déplacer vers la rangée précédente
-[  24]Afficher l'aperçu du conteneur
-[  25]Afficher l'aperçu de l'élément
-[  26]Dupliquer l'élément
-[  27]Cacher l'élément
-[  28]Afficher l'élément
-[  29]Intervertir la rangée avec la précédente
-[  30]Intervertir la rangée avec le suivante
-[  31]hérite du modèle:
-[  32]Les rangées de conteneurs devraient avoir la même largeur totale.
-[  33]La rangée
-[  34]de conteneurs devrait avoir la même largeur totale que la rangée de son modèle parent.
+[  21]Ajouter une rangÃ©e de conteneurs
+[  22]DÃ©placer vers la rangÃ©e suivante
+[  23]DÃ©placer vers la rangÃ©e prÃ©cÃ©dente
+[  24]Afficher l'aperÃ§u du conteneur
+[  25]Afficher l'aperÃ§u de l'Ã©lÃ©ment
+[  26]Dupliquer l'Ã©lÃ©ment
+[  27]Cacher l'Ã©lÃ©ment
+[  28]Afficher l'Ã©lÃ©ment
+[  29]Intervertir la rangÃ©e avec la prÃ©cÃ©dente
+[  30]Intervertir la rangÃ©e avec le suivante
+[  31]hÃ©rite du modÃ¨le:
+[  32]Les rangÃ©es de conteneurs devraient avoir la mÃªme largeur totale.
+[  33]La rangÃ©e
+[  34]de conteneurs devrait avoir la mÃªme largeur totale que la rangÃ©e de son modÃ¨le parent.

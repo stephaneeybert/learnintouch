@@ -1,1 +1,1 @@
-[   1]Composer le style du modèle
+[   1]Composer le style du modÃ¨le

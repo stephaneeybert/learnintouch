@@ -1,2 +1,2 @@
-[   0]Catégorie:
-[   1]Document à télécharger - Catégorie:
+[   0]CatÃ©gorie:
+[   1]Document Ã  tÃ©lÃ©charger - CatÃ©gorie:

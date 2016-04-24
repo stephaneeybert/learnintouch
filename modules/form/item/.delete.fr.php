@@ -1,5 +1,5 @@
-[   0]Effacer un élément de formulaire
+[   0]Effacer un Ã©lÃ©ment de formulaire
 [   1]Nom:
 [   5]Description:
-[   2]Effacer l'élément?
+[   2]Effacer l'Ã©lÃ©ment?
 [   3]Email:

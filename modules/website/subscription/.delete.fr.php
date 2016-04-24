@@ -1,6 +1,6 @@
 [   0]Abonnement
-[   1]Date de clôture:
+[   1]Date de clÃ´ture:
 [   2]Site web:
 [   5]Date d'ouverture:
 [  13]Montant:
-[  15]Durée:
+[  15]DurÃ©e:

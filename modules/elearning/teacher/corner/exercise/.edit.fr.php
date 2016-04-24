@@ -1,19 +1,19 @@
 [   0]Modifier un exercice
-[   1]Annuler l'opération
+[   1]Annuler l'opÃ©ration
 [   3]Le nom est requis.
 [   4]Le cours est requis.
-[   5]Un exercice avec ce nom existe déjà.
+[   5]Un exercice avec ce nom existe dÃ©jÃ .
 [   6]Nom: *
-[   7]Valider l'opération
+[   7]Valider l'opÃ©ration
 [   8]Description:
 [   9]Cours: *
 [  10]Vous n'avez pas le droit de modifier cet exercice.
-[  11]La durée maximale doit être un nombre de minutes
-[  12]Durée maximale:
-[  13]Par défaut, les exercices n'ont pas de durée maximale.\n\nLes participants peuvent prendre tout leur temps pour faire un exercice.\n\nIl est aussi possible d'avoir une durée maximale identique pour tous les exercices.\n\nEt il est enfin possible d'avoir une durée maximale spécifique à un exercice de façon à avoir des exercices avec des durées maximales différentes.\n\nLa durée est exprimée en minutes.
-[  20]Onglets en numéros de page:
-[  21]Par défaut, les onglets des pages d'un exercice sont affichés en utilisant les noms des pages de questions.\n\nMais il est possible d'afficher les onglets, en, ou avec, des numéros de pages.
-[  22]Cacher le clavier des lettres spéciales:
-[  23]Par défaut, lors de l'affichage d'une page de questions qui demande au participant de saisir les réponses, une série de lettres est affichée en haut de la page.\n\nCes lettres sont celles qui peuvent manquer sur le clavier de l'ordinateur utilisé par le participant.\n\nIl est possible de cacher ce clavier sur écran.
-[  53]En numéros de pages
-[  54]Avec des numéros de pages.
+[  11]La durÃ©e maximale doit Ãªtre un nombre de minutes
+[  12]DurÃ©e maximale:
+[  13]Par dÃ©faut, les exercices n'ont pas de durÃ©e maximale.\n\nLes participants peuvent prendre tout leur temps pour faire un exercice.\n\nIl est aussi possible d'avoir une durÃ©e maximale identique pour tous les exercices.\n\nEt il est enfin possible d'avoir une durÃ©e maximale spÃ©cifique Ã  un exercice de faÃ§on Ã  avoir des exercices avec des durÃ©es maximales diffÃ©rentes.\n\nLa durÃ©e est exprimÃ©e en minutes.
+[  20]Onglets en numÃ©ros de page:
+[  21]Par dÃ©faut, les onglets des pages d'un exercice sont affichÃ©s en utilisant les noms des pages de questions.\n\nMais il est possible d'afficher les onglets, en, ou avec, des numÃ©ros de pages.
+[  22]Cacher le clavier des lettres spÃ©ciales:
+[  23]Par dÃ©faut, lors de l'affichage d'une page de questions qui demande au participant de saisir les rÃ©ponses, une sÃ©rie de lettres est affichÃ©e en haut de la page.\n\nCes lettres sont celles qui peuvent manquer sur le clavier de l'ordinateur utilisÃ© par le participant.\n\nIl est possible de cacher ce clavier sur Ã©cran.
+[  53]En numÃ©ros de pages
+[  54]Avec des numÃ©ros de pages.

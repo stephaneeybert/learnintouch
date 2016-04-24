@@ -1,6 +1,6 @@
-[   0]Spécifier la page
+[   0]SpÃ©cifier la page
 [   1]Page web:
 [   5]Langue:
 [   4]Parcourir...
-[   2]Sélectionner une page du site web
-[   7]La page web est selectionnée dans la liste des pages du site web.\n\nLa page doit être une page du site web.
+[   2]SÃ©lectionner une page du site web
+[   7]La page web est selectionnÃ©e dans la liste des pages du site web.\n\nLa page doit Ãªtre une page du site web.

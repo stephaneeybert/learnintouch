@@ -1,2 +1,2 @@
-[   0]Sélectionner dans la boutique
-[   2]Catégorie d'articles:
+[   0]SÃ©lectionner dans la boutique
+[   2]CatÃ©gorie d'articles:

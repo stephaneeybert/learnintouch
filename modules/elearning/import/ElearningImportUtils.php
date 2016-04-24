@@ -224,9 +224,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $name = $matterNode->getAttribute("name");
         $description = $matterNode->getAttribute("description");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-
         array_push($matters, array($id, $name, $description));
       }
     }
@@ -278,9 +275,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $id = $courseNode->getAttribute("id");
         $name = $courseNode->getAttribute("name");
         $description = $courseNode->getAttribute("description");
-
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
 
         array_push($courses, array($id, $name, $description, $matterId));
       }
@@ -375,9 +369,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $name = $elearningCourseItemNode->getAttribute("name");
         $description = $elearningCourseItemNode->getAttribute("description");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-
         array_push($elearningCourseItems, array($type, $id, $name, $description));
       }
     }
@@ -424,9 +415,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $name = $elearningExerciseNode->getAttribute("name");
         $description = $elearningExerciseNode->getAttribute("description");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-
         array_push($elearningExercises, array($id, $name, $description));
       }
     }
@@ -455,9 +443,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $id = $elearningLessonNode->getAttribute("id");
         $name = $elearningLessonNode->getAttribute("name");
         $description = $elearningLessonNode->getAttribute("description");
-
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
 
         array_push($elearningLessons, array($id, $name, $description));
       }
@@ -665,10 +650,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $description = $courseNode->getAttribute("description");
         $image = $courseNode->getAttribute("image");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-        $image = utf8_decode($image);
-
         // The name must not already exist
         if ($elearningCourse = $this->elearningCourseUtils->selectByName($name)) {
           $randomNumber = LibUtils::generateUniqueId();
@@ -736,10 +717,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $courseDescription = $courseNode->getAttribute("description");
         $courseImage = $courseNode->getAttribute("image");
 
-        $courseName = utf8_decode($courseName);
-        $courseDescription = utf8_decode($courseDescription);
-        $courseImage = utf8_decode($courseImage);
-
         $courseItems = array();
         $elearningCourseItemNodes = $courseNode->getElementsByTagName(ELEARNING_XML_COURSE_ITEM);
         foreach ($elearningCourseItemNodes as $elearningCourseItemNode) {
@@ -750,10 +727,6 @@ class ElearningImportUtils extends ContentImportUtils {
             $name = $elearningCourseItemNode->getAttribute("name");
             $description = $elearningCourseItemNode->getAttribute("description");
             $image = $elearningCourseItemNode->getAttribute("image");
-
-            $name = utf8_decode($name);
-            $description = utf8_decode($description);
-            $image = utf8_decode($image);
 
             array_push($courseItems, array($type, $id, $name, $description, $image));
           }
@@ -1055,18 +1028,6 @@ class ElearningImportUtils extends ContentImportUtils {
     $image = $elearningExerciseNode->getAttribute("image");
     $audio = $elearningExerciseNode->getAttribute("audio");
 
-    $name = utf8_decode($name);
-    $description = utf8_decode($description);
-    $maxDuration = utf8_decode($maxDuration);
-    $hideKeyboard = utf8_decode($hideKeyboard);
-    $disableNextPageTabs = utf8_decode($disableNextPageTabs);
-    $hidePageTabs = utf8_decode($hidePageTabs);
-    $hideProgressionBar = utf8_decode($hideProgressionBar);
-    $skipExerciseIntroduction = utf8_decode($skipExerciseIntroduction);
-    $hideIntroduction = utf8_decode($hideIntroduction);
-    $image = utf8_decode($image);
-    $audio = utf8_decode($audio);
-
     // The name must not already exist
     if ($elearningExercise = $this->elearningExerciseUtils->selectByName($name)) {
       $randomNumber = LibUtils::generateUniqueId();
@@ -1079,7 +1040,6 @@ class ElearningImportUtils extends ContentImportUtils {
       $nodeName = $introductionNode->tagName;
       if ($nodeName == ELEARNING_XML_EXERCISE_INTRODUCTION) {
         $introduction = $introductionNode->nodeValue;
-        $introduction = utf8_decode($introduction);
         $introduction = LibString::decodeHtmlspecialchars($introduction);
         $introduction = LibString::stripMultipleSpaces($introduction);
 
@@ -1123,8 +1083,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $instructions = $instructionsNode->nodeValue;
         $language = $instructionsNode->getAttribute("language");
 
-        $instructions = utf8_decode($instructions);
-
         $elearningExercise->setInstructions($this->languageUtils->setTextForLanguage($elearningExercise->getInstructions(), $language, $instructions));
       }
     }
@@ -1167,26 +1125,12 @@ class ElearningImportUtils extends ContentImportUtils {
         $hideIntroduction = $elearningExercisePageNode->getAttribute("hideIntroduction");
         $hintPlacement = $elearningExercisePageNode->getAttribute("hintPlacement");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-        $hideText = utf8_decode($hideText);
-        $image = utf8_decode($image);
-        $audio = utf8_decode($audio);
-        $listOrder = utf8_decode($listOrder);
-        $questionType = utf8_decode($questionType);
-        $video = utf8_decode($video);
-        $videoUrl = utf8_decode($videoUrl);
-        $hideIntroduction = utf8_decode($hideIntroduction);
-        $hintPlacement = utf8_decode($hintPlacement);
-
         $text = '';
         $textNodes = $elearningExercisePageNode->getElementsByTagName(ELEARNING_XML_EXERCISE_PAGE_TEXT);
         foreach ($textNodes as $textNode) {
           $nodeName = $textNode->tagName;
           if ($nodeName == ELEARNING_XML_EXERCISE_PAGE_TEXT) {
             $text = $textNode->nodeValue;
-
-            $text = utf8_decode($text);
 
             $text = LibString::decodeHtmlspecialchars($text);
             $text = LibString::stripMultipleSpaces($text);
@@ -1229,8 +1173,6 @@ class ElearningImportUtils extends ContentImportUtils {
             $instructions = $instructionsNode->nodeValue;
             $language = $instructionsNode->getAttribute("language");
 
-            $instructions = utf8_decode($instructions);
-
             $elearningExercisePage->setInstructions($this->languageUtils->setTextForLanguage($elearningExercisePage->getInstructions(), $language, $instructions));
           }
         }
@@ -1258,13 +1200,6 @@ class ElearningImportUtils extends ContentImportUtils {
             $points = $elearningQuestionNode->getAttribute("points");
             $listOrder = $elearningQuestionNode->getAttribute("listOrder");
 
-            $question = utf8_decode($question);
-            $image = utf8_decode($image);
-            $audio = utf8_decode($audio);
-            $hint = utf8_decode($hint);
-            $points = utf8_decode($points);
-            $listOrder = utf8_decode($listOrder);
-
             // Create the question
             $elearningQuestion = new ElearningQuestion();
             $elearningQuestion->setQuestion($question);
@@ -1281,8 +1216,6 @@ class ElearningImportUtils extends ContentImportUtils {
               if ($nodeName == ELEARNING_XML_QUESTION_EXPLANATION) {
                 $explanation = $questionExplanationNode->nodeValue;
                 $language = $questionExplanationNode->getAttribute("language");
-
-                $explanation = utf8_decode($explanation);
 
                 $elearningQuestion->setExplanation($this->languageUtils->setTextForLanguage($elearningQuestion->getExplanation(), $language, $explanation));
               }
@@ -1312,11 +1245,6 @@ class ElearningImportUtils extends ContentImportUtils {
                 $audio = $elearningAnswerNode->getAttribute("audio");
                 $listOrder = $elearningAnswerNode->getAttribute("listOrder");
 
-                $answer = utf8_decode($answer);
-                $image = utf8_decode($image);
-                $audio = utf8_decode($audio);
-                $listOrder = utf8_decode($listOrder);
-
                 // Create the answer
                 $elearningAnswer = new ElearningAnswer();
                 $elearningAnswer->setAnswer($answer);
@@ -1331,8 +1259,6 @@ class ElearningImportUtils extends ContentImportUtils {
                   if ($nodeName == ELEARNING_XML_ANSWER_EXPLANATION) {
                     $explanation = $answerExplanationNode->nodeValue;
                     $language = $answerExplanationNode->getAttribute("language");
-
-                    $explanation = utf8_decode($explanation);
 
                     $elearningAnswer->setExplanation($this->languageUtils->setTextForLanguage($elearningAnswer->getExplanation(), $language, $explanation));
                   }
@@ -1354,7 +1280,6 @@ class ElearningImportUtils extends ContentImportUtils {
               $nodeName = $elearningSolutionNode->tagName;
               if ($nodeName == ELEARNING_XML_SOLUTION) {
                 $answer = $elearningSolutionNode->getAttribute("answer");
-                $answer = utf8_decode($answer);
                 $answer = LibString::databaseEscapeQuotes($answer);
 
                 // Create the solution
@@ -1426,12 +1351,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $image = $elearningExerciseNode->getAttribute("image");
         $audio = $elearningExerciseNode->getAttribute("audio");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-        $maxDuration = utf8_decode($maxDuration);
-        $image = utf8_decode($image);
-        $audio = utf8_decode($audio);
-
         $exercisePages = array();
         $elearningExercisePageNodes = $elearningExerciseNode->getElementsByTagName(ELEARNING_XML_EXERCISE_PAGE);
         foreach ($elearningExercisePageNodes as $elearningExercisePageNode) {
@@ -1447,17 +1366,6 @@ class ElearningImportUtils extends ContentImportUtils {
             $videoUrl = $elearningExercisePageNode->getAttribute("videoUrl");
             $hideText = $elearningExercisePageNode->getAttribute("hideText");
             $hintPlacement = $elearningExercisePageNode->getAttribute("hintPlacement");
-
-            $paragraphName = utf8_decode($paragraphName);
-            $paragraphDescription = utf8_decode($paragraphDescription);
-            $paragraphImage = utf8_decode($paragraphImage);
-            $paragraphAudio = utf8_decode($paragraphAudio);
-            $listOrder = utf8_decode($listOrder);
-            $questionType = utf8_decode($questionType);
-            $video = utf8_decode($video);
-            $videoUrl = utf8_decode($videoUrl);
-            $hideText = utf8_decode($hideText);
-            $hintPlacement = utf8_decode($hintPlacement);
 
             array_push($exercisePages, array($paragraphName, $paragraphDescription, $paragraphImage, $paragraphAudio, $listOrder, $questionType, $hintPlacement));
           }
@@ -1636,11 +1544,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $image = $elearningLessonNode->getAttribute("image");
         $audio = $elearningLessonNode->getAttribute("audio");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-        $image = utf8_decode($image);
-        $audio = utf8_decode($audio);
-
         // The name must not already exist
         if ($elearningLesson = $this->elearningLessonUtils->selectByName($name)) {
           $randomNumber = LibUtils::generateUniqueId();
@@ -1653,7 +1556,6 @@ class ElearningImportUtils extends ContentImportUtils {
           $nodeName = $introductionNode->tagName;
           if ($nodeName == ELEARNING_XML_LESSON_INTRODUCTION) {
             $introduction = $introductionNode->nodeValue;
-            $introduction = utf8_decode($introduction);
             $introduction = LibString::decodeHtmlspecialchars($introduction);
             $introduction = LibString::stripMultipleSpaces($introduction);
 
@@ -1689,7 +1591,6 @@ class ElearningImportUtils extends ContentImportUtils {
           if ($nodeName == ELEARNING_XML_LESSON_INSTRUCTIONS) {
             $instructions = $instructionsNode->nodeValue;
             $language = $instructionsNode->getAttribute("language");
-            $instructions = utf8_decode($instructions);
             $elearningLesson->setInstructions($this->languageUtils->setTextForLanguage($elearningLesson->getInstructions(), $language, $instructions));
           }
         }
@@ -1736,21 +1637,12 @@ class ElearningImportUtils extends ContentImportUtils {
             }
             $exerciseTitle = $elearningLessonParagraphNode->getAttribute("exerciseTitle");
 
-            $headline = utf8_decode($headline);
-            $image = utf8_decode($image);
-            $audio = utf8_decode($audio);
-            $video = utf8_decode($video);
-            $videoUrl = utf8_decode($videoUrl);
-            $listOrder = utf8_decode($listOrder);
-            $exerciseTitle = utf8_decode($exerciseTitle);
-
             $body = '';
             $bodyNodes = $elearningLessonParagraphNode->getElementsByTagName(ELEARNING_XML_LESSON_PARAGRAPH_BODY);
             foreach ($bodyNodes as $bodyNode) {
               $nodeName = $bodyNode->tagName;
               if ($nodeName == ELEARNING_XML_LESSON_PARAGRAPH_BODY) {
                 $body = $bodyNode->nodeValue;
-                $body = utf8_decode($body);
                 $body = LibString::decodeHtmlspecialchars($body);
                 $body = LibString::stripMultipleSpaces($body);
 
@@ -1826,11 +1718,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $image = $elearningLessonNode->getAttribute("image");
         $audio = $elearningLessonNode->getAttribute("audio");
 
-        $name = utf8_decode($name);
-        $description = utf8_decode($description);
-        $image = utf8_decode($image);
-        $audio = utf8_decode($audio);
-
         $lessonParagraphs = array();
         $elearningLessonParagraphNodes = $elearningLessonNode->getElementsByTagName(ELEARNING_XML_LESSON_PARAGRAPH);
         foreach ($elearningLessonParagraphNodes as $elearningLessonParagraphNode) {
@@ -1838,9 +1725,6 @@ class ElearningImportUtils extends ContentImportUtils {
           if ($nodeName == ELEARNING_XML_EXERCISE_PAGE) {
             $headline = $elearningLessonParagraphNode->getAttribute("headline");
             $body = $elearningLessonParagraphNode->getAttribute("body");
-
-            $headline = utf8_decode($headline);
-            $body = utf8_decode($body);
 
             array_push($lessonParagraphs, array($headline, $body));
           }

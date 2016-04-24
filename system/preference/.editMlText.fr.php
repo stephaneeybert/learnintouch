@@ -1,4 +1,4 @@
-[   0]Modifier une préférence
+[   0]Modifier une prÃ©fÃ©rence
 [   3]Texte:
-[   1]Réinitialiser la préférence?
-[   2]Réinitialiser la préférence en
+[   1]RÃ©initialiser la prÃ©fÃ©rence?
+[   2]RÃ©initialiser la prÃ©fÃ©rence en

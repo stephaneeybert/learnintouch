@@ -1,1 +1,1 @@
-[   1]Composer le style intérieur du modèle
+[   1]Composer le style intÃ©rieur du modÃ¨le

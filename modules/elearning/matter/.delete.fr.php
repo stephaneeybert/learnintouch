@@ -1,5 +1,5 @@
-[   0]Effacer une matière
+[   0]Effacer une matiÃ¨re
 [   1]Nom:
 [   5]Description:
-[   2]Effacer la matière?
-[   3]La matière ne peut être effacée car elle est utilisée par des cours.
+[   2]Effacer la matiÃ¨re?
+[   3]La matiÃ¨re ne peut Ãªtre effacÃ©e car elle est utilisÃ©e par des cours.

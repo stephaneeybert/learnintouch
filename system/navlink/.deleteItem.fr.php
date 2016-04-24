@@ -1,4 +1,4 @@
-[   0]Effacer un élément
+[   0]Effacer un Ã©lÃ©ment
 [   1]Texte:
 [   5]Description:
-[   2]Effacer l'élément?
+[   2]Effacer l'Ã©lÃ©ment?

@@ -1,11 +1,11 @@
-[   0]Modifier un modèle
-[   1]Le type de modèle est requis.
-[   2]Type de modèle:
-[   3]Modèle parent:
+[   0]Modifier un modÃ¨le
+[   1]Le type de modÃ¨le est requis.
+[   2]Type de modÃ¨le:
+[   3]ModÃ¨le parent:
 [   4]Le nom est requis.
-[   5]Il est possible pour un modèle, d'hériter d'un autre modèle.\n\nL'autre modèle devient le parent du modèle.\n\nLe modèle enfant hérite de tout le contenu du modèle parent.\n\nLe modèle enfant peut cependant styler le contenu de son modèle parent.
+[   5]Il est possible pour un modÃ¨le, d'hÃ©riter d'un autre modÃ¨le.\n\nL'autre modÃ¨le devient le parent du modÃ¨le.\n\nLe modÃ¨le enfant hÃ©rite de tout le contenu du modÃ¨le parent.\n\nLe modÃ¨le enfant peut cependant styler le contenu de son modÃ¨le parent.
 [   6]Nom:
 [   7]Description:
-[   9]Un modèle avec ce nom existe déjà.
-[  10]Avant de construire une maison, on doit décider du nombre et de l'emplacement des pièces.\n\nUne fois que la décision à été prise, la maison peut être construite.\n\nEt après que tout le monde ai emménagé, il n'y a plus moyen de déplacer les pièces.\n\nC'est la même chose avec un modèle.\n\nAvant de créer un modèle, il faut choisir son type.\n\nLe type représente le nombre et l'emplacement des conteneurs.\n\nChaque conteneur est ici représenté par un carré noir.\n\nUne fois que le modèle a été créé, il n'y a plus moyen de changer son type.
-[  12]Le type de modèle doit être spécifié lors de la création d'un nouveau modèle.\n\nIl indique le nombre et l'emplacement des différents conteneurs composant le modèle.\n\nChaque conteneur recevra plus tard des éléments de contenu.\n\nUn conteneur est ici représenté par un carré noir.\n\nUne fois que le modèle a été créé, son type ne peut plus être changé ultérieurement.\n\nC'est un peu comme de spécifier combien de pièces une maison va avoir.\n\nUne fois que les meubles ont été placé dans les pièces, le nombre et l'emplacement des pièces ne peux plus être modifié.
+[   9]Un modÃ¨le avec ce nom existe dÃ©jÃ .
+[  10]Avant de construire une maison, on doit dÃ©cider du nombre et de l'emplacement des piÃ¨ces.\n\nUne fois que la dÃ©cision Ã  Ã©tÃ© prise, la maison peut Ãªtre construite.\n\nEt aprÃ¨s que tout le monde ai emmÃ©nagÃ©, il n'y a plus moyen de dÃ©placer les piÃ¨ces.\n\nC'est la mÃªme chose avec un modÃ¨le.\n\nAvant de crÃ©er un modÃ¨le, il faut choisir son type.\n\nLe type reprÃ©sente le nombre et l'emplacement des conteneurs.\n\nChaque conteneur est ici reprÃ©sentÃ© par un carrÃ© noir.\n\nUne fois que le modÃ¨le a Ã©tÃ© crÃ©Ã©, il n'y a plus moyen de changer son type.
+[  12]Le type de modÃ¨le doit Ãªtre spÃ©cifiÃ© lors de la crÃ©ation d'un nouveau modÃ¨le.\n\nIl indique le nombre et l'emplacement des diffÃ©rents conteneurs composant le modÃ¨le.\n\nChaque conteneur recevra plus tard des Ã©lÃ©ments de contenu.\n\nUn conteneur est ici reprÃ©sentÃ© par un carrÃ© noir.\n\nUne fois que le modÃ¨le a Ã©tÃ© crÃ©Ã©, son type ne peut plus Ãªtre changÃ© ultÃ©rieurement.\n\nC'est un peu comme de spÃ©cifier combien de piÃ¨ces une maison va avoir.\n\nUne fois que les meubles ont Ã©tÃ© placÃ© dans les piÃ¨ces, le nombre et l'emplacement des piÃ¨ces ne peux plus Ãªtre modifiÃ©.

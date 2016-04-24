@@ -1,8 +1,8 @@
 [   0]Les scorings
-[   1]Créer un scoring
+[   1]CrÃ©er un scoring
 [   2]Modifier le scoring
 [   3]Effacer le scoring
 [   4]Les plages
 [   5]Nom
 [   6]Description
-[   7]Un scoring est l'évaluation du niveau d'un participant à l'aide des résultats de un exercice.\n\nSi un scoring est spécifié pour un exercice alors un message correspondant au niveau est affiché à la fin de l'exercice.\n\nUn scoring est composé de plusieurs messages qui sont associés à des pourcentages de réponses correctes.
+[   7]Un scoring est l'Ã©valuation du niveau d'un participant Ã  l'aide des rÃ©sultats de un exercice.\n\nSi un scoring est spÃ©cifiÃ© pour un exercice alors un message correspondant au niveau est affichÃ© Ã  la fin de l'exercice.\n\nUn scoring est composÃ© de plusieurs messages qui sont associÃ©s Ã  des pourcentages de rÃ©ponses correctes.

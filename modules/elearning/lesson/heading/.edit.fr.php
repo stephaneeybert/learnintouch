@@ -1,4 +1,4 @@
-[   0]Modifier un en-tête de leçon
+[   0]Modifier un en-tÃªte de leÃ§on
 [   4]Nom:
 [   5]Description:
 [   6]Le nom est requis.

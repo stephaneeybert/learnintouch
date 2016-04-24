@@ -1,4 +1,4 @@
-[   0]Composer un modèle de leçon
+[   0]Composer un modÃ¨le de leÃ§on
 [   1]Ajouter une nouvelle rubrique
 [   2]Effacer la rubrique ci-dessus
 [   3]Etes vous sur de vouloir EFFACER cette rubrique ?
@@ -6,11 +6,11 @@
 [   5]Description:
 [   6]Le nom est requis.
 [   7]Texte de la rubrique:
-[   8]Le nom et le texte de la rubrique sont affichés lors de l'affichage d'une leçon. C'est la rubrique pour un ou plusieurs paragraphs de la leçon.\n\nLes paragraphes de leçons sont affichés au sein de rubriques de modèle de leçon.\n\nChaque rubrique peut contenir plusieurs paragraphes.
+[   8]Le nom et le texte de la rubrique sont affichÃ©s lors de l'affichage d'une leÃ§on. C'est la rubrique pour un ou plusieurs paragraphs de la leÃ§on.\n\nLes paragraphes de leÃ§ons sont affichÃ©s au sein de rubriques de modÃ¨le de leÃ§on.\n\nChaque rubrique peut contenir plusieurs paragraphes.
 [   9]Nom de la rubrique:
 [  10]Image de la rubrique:
 [  11]Intervertir avec la rubrique suivante
-[  12]Intervertir avec la rubrique précédente
-[  13]Télécharger ou effacer une image ou un fichier Flash
+[  12]Intervertir avec la rubrique prÃ©cÃ©dente
+[  13]TÃ©lÃ©charger ou effacer une image ou un fichier Flash
 [  14]Instructions:
-[  15]Des instructions peuvent être affichées pour guider le créateur de contenu durant la création d'une leçon.\n\nCes instructions sont ici pour aider le créateur de contenu.\n\nElles ne font pas partie du contenu de la leçon et ne sont pas affichées dans la leçon.
+[  15]Des instructions peuvent Ãªtre affichÃ©es pour guider le crÃ©ateur de contenu durant la crÃ©ation d'une leÃ§on.\n\nCes instructions sont ici pour aider le crÃ©ateur de contenu.\n\nElles ne font pas partie du contenu de la leÃ§on et ne sont pas affichÃ©es dans la leÃ§on.

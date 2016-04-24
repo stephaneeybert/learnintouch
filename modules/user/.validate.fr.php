@@ -3,5 +3,5 @@
 [   2]Rendre le compte utilisateur permanent?
 [   3]Invalider le compte utilisateur?
 [   4]Le compte utilisateur est valide jusqu'au:
-[   5]Le compte utilisateur n'est pas limité dans le temps.
+[   5]Le compte utilisateur n'est pas limitÃ© dans le temps.
 [   6]Le compte utilisateur n'est plus valide depuis le:

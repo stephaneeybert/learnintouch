@@ -1,10 +1,10 @@
 [   0]Poster un message
-[   1]Envoyer un email à la réception d'un message:
+[   1]Envoyer un email Ã  la rÃ©ception d'un message:
 [   2]Le livre d'or est vide.
-[   3]Lorsqu'un message est posté dans le livre d'or, un email peut être envoyé à l'adresse email du site web.\n\nCeci afin de notifier le gérant du site web qu'un message a été posté dans le livre d'or.
+[   3]Lorsqu'un message est postÃ© dans le livre d'or, un email peut Ãªtre envoyÃ© Ã  l'adresse email du site web.\n\nCeci afin de notifier le gÃ©rant du site web qu'un message a Ã©tÃ© postÃ© dans le livre d'or.
 [   4]Inclure le message:
-[   5]Par défaut, l'email envoyé à l'adresse email du site web ne contient pas le message qui à été posté dans le livre d'or.\n\nL'email ne contient qu'un lien vers le message qui est conservé dans le livre d'or.\n\nMais il est possible d'inclure le message dans le contenu de l'email.\n\nCela permet de lire immédiatement le message.
-[   6]Demander un code de sécurité:
-[   7]Lorsqu'un visiteur poste un message dans le livre d'or, il peut lui être demandé de saisir un code de sécurité.\n\nParce que ce code est affiché dans une image, il peut seulement être lu par une personne.\n\nCe mécanisme de sécurité permet d'éviter les écritures automatiques de message dans le livre d'or par des robots du web.
-[  10]Sécuriser l'accès:
-[  31]Par défault, les utilisateurs ne sont pas obligés de se connecter pour poster un message dans le livre d'or.\n\nMais le livre d'or peut être protégé et son accès réservé aux utilisateurs enregistrés du site web.\n\nDans ce cas, un utilisateur sera obligé de se connecter avant de pouvoir poster un message dans le livre d'or.
+[   5]Par dÃ©faut, l'email envoyÃ© Ã  l'adresse email du site web ne contient pas le message qui Ã  Ã©tÃ© postÃ© dans le livre d'or.\n\nL'email ne contient qu'un lien vers le message qui est conservÃ© dans le livre d'or.\n\nMais il est possible d'inclure le message dans le contenu de l'email.\n\nCela permet de lire immÃ©diatement le message.
+[   6]Demander un code de sÃ©curitÃ©:
+[   7]Lorsqu'un visiteur poste un message dans le livre d'or, il peut lui Ãªtre demandÃ© de saisir un code de sÃ©curitÃ©.\n\nParce que ce code est affichÃ© dans une image, il peut seulement Ãªtre lu par une personne.\n\nCe mÃ©canisme de sÃ©curitÃ© permet d'Ã©viter les Ã©critures automatiques de message dans le livre d'or par des robots du web.
+[  10]SÃ©curiser l'accÃ¨s:
+[  31]Par dÃ©fault, les utilisateurs ne sont pas obligÃ©s de se connecter pour poster un message dans le livre d'or.\n\nMais le livre d'or peut Ãªtre protÃ©gÃ© et son accÃ¨s rÃ©servÃ© aux utilisateurs enregistrÃ©s du site web.\n\nDans ce cas, un utilisateur sera obligÃ© de se connecter avant de pouvoir poster un message dans le livre d'or.

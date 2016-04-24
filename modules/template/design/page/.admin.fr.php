@@ -1,3 +1,3 @@
-[   0]Composer le style des pages pré-formatées
+[   0]Composer le style des pages prÃ©-formatÃ©es
 [   1]Composer le style de la page
 [   4]Effacer le style de la page

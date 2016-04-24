@@ -1,22 +1,22 @@
-[   0]Les modèles
-[   1]Créer un modèle
-[   2]Renommer le modèle
-[   3]Effacer le modèle
+[   0]Les modÃ¨les
+[   1]CrÃ©er un modÃ¨le
+[   2]Renommer le modÃ¨le
+[   3]Effacer le modÃ¨le
 [   4]Nom
 [   5]Description
-[   6]Composer le modèle
-[   8]Défaut
-[   9]Dupliquer le modèle
-[  10]Exporter le modèle
-[  11]Sélectionner un modèle
-[  12]Spécifier le modèle d'entrée
-[  13]Les modèles décrivent le contenu et la disposition générale du site web.\n\nIl peut y avoir un nombre illimité de modèles.\n\nChaque modèle peut être utilisé par un nombre illimité de pages web.\n\nUn modèle est spécifiée comme étant le modèle par défaut du site web.\n\nC'est le modèle utilisé par la plupart des pages du site web.\n\nUn autre modèle peut être spécifié comme étant le modèle d'entrée du site web.\n\nC'est le modèle utilisé par la page d'entrée du site web.\n\nLe modèle d'entrée permet de choisir quel modèle sera utilisé pour l'affichage des pages web lorsqu'un visiteur arrive sur le site web.\n\nEt le modèle par défaut permet de choisir quel modèle sera utilisé pour l'affichage des pages suivantes du site web.\n\nMais il est possible d'avoir d'autres modèles et de les utiliser pour n'importe quelles pages du site web.
-[  14]Entrée
-[  15]Le modèle par défaut pour ordinateur
-[  16]Le modèle par défaut pour téléphone
-[  17]Le modèle d'entrée pour ordinateur
-[  18]Le modèle d'entrée pour téléphone
-[  19]Afficher l'apercu du modèle
-[  20]Composer le style des pages pré-formatées
+[   6]Composer le modÃ¨le
+[   8]DÃ©faut
+[   9]Dupliquer le modÃ¨le
+[  10]Exporter le modÃ¨le
+[  11]SÃ©lectionner un modÃ¨le
+[  12]SpÃ©cifier le modÃ¨le d'entrÃ©e
+[  13]Les modÃ¨les dÃ©crivent le contenu et la disposition gÃ©nÃ©rale du site web.\n\nIl peut y avoir un nombre illimitÃ© de modÃ¨les.\n\nChaque modÃ¨le peut Ãªtre utilisÃ© par un nombre illimitÃ© de pages web.\n\nUn modÃ¨le est spÃ©cifiÃ©e comme Ã©tant le modÃ¨le par dÃ©faut du site web.\n\nC'est le modÃ¨le utilisÃ© par la plupart des pages du site web.\n\nUn autre modÃ¨le peut Ãªtre spÃ©cifiÃ© comme Ã©tant le modÃ¨le d'entrÃ©e du site web.\n\nC'est le modÃ¨le utilisÃ© par la page d'entrÃ©e du site web.\n\nLe modÃ¨le d'entrÃ©e permet de choisir quel modÃ¨le sera utilisÃ© pour l'affichage des pages web lorsqu'un visiteur arrive sur le site web.\n\nEt le modÃ¨le par dÃ©faut permet de choisir quel modÃ¨le sera utilisÃ© pour l'affichage des pages suivantes du site web.\n\nMais il est possible d'avoir d'autres modÃ¨les et de les utiliser pour n'importe quelles pages du site web.
+[  14]EntrÃ©e
+[  15]Le modÃ¨le par dÃ©faut pour ordinateur
+[  16]Le modÃ¨le par dÃ©faut pour tÃ©lÃ©phone
+[  17]Le modÃ¨le d'entrÃ©e pour ordinateur
+[  18]Le modÃ¨le d'entrÃ©e pour tÃ©lÃ©phone
+[  19]Afficher l'apercu du modÃ¨le
+[  20]Composer le style des pages prÃ©-formatÃ©es
 [  21]Les images de navigation
-[  27]Les préférences
+[  27]Les prÃ©fÃ©rences

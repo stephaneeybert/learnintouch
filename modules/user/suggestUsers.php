@@ -11,10 +11,6 @@ if (!$typedInString) {
   return;
 }
 
-// Ajax treats its data as UTF-8
-$typedInString = utf8_decode($typedInString);
-$subscribe = utf8_decode($subscribe);
-
 // The name is stored in the database in a html encoded format
 $typedInString = LibString::cleanString($typedInString);
 

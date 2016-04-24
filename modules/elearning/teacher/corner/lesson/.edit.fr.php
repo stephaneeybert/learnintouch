@@ -1,10 +1,10 @@
-[   0]Modifier une leÁon
-[   1]Annuler l'opÈration
+[   0]Modifier une le√ßon
+[   1]Annuler l'op√©ration
 [   3]Le nom est requis.
 [   4]Le cours est requis.
-[   5]Une leÁon avec ce nom existe dÈj‡.
+[   5]Une le√ßon avec ce nom existe d√©j√†.
 [   6]Nom: *
-[   7]Valider l'opÈration
+[   7]Valider l'op√©ration
 [   8]Description:
 [   9]Cours: *
-[  10]Vous n'avez pas le droit de modifier cette leÁon.
+[  10]Vous n'avez pas le droit de modifier cette le√ßon.

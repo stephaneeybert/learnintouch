@@ -1,7 +1,7 @@
-[   0]Les plages de résultats
-[   1]Créer une plage
+[   0]Les plages de rÃ©sultats
+[   1]CrÃ©er une plage
 [   2]Modifier la plage
 [   3]Effacer la plage
 [   4]Note
 [   5]Haut
-[   9]Par défaut, les résultats d'exercices sone affichés en nombres de réponses correctes données par le participant.\n\nMais le nombre de réponses correctes n'est pas toujours la représentation la plus expressive.\n\nAfficher les résultats par une note, en utilisant une lettre ou un mot, peut être plus expressif.\n\nChaque note est associée à une plage qui correspond à un pourcentage de réponses correctes.\n\nPar exemple, la note 'A' peut être donnée pour un pourcentage de réponses correctes de 80 à 100, la note 'B' peut être donnée pour un pourcentage de réponses correctes de 60 à 79, etc...
+[   9]Par dÃ©faut, les rÃ©sultats d'exercices sone affichÃ©s en nombres de rÃ©ponses correctes donnÃ©es par le participant.\n\nMais le nombre de rÃ©ponses correctes n'est pas toujours la reprÃ©sentation la plus expressive.\n\nAfficher les rÃ©sultats par une note, en utilisant une lettre ou un mot, peut Ãªtre plus expressif.\n\nChaque note est associÃ©e Ã  une plage qui correspond Ã  un pourcentage de rÃ©ponses correctes.\n\nPar exemple, la note 'A' peut Ãªtre donnÃ©e pour un pourcentage de rÃ©ponses correctes de 80 Ã  100, la note 'B' peut Ãªtre donnÃ©e pour un pourcentage de rÃ©ponses correctes de 60 Ã  79, etc...

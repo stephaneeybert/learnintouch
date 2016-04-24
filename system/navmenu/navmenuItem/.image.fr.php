@@ -1,7 +1,7 @@
-[   0]Télécharger une image
+[   0]TÃ©lÃ©charger une image
 [   6]Image:
 [   3]Nom de l'image:
-[   2]Sélectionner une image:
+[   2]SÃ©lectionner une image:
 [   7]Effacer l'image?
-[  27]Aucune image n'a été spécifiée.
-[   1]Un menu de navigation peut utiliser des images.\n\nSi un élément d'un menu de navigation possède une image, alors l'image sera affichée avant le nom de l'élément.
+[  27]Aucune image n'a Ã©tÃ© spÃ©cifiÃ©e.
+[   1]Un menu de navigation peut utiliser des images.\n\nSi un Ã©lÃ©ment d'un menu de navigation possÃ¨de une image, alors l'image sera affichÃ©e avant le nom de l'Ã©lÃ©ment.

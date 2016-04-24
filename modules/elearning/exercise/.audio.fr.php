@@ -1,8 +1,8 @@
-[   0]Télécharger un fichier audio
+[   0]TÃ©lÃ©charger un fichier audio
 [   6]Fichier audio:
 [   3]Nom du fichier:
-[   5]Sélectionner un fichier:
+[   5]SÃ©lectionner un fichier:
 [   7]Effacer le fichier audio?
-[  27]Aucun fichier audio n'a été spécifié.
-[   1]Un exercice peut avoir un fichier audio.\n\nLe fichier audio est joué avant que l'utilisateur ne réponde aux questions de l'exercice.
+[  27]Aucun fichier audio n'a Ã©tÃ© spÃ©cifiÃ©.
+[   1]Un exercice peut avoir un fichier audio.\n\nLe fichier audio est jouÃ© avant que l'utilisateur ne rÃ©ponde aux questions de l'exercice.
 [   2]Ko.

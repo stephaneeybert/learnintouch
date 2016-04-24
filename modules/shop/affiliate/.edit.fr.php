@@ -1,7 +1,7 @@
-[   0]Modifier un affilié
+[   0]Modifier un affiliÃ©
 [   1]Utilisateur:
-[   2]Un affilié est un utilisateur du système.\n\nPour créer un nouvel affilié, veuillez d'abord créer un utilisateur.\n\nEnsuite veuillez choisir cet utilisateur nouvellement créé pour être un affilié. 
+[   2]Un affiliÃ© est un utilisateur du systÃ¨me.\n\nPour crÃ©er un nouvel affiliÃ©, veuillez d'abord crÃ©er un utilisateur.\n\nEnsuite veuillez choisir cet utilisateur nouvellement crÃ©Ã© pour Ãªtre un affiliÃ©. 
 [   3]L'utilisateur est requis.
-[   4]Cet utilisateur est déjà un affilié.
-[  15]Sélectionner un utilisateur
+[   4]Cet utilisateur est dÃ©jÃ  un affiliÃ©.
+[  15]SÃ©lectionner un utilisateur
 [  25]Parcourir...

@@ -1,6 +1,6 @@
-[   0]Modifier un code de réduction
-[   1]Code de réduction:
-[   2]Taux de réduction:
-[   3]Le code de réduction est requis.
-[   4]Ce code de réduction existe déjà.
-[   5]Le taux de réduction est requis.
+[   0]Modifier un code de rÃ©duction
+[   1]Code de rÃ©duction:
+[   2]Taux de rÃ©duction:
+[   3]Le code de rÃ©duction est requis.
+[   4]Ce code de rÃ©duction existe dÃ©jÃ .
+[   5]Le taux de rÃ©duction est requis.

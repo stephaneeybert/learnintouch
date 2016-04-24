@@ -1,1 +1,1 @@
-[   0]Le paiement a echoué ou a été annulé.\n\nVotre commande n'a pas été acceptée.
+[   0]Le paiement a echouÃ© ou a Ã©tÃ© annulÃ©.\n\nVotre commande n'a pas Ã©tÃ© acceptÃ©e.

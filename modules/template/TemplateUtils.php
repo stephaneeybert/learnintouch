@@ -680,12 +680,15 @@ HEREDOC;
 
 // Color the cache message
 function updateCacheMessage(templateModelId) {
-  document.getElementById("cacheMessage"+templateModelId).innerHTML = "<span id='cacheMessage"+templateModelId+"' style='color:green'>$text52</span>";
+  templateModelId = parseInt(templateModelId);
+  var element = "cacheMessage" + templateModelId;
+  document.getElementById(element).innerHTML = "<span id='cacheMessage"+templateModelId+"' style='color:green'>$text52</span>";
   }
 
 // Refresh the css cache file
 function cacheCssFile(templateModelId) {
-  document.getElementById("cacheMessage"+templateModelId).innerHTML = "<span id='cacheMessage"+templateModelId+"' style='color:grey'>$text53</span>";
+  var element = "cacheMessage" + templateModelId;
+  document.getElementById(element).innerHTML = "<span id='cacheMessage"+templateModelId+"' style='color:grey'>$text53</span>";
   ajaxAsynchronousRequest('$gTemplateDesignUrl/model/cache_css.php?templateModelId='+templateModelId, updateCacheMessage);
   }
 

@@ -7,7 +7,9 @@ class MailListUserDB {
   var $dao;
 
   function MailListUserDB() {
-    $this->dataSource = Sql::initDataSource();
+    global $gSqlDataSource;
+
+    $this->dataSource = $gSqlDataSource;
 
     $this->tableName = DB_TABLE_MAIL_LIST_USER;
 

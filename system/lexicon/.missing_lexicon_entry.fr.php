@@ -1,5 +1,5 @@
-[   0]Une entrée du lexique est manquante
-[   1]L'entrée du lexique avec l'identifiant
-[   2]n'a pas été trouvée.
-[   3]Elle était requise par la page:
+[   0]Une entrÃ©e du lexique est manquante
+[   1]L'entrÃ©e du lexique avec l'identifiant
+[   2]n'a pas Ã©tÃ© trouvÃ©e.
+[   3]Elle Ã©tait requise par la page:
 [   4]Veuillez ouvrir la page, voir son code source html et chercher le contenu suivant:

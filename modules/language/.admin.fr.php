@@ -1,15 +1,15 @@
 [   0]Les langues
-[   1]Créer une langue
+[   1]CrÃ©er une langue
 [   2]Modifier la langue
 [   3]Effacer la langue
 [   4]Code
 [   5]Image
-[   6]Le contenu du site web peut être affiché dans différentes langues.\n\nUn utilisateur visitant le site web peut choisir une langue dans laquelle les pages sont affichées.\n\nUne langue peut être désactivée si elle n'est pas utilisée.\n\nUne langue par défaut peut être spécifiée. C'est la langue utilisée pour les utilisateurs n'ayant pas encore choisit une langue.
-[   7]Choisir comme langue par défaut
+[   6]Le contenu du site web peut Ãªtre affichÃ© dans diffÃ©rentes langues.\n\nUn utilisateur visitant le site web peut choisir une langue dans laquelle les pages sont affichÃ©es.\n\nUne langue peut Ãªtre dÃ©sactivÃ©e si elle n'est pas utilisÃ©e.\n\nUne langue par dÃ©faut peut Ãªtre spÃ©cifiÃ©e. C'est la langue utilisÃ©e pour les utilisateurs n'ayant pas encore choisit une langue.
+[   7]Choisir comme langue par dÃ©faut
 [   8]Nom
-[   9]Défaut
+[   9]DÃ©faut
 [  10]Activer la langue pour le site web
-[  11]Désactiver la langue pour le site web
+[  11]DÃ©sactiver la langue pour le site web
 [  12]Changer l'image
 [  14]Activer la langue pour le panneau d'administration
-[  15]Désactiver la langue pour le panneau d'administration
+[  15]DÃ©sactiver la langue pour le panneau d'administration

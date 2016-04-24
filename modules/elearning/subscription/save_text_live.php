@@ -7,8 +7,6 @@ LibHtml::preventCaching();
 $elearningQuestionId = LibEnv::getEnvHttpPOST("elearningQuestionId");
 $text = LibEnv::getEnvHttpPOST("text");
 
-$text = utf8_decode($text);
-
 $elearningQuestion = $elearningQuestionUtils->selectById($elearningQuestionId);
 $elearningExercisePageId = $elearningQuestion->getElearningExercisePage();
 $elearningExercisePage = $elearningExercisePageUtils->selectById($elearningExercisePageId);

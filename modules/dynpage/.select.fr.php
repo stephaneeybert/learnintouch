@@ -1,2 +1,2 @@
-[   0]Sélectionner une page web
-[   1]Pour sélectionner une page web, veuillez naviguer dans les répertoires et choisir une page.
+[   0]SÃ©lectionner une page web
+[   1]Pour sÃ©lectionner une page web, veuillez naviguer dans les rÃ©pertoires et choisir une page.

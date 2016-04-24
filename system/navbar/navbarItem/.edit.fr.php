@@ -1,20 +1,20 @@
-[   0]Modifier un élément
+[   0]Modifier un Ã©lÃ©ment
 [   4]Nom:
-[  10]Nouvelle fenètre:
-[  11]Par défaut, la page pointée par le lien, est ouverte dans la fenètre courante du navigateur.\n\nMais elle peut être ouverte dans une nouvelle fenètre du navigateur.
+[  10]Nouvelle fenÃ¨tre:
+[  11]Par dÃ©faut, la page pointÃ©e par le lien, est ouverte dans la fenÃ¨tre courante du navigateur.\n\nMais elle peut Ãªtre ouverte dans une nouvelle fenÃ¨tre du navigateur.
 [  12]Page web:
-[  15]Sélectionner une page du site web
+[  15]SÃ©lectionner une page du site web
 [  25]Parcourir...
 [  17]Adresse web:
 [  16]Autre site web:
 [   9]Description:
 [   2]Ordre:
-[   3]Cacher l'élément:
+[   3]Cacher l'Ã©lÃ©ment:
 [   7]L'url est invalide.
 [  19]Langue:
-[  21]Le site web peut avoir du contenu dans plusieurs langues.\n\nLes langues utilisées par le site web doivent être activées dans le module des langues.\n\nUne barre de navigation peut avoir des éléments dans chacune des langues actives.\n\nUne langue est ainsi assignée à chaque élément d'une barre de navigation.\n\nL'élément de la barre de navigation est affiché seulement si sa langue est celle choisie par l'utilisateur visitant le site web.\n\nIl est possible de changer la langue d'un élément et de choisir une autre langue parmis les langues actives.
-[   8]Par défault un élément est visible et est affiché dans sa barre de navigation.\n\nMais il peut être caché. Dans ce cas, il n'est pas affiché dans sa barre de navigation.\n\nCette fonctionalité offre un moyen facile de cacher momentanément un élément.
-[  14]Un élément d'une barre de navigation peut avoir une description.\n\nLa description de l'élément est affichée lorsque le curseur de la souris passe au dessus de l'élément.\n\nAutrement, si un élément d'une barre de navigation n'a pas de description, alors c'est le nom de l'élément qui est affiché aux utilisateurs du site web.
-[  13]Un élément d'une barre de navigation peut pointer soit vers une page au sein du site web, soit vers une page d'un autre site web de l'internet. \n\nLa page web peut être spécifiée de trois manières: \n\n- Elle peut être selectionnée dans la liste des pages du site web (pour pointer vers une page au sein du site web) \n\n- Elle peut être selectionnée dans la liste des pages prédéfinies du site web (pour pointer vers une page prédéfinie au sein du site web) \n\n- Elle peut être manuellement saisie (pour pointer vers un autre site web) \n\nChoisissez entre selectionner une page web et saisir une adresse de site web. \n\nNotez que si une page web est sélectionnée et qu'une page prédéfinie est aussi sélectionnée, alors la page prédéfinie est ignorée. \n\nDe même, si une page web est sélectionnée et une adresse de site web est aussi saisie, alors l'adresse de site web est ignorée.\n\nSi une adresse email est saisie dans le champ url alors le lien sera un lien email.
-[  26]Modèle:
-[  27]Un modèle peut être assigné à un élément d'une barre de navigation.\n\nDans ce cas, la page web pointée par l'élément de la barre de navigation est affichée dans le modèle spécifié.\n\nAutrement, la page web est affichée dans le modèle actuel.\n\nCela permet à un site web d'afficher des pages web dans différents modèles.\n\nPar exemple, il peut y avoir un modèle par défaut pour la plupart des pages web et un autre modèle pour quelques pages web ayant trait à un évènement particulier.
+[  21]Le site web peut avoir du contenu dans plusieurs langues.\n\nLes langues utilisÃ©es par le site web doivent Ãªtre activÃ©es dans le module des langues.\n\nUne barre de navigation peut avoir des Ã©lÃ©ments dans chacune des langues actives.\n\nUne langue est ainsi assignÃ©e Ã  chaque Ã©lÃ©ment d'une barre de navigation.\n\nL'Ã©lÃ©ment de la barre de navigation est affichÃ© seulement si sa langue est celle choisie par l'utilisateur visitant le site web.\n\nIl est possible de changer la langue d'un Ã©lÃ©ment et de choisir une autre langue parmis les langues actives.
+[   8]Par dÃ©fault un Ã©lÃ©ment est visible et est affichÃ© dans sa barre de navigation.\n\nMais il peut Ãªtre cachÃ©. Dans ce cas, il n'est pas affichÃ© dans sa barre de navigation.\n\nCette fonctionalitÃ© offre un moyen facile de cacher momentanÃ©ment un Ã©lÃ©ment.
+[  14]Un Ã©lÃ©ment d'une barre de navigation peut avoir une description.\n\nLa description de l'Ã©lÃ©ment est affichÃ©e lorsque le curseur de la souris passe au dessus de l'Ã©lÃ©ment.\n\nAutrement, si un Ã©lÃ©ment d'une barre de navigation n'a pas de description, alors c'est le nom de l'Ã©lÃ©ment qui est affichÃ© aux utilisateurs du site web.
+[  13]Un Ã©lÃ©ment d'une barre de navigation peut pointer soit vers une page au sein du site web, soit vers une page d'un autre site web de l'internet. \n\nLa page web peut Ãªtre spÃ©cifiÃ©e de trois maniÃ¨res: \n\n- Elle peut Ãªtre selectionnÃ©e dans la liste des pages du site web (pour pointer vers une page au sein du site web) \n\n- Elle peut Ãªtre selectionnÃ©e dans la liste des pages prÃ©dÃ©finies du site web (pour pointer vers une page prÃ©dÃ©finie au sein du site web) \n\n- Elle peut Ãªtre manuellement saisie (pour pointer vers un autre site web) \n\nChoisissez entre selectionner une page web et saisir une adresse de site web. \n\nNotez que si une page web est sÃ©lectionnÃ©e et qu'une page prÃ©dÃ©finie est aussi sÃ©lectionnÃ©e, alors la page prÃ©dÃ©finie est ignorÃ©e. \n\nDe mÃªme, si une page web est sÃ©lectionnÃ©e et une adresse de site web est aussi saisie, alors l'adresse de site web est ignorÃ©e.\n\nSi une adresse email est saisie dans le champ url alors le lien sera un lien email.
+[  26]ModÃ¨le:
+[  27]Un modÃ¨le peut Ãªtre assignÃ© Ã  un Ã©lÃ©ment d'une barre de navigation.\n\nDans ce cas, la page web pointÃ©e par l'Ã©lÃ©ment de la barre de navigation est affichÃ©e dans le modÃ¨le spÃ©cifiÃ©.\n\nAutrement, la page web est affichÃ©e dans le modÃ¨le actuel.\n\nCela permet Ã  un site web d'afficher des pages web dans diffÃ©rents modÃ¨les.\n\nPar exemple, il peut y avoir un modÃ¨le par dÃ©faut pour la plupart des pages web et un autre modÃ¨le pour quelques pages web ayant trait Ã  un Ã©vÃ¨nement particulier.

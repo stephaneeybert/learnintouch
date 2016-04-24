@@ -1,6 +1,6 @@
-[   0]Sélectionner un lieu
-[   1]Sélectionner
-[   3]Région:
-[   4]Département
+[   0]SÃ©lectionner un lieu
+[   1]SÃ©lectionner
+[   3]RÃ©gion:
+[   4]DÃ©partement
 [   5]Code postal:
 [   6]Pays:
