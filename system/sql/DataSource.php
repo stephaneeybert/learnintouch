@@ -30,69 +30,69 @@ class DataSource {
   function DataSource($host, $databaseName) {
     $this->host = $host;
     $this->databaseName = $databaseName;
-    $this->dbConnection = 0;
+    $this->dbConnection = '';
     $this->sqlStatement = '';
-    }
+  }
 
   // Get the host name
   function getHost() {
     return($this->host);
-    }
+  }
 
   // Get the database name
   function getDatabaseName() {
     return($this->databaseName);
-    }
+  }
 
   // Get the database connection
   function getDbConnection() {
     return($this->dbConnection);
-    }
+  }
 
   // Check if a connection is established with the database
   function isConnected() {
     return(!is_null($this->dbConnection));
-    }
+  }
 
   // Connect to the database
   function connect($user, $password) {
     die('Method <b>connect</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   function selectDatabase() {
     die('Method <b>selectDatabase</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   // Disconnect from the database
   function disconnect() {
     die('Method <b>disconnect</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   // Protected
   // Connect to the database using an existing connection
   // No new connection is created
   function setDbConnection($dbConnection) {
     $this->dbConnection = $dbConnection;
-    }
+  }
 
   // Query the database and return the result
   function query($sqlStatement) {
     die('Method <b>query</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   // Get the error from the last query if any
   function getErrorMessage() {
     die('Method <b>getError</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   function listTables() {
     die('Method <b>listTables</b> of class <b>DataSource</b> is not implemented.');
-    }
+  }
 
   function getLastInsertId() {
     die('Method <b>getLastInsertId</b> of class <b>DataSource</b> is not implemented.');
-    }
-
   }
+
+}
 
 ?>

@@ -7,6 +7,9 @@ Unpack the engine archive
 cd /home/stephane/learnintouch/engine
 unzip engine.zip
 
+Make sure the charset of the PHPMailer is utf-8
+api/PHPMailer-5.2.14/class.phpmailer.php
+
 Add the crontab entries
 The crontab allows for the automatic execution of programs by the server.
 The programs can be run repeatedly, like every day, week, month, etc...
