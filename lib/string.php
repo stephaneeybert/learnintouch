@@ -176,7 +176,7 @@ class LibString {
   // and translating its html tags and quotes
   // Note the option ENT_QUOTES translates both the single and double quotes
   static function cleanString($str) {
-    $str = htmlspecialchars(trim($str), ENT_QUOTES, 'ISO-8859-1');
+    $str = htmlspecialchars(trim($str), ENT_QUOTES, 'UTF-8');
     $str = preg_replace('/&amp;#(x[a-f0-9]+|[0-9]+);/i', '&#$1;', $str);
 
     return($str);

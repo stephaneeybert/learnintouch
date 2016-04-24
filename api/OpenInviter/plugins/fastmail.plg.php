@@ -166,7 +166,7 @@ class fastmail extends openinviter_base
 		$post_elements=array();
 		$form_action=$this->getElementString($res,'action="','"');
 		$post_elements['nojs']=0;
-		$post_elements['_charset_']='ISO-8859-1';
+		$post_elements['_charset_']='UTF-8';
 		$post_elements['MLS']='UA-*';
 		$post_elements['MSS']='!AD-*';
 		$post_elements['SAD-AL-DR']=0;

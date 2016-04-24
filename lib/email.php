@@ -183,13 +183,13 @@ class LibEmail {
     $message  = "\n--$main_boundary\n";
     $message .= "Content-Type: multipart/alternative;\n\tboundary=\"$text_boundary\"\n";
     $message .= "\n--$text_boundary\n";
-    $message .= "Content-Type: text/plain; charset=\"ISO-8859-1\"\n";
+    $message .= "Content-Type: text/plain; charset=\"UTF-8\"\n";
     $message .= "Content-Transfer-Encoding: 8bit\n\n";
     $message .= ($text_message!="")?"$text_message":"Text portion of HTML Email";
     $message .= "\n--$text_boundary\n";
     $message .= "Content-Type: multipart/related;\n\tboundary=\"$html_boundary\"\n";
     $message .= "\n--$html_boundary\n";
-    $message .= "Content-Type: text/html; charset=\"ISO-8859-1\"\n";
+    $message .= "Content-Type: text/html; charset=\"UTF-8\"\n";
     $message .= "Content-Transfer-Encoding: quoted-printable\n\n";
     $message .= str_replace("=", "=3D", $html_message)."\n";
 

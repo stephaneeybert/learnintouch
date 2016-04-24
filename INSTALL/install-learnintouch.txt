@@ -7,8 +7,9 @@ Unpack the engine archive
 cd /home/stephane/learnintouch/engine
 unzip engine.zip
 
-Make sure the charset of the PHPMailer is utf-8
+Make sure the charset of the APIS are all utf-8
 api/PHPMailer-5.2.14/class.phpmailer.php
+api/pear/PEAR-1.3.1/pear/Common.php
 
 Add the crontab entries
 The crontab allows for the automatic execution of programs by the server.

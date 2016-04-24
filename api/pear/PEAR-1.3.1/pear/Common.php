@@ -883,7 +883,7 @@ class PEAR_Common extends PEAR
             "email" => "email",
             "role" => "role",
             );
-        $ret = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n";
+        $ret = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
         $ret .= "<!DOCTYPE package SYSTEM \"http://pear.php.net/dtd/package-1.0\">\n";
         $ret .= "<package version=\"1.0\">
   <name>$pkginfo[package]</name>
