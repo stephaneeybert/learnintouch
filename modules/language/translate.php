@@ -25,7 +25,7 @@ if ($language = $languageUtils->selectByCode($toLanguageCode)) {
   $filename = basename($filePath);
   $nameBits = explode(".", $filename);
   if (is_array($nameBits) && count($nameBits) > 0) {
-    $fromFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . 'fr' . '.php';
+    $fromFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . 'en' . '.php';
     $translatedFilePath = dirname($filePath) . '/.' . $nameBits[0] . '.' . $toLanguageCode . '.php';
   }
 }
