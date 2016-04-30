@@ -108,6 +108,10 @@ grant all privileges on db_europasprak.* to europasprak@'localhost' identified b
 flush privileges;
 quit;
 
+Dump some data
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert engine > ~/trash/engine-data.sql
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert europasprak > ~/trash/europasprak-data.sql
+
 Restaure some data from a data only backup file
 Insert the following statements at the top of the backup file:
 set foreign_key_checks = 0;
