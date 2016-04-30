@@ -145,7 +145,7 @@ class BackupUtils extends BackupDB {
       unlink($filename);
     }
 
-    $options = '--default-character-set=latin1 --skip-extended-insert ';
+    $options = '--default-character-set=utf8 --skip-extended-insert ';
 
     if ($tableStructure != 1) {
       $options .= ' --no-create-info';
