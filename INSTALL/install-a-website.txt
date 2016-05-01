@@ -104,7 +104,8 @@ bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/backup/db_l
 Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_europasprak.* to europasprak@'localhost' identified by 'kjffirjfenj';
+grant all privileges on europasprak.* to europasprak@'localhost' identified by 'rewgjikjfr';
+grant all privileges on engine.* to engine@'localhost' identified by 'mignet';
 flush privileges;
 quit;
 
