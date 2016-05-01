@@ -234,11 +234,17 @@ class LanguageUtils extends LanguageDB {
 
     // Check if a language has been chosen
     $languageCode = LibSession::getSessionValue(LANGUAGE_SESSION_LANGUAGE_CODE);
+    if (!$this->isActiveLanguage($languageCode)) {
+      $languageCode = '';
+    }
 
     // If no language has yet been chosen
     if (!$languageCode) {
       // Check if a language had already been specified in the past
       $languageCode = LibCookie::getCookie($this->cookieLanguageCode);
+      if (!$this->isActiveLanguage($languageCode)) {
+        $languageCode = '';
+      }
 
       // Check that the language stored in the cookie is still active
       if (!$this->isActiveLanguage($languageCode)) {
