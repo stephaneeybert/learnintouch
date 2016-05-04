@@ -88,6 +88,8 @@ if ($email) {
       $mailAddress->setSubscribe(true);
       $mailAddressUtils->insert($mailAddress);
       $mailAddressId = $mailAddressUtils->getLastInsertId();
+    } else {
+      $mailAddressId = $mailAddress->getId();
     }
 
     if ($mailListId && $mailAddressId) {
