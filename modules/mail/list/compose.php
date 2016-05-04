@@ -88,14 +88,14 @@ if ($email) {
       $mailAddress->setSubscribe(true);
       $mailAddressUtils->insert($mailAddress);
       $mailAddressId = $mailAddressUtils->getLastInsertId();
+    }
 
-      if ($mailListId && $mailAddressId) {
-        if (!$mailListAddress = $mailListAddressUtils->selectByMailListIdAndMailAddressId($mailListId, $mailAddressId)) {
-          $mailListAddress = new MailListAddress();
-          $mailListAddress->setMailAddressId($mailAddressId);
-          $mailListAddress->setMailListId($mailListId);
-          $mailListAddressUtils->insert($mailListAddress);
-        }
+    if ($mailListId && $mailAddressId) {
+      if (!$mailListAddress = $mailListAddressUtils->selectByMailListIdAndMailAddressId($mailListId, $mailAddressId)) {
+        $mailListAddress = new MailListAddress();
+        $mailListAddress->setMailAddressId($mailAddressId);
+        $mailListAddress->setMailListId($mailListId);
+        $mailListAddressUtils->insert($mailListAddress);
       }
     }
 
