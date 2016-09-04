@@ -1,0 +1,2 @@
+php_value include_path "/home/stephane/learnintouch/engine/setup"
+php_value auto_prepend_file "/home/stephane/learnintouch/www/europasprak.com/account/setup/specific.php"

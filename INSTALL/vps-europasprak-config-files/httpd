@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Apache:	start/stop apache
+#
+# Copy the file httpd in /etc/init.d and add a soft link from /etc/rc.d/rc5.d
+
+### BEGIN INIT INFO
+# Provides:          httpd
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start httpd at boot time
+# Description:       Enable httpd provided by daemon.
+### END INIT INFO
+
+export PATH=$PATH:/home/stephane/programs/install/apache/bin/
+
+case "$1" in
+  start)
+    /home/stephane/programs/install/apache/bin/apachectl start
+    echo "Starting Apache:"
+    ;;
+  stop)
+    /home/stephane/programs/install/apache/bin/apachectl stop
+    echo "Stopping Apache:"
+    ;;
+  restart)
+    /home/stephane/programs/install/apache/bin/apachectl restart
+    echo "Restarting Apache:"
+    ;;
+  *)
+    echo "Usage: %s {start|stop}\n" "$0"
+    exit 1
+    ;;
+esac
+
+exit 0
