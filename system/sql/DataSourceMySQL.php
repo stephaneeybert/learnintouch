@@ -45,6 +45,10 @@ class DataSourceMySQL extends DataSource {
 
     $sqlErrorMessage = $this->sqlStatement . "<br><br>" . mysqli_error($this->getDbConnection());
 
+    if (mysqli_connect_errno()) {
+      reportError("Failed to connect to MySQL: " . mysqli_connect_error() . $sqlErrorMessage);
+    }
+
     if (!isset($skipReportError)) {
       reportError("The sql statement failed. " . $sqlErrorMessage);
     }
