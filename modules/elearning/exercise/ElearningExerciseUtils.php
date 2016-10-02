@@ -3148,13 +3148,14 @@ var elearningSocket;
 
 $(function() {
   if ('undefined' != typeof io) {
+    console.log('The elearning namespace socket is attempting to connect to $gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-//      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
+      console.log("The elearning namespace socket connected");
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});
     });
     elearningSocket.on('message', function(message) {
-//      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
+      console.log(message);
     });
   }
 });

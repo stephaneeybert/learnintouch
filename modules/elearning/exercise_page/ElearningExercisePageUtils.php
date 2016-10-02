@@ -2552,11 +2552,11 @@ $(function() {
   if ('undefined' != typeof io) {
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
-//      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
+      $('#watchLiveInfo').append($('<li>The elearning namespace socket connected</li>'));
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});
     });
     elearningSocket.on('message', function(message) {
-//      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
+      $('#watchLiveInfo').append($('<li>' + message + '</li>'));
     });
   }
 });
