@@ -318,6 +318,7 @@ $elearningExercisePageUtils->lexiconEntryUtils = $lexiconEntryUtils;
 $elearningExercisePageUtils->elearningExerciseUtils = $elearningExerciseUtils;
 $elearningExercisePageUtils->elearningQuestionUtils = $elearningQuestionUtils;
 $elearningExercisePageUtils->elearningResultUtils = $elearningResultUtils;
+$elearningExercisePageUtils->elearningQuestionResultUtils = $elearningQuestionResultUtils;
 $elearningExercisePageUtils->elearningAnswerUtils = $elearningAnswerUtils;
 $elearningExercisePageUtils->elearningSolutionUtils = $elearningSolutionUtils;
 $elearningExercisePageUtils->elearningSubscriptionUtils = $elearningSubscriptionUtils;

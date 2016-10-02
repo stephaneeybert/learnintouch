@@ -91,7 +91,14 @@ class ElearningResultUtils extends ElearningResultDB {
   function deleteQuestionsResults($elearningResultId) {
     if ($elearningQuestionResults = $this->elearningQuestionResultUtils->selectByResult($elearningResultId)) {
       foreach ($elearningQuestionResults as $elearningQuestionResult) {
-        $this->elearningQuestionResultUtils->delete($elearningQuestionResult->getId());
+        // Do not delete the typed in text result
+        if ($elearningQuestion = $this->elearningQuestionUtils->selectById($elearningQuestionResult->getElearningQuestion())) {
+          $elearningExercisePageId = $elearningQuestion->getElearningExercisePage();
+          $elearningExercisePage = $this->elearningExercisePageUtils->selectById($elearningExercisePageId);
+          if (!$this->elearningExercisePageUtils->typeIsWriteText($elearningExercisePage)) {
+            $this->elearningQuestionResultUtils->delete($elearningQuestionResult->getId());
+          }
+        }
       }
     }
   }

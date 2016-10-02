@@ -22,6 +22,7 @@ class ElearningExercisePageUtils extends ElearningExercisePageDB {
   var $elearningExerciseUtils;
   var $elearningQuestionUtils;
   var $elearningResultUtils;
+  var $elearningQuestionResultUtils;
   var $elearningAnswerUtils;
   var $elearningSolutionUtils;
   var $elearningSubscriptionUtils;
@@ -1817,6 +1818,14 @@ HEREDOC;
     } else if ($this->typeIsWriteText($elearningExercisePage)) {
       // The question displays an input field to type in a full text
 
+      if (!$participantAnswer) {
+        // Display the typed in text from an existing result if any
+        if ($elearningResult = $this->elearningResultUtils->selectBySubscriptionAndExercise($elearningSubscription->getId(), $elearningExercise->getId())) {
+          $elearningResultId = $elearningResult->getId();
+          $participantAnswer = $this->elearningQuestionResultUtils->getParticipantAnswers($elearningResultId, $elearningQuestion->getId());
+        }
+      }
+
       $answerNbWords = $elearningQuestion->getAnswerNbWords();
       $uniqueQuestionId = $this->elearningQuestionUtils->renderUniqueQuestionId($elearningQuestion->getId());
       $elearningQuestionId = $elearningQuestion->getId();
@@ -1894,7 +1903,11 @@ $('#$uniqueTextareaId').bind("keyup", function (event) {
   skipCopilotAnswerRefresh("$elearningQuestionId");
   // Update only on additional words
   if (event.which == 32 || event.which == 188 || event.which == 190 || event.which == 8 || event.which == 13 || event.which == 59) {
-    saveTextareaLive('$uniqueTextareaId', '$elearningQuestionId');
+    // Always save live the text to type in
+    var watchLive = 1;
+    if (watchLive == 1) {
+      saveTextareaLive('$uniqueTextareaId', '$elearningQuestionId');
+    }
   }
 });
 

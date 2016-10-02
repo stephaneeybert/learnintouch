@@ -74,7 +74,7 @@ $elearningResultId = LibSession::getSessionValue(ELEARNING_SESSION_RESULT_ID);
 if ($elearningResult = $elearningResultUtils->selectById($elearningResultId)) {
   $uniqueQuestionId = $elearningQuestionUtils->renderUniqueQuestionId($elearningQuestionId);
 
-  if ($elearningExercisePageUtils->isWrittenAnswer($elearningExercisePage)) {
+  if ($elearningExercisePageUtils->typeIsWriteInQuestion($elearningExercisePage) || $elearningExercisePageUtils->typeIsWriteInText($elearningExercisePage)) {
     $elearningResultUtils->deleteQuestionResults($elearningQuestionId);
 
     $elearningQuestionResult = new ElearningQuestionResult();
