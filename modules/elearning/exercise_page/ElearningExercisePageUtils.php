@@ -1820,9 +1820,11 @@ HEREDOC;
 
       if (!$participantAnswer) {
         // Display the typed in text from an existing result if any
-        if ($elearningResult = $this->elearningResultUtils->selectBySubscriptionAndExercise($elearningSubscription->getId(), $elearningExercise->getId())) {
-          $elearningResultId = $elearningResult->getId();
-          $participantAnswer = $this->elearningQuestionResultUtils->getParticipantAnswers($elearningResultId, $elearningQuestion->getId());
+        if ($elearningSubscription) {
+          if ($elearningResult = $this->elearningResultUtils->selectBySubscriptionAndExercise($elearningSubscription->getId(), $elearningExercise->getId())) {
+            $elearningResultId = $elearningResult->getId();
+            $participantAnswer = $this->elearningQuestionResultUtils->getParticipantAnswers($elearningResultId, $elearningQuestion->getId());
+          }
         }
       }
 
