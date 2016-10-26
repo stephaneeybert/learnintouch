@@ -37,9 +37,7 @@ grant all privileges on db_engine.* to engine@'localhost' identified by 'mypassw
 flush privileges;
 quit;
 
-Export latin1 data into a utf-8 database:
-Make sure the db_engine-structure.sql has an ascii/unknown charset
-uchardet ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql
+Convert data from the latin1 to the utf-8 charset
 Dump the data specifying its original charset
 bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --skip-extended-insert db_engine > ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql
 Ignore foreign keys
@@ -50,8 +48,12 @@ Remove the comments in vi
 Remove the ENGINE names in vi
 :s/ ENGINE.*/;/99999
 Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
-iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_engine.utf8.sql
-mv ~/dev/php/learnintouch/engine/INSTALL/db_engine.utf8.sq ~/dev/php/learnintouch/engine/INSTALL/db_engine.sql
+Note that ASCII is a subset of UTF-8, so all ASCII files are already UTF-8 encoded. The bytes in the ASCII file and the bytes that would result from "encoding it to UTF-8" would be exactly the same bytes. There's no difference between them, so there's no need to do anything.
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql
+iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.utf8.sql
+mv ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.utf8.sql ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql
+
 Make sure the data file has a utf-8 charset
 uchardet ~/dev/php/learnintouch/backup/db_engine.sql
 bin/mysql -u stephane -p db_engine -v < ~/dev/php/learnintouch/engine/INSTALL/db_engine-structure.sql 
