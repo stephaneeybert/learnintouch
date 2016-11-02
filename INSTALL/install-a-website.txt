@@ -114,14 +114,12 @@ bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --ski
 bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert europasprak > ~/trash/europasprak-data.sql
 
 Restaure some data from a data only backup file
-Insert the following statements at the top of the backup file:
+Insert the following statements at the TOP of the backup file:
+set autocommit = 0;
+set unique_checks = 0;
 set foreign_key_checks = 0;
-delete from property;
-delete from profile;
-delete from preference;
-delete from statistics_visit;
-delete from statistics_page;
-delete from unique_token;
+Insert the following statements at the BOTTOM of the backup file:
+commit;
 programs/mysql/install/bin/mysql -v -u stephane -p db_europasprak < backup_db_db_europasprak
 
 Copy some data files
