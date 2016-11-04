@@ -1948,7 +1948,7 @@ $('#$uniqueQuestionInputId').focus(function() {
 });
 $('#$uniqueQuestionInputId').blur(function() {
   setTimeout(function() {
-    if (keyboardClicked == 0) {
+    if ('undefined' == typeof keyboardClicked || keyboardClicked == 0) {
       if (displayInstantFeedback) {
         getInstantFeedback('$elearningQuestionId', document.getElementById('$uniqueQuestionInputId').value);
       }
