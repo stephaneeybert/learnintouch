@@ -5,6 +5,7 @@ var server = require('./server.js');
 
 var copilotElearningSubscriptions = [];
 
+// Listen on the elearning namespace
 server.io.of('/elearning').on('connection', function(socket) {
   console.log('The elearning socket server received a connection');
 
@@ -103,13 +104,14 @@ server.io.of('/elearning').on('connection', function(socket) {
     console.log("Disconnecting sessionID: " + sessionID);
 
     socket.leave('liveResultAdminPages');
-
-    for(i = 0; i < copilotElearningSubscriptions.length; i++) {
-      if ('undefined' != typeof copilotElearningSubscriptions[i]) {
-        for(j = 0; j < copilotElearningSubscriptions[i].length; j++) {
-          if (copilotElearningSubscriptions[i][j] == sessionID) {
+    
+    var copilotElearningSubscription;
+    for (copilotElearningSubscription of copilotElearningSubscriptions) {
+      if ('undefined' != typeof copilotElearningSubscription) {
+        for(j = 0; j < copilotElearningSubscription.length; j++) {
+          if (copilotElearningSubscription[j] == sessionID) {
             console.log("Leaving the live watch for the elearning subscription: " + i);          
-            copilotElearningSubscriptions[i].splice(j, 1);
+            copilotElearningSubscription.splice(j, 1);
             socket.leave(i);
           }
         }
