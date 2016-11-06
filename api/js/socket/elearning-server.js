@@ -16,6 +16,7 @@ server.io.of('/elearning').on('connection', function(socket) {
       copilotElearningSubscriptions[data.elearningSubscriptionId] = [];
     }
     copilotElearningSubscriptions[data.elearningSubscriptionId].push(sessionID);
+    // Join the room named with the subscription id 
     socket.join(data.elearningSubscriptionId);
     socket.send("You are now able to be watched.");
     socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
@@ -101,22 +102,21 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('disconnect', function(data) {
+    socket.leave('liveResultAdminPages');
     console.log("Disconnecting sessionID: " + sessionID);
 
-    socket.leave('liveResultAdminPages');
-    
     var copilotElearningSubscription;
-    for (copilotElearningSubscription of copilotElearningSubscriptions) {
+    copilotElearningSubscriptions.forEach(function (copilotElearningSubscription, copilotElearningSubscriptionId) {
       if ('undefined' != typeof copilotElearningSubscription) {
         for(j = 0; j < copilotElearningSubscription.length; j++) {
           if (copilotElearningSubscription[j] == sessionID) {
-            console.log("Leaving the live watch for the elearning subscription: " + i);          
+            console.log("Leaving the live watch for the elearning subscription: " + copilotElearningSubscriptionId);
             copilotElearningSubscription.splice(j, 1);
-            socket.leave(i);
+            socket.leave(copilotElearningSubscriptionId);
           }
         }
       }
-    }
+    });
 
   });
 
