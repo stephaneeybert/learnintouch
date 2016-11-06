@@ -17,6 +17,7 @@ server.io.of('/elearning').on('connection', function(socket) {
     }
     copilotElearningSubscriptions[data.elearningSubscriptionId].push(sessionID);
     // Join the room named with the subscription id 
+    // The room needs to be joined, not only for the teacher to watch the answers live, but also to share the whiteboard
     socket.join(data.elearningSubscriptionId);
     socket.send("You are now able to be watched.");
     socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
