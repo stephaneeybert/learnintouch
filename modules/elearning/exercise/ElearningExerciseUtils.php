@@ -3062,8 +3062,10 @@ HEREDOC;
     $this->loadLanguageTexts();
 
     $whiteboard = '';
+    $elearningClassId = '';
     if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
       $whiteboard = $elearningSubscription->getWhiteboard();
+      $elearningClassId = $elearningSubscription->getClassId();
     }
 
     $labelClear = $this->websiteText[122];
@@ -3148,11 +3150,11 @@ var elearningSocket;
 
 $(function() {
   if ('undefined' != typeof io) {
-    console.log('The elearning namespace socket is attempting to connect to $gHostname:$NODEJS_SOCKET_PORT/elearning');
+    console.log('The socket, with elearning namespace, is attempting to connect to $gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
       console.log("The elearning namespace socket connected");
-      elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+      elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
     });
     elearningSocket.on('message', function(message) {
       console.log(message);
@@ -3166,7 +3168,7 @@ function sendWhiteboardContent(elearningSubscriptionId, content) {
     $('#whiteboard_output').append(content);
 
     // Send the content
-    elearningSocket.emit('updateWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'whiteboard': content});
+    elearningSocket.emit('updateWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId', 'whiteboard': content});
 
     // Save the content in the subscription
     saveWhiteboardContent(elearningSubscriptionId, $('#whiteboard_output').html());
@@ -3176,7 +3178,7 @@ function sendWhiteboardContent(elearningSubscriptionId, content) {
 function clearOtherWhiteboardContent() {
   if ('undefined' != typeof elearningSocket) {
     // Send the content
-    elearningSocket.emit('clearWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+    elearningSocket.emit('clearWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
   }
 }
 
@@ -3203,14 +3205,14 @@ function showLocalParticipantWhiteboard() {
 function hideOtherParticipantWhiteboard() {
   if ('undefined' != typeof elearningSocket) {
     $('#subscriptionWhiteboard').slideUp('fast');
-    elearningSocket.emit('hideParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+    elearningSocket.emit('hideParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
   }
 }
 
 function showParticipantWhiteboard() {
   if ('undefined' != typeof elearningSocket) {
     $('#subscriptionWhiteboard').slideDown('fast');
-    elearningSocket.emit('showParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId'});
+    elearningSocket.emit('showParticipantWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
   }
 }
 

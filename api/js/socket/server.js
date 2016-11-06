@@ -42,7 +42,7 @@ httpServer.listen(portNumber, function() {
   console.log('The NodeJS server [port: ' + portNumber + '] is listening...');
 });
 
-// When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. 
+// When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. The socketSessionId is to have a unique id per client. Note that, because the socket.id is renewed on each client page refresh, it cannot be used, and a custom unique client id socketSessionId is being used.
 module.exports.io.set('authorization', function (handshakeData, handler) {
   if (handshakeData.headers.cookie) {
     handshakeData.cookies = cookie.parse(decodeURIComponent(handshakeData.headers.cookie));
@@ -54,13 +54,13 @@ module.exports.io.set('authorization', function (handshakeData, handler) {
         console.log("The redis client had an error: " + error);
         return handler('The connection was refused because the redis client had an error.', false);
       } else if (!reply) {
-        console.log('The connection was refused because the redis client did not find the session id.');
-        return handler('The connection was refused because the redis client did not find the session id.', false);
+        console.log('The connection was refused because the redis client did not find the sessionID.');
+        return handler('The connection was refused because the redis client did not find the sessionID.', false);
       } else {
         var redisSocketSessionId = utils.getRedisValue(reply, "socketSessionId");
         if ('undefined' == typeof handshakeData.socketSessionId || redisSocketSessionId != handshakeData.socketSessionId) {
-          console.log('The connection was refused because the session id was invalid.');
-          return handler('The connection was refused because the session id was invalid.', false);
+          console.log('The connection was refused because the socketSessionId was invalid.');
+          return handler('The connection was refused because the socketSessionId was invalid.', false);
         } else {
           console.log('The connection was granted.');
           handler(null, true);
