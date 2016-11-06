@@ -8,7 +8,7 @@ var copilotElearningSubscriptions = [];
 server.io.of('/elearning').on('connection', function(socket) {
   console.log('The elearning socket server received a connection');
 
-  // The copilot feature allows a teacher and his participant to do an exercise together, and to see in real time the exercise being done. the two of them can provide answers to the exercise, and the other can see the provided answers live. They can also change the current page of questions. And they can use a shared whiteboard. For this feature, the teacher and his participant are confined into a socket room, with the room name being the participant's elearningSubscriptionId value.
+  // The copilot feature allows a teacher and his participant to do an exercise together, and to see in real time the exercise being done. The two of them can provide answers to the exercise, and the other can see the provided answers live. They can also change the current page of questions. And they can use a shared whiteboard. For this feature, the teacher and his participant are confined into a socket room, with the room name being the participant's elearningSubscriptionId value.
 
   socket.on('watchLiveCopilot', function(data) {
     if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
