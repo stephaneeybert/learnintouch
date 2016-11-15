@@ -3279,7 +3279,7 @@ $("#whiteboard_print").click(function() {
 $('#whiteboard_input').bind("keyup click", function (event) {
   // Update only on additional words
   if (event.which == 13) {
-    var content = $('#whiteboard_input').val() + '<br/>';
+    var content =  "$firstname: " + $('#whiteboard_input').val() + '<br/>';
     parseWhiteboardContentUrl(content);
     sendWhiteboardContent('$elearningSubscriptionId', content);
     $('#whiteboard_input').val('');
