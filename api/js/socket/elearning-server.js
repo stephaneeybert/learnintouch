@@ -19,8 +19,8 @@ server.io.of('/elearning').on('connection', function(socket) {
       if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
         copilotElearningSubscriptions[data.elearningSubscriptionId] = {};
       }
-      // There are multiple sockets, one for each client, for a subscription, all of these sockets having the same session
-      // subscription-> one socket id per client -> same session
+      // There are multiple sockets (one for each client) for a subscription, all of these sockets having the same session
+      // That is: subscription-> one socket id per client -> same session
       copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId] = sessionID;
       socket.join(data.elearningSubscriptionId);
       socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
