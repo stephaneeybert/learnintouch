@@ -65,6 +65,7 @@ update language set locale = 'en_GB.utf8' where id = '1';
 update language set locale = 'fr_FR.utf8' where id = '2';
 update language set locale = 'sv_SE.utf8' where id = '3';
 update language set locale = 'nn_NO.utf8' where id = '4';
+And see the INSTALL/install-server.txt for the locales installation and configuration
 
 Once the language files have been copied onto the server, make sure they are in utf8 encoding
 See the command dev/commands/iso88591Toutf8.sh

@@ -58,8 +58,11 @@ Install the following locales
 locale-gen en_GB
 locale-gen fr_FR
 locale-gen sv_SE
-
-It should display the exact name of the locale
+locale-gen nn_NO
+localedef -i en_GB -f UTF-8 en_GB.UTF-8
+localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
+localedef -i sv_SE -f UTF-8 sv_SE.UTF-8
+localedef -i nn_NO -f UTF-8 nn_NO.UTF-8
 
 
 Language files
