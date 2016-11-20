@@ -1,6 +1,6 @@
 <?php
 
-// TODO Not used define('DB_NAME_PREFIX', "db_");
+define('DB_NAME_PREFIX', "db_");
 
 // Names for the host, the database, users and tables
 if (isLocalhost()) {

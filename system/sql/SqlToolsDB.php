@@ -53,7 +53,6 @@ class SqlToolsDB {
     $this->dataSource->selectDatabase();
 
     $names = Array();
-    /* TODO Not used
     if ($result = $this->dao->getDatabaseNames()) {
       for ($i = 0; $i < $result->getRowCount(); $i++) {
         $row = $result->getRow($i);
@@ -67,8 +66,6 @@ class SqlToolsDB {
         }
       }
     }
-    */
-    array_push($names, "europasprak");
 
     return($names);
   }
