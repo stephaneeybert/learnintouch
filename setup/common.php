@@ -1,5 +1,8 @@
 <?PHP
 
+// Include some properties
+require_once("properties.php");
+
 // Get the environment variables
 $HOSTNAME = $_SERVER["SERVER_NAME"];
 $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
@@ -17,11 +20,6 @@ $REQUEST_URI = $_SERVER["REQUEST_URI"];
 
 date_default_timezone_set("Europe/London");
 
-// The email address of the staff
-define('STAFF_EMAIL', "mittiprovence@yahoo.se");
-
-define('NODEJS_SOCKET_PORT', 9001);
-
 function isLocalhost() {
   global $gSetupWebsiteUrl;
 
@@ -33,7 +31,7 @@ function isLocalhost() {
 }
 
 if (isLocalhost()) {
-  $gHostname = 'http://localhost';
+  $gHostname = LOCALHOST;
 } else {
   $gHostname = $gSetupWebsiteUrl;
 }
