@@ -32,8 +32,10 @@ function isLocalhost() {
 
 if (isLocalhost()) {
   $gHostname = LOCALHOST;
+  $gSocketHostname = NODEJS_SOCKET_LOCALHOST;
 } else {
   $gHostname = $gSetupWebsiteUrl;
+  $gSocketHostname = $gHostname;
 }
 
 // Include the paths to the engine modules

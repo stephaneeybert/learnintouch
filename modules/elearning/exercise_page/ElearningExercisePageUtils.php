@@ -2104,7 +2104,7 @@ HEREDOC;
     global $gImagesUserUrl;
     global $gElearningUrl;
     global $gIsPhoneClient;
-    global $gHostname;
+    global $gSocketHostname;
 
     $this->loadLanguageTexts();
 
@@ -2565,7 +2565,7 @@ HEREDOC;
 <script type="text/javascript">
 $(function() {
   if ('undefined' != typeof io) {
-    elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
       console.log('The elearning namespace socket connected');
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});

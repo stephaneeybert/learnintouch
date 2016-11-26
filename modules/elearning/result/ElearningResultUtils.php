@@ -721,7 +721,7 @@ HEREDOC;
     global $gCommonImagesUrl;
     global $gImageLightOrangeSmallBlink;
     global $gImageLightGreenSmall;
-    global $gHostname;
+    global $gSocketHostname;
 
     $ELEARNING_DOM_ID_NO_ANSWER_H = ELEARNING_DOM_ID_NO_ANSWER_H;
     $ELEARNING_DOM_ID_INCORRECT_H = ELEARNING_DOM_ID_INCORRECT_H;
@@ -919,7 +919,7 @@ function renderLiveResult(responseText) {
 var elearningSocket;
 $(function() {
   if ('undefined' != typeof io) {
-    elearningSocket = io.connect('$gHostname:$NODEJS_SOCKET_PORT/elearning');
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
     elearningSocket.on('connect', function() {
       elearningSocket.emit('watchLiveResult');
     });
