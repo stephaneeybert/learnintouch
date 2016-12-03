@@ -73,13 +73,17 @@ Extract the INSTALL/language-*.tar.gz files
 Then assign the owner again
 
 Setup the NodeJS socket server
-Install some modules
+Note !!! If changing the NodeJS socketio version, then change it also in engine/api/js/socket/socket.io.min.js
+Install Node
+Install these modules
 export NODE_PATH=/home/stephane/programs/install/lib/node_modules;
 npm install -g formidable;
 npm install -g connect;
 npm install -g cookie;
-npm install -g socket.io@0.9;
-npm install -g redis;
+npm install -g http;
+npm install -g socket.io@1.7.1;
+npm install -g redis@2.6.3;
+npm install -g socket.io-redis@2.0.0;
 Try to start by typing the command found in the service
 /home/stephane/programs/install/bin/node /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js 2>&1 >> /home/stephane/learnintouch/engine/api/js/socket/nodejs.log
 The log file
