@@ -2,7 +2,7 @@ var http = require('http');
 var connect = require('connect');
 var cookie = require('cookie');
 var socketio = require('socket.io');
-var redis = require('redis')
+var redis = require('redis');
 
 var utils = require('./utils.js');
 
