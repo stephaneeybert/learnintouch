@@ -1,46 +1,24 @@
 var http = require('http');
 var connect = require('connect');
 var cookie = require('cookie');
-var socketio = require('socket.io');
 var redis = require('redis');
+var ioredis = require('socket.io-redis');
+var socketio = require('socket.io');
 
 var utils = require('./utils.js');
 
-var PORT = 9001;
-var portNumber = process.argv[2] || PORT;
-
 var httpServer = http.createServer(utils.httpHandler);
 
-module.exports.io = socketio.listen(httpServer).configure(function () {
-  this.enable('browser client minification');  // send minified client
-  this.enable('browser client etag');          // apply etag caching logic based on version number
-  this.enable('browser client gzip');          // gzip the file
-  this.set('log level', 1);                    // reduce logging
-  this.set('transports', [                     // enable all transports (optional if you want flashsocket)
-    'websocket',
-    'flashsocket',
-    'htmlfile',
-    'xhr-polling',
-    'jsonp-polling'
-    ]);
-  console.log('The NodeJS is set up');
+var SOCKETIO_PORT = 9001;
+httpServer.listen(SOCKETIO_PORT, function() {
+  console.log('The NodeJS server [port: ' + SOCKETIO_PORT + '] is listening...');
 });
-
-var redisClient = redis.createClient();
-var pub = redis.createClient();
-var sub = redis.createClient();
-var RedisStore = require('socket.io/lib/stores/redis');
-var redisStore = new RedisStore({
-  ttl: 1800,
-  redisPub: pub,
-  redisSub: sub,
-  client:redisClient
-});
-module.exports.io.set('store', redisStore);
-
-httpServer.listen(portNumber, function() {
-  console.log('The NodeJS server [port: ' + portNumber + '] is listening...');
-});
+module.exports.io = socketio.listen(httpServer);
+  
+var REDIS_HOSTNAME = 'redis';
+var REDIS_PORT = 6379;
+module.exports.io.adapter(ioredis({ host: REDIS_HOSTNAME, port: REDIS_PORT }));
+var redisClient = redis.createClient(REDIS_PORT, REDIS_HOSTNAME);
 
 // When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. The socketSessionId is to have a unique id per client. Note that, because the socket.id is renewed on each client page refresh, it cannot be used, and a custom unique client id socketSessionId is being used.
 module.exports.io.set('authorization', function (handshakeData, handler) {

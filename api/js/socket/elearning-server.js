@@ -47,7 +47,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("updateTab: You are not being watched live yet.");
   });
 
   socket.on('updateQuestion', function(data) {
@@ -62,7 +62,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("updateQuestion: You are not being watched live yet.");
   });
 
   socket.on('updateWhiteboard', function(data) {
@@ -86,7 +86,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("updateWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('clearWhiteboard', function(data) {
@@ -110,7 +110,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("clearWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('showParticipantWhiteboard', function(data) {
@@ -134,7 +134,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("showParticipantWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('hideParticipantWhiteboard', function(data) {
@@ -158,7 +158,7 @@ server.io.of('/elearning').on('connection', function(socket) {
         }
       }
     }
-    socket.send("You are not being watched live yet.");
+    socket.send("hideParticipantWhiteboard: You are not being watched live yet.");
   });
 
   // The live results feature allows an administrator to watch the results of an exercise being done, in real time. Any administrator can watch any participant doing an exercise. Note that an administrator is not to be confused with a teacher.
@@ -186,16 +186,10 @@ server.io.of('/elearning').on('connection', function(socket) {
 
   });
 
-  // Store the session variable from the handshake
+  // Get the session variable from the handshake
   var sessionID = socket.handshake.sessionID;
-  socket.set('sessionID', sessionID, function() { 
-    console.log('Set the sessionID: ', sessionID);
-  });
-  // Store the unique socket session id variable from the handshake
+  // Get the unique socket session id variable from the handshake
   var socketSessionId = socket.handshake.socketSessionId;
-  socket.set('socketSessionId', socketSessionId, function() { 
-    console.log('Set the socketSessionId: ', socketSessionId);
-  });
 
   // Avoid a session time out on the redis server
   // Simply reload the session data and touch its timestamp
