@@ -211,6 +211,20 @@ class ElearningSubscriptionUtils extends ElearningSubscriptionDB {
     return(false);
   }
 
+  // Check if the subscription has some typed in results
+  // The typed in results being large texts that required some effort to type in, must not be deleted
+  function hasTypedInTextResult($elearningSubscriptionId) {
+    $hasTypedInText = false;
+    
+    if ($elearningResults = $this->elearningResultUtils->selectBySubscriptionId($elearningSubscriptionId)) {
+      foreach ($elearningResults as $elearningResult) {
+        $this->elearningResultUtils->hasTypedInTextResult($elearningResultId);
+      }
+    }
+
+    return($hasTypedInText);
+  }
+
   // Delete a subscription
   function deleteSubscription($elearningSubscriptionId) {
     if ($elearningResults = $this->elearningResultUtils->selectBySubscriptionId($elearningSubscriptionId)) {
