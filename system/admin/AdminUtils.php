@@ -295,6 +295,11 @@ class AdminUtils extends AdminDB {
     return($isStaff);
   }
 
+  // Get the first staff login
+  function getFirstStaffLogin() {
+    return $this->staffLogins[0];
+  }
+
   // Check if the login name is a staff login name
   function isStaffLogin($login) {
     $isStaff = false;
