@@ -3053,7 +3053,7 @@ HEREDOC;
   }
 
   // Render the whiteboard
-  function renderWhiteboard($elearningSubscriptionId, $isAdmin = false) {
+  function renderWhiteboard($elearningSubscriptionId) {
     global $gElearningUrl;
     global $gImagesUserUrl;
     global $gJsUrl;
