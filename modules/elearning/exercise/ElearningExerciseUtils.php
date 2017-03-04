@@ -3053,7 +3053,7 @@ HEREDOC;
   }
 
   // Render the whiteboard
-  function renderWhiteboard($elearningSubscriptionId) {
+  function renderWhiteboard($elearningSubscriptionId, $elearningClassId = '') {
     global $gElearningUrl;
     global $gImagesUserUrl;
     global $gJsUrl;
@@ -3062,10 +3062,11 @@ HEREDOC;
     $this->loadLanguageTexts();
 
     $whiteboard = '';
-    $elearningClassId = '';
-    if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
-      $whiteboard = $elearningSubscription->getWhiteboard();
-      $elearningClassId = $elearningSubscription->getClassId();
+    if (!$elearningClassId) {
+      if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
+        $whiteboard = $elearningSubscription->getWhiteboard();
+        $elearningClassId = $elearningSubscription->getClassId();
+      }
     }
 
     $labelClear = $this->websiteText[122];
@@ -3083,12 +3084,10 @@ HEREDOC;
       }
     } else {
       // It may happen that the admin is also logged in as a user with the same firstname
-      if (!$isAdmin) {
-        $userId = $this->userUtils->getLoggedUserId();
-        if ($userId) {
-          if ($user = $this->userUtils->selectById($userId)) {
-            $firstname = $user->getFirstname();
-          }
+      $userId = $this->userUtils->getLoggedUserId();
+      if ($userId) {
+        if ($user = $this->userUtils->selectById($userId)) {
+          $firstname = $user->getFirstname();
         }
       } else {
         $firstname = $this->adminUtils->getFirstStaffLogin();
