@@ -929,8 +929,10 @@ function renderLiveResult(responseText) {
 
 var elearningSocket;
 $(function() {
-  if ('undefined' != typeof io) {
+  if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
     elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
+  }
+  if ('undefined' != typeof elearningSocket) {
     elearningSocket.on('connect', function() {
       elearningSocket.emit('watchLiveResult');
     });

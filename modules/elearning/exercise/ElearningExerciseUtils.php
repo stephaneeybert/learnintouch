@@ -3152,9 +3152,10 @@ var whiteboadDisplayStatusCookieDuration = 24 * 360;
 var elearningSocket;
 
 $(function() {
-  if ('undefined' != typeof io) {
-    console.log('The socket, with elearning namespace, is attempting to connect to $gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
+  if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
     elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
+  }
+  if ('undefined' != typeof elearningSocket) {
     elearningSocket.on('connect', function() {
       console.log("The elearning namespace socket connected");
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
