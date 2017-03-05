@@ -15,17 +15,6 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('watchLiveCopilot', function(data) {
     // The room needs to be joined, not only for the teacher to watch the answers live, but also to share the whiteboard
     // Join the room named with the class id or alternatively with the subscription id
-    if ('undefined' != typeof data.elearningSubscriptionId) {
-      if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        copilotElearningSubscriptions[data.elearningSubscriptionId] = {};
-      }
-      // There are multiple sockets (one for each client) for a subscription, all of these sockets having the same session
-      // That is: subscription-> one socket id per client -> same session
-      copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId] = sessionID;
-      socket.join(data.elearningSubscriptionId);
-      socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
-      socket.send("You are notified by the class " + data.elearningClassId);
-    }
     if ('undefined' != typeof data.elearningClassId) {
       if ('undefined' == typeof copilotElearningClasses[data.elearningClassId]) {
         copilotElearningClasses[data.elearningClassId] = {};
@@ -34,7 +23,17 @@ server.io.of('/elearning').on('connection', function(socket) {
       // That is: class-> one socket id per client -> same session
       copilotElearningClasses[data.elearningClassId][socketSessionId] = sessionID;
       socket.join(data.elearningClassId);
-      socket.broadcast.to(data.elearningClassId).send("The class id: " + data.elearningClassId + " is now watched.");
+      socket.broadcast.to(data.elearningClassId).send("Someone else receives your notifications to the class " + data.elearningClassId);
+      socket.send("You are notified by the class " + data.elearningClassId);
+    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
+        copilotElearningSubscriptions[data.elearningSubscriptionId] = {};
+      }
+      // There are multiple sockets (one for each client) for a subscription, all of these sockets having the same session
+      // That is: subscription-> one socket id per client -> same session
+      copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId] = sessionID;
+      socket.join(data.elearningSubscriptionId);
+      socket.broadcast.to(data.elearningSubscriptionId).send("Someone else receives your notifications to the subscription " + data.elearningSubscriptionId);
       socket.send("You are notified by the subscription " + data.elearningSubscriptionId);
     }
   });
