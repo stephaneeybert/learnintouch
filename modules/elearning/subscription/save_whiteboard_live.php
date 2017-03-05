@@ -4,14 +4,28 @@ require_once("website.php");
 
 LibHtml::preventCaching();
 
-$elearningSubscriptionId = LibEnv::getEnvHttpPOST("elearningSubscriptionId");
 $whiteboard = LibEnv::getEnvHttpPOST("whiteboard");
+$elearningSubscriptionId = LibEnv::getEnvHttpPOST("elearningSubscriptionId");
+$elearningClassId = LibEnv::getEnvHttpPOST("elearningClassId");
 
-if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
-  $elearningSubscription->setWhiteboard($whiteboard);
-  $elearningSubscriptionUtils->update($elearningSubscription);
+if ($elearningSubscriptionId) {
+  if ($elearningSubscription = $elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
+    $elearningSubscription->setWhiteboard($whiteboard);
+    $elearningSubscriptionUtils->update($elearningSubscription);
 
-  $elearningSubscriptionUtils->saveLastActive($elearningSubscription);
+    $elearningSubscriptionUtils->saveLastActive($elearningSubscription);
+  }
+}
+
+if ($elearningClassId) {
+  if ($elearningSubscriptions = $elearningSubscriptionUtils->selectByClassId($elearningClassId)) {
+    foreach ($elearningSubscriptions as $elearningSubscription) {
+      $elearningSubscription->setWhiteboard($whiteboard);
+      $elearningSubscriptionUtils->update($elearningSubscription);
+
+      $elearningSubscriptionUtils->saveLastActive($elearningSubscription);
+    }
+  }
 }
 
 ?>

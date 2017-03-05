@@ -3166,7 +3166,7 @@ $(function() {
   }
 });
 
-function sendWhiteboardContent(elearningSubscriptionId, content) {
+function sendWhiteboardContent(content) {
   if ('undefined' != typeof elearningSocket) {
     // Publish the content locally
     $('#whiteboard_output').append(content);
@@ -3174,8 +3174,8 @@ function sendWhiteboardContent(elearningSubscriptionId, content) {
     // Send the content
     elearningSocket.emit('updateWhiteboard', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId', 'whiteboard': content});
 
-    // Save the content in the subscription
-    saveWhiteboardContent(elearningSubscriptionId, $('#whiteboard_output').html());
+    // Save the content
+    saveWhiteboardContent($('#whiteboard_output').html());
   }
 }
 
@@ -3186,10 +3186,10 @@ function clearOtherWhiteboardContent() {
   }
 }
 
-function saveWhiteboardContent(elearningSubscriptionId, content) {
+function saveWhiteboardContent(content) {
   content = encodeURIComponent(content);
   var url = "$gElearningUrl/subscription/save_whiteboard_live.php";
-  var params = []; params["elearningSubscriptionId"] = elearningSubscriptionId; params["whiteboard"] = content;
+  var params = []; params["elearningSubscriptionId"] = '$elearningSubscriptionId'; params["elearningClassId"] = '$elearningClassId'; params["whiteboard"] = content;
   ajaxAsynchronousPOSTRequest(url, params, postSaveWhiteboardLive);
 }
 
@@ -3240,8 +3240,7 @@ function clearLocalWhiteboard() {
   $('#whiteboard_input').val('');
   $('#whiteboard_url_content').fadeOut('slow'); 
 
-  // Save the content in the subscription
-  saveWhiteboardContent('$elearningSubscriptionId', '');
+  saveWhiteboardContent('');
 
   $('#whiteboard_input').focus();
 }
@@ -3285,7 +3284,7 @@ $('#whiteboard_input').bind("keyup click", function (event) {
   if (event.which == 13) {
     var content =  "$firstname: " + $('#whiteboard_input').val() + '<br/>';
     parseWhiteboardContentUrl(content);
-    sendWhiteboardContent('$elearningSubscriptionId', content);
+    sendWhiteboardContent(content);
     $('#whiteboard_input').val('');
   }
 });
