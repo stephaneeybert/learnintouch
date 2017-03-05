@@ -10,11 +10,11 @@ var copilotElearningClasses = [];
 server.io.of('/elearning').on('connection', function(socket) {
   console.log('The elearning socket server received a connection');
 
-  // The copilot feature allows a teacher and his participant to do an exercise together, and to see in real time the exercise being done. The two of them can provide answers to the exercise, and the other can see the provided answers live. They can also change the current page of questions. And they can use a shared whiteboard. For this feature, the teacher and his participant are confined into a socket room, with the room name being the participant's elearningSubscriptionId value.
+  // The copilot feature allows a teacher and his participant to do an exercise together, and to see in real time the exercise being done. The two of them can provide answers to the exercise, and the other can see the provided answers live. They can also change the current page of questions. And they can use a shared whiteboard. For this feature, the teacher and his participant are confined into a socket room, with the room name being the participant's elearningClassId or elearningSubscriptionId value.
 
   socket.on('watchLiveCopilot', function(data) {
     // The room needs to be joined, not only for the teacher to watch the answers live, but also to share the whiteboard
-    // Join the room named with the subscription id or alternatively with the class id
+    // Join the room named with the class id or alternatively with the subscription id
     if ('undefined' != typeof data.elearningSubscriptionId) {
       if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
         copilotElearningSubscriptions[data.elearningSubscriptionId] = {};
@@ -30,6 +30,8 @@ server.io.of('/elearning').on('connection', function(socket) {
       if ('undefined' == typeof copilotElearningClasses[data.elearningClassId]) {
         copilotElearningClasses[data.elearningClassId] = {};
       }
+      // There are multiple sockets (one for each client) for a class, all of these sockets having the same session
+      // That is: class-> one socket id per client -> same session
       copilotElearningClasses[data.elearningClassId][socketSessionId] = sessionID;
       socket.join(data.elearningClassId);
       socket.broadcast.to(data.elearningClassId).send("The class id: " + data.elearningClassId + " is now watched.");
@@ -187,18 +189,18 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   // Get the session variable from the handshake
-  var sessionID = socket.handshake.sessionID;
+  var sessionID = socket.request.sessionID;
   // Get the unique socket session id variable from the handshake
-  var socketSessionId = socket.handshake.socketSessionId;
+  var socketSessionId = socket.request.socketSessionId;
 
   // Avoid a session time out on the redis server
   // Simply reload the session data and touch its timestamp
   var intervalID = setInterval(function() {
-    if ('undefined' != typeof socket.handshake) {
-      if ('undefined' != typeof socket.handshake.session) {
-        socket.handshake.session.reload(function() {
-          socket.handshake.session.touch().save();
-          console.log("Reloaded the session for " + socket.handshake.address + ":" + socket.handshake.port);
+    if ('undefined' != typeof socket.request) {
+      if ('undefined' != typeof socket.request.session) {
+        socket.request.session.reload(function() {
+          socket.request.session.touch().save();
+          console.log("Reloaded the session for " + socket.request.address + ":" + socket.request.port);
         });
       }
     }
