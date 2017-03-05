@@ -126,7 +126,7 @@ $strCommand .= ''
 
 $panelUtils->addLine($panelUtils->addCell($labelSearch, "nbr"), $panelUtils->addCell($strSearch, "n"), '', '', $panelUtils->addCell($strCommand, "nr"));
 
-if ($elearningSubscriptionId || $elearningClassId) {
+if ($elearningSubscriptionId > 0 || $elearningClassId > 0) {
   $strCommand = " <a href=\"javascript: toggleParticipantWhiteboard(); void(0);\">"
     . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[43]' alt='' style='vertical-align:middle;' /></a>";
   $panelUtils->addLine("", "", '', '', $panelUtils->addCell($strCommand, "nr"));
@@ -177,7 +177,7 @@ if ($searchPattern) {
   $elearningSubscriptions = array();
 }
 
-if ($elearningSubscriptionId || $elearningClassId) {
+if ($elearningSubscriptionId > 0 || $elearningClassId > 0) {
   $strWhiteboard = $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId, $elearningClassId);
   $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
 }
