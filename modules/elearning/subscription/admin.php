@@ -126,42 +126,11 @@ $strCommand .= ''
 
 $panelUtils->addLine($panelUtils->addCell($labelSearch, "nbr"), $panelUtils->addCell($strSearch, "n"), '', '', $panelUtils->addCell($strCommand, "nr"));
 
-$panelUtils->openForm($PHP_SELF);
-$panelUtils->addLine($panelUtils->addCell($mlText[11], "nb"), $panelUtils->addCell($mlText[12], "nb"), '', '', '');
-$strJsSuggestCourse = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/course/suggest.php", "courseName", "elearningCourseId");
-$panelUtils->addContent($strJsSuggestCourse);
-$panelUtils->addHiddenField('elearningCourseId', $elearningCourseId);
-$strJsSuggestSession = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/session/suggest.php", "sessionName", "elearningSessionId");
-$panelUtils->addContent($strJsSuggestSession);
-$panelUtils->addHiddenField('elearningSessionId', $elearningSessionId);
-$panelUtils->addLine($panelUtils->addCell("<input type='text' id='courseName' name='$courseName' value='$courseName' /> " . $panelUtils->getTinyOk(), "n"), $panelUtils->addCell("<input type='text' id='sessionName' name='$sessionName' value='$sessionName' /> " . $panelUtils->getTinyOk(), "n"), '', '', '');
-$panelUtils->addLine($panelUtils->addCell($mlText[14], "nb"), $panelUtils->addCell($mlText[33], "nb"), '', '', '');
-$strJsSuggestClass = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/class/suggest.php", "className", "elearningClassId");
-$panelUtils->addContent($strJsSuggestClass);
-$panelUtils->addHiddenField('elearningClassId', $elearningClassId);
-$strSuggestTeacher = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/teacher/suggest.php", "teacherName", "elearningTeacherId");
-$panelUtils->addContent($strSuggestTeacher);
-$panelUtils->addHiddenField('elearningTeacherId', $elearningTeacherId);
-$panelUtils->addLine($panelUtils->addCell("<input type='text' id='className' name='$className' value='$className' /> " . $panelUtils->getTinyOk(), "n"), $panelUtils->addCell("<input type='text' id='teacherName' value='$teacherName' /> " . $panelUtils->getTinyOk(), "n"), '', '', '');
-$panelUtils->closeForm();
-$panelUtils->addLine();
-
-$strCommand = "<a href='$gElearningUrl/subscription/edit.php' $gJSNoStatus>"
-  . "<img border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'></a>";
-if ($elearningClassId) {
-  $strCommand .= " <a href='$gElearningUrl/subscription/send.php?elearningSessionId=$elearningSessionId&elearningClassId=$elearningClassId' $gJSNoStatus>"
-    . "<img border='0' src='$gCommonImagesUrl/$gImageEmail' title='$mlText[20]'></a>"
-    . " <a href='$gElearningUrl/subscription/sms.php?elearningSessionId=$elearningSessionId&elearningClassId=$elearningClassId' $gJSNoStatus>"
-    . "<img border='0' src='$gCommonImagesUrl/$gImageSms' title='$mlText[23]'></a>";
+if ($elearningSubscriptionId || $elearningClassId) {
+  $strCommand = " <a href=\"javascript: toggleParticipantWhiteboard(); void(0);\">"
+    . "<img src='$gCommonImagesUrl/$gImageWhiteboard' class='no_style_image_icon' title='$mlText[43]' alt='' style='vertical-align:middle;' /></a>";
+  $panelUtils->addLine("", "", '', '', $panelUtils->addCell($strCommand, "nr"));
 }
-
-$strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
-$panelUtils->addContent($strLiveResultJs);
-
-$labelLastExercise = $popupUtils->getTipPopup($mlText[5], $mlText[26], 300, 300);
-$labelLiveResults = $popupUtils->getTipPopup($mlText[17], $mlText[35], 300, 300);
-$labelNextExercise = $popupUtils->getTipPopup($mlText[13], $mlText[39], 300, 300);
-$panelUtils->addLine($panelUtils->addCell($mlText[4], "nb"), $panelUtils->addCell($labelLiveResults, "nb"), $panelUtils->addCell($labelLastExercise, "nb"), $panelUtils->addCell($labelNextExercise, "nb"), $panelUtils->addCell($strCommand, "nr"));
 
 $listStep = $preferenceUtils->getValue("ELEARNING_LIST_STEP");
 $listIndex = LibEnv::getEnvHttpPOST("listIndex");
@@ -207,6 +176,48 @@ if ($searchPattern) {
 } else {
   $elearningSubscriptions = array();
 }
+
+if ($elearningSubscriptionId || $elearningClassId) {
+  $strWhiteboard = $elearningExerciseUtils->renderWhiteboard($elearningSubscriptionId, $elearningClassId);
+  $panelUtils->addLine($panelUtils->addCell($strWhiteboard, ""));
+}
+
+$panelUtils->openForm($PHP_SELF);
+$panelUtils->addLine($panelUtils->addCell($mlText[11], "nb"), $panelUtils->addCell($mlText[12], "nb"), '', '', '');
+$strJsSuggestCourse = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/course/suggest.php", "courseName", "elearningCourseId");
+$panelUtils->addContent($strJsSuggestCourse);
+$panelUtils->addHiddenField('elearningCourseId', $elearningCourseId);
+$strJsSuggestSession = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/session/suggest.php", "sessionName", "elearningSessionId");
+$panelUtils->addContent($strJsSuggestSession);
+$panelUtils->addHiddenField('elearningSessionId', $elearningSessionId);
+$panelUtils->addLine($panelUtils->addCell("<input type='text' id='courseName' name='$courseName' value='$courseName' /> " . $panelUtils->getTinyOk(), "n"), $panelUtils->addCell("<input type='text' id='sessionName' name='$sessionName' value='$sessionName' /> " . $panelUtils->getTinyOk(), "n"), '', '', '');
+$panelUtils->addLine($panelUtils->addCell($mlText[14], "nb"), $panelUtils->addCell($mlText[33], "nb"), '', '', '');
+$strJsSuggestClass = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/class/suggest.php", "className", "elearningClassId");
+$panelUtils->addContent($strJsSuggestClass);
+$panelUtils->addHiddenField('elearningClassId', $elearningClassId);
+$strSuggestTeacher = $commonUtils->ajaxAutocompleteForList("$gElearningUrl/teacher/suggest.php", "teacherName", "elearningTeacherId");
+$panelUtils->addContent($strSuggestTeacher);
+$panelUtils->addHiddenField('elearningTeacherId', $elearningTeacherId);
+$panelUtils->addLine($panelUtils->addCell("<input type='text' id='className' name='$className' value='$className' /> " . $panelUtils->getTinyOk(), "n"), $panelUtils->addCell("<input type='text' id='teacherName' value='$teacherName' /> " . $panelUtils->getTinyOk(), "n"), '', '', '');
+$panelUtils->closeForm();
+$panelUtils->addLine();
+
+$strCommand = "<a href='$gElearningUrl/subscription/edit.php' $gJSNoStatus>"
+  . "<img border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'></a>";
+if ($elearningClassId) {
+  $strCommand .= " <a href='$gElearningUrl/subscription/send.php?elearningSessionId=$elearningSessionId&elearningClassId=$elearningClassId' $gJSNoStatus>"
+    . "<img border='0' src='$gCommonImagesUrl/$gImageEmail' title='$mlText[20]'></a>"
+    . " <a href='$gElearningUrl/subscription/sms.php?elearningSessionId=$elearningSessionId&elearningClassId=$elearningClassId' $gJSNoStatus>"
+    . "<img border='0' src='$gCommonImagesUrl/$gImageSms' title='$mlText[23]'></a>";
+}
+
+$strLiveResultJs = $elearningResultUtils->renderLiveResultJs();
+$panelUtils->addContent($strLiveResultJs);
+
+$labelLastExercise = $popupUtils->getTipPopup($mlText[5], $mlText[26], 300, 300);
+$labelLiveResults = $popupUtils->getTipPopup($mlText[17], $mlText[35], 300, 300);
+$labelNextExercise = $popupUtils->getTipPopup($mlText[13], $mlText[39], 300, 300);
+$panelUtils->addLine($panelUtils->addCell($mlText[4], "nb"), $panelUtils->addCell($labelLiveResults, "nb"), $panelUtils->addCell($labelLastExercise, "nb"), $panelUtils->addCell($labelNextExercise, "nb"), $panelUtils->addCell($strCommand, "nr"));
 
 $listNbItems = $elearningSubscriptionUtils->countFoundRows();
 $paginationUtils = new PaginationUtils($listNbItems, $listStep, $listIndex);
