@@ -24,7 +24,7 @@ server.io.of('/elearning').on('connection', function(socket) {
       copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId] = sessionID;
       socket.join(data.elearningSubscriptionId);
       socket.broadcast.to(data.elearningSubscriptionId).send("The subscription id: " + data.elearningSubscriptionId + " is now watched.");
-      socket.send("Your subscription " + data.elearningSubscriptionId + " is now watched.");
+      socket.send("You are notified by the class " + data.elearningClassId);
     }
     if ('undefined' != typeof data.elearningClassId) {
       if ('undefined' == typeof copilotElearningClasses[data.elearningClassId]) {
@@ -35,7 +35,7 @@ server.io.of('/elearning').on('connection', function(socket) {
       copilotElearningClasses[data.elearningClassId][socketSessionId] = sessionID;
       socket.join(data.elearningClassId);
       socket.broadcast.to(data.elearningClassId).send("The class id: " + data.elearningClassId + " is now watched.");
-      socket.send("Your class " + data.elearningClassId + " is now watched.");
+      socket.send("You are notified by the subscription " + data.elearningSubscriptionId);
     }
   });
 
