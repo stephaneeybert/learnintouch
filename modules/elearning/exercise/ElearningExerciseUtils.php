@@ -3079,8 +3079,6 @@ HEREDOC;
     if ($adminId) {
       if ($admin = $this->adminUtils->selectById($adminId)) {
         $firstname = $admin->getFirstname();
-      } else {
-        $adminUtils->isStaffLogin($login);
       }
     } else {
       // It may happen that the admin is also logged in as a user with the same firstname
