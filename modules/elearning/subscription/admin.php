@@ -4,6 +4,9 @@ require_once("website.php");
 
 $adminModuleUtils->checkAdminModule(MODULE_ELEARNING);
 
+// Just in case the same browser was used to log in a participant after the admin logged in, recreate the session every time this page is refreshed, so as to overwrite the socket session and cookie content with this admin data
+$adminUtils->openSocketSession();
+
 $mlText = $languageUtils->getMlText(__FILE__);
 
 $searchPattern = LibEnv::getEnvHttpPOST("searchPattern");

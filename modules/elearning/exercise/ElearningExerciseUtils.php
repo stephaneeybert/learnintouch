@@ -3080,15 +3080,14 @@ HEREDOC;
       if ($admin = $this->adminUtils->selectById($adminId)) {
         $firstname = $admin->getFirstname();
       }
+    } else if ($this->adminUtils->isStaff()) {
+      $firstname = $this->adminUtils->getFirstStaffLogin();
     } else {
-      // It may happen that the admin is also logged in as a user with the same firstname
       $userId = $this->userUtils->getLoggedUserId();
       if ($userId) {
         if ($user = $this->userUtils->selectById($userId)) {
           $firstname = $user->getFirstname();
         }
-      } else {
-        $firstname = $this->adminUtils->getFirstStaffLogin();
       }
     }
 
@@ -3148,6 +3147,7 @@ HEREDOC;
 var whiteboadDisplayStatusCookieDuration = 24 * 360;
 
 var elearningSocket;
+var isAdmin = false;
 
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
@@ -3157,6 +3157,9 @@ $(function() {
     elearningSocket.on('connect', function() {
       console.log("The elearning namespace socket connected");
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
+    });
+    elearningSocket.on('postLogin', function(data) {
+      isAdmin = data.admin;
     });
     elearningSocket.on('message', function(message) {
       console.log(message);
@@ -3289,10 +3292,14 @@ $('#whiteboard_input').bind("keyup click", function (event) {
 
 if ('undefined' != typeof elearningSocket) {
   elearningSocket.on('updateWhiteboard', function(data) {
-    refreshLocalWhiteboard(data.whiteboard);
+    if (isAdmin || data.admin == true) {
+      refreshLocalWhiteboard(data.whiteboard);
+    }
   });
   elearningSocket.on('clearWhiteboard', function(data) {
-    clearLocalWhiteboard();
+    if (data.admin == true) {
+      clearLocalWhiteboard();
+    }
   });
   elearningSocket.on('showParticipantWhiteboard', function(data) {
     showLocalParticipantWhiteboard();

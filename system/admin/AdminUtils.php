@@ -133,7 +133,7 @@ class AdminUtils extends AdminDB {
     // Open a new session
     $this->openSession($login);
 
-    $this->userUtils->openSocketSession($this->sessionDuration * 60);
+    $this->openSocketSession();
 
     // Save the login name in a cookie
     LibCookie::putCookie(ADMIN_SESSION_LOGIN, $login, $this->cookieLoginDuration);
@@ -146,6 +146,11 @@ class AdminUtils extends AdminDB {
 
     // Do some administration jobs
     $this->doAdminJobs();
+  }
+
+  // Open a socket session
+  function openSocketSession() {
+    $this->userUtils->openSocketSession($this->sessionDuration * 60, "admin");
   }
 
   // Check that an administrator is logged in
@@ -285,8 +290,6 @@ class AdminUtils extends AdminDB {
   // Check that the admin is a staff member
   function isStaff() {
     $isStaff = false;
-
-    $login = $this->checkAdminLogin();
 
     if ($this->isStaffLogin($login)) {
       $isStaff = true;

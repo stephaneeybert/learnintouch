@@ -16,22 +16,17 @@ server.io.of('/elearning').on('connection', function(socket) {
     // The room needs to be joined, not only for the teacher to watch the answers live, but also to share the whiteboard
     // Join the room named with the class id or alternatively with the subscription id
     if ('undefined' != typeof data.elearningClassId) {
-      if ('undefined' == typeof copilotElearningClasses[data.elearningClassId]) {
-        copilotElearningClasses[data.elearningClassId] = {};
-      }
-      // There are multiple sockets (one for each client) for a class, all of these sockets having the same session
-      // That is: class-> one socket id per client -> same session
-      copilotElearningClasses[data.elearningClassId][socketSessionId] = sessionID;
+      // There are multiple sockets (one for each client) for a class
+      copilotElearningClasses[socketSessionId] = data.elearningClassId;
       socket.join(data.elearningClassId);
       socket.broadcast.to(data.elearningClassId).send("Someone else receives your notifications to the class " + data.elearningClassId);
+      if (socketSessionId.indexOf("admin") !== -1) {
+        socket.emit('postLogin', { admin: true });
+      }
       socket.send("You are notified by the class " + data.elearningClassId);
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
-      if ('undefined' == typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        copilotElearningSubscriptions[data.elearningSubscriptionId] = {};
-      }
-      // There are multiple sockets (one for each client) for a subscription, all of these sockets having the same session
-      // That is: subscription-> one socket id per client -> same session
-      copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId] = sessionID;
+      // There are multiple sockets (one for each client) for a subscription
+      copilotElearningSubscriptions[socketSessionId] = data.elearningSubscriptionId;
       socket.join(data.elearningSubscriptionId);
       socket.broadcast.to(data.elearningSubscriptionId).send("Someone else receives your notifications to the subscription " + data.elearningSubscriptionId);
       socket.send("You are notified by the subscription " + data.elearningSubscriptionId);
@@ -39,14 +34,9 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateTab', function(data) {
-    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-      for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningSubscriptionId).emit('updateTab', {'elearningSubscriptionId': data.elearningSubscriptionId, 'elearningExercisePageId': data.elearningExercisePageId});
-          return;
-        }
-      }
+    if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('updateTab', {'elearningSubscriptionId': data.elearningSubscriptionId, 'elearningExercisePageId': data.elearningExercisePageId});
+      return;
     }
     socket.send("updateTab: You are not being watched live yet.");
   });
@@ -54,110 +44,53 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('updateQuestion', function(data) {
     socket.broadcast.to('liveResultAdminPages').emit('updateResult', data);
 
-    if ('undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-      for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningSubscriptionId).emit('updateQuestion', data);
-          return;
-        }
-      }
+    if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('updateQuestion', data);
+      return;
     }
     socket.send("updateQuestion: You are not being watched live yet.");
   });
 
   socket.on('updateWhiteboard', function(data) {
-    var alreadySent = false;
-    if ('undefined' != typeof data.elearningClassId && 'undefined' != typeof copilotElearningClasses[data.elearningClassId]) {
-      for (var socketSessionId in copilotElearningClasses[data.elearningClassId]) {
-        var currentSessionID = copilotElearningClasses[data.elearningClassId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningClassId).emit('updateWhiteboard', data);
-          alreadySent = true;
-        }
+    if ('undefined' != typeof data.elearningClassId) {
+      // A participant only sends to a teacher and not to other participants
+      if (socketSessionId.indexOf("admin") !== -1) {
+        data.admin = true;
       }
-    }
-    if (false == alreadySent) {
-      if ('undefined' != typeof data.elearningSubscriptionId && 'undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-          var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-          if (currentSessionID == sessionID) {
-            socket.broadcast.to(data.elearningSubscriptionId).emit('updateWhiteboard', data);
-          }
-        }
-      }
+      socket.broadcast.to(data.elearningClassId).emit('updateWhiteboard', data);
+    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('updateWhiteboard', data);
     }
     socket.send("updateWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('clearWhiteboard', function(data) {
-    var alreadySent = false;
-    if ('undefined' != typeof data.elearningClassId && 'undefined' != typeof copilotElearningClasses[data.elearningClassId]) {
-      for (var socketSessionId in copilotElearningClasses[data.elearningClassId]) {
-        var currentSessionID = copilotElearningClasses[data.elearningClassId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningClassId).emit('clearWhiteboard', data);
-          alreadySent = true;
-        }
+    if ('undefined' != typeof data.elearningClassId) {
+      // Only a teacher can clear the other whiteboards
+      if (socketSessionId.indexOf("admin") !== -1) {
+        data.admin = true;
       }
-    }
-    if (false == alreadySent) {
-      if ('undefined' != typeof data.elearningSubscriptionId && 'undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-          var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-          if (currentSessionID == sessionID) {
-            socket.broadcast.to(data.elearningSubscriptionId).emit('clearWhiteboard', data);
-          }
-        }
-      }
+      socket.broadcast.to(data.elearningClassId).emit('clearWhiteboard', data);
+    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('clearWhiteboard', data);
     }
     socket.send("clearWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('showParticipantWhiteboard', function(data) {
-    var alreadySent = false;
-    if ('undefined' != typeof data.elearningClassId && 'undefined' != typeof copilotElearningClasses[data.elearningClassId]) {
-      for (var socketSessionId in copilotElearningClasses[data.elearningClassId]) {
-        var currentSessionID = copilotElearningClasses[data.elearningClassId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningClassId).emit('showParticipantWhiteboard', data);
-          alreadySent = true;
-        }
-      }
-    }
-    if (false == alreadySent) {
-      if ('undefined' != typeof data.elearningSubscriptionId && 'undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-          var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-          if (currentSessionID == sessionID) {
-            socket.broadcast.to(data.elearningSubscriptionId).emit('showParticipantWhiteboard', data);
-          }
-        }
-      }
+    if ('undefined' != typeof data.elearningClassId) {
+      socket.broadcast.to(data.elearningClassId).emit('showParticipantWhiteboard', data);
+    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('showParticipantWhiteboard', data);
     }
     socket.send("showParticipantWhiteboard: You are not being watched live yet.");
   });
 
   socket.on('hideParticipantWhiteboard', function(data) {
-    var alreadySent = false;
-    if ('undefined' != typeof data.elearningClassId && 'undefined' != typeof copilotElearningClasses[data.elearningClassId]) {
-      for (var socketSessionId in copilotElearningClasses[data.elearningClassId]) {
-        var currentSessionID = copilotElearningClasses[data.elearningClassId][socketSessionId];
-        if (currentSessionID == sessionID) {
-          socket.broadcast.to(data.elearningClassId).emit('hideParticipantWhiteboard', data);
-          alreadySent = true;
-        }
-      }
-    }
-    if (false == alreadySent) {
-      if ('undefined' != typeof data.elearningSubscriptionId && 'undefined' != typeof copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-        for (var socketSessionId in copilotElearningSubscriptions[data.elearningSubscriptionId]) {
-          var currentSessionID = copilotElearningSubscriptions[data.elearningSubscriptionId][socketSessionId];
-          if (currentSessionID == sessionID) {
-            socket.broadcast.to(data.elearningSubscriptionId).emit('hideParticipantWhiteboard', data);
-          }
-        }
-      }
+    if ('undefined' != typeof data.elearningClassId) {
+      socket.broadcast.to(data.elearningClassId).emit('hideParticipantWhiteboard', data);
+    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      socket.broadcast.to(data.elearningSubscriptionId).emit('hideParticipantWhiteboard', data);
     }
     socket.send("hideParticipantWhiteboard: You are not being watched live yet.");
   });
