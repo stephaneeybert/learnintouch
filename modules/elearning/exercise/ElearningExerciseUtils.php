@@ -3190,7 +3190,7 @@ function clearOtherWhiteboardContent() {
 function saveWhiteboardContent(content) {
   content = encodeURIComponent(content);
   var url = "$gElearningUrl/subscription/save_whiteboard_live.php";
-  var params = []; params["elearningSubscriptionId"] = '$elearningSubscriptionId'; params["elearningClassId"] = '$elearningClassId'; params["whiteboard"] = content;
+  var params = []; params["elearningSubscriptionId"] = '$elearningSubscriptionId'; params["whiteboard"] = content;
   ajaxAsynchronousPOSTRequest(url, params, postSaveWhiteboardLive);
 }
 
