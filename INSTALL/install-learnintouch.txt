@@ -24,8 +24,7 @@ Add the following entries in the crontab
 with the following command
 crontab -e
 00 01 * * * /home/stephane/learnintouch/engine/cron/backup_all.sh
-00 02 * * 6 /home/stephane/learnintouch/engine/cron/cleanup_all.sh
-30 01 * * * /home/stephane/dev/commands/backup-ftp.sh
+00 03 * * 6 /home/stephane/learnintouch/engine/cron/cleanup_all.sh
 
 Create the engine database
 /home/stephane/programs/mysql/install;
