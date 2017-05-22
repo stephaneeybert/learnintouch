@@ -254,3 +254,7 @@
 [ 254]Answers
 [ 255]The number of correct answers and the number of incorrect Answers.
 [ 256]Display the shared board
+[ 257]Filter the graph of results:
+[ 258]By default, the graph of results displays the results of all the exercises.\n\nBut it is possible to display a graph composed only of exercises that do not show instant corrections (nor congratulations).\n\nIt is also possible to show a graph composed only of exercises that show instant corrections (or congratulations).
+[ 259]With instant correction
+[ 260]Without instant correction

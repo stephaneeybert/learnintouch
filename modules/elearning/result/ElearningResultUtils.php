@@ -1256,13 +1256,26 @@ HEREDOC;
     $nbExercise = 0;
     $highestQuestionNb = 0;
 
+    $graphFilter = $this->elearningExerciseUtils->getGraphFilter();
+
     if (count($elearningResults) > 0) {
       $str .= "<table><tr>";
 
       foreach ($elearningResults as $elearningResult) {
         $elearningResultId = $elearningResult->getId();
         $elearningExerciseId = $elearningResult->getElearningExerciseId();
+        $elearningSubscriptionId = $elearningResult->getSubscriptionId();
         $participantName = $this->getParticipantName($elearningResult);
+
+        if ($elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId)) {
+          $elearningCourseId = $elearningSubscription->getCourseId();
+        } else {
+          $elearningCourseId = '';
+        }
+        $displayInstantFeedback = $this->elearningExercisePageUtils->displayInstantFeedback($elearningExerciseId, $elearningSubscriptionId, $elearningCourseId);
+        if (($graphFilter == 'ELEARNING_GRAPH_FILTER_NOT_INSTANT' && $displayInstantFeedback) || ($graphFilter == 'ELEARNING_GRAPH_FILTER_INSTANT' && !$displayInstantFeedback)) {
+          continue;
+        }
 
         if ($elearningExercise = $this->elearningExerciseUtils->selectById($elearningExerciseId)) {
           $exerciseName = $elearningExercise->getName();

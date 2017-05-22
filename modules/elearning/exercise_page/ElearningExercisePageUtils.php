@@ -1545,7 +1545,7 @@ HEREDOC;
 
             $questionInputField = $this->renderQuestionInput($elearningExercise, $elearningExercisePage, $elearningQuestion, $elearningSubscription, true);
 
-            $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise, $elearningSubscription);
+            $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
 
             if ($displayInstantFeedback || $watchLive) {
               $strQuestionInput .= "<span id='" . $this->elearningQuestionUtils->renderUniqueQuestionId($elearningQuestionId) . "'>" . $questionInputField . "</span>";
@@ -1637,18 +1637,17 @@ HEREDOC;
   // be displayed to the participant right after the question has been answered
   // This method is only part of the logic as its purpose is only to trigger or not
   // the ajax request to the server where the completing part of the logic resides
-  function displayInstantFeedback($elearningExercise, $elearningSubscription) {
+  function displayInstantFeedback($elearningExerciseId, $elearningSubscriptionId, $elearningCourseId) {
     $result = false;
     $instantCorrection = false;
     $instantCongratulation = false;
 
-    if ($elearningSubscription) {
+    if ($elearningSubscriptionId) {
       // Do not offer the instant feedback when the exercise is an assignment
-      if (!$elearningAssignment = $this->elearningAssignmentUtils->selectBySubscriptionIdAndExerciseId($elearningSubscription->getId(), $elearningExercise->getId())) {
+      if (!$elearningAssignment = $this->elearningAssignmentUtils->selectBySubscriptionIdAndExerciseId($elearningSubscriptionId, $elearningExerciseId)) {
         $instantCorrection = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CORRECTION");
         $instantCongratulation = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CONGRATULATION_ON");
-        if (!$instantCorrection && !$instantCongratulation) {
-          $elearningCourseId = $elearningSubscription->getCourseId();
+        if (!$instantCorrection && !$instantCongratulation && $elearningCourseId) {
           if ($elearningCourse = $this->elearningCourseUtils->selectById($elearningCourseId)) {
             $instantCorrection = $elearningCourse->getInstantCorrection();
             $instantCongratulation = $elearningCourse->getInstantCongratulation();
@@ -1700,7 +1699,7 @@ HEREDOC;
     // Get the possible answers of the question
     $elearningAnswers = $this->elearningAnswerUtils->selectByQuestion($elearningQuestion->getId());
 
-    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise, $elearningSubscription);
+    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
 
     // Display the answers in a random order
     if ($this->shuffleAnswers($elearningSubscription)) {
@@ -2125,7 +2124,7 @@ HEREDOC;
       $elearningSubscriptionId = $elearningSubscription->getId();
     }
 
-    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise, $elearningSubscription);
+    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
 
     $str = '';
 

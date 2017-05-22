@@ -154,6 +154,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
                                           array($this->mlText[223], $this->mlText[224], PREFERENCE_TYPE_BOOLEAN, ''),
                                             "ELEARNING_INSTANT_CONGRATULATION" =>
                                             array($this->mlText[221], $this->mlText[222], PREFERENCE_TYPE_MLTEXT, $this->mlText[220]),
+                              "ELEARNING_GRAPH_FILTER" =>
+                              array($this->mlText[257], $this->mlText[258], PREFERENCE_TYPE_SELECT, array('' => '', 'ELEARNING_GRAPH_FILTER_INSTANT' => $this->mlText[259], 'ELEARNING_GRAPH_FILTER_NOT_INSTANT' => $this->mlText[260])),
                                               "ELEARNING_SHUFFLE_QUESTIONS" =>
                                               array($this->mlText[212], $this->mlText[213], PREFERENCE_TYPE_BOOLEAN, ''),
                                                 "ELEARNING_SHUFFLE_ANSWERS" =>
@@ -674,7 +676,7 @@ HEREDOC;
 
     $strDisplayGraph = ' ' . $this->popupUtils->getDialogPopup("<img src='$gImagesUserUrl/" . IMAGE_ELEARNING_COURSE_GRAPH . "' class='no_style_image_icon' title='" .  $this->websiteText[186] . " 'alt='' style='vertical-align:middle;' />", "$gElearningUrl/result/display_graph.php?elearningSubscriptionId=$elearningSubscriptionId", 600, 600);
 
-    $instantCorrection = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CORRECTION");
+    $instantCorrection = $this->hasInstantCorrection();
     $str .= "\n<tr>";
     $str .= "\n<td class='no_style_list_line'>";
     $str .= "</td>";
@@ -1495,6 +1497,18 @@ HEREDOC;
     $acceptMultipleAnswers = $this->preferenceUtils->getValue("ELEARNING_MULTIPLE_ANSWERS");
 
     return($acceptMultipleAnswers);
+  }
+
+  // By default, when doing an exercise, the correction is only displayed in the results page, at the end of the exercise.\n\nBut it is possible to display an instant correction.\n\nIn that case, a message is displayed immediately when a question is given a wrong answer.
+  function hasInstantCorrection() {
+    $instantCorrection = $this->preferenceUtils->getValue("ELEARNING_INSTANT_CORRECTION");
+
+    return($instantCorrection);
+  }
+
+  // By default, the graph of results displays the results of all the exercises.\n\nBut it is possible to display a graph composed only of exercises that do not show instant corrections (nor congratulations).\n\nIt is also possible to show a graph composed only of exercises that show instant corrections (or congratulations).
+  function getGraphFilter() {
+      return($this->preferenceUtils->getValue("ELEARNING_GRAPH_FILTER"));
   }
 
   // If a text contains some with lexicon words, then it is possible to display the lexicon explanations in a list under the text.
