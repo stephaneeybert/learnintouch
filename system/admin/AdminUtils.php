@@ -291,6 +291,8 @@ class AdminUtils extends AdminDB {
   function isStaff() {
     $isStaff = false;
 
+    $login = $this->checkAdminLogin();
+
     if ($this->isStaffLogin($login)) {
       $isStaff = true;
     }
