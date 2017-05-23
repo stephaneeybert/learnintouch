@@ -3080,14 +3080,14 @@ HEREDOC;
       if ($admin = $this->adminUtils->selectById($adminId)) {
         $firstname = $admin->getFirstname();
       }
-    } else if ($this->adminUtils->isStaff()) {
-      $firstname = $this->adminUtils->getFirstStaffLogin();
     } else {
       $userId = $this->userUtils->getLoggedUserId();
       if ($userId) {
         if ($user = $this->userUtils->selectById($userId)) {
           $firstname = $user->getFirstname();
         }
+      } else if ($this->adminUtils->isStaff()) {
+        $firstname = $this->adminUtils->getFirstStaffLogin();
       }
     }
 
