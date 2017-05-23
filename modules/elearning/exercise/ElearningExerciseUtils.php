@@ -3086,8 +3086,6 @@ HEREDOC;
         if ($user = $this->userUtils->selectById($userId)) {
           $firstname = $user->getFirstname();
         }
-      } else if ($this->adminUtils->isStaff()) {
-        $firstname = $this->adminUtils->getFirstStaffLogin();
       }
     }
 
