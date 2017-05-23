@@ -25,7 +25,6 @@
 [  25]La largeur de l'image lorsqu'elle est affichée sur un téléphone ou un appareil portable à petit écran.
 [  30]L'éditeur html:
 [  31]Il y a plusieurs éditeurs html qui peuvent être utilisés pour éditer les mails.\n\nVeuillez sélectionner l'éditeur html de votre choix.
-[  32]Innova
 [  33]CKEditor
 [  50]La signature est un texte ajouté à l'email.\n\nElle offre un moyen facile de signer les emails avec une signature commune.
 [  51]La signature peut être affichée en pied de page de l'email.

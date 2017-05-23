@@ -66,7 +66,6 @@
 [  75]La largeur des images d'une rubrique lorsqu'elles sont affichées sur un téléphone ou un appareil portable à petit écran.
 [  76]Editeur de contenu html:
 [  77]Par défaut, le contenu des articles et des journaux est du texte.\n\nMais cela peut aussi être du contenu html.\n\nDans ce cas, un éditeur html simple peut être utilisé pour rédiger le contenu.
-[  78]Innova
 [  79]CKEditor
 [  80]Nombre de journaux ou articles par page:
 [  81]La liste des journaux dans l'interface d'administration permet d'afficher un nombre choisit de journaux par page.

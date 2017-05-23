@@ -83,40 +83,18 @@ $str .= "\n<form name='edit' id='edit' action='$gElearningUrl/teacher/corner/exe
 
 $str .= "\n<span class='system_label'>$websiteText[4]</span> <span class='system_field'>$name</span>";
 
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "instructions";
-  include($gInnovaHtmlEditorPath . "setupElearningInstructions.php");
-  $str .= $gInnovaHead;
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$instructions\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContent() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContent(content) {
-  $oInnovaName.putHTML(content);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent()");
-function saveInnovaEditorContent() {
-    var body = getContent();
-  saveEditorContent("$oInnovaContentName", body);
-}
-</script>
-HEREDOC;
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $editorName = "instructions";
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->withReducedToolbar();
-  $contentEditor->withAjaxSave();
-  $contentEditor->setHeight(300);
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance($editorName, $instructions);
-  $strJsEditor = <<<HEREDOC
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$editorName = "instructions";
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->withReducedToolbar();
+$contentEditor->withAjaxSave();
+$contentEditor->setHeight(300);
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance($editorName, $instructions);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContent() {
   var editor = CKEDITOR.instances.$editorName;
@@ -129,7 +107,6 @@ function setContent(content) {
 }
 </script>
 HEREDOC;
-}
 $str .= "\n<input type='hidden' id='currentLanguageCode' name='currentLanguageCode' value='$currentLanguageCode' />";
 $str .= "\n<input type='hidden' id='questionType' name='questionType' value='$questionType' />";
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);

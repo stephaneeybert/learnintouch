@@ -76,29 +76,22 @@ $panelUtils->setHelp($help);
 $panelUtils->addLine("<b>$mlText[6]</b> $subject", '');
 $panelUtils->openForm($PHP_SELF);
 
-if ($mailUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "body";
-  include($gInnovaHtmlEditorPath . "setupMail.php");
-  $panelUtils->addContent($gInnovaHead);
-  $panelUtils->addLine("<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='80'>\n$body\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose");
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->setImagePath($mailUtils->imagePath);
-  $contentEditor->setImageUrl($mailUtils->imageUrl);
-  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_mail.php');
-  $contentEditor->withStandardToolbar();
-  $contentEditor->withImageButton();
-  $contentEditor->withMetaNames();
-  $contentEditor->setMetaNamesJs($mailUtils->renderMetaNamesJs());
-  $contentEditor->setHeight(500);
-  $str = $contentEditor->render();
-  $str .= $contentEditor->renderInstance("body", $body);
-  $panelUtils->addLine($str);
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->setImagePath($mailUtils->imagePath);
+$contentEditor->setImageUrl($mailUtils->imageUrl);
+$contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_mail.php');
+$contentEditor->withStandardToolbar();
+$contentEditor->withImageButton();
+$contentEditor->withMetaNames();
+$contentEditor->setMetaNamesJs($mailUtils->renderMetaNamesJs());
+$contentEditor->setHeight(500);
+$str = $contentEditor->render();
+$str .= $contentEditor->renderInstance("body", $body);
+$panelUtils->addLine($str);
 
 $panelUtils->addHiddenField('mailId', $mailId);
 $panelUtils->addHiddenField('formSubmitted', 1);

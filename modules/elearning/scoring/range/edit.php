@@ -146,49 +146,17 @@ $label = $popupUtils->getTipPopup($mlText[4], $mlText[14], 300, 200);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='upperRange' value='$upperRange' size='3' maxlength='3'>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[5], $mlText[9], 300, 200);
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "score";
-  include($gInnovaHtmlEditorPath . "setupElearningScoring.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$score\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContentScore() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContentScore(content) {
-  $oInnovaName.putHTML(content);
-}
-function changeScore(languageCode) {
-  var url = '$gElearningUrl/scoring/range/getScore.php?elearningScoringRangeId=$elearningScoringRangeId&languageCode='+languageCode;
-  document.getElementById('currentLanguageCode').value = languageCode;
-  ajaxAsynchronousRequest(url, updateScore);
-}
-function updateScore(responseText) {
-  var response = eval('(' + responseText + ')');
-  var score = response.score;
-  setContentScore(score);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent$oInnovaName()");
-function saveInnovaEditorContent$oInnovaName() {
-  var score = getContentScore();
-  saveEditorContent("$oInnovaContentName", score);
-}
-</script>
-HEREDOC;
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $editorName = "score";
-  $contentEditorScore = new CKEditorUtils();
-  $contentEditorScore->languageUtils = $languageUtils;
-  $contentEditorScore->commonUtils = $commonUtils;
-  $contentEditorScore->load();
-  $contentEditorScore->withReducedToolbar();
-  $contentEditorScore->withAjaxSave();
-  $strEditor = $contentEditorScore->render();
-  $strEditor .= $contentEditorScore->renderInstance($editorName, $score);
-  $strJsEditor = <<<HEREDOC
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$editorName = "score";
+$contentEditorScore = new CKEditorUtils();
+$contentEditorScore->languageUtils = $languageUtils;
+$contentEditorScore->commonUtils = $commonUtils;
+$contentEditorScore->load();
+$contentEditorScore->withReducedToolbar();
+$contentEditorScore->withAjaxSave();
+$strEditor = $contentEditorScore->render();
+$strEditor .= $contentEditorScore->renderInstance($editorName, $score);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContentScore() {
   var editor = CKEDITOR.instances.$editorName;
@@ -201,7 +169,6 @@ function setContentScore(content) {
 }
 </script>
 HEREDOC;
-}
 $panelUtils->addHiddenField('currentLanguageCode', $currentLanguageCode);
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strEditor . ' ' . $strLanguageFlag);
@@ -235,46 +202,15 @@ HEREDOC;
 $panelUtils->addContent($strJsEditor);
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[1], $mlText[10], 300, 200);
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "advice";
-  include($gInnovaHtmlEditorPath . "setupElearningScoring.php");
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$advice\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContentAdvice() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContentAdvice(content) {
-  $oInnovaName.putHTML(content);
-}
-function changeAdvice(languageCode) {
-  var url = '$gElearningUrl/scoring/range/getAdvice.php?elearningScoringRangeId=$elearningScoringRangeId&languageCode='+languageCode;
-  document.getElementById('currentLanguageCode').value = languageCode;
-  ajaxAsynchronousRequest(url, updateAdvice);
-}
-function updateAdvice(responseText) {
-  var response = eval('(' + responseText + ')');
-  var advice = response.advice;
-  setContentAdvice(advice);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent$oInnovaName()");
-function saveInnovaEditorContent$oInnovaName() {
-  var advice = getContentAdvice();
-  saveEditorContent("$oInnovaContentName", advice);
-}
-</script>
-HEREDOC;
-} else {
-  $editorName = "advice";
-  $contentEditorAdvice = new CKEditorUtils();
-  $contentEditorAdvice->languageUtils = $languageUtils;
-  $contentEditorAdvice->commonUtils = $commonUtils;
-  $contentEditorAdvice->load();
-  $contentEditorAdvice->withReducedToolbar();
-  $contentEditorAdvice->withAjaxSave();
-  $strEditor = $contentEditorAdvice->renderInstance($editorName, $advice);
-  $strJsEditor = <<<HEREDOC
+$editorName = "advice";
+$contentEditorAdvice = new CKEditorUtils();
+$contentEditorAdvice->languageUtils = $languageUtils;
+$contentEditorAdvice->commonUtils = $commonUtils;
+$contentEditorAdvice->load();
+$contentEditorAdvice->withReducedToolbar();
+$contentEditorAdvice->withAjaxSave();
+$strEditor = $contentEditorAdvice->renderInstance($editorName, $advice);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContentAdvice() {
   var editor = CKEDITOR.instances.$editorName;
@@ -297,52 +233,20 @@ function updateAdvice(responseText) {
 }
 </script>
 HEREDOC;
-}
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strEditor . ' ' . $strLanguageFlag);
 $panelUtils->addContent($strJsEditor);
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[2], $mlText[11], 300, 200);
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "proposal";
-  include($gInnovaHtmlEditorPath . "setupElearningScoring.php");
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$proposal\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContentProposal() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContentProposal(content) {
-  $oInnovaName.putHTML(content);
-}
-function changeProposal(languageCode) {
-  var url = '$gElearningUrl/scoring/range/getProposal.php?elearningScoringRangeId=$elearningScoringRangeId&languageCode='+languageCode;
-  document.getElementById('currentLanguageCode').value = languageCode;
-  ajaxAsynchronousRequest(url, updateProposal);
-}
-function updateProposal(responseText) {
-  var response = eval('(' + responseText + ')');
-  var proposal = response.proposal;
-  setContentProposal(proposal);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent$oInnovaName()");
-function saveInnovaEditorContent$oInnovaName() {
-  var proposal = getContentProposal();
-  saveEditorContent("$oInnovaContentName", proposal);
-}
-</script>
-HEREDOC;
-} else {
-  $editorName = "proposal";
-  $contentEditorProposal = new CKEditorUtils();
-  $contentEditorProposal->languageUtils = $languageUtils;
-  $contentEditorProposal->commonUtils = $commonUtils;
-  $contentEditorProposal->load();
-  $contentEditorProposal->withReducedToolbar();
-  $contentEditorProposal->withAjaxSave();
-  $strEditor = $contentEditorProposal->renderInstance($editorName, $proposal);
-  $strJsEditor = <<<HEREDOC
+$editorName = "proposal";
+$contentEditorProposal = new CKEditorUtils();
+$contentEditorProposal->languageUtils = $languageUtils;
+$contentEditorProposal->commonUtils = $commonUtils;
+$contentEditorProposal->load();
+$contentEditorProposal->withReducedToolbar();
+$contentEditorProposal->withAjaxSave();
+$strEditor = $contentEditorProposal->renderInstance($editorName, $proposal);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContentProposal() {
   var editor = CKEDITOR.instances.$editorName;
@@ -365,7 +269,6 @@ function updateProposal(responseText) {
 }
 </script>
 HEREDOC;
-}
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strEditor . ' ' . $strLanguageFlag);
 $strJsEditor .= <<<HEREDOC

@@ -47,29 +47,22 @@ if ($formSubmitted) {
   $panelUtils->addLine("<b>$mlText[6]</b> $name");
   $panelUtils->openForm($PHP_SELF);
 
-  if ($dynpageUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "content";
-    include($gInnovaHtmlEditorPath . "setupDynpage.php");
-    $panelUtils->addContent($gInnovaHead);
-    $panelUtils->addLine("<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='80'>\n$content\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose");
-  } else {
-    include($gHtmlEditorPath . "CKEditorUtils.php");
-    $contentEditor = new CKEditorUtils();
-    $contentEditor->languageUtils = $languageUtils;
-    $contentEditor->commonUtils = $commonUtils;
-    $contentEditor->load();
-    $contentEditor->setImagePath($dynpageUtils->imagePath);
-    $contentEditor->setImageUrl($dynpageUtils->imageUrl);
-    $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_dynpage.php');
-    $contentEditor->withStandardToolbar();
-    $contentEditor->withImageButton();
-    $contentEditor->withFlashButton();
-    $contentEditor->withLexicon();
-    $contentEditor->setHeight(500);
-    $str = $contentEditor->render();
-    $str .= $contentEditor->renderInstance("content", $content);
-    $panelUtils->addLine($str);
-  }
+  include($gHtmlEditorPath . "CKEditorUtils.php");
+  $contentEditor = new CKEditorUtils();
+  $contentEditor->languageUtils = $languageUtils;
+  $contentEditor->commonUtils = $commonUtils;
+  $contentEditor->load();
+  $contentEditor->setImagePath($dynpageUtils->imagePath);
+  $contentEditor->setImageUrl($dynpageUtils->imageUrl);
+  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_dynpage.php');
+  $contentEditor->withStandardToolbar();
+  $contentEditor->withImageButton();
+  $contentEditor->withFlashButton();
+  $contentEditor->withLexicon();
+  $contentEditor->setHeight(500);
+  $str = $contentEditor->render();
+  $str .= $contentEditor->renderInstance("content", $content);
+  $panelUtils->addLine($str);
 
   $panelUtils->addHiddenField('dynpageId', $dynpageId);
   $panelUtils->addHiddenField('formSubmitted', 1);

@@ -13,7 +13,6 @@
 [  12]L'accès sécurisé n'est pas activé!
 [  13]L'éditeur html:
 [  14]Il y a plusieurs éditeurs html qui peuvent être utilisés pour éditer les pages web.\n\nVeuillez sélectionner l'éditeur html de votre choix.
-[  15]Innova
 [  16]CKEditor
 [  17]Modèle:
 [  18]Par défault, les pages web sont affichées dans le modèle actif.\n\nMais il est possible de spécifier un modèle dans lequel les pages web seront toujours affichées.

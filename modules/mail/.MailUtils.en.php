@@ -25,7 +25,6 @@
 [  25]The width of an image when it is displayed on a phone or small screen mobile device.
 [  30]The html editor:
 [  31]There are several html editors that can be used to edit the mails.\n\nPlease select the html editor of your choice.
-[  32]Innova
 [  33]CKEditor
 [  50]The signature is a text appended to the email.\n\nIt offers an easy way to sign all emails with a common signature.
 [  51]The signature can be displayed in the email footer.

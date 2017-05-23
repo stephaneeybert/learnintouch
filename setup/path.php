@@ -56,9 +56,6 @@ $gTestUrl = $gEngineUrl . '/test';
 $gSystemPath = $gEnginePath . 'system/';
 $gSystemUrl = $gEngineUrl . '/system';
 
-$gInnovaHtmlEditorPath = $gSystemPath . 'editor/innovaStudio_3.6/';
-$gInnovaHtmlEditorUrl = $gSystemUrl . '/editor/innovaStudio_3.6';
-
 $gHtmlEditorPath = $gSystemPath . 'editor/ckeditor/';
 $gHtmlEditorUrl = $gSystemUrl . '/editor/ckeditor';
 

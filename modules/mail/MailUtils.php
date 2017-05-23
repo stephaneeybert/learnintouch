@@ -89,7 +89,6 @@ class MailUtils extends MailDB {
                     "MAIL_HTML_EDITOR" =>
                     array($this->mlText[30], $this->mlText[31], PREFERENCE_TYPE_SELECT,
                       array(
-                        'HTML_EDITOR_INNOVA' => $this->mlText[32],
                         'HTML_EDITOR_CKEDITOR' => $this->mlText[33],
                       )),
                     "MAIL_LIST_STEP" =>
@@ -399,19 +398,6 @@ class MailUtils extends MailDB {
       $mail->setAttachments($attachments);
       $this->update($mail);
     }
-  }
-
-  // Check if the selected html editor is the InnovaStudio
-  function useHtmlEditorInnova() {
-    $result = false;
-
-    $htmlEditor = $this->preferenceUtils->getValue("MAIL_HTML_EDITOR");
-
-    if ($htmlEditor == 'HTML_EDITOR_INNOVA') {
-      $result = true;
-    }
-
-    return($result);
   }
 
   // Check if the selected html editor is the CKEditor

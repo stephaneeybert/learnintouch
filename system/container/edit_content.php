@@ -44,44 +44,22 @@ if ($formSubmitted) {
 
   $panelUtils->setHeader($mlText[0]);
   $panelUtils->openForm($PHP_SELF);
-  if ($dynpageUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "content";
-    include($gInnovaHtmlEditorPath . "setupContainer.php");
-    $panelUtils->addContent($gInnovaHead);
-    $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$content\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-    $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContent() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContent(content) {
-  $oInnovaName.putHTML(content);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent()");
-function saveInnovaEditorContent() {
-  var body = getContent();
-  saveEditorContent("$oInnovaContentName", body);
-}
-</script>
-HEREDOC;
-  } else {
-    include($gHtmlEditorPath . "CKEditorUtils.php");
-    $editorName = "content";
-    $contentEditor = new CKEditorUtils();
-    $contentEditor->languageUtils = $languageUtils;
-    $contentEditor->commonUtils = $commonUtils;
-    $contentEditor->load();
-    $contentEditor->setImagePath($templateUtils->imagePath);
-    $contentEditor->setImageUrl($templateUtils->imageUrl);
-    $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_container.php');
-    $contentEditor->withReducedToolbar();
-    $contentEditor->withImageButton();
-    $contentEditor->withAjaxSave();
-    $contentEditor->setHeight(300);
-    $strEditor = $contentEditor->render();
-    $strEditor .= $contentEditor->renderInstance($editorName, $content);
-    $strJsEditor = <<<HEREDOC
+  include($gHtmlEditorPath . "CKEditorUtils.php");
+  $editorName = "content";
+  $contentEditor = new CKEditorUtils();
+  $contentEditor->languageUtils = $languageUtils;
+  $contentEditor->commonUtils = $commonUtils;
+  $contentEditor->load();
+  $contentEditor->setImagePath($templateUtils->imagePath);
+  $contentEditor->setImageUrl($templateUtils->imageUrl);
+  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_container.php');
+  $contentEditor->withReducedToolbar();
+  $contentEditor->withImageButton();
+  $contentEditor->withAjaxSave();
+  $contentEditor->setHeight(300);
+  $strEditor = $contentEditor->render();
+  $strEditor .= $contentEditor->renderInstance($editorName, $content);
+  $strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContent() {
   var editor = CKEDITOR.instances.$editorName;
@@ -94,7 +72,7 @@ function setContent(content) {
 }
 </script>
 HEREDOC;
-  }
+ 
   $panelUtils->addHiddenField('currentLanguageCode', $currentLanguageCode);
   $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
   $panelUtils->addLine($panelUtils->addCell($strEditor . ' ' . $strLanguageFlag, 'c'));

@@ -82,21 +82,14 @@ $str .= "\n<form name='edit' id='edit' action='$gElearningUrl/teacher/corner/cou
 $str .= "\n<div class='system_label'>$websiteText[6]</div>";
 $str .= "\n<div class='system_field'><input class='system_input' type='text' name='headline' value='$headline' size='30' maxlength='255' /></div>";
 
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "information";
-  include($gInnovaHtmlEditorPath . "setupElearningCourseInfo.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$information</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->withReducedToolbar();
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance("information", $information);
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->withReducedToolbar();
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance("information", $information);
 $str .= "\n<div class='system_label'>$websiteText[8]</div>";
 $str .= "\n<div class='system_field'>$strEditor</div>";
 

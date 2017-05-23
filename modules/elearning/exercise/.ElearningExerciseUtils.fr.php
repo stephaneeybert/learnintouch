@@ -189,7 +189,6 @@
 [ 188]Par défaut l'école recevra les résultats de l'exercice et un possible message du participant.\n\nMais il est possible de ne pas envoyer les résultats de l'exercice à l'école si le participant n'a pas écrit de message pour l'enseignant.\n\nDans ce cas, les résultats de l'exercice seront sauvegardés mais l'école ne recevra pas d'email.
 [ 189]L'éditeur html:
 [ 190]Il y a plusieurs éditeurs html qui peuvent être utilisés pour éditer le matériel de cours.\n\nVeuillez sélectionner l'éditeur html de votre choix.
-[ 191]Innova
 [ 192]CKEditor
 [ 193]Le total de tous les résultats pour le cours.
 [ 194]Afficher une correction instantanée:

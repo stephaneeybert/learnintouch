@@ -118,7 +118,6 @@ class NewsStoryUtils extends NewsStoryDB {
                                                 "NEWS_HTML_EDITOR" =>
                                                 array($this->mlText[76], $this->mlText[77], PREFERENCE_TYPE_SELECT,
                                                   array(
-                                                    'HTML_EDITOR_INNOVA' => $this->mlText[78],
                                                     'HTML_EDITOR_CKEDITOR' => $this->mlText[79],
                                                   )),
                                                 "NEWS_IMAGE_LENGTH_AXIS" =>
@@ -144,18 +143,7 @@ class NewsStoryUtils extends NewsStoryDB {
 
   // Check if an html editor is being used
   function useHtmlEditor() {
-    if ($this->useHtmlEditorInnova() || $this->useHtmlEditorCKEditor()) {
-      return(true);
-    } else {
-      return(false);
-    }
-  }
-
-  // Check if the selected html editor is the InnovaStudio
-  function useHtmlEditorInnova() {
-    $htmlEditor = $this->preferenceUtils->getValue("NEWS_HTML_EDITOR");
-
-    if ($htmlEditor == 'HTML_EDITOR_INNOVA') {
+    if ($this->useHtmlEditorCKEditor()) {
       return(true);
     } else {
       return(false);

@@ -13,7 +13,6 @@
 [  12]The secured access is not activated!
 [  13]The html editor:
 [  14]There are several html editors that can be used to edit the web pages.\n\nPlease select the html editor of your choice.
-[  15]Innova
 [  16]CKEditor
 [  17]Template model:
 [  18]By default, the web pages are displayed in the active template model.\n\nBut it is possible to specify a template model in which the web pages will always be displayed.

@@ -77,21 +77,14 @@ $panelUtils->addLine($panelUtils->addCell($mlText[6], "nb"));
 $panelUtils->addLine("<input type='text' name='headline' value='$headline' size='30' maxlength='255'>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[1], $mlText[23], 300, 200);
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "information";
-  include($gInnovaHtmlEditorPath . "setupElearningCourseInfo.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$information</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->withReducedToolbar();
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance("information", $information);
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->withReducedToolbar();
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance("information", $information);
 $panelUtils->addLine($panelUtils->addCell($label, "nb"));
 $panelUtils->addLine($strEditor);
 $panelUtils->addHiddenField('elearningCourseInfoId', $elearningCourseInfoId);

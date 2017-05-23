@@ -70,28 +70,21 @@ $str .= $commonUtils->renderWarningMessages($warnings);
 
 $str .= "\n<form name='edit' id='edit' action='$gElearningUrl/teacher/corner/exercise/introduction.php' method='post'>";
 
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "introduction";
-  include($gInnovaHtmlEditorPath . "setupElearningExercise.php");
-  $str .= $gInnovaHead;
-  $str .= "\n<textarea id='introduction' name='introduction' cols='30' rows='80'>\n$introduction\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $editorName = "introduction";
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->setImagePath($elearningExerciseUtils->imageFilePath);
-  $contentEditor->setImageUrl($elearningExerciseUtils->imageFileUrl);
-  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_exercise_introduction.php');
-  $contentEditor->withStandardToolbar();
-  $contentEditor->withImageButton();
-  $contentEditor->setHeight(500);
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance($editorName, $introduction);
-  $str .= $strEditor;
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$editorName = "introduction";
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->setImagePath($elearningExerciseUtils->imageFilePath);
+$contentEditor->setImageUrl($elearningExerciseUtils->imageFileUrl);
+$contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_exercise_introduction.php');
+$contentEditor->withStandardToolbar();
+$contentEditor->withImageButton();
+$contentEditor->setHeight(500);
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance($editorName, $introduction);
+$str .= $strEditor;
 
 $str .= "\n<input type='hidden' name='formSubmitted' value='1' />";
 $str .= "\n<input type='hidden' name='elearningExerciseId' value='$elearningExerciseId' />";

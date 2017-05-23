@@ -41,29 +41,22 @@ if ($formSubmitted) {
 
   $panelUtils->setHeader($mlText[0], "$gElearningUrl/exercise/compose.php");
   $panelUtils->openForm($PHP_SELF);
-  if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "introduction";
-    include($gInnovaHtmlEditorPath . "setupElearningExercise.php");
-    $panelUtils->addContent($gInnovaHead);
-    $panelUtils->addLine("<textarea id='introduction' name='introduction' cols='30' rows='80'>\n$introduction\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose");
-  } else {
-    include($gHtmlEditorPath . "CKEditorUtils.php");
-    $editorName = "introduction";
-    $contentEditor = new CKEditorUtils();
-    $contentEditor->languageUtils = $languageUtils;
-    $contentEditor->commonUtils = $commonUtils;
-    $contentEditor->load();
-    $contentEditor->setImagePath($elearningExerciseUtils->imageFilePath);
-    $contentEditor->setImageUrl($elearningExerciseUtils->imageFileUrl);
-    $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_exercise_introduction.php');
-    $contentEditor->withStandardToolbar();
-    $contentEditor->withImageButton();
-    $contentEditor->withLexicon();
-    $contentEditor->setHeight(500);
-    $strEditor = $contentEditor->render();
-    $strEditor .= $contentEditor->renderInstance($editorName, $introduction);
-    $panelUtils->addLine($strEditor);
-  }
+  include($gHtmlEditorPath . "CKEditorUtils.php");
+  $editorName = "introduction";
+  $contentEditor = new CKEditorUtils();
+  $contentEditor->languageUtils = $languageUtils;
+  $contentEditor->commonUtils = $commonUtils;
+  $contentEditor->load();
+  $contentEditor->setImagePath($elearningExerciseUtils->imageFilePath);
+  $contentEditor->setImageUrl($elearningExerciseUtils->imageFileUrl);
+  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_exercise_introduction.php');
+  $contentEditor->withStandardToolbar();
+  $contentEditor->withImageButton();
+  $contentEditor->withLexicon();
+  $contentEditor->setHeight(500);
+  $strEditor = $contentEditor->render();
+  $strEditor .= $contentEditor->renderInstance($editorName, $introduction);
+  $panelUtils->addLine($strEditor);
   $panelUtils->addHiddenField('elearningExerciseId', $elearningExerciseId);
   $panelUtils->addHiddenField('formSubmitted', 1);
   $panelUtils->closeForm();

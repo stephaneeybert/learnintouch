@@ -67,27 +67,20 @@ $str .= $commonUtils->renderWarningMessages($warnings);
 
 $str .= "\n<form name='edit' id='edit' action='$gElearningUrl/teacher/corner/lesson/paragraph/content.php' method='post'>";
 
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "body";
-  include($gInnovaHtmlEditorPath . "setupElearningLessonParagraph.php");
-  $str .= $gInnovaHead;
-  $str .= "\n<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$body</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->setImagePath($elearningLessonParagraphUtils->imageFilePath);
-  $contentEditor->setImageUrl($elearningLessonParagraphUtils->imageFileUrl);
-  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_lesson_paragraph.php');
-  $contentEditor->withStandardToolbar();
-  $contentEditor->withImageButton();
-  $editorName = "body";
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance($editorName, $body);
-  $str .= $strEditor;
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->setImagePath($elearningLessonParagraphUtils->imageFilePath);
+$contentEditor->setImageUrl($elearningLessonParagraphUtils->imageFileUrl);
+$contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_lesson_paragraph.php');
+$contentEditor->withStandardToolbar();
+$contentEditor->withImageButton();
+$editorName = "body";
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance($editorName, $body);
+$str .= $strEditor;
 
 $str .= "\n<input type='hidden' name='formSubmitted' value='1' />";
 $str .= "\n<input type='hidden' name='elearningLessonParagraphId' value='$elearningLessonParagraphId' />";

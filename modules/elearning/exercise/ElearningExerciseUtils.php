@@ -221,7 +221,6 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
                                                                                                                   "ELEARNING_HTML_EDITOR" =>
                                                                                                                   array($this->mlText[189], $this->mlText[190], PREFERENCE_TYPE_SELECT,
                                                                                                                     array(
-                                                                                                                      'HTML_EDITOR_INNOVA' => $this->mlText[191],
                                                                                                                       'HTML_EDITOR_CKEDITOR' => $this->mlText[192],
                                                                                                                     )),
                                                                                                                   "ELEARNING_EXERCISE_IMAGE_WIDTH" =>
@@ -1516,19 +1515,6 @@ HEREDOC;
     $lexiconList = $this->preferenceUtils->getValue("ELEARNING_DISPLAY_LEXICON_LIST");
 
     return($lexiconList);
-  }
-
-  // Check if the selected html editor is the InnovaStudio
-  function useHtmlEditorInnova() {
-    $result = false;
-
-    $htmlEditor = $this->preferenceUtils->getValue("ELEARNING_HTML_EDITOR");
-
-    if ($htmlEditor == 'HTML_EDITOR_INNOVA') {
-      $result = true;
-    }
-
-    return($result);
   }
 
   // Check if the selected html editor is the CKEditor

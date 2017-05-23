@@ -108,25 +108,18 @@ $panelUtils->addLine($panelUtils->addCell($mlText[6], "nb"));
 $panelUtils->addLine("<input type='text' name='headline' value='$headline' size='30' maxlength='255'>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[1], $mlText[23], 300, 200);
-if ($newsStoryUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "excerpt";
-  include($gInnovaHtmlEditorPath . "setupNewsStory.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$excerpt</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->setImagePath($newsStoryImageUtils->imageFilePath);
-  $contentEditor->setImageUrl($newsStoryImageUtils->imageFileUrl);
-  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_story.php');
-  $contentEditor->withReducedToolbar();
-  $contentEditor->withImageButton();
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance("excerpt", $excerpt);
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->setImagePath($newsStoryImageUtils->imageFilePath);
+$contentEditor->setImageUrl($newsStoryImageUtils->imageFileUrl);
+$contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_story.php');
+$contentEditor->withReducedToolbar();
+$contentEditor->withImageButton();
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance("excerpt", $excerpt);
 $panelUtils->addLine($panelUtils->addCell($label, "nb"));
 $panelUtils->addLine($strEditor);
 $panelUtils->addLine();
@@ -154,45 +147,27 @@ for ($i = 0; $i < count($newsStoryParagraphs); $i++) {
   $body = $newsStoryParagraph->getBody();
   $footer = $newsStoryParagraph->getFooter();
 
-  if ($newsStoryUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "header$newsStoryParagraphId";
-    include($gInnovaHtmlEditorPath . "setupNewsStory.php");
-    $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$header</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  } else {
-    $contentEditor = new CKEditorUtils();
-    $contentEditor->languageUtils = $languageUtils;
-    $contentEditor->commonUtils = $commonUtils;
-    $contentEditor->load();
-    $contentEditor->setImagePath($newsStoryImageUtils->imageFilePath);
-    $contentEditor->setImageUrl($newsStoryImageUtils->imageFileUrl);
-    $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_story.php');
-    $contentEditor->withStandardToolbar();
-    $contentEditor->withImageButton();
-    $contentEditor->setHeight(300);
-    $strEditor = $contentEditor->renderInstance("header$newsStoryParagraphId", $header);
-  }
+  $contentEditor = new CKEditorUtils();
+  $contentEditor->languageUtils = $languageUtils;
+  $contentEditor->commonUtils = $commonUtils;
+  $contentEditor->load();
+  $contentEditor->setImagePath($newsStoryImageUtils->imageFilePath);
+  $contentEditor->setImageUrl($newsStoryImageUtils->imageFileUrl);
+  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_story.php');
+  $contentEditor->withStandardToolbar();
+  $contentEditor->withImageButton();
+  $contentEditor->setHeight(300);
+  $strEditor = $contentEditor->renderInstance("header$newsStoryParagraphId", $header);
 
   $label = $popupUtils->getTipPopup($mlText[3], $mlText[24], 300, 300);
   $panelUtils->addLine($panelUtils->addCell($label, "nb"));
   $panelUtils->addLine($strEditor);
 
-  if ($newsStoryUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "body$newsStoryParagraphId";
-    include($gInnovaHtmlEditorPath . "setupNewsStory.php");
-    $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='50' rows='8'>$body</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  } else {
-    $strEditor = $contentEditor->renderInstance("body$newsStoryParagraphId", $body);
-  }
+  $strEditor = $contentEditor->renderInstance("body$newsStoryParagraphId", $body);
   $panelUtils->addLine($panelUtils->addCell($mlText[2], "nb"));
   $panelUtils->addLine($strEditor);
 
-  if ($newsStoryUtils->useHtmlEditorInnova()) {
-    $oInnovaContentName = "footer$newsStoryParagraphId";
-    include($gInnovaHtmlEditorPath . "setupNewsStory.php");
-    $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='50' rows='4'>$footer</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  } else {
-    $strEditor = $contentEditor->renderInstance("footer$newsStoryParagraphId", $footer);
-  }
+  $strEditor = $contentEditor->renderInstance("footer$newsStoryParagraphId", $footer);
 
   // The one and only paragraph cannot be deleted
   $strLine = '';

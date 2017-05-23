@@ -65,40 +65,18 @@ $label = $popupUtils->getTipPopup($mlText[3], $mlText[14], 300, 300);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='value' value='$value' size='30' maxlength='50'>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[19], $mlText[20], 300, 300);
-if ($dynpageUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "text";
-  include($gInnovaHtmlEditorPath . "setupForm.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$text\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContent() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContent(content) {
-  $oInnovaName.putHTML(content);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent()");
-function saveInnovaEditorContent() {
-  var body = getContent();
-  saveEditorContent("$oInnovaContentName", body);
-}
-</script>
-HEREDOC;
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $editorName = "text";
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->withReducedToolbar();
-  $contentEditor->withAjaxSave();
-  $contentEditor->setHeight(300);
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance($editorName, $text);
-  $strJsEditor = <<<HEREDOC
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$editorName = "text";
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->withReducedToolbar();
+$contentEditor->withAjaxSave();
+$contentEditor->setHeight(300);
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance($editorName, $text);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContent() {
   var editor = CKEDITOR.instances.$editorName;
@@ -111,7 +89,6 @@ function setContent(content) {
 }
 </script>
 HEREDOC;
-}
 $panelUtils->addHiddenField('currentLanguageCode', $currentLanguageCode);
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strEditor . ' ' . $strLanguageFlag);

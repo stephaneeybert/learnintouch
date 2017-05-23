@@ -120,40 +120,18 @@ $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[5], "nbr"), "<input type='text' name='description' value='$description' size='30' maxlength='255'>");
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[14], $mlText[15], 300, 300);
-if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "instructions";
-  include($gInnovaHtmlEditorPath . "setupElearningInstructions.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='30' rows='5'>\n$instructions\n</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-  $strJsEditor = <<<HEREDOC
-<script type='text/javascript'>
-function getContent() {
-  var content = $oInnovaName.getHTMLBody();
-  return(content);
-}
-function setContent(content) {
-  $oInnovaName.putHTML(content);
-}
-$oInnovaName.onSave=new Function("saveInnovaEditorContent()");
-function saveInnovaEditorContent() {
-  var body = getContent();
-  saveEditorContent("$oInnovaContentName", body);
-}
-</script>
-HEREDOC;
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $editorName = "instructions";
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->withReducedToolbar();
-  $contentEditor->withAjaxSave();
-  $contentEditor->setHeight(300);
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance($editorName, $instructions);
-  $strJsEditor = <<<HEREDOC
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$editorName = "instructions";
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->withReducedToolbar();
+$contentEditor->withAjaxSave();
+$contentEditor->setHeight(300);
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance($editorName, $instructions);
+$strJsEditor = <<<HEREDOC
 <script type='text/javascript'>
 function getContent() {
   var editor = CKEDITOR.instances.$editorName;
@@ -166,7 +144,6 @@ function setContent(content) {
 }
 </script>
 HEREDOC;
-}
 $panelUtils->addHiddenField('currentLanguageCode', $currentLanguageCode);
 $strLanguageFlag = $languageUtils->renderChangeWebsiteLanguageBar($currentLanguageCode);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), $strEditor . ' ' . $strLanguageFlag);
@@ -206,8 +183,6 @@ function confirmDelete() {
 HEREDOC;
 $panelUtils->addContent($strConfirmDelete);
 
-$gInnovaHead = '';
-
 if ($elearningLessonHeadings = $elearningLessonHeadingUtils->selectByElearningLessonModelId($elearningLessonModelId)) {
   foreach ($elearningLessonHeadings as $elearningLessonHeading) {
     $elearningLessonHeadingId = $elearningLessonHeading->getId();
@@ -235,24 +210,18 @@ if ($elearningLessonHeadings = $elearningLessonHeadingUtils->selectByElearningLe
     $panelUtils->addLine($panelUtils->addCell($mlText[10], "nbr"), $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePicture' title='$mlText[13]'>", "$gElearningUrl/lesson/heading/image.php?elearningLessonHeadingId=$elearningLessonHeadingId", 600, 600) . ' ' . $strImage);
     $panelUtils->addLine();
 
-    if ($elearningExerciseUtils->useHtmlEditorInnova()) {
-      $oInnovaContentName = "content$elearningLessonHeadingId";
-      include($gInnovaHtmlEditorPath . "setupElearningLessonHeading.php");
-      $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName'>$content</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-    } else {
-      $editorName = "content$elearningLessonHeadingId";
-      $contentEditor = new CKEditorUtils();
-      $contentEditor->languageUtils = $languageUtils;
-      $contentEditor->commonUtils = $commonUtils;
-      $contentEditor->load();
-      $contentEditor->setImagePath($elearningLessonHeadingUtils->imageFilePath);
-      $contentEditor->setImageUrl($elearningLessonHeadingUtils->imageFileUrl);
-      $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_lesson_heading.php');
-      $contentEditor->withReducedToolbar();
-      $contentEditor->withImageButton();
-      $contentEditor->setHeight(300);
-      $strEditor = $contentEditor->renderInstance($editorName, $content);
-    }
+    $editorName = "content$elearningLessonHeadingId";
+    $contentEditor = new CKEditorUtils();
+    $contentEditor->languageUtils = $languageUtils;
+    $contentEditor->commonUtils = $commonUtils;
+    $contentEditor->load();
+    $contentEditor->setImagePath($elearningLessonHeadingUtils->imageFilePath);
+    $contentEditor->setImageUrl($elearningLessonHeadingUtils->imageFileUrl);
+    $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_elearning_lesson_heading.php');
+    $contentEditor->withReducedToolbar();
+    $contentEditor->withImageButton();
+    $contentEditor->setHeight(300);
+    $strEditor = $contentEditor->renderInstance($editorName, $content);
 
     // The one and only lesson heading cannot be swaped
     $strLine = '';

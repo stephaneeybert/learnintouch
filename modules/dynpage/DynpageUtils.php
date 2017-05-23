@@ -68,7 +68,6 @@ class DynpageUtils extends DynpageDB {
               "DYNPAGE_HTML_EDITOR" =>
               array($this->mlText[13], $this->mlText[14], PREFERENCE_TYPE_SELECT,
                 array(
-                  'HTML_EDITOR_INNOVA' => $this->mlText[15],
                   'HTML_EDITOR_CKEDITOR' => $this->mlText[16],
                 )),
               "DYNPAGE_WEBSITE_IN_CONSTRUCTION" =>
@@ -201,19 +200,6 @@ class DynpageUtils extends DynpageDB {
     }
 
     return($templateModelId);
-  }
-
-  // Check if the selected html editor is the InnovaStudio
-  function useHtmlEditorInnova() {
-    $result = false;
-
-    $htmlEditor = $this->preferenceUtils->getValue("DYNPAGE_HTML_EDITOR");
-
-    if ($htmlEditor == 'HTML_EDITOR_INNOVA') {
-      $result = true;
-    }
-
-    return($result);
   }
 
   // Check if the selected html editor is the CKEditor

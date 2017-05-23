@@ -173,34 +173,21 @@ $label = $popupUtils->getTipPopup($mlText[2], $mlText[16], 300, 500);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' name='archive' id='archive' value='$archive' size='12' maxlength='10'> " . $clockUtils->getDateNumericFormatTip());
 $panelUtils->addLine();
 $label = $popupUtils->getTipPopup($mlText[1], $mlText[9], 300, 300);
-if ($newsStoryUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "header";
-  include($gInnovaHtmlEditorPath . "setupNewsPaper.php");
-  $panelUtils->addContent($gInnovaHead);
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='50' rows='4'>$header</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  include($gHtmlEditorPath . "CKEditorUtils.php");
-  $contentEditor = new CKEditorUtils();
-  $contentEditor->languageUtils = $languageUtils;
-  $contentEditor->commonUtils = $commonUtils;
-  $contentEditor->load();
-  $contentEditor->setImagePath($newsPaperUtils->imagePath);
-  $contentEditor->setImageUrl($newsPaperUtils->imageUrl);
-  $contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_paper.php');
-  $contentEditor->withReducedToolbar();
-  $contentEditor->withImageButton();
-  $strEditor = $contentEditor->render();
-  $strEditor .= $contentEditor->renderInstance("header", $header);
-}
+include($gHtmlEditorPath . "CKEditorUtils.php");
+$contentEditor = new CKEditorUtils();
+$contentEditor->languageUtils = $languageUtils;
+$contentEditor->commonUtils = $commonUtils;
+$contentEditor->load();
+$contentEditor->setImagePath($newsPaperUtils->imagePath);
+$contentEditor->setImageUrl($newsPaperUtils->imageUrl);
+$contentEditor->setImageBrowserUploadUrl($gSystemUrl . '/editor/ckeditor/connector/image_news_paper.php');
+$contentEditor->withReducedToolbar();
+$contentEditor->withImageButton();
+$strEditor = $contentEditor->render();
+$strEditor .= $contentEditor->renderInstance("header", $header);
 $panelUtils->addLine($panelUtils->addCell("<b>$label</b>" . $strEditor, "n"));
 $panelUtils->addLine();
-if ($newsStoryUtils->useHtmlEditorInnova()) {
-  $oInnovaContentName = "footer";
-  include($gInnovaHtmlEditorPath . "setupNewsPaper.php");
-  $strEditor = "<textarea id='$oInnovaContentName' name='$oInnovaContentName' cols='50' rows='4'>$footer</textarea> $gInnovaBodyOpen $gInnovaBodyClose";
-} else {
-  $strEditor = $contentEditor->renderInstance("footer", $footer);
-}
+$strEditor = $contentEditor->renderInstance("footer", $footer);
 $label = $popupUtils->getTipPopup($mlText[5], $mlText[10], 300, 300);
 $panelUtils->addLine($panelUtils->addCell("<b>$label</b>" . $strEditor, "n"));
 $panelUtils->addLine();

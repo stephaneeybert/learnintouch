@@ -66,7 +66,6 @@
 [  75]The width for the images of a news heading when they are displayed on a phone or small screen mobile device.
 [  76]Html content editor:
 [  77]By default, the content for the news stories and newspapers is some text.\n\nBut it can be html content.\n\nIn that case, a simple html editor can be used to edit the content.
-[  78]Innova
 [  79]CKEditor
 [  80]Number of newspapers or news stories per page:
 [  81]When a page contains many newspapers or news stories, it is possible to display only a certain number per page, the others being displayed on next and previous pages.
