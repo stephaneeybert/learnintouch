@@ -12,6 +12,12 @@ Add the plugin name in the file system/editor/ckeditor/CKEditorUtils.php
 
 Create a soft link to the plugin directory from the directory js/editor/ckeditor/plugins/
 
-ln -s ../../../../system/editor/ckeditor/plugins/imageUpload imageUpload
+cd api/js/editor/ckeditor_4.5.6_full/plugins
+ln -s ../../../../../system/editor/ckeditor/plugins/imageUpload imageUpload
+ln -s ../../../../../system/editor/ckeditor/plugins/internalLink internalLink
+ln -s ../../../../../system/editor/ckeditor/plugins/ajaxSave ajaxSave
+ln -s ../../../../../system/editor/ckeditor/plugins/lexicon lexico
+ln -s ../../../../../system/editor/ckeditor/plugins/lexiconClear lexiconClear
+ln -s ../../../../../system/editor/ckeditor/plugins/metaName metaName
 
 
