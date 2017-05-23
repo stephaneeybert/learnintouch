@@ -22,7 +22,13 @@
     } else if (selection.getType() == CKEDITOR.SELECTION_TEXT) {
       if (CKEDITOR.env.ie) {
         selection.unlock(true);
-        selectedContent = selection.getNative().createRange().text;
+        if (selection.getSelection) {
+          selectedContent = selection.getSelection().text;
+        } else if (selection.getSelectedText) {
+          selectedContent = selection.getSelectedText();
+        } else if (selection.getNative) {
+          selectedContent = selection.getNative().createRange().text;
+        }
       } else {
         selectedContent = selection.getNative();
       }

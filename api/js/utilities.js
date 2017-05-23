@@ -35,8 +35,13 @@ function getUserSelectedText(pageDocument, element) {
     var selectedText;
     if (pageDocument.selection != undefined) {
         element.focus();
-        var sel = pageDocument.selection.createRange();
-        selectedText = sel.text;
+        if (selection.getSelection) {
+          selectedText = selection.getSelection().text;
+        } else if (selection.getSelectedText) {
+          selectedText = selection.getSelectedText();
+        } else if (selection.getNative) {
+          selectedText = selection.getNative().createRange().text;
+        }
     } else if (element.selectionStart != undefined) {
         var startPos = element.selectionStart;
         var endPos = element.selectionEnd;
