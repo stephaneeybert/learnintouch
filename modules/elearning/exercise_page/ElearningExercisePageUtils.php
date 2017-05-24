@@ -1527,6 +1527,13 @@ HEREDOC;
 
     $strText = '';
 
+    $elearningSubscriptionId = '';
+    $courseId = '';
+    if ($elearningSubscription) {
+      $elearningSubscriptionId = $elearningSubscription->getId();
+      $courseId = $elearningSubscription->getCourseId();
+    }
+
     if ($pageText) {
       if (!$forPrint) {
         // Replace the question markers within the text if any with answer input fields
@@ -1545,7 +1552,7 @@ HEREDOC;
 
             $questionInputField = $this->renderQuestionInput($elearningExercise, $elearningExercisePage, $elearningQuestion, $elearningSubscription, true);
 
-            $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
+            $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscriptionId, $courseId);
 
             if ($displayInstantFeedback || $watchLive) {
               $strQuestionInput .= "<span id='" . $this->elearningQuestionUtils->renderUniqueQuestionId($elearningQuestionId) . "'>" . $questionInputField . "</span>";
@@ -1682,10 +1689,13 @@ HEREDOC;
       }
     }
 
+    $watchLive = '';
+    $elearningSubscriptionId = '';
+    $courseId = '';
     if ($elearningSubscription) {
       $watchLive = $elearningSubscription->getWatchLive();
-    } else {
-      $watchLive = false;
+      $elearningSubscriptionId = $elearningSubscription->getId();
+      $courseId = $elearningSubscription->getCourseId();
     }
 
     // Get the answer chosen by the user
@@ -1699,7 +1709,7 @@ HEREDOC;
     // Get the possible answers of the question
     $elearningAnswers = $this->elearningAnswerUtils->selectByQuestion($elearningQuestion->getId());
 
-    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
+    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscriptionId, $courseId);
 
     // Display the answers in a random order
     if ($this->shuffleAnswers($elearningSubscription)) {
@@ -2119,12 +2129,14 @@ HEREDOC;
 
     $watchLive = '';
     $elearningSubscriptionId = '';
+    $courseId = '';
     if ($elearningSubscription) {
       $watchLive = $elearningSubscription->getWatchLive();
       $elearningSubscriptionId = $elearningSubscription->getId();
+      $courseId = $elearningSubscription->getCourseId();
     }
 
-    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscription->getId(), $elearningSubscription->getCourseId());
+    $displayInstantFeedback = $this->displayInstantFeedback($elearningExercise->getId(), $elearningSubscriptionId, $courseId);
 
     $str = '';
 

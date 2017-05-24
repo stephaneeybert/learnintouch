@@ -3342,6 +3342,8 @@ HEREDOC;
 
     if ($elearningSubscriptionId) {
       $str .= $this->renderWhiteboard($elearningSubscriptionId);
+
+      $elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId);
     }
 
     $isLast = $this->elearningExercisePageUtils->isLastExercisePage($elearningExercisePages, $elearningExercisePageId);
@@ -3386,7 +3388,6 @@ HEREDOC;
     }
 
     // Render the exercise page of questions
-    $elearningSubscription = $this->elearningSubscriptionUtils->selectById($elearningSubscriptionId);
     $str .= $this->elearningExercisePageUtils->render($elearningExercise, $elearningExercisePage, $elearningSubscription);
 
     if (!$isLast) {
