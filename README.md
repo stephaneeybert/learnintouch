@@ -3,7 +3,7 @@ learnintouch
 
 LearnInTouch, learn, teach and keep in touch !
 
-LearnInTouch is a CRM complete with an e-learning platform for language schools, a hobby project that snowballed into an extensive product.
+LearnInTouch is a CRM complete with an elearning platform for language schools, a hobby project that snowballed into an extensive product.
 
 Started in 2003 before the age of frameworks it is layered with its custom DAO and dependency injection.
 
