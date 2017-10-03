@@ -6,7 +6,7 @@
 $gSetupWebsiteName = 'europasprak';
 
 // The name of the web site url
-$gSetupWebsiteUrl = 'http://www.europasprak.com';
+$gSetupWebsiteUrl = 'http://www.europasprak.com:' . $_SERVER['SERVER_PORT'];
 
 // The root path
 $gRootPath = '/home/stephane/learnintouch/www/europasprak.com/';

@@ -6,7 +6,7 @@
 $gSetupWebsiteName = 'learnintouch';
 
 // The name of the web site url
-$gSetupWebsiteUrl = 'http://dev.learnintouch.com';
+$gSetupWebsiteUrl = 'http://dev.learnintouch.com:' . $_SERVER['SERVER_PORT'];
 
 // The root path
 $gRootPath = '/home/stephane/dev/php/learnintouch/www/learnintouch.com/';
