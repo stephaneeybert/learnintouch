@@ -936,6 +936,7 @@ HEREDOC;
     global $gElearningUrl;
     global $gImagesUserUrl;
     global $gJSNoStatus;
+    global $gContactUrl;
 
     $systemDate = $this->clockUtils->getSystemDate();
 
