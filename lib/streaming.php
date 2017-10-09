@@ -33,21 +33,34 @@ class LibStreaming {
     $buttonStopImage = $gImagesUserUrl . '/' . IMAGE_AUDIO_STOP;
 
     if ($mediaFileUrl) {
+      if ($this->autostart == true) {
+        $autostart = "true";
+      } else if ($this->autostart == false) {
+        $autostart = "false";
+      }
+
       $str = <<<HEREDOC
 <img id="$playPauseButtonDomId" src="$buttonPlayImage" title="" />
 HEREDOC;
+
       if (!$this->noStopButton) {
         $str .= <<<HEREDOC
  <img id="$stopButtonDomId" src="$buttonStopImage" title="" />
 HEREDOC;
       }
+
       $str .= <<<HEREDOC
 <script type="text/javascript">
 $(document).ready(function() {
+HEREDOC;
+
+      $str .= <<<HEREDOC
+  var audio$uniqueId;
   soundManager.onready(function() {
-    var audio$uniqueId = soundManager.createSound({
+    audio$uniqueId = soundManager.createSound({
       id:'audio$uniqueId',
       url:'$mediaFileUrl',
+      autoPlay:$autostart,
       onplay:function() {
         document.getElementById("$playPauseButtonDomId").src = "$buttonPauseImage";
       },
@@ -73,10 +86,13 @@ $(document).ready(function() {
       }, false);
     }
   });
+HEREDOC;
+    }
+
+    $str .= <<<HEREDOC
 });
 </script>
 HEREDOC;
-    }
 
     return($str);
   }
