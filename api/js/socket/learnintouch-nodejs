@@ -13,10 +13,12 @@
 # Description:       Enable learnintouch-nodejs provided by daemon.
 ### END INIT INFO
 
+export PATH=$PATH:/home/stephane/programs/install/bin/
+
 case "$1" in
   start)
-#        forever start /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js
-        /home/stephane/learnintouch/engine/api/js/socket/start.sh
+        forever start /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js
+#        /home/stephane/learnintouch/engine/api/js/socket/start.sh
         echo "Starting the socket server:"
         ;;
   stop)
