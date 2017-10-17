@@ -2532,7 +2532,6 @@ function getQuestionCheckboxesValues(elearningQuestionId) {
 function getInstantFeedback(elearningQuestionId, participantAnswer) {
   participantAnswer = encodeURIComponent(participantAnswer);
   var url = '$gElearningUrl/exercise_page/getInstantFeedback.php?elearningSubscriptionId=$elearningSubscriptionId&elearningQuestionId='+elearningQuestionId+'&participantAnswer='+participantAnswer;
-console.log(url);
   ajaxAsynchronousRequest(url, renderInstantFeedback);
 }
 
