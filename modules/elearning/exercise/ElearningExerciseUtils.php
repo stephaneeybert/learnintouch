@@ -3077,6 +3077,8 @@ HEREDOC;
     $labelClearTheWhiteboard = $this->websiteText[137];
     $labelPrint = $this->websiteText[170];
     $labelPrintTheWhiteboard = $this->websiteText[145];
+    $labelMax = $this->websiteText[191];
+    $labelMaxTheWhiteboard = $this->websiteText[239];
 
     $firstname = '';
     $adminId = $this->adminUtils->getLoggedAdminId();
@@ -3107,6 +3109,7 @@ HEREDOC;
       . "<div class='elearning_whiteboard_buttons'>"
       . " <span class='elearning_whiteboard_clear' id='whiteboard_clear' title='$labelClearTheWhiteboard'>$labelClear</span>"
       . " <span class='elearning_whiteboard_print' id='whiteboard_print' title='$labelPrintTheWhiteboard'>$labelPrint</span>"
+      . " <span class='elearning_whiteboard_print' id='whiteboard_max' title='$labelMaxTheWhiteboard'>$labelMax</span>"
       . "</div>"
       . "<div class='elearning_whiteboard_output' id='whiteboard_output'>$whiteboard</div>"
       . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard_input' id='whiteboard_input' rows='1'></textarea>"
@@ -3150,6 +3153,8 @@ var whiteboadDisplayStatusCookieDuration = 24 * 360;
 
 var elearningSocket;
 var isAdmin = false;
+var WHITEBOARD_HEIGHT_MAX = 500;
+var WHITEBOARD_HEIGHT_NORMAL = 100;
 
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
@@ -3238,6 +3243,8 @@ function refreshLocalWhiteboard(content) {
 }
 
 function clearLocalWhiteboard() {
+  unmaxWhiteboard();
+
   $('#whiteboard_url_iframe').attr('src', '');
   $('#whiteboard_output').html('');
   $('#whiteboard_input').val('');
@@ -3266,6 +3273,19 @@ function parseWhiteboardContentUrl(content) {
   }
 }
 
+function maxWhiteboard() {
+  var height = $('#whiteboard_output').css('height').replace(/[^-\d\.]/g, '');
+  if (height == WHITEBOARD_HEIGHT_MAX) {
+    $('#whiteboard_output').css({height: WHITEBOARD_HEIGHT_NORMAL});
+  } else {
+    $('#whiteboard_output').css({height: WHITEBOARD_HEIGHT_MAX});
+  }
+}
+
+function unmaxWhiteboard() {
+  $('#whiteboard_output').css({height: WHITEBOARD_HEIGHT_NORMAL});
+}
+
 $(document).ready(function() {
 
 $("#whiteboard").autoGrow();
@@ -3290,6 +3310,10 @@ $('#whiteboard_input').bind("keyup click", function (event) {
     sendWhiteboardContent(content);
     $('#whiteboard_input').val('');
   }
+});
+
+$("#whiteboard_max").click(function(e) {
+  maxWhiteboard();
 });
 
 if ('undefined' != typeof elearningSocket) {

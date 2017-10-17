@@ -189,7 +189,7 @@
 [ 188]Om en lärare är markerat i kontakt sidan, som standard han kommer att få resultatet av övningen och möjligtvis ett meddelande från deltagaren.\n\nMen det går inte att skicka övningsresultat till läraren om deltagaren inte har skrivit något meddelande för läraren.\n\nI så fall kommer att övningsresultat räddas men läraren kommer inte att få någon e-post.
 [ 189]Html-redigeraren:
 [ 190]Det finns flera html-redigerare som kan användas för att redigera kursmaterial.\n\nVälj den html-redigerare du föredrar.
-[ 191]Standard
+[ 191]Maximize
 [ 192]Alternate
 [ 193]Ingen
 [ 194]Visa instant korrigeringar:
@@ -237,6 +237,7 @@
 [ 236]As page numbers
 [ 237]With page numbers
 [ 238]Show the whiteboard
+[ 191]Maximize the whiteboard
 [ 240]You can
 [ 241]subscribe
 [ 242]to one of our courses.

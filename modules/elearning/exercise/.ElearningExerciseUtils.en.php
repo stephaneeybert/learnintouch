@@ -189,6 +189,7 @@
 [ 188]By default the school will receive the results of the exercise and a message from the participant if any.\n\nBut it is possible not to send the exercise results to the school if the participant has not written any message.\n\nIn that case, the exercise results will be saved but the school will not receive any email.
 [ 189]The html editor:
 [ 190]There are several html editors that can be used to edit the course material.\n\nPlease select the html editor of your choice.
+[ 191]Maximize
 [ 192]CKEditor
 [ 193]The total of all the results for the course.
 [ 194]Display an instant correction:
@@ -236,6 +237,7 @@
 [ 236]As page numbers
 [ 237]With page numbers
 [ 238]Show the whiteboard
+[ 239]Maximize the whiteboard
 [ 240]You can
 [ 241]subscribe
 [ 242]to one of our courses.
