@@ -4,15 +4,15 @@
 
 class DataSourceMySQL extends DataSource {
 
-  function DataSourceMySQL($host = '', $databaseName) {
-    $this->DataSource($host, $databaseName);
+  function DataSourceMySQL($host = '', $port = '', $databaseName) {
+    $this->DataSource($host, $port, $databaseName);
   }
 
   function connect($username, $password, $type = DB_NON_PERSISTENT) {
     if ($type == DB_PERSISTENT) {
-      $this->setDbConnection(mysqli_connect("p:". $this->getHost(), $username, $password));
+      $this->setDbConnection(mysqli_connect("p:". $this->getHost(), $username, $password, $this->getDatabaseName(), $this->getPort()));
     } else {
-      $this->setDbConnection(mysqli_connect($this->getHost(), $username, $password));
+      $this->setDbConnection(mysqli_connect($this->getHost(), $username, $password, $this->getDatabaseName(), $this->getPort()));
     }
 
     $this->selectDatabase();

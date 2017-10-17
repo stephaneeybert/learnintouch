@@ -17,6 +17,10 @@ class DataSource {
   var $host;
 
   // Private
+  // The port number
+  var $port;
+
+  // Private
   // The name of the database
   var $databaseName;
 
@@ -27,8 +31,9 @@ class DataSource {
   // The sql statement
   var $sqlStatement;
 
-  function DataSource($host, $databaseName) {
+  function DataSource($host, $port, $databaseName) {
     $this->host = $host;
+    $this->port = $port;
     $this->databaseName = $databaseName;
     $this->dbConnection = '';
     $this->sqlStatement = '';
@@ -37,6 +42,11 @@ class DataSource {
   // Get the host name
   function getHost() {
     return($this->host);
+  }
+
+  // Get the port number
+  function getPort() {
+    return($this->port);
   }
 
   // Get the database name

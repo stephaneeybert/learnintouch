@@ -9,7 +9,7 @@ class Sql {
       $dbName = DB_NAME;
     }
 
-    $dataSource = new DataSourceMySQL(DB_HOST, $dbName);
+    $dataSource = new DataSourceMySQL(DB_HOST, DB_PORT, $dbName);
 
     if (!$dataSource->connect(DB_USER, DB_PASS)) {
       die("The data source for the database $dbName could not be initialized for the user " . DB_USER . ".");
@@ -25,7 +25,7 @@ class Sql {
       $dbName = DB_COMMON_DB_NAME;
     }
 
-    $dataSource = new DataSourceMySQL(DB_COMMON_HOST, $dbName);
+    $dataSource = new DataSourceMySQL(DB_COMMON_HOST, DB_COMMON_PORT, $dbName);
 
     if (!$dataSource->connect(DB_COMMON_USER, DB_COMMON_PASS)) {
       die("The data source for the database $dbName could not be initialized for the user " . DB_COMMON_USER . ".");
