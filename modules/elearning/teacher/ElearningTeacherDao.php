@@ -42,13 +42,20 @@ HEREDOC;
   }
 
   function selectLikePattern($searchPattern, $start = false, $rows = false) {
+    $OR_CLAUSE = "";
     if (strstr($searchPattern, ' ')) {
-      list($firstname, $lastname) = explode(' ', $searchPattern);
-      $OR_BOTH_NAMES = "OR (lower(u.firstname) LIKE lower('%$firstname%') AND lower(u.lastname) LIKE lower('%$lastname%'))";
-    } else {
-      $OR_BOTH_NAMES = "";
+      $bits = explode(' ', $searchPattern);
+      foreach ($bits as $bit) {
+        if (strlen($bit) > 1) {
+          if ($OR_CLAUSE) {
+            $OR_CLAUSE .= "OR ";
+          }
+          $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
+        }
+      }
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS et.* FROM $this->tableName et, " . DB_TABLE_USER . " u WHERE et.user_account_id = u.id AND (lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%') OR lower(u.email) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) ORDER BY u.firstname, u.lastname";
+
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS et.* FROM $this->tableName et, " . DB_TABLE_USER . " u WHERE et.user_account_id = u.id AND ($OR_CLAUSE) ORDER BY u.firstname, u.lastname";
     if ($rows) {
       if (!$start) {
         $start = 0;

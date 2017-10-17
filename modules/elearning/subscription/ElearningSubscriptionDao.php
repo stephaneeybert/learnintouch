@@ -300,13 +300,19 @@ HEREDOC;
   }
 
   function selectLikePattern($searchPattern, $start = false, $rows = false) {
+    $OR_CLAUSE = "";
     if (strstr($searchPattern, ' ')) {
-      list($firstname, $lastname) = explode(' ', $searchPattern);
-      $OR_BOTH_NAMES = "OR (lower(u.firstname) LIKE lower('%$firstname%') AND lower(u.lastname) LIKE lower('%$lastname%'))";
-    } else {
-      $OR_BOTH_NAMES = "";
+      $bits = explode(' ', $searchPattern);
+      foreach ($bits as $bit) {
+        if (strlen($bit) > 1) {
+          if ($OR_CLAUSE) {
+            $OR_CLAUSE .= "OR ";
+          }
+          $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
+        }
+      }
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND (lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND ($OR_CLAUSE) ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
     if ($rows) {
       if (!$start) {
         $start = 0;
@@ -319,13 +325,19 @@ HEREDOC;
   }
 
   function selectLikePatternDistinctUsers($searchPattern) {
+    $OR_CLAUSE = "";
     if (strstr($searchPattern, ' ')) {
-      list($firstname, $lastname) = explode(' ', $searchPattern);
-      $OR_BOTH_NAMES = "OR (lower(u.firstname) LIKE lower('%$firstname%') AND lower(u.lastname) LIKE lower('%$lastname%'))";
-    } else {
-      $OR_BOTH_NAMES = "";
+      $bits = explode(' ', $searchPattern);
+      foreach ($bits as $bit) {
+        if (strlen($bit) > 1) {
+          if ($OR_CLAUSE) {
+            $OR_CLAUSE .= "OR ";
+          }
+          $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
+        }
+      }
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND (lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) GROUP BY u.id ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND ($OR_CLAUSE) GROUP BY u.id ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
     return($this->querySelect($sqlStatement));
   }
 

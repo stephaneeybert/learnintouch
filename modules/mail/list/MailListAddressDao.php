@@ -71,13 +71,19 @@ HEREDOC;
   }
 
   function selectByMailListIdAndSubscribersLikePattern($mailListId, $searchPattern, $start = false, $rows = false) {
+    $OR_CLAUSE = "";
     if (strstr($searchPattern, ' ')) {
-      list($firstname, $lastname) = explode(' ', $searchPattern);
-      $OR_BOTH_NAMES = "OR (lower(ma.firstname) LIKE lower('%$firstname%') AND lower(ma.lastname) LIKE lower('%$lastname%'))";
-    } else {
-      $OR_BOTH_NAMES = "";
+      $bits = explode(' ', $searchPattern);
+      foreach ($bits as $bit) {
+        if (strlen($bit) > 1) {
+          if ($OR_CLAUSE) {
+            $OR_CLAUSE .= "OR ";
+          }
+          $OR_CLAUSE .= "lower(ma.email) LIKE lower('%$bit%') OR lower(ma.firstname) LIKE lower('%$bit%') OR lower(ma.lastname) LIKE lower('%$bit%') OR lower(ma.text_comment) LIKE lower('%$bit%') OR lower(ma.country) LIKE lower('%$bit%')";
+        }
+      }
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE m.mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND (lower(ma.email) LIKE lower('%$searchPattern%') OR lower(ma.firstname) LIKE lower('%$searchPattern%') OR lower(ma.lastname) LIKE lower('%$searchPattern%') OR lower(ma.text_comment) LIKE lower('%$searchPattern%') OR lower(ma.country) LIKE lower('%$searchPattern%') $OR_BOTH_NAMES) order by ma.email";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_MAIL_ADDRESS . " ma WHERE m.mail_list_id = '$mailListId' AND ma.id = m.mail_address_id AND ma.subscribe = '1' AND ($OR_CLAUSE) order by ma.email";
     if ($rows) {
       if (!$start) {
         $start = 0;

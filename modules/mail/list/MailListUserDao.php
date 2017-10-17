@@ -58,13 +58,19 @@ HEREDOC;
   }
 
   function selectByMailListIdAndMailSubscribersLikePattern($mailListId, $searchPattern, $start = false, $rows = false) {
+    $OR_CLAUSE = "";
     if (strstr($searchPattern, ' ')) {
-      list($firstname, $lastname) = explode(' ', $searchPattern);
-      $OR_BOTH_NAMES = "OR (lower(u.firstname) LIKE lower('%$firstname%') AND lower(u.lastname) LIKE lower('%$lastname%'))";
-    } else {
-      $OR_BOTH_NAMES = "";
+      $bits = explode(' ', $searchPattern);
+      foreach ($bits as $bit) {
+        if (strlen($bit) > 1) {
+          if ($OR_CLAUSE) {
+            $OR_CLAUSE .= "OR ";
+          }
+          $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%') OR u.home_phone LIKE '%$bit%' OR u.work_phone LIKE '%$bit%' OR u.fax LIKE '%$bit%' OR u.mobile_phone LIKE '%$bit%'";
+        }
+      }
     }
-    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_USER . " u WHERE mail_list_id = '$mailListId' AND u.id = m.user_account_id AND u.mail_subscribe = '1' AND (lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%') OR u.home_phone LIKE '%$searchPattern%' OR u.work_phone LIKE '%$searchPattern%' OR u.fax LIKE '%$searchPattern%' OR u.mobile_phone LIKE '%$searchPattern%' $OR_BOTH_NAMES) ORDER BY u.lastname, u.firstname";
+    $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS m.* FROM $this->tableName m, " . DB_TABLE_USER . " u WHERE mail_list_id = '$mailListId' AND u.id = m.user_account_id AND u.mail_subscribe = '1' AND ($OR_CLAUSE) ORDER BY u.lastname, u.firstname";
     if ($rows) {
       if (!$start) {
         $start = 0;
