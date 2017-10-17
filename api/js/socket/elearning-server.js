@@ -58,8 +58,10 @@ server.io.of('/elearning').on('connection', function(socket) {
         data.admin = true;
       }
       socket.broadcast.to(data.elearningClassId).emit('updateWhiteboard', data);
+      return;
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('updateWhiteboard', data);
+      return;
     }
     socket.send("updateWhiteboard: You are not being watched live yet.");
   });
@@ -71,8 +73,10 @@ server.io.of('/elearning').on('connection', function(socket) {
         data.admin = true;
       }
       socket.broadcast.to(data.elearningClassId).emit('clearWhiteboard', data);
+      return;
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('clearWhiteboard', data);
+      return;
     }
     socket.send("clearWhiteboard: You are not being watched live yet.");
   });
@@ -80,8 +84,10 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('showParticipantWhiteboard', function(data) {
     if ('undefined' != typeof data.elearningClassId) {
       socket.broadcast.to(data.elearningClassId).emit('showParticipantWhiteboard', data);
+      return;
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('showParticipantWhiteboard', data);
+      return;
     }
     socket.send("showParticipantWhiteboard: You are not being watched live yet.");
   });
@@ -89,8 +95,10 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('hideParticipantWhiteboard', function(data) {
     if ('undefined' != typeof data.elearningClassId) {
       socket.broadcast.to(data.elearningClassId).emit('hideParticipantWhiteboard', data);
+      return;
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('hideParticipantWhiteboard', data);
+      return;
     }
     socket.send("hideParticipantWhiteboard: You are not being watched live yet.");
   });
