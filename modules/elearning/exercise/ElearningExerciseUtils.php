@@ -1133,7 +1133,7 @@ HEREDOC;
   }
 
   // Render the player
-  function renderPlayer($audio) {
+  function renderPlayer($audio, $autostart) {
     global $gDataUrl;
     global $gDataPath;
 
@@ -1142,9 +1142,11 @@ HEREDOC;
     if ($audio) {
       $str .= "<div class='elearning_exercise_player'>";
 
-      $autoStartAudioPlayer = $this->autoStartAudioPlayer();
+      if (!$autostart) {
+        $autostart = $this->autoStartAudioPlayer();
+      }
 
-      $this->playerUtils->setAutostart($autoStartAudioPlayer);
+      $this->playerUtils->setAutostart($autostart);
 
       if (is_file($gDataPath . "elearning/exercise/audio/$audio")) {
         if ($this->displayDownloadAudioFileIcon()) {
@@ -2925,6 +2927,7 @@ HEREDOC;
     $description = $elearningExercise->getDescription();
     $introduction = $elearningExercise->getIntroduction();
     $audio = $elearningExercise->getAudio();
+    $autostart = $elearningExercise->getAutostart();
     $public = $elearningExercise->getPublicAccess();
 
     $str = '';
@@ -2942,7 +2945,7 @@ HEREDOC;
 
     $str .= $this->renderImage($elearningExercise->getImage());
 
-    $str .= $this->renderPlayer($audio);
+    $str .= $this->renderPlayer($audio, $autostart);
 
     if ($elearningSubscriptionId) {
       $str .= $this->renderWhiteboard($elearningSubscriptionId);

@@ -789,6 +789,7 @@ class ElearningImportUtils extends ContentImportUtils {
       $hideIntroduction = $elearningExercise->getHideIntroduction();
       $image = $elearningExercise->getImage();
       $audio = $elearningExercise->getAudio();
+      $autostart = $elearningExercise->getAutostart();
       $maxDuration = $elearningExercise->getMaxDuration();
       $hideKeyboard = $elearningExercise->getHideKeyboard();
       $disableNextPageTabs = $elearningExercise->getDisableNextPageTabs();
@@ -819,6 +820,7 @@ class ElearningImportUtils extends ContentImportUtils {
       $xmlExerciseNode->setAttribute("description", $description);
       $xmlExerciseNode->setAttribute("image", $image);
       $xmlExerciseNode->setAttribute("audio", $audio);
+      $xmlExerciseNode->setAttribute("autostart", $autostart);
       $xmlExerciseNode->setAttribute("maxDuration", $maxDuration);
       $xmlExerciseNode->setAttribute("hideKeyboard", $hideKeyboard);
       $xmlExerciseNode->setAttribute("disableNextPageTabs", $disableNextPageTabs);
@@ -1027,6 +1029,7 @@ class ElearningImportUtils extends ContentImportUtils {
     $hideIntroduction = $elearningExerciseNode->getAttribute("hideIntroduction");
     $image = $elearningExerciseNode->getAttribute("image");
     $audio = $elearningExerciseNode->getAttribute("audio");
+    $autostart = $elearningExerciseNode->getAttribute("autostart");
 
     // The name must not already exist
     if ($elearningExercise = $this->elearningExerciseUtils->selectByName($name)) {
@@ -1073,6 +1076,7 @@ class ElearningImportUtils extends ContentImportUtils {
     $elearningExercise->setReleaseDate($releaseDate);
     $elearningExercise->setImage($image);
     $elearningExercise->setAudio($audio);
+    $elearningExercise->setAutostart($autostart);
     $this->elearningExerciseUtils->insert($elearningExercise);
     $lastInsertElearningExerciseId = $this->elearningExerciseUtils->getLastInsertId();
 
@@ -1350,6 +1354,7 @@ class ElearningImportUtils extends ContentImportUtils {
         $maxDuration = $elearningExerciseNode->getAttribute("maxDuration");
         $image = $elearningExerciseNode->getAttribute("image");
         $audio = $elearningExerciseNode->getAttribute("audio");
+        $autostart = $elearningExerciseNode->getAttribute("autostart");
 
         $exercisePages = array();
         $elearningExercisePageNodes = $elearningExerciseNode->getElementsByTagName(ELEARNING_XML_EXERCISE_PAGE);

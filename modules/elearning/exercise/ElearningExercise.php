@@ -10,6 +10,7 @@ class ElearningExercise {
   var $hideIntroduction;
   var $image;
   var $audio;
+  var $autostart;
   var $publicAccess;
   var $maxDuration;
   var $releaseDate;
@@ -64,6 +65,10 @@ class ElearningExercise {
 
   function getAudio() {
     return($this->audio);
+  }
+
+  function getAutostart() {
+    return($this->autostart);
   }
 
   function getPublicAccess() {
@@ -176,6 +181,10 @@ class ElearningExercise {
 
   function setAudio($audio) {
     $this->audio = $audio;
+  }
+
+  function setAutostart($autostart) {
+    $this->autostart = $autostart;
   }
 
   function setPublicAccess($publicAccess) {

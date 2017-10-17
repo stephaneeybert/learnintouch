@@ -20,6 +20,7 @@ if ($formSubmitted == 1) {
 
   if ($deleteFile == 1) {
     $audio = '';
+    $autostart = '';
   } else {
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
@@ -58,6 +59,7 @@ if ($formSubmitted == 1) {
 
     if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseId)) {
       $elearningExercise->setAudio($audio);
+      $elearningExercise->setAutostart($autostart);
       $elearningExerciseUtils->update($elearningExercise);
     }
 
@@ -75,8 +77,10 @@ if (!$elearningExerciseId) {
 }
 
 $audio = '';
+$autostart = '';
 if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseId)) {
   $audio = $elearningExercise->getAudio();
+  $autostart = $elearningExercise->getAutostart();
 }
 
 $str = '';
@@ -100,6 +104,8 @@ if ($audio) {
   $str .= "\n<div class='system_label'>$websiteText[8]</div>";
   $str .= "\n<div class='system_field'><input type='checkbox' name='deleteFile' value='1'></div>";
 }
+$str .= "\n<div class='system_label'>$websiteText[9]</div>";
+$str .= "\n<div class='system_field'><input type='checkbox' name='autostart' value='1'></div>";
 $str .= "\n<div class='system_label'>$websiteText[5]</div>";
 $str .= "\n<div class='system_field'><input type=file name='userfile' size='15' maxlength='50'></div>";
 $str .= "\n<div class='system_field'>" . $fileUploadUtils->getFileSizeMessage($elearningExerciseUtils->audioFileSize) . "</div>";

@@ -7,5 +7,6 @@
 [   6]Fichier audio:
 [   7]Annuler l'opération
 [   8]Effacer le fichier audio?
+[   9]Autostart:
 [  11]Vous n'avez pas le droit d'utiliser cet exercice.
 [  27]Aucun fichier audio n'a été spécifié.

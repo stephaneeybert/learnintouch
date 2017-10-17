@@ -33,6 +33,7 @@ class ElearningExerciseDB {
       $object->setHideIntroduction($row['hide_introduction']);
       $object->setImage($row['image']);
       $object->setAudio($row['audio']);
+      $object->setAutostart($row['autostart']);
       $object->setPublicAccess($row['public_access']);
       $object->setMaxDuration($row['max_duration']);
       $object->setReleaseDate($row['release_date']);
@@ -529,7 +530,7 @@ class ElearningExerciseDB {
     $introduction = $object->getIntroduction();
     $introduction = LibString::databaseEscapeQuotes($introduction);
 
-    return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $introduction, $object->getHideIntroduction(), $object->getImage(), $object->getAudio(), $object->getPublicAccess(), $object->getMaxDuration(), $object->getReleaseDate(), $object->getSecured(), $object->getSkipExerciseIntroduction(), $object->getSocialConnect(), $object->getHideSolutions(), $object->getHideProgressionBar(), $object->getHidePageTabs(), $object->getDisableNextPageTabs(), $object->getNumberPageTabs(), $object->getHideKeyboard(), $object->getContactPage(), $object->getCategoryId(), $object->getWebpageId(), $object->getLevelId(), $object->getSubjectId(), $object->getScoringId(), $object->getGarbage(), $object->getLocked()));
+    return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $introduction, $object->getHideIntroduction(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getPublicAccess(), $object->getMaxDuration(), $object->getReleaseDate(), $object->getSecured(), $object->getSkipExerciseIntroduction(), $object->getSocialConnect(), $object->getHideSolutions(), $object->getHideProgressionBar(), $object->getHidePageTabs(), $object->getDisableNextPageTabs(), $object->getNumberPageTabs(), $object->getHideKeyboard(), $object->getContactPage(), $object->getCategoryId(), $object->getWebpageId(), $object->getLevelId(), $object->getSubjectId(), $object->getScoringId(), $object->getGarbage(), $object->getLocked()));
   }
 
   function update($object) {
@@ -545,7 +546,7 @@ class ElearningExerciseDB {
     $introduction = $object->getIntroduction();
     $introduction = LibString::databaseEscapeQuotes($introduction);
 
-    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $instructions, $introduction, $object->getHideIntroduction(), $object->getImage(), $object->getAudio(), $object->getPublicAccess(), $object->getMaxDuration(), $object->getReleaseDate(), $object->getSecured(), $object->getSkipExerciseIntroduction(), $object->getSocialConnect(), $object->getHideSolutions(), $object->getHideProgressionBar(), $object->getHidePageTabs(), $object->getDisableNextPageTabs(), $object->getNumberPageTabs(), $object->getHideKeyboard(), $object->getContactPage(), $object->getCategoryId(), $object->getWebpageId(), $object->getLevelId(), $object->getSubjectId(), $object->getScoringId(), $object->getGarbage(), $object->getLocked()));
+    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $instructions, $introduction, $object->getHideIntroduction(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getPublicAccess(), $object->getMaxDuration(), $object->getReleaseDate(), $object->getSecured(), $object->getSkipExerciseIntroduction(), $object->getSocialConnect(), $object->getHideSolutions(), $object->getHideProgressionBar(), $object->getHidePageTabs(), $object->getDisableNextPageTabs(), $object->getNumberPageTabs(), $object->getHideKeyboard(), $object->getContactPage(), $object->getCategoryId(), $object->getWebpageId(), $object->getLevelId(), $object->getSubjectId(), $object->getScoringId(), $object->getGarbage(), $object->getLocked()));
   }
 
   function delete($elearningExerciseId) {

@@ -7,5 +7,6 @@
 [   6]Audio file:
 [   7]Cancel the operation
 [   8]Delete the audio file?
+[   9]Autostart:
 [  11]You have no right to use this exercise.
 [  27]No audio file has been specified.

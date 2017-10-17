@@ -24,6 +24,7 @@ introduction text,
 hide_introduction boolean not null,
 image varchar(255),
 audio varchar(255),
+autostart boolean not null,
 public_access boolean not null,
 max_duration int unsigned,
 release_date datetime not null,
@@ -55,25 +56,25 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
-  function insert($name, $description, $instructions, $introduction, $hideIntroduction, $image, $audio, $publicAccess, $maxDuration, $releaseDate, $secured, $skipExerciseIntroduction, $socialConnect, $hideSolutions, $hideProgressionBar, $hidePageTabs, $disableNextPageTabs, $numberPageTabs, $hideKeyboard, $contactPage, $categoryId, $webpageId, $levelId, $subjectId, $scoringId, $garbage, $locked) {
+  function insert($name, $description, $instructions, $introduction, $hideIntroduction, $image, $audio, $autostart, $publicAccess, $maxDuration, $releaseDate, $secured, $skipExerciseIntroduction, $socialConnect, $hideSolutions, $hideProgressionBar, $hidePageTabs, $disableNextPageTabs, $numberPageTabs, $hideKeyboard, $contactPage, $categoryId, $webpageId, $levelId, $subjectId, $scoringId, $garbage, $locked) {
     $categoryId = LibString::emptyToNULL($categoryId);
     $levelId = LibString::emptyToNULL($levelId);
     $subjectId = LibString::emptyToNULL($subjectId);
     $scoringId = LibString::emptyToNULL($scoringId);
     $releaseDate = LibString::emptyToNULL($releaseDate);
     $releaseDate = LibString::addSingleQuotesIfNotNULL($releaseDate);
-    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', '$name', '$description', '$instructions', '$introduction', '$hideIntroduction', '$image', '$audio', '$publicAccess', '$maxDuration', $releaseDate, '$secured', '$skipExerciseIntroduction', '$socialConnect', '$hideSolutions', '$hideProgressionBar', '$hidePageTabs', '$disableNextPageTabs', '$numberPageTabs', '$hideKeyboard', '$contactPage', $categoryId, '$webpageId', $levelId, $subjectId, $scoringId, '$garbage', '$locked')";
+    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', '$name', '$description', '$instructions', '$introduction', '$hideIntroduction', '$image', '$audio', '$autostart', '$publicAccess', '$maxDuration', $releaseDate, '$secured', '$skipExerciseIntroduction', '$socialConnect', '$hideSolutions', '$hideProgressionBar', '$hidePageTabs', '$disableNextPageTabs', '$numberPageTabs', '$hideKeyboard', '$contactPage', $categoryId, '$webpageId', $levelId, $subjectId, $scoringId, '$garbage', '$locked')";
     return($this->querySelect($sqlStatement));
   }
 
-  function update($id, $name, $description, $instructions, $introduction, $hideIntroduction, $image, $audio, $publicAccess, $maxDuration, $releaseDate, $secured, $skipExerciseIntroduction, $socialConnect, $hideSolutions, $hideProgressionBar, $hidePageTabs, $disableNextPageTabs, $numberPageTabs, $hideKeyboard, $contactPage, $categoryId, $webpageId, $levelId, $subjectId, $scoringId, $garbage, $locked) {
+  function update($id, $name, $description, $instructions, $introduction, $hideIntroduction, $image, $audio, $autostart, $publicAccess, $maxDuration, $releaseDate, $secured, $skipExerciseIntroduction, $socialConnect, $hideSolutions, $hideProgressionBar, $hidePageTabs, $disableNextPageTabs, $numberPageTabs, $hideKeyboard, $contactPage, $categoryId, $webpageId, $levelId, $subjectId, $scoringId, $garbage, $locked) {
     $categoryId = LibString::emptyToNULL($categoryId);
     $levelId = LibString::emptyToNULL($levelId);
     $subjectId = LibString::emptyToNULL($subjectId);
     $scoringId = LibString::emptyToNULL($scoringId);
     $releaseDate = LibString::emptyToNULL($releaseDate);
     $releaseDate = LibString::addSingleQuotesIfNotNULL($releaseDate);
-    $sqlStatement = "UPDATE $this->tableName SET name = '$name', description = '$description', instructions = '$instructions', introduction = '$introduction', hide_introduction = '$hideIntroduction', image = '$image', audio = '$audio', public_access = '$publicAccess', max_duration = '$maxDuration', release_date = $releaseDate, secured = '$secured', skip_exercise_introduction = '$skipExerciseIntroduction', social_connect = '$socialConnect', hide_solutions = '$hideSolutions', hide_progression_bar = '$hideProgressionBar', hide_page_tabs = '$hidePageTabs', hide_keyboard = '$hideKeyboard', contact_page = '$contactPage', disable_next_page_tabs = '$disableNextPageTabs', number_page_tabs = '$numberPageTabs', category_id = $categoryId, webpage_id = '$webpageId', level_id = $levelId, subject_id = $subjectId, scoring_id = $scoringId, garbage = '$garbage', locked = '$locked' WHERE id = '$id'";
+    $sqlStatement = "UPDATE $this->tableName SET name = '$name', description = '$description', instructions = '$instructions', introduction = '$introduction', hide_introduction = '$hideIntroduction', image = '$image', audio = '$audio', autostart = '$autostart', public_access = '$publicAccess', max_duration = '$maxDuration', release_date = $releaseDate, secured = '$secured', skip_exercise_introduction = '$skipExerciseIntroduction', social_connect = '$socialConnect', hide_solutions = '$hideSolutions', hide_progression_bar = '$hideProgressionBar', hide_page_tabs = '$hidePageTabs', hide_keyboard = '$hideKeyboard', contact_page = '$contactPage', disable_next_page_tabs = '$disableNextPageTabs', number_page_tabs = '$numberPageTabs', category_id = $categoryId, webpage_id = '$webpageId', level_id = $levelId, subject_id = $subjectId, scoring_id = $scoringId, garbage = '$garbage', locked = '$locked' WHERE id = '$id'";
     return($this->querySelect($sqlStatement));
   }
 
