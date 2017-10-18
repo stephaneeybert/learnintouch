@@ -6,6 +6,7 @@ var ioredis = require('socket.io-redis');
 var socketio = require('socket.io');
 
 var utils = require('./utils.js');
+var config = require('./config');
 
 var httpServer = http.createServer(utils.httpHandler);
 
@@ -15,10 +16,8 @@ httpServer.listen(SOCKETIO_PORT, function() {
 });
 module.exports.io = socketio.listen(httpServer);
   
-var REDIS_HOSTNAME = 'localhost';
-var REDIS_PORT = 6379;
-module.exports.io.adapter(ioredis({ host: REDIS_HOSTNAME, port: REDIS_PORT }));
-var redisClient = redis.createClient(REDIS_PORT, REDIS_HOSTNAME);
+module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
+var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
 
 // When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. The socketSessionId is to have a unique id per client. Note that, because the socket.id is renewed on each client page refresh, it cannot be used, and a custom unique client id socketSessionId is being used.
 module.exports.io.use(function (socket, handler) {
