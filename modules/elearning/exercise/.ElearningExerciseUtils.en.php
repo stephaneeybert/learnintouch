@@ -237,7 +237,7 @@
 [ 236]As page numbers
 [ 237]With page numbers
 [ 238]Show the whiteboard
-[ 239]Maximize the whiteboard
+[ 239]Enlarge the whiteboard
 [ 240]You can
 [ 241]subscribe
 [ 242]to one of our courses.

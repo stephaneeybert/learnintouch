@@ -237,7 +237,7 @@
 [ 236]En numéros de pages
 [ 237]Avec des numéros de pages.
 [ 238]Afficher le tableau
-[ 239]Maximiser le tableau
+[ 239]Agrandir le tableau
 [ 240]Vous pouvez vous
 [ 241]inscrire
 [ 242]à un de nos cours.
