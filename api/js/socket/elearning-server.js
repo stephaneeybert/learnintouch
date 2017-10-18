@@ -75,6 +75,10 @@ server.io.of('/elearning').on('connection', function(socket) {
       socket.broadcast.to(data.elearningClassId).emit('clearWhiteboard', data);
       return;
     } else if ('undefined' != typeof data.elearningSubscriptionId) {
+      // Only a teacher can clear the other whiteboards
+      if (socketSessionId.indexOf("admin") !== -1) {
+        data.admin = true;
+      }
       socket.broadcast.to(data.elearningSubscriptionId).emit('clearWhiteboard', data);
       return;
     }
