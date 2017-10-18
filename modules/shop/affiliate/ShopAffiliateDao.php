@@ -71,6 +71,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%')";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS sa.* FROM $this->tableName sa, " . DB_TABLE_USER . " u WHERE sa.user_account_id = u.id AND ($OR_CLAUSE) ORDER BY u.firstname, u.lastname";
     if ($rows) {

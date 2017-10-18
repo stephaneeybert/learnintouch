@@ -311,6 +311,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%')";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND ($OR_CLAUSE) ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
     if ($rows) {
@@ -336,6 +338,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(u.email) LIKE lower('%$bit%') OR lower(u.firstname) LIKE lower('%$bit%') OR lower(u.lastname) LIKE lower('%$bit%')";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(u.email) LIKE lower('%$searchPattern%') OR lower(u.firstname) LIKE lower('%$searchPattern%') OR lower(u.lastname) LIKE lower('%$searchPattern%')";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS s.* FROM $this->tableName s, " . DB_TABLE_USER . " u WHERE u.id = s.user_account_id AND ($OR_CLAUSE) GROUP BY u.id ORDER BY u.firstname, u.lastname, u.email, s.subscription_date DESC";
     return($this->querySelect($sqlStatement));

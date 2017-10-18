@@ -122,6 +122,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR lower(text_comment) LIKE lower('%$bit%') OR lower(country) LIKE lower('%$sbit%')";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR lower(text_comment) LIKE lower('%$searchPattern%') OR lower(country) LIKE lower('%$searchPattern%')";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE subscribe = '1' AND ($OR_CLAUSE)";
     if ($rows) {
@@ -147,6 +149,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR lower(text_comment) LIKE lower('%$bit%') OR lower(country) LIKE lower('%$sbit%')";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR lower(text_comment) LIKE lower('%$searchPattern%') OR lower(country) LIKE lower('%$searchPattern%')";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE $OR_CLAUSE ORDER BY firstname, lastname, email";
     if ($rows) {

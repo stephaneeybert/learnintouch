@@ -128,6 +128,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(organisation) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR home_phone LIKE '%$bit%' OR work_phone LIKE '%$bit%' OR fax LIKE '%$bit%' OR mobile_phone LIKE '%$bit%'";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(organisation) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR home_phone LIKE '%$searchPattern%' OR work_phone LIKE '%$searchPattern%' OR fax LIKE '%$searchPattern%' OR mobile_phone LIKE '%$searchPattern%'";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE $OR_CLAUSE ORDER BY firstname, lastname";
     if ($rows) {
@@ -153,6 +155,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(organisation) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR home_phone LIKE '%$bit%' OR work_phone LIKE '%$bit%' OR fax LIKE '%$bit%' OR mobile_phone LIKE '%$bit%'";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(organisation) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR home_phone LIKE '%$searchPattern%' OR work_phone LIKE '%$searchPattern%' OR fax LIKE '%$searchPattern%' OR mobile_phone LIKE '%$searchPattern%'";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE mail_subscribe = '1' AND ($OR_CLAUSE) ORDER BY firstname, lastname";
     if ($rows) {
@@ -178,6 +182,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(organisation) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR home_phone LIKE '%$bit%' OR work_phone LIKE '%$bit%' OR fax LIKE '%$bit%' OR mobile_phone LIKE '%$bit%'";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(organisation) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR home_phone LIKE '%$searchPattern%' OR work_phone LIKE '%$searchPattern%' OR fax LIKE '%$searchPattern%' OR mobile_phone LIKE '%$searchPattern%'";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE mail_subscribe != '1' AND ($OR_CLAUSE) ORDER BY firstname, lastname";
     if ($rows) {
@@ -203,6 +209,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(organisation) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR home_phone LIKE '%$bit%' OR work_phone LIKE '%$bit%' OR fax LIKE '%$bit%' OR mobile_phone LIKE '%$bit%'";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(organisation) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR home_phone LIKE '%$searchPattern%' OR work_phone LIKE '%$searchPattern%' OR fax LIKE '%$searchPattern%' OR mobile_phone LIKE '%$searchPattern%'";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE sms_subscribe = '1' AND ($OR_CLAUSE) ORDER BY firstname, lastname";
     if ($rows) {
@@ -228,6 +236,8 @@ HEREDOC;
           $OR_CLAUSE .= "lower(email) LIKE lower('%$bit%') OR lower(organisation) LIKE lower('%$bit%') OR lower(firstname) LIKE lower('%$bit%') OR lower(lastname) LIKE lower('%$bit%') OR home_phone LIKE '%$bit%' OR work_phone LIKE '%$bit%' OR fax LIKE '%$bit%' OR mobile_phone LIKE '%$bit%'";
         }
       }
+    } else {
+      $OR_CLAUSE = "lower(email) LIKE lower('%$searchPattern%') OR lower(organisation) LIKE lower('%$searchPattern%') OR lower(firstname) LIKE lower('%$searchPattern%') OR lower(lastname) LIKE lower('%$searchPattern%') OR home_phone LIKE '%$searchPattern%' OR work_phone LIKE '%$searchPattern%' OR fax LIKE '%$searchPattern%' OR mobile_phone LIKE '%$searchPattern%'";
     }
     $sqlStatement = "SELECT SQL_CALC_FOUND_ROWS * FROM $this->tableName WHERE sms_subscribe != '1' AND ($OR_CLAUSE) ORDER BY firstname, lastname";
     if ($rows) {
