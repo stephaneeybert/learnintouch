@@ -21,6 +21,8 @@ if ($formSubmitted == 1) {
     $audio = '';
     $autostart = '';
   } else {
+    $autostart = LibEnv::getEnvHttpPOST("autostart");
+
     // Get the file characteristics
     // Note how the form parameter "userfile" creates several variables
     $uploaded_file = LibEnv::getEnvHttpFILE("userfile");
@@ -76,6 +78,12 @@ if ($elearningExercise = $elearningExerciseUtils->selectById($elearningExerciseI
   $autostart = $elearningExercise->getAutostart();
 }
 
+if ($autostart == '1') {
+  $checkedAutostart = "CHECKED";
+} else {
+  $checkedAutostart = '';
+}
+
 $panelUtils->setHeader($mlText[0]);
 
 if (count($warnings) > 0) {
@@ -96,7 +104,7 @@ if ($audio) {
   $panelUtils->addLine($panelUtils->addCell($mlText[7], "nbr"), "<input type='checkbox' name='deleteFile' value='1'>");
 }
 $panelUtils->addLine();
-$panelUtils->addLine($panelUtils->addCell($mlText[4], "nbr"), "<input type='checkbox' name='autostart' value='1'>");
+$panelUtils->addLine($panelUtils->addCell($mlText[4], "nbr"), "<input type='checkbox' name='autostart' $checkedAutostart value='1'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[5], "nbr"), "<input type=file name='userfile' size='15' maxlength='50'>");
 $panelUtils->addLine('', $fileUploadUtils->getFileSizeMessage($elearningExerciseUtils->audioFileSize));
