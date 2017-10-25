@@ -10,9 +10,8 @@ var config = require('./config');
 
 var httpServer = http.createServer(utils.httpHandler);
 
-var SOCKETIO_PORT = 9001;
-httpServer.listen(SOCKETIO_PORT, function() {
-  console.log('The NodeJS server [port: ' + SOCKETIO_PORT + '] is listening...');
+httpServer.listen(config.socketio.port, function() {
+  console.log('The NodeJS server [port: ' + config.socketio.port + '] is listening...');
 });
 module.exports.io = socketio.listen(httpServer);
   
