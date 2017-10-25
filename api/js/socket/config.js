@@ -1,7 +1,7 @@
 var config = {};
 
 config.redis = {};
-config.redis.hostname = 'redis';
+config.redis.hostname = 'localhost';
 config.redis.port = 6379;
 
 config.socketio = {};
