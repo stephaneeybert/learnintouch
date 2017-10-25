@@ -3133,7 +3133,8 @@ HEREDOC;
 .elearning_whiteboard_output {
   width: 99% !important;
   min-height: 100px;
-  height: auto;
+  height: 100px;
+  overflow-y: auto;
   background-color: #556B2F;
   color: white;
   border-style: solid;
