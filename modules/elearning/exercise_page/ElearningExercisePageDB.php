@@ -34,6 +34,7 @@ class ElearningExercisePageDB {
       $object->setTextMaxHeight($row['text_max_height']);
       $object->setImage($row['image']);
       $object->setAudio($row['audio']);
+      $object->setAutostart($row['autostart']);
       $object->setVideo($row['video']);
       $object->setVideoUrl($row['video_url']);
       $object->setQuestionType($row['question_type']);
@@ -184,7 +185,7 @@ class ElearningExercisePageDB {
       $instructions = $object->getInstructions();
       $instructions = LibString::databaseEscapeQuotes($instructions);
 
-      return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
+      return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
     }
 
   function update($object) {
@@ -200,7 +201,7 @@ class ElearningExercisePageDB {
       $instructions = $object->getInstructions();
       $instructions = LibString::databaseEscapeQuotes($instructions);
 
-    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
+    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
     }
 
   function delete($id) {

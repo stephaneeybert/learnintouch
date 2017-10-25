@@ -24,6 +24,7 @@ hide_text boolean not null,
 text_max_height int unsigned not null,
 image varchar(255),
 audio varchar(255),
+autostart boolean not null,
 video varchar(1024),
 video_url varchar(255),
 question_type varchar(50),
@@ -38,13 +39,13 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
-  function insert($name, $description, $instructions, $text, $hideText, $textMaxHeigth, $image, $audio, $video, $videoUrl, $questionType, $hintPlacement, $elearningExerciseId, $listOrder) {
-    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', '$name', '$description', '$instructions', '$text', '$hideText', '$textMaxHeigth', '$image', '$audio', '$video', '$videoUrl', '$questionType', '$hintPlacement', '$elearningExerciseId', '$listOrder')";
+  function insert($name, $description, $instructions, $text, $hideText, $textMaxHeigth, $image, $audio, $autostart, $video, $videoUrl, $questionType, $hintPlacement, $elearningExerciseId, $listOrder) {
+    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', '$name', '$description', '$instructions', '$text', '$hideText', '$textMaxHeigth', '$image', '$audio', '$autostart', '$video', '$videoUrl', '$questionType', '$hintPlacement', '$elearningExerciseId', '$listOrder')";
     return($this->querySelect($sqlStatement));
   }
 
-  function update($id, $name, $description, $instructions, $text, $hideText, $textMaxHeigth, $image, $audio, $video, $videoUrl, $questionType, $hintPlacement, $elearningExerciseId, $listOrder) {
-    $sqlStatement = "UPDATE $this->tableName SET name = '$name', description = '$description', instructions = '$instructions', text = '$text', hide_text = '$hideText', text_max_height = '$textMaxHeigth', image = '$image', audio = '$audio', video = '$video', video_url = '$videoUrl', question_type = '$questionType', hint_placement = '$hintPlacement', elearning_exercise_id = '$elearningExerciseId', list_order = '$listOrder' WHERE id = '$id'";
+  function update($id, $name, $description, $instructions, $text, $hideText, $textMaxHeigth, $image, $audio, $autostart, $video, $videoUrl, $questionType, $hintPlacement, $elearningExerciseId, $listOrder) {
+    $sqlStatement = "UPDATE $this->tableName SET name = '$name', description = '$description', instructions = '$instructions', text = '$text', hide_text = '$hideText', text_max_height = '$textMaxHeigth', image = '$image', audio = '$audio', autostart = '$autostart', video = '$video', video_url = '$videoUrl', question_type = '$questionType', hint_placement = '$hintPlacement', elearning_exercise_id = '$elearningExerciseId', list_order = '$listOrder' WHERE id = '$id'";
     return($this->querySelect($sqlStatement));
   }
 

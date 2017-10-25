@@ -11,6 +11,7 @@ class ElearningExercisePage {
   var $textMaxHeight;
   var $image;
   var $audio;
+  var $autostart;
   var $video;
   var $videoUrl;
   var $questionType;
@@ -55,6 +56,10 @@ class ElearningExercisePage {
 
   function getAudio() {
     return($this->audio);
+  }
+
+  function getAutostart() {
+    return($this->autostart);
   }
 
   function getVideo() {
@@ -115,6 +120,10 @@ class ElearningExercisePage {
 
   function setAudio($audio) {
     $this->audio = $audio;
+  }
+
+  function setAutostart($autostart) {
+    $this->autostart = $autostart;
   }
 
   function setVideo($video) {

@@ -1223,16 +1223,18 @@ HEREDOC;
   }
 
   // Render the player
-  function renderPlayer($audio) {
+  function renderPlayer($audio, $autostart) {
     global $gDataUrl;
     global $gDataPath;
 
     $str = '';
 
     if ($audio) {
-      $autoStartAudioPlayer = $this->elearningExerciseUtils->autoStartAudioPlayer();
-
-      $this->playerUtils->setAutostart($autoStartAudioPlayer);
+      if (!$autostart) {
+        $autostart = $this->elearningExerciseUtils->autoStartAudioPlayer();
+      }
+            
+      $this->playerUtils->setAutostart($autostart);
 
       if (is_file($gDataPath . "elearning/exercise_page/audio/$audio")) {
         $audioDownload = $this->preferenceUtils->getValue("ELEARNING_DISPLAY_AUDIO_DOWNLOAD");
@@ -2120,6 +2122,7 @@ HEREDOC;
     $name = $elearningExercisePage->getName();
     $description = $elearningExercisePage->getDescription();
     $audio = $elearningExercisePage->getAudio();
+    $autostart = $elearningExercise->getAutostart();
     $video = $elearningExercisePage->getVideo();
     $videoUrl = $elearningExercisePage->getVideoUrl();
 
@@ -2471,7 +2474,7 @@ HEREDOC;
     }
 
     if ($audio) {
-      $strPlayer = $this->renderPlayer($audio);
+      $strPlayer = $this->renderPlayer($audio, $autostart);
       $str .= "<div class='elearning_exercise_player'>$strPlayer</div>";
     }
 
