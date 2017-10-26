@@ -2122,7 +2122,7 @@ HEREDOC;
     $name = $elearningExercisePage->getName();
     $description = $elearningExercisePage->getDescription();
     $audio = $elearningExercisePage->getAudio();
-    $autostart = $elearningExercise->getAutostart();
+    $autostart = $elearningExercisePage->getAutostart();
     $video = $elearningExercisePage->getVideo();
     $videoUrl = $elearningExercisePage->getVideoUrl();
 
