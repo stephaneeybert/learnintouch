@@ -3369,6 +3369,7 @@ HEREDOC;
 
     $str .= "\n<div class='elearning_exercise'>";
 
+    $elearningSubscription = '';
     if ($elearningSubscriptionId) {
       $str .= $this->renderWhiteboard($elearningSubscriptionId);
 
