@@ -22,8 +22,8 @@ The secondary DNS registration
 https://www.ovh.com/manager/web/login.html
 
 Restart the DNS service
-/etc/init.d/bind9 restart;
-/etc/init.d/bind9 reload
+sudo /etc/init.d/bind9 restart
+sudo /etc/init.d/bind9 reload
 
 Add the virtual host entries file
 /home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
@@ -64,6 +64,7 @@ bin/mysql -u stephane -p
 create database db_europasprak character set utf8mb4 collate utf8mb4_unicode_ci;
 
 Create the database schema
+bin/mysqldump -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data europasprak -v > ~/db_integration_structure.sql
 Make sure the db_learnintouch-structure.sql has an ascii/unknown charset 
 uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
 Make sure the db_learnintouch.sql files has a utf-8 charset
@@ -71,6 +72,7 @@ uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
 cd programs/mysql/install
 bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
 bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
+bin/mysql -u root -p fu -v < ~/db_integration_structure.sql
 
 Add some index
 cd programs/mysql/install
