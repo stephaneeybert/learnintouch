@@ -24,20 +24,20 @@ foreach ($contentImports as $contentImport) {
   $domainName = $contentImport->getDomainName();
 
   if ($contentImportUtils->permissionRequestIsPending($contentImportId)) {
-    $pending = $mlText[7];
-    } else if ($contentImportUtils->permissionRequestWasDenied($contentImportId)) {
-    $pending = $mlText[8];
-    } else {
-    $pending = '';
-    }
+    $status = $mlText[7];
+  } else if ($contentImportUtils->permissionRequestWasDenied($contentImportId)) {
+    $status = $mlText[8];
+  } else {
+    $status = '';
+  }
 
   $strCommand = " <a href='$gContentImportUrl/exporters/requestPermission.php?contentImportId=$contentImportId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImagePassword' title='$mlText[6]'></a>"
-  . " <a href='$gContentImportUrl/exporters/delete.php?contentImportId=$contentImportId' $gJSNoStatus>"
+    . " <a href='$gContentImportUrl/exporters/delete.php?contentImportId=$contentImportId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
-  $panelUtils->addLine($domainName, $pending, $panelUtils->addCell($strCommand, "nr"));
-  }
+  $panelUtils->addLine($domainName, $status, $panelUtils->addCell($strCommand, "nr"));
+}
 
 $str = $panelUtils->render();
 
