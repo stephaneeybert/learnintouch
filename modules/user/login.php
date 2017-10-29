@@ -43,7 +43,7 @@ if ($formSubmitted == 1) {
 
   // Check if the user email address is not yet confirmed
   if ($email && $userUtils->userEmailAddressIsNotYetConfirmed($email)) {
-    $message = $websiteText[4];
+    $message = $websiteText[18];
     array_push($warnings, $message);
     $message = $websiteText[15] . ' ' . $email;
     array_push($warnings, $message);
