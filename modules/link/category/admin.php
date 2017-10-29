@@ -45,9 +45,9 @@ foreach ($linkCategories as $linkCategory) {
 
   $strSwap = "<a href='$gLinkUrl/category/swapup.php?categoryId=$categoryId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageUp'title='$mlText[11]'></a> <a href='$gLinkUrl/category/swapdown.php?categoryId=$categoryId' $gJSNoStatus><img border='0' src='$gCommonImagesUrl/$gImageDown' title='$mlText[10]'></a>";
 
-  $strCommand = "<a href='$gLinkUrl/category/edit.php?categoryId=$categoryId' $gJSNoStatus>"
+  $strCommand = "<a href='$gLinkUrl/category/edit.php?linkCategoryId=$categoryId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageEdit' title='$mlText[2]'></a>"
-    . " <a href='$gLinkUrl/category/delete.php?categoryId=$categoryId' $gJSNoStatus>"
+    . " <a href='$gLinkUrl/category/delete.php?linkCategoryId=$categoryId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageDelete' title='$mlText[3]'></a>";
 
   $panelUtils->addLine("$strSortable $strSwap $name", $description, $panelUtils->addCell($strCommand, "nbr"));
