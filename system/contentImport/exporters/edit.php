@@ -50,7 +50,7 @@ if ($formSubmitted) {
 
   $contentImportId = LibEnv::getEnvHttpGET("contentImportId");
 
-  $domainName = '';
+  $domainName = 'www.';
   if ($contentImportId) {
     if ($contentImport = $contentImportUtils->selectById($contentImportId)) {
       $domainName = $contentImport->getDomainName();
