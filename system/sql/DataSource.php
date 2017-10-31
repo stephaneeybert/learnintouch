@@ -35,7 +35,7 @@ class DataSource {
     $this->host = $host;
     $this->port = $port;
     $this->databaseName = $databaseName;
-    $this->dbConnection = '';
+    $this->dbConnection = null;
     $this->sqlStatement = '';
   }
 
@@ -61,7 +61,7 @@ class DataSource {
 
   // Check if a connection is established with the database
   function isConnected() {
-    return(!is_null($this->dbConnection));
+    return(!is_null($this->dbConnection) && !empty($this->dbConnection));
   }
 
   // Connect to the database
