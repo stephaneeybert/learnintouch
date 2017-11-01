@@ -81,6 +81,7 @@ npm install -g formidable;
 npm install -g connect;
 npm install -g cookie;
 npm install -g http;
+npm install -g lodash;
 npm install -g socket.io@1.7.1;
 npm install -g redis@2.6.3;
 npm install -g socket.io-redis@2.0.0;
