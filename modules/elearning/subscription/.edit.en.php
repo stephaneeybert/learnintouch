@@ -27,3 +27,4 @@
 [  26]Subscription closing date:
 [  27]Watch live:
 [  28]The exercises of a course can be watched live by a teacher.\n\nIt is then possible for the teacher, to watch on his computer, the progress of the exercise while the participant is answering the questions.\n\nThe questions results will be displayed live to the teacher while the participant is doing the exercise.
+[  29]For information, this participant already has the subscriptions:

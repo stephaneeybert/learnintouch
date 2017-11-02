@@ -235,12 +235,13 @@ if ($watchLive == '1') {
 
 $elearningClasses = $elearningClassUtils->selectAll();
 
-$strWarning = '';
+$strWarning = '<div id="warnings">';
 if (count($warnings) > 0) {
   foreach ($warnings as $warning) {
     $strWarning .= "<br>$warning";
   }
 }
+$strWarning .= '</div>';
 
 // Get the participant's name
 $userName = '';
@@ -275,6 +276,45 @@ if ($requireSession) {
 $panelUtils->openForm($PHP_SELF);
 $label = $popupUtils->getTipPopup($mlText[4], $mlText[15], 300, 300);
 $strJsSuggest = $commonUtils->ajaxAutocomplete("$gUserUrl/suggestUsers.php", "userName", "userId");
+if (!$elearningSubscriptionId) {
+  $strJsSuggest .= <<<HEREDOC
+<script type='text/javascript'>
+$(document).ready(function() {
+$("#userId").change(function() {
+  if ($("#userId")) {
+    var userId = $("#userId").attr("value");
+    var userName = $("#userName").attr("value");
+    var url = "$gUserUrl/get.php?userId="+userId;
+    ajaxAsynchronousRequest(url, retrieveFullUserName);
+  }
+});
+});
+
+function retrieveFullUserName(responseText) {
+  var response = eval('(' + responseText + ')');
+  var user = response;
+  if (user) {
+    var url = "$gElearningUrl/subscription/suggest.php?term="+user.name+"&displayClass=1";
+    ajaxAsynchronousRequest(url, warnOfAnotherSubscription);
+  }
+}
+
+function warnOfAnotherSubscription(responseText) {
+  var response = eval('(' + responseText + ')');
+  var elearningSubscriptions = response;
+  if (elearningSubscriptions.length > 0) {
+    var existingSubscriptionsMessage = "$mlText[29]";
+    for (i = 0; i < elearningSubscriptions.length; i++) {
+      var elearningSubscriptionId = elearningSubscriptions[i].id;
+      var name = elearningSubscriptions[i].value;
+      existingSubscriptionsMessage += " - " + name;
+    }
+    $("#warnings").text(existingSubscriptionsMessage);
+  }
+}
+</script>
+HEREDOC;
+}
 $panelUtils->addContent($strJsSuggest);
 $panelUtils->addHiddenField('userId', $userId);
 $panelUtils->addLine($panelUtils->addCell($label, "nbr"), "<input type='text' id='userName' value='$userName' />");

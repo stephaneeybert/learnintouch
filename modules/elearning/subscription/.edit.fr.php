@@ -27,3 +27,4 @@
 [  26]Date de clôture de l'inscription:
 [  27]Suivre en direct:
 [  28]Les exercices d'un cours peuvent peuvent être suivis en direct par un professeur.\n\nIl est alors possible pour le professeur, de suivre sur son ordinateur, la progression de l'exercice pendant que le participant répond aux questions.\n\nLes résultats des questions seront affichés en direct au professeur pendant que le participant fait l'exercice.
+[  29]Pour information, ce participant a déjà les inscriptions:

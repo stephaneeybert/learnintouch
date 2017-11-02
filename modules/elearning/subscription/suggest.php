@@ -16,7 +16,7 @@ $typedInString = LibString::cleanString($typedInString);
 
 $responseText = '[';
 
-if ($elearningSubscriptions = $elearningSubscriptionUtils->selectLikePatternDistinctUsers($typedInString)) {
+if ($elearningSubscriptions = $elearningSubscriptionUtils->selectLikePattern($typedInString)) {
   foreach ($elearningSubscriptions as $elearningSubscription) {
     $elearningSubscriptionId = $elearningSubscription->getId();
     $userId = $elearningSubscription->getUserId();
