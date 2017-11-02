@@ -1,4 +1,4 @@
-[   0]Modifier un code de réduction
+[   0]Ajouter ou Modifier un code de réduction
 [   1]Code de réduction:
 [   2]Taux de réduction:
 [   3]Le code de réduction est requis.

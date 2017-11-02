@@ -1,4 +1,4 @@
-[   0]Modifier un format
+[   0]Ajouter ou Modifier un format
 [   4]Album:
 [   1]Prix:
 [   3]Le prix d'une photo pour toutes les photos dans le format pour l'album.

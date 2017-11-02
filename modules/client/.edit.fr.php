@@ -1,4 +1,4 @@
-[   0]Modifier un client
+[   0]Ajouter ou Modifier un client
 [   6]Nom:
 [   7]Description:
 [   8]Adresse web:

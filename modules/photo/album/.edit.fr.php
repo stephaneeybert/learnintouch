@@ -1,4 +1,4 @@
-[   0]Modifier un album
+[   0]Ajouter ou Modifier un album
 [   2]Le nom est déjà utilisé par un autre album photo.
 [   3]Lieu:
 [   4]Nom:

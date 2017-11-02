@@ -1,4 +1,4 @@
-[   0]Modifier une plage de résultats
+[   0]Ajouter ou Modifier une plage de résultats
 [   1]Note:
 [   2]Haut:
 [   3]La note est requise.

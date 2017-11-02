@@ -1,4 +1,4 @@
-[   0]Modifier un administrateur
+[   0]Ajouter ou Modifier un administrateur
 [   1]Prénom: *
 [   2]Nom: *
 [   3]Adresse:

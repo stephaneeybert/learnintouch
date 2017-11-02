@@ -1,4 +1,4 @@
-[   0]Modifier une question
+[   0]Ajouter ou Modifier une question
 [   1]Le nombre de points doit être plus grand ou égal à 1.
 [   2]Page de questions:
 [   3]Points:

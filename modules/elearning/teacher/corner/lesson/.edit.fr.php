@@ -1,4 +1,4 @@
-[   0]Modifier une leçon
+[   0]Ajouter ou Modifier une leçon
 [   1]Annuler l'opération
 [   3]Le nom est requis.
 [   4]Le cours est requis.

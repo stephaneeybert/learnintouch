@@ -1,4 +1,4 @@
-[   0]Modifier une photo
+[   0]Ajouter ou Modifier une photo
 [   1]Prix:
 [   2]Commentaire:
 [   3]La description est affichée lorsque le curseur de la souris passe au dessus de la photo.

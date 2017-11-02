@@ -16,7 +16,7 @@
 [  15]Un echantillon gratuit est un élément de cours qui est offert gratuitement et n'impose pas une connexion utilisateur.\n\nIl est possible de spécifier un nombre d'éléments gratuits.\n\nDans ce cas, les premières leçons et/ou les premiers exercices du cours seront offerts gratuitement comme echantillons du cours.
 [  16]Information sur le cours:
 [  17]Un cours a un nom et une description afin de décrire le cours au participant.\n\nIl est possible de fournir au participant une information supplémentaire sur le contenu du cours.\n\nCette information sur le cours est affichée au participant afin de lui fournir plus de détails sur le contenu du cours.
-[  18]Modifier l'information sur le contenu du cours
+[  18]Ajouter ou Modifier l'information sur le contenu du cours
 [  20]Afficher une correction instantanée:
 [  21]Par défaut, lorsqu'un exercice est fait, la correction est seulement affichée dans la page des résultats, à la fin de l'exercice.\n\nMais il est possible d'afficher une correction instantanée.\n\nDans ce cas, un message est affiché immédiatement lorsqu'à une question, est donné une mauvaise réponse. 
 [  22]Afficher une félicitation instantanée:

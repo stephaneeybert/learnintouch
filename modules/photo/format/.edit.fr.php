@@ -1,4 +1,4 @@
-[   0]Modifier un format
+[   0]Ajouter ou Modifier un format
 [   4]Nom:
 [   1]Prix:
 [   3]Si le prix est spécifié alors il est le prix unitaire pour toutes les photos dans le format.

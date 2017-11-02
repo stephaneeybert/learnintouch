@@ -1,4 +1,4 @@
-[   0]Modifier une session
+[   0]Ajouter ou Modifier une session
 [   1]Clôturée:
 [   2]Une session est clôturée automatiquement lorsque sa date de clôture est passée.\n\nMais elle peut aussi être clôturée manuellement.\n\nLorsqu'une session est clôturée, les participants ne peuvent plus faire les exercices de la session.
 [   3]Date d'ouverture:

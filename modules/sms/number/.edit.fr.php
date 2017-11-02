@@ -1,4 +1,4 @@
-[   0]Modifier un numéro
+[   0]Ajouter ou Modifier un numéro
 [   1]Numéro:
 [   2]Prénom:
 [   3]Nom:

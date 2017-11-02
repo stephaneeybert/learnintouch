@@ -1,4 +1,4 @@
-[   0]Modifier un paragraphe de leçon
+[   0]Ajouter ou Modifier un paragraphe de leçon
 [   1]Rubrique:
 [   2]Leçon: *
 [   3]Le titre du paragraphe est requis.

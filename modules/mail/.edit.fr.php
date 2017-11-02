@@ -1,4 +1,4 @@
-[   0]Modifier un mailing
+[   0]Ajouter ou Modifier un mailing
 [   1]Sujet:
 [   2]Description:
 [   3]Le mailing est vérouillé est ne peut pas être modifié.

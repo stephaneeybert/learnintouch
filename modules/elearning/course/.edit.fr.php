@@ -1,4 +1,4 @@
-[   0]Modifier un cours
+[   0]Ajouter ou Modifier un cours
 [   1]Le cours est vérouillé est ne peut pas être modifié.
 [   2]La matière est requise.
 [   3]Autoriser dans n'importe quel order:
@@ -18,7 +18,7 @@
 [  17]Si un participant excède la durée maximum pour faire un exercice alors son exercice peut être interrompu lorsque le temps a été dépassé.\n\nPar défaut, l'exercice n'est pas interrompu si le participant a excédé la durée maximale de l'exercice.
 [  18]Reinitialiser les réponses après l'exercice:
 [  19]Par défaut, lorsqu'un exercice a été fait, les réponses du participant sont conservées dans les questions, afin que lorsque le participant refait l'exercice, les réponses précédemment données apparaissent dans les questions.\n\nMais il est possible de reinitialiser les réponses du participant lorsque les résultats du participant ont été affiché.\n\nDans ce cas, lorsque le participant refait l'exercice, les réponses précédemment données n'apparaitront pas dans les questions.
-[  20]Modifier l'information sur le contenu du cours
+[  20]Ajouter ou Modifier l'information sur le contenu du cours
 [  21]Utilisateur:
 [  22]Si un cours est créé par un utilisateur du site web au lieu d'un administrateur, alors aucun autres utilisateurs ne peut le modifier.\n\nCependant, un administrateur peut toujours modifier le cours.
 [  23]Par défaut, un participant ne peut pas se désinscrire lui mëme d'un cours.\n\nMais il est possible de permettre aux participants d'un cours de se désinscrire eux-mëme.

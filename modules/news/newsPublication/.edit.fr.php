@@ -1,4 +1,4 @@
-[   0]Modifier une publication
+[   0]Ajouter ou Modifier une publication
 [   1]Nom:
 [   2]Description:
 [   3]Auto archivage (jours):

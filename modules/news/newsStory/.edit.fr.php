@@ -1,4 +1,4 @@
-[   0]Modifier un article
+[   0]Ajouter ou Modifier un article
 [   1]Publication:
 [   3]Une publication est un magazine, un journal, une newsletter... avec des éditions publiées périodiquement.\n\nUn journal est une édition d'une publication.
 [   4]Le titre est requis.

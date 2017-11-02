@@ -1,4 +1,4 @@
-[   0]Modifier une rubrique
+[   0]Ajouter ou Modifier une rubrique
 [   1]L'ordre doit être un nombre.
 [   2]L'ordre est requis.
 [   4]Le nom est requis.

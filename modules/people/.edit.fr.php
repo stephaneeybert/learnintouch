@@ -1,4 +1,4 @@
-[   0]Modifier une personne
+[   0]Ajouter ou Modifier une personne
 [   1]Téléphone bureau:
 [   2]Téléphone portable:
 [   5]Catégorie:

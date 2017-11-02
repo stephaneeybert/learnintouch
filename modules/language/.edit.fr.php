@@ -1,4 +1,4 @@
-[   0]Modifier une langue
+[   0]Ajouter ou Modifier une langue
 [   7]Nom:
 [   6]Code:
 [   1]Locale:

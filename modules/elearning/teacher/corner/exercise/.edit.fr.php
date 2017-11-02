@@ -1,4 +1,4 @@
-[   0]Modifier un exercice
+[   0]Ajouter ou Modifier un exercice
 [   1]Annuler l'opération
 [   3]Le nom est requis.
 [   4]Le cours est requis.

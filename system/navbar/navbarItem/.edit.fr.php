@@ -1,4 +1,4 @@
-[   0]Modifier un élément
+[   0]Ajouter ou Modifier un élément
 [   4]Nom:
 [  10]Nouvelle fenètre:
 [  11]Par défaut, la page pointée par le lien, est ouverte dans la fenètre courante du navigateur.\n\nMais elle peut être ouverte dans une nouvelle fenètre du navigateur.

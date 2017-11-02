@@ -1,4 +1,4 @@
-[   0]Modifier une page de questions
+[   0]Ajouter ou Modifier une page de questions
 [   1]Description:
 [   2]Exercice:
 [   3]Hauteur maximum du texte:

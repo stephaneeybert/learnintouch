@@ -1,4 +1,4 @@
-[   0]Modifier un enseignant
+[   0]Ajouter ou Modifier un enseignant
 [   1]Utilisateur:
 [   2]Un enseignant est un utilisateur du système.\n\nPour créer un nouvel enseignant, veuillez d'abord créer un utilisateur.\n\nEnsuite veuillez choisir cet utilisateur nouvellement créé pour être un enseignant.
 [   3]L'utilisateur est requis.

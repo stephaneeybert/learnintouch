@@ -1,4 +1,4 @@
-[   0]Modifier un validateur
+[   0]Ajouter ou Modifier un validateur
 [   1]Type:
 [   2]Message:
 [   3]Limite:

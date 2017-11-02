@@ -1,4 +1,4 @@
-[   0]Modifier un formulaire
+[   0]Ajouter ou Modifier un formulaire
 [   4]Nom:
 [   3]Le nom est seulement utilisé pour identifier le formulaire est n'est pas affiché au visiteur.
 [  20]Le titre du formulaire est affiché en haut de la page.

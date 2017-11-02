@@ -1,4 +1,4 @@
-[   0]Modifier une liste d'articles
+[   0]Ajouter ou Modifier une liste d'articles
 [   1]Journal:
 [   6]Publication:
 [   2]Veuillez sélectionner un journal comme source de la liste des articles.

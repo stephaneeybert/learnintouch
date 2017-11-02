@@ -1,4 +1,4 @@
-[   0]Modifier une addresse
+[   0]Ajouter ou Modifier une addresse
 [   1]Email:
 [   2]Prénom:
 [   3]Nom:

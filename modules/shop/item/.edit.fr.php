@@ -1,4 +1,4 @@
-[   0]Modifier un article
+[   0]Ajouter ou Modifier un article
 [   1]Frais d'envoi:
 [   2]Référence:
 [   3]Prix:

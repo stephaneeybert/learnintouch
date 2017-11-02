@@ -1,4 +1,4 @@
-[   0]Modifier un élément de formulaire
+[   0]Ajouter ou Modifier un élément de formulaire
 [   1]Aide:
 [   2]Valeur par défaut:
 [   3]Valeur:
@@ -23,7 +23,7 @@
 [  22]Si le type de sélectionné est 'Adresse email' alors il est possible d'ajouter une adresse email saisie par l'utilisateur, au carnet d'adresses email et à une liste de destinataires.\n\nDans ce cas, chaque fois qu'un utilisateur saisira une adresse email, l'adresse email sera sauvegardée dans le carnet d'adresses email et dans la liste de destinataires choisie.
 [  24]Carnet d'adresses email:
 [  25]Si le type de sélectionné est 'Adresse email' alors il est possible d'ajouter une adresse email saisie par l'utilisateur, au carnet d'adresses email.\n\nDans ce cas, chaque fois qu'un utilisateur saisira une adresse email, l'adresse email sera sauvegardée dans le carnet d'adresses email.\n\nPour aussi sauvegarder le prénom et le nom de l'utilisateur, veuillez utiliser les types 'Prénom' et 'Nom' pour les champs du formulaire dans lesquels l'utilisateur saisira son prénom et son nom.
-[  26]Modifier la valeur
+[  26]Ajouter ou Modifier la valeur
 [  28]Ajouter une nouvelle valeur et son texte
 [  29]Effacer la valeur et son texte
 [  30]Etes vous sur de vouloir EFFACER cette valeur ?

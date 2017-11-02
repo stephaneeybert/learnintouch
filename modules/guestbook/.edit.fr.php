@@ -1,4 +1,4 @@
-[   0]Modifier un message
+[   0]Ajouter ou Modifier un message
 [   6]Nom:
 [   7]Prénom:
 [   8]Email:

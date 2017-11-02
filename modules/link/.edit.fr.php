@@ -1,4 +1,4 @@
-[   0]Modifier un lien
+[   0]Ajouter ou Modifier un lien
 [   5]Catégorie:
 [   6]Nom:
 [   7]Description:

@@ -1,4 +1,4 @@
-[   0]Modifier un referer
+[   0]Ajouter ou Modifier un referer
 [   6]Nom:
 [   7]Description:
 [   8]Nom de domaine:

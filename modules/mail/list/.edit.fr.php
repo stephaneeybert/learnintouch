@@ -1,4 +1,4 @@
-[   0]Modifier une liste
+[   0]Ajouter ou Modifier une liste
 [   1]Ajouter les utilisateurs créés du:
 [   2]Il est possible d'ajouter tous les utilisateurs ou les adresses email qui ont été créé durant une certaine période.\n\nCela peut être pratique pour créer une liste de tous les utilisateurs ou les adresses email importés à une certaine date.
 [   3]au:

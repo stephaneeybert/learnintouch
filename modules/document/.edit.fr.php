@@ -1,4 +1,4 @@
-[   0]Modifier un document
+[   0]Ajouter ou Modifier un document
 [   1]Cacher:
 [   2]Un document peut être rangé dans une catégorie.\n\nCela offre un rangement plus facile des documents.
 [   3]Une courte description du document.\n\nCela peut être un court mémo sur le document.

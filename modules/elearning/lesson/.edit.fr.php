@@ -1,4 +1,4 @@
-[   0]Modifier une leçon
+[   0]Ajouter ou Modifier une leçon
 [   1]Instructions:
 [   2]Modèle:
 [   3]Niveau:

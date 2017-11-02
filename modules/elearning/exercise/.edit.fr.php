@@ -1,4 +1,4 @@
-[   0]Modifier un exercice
+[   0]Ajouter ou Modifier un exercice
 [   1]L'exercice est vérouillé est ne peut pas être modifié.
 [   2]Catégorie:
 [   3]Niveau:

@@ -1,4 +1,4 @@
-[   0]Modifier une plage de scoring
+[   0]Ajouter ou Modifier une plage de scoring
 [   1]Conseil de l'école:
 [   2]Proposition de cours:
 [   3]Le message du score est requis.

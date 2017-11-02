@@ -1,4 +1,4 @@
-[   0]Modifier un journal
+[   0]Ajouter ou Modifier un journal
 [   1]En-tête:
 [   2]Date d'archivage:
 [   3]Ne pas publier le journal:

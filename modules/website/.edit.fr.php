@@ -1,4 +1,4 @@
-[   0]Modifier un site web
+[   0]Ajouter ou Modifier un site web
 [   1]Prénom:
 [   2]Nom:
 [   3]Nom de domaine: *

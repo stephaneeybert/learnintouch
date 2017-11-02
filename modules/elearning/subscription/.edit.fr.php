@@ -1,4 +1,4 @@
-[   0]Modifier une inscription
+[   0]Ajouter ou Modifier une inscription
 [   1]La session est requise.
 [   2]Session:
 [   3]Classe:

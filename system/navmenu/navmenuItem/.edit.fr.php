@@ -1,4 +1,4 @@
-[   0]Modifier un élément
+[   0]Ajouter ou Modifier un élément
 [   2]Ordre:
 [   3]Cacher l'élément:
 [   4]Nom:

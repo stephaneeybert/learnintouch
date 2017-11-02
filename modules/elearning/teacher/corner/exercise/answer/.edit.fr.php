@@ -1,4 +1,4 @@
-[   0]Modifier une réponse
+[   0]Ajouter ou Modifier une réponse
 [   2]Question:
 [   4]Réponse:
 [   9]Vous n'avez pas le droit d'utiliser cet exercice.
