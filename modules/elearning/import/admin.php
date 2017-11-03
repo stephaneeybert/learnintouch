@@ -194,7 +194,7 @@ if ($paginationLinks) {
 }
 
 if ($currentElearningCourseId > 0 && is_array($courseItems)) {
-  $panelUtils->addLine($panelUtils->addCell($mlText[11], "nb"), $panelUtils->addCell($mlText[2], "nb"), '');
+  $panelUtils->addLine($panelUtils->addCell($mlText[11], "nb"), $panelUtils->addCell($mlText[2], "nb"), $panelUtils->addCell($mlText[24], "wnr"));
   $panelUtils->addLine();
   $panelUtils->openList();
   foreach ($courseItems as $courseItem) {
@@ -220,7 +220,7 @@ if ($currentElearningCourseId > 0 && is_array($courseItems)) {
   $panelUtils->closeList();
 } else {
   if (count($courses) > 0) {
-    $panelUtils->addLine($panelUtils->addCell($mlText[1], "nb"), $panelUtils->addCell($mlText[2], "nb"), '');
+    $panelUtils->addLine($panelUtils->addCell($mlText[1], "nb"), $panelUtils->addCell($mlText[2], "nb"), $panelUtils->addCell($mlText[23], "wnr"));
     $panelUtils->addLine();
     $panelUtils->openList();
     foreach ($courses as $course) {
