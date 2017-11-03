@@ -7,8 +7,8 @@ $adminModuleUtils->checkAdminModule(MODULE_ELEARNING);
 $mlText = $languageUtils->getMlText(__FILE__);
 
 $currentContentImportId = LibEnv::getEnvHttpPOST("currentContentImportId");
-$elearningMatterId = LibEnv::getEnvHttpPOST("elearningMatterId");
-$elearningCourseId = LibEnv::getEnvHttpPOST("elearningCourseId");
+$currentElearningMatterId = LibEnv::getEnvHttpPOST("elearningMatterId");
+$currentElearningCourseId = LibEnv::getEnvHttpPOST("elearningCourseId");
 $other = LibEnv::getEnvHttpPOST("other");
 
 if (!$currentContentImportId) {
@@ -17,16 +17,16 @@ if (!$currentContentImportId) {
   LibSession::putSessionValue(CONTENT_IMPORT_SESSION_CURRENT, $currentContentImportId);
 }
 
-if (!$elearningMatterId) {
-  $elearningMatterId = LibSession::getSessionValue(ELEARNING_SESSION_MATTER);
+if (!$currentElearningMatterId) {
+  $currentElearningMatterId = LibSession::getSessionValue(ELEARNING_SESSION_MATTER);
 } else {
-  LibSession::putSessionValue(ELEARNING_SESSION_MATTER, $elearningMatterId);
+  LibSession::putSessionValue(ELEARNING_SESSION_MATTER, $currentElearningMatterId);
 }
 
-if (!$elearningCourseId) {
-  $elearningCourseId = LibSession::getSessionValue(ELEARNING_SESSION_COURSE);
+if (!$currentElearningCourseId) {
+  $currentElearningCourseId = LibSession::getSessionValue(ELEARNING_SESSION_COURSE);
 } else {
-  LibSession::putSessionValue(ELEARNING_SESSION_COURSE, $elearningCourseId);
+  LibSession::putSessionValue(ELEARNING_SESSION_COURSE, $currentElearningCourseId);
 }
 
 if (!$other) {
@@ -83,8 +83,8 @@ if ($currentContentImportId > 0) {
       $courses = $elearningImportUtils->getCourseListREST($xmlResponseSearchedContent);
       $lessons = $elearningImportUtils->getLessonListREST($xmlResponseSearchedContent);
       $exercises = $elearningImportUtils->getExerciseListREST($xmlResponseSearchedContent);
-    } else if ($elearningMatterId > 0) {
-      $courses = $elearningImportUtils->getCourseListREST($xmlResponse, $elearningMatterId);
+    } else if ($currentElearningMatterId > 0) {
+      $courses = $elearningImportUtils->getCourseListREST($xmlResponse, $currentElearningMatterId);
     } else if ($other == ELEARNING_IMPORT_OTHER_EXERCISE) {
       $xmlResponseOther = $elearningImportUtils->exposeAllExercisesAsXML($currentContentImportId, false, $listIndex, $listStep);
       $exercises = $elearningImportUtils->getExerciseListREST($xmlResponseOther);
@@ -94,8 +94,8 @@ if ($currentContentImportId > 0) {
       $lessons = $elearningImportUtils->getLessonListREST($xmlResponseOther);
       $listNbItems = $elearningImportUtils->getListNbItemsREST($xmlResponseOther);
     }
-    if (count($courses) > 0 && $elearningCourseId > 0) {
-      $xmlResponseCourse = $elearningImportUtils->exposeCourseAsXML($currentContentImportId, $elearningCourseId, false);
+    if (count($courses) > 0 && $currentElearningCourseId > 0) {
+      $xmlResponseCourse = $elearningImportUtils->exposeCourseAsXML($currentContentImportId, $currentElearningCourseId, false);
       $courseContent = $elearningImportUtils->getCourseContentREST($currentContentImportId, $xmlResponseCourse);
       if ($courseContent) {
         list($unusedElearningCourseId, $name, $description, $image, $courseItems) = $courseContent;
@@ -141,7 +141,7 @@ if (count($matters) > 0 && !$searchPattern) {
     $matterList[$elearningMatterId] = $name;
   }
   $labelMatter = $popupUtils->getTipPopup($mlText[7], $mlText[16], 300, 300);
-  $strMatter = "<b>$labelMatter</b> " . LibHtml::getSelectList("elearningMatterId", $matterList, $elearningMatterId, true);
+  $strMatter = "<b>$labelMatter</b> " . LibHtml::getSelectList("elearningMatterId", $matterList, $currentElearningMatterId, true);
 
   $otherList = array(
     '0' => '',
@@ -161,7 +161,7 @@ if (count($courses) > 0 && !$searchPattern) {
     $courseList[$elearningCourseId] = $name;
   }
   $labelCourse = $popupUtils->getTipPopup($mlText[13], $mlText[17], 300, 300);
-  $strCourse = "<b>$labelCourse</b> " . LibHtml::getSelectList("elearningCourseId", $courseList, $elearningCourseId, true);
+  $strCourse = "<b>$labelCourse</b> " . LibHtml::getSelectList("elearningCourseId", $courseList, $currentElearningCourseId, true);
 
   $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($strCourse, "n"));
@@ -193,7 +193,7 @@ if ($paginationLinks) {
   $panelUtils->addLine();
 }
 
-if ($elearningCourseId > 0 && is_array($courseItems)) {
+if ($currentElearningCourseId > 0 && is_array($courseItems)) {
   $panelUtils->addLine($panelUtils->addCell($mlText[11], "nb"), $panelUtils->addCell($mlText[2], "nb"), '');
   $panelUtils->addLine();
   $panelUtils->openList();
