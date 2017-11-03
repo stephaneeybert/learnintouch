@@ -160,9 +160,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $name = $elearningMatter->getName();
         $description = $elearningMatter->getDescription();
 
-        $name = utf8_encode($name);
-        $description = utf8_encode($description);
-
         $xmlMatterNode = $xmlDocument->createElement(ELEARNING_XML_MATTER);
         $xmlMatterNode->setAttribute("id", $elearningMatterId);
         $xmlMatterNode->setAttribute("name", $name);
@@ -182,9 +179,6 @@ class ElearningImportUtils extends ContentImportUtils {
         $name = $elearningCourse->getName();
         $description = $elearningCourse->getDescription();
         $matterId = $elearningCourse->getMatterId();
-
-        $name = utf8_encode($name);
-        $description = utf8_encode($description);
 
         $xmlCourseNode = $xmlDocument->createElement(ELEARNING_XML_COURSE);
         $xmlCourseNode->setAttribute("id", $elearningCourseId);
@@ -318,10 +312,6 @@ class ElearningImportUtils extends ContentImportUtils {
             $image = $elearningLesson->getImage();
           }
         }
-
-        $name = utf8_encode($name);
-        $description = utf8_encode($description);
-        $image = utf8_encode($image);
 
         $xmlCourseItemNode = $xmlDocument->createElement(ELEARNING_XML_COURSE_ITEM);
         if ($elearningExerciseId) {
@@ -569,10 +559,6 @@ class ElearningImportUtils extends ContentImportUtils {
       $description = $elearningCourse->getDescription();
       $image = $elearningCourse->getImage();
 
-      $name = utf8_encode($name);
-      $description = utf8_encode($description);
-      $image = utf8_encode($image);
-
       $xmlCourseNode = $xmlDocument->createElement(ELEARNING_XML_COURSE);
       $xmlCourseNode->setAttribute("id", $elearningCourseId);
       $xmlCourseNode->setAttribute("name", $name);
@@ -598,10 +584,6 @@ class ElearningImportUtils extends ContentImportUtils {
               $image = $elearningLesson->getImage();
             }
           }
-
-          $name = utf8_encode($name);
-          $description = utf8_encode($description);
-          $image = utf8_encode($image);
 
           $xmlCourseItemNode = $xmlDocument->createElement(ELEARNING_XML_COURSE_ITEM);
           if ($elearningExerciseId) {
@@ -797,20 +779,6 @@ class ElearningImportUtils extends ContentImportUtils {
       $hideProgressionBar = $elearningExercise->getHideProgressionBar();
       $skipExerciseIntroduction = $elearningExercise->getSkipExerciseIntroduction();
 
-      $name = utf8_encode($name);
-      $description = utf8_encode($description);
-      $introduction = utf8_encode($introduction);
-      $instructions = utf8_encode($instructions);
-      $image = utf8_encode($image);
-      $audio = utf8_encode($audio);
-      $maxDuration = utf8_encode($maxDuration);
-      $hideKeyboard = utf8_encode($hideKeyboard);
-      $disableNextPageTabs = utf8_encode($disableNextPageTabs);
-      $hidePageTabs = utf8_encode($hidePageTabs);
-      $hideProgressionBar = utf8_encode($hideProgressionBar);
-      $hideIntroduction = utf8_encode($hideIntroduction);
-      $skipExerciseIntroduction = utf8_encode($skipExerciseIntroduction);
-
       $leIntroduction = $introduction;
       $introduction = LibString::cleanString($introduction);
 
@@ -842,7 +810,6 @@ class ElearningImportUtils extends ContentImportUtils {
       foreach ($languages as $language) {
         $languageCode = $language->getCode();
         $instructions = $this->languageUtils->getTextForLanguage($elearningExercise->getInstructions(), $languageCode);
-        $instructions = utf8_encode($instructions);
         $instructions = LibString::cleanString($instructions);
         $xmlInstructionsNode = $xmlDocument->createElement(ELEARNING_XML_EXERCISE_INSTRUCTIONS, $instructions);
         $xmlInstructionsNode->setAttribute("language", $languageCode);
@@ -865,18 +832,6 @@ class ElearningImportUtils extends ContentImportUtils {
           $hideText = $elearningExercisePage->getHideText();
           $hintPlacement = $elearningExercisePage->getHintPlacement();
           $listOrder = $elearningExercisePage->getListOrder();
-
-          $name = utf8_encode($name);
-          $description = utf8_encode($description);
-          $text = utf8_encode($text);
-          $image = utf8_encode($image);
-          $audio = utf8_encode($audio);
-          $questionType = utf8_encode($questionType);
-          $video = utf8_encode($video);
-          $videoUrl = utf8_encode($videoUrl);
-          $hideText = utf8_encode($hideText);
-          $hintPlacement = utf8_encode($hintPlacement);
-          $listOrder = utf8_encode($listOrder);
 
           $leText = $text;
           $text = LibString::cleanString($text);
@@ -906,7 +861,6 @@ class ElearningImportUtils extends ContentImportUtils {
           foreach ($languages as $language) {
             $languageCode = $language->getCode();
             $instructions = $this->languageUtils->getTextForLanguage($elearningExercisePage->getInstructions(), $languageCode);
-            $instructions = utf8_encode($instructions);
             $instructions = LibString::cleanString($instructions);
             $xmlInstructionsNode = $xmlDocument->createElement(ELEARNING_XML_EXERCISE_PAGE_INSTRUCTIONS, $instructions);
             $xmlInstructionsNode->setAttribute("language", $languageCode);
@@ -925,13 +879,6 @@ class ElearningImportUtils extends ContentImportUtils {
               $points = $elearningQuestion->getPoints();
               $listOrder = $elearningQuestion->getListOrder();
 
-              $question = utf8_encode($question);
-              $image = utf8_encode($image);
-              $audio = utf8_encode($audio);
-              $hint = utf8_encode($hint);
-              $points = utf8_encode($points);
-              $listOrder = utf8_encode($listOrder);
-
               $xmlQuestionNode = $xmlDocument->createElement(ELEARNING_XML_QUESTION);
               $xmlQuestionNode->setAttribute("question", $question);
               $xmlQuestionNode->setAttribute("image", $image);
@@ -946,7 +893,6 @@ class ElearningImportUtils extends ContentImportUtils {
               foreach ($languages as $language) {
                 $languageCode = $language->getCode();
                 $explanation = $this->languageUtils->getTextForLanguage($elearningQuestion->getExplanation(), $languageCode);
-                $explanation = utf8_encode($explanation);
                 $explanation = LibString::cleanString($explanation);
                 $xmlExplanationNode = $xmlDocument->createElement(ELEARNING_XML_QUESTION_EXPLANATION, $explanation);
                 $xmlExplanationNode->setAttribute("language", $languageCode);
@@ -963,11 +909,6 @@ class ElearningImportUtils extends ContentImportUtils {
                   $audio = $elearningAnswer->getAudio();
                   $listOrder = $elearningAnswer->getListOrder();
 
-                  $answer = utf8_encode($answer);
-                  $image = utf8_encode($image);
-                  $audio = utf8_encode($audio);
-                  $listOrder = utf8_encode($listOrder);
-
                   $xmlAnswerNode = $xmlDocument->createElement(ELEARNING_XML_ANSWER);
                   $xmlAnswerNode->setAttribute("answer", $answer);
                   $xmlAnswerNode->setAttribute("image", $image);
@@ -980,7 +921,6 @@ class ElearningImportUtils extends ContentImportUtils {
                   foreach ($languages as $language) {
                     $languageCode = $language->getCode();
                     $explanation = $this->languageUtils->getTextForLanguage($elearningAnswer->getExplanation(), $languageCode);
-                    $explanation = utf8_encode($explanation);
                     $explanation = LibString::cleanString($explanation);
                     $xmlExplanationNode = $xmlDocument->createElement(ELEARNING_XML_ANSWER_EXPLANATION, $explanation);
                     $xmlExplanationNode->setAttribute("language", $languageCode);
@@ -997,8 +937,6 @@ class ElearningImportUtils extends ContentImportUtils {
                     $solutionElearningAnswerId = $elearningSolution->getElearningAnswer();
                     if ($solutionElearningAnswer = $this->elearningAnswerUtils->selectById($solutionElearningAnswerId)) {
                       $answer = $solutionElearningAnswer->getAnswer();
-
-                      $answer = utf8_encode($answer);
 
                       $xmlSolutionNode = $xmlDocument->createElement(ELEARNING_XML_SOLUTION);
                       $xmlSolutionNode->setAttribute("answer", $answer);
@@ -1433,13 +1371,6 @@ class ElearningImportUtils extends ContentImportUtils {
       $audio = $elearningLesson->getAudio();
       $introduction = $elearningLesson->getIntroduction();
 
-      $name = utf8_encode($name);
-      $description = utf8_encode($description);
-      $instructions = utf8_encode($instructions);
-      $image = utf8_encode($image);
-      $audio = utf8_encode($audio);
-      $introduction = utf8_encode($introduction);
-
       $leIntroduction = $introduction;
       $introduction = LibString::cleanString($introduction);
 
@@ -1463,7 +1394,6 @@ class ElearningImportUtils extends ContentImportUtils {
       foreach ($languages as $language) {
         $languageCode = $language->getCode();
         $instructions = $this->languageUtils->getTextForLanguage($elearningLesson->getInstructions(), $languageCode);
-        $instructions = utf8_encode($instructions);
         $instructions = LibString::cleanString($instructions);
         $xmlInstructionsNode = $xmlDocument->createElement(ELEARNING_XML_LESSON_INSTRUCTIONS, $instructions);
         $xmlInstructionsNode->setAttribute("language", $languageCode);
@@ -1484,15 +1414,6 @@ class ElearningImportUtils extends ContentImportUtils {
           $listOrder = $elearningLessonParagraph->getListOrder();
           $elearningExerciseId = $elearningLessonParagraph->getElearningExerciseId();
           $exerciseTitle = $elearningLessonParagraph->getExerciseTitle();
-
-          $headline = utf8_encode($headline);
-          $body = utf8_encode($body);
-          $image = utf8_encode($image);
-          $audio = utf8_encode($audio);
-          $video = utf8_encode($video);
-          $videoUrl = utf8_encode($videoUrl);
-          $listOrder = utf8_encode($listOrder);
-          $exerciseTitle = utf8_encode($exerciseTitle);
 
           $leBody = $body;
           $body = LibString::cleanString($body);
