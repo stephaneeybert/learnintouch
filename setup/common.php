@@ -31,7 +31,9 @@ function isLocalhost() {
 }
 
 $gHostname = LOCALHOST;
-$gSocketHostname = NODEJS_SOCKET_LOCALHOST;
+
+// The socket host
+$gSocketHostname = 'http://' . $gSetupWebsiteDomain;
 
 // Include the paths to the engine modules
 require_once("path.php");
