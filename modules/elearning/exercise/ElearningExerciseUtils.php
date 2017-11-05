@@ -3127,8 +3127,11 @@ HEREDOC;
 <style type="text/css">
 .elearning_whiteboard_buttons {
   width: 99% !important;
-  cursor:pointer;
+  cursor: pointer;
   text-align: right;
+}
+.elearning_whiteboard_buttons span:hover {
+  text-decoration: underline;
 }
 .elearning_whiteboard_output {
   width: 99% !important;
