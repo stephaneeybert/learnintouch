@@ -64,7 +64,11 @@ Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
 grant all privileges on fhs.* to fhs@'localhost' identified by 'xxx';
+<<<<<<< HEAD
 grant all privileges on fu.* to fu@'localhost' identified by 'xxx';
+=======
+grant all privileges on db_europasprak.* to europasprak@'localhost' identified by 'xxx';
+>>>>>>> a501ca11ca145454e49e355ec9f5714242c7847a
 flush privileges;
 quit;
 
@@ -74,6 +78,7 @@ bin/mysql -u stephane -p
 create database fhs character set utf8mb4 collate utf8mb4_unicode_ci;
 
 Create the database schema
+<<<<<<< HEAD
 Make sure the structure file has an ascii/unknown charset 
 uchardet ~/learnintouch/www/fu/db-structure.sql
 Make sure the data file has a utf-8 charset
@@ -81,6 +86,15 @@ uchardet ~/learnintouch/www/fu/db-data.sql
 cd programs/mysql/install
 bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-structure.sql
 bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-data.sql
+=======
+Make sure the db_learnintouch-structure.sql has an ascii/unknown charset 
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+Make sure the db_learnintouch.sql files has a utf-8 charset
+uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
+cd programs/mysql/install
+bin/mysql -u root -p fhs -v < ~/learnintouch/www/fhs/db-structure.sql
+bin/mysql -u root -p fhs -v < ~/learnintouch/www/fhs/db-data.sql
+>>>>>>> a501ca11ca145454e49e355ec9f5714242c7847a
 
 Add some index
 cd programs/mysql/install
@@ -105,6 +119,7 @@ Go in the language module and select the website and administrative languages.
 
 
 
+<<<<<<< HEAD
 Dumping some data
 bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql
 
@@ -112,12 +127,40 @@ Checking the charset of the generated file
 uchardet ~/learnintouch/www/fu/db-data.utf8.sql
 
 Restoring some data from a data only backup file
+=======
+Export latin1 data into a utf-8 database:
+Make sure the db_learnintouch-structure.sql has an ascii/unknown charset
+uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+Dump the data specifying its original charset
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --skip-extended-insert db_learnintouch > ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
+Ignore foreign keys
+set foreign_key_checks = 0;
+Remove the comments in vi
+:g/^--/d
+:g,^\/\*\!,d
+Remove the ENGINE names in vi
+:s/ ENGINE.*/;/99999
+Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
+iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sql
+mv ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sq ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
+Make sure the data file has a utf-8 charset
+uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
+bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
+bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
+
+Dump some data
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert engine > ~/trash/engine-data.sql
+bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert europasprak > ~/trash/europasprak-data.sql
+
+Restaure some data from a data only backup file
+>>>>>>> a501ca11ca145454e49e355ec9f5714242c7847a
 Insert the following statements at the TOP of the backup file:
 set autocommit = 0;
 set unique_checks = 0;
 set foreign_key_checks = 0;
 Insert the following statements at the BOTTOM of the backup file:
 commit;
+<<<<<<< HEAD
 bin/mysql -v -u root -p fhs < ~/learnintouch/www/fu/db-data.sql
 
 Exporting latin1 data into a utf-8 database:
@@ -142,4 +185,7 @@ Make sure the data file has a utf-8 charset
 uchardet ~/learnintouch/www/fu/db-data.utf8.sql
 bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-structure.sql
 bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-data.utf8.sql
+=======
+programs/mysql/install/bin/mysql -v -u stephane -p db_europasprak < backup_db_db_europasprak
+>>>>>>> a501ca11ca145454e49e355ec9f5714242c7847a
 
