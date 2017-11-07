@@ -109,7 +109,7 @@ Dumping some data
 bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql
 
 Checking the charset of the generated file
-uchardet ~/learnintouch/www/fu/db-data.utf8.sql
+uchardet ~/learnintouch/www/fu/db-data.sql
 
 Restoring some data from a data only backup file
 Insert the following statements at the TOP of the backup file:
