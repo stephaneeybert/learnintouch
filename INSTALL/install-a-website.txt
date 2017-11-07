@@ -1,6 +1,42 @@
 To create a new website site, do the following operations:
 
 Register the website domain name at a registrar
+Add an A type entry with the server IP address
+
+For a domain name only and NOT for a sub domain name
+Add a bind entry for the website
+/etc/bind/named.conf.custom-zones
+The secondary DNS registration
+https://www.ovh.com/manager/web/
+Restart the DNS service
+sudo /etc/init.d/bind9 restart
+sudo /etc/init.d/bind9 reload
+
+Add the virtual host entries file
+/home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
+<VirtualHost *:80>
+  ServerName www.europasprak.com
+  ServerAlias europasprak.com
+  DocumentRoot /home/stephane/learnintouch/www/europasprak.com
+  CustomLog logs/learnintouch-access_log combined
+  <Directory "/home/stephane/learnintouch/www/europasprak.com">
+    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
+  </Directory>
+</VirtualHost>
+<VirtualHost *:80>
+  ServerName fu.europasprak.com
+  DocumentRoot /home/stephane/learnintouch/www/fu
+  CustomLog logs/learnintouch-access_log combined
+  <Directory "/home/stephane/learnintouch/www/fu">
+    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
+  </Directory>
+</VirtualHost>
+and restart the httpd server
+sudo /etc/init.d/httpd restart
+
+Create a /home/stephane/learnintouch/www/europasprak/.htaccess file containing the following directives
+php_value include_path "/home/stephane/learnintouch/engine/setup"
+php_value auto_prepend_file "/home/stephane/learnintouch/www/europasprak.com/account/setup/specific.php"
 
 Create the directories and soft links
 mkdir -p /home/stephane/learnintouch/www/europasprak.com;
@@ -15,136 +51,95 @@ ln -s /home/stephane/learnintouch/engine/cron/cleanup.sh cleanup.sh;
 ln -s /home/stephane/learnintouch/engine/cron/backup.sh backup.sh;
 ln -s /home/stephane/learnintouch/engine/cron/refresh_template_models.sh refresh_template_models.sh;
 
-Add a bind entry for the website
-/etc/bind/named.conf.custom-zones
-
-The secondary DNS registration
-https://www.ovh.com/manager/web/login.html
-
-Restart the DNS service
-sudo /etc/init.d/bind9 restart
-sudo /etc/init.d/bind9 reload
-
-Add the virtual host entries file
-/home/stephane/programs/install/apache/conf/extra/httpd-vhosts.conf
-
-<VirtualHost europasprak.com:80>
-  DocumentRoot /home/stephane/learnintouch/www/europasprak.com
-  ServerName www.europasprak.com
-  ServerAlias europasprak.com
-  CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/europasprak.com">
-    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
-  </Directory>
-</VirtualHost>
-
-<VirtualHost europasprak.learnintouch.com:80>
-  DocumentRoot /home/stephane/learnintouch/www/europasprak
-  ServerName europasprak.learnintouch.com
-  CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/europasprak">
-    Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
-  </Directory>
-</VirtualHost>
-
-Restart httpd
-
-Create a /home/stephane/learnintouch/www/europasprak/.htaccess file containing the following directives
-php_value include_path "/home/stephane/learnintouch/engine/setup"
-php_value auto_prepend_file "/home/stephane/learnintouch/www/europasprak.com/account/setup/specific.php"
-
 Create the /home/stephane/learnintouch/www/europasprak/account/setup/specific.php file
 
-Create the directories
-http://europasprak.learnintouch.com/engine/setup/directories.php
+Copy some data files
+cd ~/learnintouch/www/
+cp -R fu/account/data/* fhs/account/data/
 
-Create the database
-cd programs/mysql/install
-bin/mysql -u stephane -p
-create database db_europasprak character set utf8mb4 collate utf8mb4_unicode_ci;
-
-Create the database schema
-bin/mysqldump -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data europasprak -v > ~/db_integration_structure.sql
-Make sure the db_learnintouch-structure.sql has an ascii/unknown charset 
-uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
-Make sure the db_learnintouch.sql files has a utf-8 charset
-uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
-cd programs/mysql/install
-bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
-bin/mysql -u stephane -p db_europasprak -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
-bin/mysql -u root -p fu -v < ~/db_integration_structure.sql
-
-Add some index
-cd programs/mysql/install
-bin/mysql -v -u stephane -p
-use db_europasprak;
-alter table statistics_visit add index(visit_datetime);
-alter table statistics_visit add index(visitor_host_address);
-alter table statistics_visit add index(visitor_browser);
-alter table statistics_visit add index(visitor_referer);
-
-Export latin1 data into a utf-8 database:
-Make sure the db_learnintouch-structure.sql has an ascii/unknown charset
-uchardet ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
-Dump the data specifying its original charset
-bin/mysqldump -u stephane -p --no-create-info --default-character-set=latin1 --skip-extended-insert db_learnintouch > ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
-Ignore foreign keys
-set foreign_key_checks = 0;
-Remove the comments in vi
-:g/^--/d
-:g,^\/\*\!,d
-Remove the ENGINE names in vi
-:s/ ENGINE.*/;/99999
-Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
-iconv -f ISO-8859-1 -t utf-8 ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql -o ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sql
-mv ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.utf8.sq ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch.sql
-Make sure the data file has a utf-8 charset
-uchardet ~/dev/php/learnintouch/backup/db_learnintouch.sql
-bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/engine/INSTALL/db_learnintouch-structure.sql
-bin/mysql -u stephane -p db_learnintouch -v < ~/dev/php/learnintouch/backup/db_learnintouch.sql
+Add an entry in the cron/*_all.sh crontabed files
+vi /home/stephane/learnintouch/engine/cron/*_all.sh
 
 Add a MySQL user
 programs/mysql/install/bin/mysql -u stephane -p
 use mysql;
-grant all privileges on db_europasprak.* to europasprak@'localhost' identified by 'rewgjikjfr';
-grant all privileges on db_engine.* to engine@'localhost' identified by 'mignet';
+grant all privileges on fhs.* to fhs@'localhost' identified by 'xxx';
+grant all privileges on fu.* to fu@'localhost' identified by 'xxx';
 flush privileges;
 quit;
 
-Dump some data
-bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert engine > ~/trash/engine-data.sql
-bin/mysqldump -u stephane -p --no-create-info --default-character-set=utf8 --skip-extended-insert europasprak > ~/trash/europasprak-data.sql
+Create the database
+cd programs/mysql/install
+bin/mysql -u stephane -p
+create database fhs character set utf8mb4 collate utf8mb4_unicode_ci;
 
-Restaure some data from a data only backup file
-Insert the following statements at the TOP of the backup file:
-set autocommit = 0;
-set unique_checks = 0;
-set foreign_key_checks = 0;
-Insert the following statements at the BOTTOM of the backup file:
-commit;
-programs/mysql/install/bin/mysql -v -u stephane -p db_europasprak < backup_db_db_europasprak
+Create the database schema
+Make sure the structure file has an ascii/unknown charset 
+uchardet ~/learnintouch/www/fu/db-structure.sql
+Make sure the data file has a utf-8 charset
+uchardet ~/learnintouch/www/fu/db-data.sql
+cd programs/mysql/install
+bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-structure.sql
+bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-data.sql
 
-Copy some data files
-\cp -Rf /home/stephane/learnintouch/www/blackebergs/account/data/* /home/stephane/learnintouch/www/europasprak/account/data/
-\cp -Rf data/* /home/stephane/learnintouch/www/europasprak/account/data/
-
-Add an entry in the cron/*_all.sh files
-vi /home/stephane/learnintouch/engine/cron/*_all.sh
+Add some index
+cd programs/mysql/install
+bin/mysql -v -u stephane -p
+use fhs;
+alter table statistics_visit add index(visit_datetime);
+alter table statistics_visit add index(visitor_host_address);
+alter table statistics_visit add index(visitor_browser);
+alter table statistics_visit add index(visitor_referer);
 
 Create the domain name in the content management system
 In the administration panel, go to 'The websites' module and create a new website
 
 Create an administrator
 In the administration panel, go to 'The administrators' module, create a new administrator and check his module rights
-http://europasprak.learnintouch.com/engine/system/admin/list.php
 Log out and try logging in with the administrator
-http://europasprak.learnintouch.com/engine/system/admin/login.php
 
 Create the website identity
-Go in the image set module and reset the image set.
-http://europasprak.learnintouch.com/engine/modules/template/imageSet/admin.php
+Go in the template image set module and reset the image set.
 Go in the website profile module and specify the website name, domain name and email address.
-http://europasprak.learnintouch.com/engine/modules/website/admin.php
 Go in the language module and select the website and administrative languages.
-http://europasprak.learnintouch.com/engine/modules/language/admin.php
+
+
+
+Dumping some data
+bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql
+
+Checking the charset of the generated file
+uchardet ~/learnintouch/www/fu/db-data.utf8.sql
+
+Restoring some data from a data only backup file
+Insert the following statements at the TOP of the backup file:
+set autocommit = 0;
+set unique_checks = 0;
+set foreign_key_checks = 0;
+Insert the following statements at the BOTTOM of the backup file:
+commit;
+bin/mysql -v -u root -p fhs < ~/learnintouch/www/fu/db-data.sql
+
+Exporting latin1 data into a utf-8 database:
+Make sure the structure file has an ascii/unknown charset
+uchardet ~/learnintouch/www/fu/db-structure.sql
+Dump the data specifying its original charset
+bin/mysqldump -u root -p --no-create-info --default-character-set=latin1 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql 
+In the created file, add the following statements:
+set autocommit = 0;
+set unique_checks = 0;
+set foreign_key_checks = 0;
+...
+commit;
+Removing the comments in vi
+:g/^--/d
+:g,^\/\*\!,d
+Removing the ENGINE names in vi
+:s/ ENGINE.*/;/99999
+Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
+iconv -f ISO-8859-1 -t utf-8 ~/learnintouch/www/fu/db-data.sql -o ~/learnintouch/www/fu/db-data.utf8.sql
+Make sure the data file has a utf-8 charset
+uchardet ~/learnintouch/www/fu/db-data.utf8.sql
+bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-structure.sql
+bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-data.utf8.sql
 
