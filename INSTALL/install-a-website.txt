@@ -105,8 +105,11 @@ Go in the language module and select the website and administrative languages.
 
 
 
-Dumping some data
-bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql
+Dumping the structure
+bin/mysqldump -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data -v fu > ~/learnintouch/www/fu/db-structure.sql
+
+Dumping the data
+bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert -v fu > ~/learnintouch/www/fu/db-data.sql
 
 Checking the charset of the generated file
 uchardet ~/learnintouch/www/fu/db-data.sql
