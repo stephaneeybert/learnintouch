@@ -99,7 +99,7 @@ if ($formSubmitted) {
 
   $name = '';
   $description = '';
-  $nbColumns = '';
+  $nbColumns = 0;
   $slideDown = '';
   $align = '';
   $withArchive = '';

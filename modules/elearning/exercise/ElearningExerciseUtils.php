@@ -710,12 +710,12 @@ HEREDOC;
 
       if ($elearningExercise = $this->selectById($elearningExerciseId)) {
         $elearningResultId = '';
-        $points = '';
-        $grade = '';
-        $nbQuestions = '';
-        $nbIncorrectAnswers = '';
-        $nbCorrectAnswers = '';
-        $nbIncorrectAnswers = '';
+        $points = 0;
+        $grade = 0;
+        $nbQuestions = 0;
+        $nbIncorrectAnswers = 0;
+        $nbCorrectAnswers = 0;
+        $nbIncorrectAnswers = 0;
         if ($elearningResult = $this->elearningResultUtils->selectBySubscriptionAndExercise($elearningSubscriptionId, $elearningExerciseId)) {
           $elearningResultId = $elearningResult->getId();
           $resultTotals = $this->elearningResultUtils->getExerciseTotals($elearningExerciseId, $elearningResultId);
@@ -814,10 +814,10 @@ HEREDOC;
 
             if ($elearningExercise = $this->selectById($elearningExerciseId)) {
               $elearningResultId = '';
-              $points = '';
-              $nbQuestions = '';
-              $nbCorrectAnswers = '';
-              $nbIncorrectAnswers = '';
+              $points = 0;
+              $nbQuestions = 0;
+              $nbCorrectAnswers = 0;
+              $nbIncorrectAnswers = 0;
               if ($elearningResult = $this->elearningResultUtils->selectBySubscriptionAndExercise($elearningSubscriptionId, $elearningExerciseId)) {
                 $elearningResultId = $elearningResult->getId();
                 $resultTotals = $this->elearningResultUtils->getExerciseTotals($elearningExerciseId, $elearningResultId);
