@@ -35,7 +35,11 @@ class PaginationUtils {
 
     $this->listNbItems = $listNbItems;
     $this->listStep = $listStep;
-    $this->listIndex = $listIndex;
+    if ($listIndex) {
+      $this->listIndex = $listIndex;
+    } else {
+      $this->listIndex = 0;
+    }
 
     $this->hiddenVariables = array();
 
