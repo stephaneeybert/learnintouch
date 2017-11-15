@@ -102,11 +102,11 @@ class LocationStateDB {
     return($objects);
   }
 
-  function selectByCountryAndRegion($country, $country) {
+  function selectByCountryAndRegion($country, $region) {
     $this->dataSource->selectDatabase();
 
     $objects = Array();
-    if ($result = $this->dao->selectByCountryAndRegion($country, $country)) {
+    if ($result = $this->dao->selectByCountryAndRegion($country, $region)) {
       for ($i = 0; $i < $result->getRowCount(); $i++) {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
