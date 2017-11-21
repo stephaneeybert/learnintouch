@@ -2,6 +2,9 @@
 
 require_once("website.php");
 
+// Prevent any possible previous header from being sent before the following image header that must be the first
+ob_end_clean();
+
 $filename = LibEnv::getEnvHttpGET("filename");
 $width = LibEnv::getEnvHttpGET("width");
 $height = LibEnv::getEnvHttpGET("height");
