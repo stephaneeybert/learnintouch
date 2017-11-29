@@ -267,7 +267,7 @@ if ($templateContainers = $templateContainerUtils->selectByTemplateModelId($temp
     $strTable .= "<td id='container$templateContainerId' align='center' valign='top' style='padding:0px; border-style:solid; border-width:1px; border-color:#000000;'>"
       . "\n<table width='100%' border='0' cellpadding='2' cellspacing='2'>"
       . "<tr><td valign='top'><table width='1%' border='0' cellpadding='0' cellspacing='0'><tr><td valign='top'>$strMoveToPreviousRow</td><td valign='top'>$strMoveToNextRow</td><td valign='top'>$strSwapPreviousContainer</td><td valign='top'>$strSwapNextContainer</td><td valign='top'>$strDeleteContainer</td><td valign='top'>$strAddContainer</td></tr></table></td><td align='right' valign='top' style='white-space:nowrap;'>$strContainerWidthHeight $strContainerProperty $strPreview</td></tr>"
-      . "<tr><td colspan='2' style='padding:10px;' align='right' width='90%' valign='top' nowrap>"
+      . "<tr><td colspan='2' style='padding:10px;' align='right' width='90%' valign='top'>"
       . $strListElement
       . $strAddElement
       . "</td></tr>"
