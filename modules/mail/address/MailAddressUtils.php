@@ -12,7 +12,7 @@ class MailAddressUtils extends MailAddressDB {
     $this->MailAddressDB();
   }
 
-  function init() {
+  function loadLanguageTexts() {
     $this->websiteText = $this->languageUtils->getWebsiteText(__FILE__);
   }
 
@@ -47,6 +47,8 @@ class MailAddressUtils extends MailAddressDB {
   // Render the mini email address registration form
   function renderMiniRegister() {
     global $gMailUrl;
+
+    $this->loadLanguageTexts();
 
     $str = '';
 
