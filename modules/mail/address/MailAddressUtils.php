@@ -4,8 +4,6 @@ class MailAddressUtils extends MailAddressDB {
 
   var $websiteText;
 
-  var $currentSubscribe;
-
   var $languageUtils;
   var $mailListAddressUtils;
   var $mailListUtils;
@@ -16,8 +14,6 @@ class MailAddressUtils extends MailAddressDB {
 
   function init() {
     $this->websiteText = $this->languageUtils->getWebsiteText(__FILE__);
-
-    $this->currentSubscribe = "mailCurrentSubscribe";
   }
 
   // Subscribe to the address book
