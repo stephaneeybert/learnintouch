@@ -8,6 +8,7 @@ class BackupUtils extends BackupDB {
   var $backupFileUrl;
 
   var $previousBackupFilePath;
+  var $previousBackupFileUrl;
 
   var $exportFilePath;
   var $exportFileUrl;
@@ -43,8 +44,8 @@ class BackupUtils extends BackupDB {
 
     $this->backupFilePath = $gDataPath . 'backup/file/';
     $this->backupFileUrl = $gDataUrl . '/backup/file';
-    $this->previousBackupFilePath = $gAccountPath . 'db_backup/';
-    $this->previousBackupFileUrl = $gAccountUrl . '/db_backup';
+    $this->previousBackupFilePath = $this->backupFilePath . 'previous/';
+    $this->previousBackupFileUrl = $this->backupFileUrl . '/previous';
     $this->exportFilePath = $gDataPath . 'backup/export/';
     $this->exportFileUrl = $gDataUrl . '/backup/export';
 
@@ -236,17 +237,31 @@ class BackupUtils extends BackupDB {
     global $gDataPath;
 
     $dirList = array();
+
     $dirs = LibDir::getDirNames($gDataPath);
     if (is_array($dirs)) {
       $i = 0;
       foreach ($dirs as $dir) {
-        // Do not backup the current and parent directories
-        if ($dir != "." && $dir != "..") {
+        // Do not backup some directories
+        if ($dir != "." && $dir != ".." && $dir != "backup") {
           $dirList[$i]= $gDataPath . $dir;
           $i++;
         }
       }
     }
+
+    $dirs = LibDir::getDirNames($this->backupFilePath);
+    if (is_array($dirs)) {
+      $i = 0;
+      foreach ($dirs as $dir) {
+        // Do not backup some directories
+        if ($dir != "." && $dir != ".." && $dir != "previous") {
+          $dirList[$i]= $gDataPath . $dir;
+          $i++;
+        }
+      }
+    }
+
     sort($dirList);
 
     $tarArchive = new Archive_Tar($filename);
