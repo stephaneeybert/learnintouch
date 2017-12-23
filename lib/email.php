@@ -65,15 +65,7 @@ class LibEmail {
     $unsubscribeUrl = "$gTemplateUrl/display.php?pageId=SYSTEM_PAGE_USER_UNSUBSCRIBE";
     $mail->addCustomHeader("List-Unsubscribe: <mailto:$fromEmail?subject=Unsubscribe>, <$unsubscribeUrl>");          
     
-    // Setup the SSL private key and the SSL public key
-    // The SSL encryption to be used for PHPMailer 5.2.14 is SHA256
-    // The public key must also be specified in the DNS Zone
-    // An example of a DNS Zone DKIM key entry:
-    // mailng._domainkey.europasprak.com. 0 DKIM k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyaWk6dvLpoYfcUcJM6F6JvZa4sNOglm6ejPUPeC6Z/ENGExnVupjWy5nuUyMfTa5ASu9+b+h+vRZtiQTQLS+7YlkLxFKn6MSGcbufjtIvETYstmN2C5AylUT1CwFEDvW2YlemmXswML8uh3hLJPVWbj1wrAhVZWsNqnYUkf/XOgELBaASfhdhYU+JlqGP7ulTApkeCLRtVJ3e/i4dlIIq7aHfjvDns5UOAPgz87X87wkT92S1cxFRRB7BxEig6joh2ijELXFtVWvtyPhLmZ4HE7IRtnslZzsAtLh5eQ31vYCUaBQEV98qdlJSb4IIxg+OAZHYOlmnAINtdMeDglXcwIDAQAB
     $mail->DKIM_domain = $gSetupWebsiteUrl;
-    $mail->DKIM_private = $gSetupPath . 'dkim.ssl.private.key'; // The file containing the private key 
-    $mail->DKIM_selector = "mailing"; // The prefix (like mailing in mailing._domainkey.europasprak.com.) seen in the DNS zone
-    $mail->DKIM_passphrase = ""; // The passphrase protecting the private key
     $mail->DKIM_identity = $mail->From;
 
     if ($attachedImages && is_array($attachedImages)) {
