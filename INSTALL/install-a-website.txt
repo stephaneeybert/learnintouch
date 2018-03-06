@@ -97,7 +97,7 @@ In the administration panel, go to 'The websites' module and create a new websit
 Enable mail sending from the domain name
 Add an SPF and a DKIM entries in the DNS Zones of the domain name
 The mail gateway provides a public key that must be included in the entry
-The mailjet gateway: https://www.mailjet.com/docs/spf-dkim-guide/
+The mailjet gateway: https://app.mailjet.com/docs/spf-dkim-guide#dns-spf
 
 Create an administrator
 In the administration panel, go to 'The administrators' module, create a new administrator and check his module rights
