@@ -242,7 +242,7 @@ if ($elearningLessonHeadings = $elearningLessonHeadingUtils->selectByElearningLe
   }
 }
 
-$strAddLessonHeading = "<img id='addButton' border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'> $mlText[1]";
+$strAddLessonHeading = "<a href='$PHP_SELF?elearningLessonModelId=$elearningLessonModelId&addLessonHeading=1' $gJSNoStatus><img id='addButton' border='0' src='$gCommonImagesUrl/$gImageAdd' title='$mlText[1]'> $mlText[1]</a>";
 $panelUtils->addLine('', $panelUtils->addCell($strAddLessonHeading, "nb"));
 $panelUtils->addLine();
 $panelUtils->addLine('', $panelUtils->getOk());
