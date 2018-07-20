@@ -24,10 +24,10 @@ Add the virtual host entries file
   </Directory>
 </VirtualHost>
 <VirtualHost *:80>
-  ServerName fu.europasprak.com
-  DocumentRoot /home/stephane/learnintouch/www/fu
+  ServerName lerum.europasprak.com
+  DocumentRoot /home/stephane/learnintouch/www/lerum
   CustomLog logs/learnintouch-access_log combined
-  <Directory "/home/stephane/learnintouch/www/fu">
+  <Directory "/home/stephane/learnintouch/www/lerum">
     Include /home/stephane/learnintouch/engine/setup/url_rewrite.conf
   </Directory>
 </VirtualHost>
@@ -55,37 +55,34 @@ Create the /home/stephane/learnintouch/www/europasprak/account/setup/specific.ph
 
 Copy some data files
 cd ~/learnintouch/www/
-cp -R fu/account/data/* fhs/account/data/
+cp -R lerum/account/data/* lerum/account/data/
 
 Add an entry in the cron/*_all.sh crontabed files
 vi /home/stephane/learnintouch/engine/cron/*_all.sh
 
 Add a MySQL user
-programs/mysql/install/bin/mysql -u stephane -p
+programs/mysql/install/bin/mysql -u root -p
 use mysql;
-grant all privileges on fhs.* to fhs@'localhost' identified by 'xxx';
-grant all privileges on fu.* to fu@'localhost' identified by 'xxx';
+grant all privileges on lerum.* to lerum@'localhost' identified by 'xxx';
 flush privileges;
 quit;
 
 Create the database
-cd programs/mysql/install
-bin/mysql -u stephane -p
-create database fhs character set utf8mb4 collate utf8mb4_unicode_ci;
+programs/mysql/install/bin/mysql -u root -p
+create database lerum character set utf8mb4 collate utf8mb4_unicode_ci;
 
 Create the database schema
 Make sure the structure file has an ascii/unknown charset 
-uchardet ~/learnintouch/www/fu/db-structure.sql
+uchardet ~/learnintouch/www/lerum/db-structure.sql
 Make sure the data file has a utf-8 charset
-uchardet ~/learnintouch/www/fu/db-data.sql
+uchardet ~/learnintouch/www/lerum/db-data.sql
 cd programs/mysql/install
-bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-structure.sql
-bin/mysql -u root -p fhs -v < ~/learnintouch/www/fu/db-data.sql
+bin/mysql -u root -p lerum -v < ~/backup/db-structure.sql
+bin/mysql -u root -p lerum -v < ~/backup/db-data.sql
 
 Add some index
-cd programs/mysql/install
-bin/mysql -v -u stephane -p
-use fhs;
+programs/mysql/install/bin/mysql -v -u root -p
+use lerum;
 alter table statistics_visit add index(visit_datetime);
 alter table statistics_visit add index(visitor_host_address);
 alter table statistics_visit add index(visitor_browser);
@@ -111,13 +108,13 @@ Go in the language module and select the website and administrative languages.
 
 
 Dumping the structure
-bin/mysqldump -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data -v fu > ~/learnintouch/www/fu/db-structure.sql
+bin/mysqldump -u root -p --default-character-set=latin1 --skip-extended-insert --add-drop-table --no-data -v lerum > ~/learnintouch/www/lerum/db-structure.sql
 
 Dumping the data
-bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert -v fu > ~/learnintouch/www/fu/db-data.sql
+bin/mysqldump -u root -p --no-create-info --default-character-set=utf8 --skip-extended-insert -v lerum > ~/learnintouch/www/lerum/db-data.sql
 
 Checking the charset of the generated file
-uchardet ~/learnintouch/www/fu/db-data.sql
+uchardet ~/learnintouch/www/lerum/db-data.sql
 
 Restoring some data from a data only backup file
 Insert the following statements at the TOP of the backup file:
@@ -126,13 +123,13 @@ set unique_checks = 0;
 set foreign_key_checks = 0;
 Insert the following statements at the BOTTOM of the backup file:
 commit;
-bin/mysql -v -u root -p fhs < ~/learnintouch/www/fu/db-data.sql
+bin/mysql -v -u root -p lerum < ~/learnintouch/www/lerum/db-data.sql
 
 Exporting latin1 data into a utf-8 database:
 Make sure the structure file has an ascii/unknown charset
-uchardet ~/learnintouch/www/fu/db-structure.sql
+uchardet ~/learnintouch/www/lerum/db-structure.sql
 Dump the data specifying its original charset
-bin/mysqldump -u root -p --no-create-info --default-character-set=latin1 --skip-extended-insert fu > ~/learnintouch/www/fu/db-data.sql 
+bin/mysqldump -u root -p --no-create-info --default-character-set=latin1 --skip-extended-insert lerum > ~/learnintouch/www/lerum/db-data.sql 
 In the created file, add the following statements:
 set autocommit = 0;
 set unique_checks = 0;
@@ -145,9 +142,9 @@ Removing the comments in vi
 Removing the ENGINE names in vi
 :s/ ENGINE.*/;/99999
 Convert the data to utf-8 (even if uchardet already says it is utf-8 do not believe it as it is still latin1)
-iconv -f ISO-8859-1 -t utf-8 ~/learnintouch/www/fu/db-data.sql -o ~/learnintouch/www/fu/db-data.utf8.sql
+iconv -f ISO-8859-1 -t utf-8 ~/learnintouch/www/lerum/db-data.sql -o ~/learnintouch/www/lerum/db-data.utf8.sql
 Make sure the data file has a utf-8 charset
-uchardet ~/learnintouch/www/fu/db-data.utf8.sql
-bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-structure.sql
-bin/mysql -u stephane -p fu -v < ~/learnintouch/www/fu/db-data.utf8.sql
+uchardet ~/learnintouch/www/lerum/db-data.utf8.sql
+bin/mysql -u stephane -p lerum -v < ~/learnintouch/www/lerum/db-structure.sql
+bin/mysql -u stephane -p lerum -v < ~/learnintouch/www/lerum/db-data.utf8.sql
 
