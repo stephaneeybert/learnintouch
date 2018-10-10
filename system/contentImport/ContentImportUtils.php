@@ -237,7 +237,7 @@ class ContentImportUtils extends ContentImportDB {
 
     return($certificate);
   }
-  function renderPermissionKey($seed) {
+  function renderPermissionKey() {
     $permissionKey = LibUtils::generateUniqueId(CONTENT_IMPORT_KEY_LENGTH);
 
     return($permissionKey);
@@ -253,7 +253,7 @@ class ContentImportUtils extends ContentImportDB {
       $domainName = $contentImport->getDomainName();
 
       $importCertificate = $this->renderImportCertificate();
-      $permissionKey = $this->renderPermissionKey($gHomeUrl);
+      $permissionKey = $this->renderPermissionKey();
 
       $url = $domainName . "/engine/system/contentImport/exporters/exposeRequestPermission.php?domainName=$gHomeUrl&importCertificate=$importCertificate&permissionKey=$permissionKey";
 
@@ -303,7 +303,7 @@ class ContentImportUtils extends ContentImportDB {
   function registerPermissionRequestWasReceived($domainName, $permissionKey) {
     if ($domainName && $permissionKey) {
       // Generate a new permission key by the exporting website
-      $permissionKey = $this->renderPermissionKey($permissionKey);
+      $permissionKey = $this->renderPermissionKey();
 
       if ($contentImport = $this->selectByDomainNameAndIsImporting($domainName)) {
         $contentImportId = $contentImport->getId();
