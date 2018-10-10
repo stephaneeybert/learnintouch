@@ -67,8 +67,6 @@ class ContentImportUtils extends ContentImportDB {
 
   // Warn about an illegal import attempt
   function illegalImportAttemptAlert($domainName) {
-    global $gHomeUrl;
-
     $this->loadLanguageTexts();
 
     $websiteName = $this->profileUtils->getProfileValue("website.name");
