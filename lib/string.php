@@ -206,6 +206,11 @@ class LibString {
     return(preg_replace("/[^[:alnum:]+]/i", '', $str));
   }
 
+  // Get the domain name of the url
+  static function getDomainName($url) {
+    return parse_url($url, PHP_URL_HOST);
+  }
+
   // Strip the trailling slash
   static function stripTraillingSlash($str) {
     $str = preg_replace("!/$!iU", '', $str);
