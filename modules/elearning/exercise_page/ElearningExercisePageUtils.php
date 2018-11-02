@@ -2759,9 +2759,7 @@ HEREDOC;
         // The answers of the questions can be dragged so as to be dropped on the question
         // The droppable area reaches under the question and encloses its already dropped answers
         $uniqueQuestionId = $this->elearningQuestionUtils->renderUniqueQuestionId($elearningQuestionId);
-        $str .= "<tr><td style='vertical-align:top; width:65%;' class='elearning_question_droppable' elearningQuestionId='$elearningQuestionId' uniqueQuestionId='$uniqueQuestionId' multipleAnswers='$multipleAnswers'>";
-
-        $str .= "\n<div class='elearning_exercise_page_question' id='$uniqueQuestionId'>";
+        $str .= "<tr><td style='vertical-align:top; width:65%;'>";
 
         $str .= $this->elearningQuestionUtils->renderImage($elearningQuestion);
 
@@ -2770,6 +2768,10 @@ HEREDOC;
           $strPlayer = $this->elearningQuestionUtils->renderPlayer($audio);
           $str .= ' ' . "<span class='elearning_question_player' style='vertical-align:middle;'>" . $strPlayer . "</span>";
         }
+
+        $str .= "<span class='elearning_question_droppable' elearningQuestionId='$elearningQuestionId' uniqueQuestionId='$uniqueQuestionId' multipleAnswers='$multipleAnswers'>";
+
+        $str .= "\n<div class='elearning_exercise_page_question' id='$uniqueQuestionId'>";
 
         $strQuestion = '';
 
@@ -2831,7 +2833,7 @@ HEREDOC;
           }
         }
 
-        $str .= "</td></tr>";
+        $str .= "</span></td></tr>";
       }
 
       $str .= "</table>";
