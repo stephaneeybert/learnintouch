@@ -5,4 +5,3 @@ personal
 INSTALL/db_engine.sql
 INSTALL/db-data.sql
 INSTALL/db-structure.sql
-setup/properties.php
