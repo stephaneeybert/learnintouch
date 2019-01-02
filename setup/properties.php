@@ -6,10 +6,10 @@ define('DB_COMMON_PORT', DB_PORT);
 define('DB_COMMON_USER', getenv("LEARNINTOUCH_DB_USER"));
 define('DB_COMMON_PASS', getenv("LEARNINTOUCH_DB_PASSWORD"));
 
-define('STAFF_EMAIL', "mittiprovence@yahoo.se");
+define('STAFF_EMAIL', getenv("STAFF_EMAIL"));
 
-define('LOCALHOST', 'http://localhost');
+define('LOCALHOST', getenv("LOCAL_HOST"));
 
-define('NODEJS_SOCKET_PORT', 9001);
+define('NODEJS_SOCKET_PORT', getenv("NODEJS_SOCKET_PORT"));
 
 ?>
