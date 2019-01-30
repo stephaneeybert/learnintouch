@@ -1,6 +1,8 @@
 var http = require('http');
+var https = require('https');
 var connect = require('connect');
 var cookie = require('cookie');
+var path = require('path');
 var redis = require('redis');
 var ioredis = require('socket.io-redis');
 var socketio = require('socket.io');
@@ -8,13 +10,28 @@ var socketio = require('socket.io');
 var utils = require('./utils.js');
 var config = require('./config');
 
+//var options = {
+//};
+//var httpServer = http.createServer(options, utils.httpHandler);
 var httpServer = http.createServer(utils.httpHandler);
-
 httpServer.listen(config.socketio.port, function() {
-  console.log('The NodeJS server [port: ' + config.socketio.port + '] is listening...');
+  console.log('The NodeJS HTTP server [port: ' + config.socketio.port + '] is listening...');
 });
 module.exports.io = socketio.listen(httpServer);
-  
+
+//var options = {
+//  key: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-privkey.pem')),
+//  cert: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-cert.pem')),
+//  ca: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-chain.pem')),
+//  requestCert: false,
+//  rejectUnauthorized: false
+//};
+//var httpsServer = https.createServer(options, utils.httpHandler);
+//httpsServer.listen(config.socketio.port, function() {
+//  console.log('The NodeJS HTTPS server [port: ' + config.socketio.port + '] is listening...');
+//});
+//module.exports.io = socketio.listen(httpsServer);
+
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
 
