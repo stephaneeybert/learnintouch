@@ -10,7 +10,7 @@ $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
 
 if ($formSubmitted) {
 
-  $login = LibEnv::getEnvHttpPOST("login");
+  $login = LibEnv::getEnvHttpPOST("loginname");
   $password = LibEnv::getEnvHttpPOST("password");
   $plogin = LibEnv::getEnvHttpPOST("plogin");
 
@@ -91,7 +91,7 @@ if (count($warnings) > 0) {
 $panelUtils->setHeader($mlText[0]);
 $panelUtils->addLine($panelUtils->addCell($strWarning, "wb"));
 $panelUtils->openForm($PHP_SELF, "login");
-$panelUtils->addLine($panelUtils->addCell($mlText[1], "nbr"), "<input type='text' size='20' maxlength='50' id='login' name='login' value='$plogin'>");
+$panelUtils->addLine($panelUtils->addCell($mlText[1], "nbr"), "<input type='text' size='20' maxlength='50' id='loginname' name='loginname' value='$plogin'>");
 $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), "<input type='password' size='20' id='password' name='password' value='$password'>");
 $panelUtils->addLine();
@@ -103,7 +103,7 @@ $panelUtils->closeForm();
 $strJs = <<<HEREDOC
 <script type='text/javascript'>
 function adminLoginFocus() {
-  var login = document.forms['login'].elements['login'];
+  var login = document.forms['login'].elements['loginname'];
   var password = document.forms['login'].elements['password'];
   if (login.value == '') {
     login.focus();
