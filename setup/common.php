@@ -33,7 +33,8 @@ function isLocalhost() {
 $gHostname = LOCALHOST;
 
 // The socket host
-$gSocketHostname = 'http://' . $gSetupWebsiteDomain;
+// This allows the socket to auto detect the browser scheme, connecting using http or https accordingly
+$gSocketHostname = '//' . $gSetupWebsiteDomain;
 
 // Include the paths to the engine modules
 require_once("path.php");
