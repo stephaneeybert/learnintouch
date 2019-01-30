@@ -142,6 +142,8 @@ class LibUtils {
     // Remove the protocol if any
     $protocol = 'http://';
     $url = str_replace($protocol, '', $url);
+    $protocol = 'https://';
+    $url = str_replace($protocol, '', $url);
 
     // Remove the domain name
     if (strstr($url, $HOSTNAME)) {
@@ -184,7 +186,7 @@ class LibUtils {
   static function isRelativeUrl($url) {
     $isRelative = false;
 
-    if (!strstr($url, 'http://') && !strstr($url, 'www') && ($url == LibUtils::getRelativeUrl($url))) {
+    if (!strstr($url, 'http://') && !strstr($url, 'https://') && !strstr($url, 'www') && ($url == LibUtils::getRelativeUrl($url))) {
       $isRelative = true;
     }
 
@@ -202,13 +204,24 @@ class LibUtils {
     return($isMailto);
   }
 
+  // Get the website protocol
+  static function getProtocol() {
+    if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+      $protocol = 'https';
+    } else {
+      $protocol = 'http';
+    }
+    return($protocol);
+  }
+
   // Format the url
   static function formatUrl($url) {
     if (!$url) {
       return;
     }
 
-    $protocol = 'http://';
+    $url = LibUtils::normalizeUrl($url);
+    $protocol = LibUtils::getProtocol();
     $subDomain = '';
 
     // Remove the protocol if any

@@ -508,7 +508,9 @@ HEREDOC;
     global $gCommonImagesUrl;
     global $gImagePoweredByLearnInTouch;
 
-    $str = "<a href='http://www.thalasoft.com' target='_blank' $gJSNoStatus>"
+    $protocol = LibUtils::getProtocol();
+
+    $str = "<a href='" . $protocol . "://www.thalasoft.com' target='_blank' $gJSNoStatus>"
       . "<img src='$gCommonImagesUrl/$gImagePoweredByLearnInTouch' class='tipPopup' border='0' title='Learn, teach and keep in touch !'>"
       . "</a>";
 

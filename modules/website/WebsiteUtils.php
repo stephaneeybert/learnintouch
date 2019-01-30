@@ -105,8 +105,9 @@ class WebsiteUtils extends WebsiteDB {
 
     $domainName = '';
 
-    // Remove the http:// prefix
+    // Remove the protocol
     $str = str_replace('http://', '', $gSetupWebsiteUrl);
+    $str = str_replace('https://', '', $gSetupWebsiteUrl);
 
     // Remove sub domain names
     $bits = explode('.', $str);

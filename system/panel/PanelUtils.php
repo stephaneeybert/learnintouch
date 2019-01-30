@@ -156,6 +156,8 @@ class PanelUtils extends PanelContentUtils {
 
     $this->loadLanguageTexts();
 
+    $protocol = LibUtils::getProtocol();
+
     $str = '';
 
     $str .= "\n<table border='0' id='bodyTable' class='admin' style='width:100%; height:94%;'><tbody><tr><td class='no_style_body'>";
@@ -165,7 +167,7 @@ class PanelUtils extends PanelContentUtils {
       $str .= "\n<td align='left' width='25%'>";
       if ($this->isMainMenu) {
         $title = $this->mlText[5];
-        $str .= "\n<a href='http://www.thalasoft.com' target='_blank' $gJSNoStatus>";
+        $str .= "\n<a href='" . $protocol . "://www.thalasoft.com' target='_blank' $gJSNoStatus>";
         $str .= "\n<img src='$gCommonMenuImagesUrl/$gIconLearnInTouch' class='tipPopup' border='0' title='$title'>";
         $str .= "\n</a>";
       } else {
@@ -200,7 +202,7 @@ class PanelUtils extends PanelContentUtils {
     $strTranslate = $this->languageUtils->renderTranslateLanguageResource();
 
     $title = $this->mlText[6];
-    $str .= "<div style='width:100%; text-align:center;'>$strTranslate <a href='http://8fub189.copyrightfrance.com' $gJSNoStatus target='_blank' title='$title'>Copyright</a> 2010 <a href='http://www.thalasoft.com' $gJSNoStatus target='_blank' title='$title'>Thalasoft</a> All Rights Reserved.</div>";
+    $str .= "<div style='width:100%; text-align:center;'>$strTranslate <a href='http://8fub189.copyrightfrance.com' $gJSNoStatus target='_blank' title='$title'>Copyright</a> 2010 <a href='" . $protocol . "://www.thalasoft.com' $gJSNoStatus target='_blank' title='$title'>Thalasoft</a> All Rights Reserved.</div>";
 
     return($str);
   }
