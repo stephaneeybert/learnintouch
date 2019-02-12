@@ -16,6 +16,10 @@ if ($formSubmitted) {
   $timeDifference = LibString::cleanString($timeDifference);
 
   $clockUtils->setTimeDifference($timeDifference);
+
+  $str = LibHtml::urlRedirect("$gAdminUrl/menu.php");
+  printContent($str);
+  return;
 }
 
 $panelUtils->setHeader($mlText[0], "$gAdminUrl/menu.php");
