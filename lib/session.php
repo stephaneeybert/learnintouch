@@ -6,10 +6,6 @@ class LibSession {
   // To check if a session exists, do not rely on the session id,
   // but rather on a session variable
   static function openSession() {
-    // Using sessions might prevent a browser from caching the form input fields content
-    // Set the session cache limiter to work around that issue
-    session_cache_limiter('nocache');
-
     if (!session_id()) {
       session_start();
     }
