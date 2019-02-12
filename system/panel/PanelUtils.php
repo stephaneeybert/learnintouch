@@ -99,7 +99,7 @@ class PanelUtils extends PanelContentUtils {
   function addLine() {
     $arguments = func_get_args();
     if (!$arguments) {
-      $arguments = '';
+      $arguments = array();
     }
     $this->lines[count($this->lines)] = $arguments;
     $this->linesHiddenContent[count($this->linesHiddenContent)] = '';
