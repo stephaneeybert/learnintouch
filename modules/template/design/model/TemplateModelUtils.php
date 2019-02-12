@@ -848,7 +848,7 @@ class TemplateModelUtils extends TemplateModelDB {
         if ($templatePropertySet = $this->templatePropertySetUtils->selectById($templatePropertySetId)) {
           if ($templateProperty = $this->templatePropertyUtils->selectByTemplatePropertySetIdAndName($templatePropertySetId, 'WIDTH')) {
             $cellWidth = $templateProperty->getValue();
-            $cellWidth = $cellWidth + $this->templateContainerUtils->getLeftAndRightBorderWidth($templateContainerId);
+            $cellWidth = intval($cellWidth) + intval($this->templateContainerUtils->getLeftAndRightBorderWidth($templateContainerId));
             $rowWidth = $rowWidth + $cellWidth;
           }
         }
