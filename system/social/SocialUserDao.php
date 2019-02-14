@@ -22,8 +22,6 @@ linkedin_user_id varchar(48),
 unique (linkedin_user_id),
 google_user_id varchar(48),
 unique (google_user_id),
-twitter_user_id varchar(48),
-unique (twitter_user_id),
 user_account_id int unsigned not null,
 index (user_account_id), foreign key (user_account_id) references user(id),
 primary key (id), unique (id)
@@ -33,21 +31,19 @@ HEREDOC;
     return($this->querySelect($sqlStatement));
   }
 
-  function insert($facebookUserId, $linkedinUserId, $googleUserId, $twitterUserId, $userId) {
+  function insert($facebookUserId, $linkedinUserId, $googleUserId, $userId) {
     $facebookUserId = LibString::emptyToNULL($facebookUserId);
     $linkedinUserId = LibString::emptyToNULL($linkedinUserId);
     $googleUserId = LibString::emptyToNULL($googleUserId);
-    $twitterUserId = LibString::emptyToNULL($twitterUserId);
-    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', $facebookUserId, $linkedinUserId, $googleUserId, $twitterUserId, '$userId')";
+    $sqlStatement = "INSERT INTO $this->tableName VALUES ('', '', $facebookUserId, $linkedinUserId, $googleUserId, '$userId')";
     return($this->querySelect($sqlStatement));
   }
 
-  function update($id, $facebookUserId, $linkedinUserId, $googleUserId, $twitterUserId, $userId) {
+  function update($id, $facebookUserId, $linkedinUserId, $googleUserId, $userId) {
     $facebookUserId = LibString::emptyToNULL($facebookUserId);
     $linkedinUserId = LibString::emptyToNULL($linkedinUserId);
     $googleUserId = LibString::emptyToNULL($googleUserId);
-    $twitterUserId = LibString::emptyToNULL($twitterUserId);
-    $sqlStatement = "UPDATE $this->tableName SET facebook_user_id = $facebookUserId, linkedin_user_id = $linkedinUserId, google_user_id = $googleUserId, twitter_user_id = $twitterUserId, user_account_id = '$userId' WHERE id = '$id'";
+    $sqlStatement = "UPDATE $this->tableName SET facebook_user_id = $facebookUserId, linkedin_user_id = $linkedinUserId, google_user_id = $googleUserId, user_account_id = '$userId' WHERE id = '$id'";
     return($this->querySelect($sqlStatement));
   }
 
@@ -93,16 +89,6 @@ HEREDOC;
 
   function selectByLinkedinUserId($linkedinUserId) {
     $sqlStatement = "SELECT * FROM $this->tableName WHERE linkedin_user_id = '$linkedinUserId' LIMIT 1";
-    return($this->querySelect($sqlStatement));
-  }
-
-  function selectByTwitterUserIdAndUserId($twitterUserId, $userId) {
-    $sqlStatement = "SELECT * FROM $this->tableName WHERE twitter_user_id = '$twitterUserId' AND user_account_id = '$userId' LIMIT 1";
-    return($this->querySelect($sqlStatement));
-  }
-
-  function selectByTwitterUserId($twitterUserId) {
-    $sqlStatement = "SELECT * FROM $this->tableName WHERE twitter_user_id = '$twitterUserId' LIMIT 1";
     return($this->querySelect($sqlStatement));
   }
 

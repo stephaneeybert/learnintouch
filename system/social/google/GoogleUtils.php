@@ -20,6 +20,15 @@ class GoogleUtils extends SocialUserDB {
     $this->clientSecret = $this->profileUtils->getGoogleClientSecret();
   }
 
+  function isEnabled() {
+    $this->clientId = $this->profileUtils->getGoogleClientId();
+    if ($this->clientId) {
+      return(true);
+    } else {
+      return(false);
+    }
+  }
+
   function renderLoginButton() {
     global $gGoogleUrl;
     global $gImagesUserUrl;

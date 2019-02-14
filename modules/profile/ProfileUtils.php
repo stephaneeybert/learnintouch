@@ -60,7 +60,6 @@ class ProfileUtils extends ProfileDB {
 
   function loadProfileNames() {
     global $gGoogleUrl;
-    global $gTwitterUrl;
 
     $this->loadLanguageTexts();
 
@@ -70,11 +69,6 @@ class ProfileUtils extends ProfileDB {
       . ' ' . $this->mlText[48]
       . ' ' . $gGoogleUrl . '/login.php'
       . ' ' . $this->mlText[49];
-
-    $twitterRegisterLabel = $this->mlText[47]
-      . ' ' . $this->mlText[54]
-      . ' ' . $gTwitterUrl . '/login.php'
-      . ' ' . $this->mlText[55];
 
     $this->profileNames = array(
       array("website.name", $this->mlText[1], $this->mlText[101]),
@@ -89,9 +83,6 @@ class ProfileUtils extends ProfileDB {
       array("facebook.secret", $this->mlText[5], $this->mlText[11]),
       array("facebook.appid", $this->mlText[13], $this->mlText[14]),
       array("linkedin.apikey", $this->mlText[37], $this->mlText[38]),
-      array("tweeter.id", $this->mlText[35], $this->mlText[36] . $twitterRegisterLabel),
-      array("tweeter.consumer.key", $this->mlText[50], $this->mlText[51] . $twitterRegisterLabel),
-      array("tweeter.consumer.secret", $this->mlText[52], $this->mlText[53] . $twitterRegisterLabel),
       array("google.apikey", $this->mlText[39], $this->mlText[40] . $googleRegisterLabel),
       array("google.client.id", $this->mlText[41], $this->mlText[42] . $googleRegisterLabel),
       array("google.client.secret", $this->mlText[43], $this->mlText[44] . $googleRegisterLabel),
@@ -385,33 +376,6 @@ class ProfileUtils extends ProfileDB {
     }
   }
 
-  // Get the Twitter id
-  function getTwitterId() {
-    if ($profile = $this->selectByName("tweeter.id")) {
-      $value = $profile->getValue();
-
-      return($value);
-    }
-  }
-
-  // Get the Twitter consumer key
-  function getTwitterConsumerKey() {
-    if ($profile = $this->selectByName("tweeter.consumer.key")) {
-      $value = $profile->getValue();
-
-      return($value);
-    }
-  }
-
-  // Get the Twitter consumer secret
-  function getTwitterConsumerSecret() {
-    if ($profile = $this->selectByName("tweeter.consumer.secret")) {
-      $value = $profile->getValue();
-
-      return($value);
-    }
-  }
-
   // Get the Google site Id
   function getGoogleApiKey() {
     if ($profile = $this->selectByName("google.apikey")) {
@@ -437,13 +401,6 @@ class ProfileUtils extends ProfileDB {
 
       return($value);
     }
-  }
-
-  // Render the Twitter account url
-  function renderTwitterAccountUrl() {
-    $url = "http://www.twitter.com/" . $this->getTwitterId();
-
-    return($url);
   }
 
   // Get the description used when publishing messages on social websites like Facebook

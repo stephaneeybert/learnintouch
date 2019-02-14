@@ -68,7 +68,6 @@ $formItemUtils = new FormItemUtils();
 $formItemValueUtils = new FormItemValueUtils();
 $formValidUtils = new FormValidUtils();
 $googleUtils = new GoogleUtils();
-$twitterUtils = new TwitterUtils();
 $guestbookUtils = new GuestbookUtils();
 $languageUtils = new LanguageUtils();
 $lexiconEntryUtils = new LexiconEntryUtils();

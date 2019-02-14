@@ -213,24 +213,19 @@ HEREDOC;
     . "<div class='system_comment'>";
 
   $strFacebookLogin = $facebookUtils->renderLoginSetup(true);
-  if ($strFacebookLogin) {
+  if ($facebookUtils->isEnabled()) {
     $str .= $strFacebookLogin;
     $str .= ' ' . $facebookUtils->renderLoginButton();
   }
 
   $strLinkedinLogin = $linkedinUtils->renderLoginSetup(true);
-  if ($strLinkedinLogin) {
+  if ($linkedinUtils->isEnabled()) {
     $str .= $strLinkedinLogin;
     $str .= ' ' . $linkedinUtils->renderLoginButton();
   }
 
-  $withTwitter = $twitterUtils->setup(true);
-  if ($withTwitter) {
-    $str .= ' ' . $twitterUtils->renderLoginButton();
-  }
-
   $withGoogle = $googleUtils->setup(true);
-  if ($withGoogle) {
+  if ($googleUtils->isEnabled()) {
     $str .= ' ' . $googleUtils->renderLoginButton();
   }
 

@@ -1000,7 +1000,6 @@ class NewsPaperUtils extends NewsPaperDB {
       $columnNewsStoryNb = count($newsStoryList);
     }
 
-    $tweeterId = $this->profileUtils->getTwitterId();
     $facebookApplicationId = $this->profileUtils->getFacebookApplicationId();
 
     // Render the news stories in one or several columns

@@ -28,6 +28,5 @@ define('IMAGE_COMMON_1RIGHTARROW', '1rightarrow.png');
 define('IMAGE_COMMON_FACEBOOK', 'facebook.png');
 define('IMAGE_COMMON_GOOGLEPLUS', 'googleplus.png');
 define('IMAGE_COMMON_LINKEDIN', 'linkedin.png');
-define('IMAGE_COMMON_TWITTER', 'twitter.png');
 
 ?>

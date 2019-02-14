@@ -32,8 +32,6 @@
 [  32]Invite message:
 [  33]It is possible, for a visitor of the website, to send by email an invite message to all his friends.\n\nAlthough the visitor can type in the message, a text can be suggested to the visitor.
 [  34]Have a look at this website
-[  35]Twitter id:
-[  36]The Twitter id is the login name of a Twitter account.
 [  37]LinkedIn API Key:
 [  38]The identifier LinkedIn API Key is a unique identifier attributed by LinkedIn when registering a new application into the LinkedIn platform.\n\nIt is found in the www.linkedin.com website at https://www.linkedin.com/secure/developer -> Add New Application\n\nAfter that, you must refresh the models of your website.
 [  39]Google Api Key:
@@ -44,15 +42,9 @@
 [  44]The identifier Google Client Secret is a unique identifier attributed by Google when registering a new application into the Google platform.\n\nIt is obtained after registration of the website.
 [  45]\n\nRegistering the website at Google:\nGo to the Google console https://code.google.com/apis/console/\nClick on the left menu item "Services" and switch on the "Google+ API" service.\nClick on the left menu item "API Access"\nClick on the button "Create an OAuth 2.0 client ID"\nIn the field "Product name:" type in the name of your website.\nIn the field "Product logo:" paste the url to the image of your website logo.\nThe url to the image of your website logo is:
 [  46]\nClick on the "Update" button to display your logo.
-[  47]\n\nRegistering the website at Twitter:\nGo to the Twitter app page https://dev.twitter.com/apps\nClick on the "Create a new application" button.\nFill in the form.
 [  48]\nIn the field "Redirect URIs:" type in the login url of your website, which is:
 [  49]\nClick on the "Next" button.\nSelect the "Web application" option.\nIn the "Hostname" field, select the "http://" protocol and type in the domain name of your website.\nClick on the "Create client ID" button.\nCopy and paste the "Client ID" and "Client secret" values into the profile of your website.
-[  50]Twitter consumer key:
-[  51]The Twitter consumer key is given by Twitter when registering an application.
-[  52]Twitter consumer secret:
-[  53]The Twitter consumer secret is given by Twitter when registering an application.
 [  54]\nIn the field "Callback URL:" type in the login url of your website, which is:
-[  55]\nCopy and paste the "Twitter consumer key" and "Twitter consumer secret" values into the profile of your website.
 [  56]Javascript in the body:
 [  57]It is possible to insert some javascript at the end of the page body element.
 [  58]Mail SMTP Host:

@@ -6,7 +6,6 @@ class SocialUser {
   var $facebookUserId;
   var $linkedinUserId;
   var $googleUserId;
-  var $twitterUserId;
   var $userId;
 
   function SocialUser($id = '') {
@@ -28,10 +27,6 @@ class SocialUser {
     return($this->googleUserId);
   }
 
-  function getTwitterUserId() {
-    return($this->twitterUserId);
-  }
-
   function getUserId() {
     return($this->userId);
   }
@@ -50,10 +45,6 @@ class SocialUser {
 
   function setGoogleUserId($googleUserId) {
     $this->googleUserId = $googleUserId;
-  }
-
-  function setTwitterUserId($twitterUserId) {
-    $this->twitterUserId = $twitterUserId;
   }
 
   function setUserId($userId) {

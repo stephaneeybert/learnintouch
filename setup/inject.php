@@ -18,12 +18,6 @@ $googleUtils->profileUtils = $profileUtils;
 $googleUtils->userUtils = $userUtils;
 $googleUtils->preferenceUtils = $preferenceUtils;
 
-$twitterUtils->commonUtils = $commonUtils;
-$twitterUtils->popupUtils = $popupUtils;
-$twitterUtils->profileUtils = $profileUtils;
-$twitterUtils->userUtils = $userUtils;
-$twitterUtils->preferenceUtils = $preferenceUtils;
-
 $fileUploadUtils->languageUtils = $languageUtils;
 
 $popupUtils->templateUtils = $templateUtils;
@@ -109,7 +103,6 @@ $socialUserUtils->commonUtils = $commonUtils;
 $socialUserUtils->profileUtils = $profileUtils;
 $socialUserUtils->facebookUtils = $facebookUtils;
 $socialUserUtils->linkedinUtils = $linkedinUtils;
-$socialUserUtils->twitterUtils = $twitterUtils;
 
 $linkedinUtils->commonUtils = $commonUtils;
 $linkedinUtils->profileUtils = $profileUtils;

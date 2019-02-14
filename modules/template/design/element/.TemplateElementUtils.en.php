@@ -42,7 +42,7 @@
 [  41]A newspaper cycle
 [  42]A newspaper cycle displays in a cycle the news stories of the newspaper.
 [  43]The social networks buttons
-[  44]The social networks, like Google Plus, Facebook and Twitter, offer buttons to express a positive note.
+[  44]The social networks, like Google Plus and Facebook, offer buttons to express a positive note.
 [  45]The lessons search
 [  46]The search allows a visitor of the website to search for a lesson in the courses platform.
 [  47]The exercises search

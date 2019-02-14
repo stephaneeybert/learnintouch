@@ -137,9 +137,6 @@ $gLinkedinUrl = $gSystemUrl . '/social/linkedin';
 $gGooglePath = $gSystemPath . 'social/google/';
 $gGoogleUrl = $gSystemUrl . '/social/google';
 
-$gTwitterPath = $gSystemPath . 'social/twitter/';
-$gTwitterUrl = $gSystemUrl . '/social/twitter';
-
 $gInviterPath = $gSystemPath . 'social/inviter/';
 $gInviterUrl = $gSystemUrl . '/social/inviter';
 

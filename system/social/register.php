@@ -14,7 +14,6 @@ if ($formSubmitted == 1) {
 
   $facebookUserId = LibEnv::getEnvHttpPOST("facebookUserId");
   $linkedinUserId = LibEnv::getEnvHttpPOST("linkedinUserId");
-  $twitterUserId = LibEnv::getEnvHttpPOST("twitterUserId");
   $googleUserId = LibEnv::getEnvHttpPOST("googleUserId");
   $email = LibEnv::getEnvHttpPOST("email");
   $firstname = LibEnv::getEnvHttpPOST("firstname");
@@ -86,9 +85,6 @@ if ($formSubmitted == 1) {
         if ($linkedinUserId) {
           $socialUser->setLinkedinUserId($linkedinUserId);
         }
-        if ($twitterUserId) {
-          $socialUser->setTwitterUserId($twitterUserId);
-        }
         if ($googleUserId) {
           $socialUser->setGoogleUserId($googleUserId);
         }
@@ -100,9 +96,6 @@ if ($formSubmitted == 1) {
         }
         if ($linkedinUserId) {
           $socialUser->setLinkedinUserId($linkedinUserId);
-        }
-        if ($twitterUserId) {
-          $socialUser->setTwitterUserId($twitterUserId);
         }
         if ($googleUserId) {
           $socialUser->setGoogleUserId($googleUserId);
@@ -126,7 +119,6 @@ if (!$formSubmitted) {
   $subscribe = '';
   $facebookUserId = LibEnv::getEnvHttpGET("facebookUserId");
   $linkedinUserId = LibEnv::getEnvHttpGET("linkedinUserId");
-  $twitterUserId = LibEnv::getEnvHttpGET("twitterUserId");
   $googleUserId = LibEnv::getEnvHttpGET("googleUserId");
   $email = LibEnv::getEnvHttpGET("email");
   $firstname = LibEnv::getEnvHttpGET("firstname");
@@ -155,8 +147,6 @@ if ($facebookUserId) {
   $str .= "\n<div class='system_comment'>$websiteText[11]</div>";
 } else if ($linkedinUserId) {
   $str .= "\n<div class='system_comment'>$websiteText[12]</div>";
-} else if ($twitterUserId) {
-  $str .= "\n<div class='system_comment'>$websiteText[14]</div>";
 } else if ($googleUserId) {
   $str .= "\n<div class='system_comment'>$websiteText[13]</div>";
 }
@@ -189,7 +179,6 @@ $str .= "<div class='system_okay_button'>"
 
 $str .= "\n<input type='hidden' name='facebookUserId' value='$facebookUserId' />";
 $str .= "\n<input type='hidden' name='linkedinUserId' value='$linkedinUserId' />";
-$str .= "\n<input type='hidden' name='twitterUserId' value='$twitterUserId' />";
 $str .= "\n<input type='hidden' name='googleUserId' value='$googleUserId' />";
 
 $str .= "\n<input type='hidden' name='formSubmitted' value='1' />";

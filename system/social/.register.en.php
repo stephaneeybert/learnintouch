@@ -12,4 +12,3 @@
 [  11]You are being logged in with your Facebook account.
 [  12]You are being logged in with your LinkedIn account.
 [  13]You are being logged in with your Google account.
-[  14]You are being logged in with your Twitter account.

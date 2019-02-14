@@ -21,6 +21,15 @@ class FacebookUtils extends SocialUserDB {
     $this->applicationId = $this->profileUtils->getFacebookApplicationId();
   }
 
+  function isEnabled() {
+    $this->apiKey = $this->profileUtils->getFacebookApiKey();
+    if ($this->apiKey) {
+      return(true);
+    } else {
+      return(false);
+    }
+  }
+
   // Get the api key
   function getApiKey() {
     $this->init();

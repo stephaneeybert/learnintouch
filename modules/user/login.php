@@ -108,24 +108,19 @@ $str .= "\n<div class='system_comment'>";
 $commonUtils->preventPageCaching();
 
 $strFacebookLogin = $facebookUtils->renderLoginSetup(false);
-if ($strFacebookLogin) {
+if ($facebookUtils->isEnabled()) {
   $str .= $strFacebookLogin;
   $str .= ' ' . $facebookUtils->renderLoginButton();
 }
 
 $strLinkedinLogin = $linkedinUtils->renderLoginSetup(false);
-if ($strLinkedinLogin) {
+if ($linkedinUtils->isEnabled()) {
   $str .= $strLinkedinLogin;
   $str .= ' ' . $linkedinUtils->renderLoginButton();
 }
 
-$withTwitter = $twitterUtils->setup(false);
-if ($withTwitter) {
-  $str .= ' ' . $twitterUtils->renderLoginButton();
-}
-
 $withGoogle = $googleUtils->setup(false);
-if ($withGoogle) {
+if ($googleUtils->isEnabled()) {
   $str .= ' ' . $googleUtils->renderLoginButton();
 }
 

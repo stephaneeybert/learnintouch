@@ -6,7 +6,6 @@ class SocialUserUtils {
   var $profileUtils;
   var $facebookUtils;
   var $linkedinUtils;
-  var $twitterUtils;
 
   function publishNotification($message, $url, $caption, $actionLinks) {
     $description = $this->profileUtils->getWebsiteSocialDescription();
@@ -33,9 +32,6 @@ class SocialUserUtils {
 
     $linkedInCaption = str_replace('{*actor*}', '', $caption);
     $str .= ' ' . $this->linkedinUtils->publishNotification($message, $url, $linkedInCaption, $actionLinks, $description, $logoUrl);
-
-    $twitterCaption = str_replace('{*actor*}', '', $caption);
-    $str .= ' ' . $this->twitterUtils->publishNotification($message, $url, $twitterCaption, $actionLinks, $description, $logoUrl);
 
     return($str);
   }

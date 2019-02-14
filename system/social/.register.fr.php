@@ -12,4 +12,3 @@
 [  11]Vous ëtes connecté avec votre compte Facebook.
 [  12]Vous ëtes connecté avec votre compte LinkedIn.
 [  13]Vous ëtes connecté avec votre compte Google.
-[  14]Vous ëtes connecté avec votre compte Twitter.

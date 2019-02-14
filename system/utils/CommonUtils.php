@@ -171,7 +171,6 @@ HEREDOC;
     global $gImageLinkedInShare;
     global $gSetupWebsiteUrl;
 
-    $tweeterId = $this->profileUtils->getTwitterId();
     $facebookApplicationId = $this->profileUtils->getFacebookApplicationId();
     $linkedinApiKey = $this->profileUtils->getLinkedinApiKey();
 
@@ -190,10 +189,6 @@ HEREDOC;
     }
 
     $str .= " <g:plusone href='$url' size='medium' count='false'></g:plusone>";
-
-    if ($tweeterId) {
-      $str .= " <a href='http://twitter.com/share' class='twitter-share-button' data-url='$url' data-text='$name' data-count='none' data-via='$tweeterId'>Tweet</a>";
-    }
 
     return($str);
   }

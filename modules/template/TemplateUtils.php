@@ -1089,7 +1089,6 @@ HEREDOC;
 <script type='text/javascript' src='$gJsUrl/jquery/wtooltip.min.js'></script>
 <link rel='stylesheet' type='text/css' href='$gJsUrl/jquery/tipsy-0.1.7/src/stylesheets/tipsy.css' />
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="$gJsUrl/socket/socket.io.min.js"></script>
 <script type='text/javascript' src='$gJsUrl/jquery/tipsy-0.1.7/src/javascripts/jquery.tipsy.js'></script>
 <script type="text/javascript" src="$gJsUrl/jquery/cycle/jquery.cycle.all.min.2.99.js"></script>
@@ -1116,6 +1115,7 @@ $(document).ready(function() {
   soundManager.onready(function() {
     soundManager.setup({
     waitForWindowLoad: true,
+    useConsole: false,
     debugMode: false,
     debugFlash: false,
     useConsole: true,

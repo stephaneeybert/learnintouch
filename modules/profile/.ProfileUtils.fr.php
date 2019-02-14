@@ -32,8 +32,6 @@
 [  32]Message d'invitation:
 [  33]Il est possible, pour un visiteur du site web, d'envoyer par email un message d'invitation à tous ses amis.\n\nBien que le visiteur puisse saisir le message, un texte peut être suggéré au visiteur.
 [  34]Regarde ce site web
-[  35]Twitter id:
-[  36]L'identifiant Twitter est le nom de connexion d'un compte Twitter.
 [  37]LinkedIn API Key:
 [  38]L'identifiant LinkedIn API Key est un identifiant unique attribué par LinkedIn lors de l'enregistrement d'une nouvelle application dans la plate-forme LinkedIn.\n\nIl se trouve dans le site web www.linkedin.com à https://www.linkedin.com/secure/developer -> Add New Application\n\nAprès cela, vous devez rafraichir les modèles de votre site web.
 [  39]Google Api Key:
@@ -44,15 +42,9 @@
 [  44]L'identifiant Google Client Secret est un identifiant unique attribué par Google lors de l'enregistrement d'une nouvelle application dans la plate-forme Google.\n\nIl est obtenu après l'enregistrement du site web.
 [  45]\n\nEnregistrement du site web à Google:\nVeuillez aller à la Google console https://code.google.com/apis/console/\nVeuillez cliquer dans le menu à gauche sur l'élément "Services" et activer le service "Google+ API".\nVeuillez cliquer dans le menu à gauche sur l'élément "API Access"\nVeuillez cliquer sur le bouton "Create an OAuth 2.0 client ID"\nDans le champ "Product name:" veuillez saisir le nom de votre site web.\nDans le champ "Product logo:" veuillez coller l'url vers l'image du logo de votre site web.\nL'url vers l'image du logo de votre site web est:
 [  46]\nVeuillez cliquer sur le bouton "Update" pour afficher votre logo.
-[  47]\n\nEnregistrement du site web à Twitter:\nVeuillez aller à la page https://dev.twitter.com/apps\nVeuillez cliquer sur le bouton "Create a new application".\nVeuillez remplir le formulaire.
 [  48]\nDans le champ "Redirect URIs:" veuillez saisir l'url de connexion dans votre site web, qui est:
 [  49]\nVeuillez cliquer sur le bouton "Next".\nVeuillez sélectionner l'option "Web application".\nDans le champ "Hostname", veuillez sélectionner le protocol "http://" et saisir le nom de domaine de votre site web.\nVeuillez cliquer sur le bouton "Create client ID".\nVeuillez copier et coller les valeurs "Client ID" et "Client secret" dans le profil de votre site web.
-[  50]Twitter consumer key:
-[  51]La Twitter consumer key est donnée par Twitter lors de l'enregistrement d'une application.
-[  52]Twitter consumer secret:
-[  53]Le Twitter consumer secret est donné par Twitter lors de l'enregistrement d'une application.
 [  54]\nDans le champ "Callback URL:" veuillez saisir l'url de connexion dans votre site web, qui est:
-[  55]\nVeuillez copier et coller les valeurs "Twitter consumer key" et "Twitter consumer secret" dans le profil de votre site web.
 [  56]Javascript dans le body:
 [  58]Mail SMTP Host:
 [  59]Le nom de host du serveur SMTP. Le fournisseur mandrill.com est une solution possible.

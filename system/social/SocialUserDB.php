@@ -29,7 +29,6 @@ class SocialUserDB {
       $object->setFacebookUserId($row['facebook_user_id']);
       $object->setLinkedinUserId($row['linkedin_user_id']);
       $object->setGoogleUserId($row['google_user_id']);
-      $object->setTwitterUserId($row['twitter_user_id']);
       $object->setUserId($row['user_account_id']);
 
       return($object);
@@ -140,30 +139,6 @@ class SocialUserDB {
     }
   }
 
-  function selectByTwitterUserIdAndUserId($twitterUserId, $userId) {
-    $this->dataSource->selectDatabase();
-
-    if ($result = $this->dao->selectByTwitterUserIdAndUserId($twitterUserId, $userId)) {
-      if ($result->getRowCount() == 1) {
-        $row = $result->getRow(0);
-        $object = $this->getObject($row);
-        return($object);
-      }
-    }
-  }
-
-  function selectByTwitterUserId($twitterUserId) {
-    $this->dataSource->selectDatabase();
-
-    if ($result = $this->dao->selectByTwitterUserId($twitterUserId)) {
-      if ($result->getRowCount() == 1) {
-        $row = $result->getRow(0);
-        $object = $this->getObject($row);
-        return($object);
-      }
-    }
-  }
-
   function selectByGoogleUserIdAndUserId($googleUserId, $userId) {
     $this->dataSource->selectDatabase();
 
@@ -207,7 +182,7 @@ class SocialUserDB {
       return(false);
     }
 
-    return($this->dao->insert($object->getFacebookUserId(), $object->getLinkedinUserId(), $object->getGoogleUserId(), $object->getTwitterUserId(), $object->getUserId()));
+    return($this->dao->insert($object->getFacebookUserId(), $object->getLinkedinUserId(), $object->getGoogleUserId(), $object->getUserId()));
   }
 
   function update($object) {
@@ -217,7 +192,7 @@ class SocialUserDB {
       return(false);
     }
 
-    return($this->dao->update($object->getId(), $object->getFacebookUserId(), $object->getLinkedinUserId(), $object->getGoogleUserId(), $object->getTwitterUserId(), $object->getUserId()));
+    return($this->dao->update($object->getId(), $object->getFacebookUserId(), $object->getLinkedinUserId(), $object->getGoogleUserId(), $object->getUserId()));
   }
 
   function delete($id) {

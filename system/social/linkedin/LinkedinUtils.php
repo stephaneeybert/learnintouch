@@ -22,6 +22,15 @@ class LinkedinUtils extends SocialUserDB {
     return($this->apiKey);
   }
 
+  function isEnabled() { 
+    $this->apiKey = $this->profileUtils->getLinkedinApiKey();
+    if ($this->apiKey) { 
+      return(true);
+    } else {
+      return(false);
+    }
+  }
+
   function renderLoginJs($noRedirect) {
     global $gLinkedinUrl;
     global $gSocialUrl;

@@ -42,7 +42,7 @@
 [  41]Un cycle d'un journal
 [  42]Un cycle d'un journal affiche en un cycle les articles d'un journal.
 [  43]Les boutons des réseaux sociaux
-[  44]Les réseaux sociaux, comme Google Plus, Facebook et Twitter, offrent des boutons pour permettre d'exprimer une note positive.
+[  44]Les réseaux sociaux, comme Google Plus et Facebook, offrent des boutons pour permettre d'exprimer une note positive.
 [  45]La recherche de leçons
 [  46]La recherche permet à un visiteur de rechercher une leçon dans la plate forme de cours.
 [  47]La recherche d'exercices
