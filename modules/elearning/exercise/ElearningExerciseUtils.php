@@ -3166,7 +3166,7 @@ $(function() {
     elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
   }
   if ('undefined' != typeof elearningSocket) {
-    console.log("A socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning exists");
+    console.log("A socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning already exists");
     elearningSocket.on('connect', function() {
       console.log("The elearning namespace socket connected");
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});
