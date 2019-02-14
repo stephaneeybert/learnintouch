@@ -38,14 +38,14 @@ module.exports.httpHandler = function(req, res) {
   switch(req.url) {
     case '/ping':
       if (req.method == 'GET') {
-        console.log("[200] " + req.method + " to " + req.url);
+//        console.log("Received a [200] " + req.method + " to " + req.url);
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.end('');
       }
       break;
     case '/push':
       if (req.method == 'POST') {
-        console.log("[200] " + req.method + " to " + req.url);
+//        console.log("Received a [200] " + req.method + " to " + req.url);
         form = new formidable.IncomingForm();
         form.parse(req, function(e, fields, files) {
           res.writeHead(200, {'Content-Type': 'text/plain'});

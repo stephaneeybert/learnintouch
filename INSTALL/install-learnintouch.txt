@@ -83,6 +83,7 @@ npm install -g cookie;
 npm install -g http;
 npm install -g https;
 npm install -g path;
+npm install -g fs;
 npm install -g lodash;
 npm install -g socket.io@1.7.1;
 npm install -g redis@2.6.3;

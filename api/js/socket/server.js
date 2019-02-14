@@ -3,6 +3,7 @@ var https = require('https');
 var connect = require('connect');
 var cookie = require('cookie');
 var path = require('path');
+var fs = require('fs');
 var redis = require('redis');
 var ioredis = require('socket.io-redis');
 var socketio = require('socket.io');
@@ -10,27 +11,41 @@ var socketio = require('socket.io');
 var utils = require('./utils.js');
 var config = require('./config');
 
-//var options = {
-//};
-//var httpServer = http.createServer(options, utils.httpHandler);
+var sslKey = '';
+var sslCertificate = '';
+var sslChain = '';
+if (fs.existsSync(config.ssl.path + config.ssl.key)) {
+  sslKey = fs.readFileSync(path.resolve(config.ssl.path + config.ssl.key));
+  sslCertificate = fs.readFileSync(path.resolve(config.ssl.path + config.ssl.certificate));
+  sslChain = fs.readFileSync(path.resolve(config.ssl.path + config.ssl.chain));
+  console.log("The virtual host HAS an SSL private key");
+} else {
+  console.log("The virtual host DOESN'T have an SSL private key");
+}
+
+console.log("Configuring the server for HTTP");
+console.log("The HTTP server is used by the healthcheck even if the socket is served on the HTTPS server");
 var httpServer = http.createServer(utils.httpHandler);
 httpServer.listen(config.socketio.port, function() {
   console.log('The NodeJS HTTP server [port: ' + config.socketio.port + '] is listening...');
 });
-module.exports.io = socketio.listen(httpServer);
 
-//var options = {
-//  key: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-privkey.pem')),
-//  cert: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-cert.pem')),
-//  ca: fs.readFileSync(path.resolve(__dirname, '/usr/bin/learnintouch/letsencrypt/current-chain.pem')),
-//  requestCert: false,
-//  rejectUnauthorized: false
-//};
-//var httpsServer = https.createServer(options, utils.httpHandler);
-//httpsServer.listen(config.socketio.port, function() {
-//  console.log('The NodeJS HTTPS server [port: ' + config.socketio.port + '] is listening...');
-//});
-//module.exports.io = socketio.listen(httpsServer);
+if (sslKey) {
+  console.log("Configuring the server for HTTPS");
+  var options = {
+    key: sslKey,
+    cert: sslCertificate,
+    ca: sslChain,
+    requestCert: false,
+    rejectUnauthorized: false
+  };
+  var httpsServer = https.createServer(options, utils.httpHandler);
+  httpsServer.listen(config.socketio.sslport, function() {
+    console.log('The NodeJS HTTPS server [port: ' + config.socketio.sslport + '] is listening...');
+  });
+}
+
+module.exports.io = socketio.listen(httpsServer);
 
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
