@@ -9,5 +9,7 @@
 [   8]Voir
 [   9]Issuu:
 [  10]Par défaut, les documents peuvent seulement être téléchargés.\n\nMais il est possible de les voir directement sur le site web.\n\nVous devez pour cela, vous inscrire à www.issuu.com et aller à la page http://www.issuu.com/smartlook\n\nDe là, vous saisissez simplement le nom de domaine de votre site web et copiez le code dans la préférence.\n\nAprès cela, vous devez rafraichir les modèles de votre site web.
+[  11]Désactiver Issuu:
+[  12]Par défaut, le service Issuu est activé en spécifiant son code source javascript.\n\nMais il est possible de le désactiver.\n\nDans ce cas, il n'y a pas besoin de supprimer son code source javascript pour le désactiver.
 [  32]Nombre de documents par rangée:
 [  33]Les listes de documents peuvent afficher plusieurs documents par rangée.\n\nLe nombre de documents par rangée peut être modifié.

@@ -63,6 +63,8 @@ class DocumentUtils extends DocumentDB {
           array($this->mlText[6], $this->mlText[7], PREFERENCE_TYPE_BOOLEAN, ''),
           "DOCUMENT_ISSUU_SMARTLOOK" =>
           array($this->mlText[9], $this->mlText[10], PREFERENCE_TYPE_RAW_CONTENT, ''),
+          "DOCUMENT_ISSUU_DISABLE" =>
+          array($this->mlText[11], $this->mlText[12], PREFERENCE_TYPE_BOOLEAN, ''),
           );
 
     $this->preferenceUtils->init($this->preferences);
@@ -108,7 +110,7 @@ class DocumentUtils extends DocumentDB {
   function getDocumentUrl($documentId) {
     $url = '';
 
-    if ($this->getIssuuSmartlook()) {
+    if ($this->isEnabled()) {
       if ($document = $this->selectById($documentId)) {
         $file = $document->getFile();
         $url = $this->fileUrl . '/' . $file;
@@ -300,7 +302,7 @@ class DocumentUtils extends DocumentDB {
     $title = $this->websiteText[1] . ' ' . $file;
 
     $issuu = false;
-    if ($this->getIssuuSmartlook()) {
+    if ($this->isEnabled()) {
       $issuu = true;
     }
 
@@ -323,23 +325,31 @@ class DocumentUtils extends DocumentDB {
     $str .= "</a>";
 
     $str .= "<div class='document_buttons'>";
-      if ($issuu) {
-        $str .= "<span class='document_view_button'>"
-          . "<a href='" . $this->fileUrl . '/' . $file . "'>"
-          . '[' . $this->websiteText[8] . ']'
-          . "</a>"
-          . "</span>";
-      }
-      $str .= " <span class='document_download_button'>"
-        . "<a href='$downloadUrl' $gJSNoStatus>"
-        . '[' . $this->websiteText[3] . ']'
+    if ($issuu) {
+      $str .= "<span class='document_view_button'>"
+        . "<a href='" . $this->fileUrl . '/' . $file . "'>"
+        . '[' . $this->websiteText[8] . ']'
         . "</a>"
         . "</span>";
+    }
+    $str .= " <span class='document_download_button'>"
+      . "<a href='$downloadUrl' $gJSNoStatus>"
+      . '[' . $this->websiteText[3] . ']'
+      . "</a>"
+      . "</span>";
     $str .= "</div>";
 
     $str .= '</div>';
 
     return($str);
+  }
+
+  function isEnabled() {
+    if ($this->getIssuuSmartlook() && !$this->preferenceUtils->getValue("DOCUMENT_ISSUU_DISABLE")) {
+      return(true);
+    } else {
+      return(false);
+    }
   }
 
   // Get the Issuu.com/smartlook/ viewer
