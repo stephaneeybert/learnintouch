@@ -126,6 +126,8 @@ class ProfileUtils extends ProfileDB {
                           array($this->mlText[28], $this->mlText[29], PREFERENCE_TYPE_RAW_CONTENT, ''),
                           "PROFILE_JS_BODY_END" =>
                           array($this->mlText[56], $this->mlText[57], PREFERENCE_TYPE_RAW_CONTENT, ''),
+          "PROFILE_JS_DISABLE" =>
+          array($this->mlText[66], $this->mlText[67], PREFERENCE_TYPE_BOOLEAN, ''),          
                           );
 
     $this->preferenceUtils->init($this->preferences);
@@ -294,6 +296,14 @@ class ProfileUtils extends ProfileDB {
     $googleAnalytics = $this->preferenceUtils->getValue("PROFILE_WEBSITE_GOOGLE_ANALYTICS");
 
     return($googleAnalytics);
+  }
+
+  function isEnabled() {
+    if ($this->getJsBodyEnd() && !$this->preferenceUtils->getValue("PROFILE_JS_DISABLE")) {
+      return(true);
+    } else {
+      return(false);
+    }
   }
 
   // Get the javascript to be inserted at the end of the page body

@@ -62,6 +62,8 @@
 [  63]Le nom d'utilisateur pour le serveur SMTP.
 [  64]Mail SMTP Mot de passe:
 [  65]Le mot de passe pour le serveur SMTP.
+[  66]Désactiver le javascript:
+[  67]Par défaut, le code source javascript est activé lorsqu'il est spécifié.\n\nMais il est possible de le désactiver.\n\nDans ce cas, il n'y a pas besoin de supprimer le code source javascript pour le désactiver.
 [  57]Il est possible d'insérer du javascript à la fin de l'élément body de la page.
 [ 101]Le nom du site web peut être un nom de société ou d'organistation.
 [ 108]L'adresse email du site web est utilisée pour toute les communications par email avec les utilisateurs et les administrateurs du site web.\n\nIl est donc important de saisir une adresse email valide.

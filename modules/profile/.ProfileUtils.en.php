@@ -63,6 +63,8 @@
 [  63]The username for the SMTP server.
 [  64]Mail SMTP Password:
 [  65]The password for the SMTP server.
+[  66]Disable javascript:
+[  67]By default, the javascript source code is enabled when it is specified.\n\nBut it is possible to disable it.\n\nIn that case, there is no need to delete the javascript source code to disable it.
 [ 101]The name of the web site can be a company or an organisation name.
 [ 108]The email address of the web site is used for all the communications by email with the users and the administrators of the web site.\n\nIt is therefore important to type in a valid email address.
 [ 109]The firstname and the lastname of the webmaster.\n\nThe webmaster is the person in charge of the web site.

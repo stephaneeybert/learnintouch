@@ -1216,11 +1216,15 @@ HEREDOC;
     $strBody .= "\n</td></tr></tbody></table>";
     $strBody .= "\n</div>";
 
-    $strBody .= $this->profileUtils->getGoogleAnalytics();
+    if ($this->documentUtils->isEnabled()) {
+      $strBody .= $this->documentUtils->getIssuuSmartlook();
+    }
 
-    $strBody .= $this->documentUtils->getIssuuSmartlook();
+    if ($this->profileUtils->isEnabled()) {
+      $strBody .= $this->profileUtils->getGoogleAnalytics();
 
-    $strBody .= $this->profileUtils->getJsBodyEnd();
+      $strBody .= $this->profileUtils->getJsBodyEnd();
+    }
 
     $strBody .= $this->renderModelCss($templateModelId);
 
