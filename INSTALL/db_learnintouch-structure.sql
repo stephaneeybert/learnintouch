@@ -1790,7 +1790,7 @@ CREATE TABLE `template_container` (
   `template_model_id` bigint(20) unsigned NOT NULL,
   `row_nb` int(10) unsigned NOT NULL,
   `cell_nb` int(10) unsigned NOT NULL,
-  `template_property_set_id` bigint(20) unsigned NOT NULL,
+  `template_property_set_id` bigint(20) unsigned,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   KEY `template_model_id` (`template_model_id`),
