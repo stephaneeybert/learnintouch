@@ -371,9 +371,14 @@ class TemplatePropertySetUtils extends TemplatePropertySetDB {
   }
 
   // Export a property set
-  function exportXML(& $xmlNode, $templatePropertySetId, $attributes = '') {
+  function exportXML($xmlNode, $templatePropertySetId, $attributes = '') {
     if ($templatePropertySet = $this->selectById($templatePropertySetId)) {
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_PROPERTY_SET, '', $attributes);
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_PROPERTY_SET);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Export the properties
       $templateProperties = $this->templatePropertyUtils->selectByTemplatePropertySetId($templatePropertySetId);
@@ -393,10 +398,10 @@ class TemplatePropertySetUtils extends TemplatePropertySetDB {
     $this->insert($templatePropertySet);
     $lastInsertTemplatePropertySetId = $this->getLastInsertId();
 
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->attributes["name"];
-      $value =& $xmlChildNode->attributes["value"];
+      $name = $xmlChildNode->attributes()["name"];
+      $value = $xmlChildNode->attributes()["value"];
 
       // Create the property
       $templateProperty = new TemplateProperty();

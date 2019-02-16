@@ -1,7 +1,6 @@
 <?PHP
 
 require_once("website.php");
-require_once($gPearPath . "Tree.php");
 
 $adminModuleUtils->checkAdminModule(MODULE_TEMPLATE);
 

@@ -1,6 +1,7 @@
 Create the application directories:
 mkdir /home/stephane/learnintouch;
 mkdir /home/stephane/learnintouch/engine;
+mkdir /home/stephane/learnintouch/engine/data;
 mkdir /home/stephane/learnintouch/www;
 
 Unpack the engine archive

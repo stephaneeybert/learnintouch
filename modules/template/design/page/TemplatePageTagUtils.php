@@ -79,12 +79,17 @@ class TemplatePageTagUtils extends TemplatePageTagDB {
   }
 
   // Export a tag
-  function exportXML(& $xmlNode, $templatePageTagId) {
+  function exportXML($xmlNode, $templatePageTagId) {
     if ($templatePageTag = $this->selectById($templatePageTagId)) {
       $tagID = $templatePageTag->getTagID();
 
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_PAGE_TAG);
       $attributes = array("tagID" => $tagID);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_PAGE_TAG, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Export the property set
       $templatePropertySetId = $templatePageTag->getTemplatePropertySetId();
@@ -94,7 +99,7 @@ class TemplatePageTagUtils extends TemplatePageTagDB {
 
   // Import a tag
   function importXML($xmlNode, $lastInsertTemplatePageId) {
-    $tagID =& $xmlNode->attributes["tagID"];
+    $tagID = $xmlNode->attributes()["tagID"];
 
     // Create the tag
     $templatePageTag = new TemplatePageTag();
@@ -103,9 +108,9 @@ class TemplatePageTagUtils extends TemplatePageTagDB {
     $this->insert($templatePageTag);
     $lastInsertTemplatePageTagId = $this->getLastInsertId();
 
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->name;
+      $name = $xmlChildNode->getName();
       if ($name == TEMPLATE_PROPERTY_SET) {
         // Create the property set
         $lastInsertTemplatePropertySetId = $this->templatePropertySetUtils->importXML($xmlChildNode);

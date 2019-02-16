@@ -22,9 +22,13 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
   }
 
   function createDirectories() {
+    global $gTemplateDataPath;
+
     if (!is_dir($this->imagePath)) {
-      mkdir($this->imagePath);
-      chmod($this->imagePath, 0755);
+      mkdir($this->imagePath, 0755, true);
+    }
+    if (!is_dir($gTemplateDataPath . "export/image/")) {
+      mkdir($gTemplateDataPath . "export/image/", 0755, true);
     }
   }
 
@@ -82,15 +86,20 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
   }
 
   // Export a property
-  function exportXML(& $xmlNode, $templatePropertyId) {
+  function exportXML($xmlNode, $templatePropertyId) {
     global $gTemplateDataPath;
 
     if ($templateProperty = $this->selectById($templatePropertyId)) {
       $name = $templateProperty->getName();
       $value = $templateProperty->getValue();
 
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_PROPERTY);
       $attributes = array("name" => $name, "value" => $value);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_PROPERTY, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Copy the images if any
       if ($name == 'BACKGROUND_IMAGE') {

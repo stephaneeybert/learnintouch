@@ -260,13 +260,18 @@ class TemplateContainerUtils extends TemplateContainerDB {
   }
 
   // Export a container
-  function exportXML(& $xmlNode, $templateContainerId) {
+  function exportXML($xmlNode, $templateContainerId) {
     if ($templateContainer = $this->selectById($templateContainerId)) {
       $row = $templateContainer->getRow();
       $cell = $templateContainer->getCell();
 
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_CONTAINER);
       $attributes = array("row" => $row, "cell" => $cell);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_CONTAINER, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Export the property set
       $templatePropertySetId = $templateContainer->getTemplatePropertySetId();
@@ -284,8 +289,8 @@ class TemplateContainerUtils extends TemplateContainerDB {
   // Import a container
   function importXML($xmlNode, $lastInsertTemplateModelId) {
 
-    $row =& $xmlNode->attributes["row"];
-    $cell =& $xmlNode->attributes["cell"];
+    $row = $xmlNode->attributes()["row"];
+    $cell = $xmlNode->attributes()["cell"];
 
     // Create the container
     $templateContainer = new TemplateContainer();
@@ -295,9 +300,9 @@ class TemplateContainerUtils extends TemplateContainerDB {
     $this->insert($templateContainer);
     $lastInsertTemplateContainerId = $this->getLastInsertId();
 
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->name;
+      $name = $xmlChildNode->getName();
       if ($name == TEMPLATE_PROPERTY_SET) {
         // Create the property set
         $lastInsertTemplatePropertySetId = $this->templatePropertySetUtils->importXML($xmlChildNode);

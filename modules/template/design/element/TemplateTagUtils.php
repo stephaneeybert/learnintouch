@@ -145,12 +145,17 @@ class TemplateTagUtils extends TemplateTagDB {
   }
 
   // Export a tag
-  function exportXML(& $xmlNode, $templateTagId) {
+  function exportXML($xmlNode, $templateTagId) {
     if ($templateTag = $this->selectById($templateTagId)) {
       $tagID = $templateTag->getTagID();
 
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_TAG);
       $attributes = array("tagID" => $tagID);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_TAG, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       $templatePropertySetId = $templateTag->getTemplatePropertySetId();
       $this->templatePropertySetUtils->exportXML($xmlChildNode, $templatePropertySetId);
@@ -159,7 +164,7 @@ class TemplateTagUtils extends TemplateTagDB {
 
   // Import a tag
   function importXML($xmlNode, $lastInsertTemplateElementId) {
-    $tagID =& $xmlNode->attributes["tagID"];
+    $tagID = $xmlNode->attributes()["tagID"];
 
     $templateTag = new TemplateTag();
     $templateTag->setTagID($tagID);
@@ -167,9 +172,9 @@ class TemplateTagUtils extends TemplateTagDB {
     $this->insert($templateTag);
     $lastInsertTemplateTagId = $this->getLastInsertId();
 
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->name;
+      $name = $xmlChildNode->getName();
       if ($name == TEMPLATE_PROPERTY_SET) {
         $lastInsertTemplatePropertySetId = $this->templatePropertySetUtils->importXML($xmlChildNode);
 

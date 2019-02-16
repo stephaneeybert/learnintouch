@@ -12,10 +12,6 @@ define('DB_TABLE_TEMPLATE_PAGE_TAG', "template_page_tag");
 define('DB_TABLE_TEMPLATE_PROPERTY_SET', "template_property_set");
 define('DB_TABLE_TEMPLATE_PROPERTY', "template_property");
 
-// The path to the data
-$gTemplateDataPath = $gEngineDataPath . "template/";
-$gTemplateDataUrl = $gEngineDataUrl . "/template";
-
 // Types of property
 $i = 1;
 define('TEMPLATE_PROPERTY_TYPE_BOOLEAN', $i++);

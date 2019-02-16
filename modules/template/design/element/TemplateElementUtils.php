@@ -203,7 +203,7 @@ class TemplateElementUtils extends TemplateElementDB {
   }
 
   // Export an element
-  function exportXML(& $xmlNode, $templateElementId) {
+  function exportXML($xmlNode, $templateElementId) {
     if ($templateElement = $this->selectById($templateElementId)) {
       $elementType = $templateElement->getElementType();
       $listOrder = $templateElement->getListOrder();
@@ -212,8 +212,13 @@ class TemplateElementUtils extends TemplateElementDB {
       // The element content is not exported
       // Only its object id is, as it serves as a boolean to check if an object
       // needs to be created at import time
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_ELEMENT);
       $attributes = array("elementType" => $elementType, "listOrder" => $listOrder, "objectId" => $objectId);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_ELEMENT, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Export the tags
       $teplateTags = $this->templateTagUtils->selectByTemplateElementId($templateElementId);
@@ -226,9 +231,9 @@ class TemplateElementUtils extends TemplateElementDB {
 
   // Import an element
   function importXML($xmlNode, $lastInsertTemplateContainerId) {
-    $elementType =& $xmlNode->attributes["elementType"];
-    $listOrder =& $xmlNode->attributes["listOrder"];
-    $objectId =& $xmlNode->attributes["objectId"];
+    $elementType = $xmlNode->attributes()["elementType"];
+    $listOrder = $xmlNode->attributes()["listOrder"];
+    $objectId = $xmlNode->attributes()["objectId"];
 
     // Create the element
     $templateElement = new TemplateElement();
@@ -245,9 +250,9 @@ class TemplateElementUtils extends TemplateElementDB {
     $lastInsertTemplateElementId = $this->getLastInsertId();
 
     // Create the element tag
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->name;
+      $name = $xmlChildNode->getName();
       if ($name == TEMPLATE_TAG) {
         $this->templateTagUtils->importXML($xmlChildNode, $lastInsertTemplateElementId);
       }

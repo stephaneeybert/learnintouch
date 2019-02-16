@@ -18,6 +18,8 @@ $lexiconEntryUtils->createDirectories();
 
 $templateUtils->createDirectories();
 
+$templateModelUtils->createDirectories();
+
 $templatePropertyUtils->createDirectories();
 
 $navbarItemUtils->createDirectories();

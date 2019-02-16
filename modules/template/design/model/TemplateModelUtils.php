@@ -24,6 +24,15 @@ class TemplateModelUtils extends TemplateModelDB {
     $this->TemplateModelDB();
   }
 
+  function createDirectories() {
+    global $gTemplateDataPath;
+
+    if (!is_dir($gTemplateDataPath . "export/xml/")) {
+    die($gTemplateDataPath);
+      mkdir($gTemplateDataPath . "export/xml/", 0755, true);
+    }
+  }  
+
   function getPropertyTypes() {
     $propertyTypes = array(
         'ALIGNMENT',
@@ -373,9 +382,7 @@ class TemplateModelUtils extends TemplateModelDB {
   function exportXML($templateModelId) {
     global $gTemplateDataPath;
 
-    $xmlDocument  = new XML_Tree();
-    // The reference character & is required by the xml library
-    $xmlNode =& $xmlDocument->addRoot("template");
+    $xmlNode = new SimpleXMLElement("<template></template>");
 
     if ($templateModel = $this->selectById($templateModelId)) {
       $name = $templateModel->getName();
@@ -393,8 +400,10 @@ class TemplateModelUtils extends TemplateModelDB {
         $templateModel->setName($name);
       }
 
-      $attributes = array("name" => $name, "description" => $description, "modelType" => $modelType);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_MODEL, '', $attributes);
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_MODEL);
+      $xmlChildNode->addAttribute("name", $name);
+      $xmlChildNode->addAttribute("description", $description);
+      $xmlChildNode->addAttribute("modelType", $modelType);
 
       // Export the property set
       $templatePropertySetId = $templateModel->getTemplatePropertySetId();
@@ -421,64 +430,9 @@ class TemplateModelUtils extends TemplateModelDB {
       }
 
       $filename = $gTemplateDataPath . "export/xml/$name";
-      $str = $xmlDocument->get();
+      $str = $xmlNode->asXML();
 
       LibFile::writeString($filename, $str);
-    }
-  }
-
-  // Export a model
-  function exportWddx($templateModelId) {
-    global $gTemplateDataPath;
-
-    if ($templateModel = $this->selectById($templateModelId)) {
-      $name = $templateModel->getName();
-      $description = $templateModel->getDescription();
-      $modelType = $templateModel->getModelType();
-
-      $name = LibString::stripNonFilenameChar($name);
-
-      // If a model is already exported under the same name
-      // alter the name of the model to be exported
-      $filename = $gTemplateDataPath . "export/xml/$name";
-      if (is_file($filename)) {
-        $randomNumber = LibUtils::generateUniqueId();
-        $name = $name . TEMPLATE_DUPLICATA . '_' . $randomNumber;
-        $templateModel->setName($name);
-      }
-
-      $attributes = array("name" => $name, "description" => $description, "modelType" => $modelType);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_MODEL, '', $attributes);
-
-      // Export the property set
-      $templatePropertySetId = $templateModel->getTemplatePropertySetId();
-      $this->templatePropertySetUtils->exportXML($xmlChildNode, $templatePropertySetId, array("inner" => "false"));
-
-      // Export the inner property set
-      $innerTemplatePropertySetId = $templateModel->getInnerTemplatePropertySetId();
-      $this->templatePropertySetUtils->exportXML($xmlChildNode, $innerTemplatePropertySetId, array("inner" => "true"));
-
-      // Export the containers
-      if ($templateContainers = $this->templateContainerUtils->selectByTemplateModelId($templateModelId)) {
-        foreach ($templateContainers as $templateContainer) {
-          $templateContainerId = $templateContainer->getId();
-          $this->templateContainerUtils->exportXML($xmlChildNode, $templateContainerId);
-        }
-      }
-
-      // Export the system pages
-      if ($templatePages = $this->templatePageUtils->selectByTemplateModelId($templateModelId)) {
-        foreach ($templatePages as $templatePage) {
-          $templatePageId = $templatePage->getId();
-          $this->templatePageUtils->exportXML($xmlChildNode, $templatePageId);
-        }
-      }
-
-      $filename = $gTemplateDataPath . "export/xml/$name";
-      $wddxPacketId = wddx_packet_start($name);
-      wddx_add_vars($wddxPacketId, 'modelArray');
-      $wddxPacket = wddx_packet_end($wddxPacketId);
-      LibFile::writeString($filename, $wddxPacket);
     }
   }
 
@@ -491,17 +445,15 @@ class TemplateModelUtils extends TemplateModelDB {
     // Get the xml file content
     $str = LibFile::readIntoString($gTemplateDataPath . "export/xml/$name");
 
-    $xmlDocument  = new XML_Tree();
-    $xmlNode = $xmlDocument->getTreeFromString($str);
-
-    $templateModelNodes =& $xmlNode->children;
+    $xmlNode = new SimpleXMLElement($str);
+    $templateModelNodes = $xmlNode->children();
     foreach ($templateModelNodes as $templateModelNode) {
-      $elementName = $templateModelNode->name;
+      $elementName = $templateModelNode->getName();
 
       if ($elementName == TEMPLATE_MODEL) {
-        $name = $templateModelNode->attributes["name"];
-        $description = $templateModelNode->attributes["description"];
-        $modelType = $templateModelNode->attributes["modelType"];
+        $name = $templateModelNode->attributes()["name"];
+        $description = $templateModelNode->attributes()["description"];
+        $modelType = $templateModelNode->attributes()["modelType"];
 
         // Check if a model with the same name already exists
         if ($wTemplateModel = $this->selectByName($name)) {
@@ -523,9 +475,9 @@ class TemplateModelUtils extends TemplateModelDB {
         $this->insert($templateModel);
         $lastInsertTemplateModelId = $this->getLastInsertId();
 
-        $templateModelChildNodes = $templateModelNode->children;
+        $templateModelChildNodes = $templateModelNode->children();
         foreach ($templateModelChildNodes as $templateModelChildNode) {
-          $name = $templateModelChildNode->name;
+          $name = $templateModelChildNode->getName();
 
           if ($name == TEMPLATE_PROPERTY_SET) {
             // Create the property set
@@ -533,7 +485,7 @@ class TemplateModelUtils extends TemplateModelDB {
 
             // Link the model and the property set
             $templateModel->setId($lastInsertTemplateModelId);
-            $inner = $templateModelChildNode->attributes["inner"];
+            $inner = $templateModelChildNode->attributes()["inner"];
             if ($inner == "true") {
               $templateModel->setInnerTemplatePropertySetId($lastInsertTemplatePropertySetId);
             } else {

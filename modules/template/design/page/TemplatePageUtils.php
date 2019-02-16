@@ -121,15 +121,20 @@ class TemplatePageUtils extends TemplatePageDB {
   }
 
   // Export
-  function exportXML(& $xmlNode, $templatePageId) {
+  function exportXML($xmlNode, $templatePageId) {
     if ($templatePage = $this->selectById($templatePageId)) {
       $systemPage = $templatePage->getSystemPage();
 
       // The element content is not exported
       // Only its object id is, as it serves as a boolean to check if an object
       // needs to be created at import time
+      $xmlChildNode = $xmlNode->addChild(TEMPLATE_PAGE);
       $attributes = array("systemPage" => $systemPage);
-      $xmlChildNode =& $xmlNode->addChild(TEMPLATE_PAGE, '', $attributes);
+      if (is_array($attributes)) {
+        foreach ($attributes as $aName => $aValue) {
+          $xmlChildNode->addAttribute($aName, $aValue);
+        }
+      }
 
       // Export the tags
       $teplatePageTags = $this->templatePageTagUtils->selectByTemplatePageId($templatePageId);
@@ -142,7 +147,7 @@ class TemplatePageUtils extends TemplatePageDB {
 
   // Import
   function importXML($xmlNode, $lastInsertTemplateModelId) {
-    $systemPage =& $xmlNode->attributes["systemPage"];
+    $systemPage = $xmlNode->attributes()["systemPage"];
 
     // Create the element
     $templatePage = new TemplatePage();
@@ -153,9 +158,9 @@ class TemplatePageUtils extends TemplatePageDB {
     $lastInsertTemplatePageId = $this->getLastInsertId();
 
     // Create the element tag
-    $xmlChildNodes =& $xmlNode->children;
+    $xmlChildNodes = $xmlNode->children();
     foreach ($xmlChildNodes as $xmlChildNode) {
-      $name =& $xmlChildNode->name;
+      $name = $xmlChildNode->getName();
       if ($name == TEMPLATE_PAGE_TAG) {
         $this->templatePageTagUtils->importXML($xmlChildNode, $lastInsertTemplatePageId);
       }

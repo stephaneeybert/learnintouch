@@ -158,6 +158,9 @@ $gTemplateImageUrl = $gApiUrl . '/image/template';
 $gTemplateDesignPath = $gTemplatePath . 'design/';
 $gTemplateDesignUrl = $gTemplateUrl . '/design';
 
+$gTemplateDataPath = $gEngineDataPath . "template/";
+$gTemplateDataUrl = $gEngineDataUrl . "/template";
+
 $gLanguagePath = $gModulesPath . 'language/';
 $gLanguageUrl = $gModulesUrl . '/language';
 

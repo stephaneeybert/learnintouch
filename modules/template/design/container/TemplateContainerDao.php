@@ -20,7 +20,7 @@ template_model_id int unsigned not null,
 index (template_model_id), foreign key (template_model_id) references template_model(id),
 row_nb int unsigned not null,
 cell_nb int unsigned not null,
-template_property_set_id int unsigned not null,
+template_property_set_id int unsigned,
 index (template_property_set_id), foreign key (template_property_set_id) references template_property_set(id),
 primary key (id), unique (id)
 ) type = INNODB;
