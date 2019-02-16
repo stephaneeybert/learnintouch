@@ -44,9 +44,6 @@ $gApiUrl = $gEngineUrl . '/api';
 $gJsPath = $gApiPath . 'js/';
 $gJsUrl = $gApiUrl . '/js';
 
-$gPearPath = $gApiPath . 'pear/';
-$gPearUrl = $gApiUrl . '/pear';
-
 $gLibPath = $gEnginePath . 'lib/';
 $gLibUrl = $gEngineUrl . '/lib';
 

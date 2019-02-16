@@ -19,4 +19,5 @@
 [  19]Afficher l'apercu du modèle
 [  20]Composer le style des pages pré-formatées
 [  21]Les images de navigation
+[  22]Les modèles exportés
 [  27]Les préférences

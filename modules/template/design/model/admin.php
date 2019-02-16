@@ -16,6 +16,8 @@ $strCommand = " <a href='$gTemplateUrl/design/model/add.php' $gJSNoStatus>"
 . "<img border='0' src='$gCommonImagesUrl/$gImageHome' title='$mlText[12]'></a>"
 . " <a href='$gImageSetUrl/admin.php' $gJSNoStatus>"
 . "<img border='0' src='$gCommonImagesUrl/$gImageNavIcon' title='$mlText[21]'></a>"
+. " <a href='$gTemplateUrl/design/model/export_list.php' $gJSNoStatus>"
+. "<img border='0' src='$gCommonImagesUrl/$gImageImport' title='$mlText[22]'></a>"
 . " <a href='$gTemplateUrl/design/model/preference.php' $gJSNoStatus>"
 . "<img border='0' src='$gCommonImagesUrl/$gImageSetup' title='$mlText[27]'></a>";
 
@@ -54,6 +56,8 @@ foreach ($templateModels as $templateModel) {
     . " <a href='$gTemplateUrl/design/page/admin.php?templateModelId=$templateModelId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageProperty' title='$mlText[20]'></a>"
     . ' ' . $popupUtils->getDialogPopup("<img border='0' src='$gCommonImagesUrl/$gImagePreview' title='$mlText[19]'>", "$gTemplateUrl/design/model/preview.php?templateModelId=$templateModelId", 800, 600)
+    . " <a href='$gTemplateUrl/design/model/export.php?templateModelId=$templateModelId' $gJSNoStatus>"
+    . "<img border='0' src='$gCommonImagesUrl/$gImageExport' title='$mlText[10]'></a>"
     . " <a href='$gTemplateUrl/design/model/duplicate.php?templateModelId=$templateModelId' $gJSNoStatus>"
     . "<img border='0' src='$gCommonImagesUrl/$gImageCopy' title='$mlText[9]'></a>";
 
