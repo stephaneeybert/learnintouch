@@ -284,9 +284,8 @@ HEREDOC;
 
   // Call a batch script asynchronuously so as to avoid a time out in the browser
   function execlCLIwget($scriptFileUrl) {
-    $procCommand = "wget \"$scriptFileUrl\" -q -O - -b";
-    $proc = popen($procCommand, "r");
-    pclose($proc);
+    $command = "wget \"$scriptFileUrl\" -q -O - -b";
+    system($command);
   }
 
   function renderKeyboard($strLetters, $caption) {
