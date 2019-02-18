@@ -237,7 +237,7 @@ class BackupUtils extends BackupDB {
       $i = 0;
       foreach ($dirs as $dir) {
         // Do not backup some directories
-        if ($dir != "." && $dir != ".." && $dir != "backup") {
+        if ($dir != "." && $dir != "..") {
           $dirList[$i]= $gDataPath . $dir;
           $i++;
         }
