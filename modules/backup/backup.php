@@ -51,9 +51,9 @@ if ($formSubmitted) {
   $backupUtils->deleteBackup();
 
   $scriptUrl = $gBackupUrl . "/batchBackup.php?dbFilename=$dbFilename&tableStructure=$tableStructure&tableData=$tableData&dataFormat=$dataFormat&fullInsert=$fullInsert&noSecret=$noSecret";
-  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_SCHEME), "http", $scriptUrl);
-  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_HOST), "127.0.0.1", $scriptUrl);
-  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_PORT), "80", $scriptUrl);
+  if (isLocalhost()) {
+    $scriptUrl = $backupUtils->urlDomainNameToLocalhost($scriptUrl);
+  }
   $commonUtils->execlCLIwget($scriptUrl);
 
   $str = $mlText[4];

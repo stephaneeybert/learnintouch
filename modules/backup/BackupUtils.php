@@ -304,6 +304,16 @@ class BackupUtils extends BackupDB {
       return("tar");
     }
   }
+
+  // Change the domain name of the script url to localhost 
+  // On the development enviroment the domain name is not a real one
+  function urlDomainNameToLocalhost($url) {
+    $url = str_replace(parse_url($url, PHP_URL_SCHEME), "http", $url);
+    $url = str_replace(parse_url($url, PHP_URL_HOST), "127.0.0.1", $url);
+    $url = str_replace(parse_url($url, PHP_URL_PORT), "80", $url);
+    return($url);
+  }
+
   // Render data file url
   function renderBackupFileUrl() {
     global $gAccountUrl;
