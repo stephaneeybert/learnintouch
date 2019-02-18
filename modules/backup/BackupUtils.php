@@ -152,10 +152,13 @@ class BackupUtils extends BackupDB {
       $options .= ' --no-data';
     }
 
+    $dbHost = DB_HOST;
+    $dbPort = DB_PORT;
     $dbUser = DB_USER;
     $dbPassword = DB_PASS;
 
-    $lastLine = system("mysqldump --user=$dbUser --password=$dbPassword $options $dbName > $filename", $returnValue);
+    $command = "mysqldump --protocol=tcp -h $dbHost -P $dbPort --user=$dbUser --password=$dbPassword $options $dbName > $filename";
+    $lastLine = system($command, $returnValue);
 
     return(true);
   }
