@@ -10,7 +10,6 @@ unzip engine.zip
 
 Make sure the charset of the APIs are all utf-8
 api/PHPMailer-5.2.14/class.phpmailer.php
-api/pear/PEAR-1.3.1/pear/Common.php
 api/OpenInviter/plugins/fastmail.plg.php
 Remove utf8_decode calls from the APIs
 api/OpenInviter/plugins/multiply.plg.php
