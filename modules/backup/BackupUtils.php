@@ -246,8 +246,9 @@ class BackupUtils extends BackupDB {
     sort($dirList);
 
     $success = true;
-    $lastLine = system("tar -cvf $filename $gDataPath", $returnValue);
-    $lastLine = system("gzip $filename", $returnValue);
+    $tarFilename = str_replace(".gz", "", $filename);
+    $lastLine = system("tar -cvf $tarFilename $gDataPath", $returnValue);
+    $lastLine = system("gzip $tarFilename", $returnValue);
     $success = ($returnValue > 0 ? false : true);
 
     return($success);
@@ -288,15 +289,6 @@ class BackupUtils extends BackupDB {
     return($url);
   }
 
-  // Render the file suffix
-  function renderBackupFileSuffix() {
-    if (Phar::canCompress()) {
-      return("tar.gz");
-    } else {
-      return("tar");
-    }
-  }
-
   // Change the domain name of the script url to localhost 
   // On the development enviroment the domain name is not a real one
   function urlDomainNameToLocalhost($url) {
@@ -310,7 +302,7 @@ class BackupUtils extends BackupDB {
   function renderBackupFileUrl() {
     global $gAccountUrl;
 
-    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . "." . $this->renderBackupFileSuffix();
+    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar.gz";
 
     return($url);
   }
@@ -319,7 +311,7 @@ class BackupUtils extends BackupDB {
   function renderBackupFilePath() {
     global $gAccountPath;
 
-    $backupFilePath = $gAccountPath . $this->websiteUtils->getSetupWebsiteName() . "." . $this->renderBackupFileSuffix();
+    $backupFilePath = $gAccountPath . $this->websiteUtils->getSetupWebsiteName() . ".tar.gz";
 
     return($backupFilePath);
   }
