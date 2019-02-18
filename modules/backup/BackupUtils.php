@@ -250,11 +250,12 @@ class BackupUtils extends BackupDB {
       $tarArchive = new PharData($filename);
       $tarArchive->buildFromDirectory($gDataPath);
       if (Phar::canCompress()) {
-        $tarArchive->compress(\Phar::GZ);
+        $tarArchive->compress(Phar::GZ);
         unset($tarArchive);
         unlink($filename);
       }
     } catch (Exception $e) {
+      error_log($e->getMessage());
       $success = false;
     }
 
