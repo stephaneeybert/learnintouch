@@ -246,18 +246,9 @@ class BackupUtils extends BackupDB {
     sort($dirList);
 
     $success = true;
-    try {
-      $tarArchive = new PharData($filename);
-      $tarArchive->buildFromDirectory($gDataPath);
-      if (Phar::canCompress()) {
-        $tarArchive->compress(Phar::GZ);
-        unset($tarArchive);
-        unlink($filename);
-      }
-    } catch (Exception $e) {
-      error_log($e->getMessage());
-      $success = false;
-    }
+    $lastLine = system("tar -cvf $filename $gDataPath", $returnValue);
+    $lastLine = system("gzip $filename", $returnValue);
+    $success = ($returnValue > 0 ? false : true);
 
     return($success);
   }
