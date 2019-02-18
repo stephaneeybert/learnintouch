@@ -107,7 +107,7 @@ $panelUtils->addLine();
 $panelUtils->addLine($panelUtils->addCell("$mlText[4]", "nb"), $panelUtils->addCell("$mlText[2]", "nb"), $panelUtils->addCell($mlText[5], "nbc"), '');
 $panelUtils->addLine();
 
-$backupDir = opendir($backupUtils->previousBackupFilePath);
+$backupDir = opendir($backupUtils->backupFilePath);
 
 $fileTimestamps = Array();
 $fileSizes = Array();
@@ -115,10 +115,10 @@ while (($fileName = readdir($backupDir)) !== false) {
   // Do not list the current and parent directories
   if (!is_dir($fileName)) {
     // Get the file size
-    $fileSize = filesize("$backupUtils->previousBackupFilePath$fileName");
+    $fileSize = filesize("$backupUtils->backupFilePath$fileName");
 
     // Get the file creation time
-    $fileTimestamp = filemtime("$backupUtils->previousBackupFilePath$fileName");
+    $fileTimestamp = filemtime("$backupUtils->backupFilePath$fileName");
 
     $fileTimestamps[$fileName] = $fileTimestamp;
     $fileSizes[$fileName] = $fileSize;

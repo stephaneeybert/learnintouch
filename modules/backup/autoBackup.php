@@ -1,7 +1,5 @@
 <?PHP
 
-require_once($gPearPath . "Tar.php");
-
 $mlText = $languageUtils->getMlText(__FILE__);
 
 // Edit the database name so that my name does not appear in it
@@ -10,7 +8,7 @@ $dbName = str_replace("stephane", '', $dbName);
 $dbName = str_replace("eybert", '', $dbName);
 
 // Create the file name
-$dbFilename = $backupUtils->backupFilePath . $backupUtils->backupFilePrefix . $dbName . "_" . date("Y-m-d") . "_" . date("H-i") . ".sql";
+$dbFilename = $backupUtils->latestBackupFilePath . $backupUtils->backupFilePrefix . $dbName . "_" . date("Y-m-d") . "_" . date("H-i") . ".sql";
 $dbFilename = str_replace("__", "_", $dbFilename);
 
 // Backup the database
@@ -18,8 +16,7 @@ $backupSuccess = $backupUtils->backupDatabase($dbFilename, false);
 
 // Check for the backup success
 if ($backupSuccess) {
-  $backupFilePath = $backupUtils->renderBackupFilePath();
-  $backupSuccess = $backupUtils->backupDataPath($backupFilePath);
+  $backupSuccess = $backupUtils->backupDataPath($backupUtils->renderBackupFilePath());
 }
 
 $webmasterEmail = $profileUtils->getProfileValue("webmaster.email");
@@ -32,7 +29,6 @@ if (!$webmasterName) {
 
 // Check for the backup success
 if ($backupSuccess == false) {
-  // Delete the old databse backup files
   $backupUtils->deleteDBBackupFiles(1);
 
   $strSubject = $mlText[8];

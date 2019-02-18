@@ -1,7 +1,6 @@
 <?PHP
 
 require_once("website.php");
-require_once($gPearPath . "Tar.php");
 
 $dbFilename = LibEnv::getEnvHttpGET("dbFilename");
 $tableStructure = LibEnv::getEnvHttpGET("tableStructure");

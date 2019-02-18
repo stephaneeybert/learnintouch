@@ -1,7 +1,6 @@
 <?PHP
 
 require_once("website.php");
-require_once($gPearPath . "Tar.php");
 
 $adminModuleUtils->checkAdminModule(MODULE_BACKUP);
 
@@ -24,7 +23,7 @@ if ($formSubmitted) {
   $dbName = DB_NAME;
 
   // Create the file name
-  $dbFilename = $backupUtils->backupFilePath . $backupUtils->backupFilePrefix . $dbName . "_" . date("Y-m-d") . "_" . date("H-i") . ".sql";
+  $dbFilename = $backupUtils->latestBackupFilePath . $backupUtils->backupFilePrefix . $dbName . "_" . date("Y-m-d") . "_" . date("H-i") . ".sql";
   $dbFilename = str_replace("__", "_", $dbFilename);
 
   if (!$tableStructure) {
@@ -51,8 +50,11 @@ if ($formSubmitted) {
 
   $backupUtils->deleteBackup();
 
-  $scriptFile = $gBackupUrl . "/batchBackup.php?dbFilename=$dbFilename&tableStructure=$tableStructure&tableData=$tableData&dataFormat=$dataFormat&fullInsert=$fullInsert&noSecret=$noSecret";
-  $commonUtils->execlCLIwget($scriptFile);
+  $scriptUrl = $gBackupUrl . "/batchBackup.php?dbFilename=$dbFilename&tableStructure=$tableStructure&tableData=$tableData&dataFormat=$dataFormat&fullInsert=$fullInsert&noSecret=$noSecret";
+  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_SCHEME), "http", $scriptUrl);
+  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_HOST), "127.0.0.1", $scriptUrl);
+  $scriptUrl = str_replace(parse_url($scriptUrl, PHP_URL_PORT), "80", $scriptUrl);
+  $commonUtils->execlCLIwget($scriptUrl);
 
   $str = $mlText[4];
   $str .= LibHtml::urlRedirect("$gBackupUrl/admin.php");

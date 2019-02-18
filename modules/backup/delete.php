@@ -21,8 +21,8 @@ if ($formSubmitted) {
 
   if (count($warnings) == 0) {
 
-    if (file_exists($backupUtils->previousBackupFilePath . $fileName)) {
-      unlink($backupUtils->previousBackupFilePath . $fileName);
+    if (file_exists($backupUtils->backupFilePath . $fileName)) {
+      unlink($backupUtils->backupFilePath . $fileName);
     }
 
     $str = LibHtml::urlRedirect("$gBackupUrl/admin.php");

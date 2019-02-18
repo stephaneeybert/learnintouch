@@ -7,8 +7,8 @@ class BackupUtils extends BackupDB {
   var $backupFilePath;
   var $backupFileUrl;
 
-  var $previousBackupFilePath;
-  var $previousBackupFileUrl;
+  var $latestBackupFilePath;
+  var $latestBackupFileUrl;
 
   var $exportFilePath;
   var $exportFileUrl;
@@ -42,17 +42,17 @@ class BackupUtils extends BackupDB {
     global $gAccountPath;
     global $gAccountUrl;
 
-    $this->backupFilePath = $gDataPath . 'backup/file/';
-    $this->backupFileUrl = $gDataUrl . '/backup/file';
-    $this->previousBackupFilePath = $this->backupFilePath . 'previous/';
-    $this->previousBackupFileUrl = $this->backupFileUrl . '/previous';
-    $this->exportFilePath = $gDataPath . 'backup/export/';
-    $this->exportFileUrl = $gDataUrl . '/backup/export';
+    $this->backupFilePath = $gAccountPath . 'backup/file/';
+    $this->backupFileUrl = $gAccountUrl . '/backup/file';
+    $this->latestBackupFilePath = $gDataPath . 'backup/';
+    $this->latestBackupFileUrl = $gDataUrl . '/backup';
+    $this->exportFilePath = $gAccountPath . 'backup/export/';
+    $this->exportFileUrl = $gAccountUrl . '/backup/export';
 
     $this->rubishTables = array('statistics_visit', 'syslog');
     $this->secretTables = array('template_model', 'template_container', 'template_element', 'template_tag', 'template_property_set', 'template_property');
 
-    $this->backupFilePrefix = 'backup_db_';
+    $this->backupFilePrefix = 'backup_';
 
     $this->backupDataFormats = array("INSERT", "CSV");
 
@@ -65,24 +65,18 @@ class BackupUtils extends BackupDB {
     global $gAccountPath;
 
     if (!is_dir($this->backupFilePath)) {
-      if (!is_dir($gDataPath . 'backup')) {
-        mkdir($gDataPath . 'backup');
+      if (!is_dir($gAccountPath . 'backup')) {
+        mkdir($gAccountPath . 'backup');
       }
-      mkdir($this->backupFilePath);
-      chmod($this->backupFilePath, 0755);
+      mkdir($this->backupFilePath, 0755);
     }
 
-    if (!is_dir($this->previousBackupFilePath)) {
-      mkdir($this->previousBackupFilePath);
-      chmod($this->previousBackupFilePath, 0755);
+    if (!is_dir($this->latestBackupFilePath)) {
+      mkdir($this->latestBackupFilePath, 0755);
     }
 
     if (!is_dir($this->exportFilePath)) {
-      if (!is_dir($gDataPath . 'backup')) {
-        mkdir($gDataPath . 'backup');
-      }
-      mkdir($this->exportFilePath);
-      chmod($this->exportFilePath, 0755);
+      mkdir($this->exportFilePath, 0755);
     }
   }
 
@@ -249,24 +243,20 @@ class BackupUtils extends BackupDB {
         }
       }
     }
-
-    $dirs = LibDir::getDirNames($this->backupFilePath);
-    if (is_array($dirs)) {
-      $i = 0;
-      foreach ($dirs as $dir) {
-        // Do not backup some directories
-        if ($dir != "." && $dir != ".." && $dir != "previous") {
-          $dirList[$i]= $gDataPath . $dir;
-          $i++;
-        }
-      }
-    }
-
     sort($dirList);
 
-    $tarArchive = new Archive_Tar($filename);
-
-    $success = $tarArchive->create($dirList);
+    $success = true;
+    try {
+      $tarArchive = new PharData($filename);
+      $tarArchive->buildFromDirectory($gDataPath);
+      if (Phar::canCompress()) {
+        $tarArchive->compress(\Phar::GZ);
+        unset($tarArchive);
+        unlink($filename);
+      }
+    } catch (Exception $e) {
+      $success = false;
+    }
 
     return($success);
   }
@@ -277,9 +267,17 @@ class BackupUtils extends BackupDB {
 
     $languageFiles = $this->languageUtils->getLanguageFilenames($languageCode);
 
-    $tarArchive = new Archive_Tar($filename);
-
-    $success = $tarArchive->create($languageFiles);
+    $success = true;
+    try {
+      $tarArchive = new PharData($filename);
+      foreach ($languageFiles as $languageFile) {
+        $tarArchive->addFile($languageFile);
+      }
+      $tarArchive->compress(Phar::GZ);
+      $success = true;
+    } catch (Exception $e) {
+      $success = false;
+    }
 
     return($success);
   }
@@ -293,16 +291,24 @@ class BackupUtils extends BackupDB {
 
   // Render sql file url
   function renderSqlFileUrl($filename) {
-    $url = $this->previousBackupFileUrl . '/' . $filename;
+    $url = $this->backupFileUrl . '/' . $filename;
 
     return($url);
   }
 
+  // Render the file suffix
+  function renderBackupFileSuffix() {
+    if (Phar::canCompress()) {
+      return("tar.gz");
+    } else {
+      return("tar");
+    }
+  }
   // Render data file url
   function renderBackupFileUrl() {
     global $gAccountUrl;
 
-    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar";
+    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . "." . $this->renderBackupFileSuffix();
 
     return($url);
   }
@@ -311,7 +317,7 @@ class BackupUtils extends BackupDB {
   function renderBackupFilePath() {
     global $gAccountPath;
 
-    $backupFilePath = $gAccountPath . $this->websiteUtils->getSetupWebsiteName() . ".tar";
+    $backupFilePath = $gAccountPath . $this->websiteUtils->getSetupWebsiteName() . "." . $this->renderBackupFileSuffix();
 
     return($backupFilePath);
   }
@@ -345,48 +351,44 @@ class BackupUtils extends BackupDB {
   // Keep a minimum number of database files
   // The database files are moved out of the tar-ed data/ directory
   // so as not to have all of them in the tar archive, but only the last one
-  function deleteDBBackupFiles($min = 7) {
+  function deleteDBBackupFiles($min = 3) {
     if (($backupDir = opendir($this->backupFilePath)) == false) {
       return(false);
     }
 
-    if (($previousBackupDir = opendir($this->previousBackupFilePath)) == false) {
+    if (($latestBackupDir = opendir($this->latestBackupFilePath)) == false) {
       return(false);
     }
 
     // Move the previous backup db file in a parent directory
-    while (($fileName = readdir($backupDir)) !== false) {
-      if (!is_dir($fileName)) {
-        rename($this->backupFilePath . $fileName, $this->previousBackupFilePath . $fileName);
+    while (($fileName = readdir($latestBackupDir)) !== false) {
+      if (!is_dir($this->latestBackupFilePath . $fileName) && is_file($this->latestBackupFilePath . $fileName)) {
+        rename($this->latestBackupFilePath . $fileName, $this->backupFilePath . $fileName);
       }
     }
-
-    closedir($backupDir);
+    closedir($latestBackupDir);
 
     $fileTimestamps = Array();
     $fileNames = Array();
-    while (($fileName = readdir($previousBackupDir)) !== false) {
+    while (($fileName = readdir($backupDir)) !== false) {
       if (!is_dir($fileName)) {
-        $fileTimestamp = filemtime($this->previousBackupFilePath . $fileName);
-
+        $fileTimestamp = filemtime($this->backupFilePath . $fileName);
         $fileTimestamps[$fileName] = $fileTimestamp;
       }
     }
-
     // Sort on the timestamps in reverse order
     arsort($fileTimestamps);
 
     $i = 1;
     foreach ($fileTimestamps as $fileName => $fileTimestamp) {
       if ($i > $min) {
-        if (file_exists($this->previousBackupFilePath . $fileName)) {
-          unlink($this->previousBackupFilePath . $fileName);
+        if (file_exists($this->backupFilePath . $fileName)) {
+          unlink($this->backupFilePath . $fileName);
         }
       }
       $i++;
     }
-
-    closedir($previousBackupDir);
+    closedir($backupDir);
   }
 
   // Check if a table is secret
