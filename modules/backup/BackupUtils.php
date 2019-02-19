@@ -249,7 +249,6 @@ class BackupUtils extends BackupDB {
     }
     sort($dirList);
 
-    $success = true;
     $tarFilename = str_replace(".gz", "", $filename);
     $lastLine = system("tar -cvf $tarFilename $gDataPath", $returnValue);
     $lastLine = system("gzip $tarFilename", $returnValue);
