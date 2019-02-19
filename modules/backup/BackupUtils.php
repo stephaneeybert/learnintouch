@@ -340,7 +340,7 @@ class BackupUtils extends BackupDB {
   // Keep a minimum number of database files
   // The database files are moved out of the tar-ed data/ directory
   // so as not to have all of them in the tar archive, but only the last one
-  function deleteDBBackupFiles($min = 3) {
+  function deleteDBBackupFiles($min = 7) {
     if (($backupDir = opendir($this->backupFilePath)) == false) {
       return(false);
     }
