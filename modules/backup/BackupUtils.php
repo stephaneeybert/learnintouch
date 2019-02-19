@@ -259,21 +259,13 @@ class BackupUtils extends BackupDB {
 
   // Backup the language files
   function backupLanguageFiles($filename, $languageCode) {
-    global $gDataPath;
+    global $gEnginePath;
 
     $languageFiles = $this->languageUtils->getLanguageFilenames($languageCode);
 
-    $success = true;
-    try {
-      $tarArchive = new PharData($filename);
-      foreach ($languageFiles as $languageFile) {
-        $tarArchive->addFile($languageFile);
-      }
-      $tarArchive->compress(Phar::GZ);
-      $success = true;
-    } catch (Exception $e) {
-      $success = false;
-    }
+    $command = "find $gEnginePath -name '.*." . $languageCode . ".php' -print0 | tar -czvf $filename --null -T - > /dev/null 2>&1";
+    $lastLine = system($command, $returnValue);
+    $success = ($returnValue > 0 ? false : true);
 
     return($success);
   }

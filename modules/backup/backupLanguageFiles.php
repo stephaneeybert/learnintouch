@@ -6,22 +6,14 @@ $adminModuleUtils->checkAdminModule(MODULE_BACKUP);
 
 $mlText = $languageUtils->getMlText(__FILE__);
 
-$login = $adminUtils->getSessionLogin();
-if ($admin = $adminUtils->selectByLogin($login)) {
-  $adminId = $admin->getId();
-  $value = $adminOptionUtils->getOptionValue(OPTION_LANGUAGE_TRANSLATE, $adminId);
-  $values = $websiteOptionUtils->getOptionValues(OPTION_LANGUAGE_TRANSLATE);
-  $languageCode = $values[$value];
-} else if ($adminUtils->isStaff()) {
-  $languageCode = $languageUtils->getCurrentLanguageCode();
-}
-
 $formSubmitted = LibEnv::getEnvHttpPOST("formSubmitted");
 
 if ($formSubmitted) {
 
+  $languageCode = LibEnv::getEnvHttpPOST("languageCode");
+
   // Create the file name
-  $filename = $backupUtils->exportFilePath . "language_" . $languageCode . ".tar";
+  $filename = $backupUtils->backupFilePath . "language_" . $languageCode . "_" . date("Y-m-d") . "_" . date("H-i") . ".tar.gz";
 
   // Backup the files for the language
   $backupSuccess = $backupUtils->backupLanguageFiles($filename, $languageCode);
@@ -53,11 +45,6 @@ if ($formSubmitted) {
     return;
   }
 
-  // Display a popup window to save the file on the local computer
-  if ($filename) {
-    LibFile::downloadFile($filename);
-  }
-
   $str = LibHtml::urlRedirect("$gBackupUrl/admin.php");
   printMessage($str);
   return;
@@ -70,14 +57,11 @@ if ($formSubmitted) {
   $panelUtils->openForm($PHP_SELF);
   $panelUtils->addLine();
 
-  if ($language = $languageUtils->selectByCode($languageCode)) {
-    $languageId = $language->getId();
-    $name = $language->getName();
-    $strImage = $languageUtils->renderImage($languageId);
-    $panelUtils->addLine($panelUtils->addCell($mlText[2], "br"), "$strImage $name");
-    $panelUtils->addLine();
-  }
+  $list = array("en" => "English", "fr" => "Français", "se" => "Svenska");
+  $strSelectLanguages = LibHtml::getSelectList("languageCode", $list);
 
+  $panelUtils->addLine($panelUtils->addCell($mlText[2], "nbr"), $strSelectLanguages);
+  $panelUtils->addLine();
   $panelUtils->addLine($panelUtils->addCell($mlText[15], "br"), $panelUtils->getOk());
   $panelUtils->addHiddenField('formSubmitted', 1);
   $panelUtils->closeForm();
