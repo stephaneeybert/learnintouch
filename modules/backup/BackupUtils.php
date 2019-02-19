@@ -115,15 +115,19 @@ class BackupUtils extends BackupDB {
   // Backup the engine database
   function backupCommonDatabase($filename, $tableStructure = true, $tableData = true, $dataFormat = 0, $fullInsert = false) {
     $dbName = DB_COMMON_DB_NAME;
+    $dbUser = DB_COMMON_USER;
+    $dbPassword = DB_COMMON_PASS;
 
-    return($this->backupTables($filename, $dbName, $tableStructure, $tableData, $dataFormat, $fullInsert, true));
+    return($this->backupTables($filename, $dbName, $dbUser, $dbPassword, $tableStructure, $tableData, $dataFormat, $fullInsert, true));
   }
 
   // Backup the account database
   function backupDatabase($filename, $tableStructure = true, $tableData = true, $dataFormat = 0, $fullInsert = false, $noSecret = false) {
     $dbName = DB_NAME;
+    $dbUser = DB_USER;
+    $dbPassword = DB_PASS;
 
-    return($this->backupTables($filename, $dbName, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret));
+    return($this->backupTables($filename, $dbName, $dbUser, $dbPassword, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret));
   }
 
   // Backup a database
@@ -133,8 +137,7 @@ class BackupUtils extends BackupDB {
   // $tableData : if true then save the table data
   // $dataFormat : the data format ('INSERT' = INSERT statements, 'CSV' = comma separated data)
   // $fullInsert (optional) : if true then INSERT with field names
-  function backupTables($filename, $dbName, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret) {
-
+  function backupTables($filename, $dbName, $dbUser, $dbPassword, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret) {
     // If the file aready exists, delete it before creating a new empty one
     if (file_exists($filename)) {
       unlink($filename);
@@ -154,8 +157,6 @@ class BackupUtils extends BackupDB {
 
     $dbHost = DB_HOST;
     $dbPort = DB_PORT;
-    $dbUser = DB_USER;
-    $dbPassword = DB_PASS;
 
     $command = "mysqldump --protocol=tcp -h $dbHost -P $dbPort --user=$dbUser --password=$dbPassword $options $dbName > $filename";
     $lastLine = system($command, $returnValue);
