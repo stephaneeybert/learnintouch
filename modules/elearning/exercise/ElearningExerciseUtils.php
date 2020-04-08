@@ -3104,6 +3104,20 @@ HEREDOC;
       $display = "none";
     }
 
+    $keyboardLetters = $this->getKeyboardLetters();
+    $miniKeyboard = "<div class='elearning_whiteboard_keyboard'>"
+      . "<span title='" . $this->websiteText[262] . "'>" . $this->websiteText[261] . "</span>"
+      . $this->commonUtils->renderKeyboard($keyboardLetters, $this->websiteText[263], "elearning_whiteboard_keyboard")
+      . "</div>"
+      . <<<HEREDOC
+<script type='text/javascript'>
+var focusedElement = '';
+function focusElement(element) {
+  focusedElement = element;
+}
+</script>
+HEREDOC;
+
     $str = "<div id='subscriptionWhiteboard' style='display: $display;'><br />"
       . "<div class='elearning_whiteboard'>"
       . "<div class='elearning_whiteboard_buttons'>"
@@ -3112,13 +3126,14 @@ HEREDOC;
       . " <span class='elearning_whiteboard_print' id='whiteboard_max' title='$labelMaxTheWhiteboard'>$labelMax</span>"
       . "</div>"
       . "<div class='elearning_whiteboard_output' id='whiteboard_output'>$whiteboard</div>"
-      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard_input' id='whiteboard_input' rows='1'></textarea>"
+      . "<textarea class='elearning_whiteboard_input textarea_max' name='whiteboard_input' id='whiteboard_input' rows='1' onfocus='focusElement(this);'></textarea>"
       . "<div id='whiteboard_loading' style='display:none;'><img src='$gImagesUserUrl/" . IMAGE_COMMON_LOADING . "' title='" . $this->websiteText[2] . "' alt='' /></div>"
       . "<div id='whiteboard_warning' style='display:none;'></div>"
       . "<div id='whiteboard_url_content' style='display:none;'>"
       . "<iframe id='whiteboard_url_iframe' name='whiteboard_url_iframe' type='text/html' frameborder='0' width='370' height='300'></iframe>"
       . "</div>" 
       . "</div>"
+      . $miniKeyboard
       . "</div>";
 
     $ELEARNING_WHITEBOARD_DISPLAY_STATE = ELEARNING_WHITEBOARD_DISPLAY_STATE;
@@ -3318,6 +3333,10 @@ $('#whiteboard_input').bind("keyup click", function (event) {
   }
 });
 
+$('#whiteboard_input').focus(function() {
+  latestChangedField = $('#whiteboard_input');
+});
+
 $("#whiteboard_max").click(function(e) {
   maxWhiteboard();
 });
@@ -3343,12 +3362,6 @@ if ('undefined' != typeof elearningSocket) {
 });
 </script>
 HEREDOC;
-
-    $keyboardLetters = $this->getKeyboardLetters();
-    $str .= "<div class='elearning_whiteboard_keyboard'>"
-      . "<span title='" . $this->websiteText[262] . "'>" . $this->websiteText[261] . "</span>"
-      . $this->commonUtils->renderKeyboard($keyboardLetters, $this->websiteText[263], "elearning_whiteboard_keyboard")
-      . "</div>";
 
     return($str);
   }

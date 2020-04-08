@@ -293,7 +293,7 @@ HEREDOC;
 <script type='text/javascript'>
 function typeTextIntoFocusedElement(text) {
   if (focusedElement) {
-    focusedElement.value += text;
+   focusedElement.value += text;
   }
 }
 
@@ -309,6 +309,10 @@ $('.$domId').bind("click", function (event) {
 HEREDOC;
 
     if ($strLetters) {
+      $strLetters = str_replace('-', '', $strLetters);
+      $strLetters = str_replace('_', '', $strLetters);
+      $strLetters = str_replace('"', '', $strLetters);
+      $strLetters = str_replace("'", '', $strLetters);
       $letters = explode(' ', $strLetters);
       foreach ($letters as $letter) {
         $str .= "<span><a href=\"javascript:typeTextIntoFocusedElement('$letter');\" title='$caption'> $letter </a></span>";
