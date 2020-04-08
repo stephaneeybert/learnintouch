@@ -3343,7 +3343,21 @@ if ('undefined' != typeof elearningSocket) {
 });
 </script>
 HEREDOC;
+
+    $keyboardLetters = $this->getKeyboardLetters();
+    $str .= "<div class='elearning_whiteboard_keyboard'>"
+      . "<span title='" . $this->websiteText[262] . "'>" . $this->websiteText[261] . "</span>"
+      . $this->commonUtils->renderKeyboard($keyboardLetters, $this->websiteText[263], "elearning_whiteboard_keyboard")
+      . "</div>";
+
     return($str);
+  }
+
+  // By default the on-screen keyboard displays a series of letters. But it is possible to specify the letters that are to be offered to the participant. If letters are typed in, then only these letters will be displayed as the on-screen keyboard.
+  function getKeyboardLetters() {
+    $keyboardLetters = $this->preferenceUtils->getValue("ELEARNING_KEYBOARD_LETTERS");
+
+    return($keyboardLetters);
   }
 
   // Render the exercise
@@ -3558,6 +3572,7 @@ HEREDOC;
       . "</div>"
       . "<div class='elearning_whiteboard_output'>The border of the whiteboard output</div>"
       . "<div class='elearning_whiteboard_input'>The border of the whiteboard input</div>"
+      . "<div class='elearning_whiteboard_keyboard'>The keyboard of the whiteboard input</div>"
       . "</div>"
       . "<div class='elearning_exercise_name'>The name of the exercise</div>"
       . "<div class='elearning_exercise_description'>The description of the exercise</div>"

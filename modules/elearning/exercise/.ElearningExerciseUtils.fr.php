@@ -259,3 +259,6 @@
 [ 258]Par défaut, le graphe de résultats affiche les résultats de tous les exercices.\n\nMais il est possible d'afficher un graphe composé que d'exercices qui n'ont pas de corrections instantanées (ni de félicitations).\n\nIl est aussi possible d'afficher un graphe composé que d'exercices qui ont des corrections instantanées (ou des félicitations).
 [ 259]Avec correction instantanée
 [ 260]Sans correction instantanée
+[ 261]Mini clavier:
+[ 262]Veuillez cliquer sur une lettre dans le mini clavier
+[ 263]Insérer la lettre

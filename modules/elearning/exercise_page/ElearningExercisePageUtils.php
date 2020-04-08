@@ -2495,7 +2495,7 @@ HEREDOC;
       if (!$this->hideKeyboard($elearningExercise)) {
         $str .= "<div class='elearning_exercise_page_keyboard'>" 
           . "<span title='" . $this->websiteText[20] . "'>" . $this->websiteText[19] . "</span>"
-          . $this->commonUtils->renderKeyboard($keyboardLetters, $this->websiteText[21]) 
+          . $this->commonUtils->renderKeyboard($keyboardLetters, $this->websiteText[21], "elearning_exercise_page_keyboard") 
           . "</div>";
       }
     }

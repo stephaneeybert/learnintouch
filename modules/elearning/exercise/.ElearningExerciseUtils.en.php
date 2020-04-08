@@ -259,3 +259,6 @@
 [ 258]By default, the graph of results displays the results of all the exercises.\n\nBut it is possible to display a graph composed only of exercises that do not show instant corrections (nor congratulations).\n\nIt is also possible to show a graph composed only of exercises that show instant corrections (or congratulations).
 [ 259]With instant correction
 [ 260]Without instant correction
+[ 261]Mini keyboard:
+[ 262]Click on a letter in the mini keyboard
+[ 263]Insert the letter

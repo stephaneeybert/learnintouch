@@ -288,7 +288,7 @@ HEREDOC;
     system($command);
   }
 
-  function renderKeyboard($strLetters, $caption) {
+  function renderKeyboard($strLetters, $caption, $domId) {
     $str = <<<HEREDOC
 <script type='text/javascript'>
 function typeTextIntoFocusedElement(text) {
@@ -299,7 +299,7 @@ function typeTextIntoFocusedElement(text) {
 
 var keyboardClicked = 0;
 var latestChangedField;
-$('.elearning_exercise_page_keyboard').bind("click", function (event) {
+$('.$domId').bind("click", function (event) {
   keyboardClicked = 1;
   if (latestChangedField) {
     latestChangedField.focus();
