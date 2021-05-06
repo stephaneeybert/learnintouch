@@ -76,7 +76,8 @@ Note !!! If changing the NodeJS socketio version, then change it also in engine/
 by copying it from programs/install/lib/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.min.js
 Install Node
 Install these modules
-export NODE_PATH=/home/stephane/programs/install/lib/node_modules;
+mkdir -p ~/programs/install/lib/node_modules;
+export NODE_PATH=~/programs/install/lib/node_modules;
 npm install -g formidable;
 npm install -g connect;
 npm install -g cookie;
