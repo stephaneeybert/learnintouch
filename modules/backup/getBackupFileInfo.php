@@ -4,14 +4,14 @@ require_once("website.php");
 
 LibHtml::preventCaching();
 
-$backupFileUrl = $backupUtils->renderBackupFileUrl();
-$backupFilePath = $backupUtils->renderBackupFilePath();
+$backupFileUrl = $backupUtils->renderBackupTarFileUrl();
+$backupTarFilePath = $backupUtils->renderBackupTarFilePath();
 
-$fileName = basename($backupFilePath);
+$fileName = basename($backupTarFilePath);
 
-if (is_readable($backupFilePath)) {
-  $fileTimestamp = filemtime($backupFilePath);
-  $fileSize = filesize($backupFilePath);
+if (is_readable($backupTarFilePath)) {
+  $fileTimestamp = filemtime($backupTarFilePath);
+  $fileSize = filesize($backupTarFilePath);
   $fileTime = date("d/m/Y H:i:s", $fileTimestamp);
   $fileUrl = $backupFileUrl;
 } else {

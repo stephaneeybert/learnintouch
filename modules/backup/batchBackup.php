@@ -14,7 +14,7 @@ $mlText = $languageUtils->getMlText(__FILE__);
 $backupSuccess = $backupUtils->backupDatabase($dbFilename, $tableStructure, $tableData, $dataFormat, $fullInsert, $noSecret);
 
 if ($backupSuccess) {
-  $backupFilePath = $backupUtils->renderBackupFilePath();
+  $backupFilePath = $backupUtils->renderBackupTarFilePath();
   $backupSuccess = $backupUtils->backupDataPath($backupFilePath);
 }
 

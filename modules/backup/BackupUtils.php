@@ -231,7 +231,7 @@ class BackupUtils extends BackupDB {
   }
 
   // Backup the account data directory
-  function backupDataPath($filename) {
+  function backupDataPath($tarFilename) {
     global $gDataPath;
 
     $dirList = array();
@@ -249,9 +249,7 @@ class BackupUtils extends BackupDB {
     }
     sort($dirList);
 
-    $tarFilename = str_replace(".gz", "", $filename);
     $lastLine = system("tar -cvf $tarFilename $gDataPath", $returnValue);
-    $lastLine = system("gzip $tarFilename", $returnValue);
     $success = ($returnValue > 0 ? false : true);
 
     return($success);
@@ -293,20 +291,16 @@ class BackupUtils extends BackupDB {
     return($url);
   }
 
-  // Render data file url
-  function renderBackupFileUrl() {
-    global $gAccountUrl;
-
-    $url = $gAccountUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar.gz";
+  // Render data .tar file url
+  function renderBackupTarFileUrl() {
+    $url = $this->latestBackupFileUrl . '/' . $this->websiteUtils->getSetupWebsiteName() . ".tar";
 
     return($url);
   }
 
-  // Render data file path
-  function renderBackupFilePath() {
-    global $gAccountPath;
-
-    $backupFilePath = $gAccountPath . $this->websiteUtils->getSetupWebsiteName() . ".tar.gz";
+  // Render data .tar file path
+  function renderBackupTarFilePath() {
+    $backupFilePath = $this->latestBackupFilePath . $this->websiteUtils->getSetupWebsiteName() . ".tar";
 
     return($backupFilePath);
   }
@@ -320,7 +314,7 @@ class BackupUtils extends BackupDB {
     }
 
     // Create the file name
-    $dataFilename = $this->renderBackupFilePath();
+    $dataFilename = $this->renderBackupTarFilePath();
 
     // Delete the main backup file
     $this->deleteBackupFile($dataFilename);

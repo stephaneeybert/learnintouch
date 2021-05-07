@@ -50,8 +50,8 @@ $panelUtils->addLine('', '', '', $panelUtils->addCell($strCommand, "nbr"));
 // Display the main backup file
 // The download.php script cannot be used for large files
 // So the files are downloaded like simple links
-$backupFileUrl = $backupUtils->renderBackupFileUrl();
-$backupFilePath = $backupUtils->renderBackupFilePath();
+$backupFileUrl = $backupUtils->renderBackupTarFileUrl();
+$backupFilePath = $backupUtils->renderBackupTarFilePath();
 if (is_readable($backupFilePath)) {
   // Get the file creation time
   $fileTimestamp = filemtime($backupFilePath);
@@ -77,18 +77,22 @@ function renderBackupFile(responseText) {
   var fileUrl = response.fileUrl;
   var color = '';
   var title = '';
+  var urlAttr = '';
   if (fileSize > 0) {
     if (fileSize > previousFileSize) {
       color = "red";
+      cursor = "not-allowed";
       title = '$mlText[13]';
       previousFileSize = fileSize;
     } else {
       color = "green";
+      cursor = "grab";
       title = '$mlText[8]';
+      urlAttr = "href='" + fileUrl + "'";
       // Stop the loop
       window.clearInterval(repeat);
     }
-    document.getElementById("backupFile").innerHTML = "<a href='" + fileUrl + "' title='" + title + "'><span style='color:" + color + ";'>" + fileName + "</span></a> " + " $mlText[15] <span id='backupFileSize'><span style='color:" + color + ";'>" + fileSize + "</span>";
+    document.getElementById("backupFile").innerHTML = "<a " + urlAttr + " title='" + title + "' style='text-decoration: none;'><span style='color:" + color + "; cursor:" + cursor + ";'>" + fileName + "</span></a> " + " $mlText[15] <span id='backupFileSize'><span style='color:" + color + ";'>" + fileSize + "</span>";
   } else {
     // If the file size does not change then there is not backup going on
     // and there is no need to refresh the file size

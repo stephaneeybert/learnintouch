@@ -16,7 +16,7 @@ $backupSuccess = $backupUtils->backupDatabase($dbFilename, false);
 
 // Check for the backup success
 if ($backupSuccess) {
-  $backupSuccess = $backupUtils->backupDataPath($backupUtils->renderBackupFilePath());
+  $backupSuccess = $backupUtils->backupDataPath($backupUtils->renderBackupTarFilePath());
 }
 
 $webmasterEmail = $profileUtils->getProfileValue("webmaster.email");
