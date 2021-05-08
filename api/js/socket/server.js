@@ -45,7 +45,18 @@ if (sslKey) {
   });
 }
 
-module.exports.io = socketio.listen(httpsServer);
+module.exports.io = socketio(httpsServer, {
+  cors: {
+    origin: '*',
+    methods: [
+      'GET',
+      'POST'
+    ],
+    allowedHeaders: [],
+    credentials: true
+  }
+});
+console.log(module.exports.io);
 
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);

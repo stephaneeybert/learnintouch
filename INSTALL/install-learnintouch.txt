@@ -72,8 +72,14 @@ Extract the INSTALL/language-*.tar.gz files
 Then assign the owner again
 
 Setup the NodeJS socket server
-Note !!! If changing the NodeJS socketio version, then change it also in engine/api/js/socket/socket.io.min.js
-by copying it from programs/install/lib/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.min.js
+The socket.io library is used by the Node server and by the PHP server so they can communicate together.
+The socket.io version of the PHP server is the engine/api/js/socket/socket.io.min.js file
+The socket.io version of the Node server is the one installed by npm and may vary with time, and it is found in the ./node_modules/socket.io/client-dist/socket.io.min.js
+Note !!! If changing the NodeJS socket.io version, then change it also in engine/api/js/socket/socket.io.min.js
+by copying it from ./node_modules/socket.io/client-dist/socket.io.min.js
+docker cp www_learnintouch_nodejs.1.qse6q9uap55va028rmftv6wkn:/usr/local/learnintouch/node_modules/socket.io/client-dist/socket.io.min.js ~/dev/docker/projects/learnintouch/volumes/engine/api/js/socket/
+In a Docker environment, the learnintouch/nodejs-learnintouch container contains the /node_modules/socket.io/client-dist/socket.io.min.js file
+Logging socket.io https://socket.io/docs/v3/logging-and-debugging/
 Install Node
 Install these modules
 mkdir -p ~/programs/install/lib/node_modules;
