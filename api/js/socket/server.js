@@ -93,7 +93,7 @@ module.exports.io.use(function (socket, handler) {
 });
 
 // Handle a POST http request sent to the Node.js server
-httpHandleServerPostRequest = function(data) {
+var httpHandleServerPostRequest = function(data) {
   console.log("Received posted data: ", data);
   var stringified = JSON.stringify(data);
   var postedData = JSON.parse(stringified);
