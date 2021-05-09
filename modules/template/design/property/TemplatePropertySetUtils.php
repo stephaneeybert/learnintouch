@@ -237,12 +237,14 @@ class TemplatePropertySetUtils extends TemplatePropertySetDB {
       $type = '';
       $selectOptions = '';
 
-      $properties = $this->propertyTypes[$name];
-      if (count($properties) == 5) {
-        list($css, $description, $help, $type, $selectOptions) = $properties;
-      } else if (count($properties) == 4) {
-        list($css, $description, $help, $type) = $properties;
-        $selectOptions = '';
+      if ($this->propertyTypes) {
+        $properties = $this->propertyTypes[$name];
+        if (count($properties) == 5) {
+          list($css, $description, $help, $type, $selectOptions) = $properties;
+        } else if (count($properties) == 4) {
+          list($css, $description, $help, $type) = $properties;
+          $selectOptions = '';
+        }
       }
 
       $property = array(

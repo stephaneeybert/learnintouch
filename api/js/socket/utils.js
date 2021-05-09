@@ -34,18 +34,20 @@ module.exports.getRedisValue = function(data, name) {
 };
 
 // Handle http requests sent to the Node.js server
-module.exports.httpHandler = function(req, res) {
+module.exports.httpHandler = function(req, res, next) {
+  // Allow CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+
   switch(req.url) {
     case '/ping':
       if (req.method == 'GET') {
-//        console.log("Received a [200] " + req.method + " to " + req.url);
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.end('');
       }
       break;
     case '/push':
       if (req.method == 'POST') {
-//        console.log("Received a [200] " + req.method + " to " + req.url);
         form = new formidable.IncomingForm();
         form.parse(req, function(e, fields, files) {
           res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -55,11 +57,11 @@ module.exports.httpHandler = function(req, res) {
       }
       break;
     default:
-      send404(res);
+      res.end('');
   };
 };
 
-send404 = function(res) {
+var send404 = function(res) {
   res.writeHead(404);
   res.write('404');
   res.end();
