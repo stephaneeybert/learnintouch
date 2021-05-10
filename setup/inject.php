@@ -661,6 +661,7 @@ $shopOrderUtils->shopOrderItemUtils = $shopOrderItemUtils;
 $guestbookUtils->languageUtils = $languageUtils;
 $guestbookUtils->userUtils = $userUtils;
 
+$mailUtils->dynpageUtils = $dynpageUtils;
 $mailUtils->languageUtils = $languageUtils;
 $mailUtils->preferenceUtils = $preferenceUtils;
 $mailUtils->adminModuleUtils = $adminModuleUtils;

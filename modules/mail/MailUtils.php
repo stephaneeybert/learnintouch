@@ -17,6 +17,7 @@ class MailUtils extends MailDB {
 
   var $preferences;
 
+  var $dynpageUtils;
   var $languageUtils;
   var $preferenceUtils;
   var $adminModuleUtils;
@@ -281,11 +282,18 @@ class MailUtils extends MailDB {
   }
 
   // Transform the image urls into email image elements
+  // for multiple modules
   function urlToEmailImageCID($body) {
+    $body = $this->urlToEmailImageCIDReplace($this->imageUrl, $body);
+    $body = $this->urlToEmailImageCIDReplace($this->dynpageUtils->imageUrl, $body);
+    return($body);
+  }
+
+  // Transform the image urls into email image elements
+  function urlToEmailImageCIDReplace($urlPrefix, $body) {
     global $gHomeUrl;
 
-    $relativeUrl = substr($this->imageUrl, strlen($gHomeUrl), strlen($this->imageUrl) - strlen($gHomeUrl)) . '/';
-
+    $relativeUrl = substr($urlPrefix, strlen($gHomeUrl), strlen($urlPrefix) - strlen($gHomeUrl)) . '/';
     $body = str_replace($relativeUrl, "cid:", $body);
 
     return($body);
