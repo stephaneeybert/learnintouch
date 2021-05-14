@@ -36,8 +36,8 @@ module.exports.getRedisValue = function(data, name) {
 // Handle http requests sent to the Node.js server
 module.exports.httpHandler = function(req, res, next) {
   // Allow CORS
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+//  res.setHeader("Access-Control-Allow-Origin", "*");
+//  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
 
   switch(req.url) {
     case '/ping':
@@ -57,7 +57,7 @@ module.exports.httpHandler = function(req, res, next) {
       }
       break;
     default:
-      res.end('');
+//      res.end('');
   };
 };
 

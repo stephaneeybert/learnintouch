@@ -2578,9 +2578,11 @@ HEREDOC;
 <script type="text/javascript">
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
-    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
+    console.log("Creating a socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning");
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', { autoConnect: true, withCredentials: true, reconnect: true, rejectUnauthorized: false });
   }
   if ('undefined' != typeof elearningSocket) {
+    console.log("A socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning exists");
     elearningSocket.on('connect', function() {
       console.log('The elearning namespace socket connected');
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId'});

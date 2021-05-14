@@ -930,7 +930,7 @@ function renderLiveResult(responseText) {
 var elearningSocket;
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
-    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning');
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', { autoConnect: true, withCredentials: true, reconnect: true, rejectUnauthorized: false });
   }
   if ('undefined' != typeof elearningSocket) {
     elearningSocket.on('connect', function() {

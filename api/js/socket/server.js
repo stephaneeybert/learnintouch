@@ -48,21 +48,18 @@ if (sslKey) {
 module.exports.io = socketio(httpsServer, {
   cors: {
     origin: '*',
-    methods: [
-      'GET',
-      'POST'
-    ],
-    allowedHeaders: [],
+    methods: ["GET", "POST"],
     credentials: true
   }
 });
-console.log(module.exports.io);
 
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
 
 // When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. The socketSessionId is to have a unique id per client. Note that, because the socket.id is renewed on each client page refresh, it cannot be used, and a custom unique client id socketSessionId is being used.
-module.exports.io.use(function (socket, handler) {
+module.exports.io.use((socket, handler) => {
+  console.log('The namespace middleware is registered');
+  console.log(socket.request.headers.cookie);
   if (socket.request.headers.cookie) {
     socket.request.cookies = cookie.parse(decodeURIComponent(socket.request.headers.cookie));
     socket.request.sessionID = socket.request.cookies['PHPSESSID'];
@@ -99,7 +96,7 @@ var httpHandleServerPostRequest = function(data) {
   var postedData = JSON.parse(stringified);
 
   // Send a message to the root namespace
-  server.io.sockets.emit('myDemoMessage', {'username': "From the NodeJS http server root namespace... firstname: " + postedData.firstname + " lastname: " + postedData.lastname});
+  server.io.of('/').emit('myDemoMessage', {'username': "From the NodeJS http server root namespace... firstname: " + postedData.firstname + " lastname: " + postedData.lastname});
 
   // Send a message to the /demo namespace
   server.io.of('/demo').emit('myNotepadMessage', {'notepad': "Some content for the notepad...", 'firstname': postedData.firstname, 'lastname': postedData.lastname});
