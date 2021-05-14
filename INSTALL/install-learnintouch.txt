@@ -23,7 +23,7 @@ The programs can be run repeatedly, like every day, week, month, etc...
 Add the following entries in the crontab
 with the following command
 crontab -e
-00 01 * * * /home/stephane/learnintouch/engine/cron/backup_all.sh
+00 01 * * * /home/stephane/learnintouch/engine/cron/backup-all-websites.sh
 00 03 * * 6 /home/stephane/learnintouch/engine/cron/cleanup_all.sh
 
 Create the engine database
