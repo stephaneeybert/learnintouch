@@ -2,6 +2,8 @@
 
 basedir=/usr/local/learnintouch/www
 
+# Entering each website home directory is required so as to point to its specific properties file
+
 cd $basedir/europasprak.com
 ./backup.sh &
 

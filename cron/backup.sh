@@ -13,4 +13,7 @@ export WWW_THALASOFT_DB_PASSWORD={{DOCKER-SECRET:WWW_THALASOFT_DB_PASSWORD}}
 source /usr/local/learnintouch/expand-secrets.sh
 #/usr/local/learnintouch/expand-all-secrets.sh TODO DRY ~/dev/docker/projects/learnintouch/learnintouch/start.sh
 
-/usr/local/php/install/bin/php -d include_path='/usr/local/learnintouch/engine/setup/' -f /usr/local/learnintouch/engine/system/cron/backup.php $PWD/account/setup/specific.php
+export MYSQL_HOME=/usr/local/mariadb/install # TODO How to set the PATH in Docker instead ?
+export PATH=$PATH:$MYSQL_HOME/bin
+
+/usr/local/php/install/bin/php -d include_path='/usr/local/learnintouch/engine/setup/' -f /usr/local/learnintouch/engine/system/cron/backup.php $PWD/account/setup/specific.php >> /usr/local/learnintouch/logs/cron.log 2>&1
