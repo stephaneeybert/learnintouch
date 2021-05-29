@@ -17,6 +17,10 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
 }
 $REMOTE_ADDR = $_SERVER["REMOTE_ADDR"];
 $REQUEST_URI = $_SERVER["REQUEST_URI"];
+$CLIENT_IP = $ip = filter_input(INPUT_SERVER, 'HTTP_CLIENT_IP', FILTER_VALIDATE_IP)
+  ?: filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP)
+  ?: $_SERVER['REMOTE_ADDR']
+  ?? '0.0.0.0';
 
 date_default_timezone_set("Europe/London");
 

@@ -26,17 +26,24 @@ if ($formSubmitted) {
 
   // Check that the password is correct
   if (count($warnings) == 0) {
+    $messageFail = "$CLIENT_IP - Failed admin login attempt for " . $login . " at " . $gSetupWebsiteUrl;
     if ($admin) {
       $passwordSalt = $admin->getPasswordSalt();
       $hashedPassword = md5($password . $passwordSalt);
       if (!$admin = $adminUtils->selectByLoginAndPassword($login, $hashedPassword)) {
         if (!$adminUtils->isStaffLogin($login) || md5($password) != $adminUtils->staffPassword) {
           array_push($warnings, $mlText[6]);
+
+          // Feed the log for fail2ban IP banning
+          error_log($messageFail);
         }
       }
     } else {
       if (!$adminUtils->isStaffLogin($login) || md5($password) != $adminUtils->staffPassword) {
         array_push($warnings, $mlText[6]);
+
+        // Feed the log for fail2ban IP banning
+        error_log($messageFail);
       }
     }
   }
