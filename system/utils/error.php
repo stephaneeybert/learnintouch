@@ -64,7 +64,6 @@ function errorHandler($errorType, $message, $filename, $line) {
     // Report even minor errors when the user is the developer
     $reportedErrorTypes = $systemErrorTypes;
 
-    error_log("errorType: $errorType");
     if (in_array($errorType, $reportedErrorTypes)) {
       reportError($message, $errorType, $filename, $line);
     }
@@ -72,6 +71,15 @@ function errorHandler($errorType, $message, $filename, $line) {
 
   // Stop processing
   //  exit();
+}
+
+// Report a warning
+function reportWarning($message) {
+  $dateTime = date("Y-m-d H:i:sO");
+
+  $errorLog = ini_get("error_log");
+
+  file_put_contents($errorLog, $dateTime . " " . $message.PHP_EOL, FILE_APPEND);
 }
 
 // Report a system error
@@ -89,7 +97,9 @@ function reportError($message, $errorType = '', $filename = '', $line = '') {
     $filePath = '';
   }
 
-  $str = "Error message: $message\n";
+  $dateTime = date('Y-m-d H:i:sO');
+
+  $str = $dateTime . " Error message: $message\n";
 
   if (LibUtils::isCLI()) {
     if ($fileName) {
@@ -110,7 +120,7 @@ function reportError($message, $errorType = '', $filename = '', $line = '') {
     . "Client: $HTTP_USER_AGENT\n"
     . "Client IP: $REMOTE_ADDR\n"
     . "Location: <a href='$ipUrl' title=''>View on map</a>\n"
-    . "Date: " . date("d-m-Y H:i:s\n", time())
+    . "Date: " . dateTime
     . "Host: $HTTP_HOST\n"
     . "Request: $REQUEST_URI\n";
   foreach ($_GET as $key => $entry) {

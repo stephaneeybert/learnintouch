@@ -35,7 +35,7 @@ if ($formSubmitted) {
           array_push($warnings, $mlText[6]);
 
           // Feed the log for fail2ban IP banning
-          error_log($messageFail);
+          reportWarning($messageFail);
         }
       }
     } else {
@@ -43,7 +43,7 @@ if ($formSubmitted) {
         array_push($warnings, $mlText[6]);
 
         // Feed the log for fail2ban IP banning
-        error_log($messageFail);
+        reportWarning($messageFail);
       }
     }
   }
