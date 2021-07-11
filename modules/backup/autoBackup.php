@@ -29,7 +29,7 @@ if (!$webmasterName) {
 
 // Check for the backup success
 if ($backupSuccess == false) {
-  $backupUtils->deleteDBBackupFiles(1);
+  $backupUtils->deleteDBBackupFiles();
 
   $strSubject = $mlText[8];
 
