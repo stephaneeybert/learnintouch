@@ -140,7 +140,7 @@ function reportError($message, $errorType = '', $filename = '', $line = '') {
     $emailSubject = "A PHP error occured on a website";
     $emailBody = nl2br($str);
     if (LibEmail::validate($email)) {
-      LibEmail::sendMail($email, $email, $emailSubject, $emailBody);
+      LibEmail::sendMail($email, $email, $emailSubject, $emailBody, $email, $email);
     }
   } else {
     // Print the error message
