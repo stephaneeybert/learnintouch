@@ -4,11 +4,11 @@ $specific = '';
 if ($argc == 2) {
   $specific = $argv[1];
 } else {
-  die("Some arguments are missing for the file $PHP_SELF");
+  die("Some arguments are missing for the file $SCRIPT_FILENAME");
 }
 
 if (!is_file($specific)) {
-  die("The file $specific is missing for the file $PHP_SELF");
+  die("The file $specific is missing for the file $SCRIPT_FILENAME");
 }
 include($specific);
 
