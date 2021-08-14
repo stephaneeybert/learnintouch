@@ -6,6 +6,10 @@ var server = require('./server.js');
 var copilotElearningSubscriptions = [];
 var copilotElearningClasses = [];
 
+server.io.of('/elearning').on('connect_error', function(error) {
+  console.log('Socket connection error due to ' + error.message);
+});
+
 // Listen on the elearning namespace
 server.io.of('/elearning').on('connection', function(socket) {
   console.log('The elearning socket server received a connection');
