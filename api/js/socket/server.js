@@ -23,13 +23,6 @@ if (fs.existsSync(config.ssl.path + config.ssl.key)) {
   console.log("The virtual host DOESN'T have an SSL private key");
 }
 
-console.log("Configuring the server for HTTP");
-console.log("The HTTP server is used by the healthcheck even if the socket is served on the HTTPS server");
-var httpServer = http.createServer(utils.httpHandler);
-httpServer.listen(config.socketio.port, function() {
-  console.log('The NodeJS HTTP server [port: ' + config.socketio.port + '] is listening...');
-});
-
 if (sslKey) {
   console.log("Configuring the server for HTTPS");
   var options = {
@@ -43,27 +36,55 @@ if (sslKey) {
   httpsServer.listen(config.socketio.sslport, function() {
     console.log('The NodeJS HTTPS server [port: ' + config.socketio.sslport + '] is listening...');
   });
+
+  module.exports.io = socketio(httpsServer, {
+    cors: {
+      origin: '*',
+      methods: ["GET", "POST"],
+      credentials: true
+    },
+    cookie: {
+      name: 'PHPSESSID',
+      httpOnly: false,
+      path: "/"
+    }
+  });
+} else {
+  console.log("Configuring the server for HTTP");
+  var httpServer = http.createServer(utils.httpHandler);
+  httpServer.listen(config.socketio.port, function() {
+    console.log('The NodeJS HTTP server [port: ' + config.socketio.port + '] is listening...');
+  });
+
+  module.exports.io = socketio(httpServer, {
+    cors: {
+      origin: '*',
+      methods: ["GET", "POST"],
+      credentials: true
+    },
+    cookie: {
+      name: 'PHPSESSID',
+      httpOnly: false,
+      path: "/"
+    }
+  });
 }
 
-module.exports.io = socketio(httpsServer, {
-  cors: {
-    origin: '*',
-    methods: ["GET", "POST"],
-    credentials: true
-  }
+module.exports.io.use((socket, handler) => {
+  console.log('Hello !! main namespace middleware');
 });
 
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
 
 // When a client socket attempts to connect, it sends the cookies in its handshake. By comparing the unique socket session id sent in a handshake cookie, with the one already stored in the Redis store, we can make sure that the socket attempting to connect, is originating from a legitimate logged in user. When the user logged in the application, a socket session id was created and saved in the Redis store. The Redis store acting as the PHP session store, it keeps all the logged in user session variables under the PHP sessionID value. The socketSessionId is to have a unique id per client. Note that, because the socket.id is renewed on each client page refresh, it cannot be used, and a custom unique client id socketSessionId is being used.
-module.exports.io.use((socket, handler) => {
-  console.log('The namespace middleware is registered');
-  console.log(socket.request.headers.cookie);
-  if (socket.request.headers.cookie) {
-    socket.request.cookies = cookie.parse(decodeURIComponent(socket.request.headers.cookie));
-    socket.request.sessionID = socket.request.cookies['PHPSESSID'];
-    socket.request.socketSessionId = socket.request.cookies['socketSessionId'];
+module.exports.io.of('/elearning').use((socket, handler) => {
+  console.log('The main namespace middleware is called');
+  console.log(socket.handshake.headers.cookie);
+  if (socket.handshake.headers.cookie) {
+    var cookies = cookie.parse(decodeURIComponent(socket.handshake.headers.cookie));
+    socket.request.sessionID = cookies['PHPSESSID'];
+    socket.request.socketSessionId = cookies['socketSessionId'];
     console.log("Authorization attempt with sessionID: " + socket.request.sessionID + " and socketSessionId: " + socket.request.socketSessionId);
     redisClient.get("PHPREDIS_SESSION:" + socket.request.sessionID, function (error, reply) {
       if (error) {

@@ -927,10 +927,14 @@ function renderLiveResult(responseText) {
   }
 }
 
+var socketConnectionProperties = {
+  transports: ['websocket', 'polling', 'flashsocket'],
+  withCredentials: true
+}
 var elearningSocket;
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
-    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', { autoConnect: true, withCredentials: true, reconnect: true, rejectUnauthorized: false });
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', socketConnectionProperties);
   }
   if ('undefined' != typeof elearningSocket) {
     elearningSocket.on('connect', function() {

@@ -3174,14 +3174,18 @@ var elearningSocket;
 var isAdmin = false;
 var WHITEBOARD_HEIGHT_MAX = 500;
 var WHITEBOARD_HEIGHT_NORMAL = 100;
+var socketConnectionProperties = {
+  transports: ['websocket', 'polling', 'flashsocket'],
+  withCredentials: true
+}
 
 $(function() {
   if ('undefined' != typeof io && 'undefined' == typeof elearningSocket) {
     console.log("Creating a socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning");
-    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', { autoConnect: true, withCredentials: true, reconnect: true, rejectUnauthorized: false });
+    elearningSocket = io.connect('$gSocketHostname:$NODEJS_SOCKET_PORT/elearning', socketConnectionProperties);
   }
   if ('undefined' != typeof elearningSocket) {
-    console.log("A socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning exists");
+    console.log("A socket on $gSocketHostname:$NODEJS_SOCKET_PORT/elearning has been created");
     elearningSocket.on('connect', function() {
       console.log("The elearning namespace socket connected");
       elearningSocket.emit('watchLiveCopilot', {'elearningSubscriptionId': '$elearningSubscriptionId', 'elearningClassId': '$elearningClassId'});

@@ -19,26 +19,26 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('watchLiveCopilot', function(data) {
     // The room needs to be joined, not only for the teacher to watch the answers live, but also to share the whiteboard
     // Join the room named with the class id or alternatively with the subscription id
-    if ('undefined' != typeof data.elearningClassId) {
+    if (data.elearningClassId) {
       // There are multiple sockets (one for each client) for a class
       copilotElearningClasses[socketSessionId] = data.elearningClassId;
       socket.join(data.elearningClassId);
-      socket.broadcast.to(data.elearningClassId).send("Someone else receives your notifications to the class " + data.elearningClassId);
+      socket.broadcast.to(data.elearningClassId).emit("Someone else receives your notifications to the class " + data.elearningClassId);
       if (socketSessionId.indexOf("admin") !== -1) {
         socket.emit('postLogin', { admin: true });
       }
       socket.send("You are notified by the class " + data.elearningClassId);
-    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+    } else if (data.elearningSubscriptionId) {
       // There are multiple sockets (one for each client) for a subscription
       copilotElearningSubscriptions[socketSessionId] = data.elearningSubscriptionId;
       socket.join(data.elearningSubscriptionId);
-      socket.broadcast.to(data.elearningSubscriptionId).send("Someone else receives your notifications to the subscription " + data.elearningSubscriptionId);
+      socket.broadcast.to(data.elearningSubscriptionId).emit("Someone else receives your notifications to the subscription " + data.elearningSubscriptionId);
       socket.send("You are notified by the subscription " + data.elearningSubscriptionId);
     }
   });
 
   socket.on('updateTab', function(data) {
-    if ('undefined' != typeof data.elearningSubscriptionId) {
+    if (data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('updateTab', {'elearningSubscriptionId': data.elearningSubscriptionId, 'elearningExercisePageId': data.elearningExercisePageId});
       return;
     }
@@ -48,7 +48,7 @@ server.io.of('/elearning').on('connection', function(socket) {
   socket.on('updateQuestion', function(data) {
     socket.broadcast.to('liveResultAdminPages').emit('updateResult', data);
 
-    if ('undefined' != typeof data.elearningSubscriptionId) {
+    if (data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('updateQuestion', data);
       return;
     }
@@ -56,14 +56,14 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('updateWhiteboard', function(data) {
-    if ('undefined' != typeof data.elearningClassId) {
+    if (data.elearningClassId) {
       // A participant only sends to a teacher and not to other participants
       if (socketSessionId.indexOf("admin") !== -1) {
         data.admin = true;
       }
       socket.broadcast.to(data.elearningClassId).emit('updateWhiteboard', data);
       return;
-    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+    } else if (data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('updateWhiteboard', data);
       return;
     }
@@ -71,14 +71,14 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('clearWhiteboard', function(data) {
-    if ('undefined' != typeof data.elearningClassId) {
+    if (data.elearningClassId) {
       // Only a teacher can clear the other whiteboards
       if (socketSessionId.indexOf("admin") !== -1) {
         data.admin = true;
       }
       socket.broadcast.to(data.elearningClassId).emit('clearWhiteboard', data);
       return;
-    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+    } else if (data.elearningSubscriptionId) {
       // Only a teacher can clear the other whiteboards
       if (socketSessionId.indexOf("admin") !== -1) {
         data.admin = true;
@@ -90,10 +90,10 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('showParticipantWhiteboard', function(data) {
-    if ('undefined' != typeof data.elearningClassId) {
+    if (data.elearningClassId) {
       socket.broadcast.to(data.elearningClassId).emit('showParticipantWhiteboard', data);
       return;
-    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+    } else if (data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('showParticipantWhiteboard', data);
       return;
     }
@@ -101,10 +101,10 @@ server.io.of('/elearning').on('connection', function(socket) {
   });
 
   socket.on('hideParticipantWhiteboard', function(data) {
-    if ('undefined' != typeof data.elearningClassId) {
+    if (data.elearningClassId) {
       socket.broadcast.to(data.elearningClassId).emit('hideParticipantWhiteboard', data);
       return;
-    } else if ('undefined' != typeof data.elearningSubscriptionId) {
+    } else if (data.elearningSubscriptionId) {
       socket.broadcast.to(data.elearningSubscriptionId).emit('hideParticipantWhiteboard', data);
       return;
     }
@@ -122,7 +122,7 @@ server.io.of('/elearning').on('connection', function(socket) {
 
     var copilotElearningSubscription;
     copilotElearningSubscriptions.forEach(function (copilotElearningSubscription, copilotElearningSubscriptionId) {
-      if ('undefined' != typeof copilotElearningSubscription) {
+      if (copilotElearningSubscription) {
         for (var socketSessionId in copilotElearningSubscription) {
           var currentSessionID = copilotElearningSubscription[socketSessionId];
           if (currentSessionID == sessionID) {

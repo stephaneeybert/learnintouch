@@ -17,16 +17,19 @@ export PATH=$PATH:/home/stephane/programs/install/bin/
 
 case "$1" in
   start)
-        forever start /home/stephane/learnintouch/engine/api/js/socket/elearning-server.js
-#        /home/stephane/learnintouch/engine/api/js/socket/start.sh
-        echo "Starting the socket server:"
-        ;;
+#    /home/europasprak/programs/install/lib/node_modules/forever/bin/forever start /home/europasprak/dev/docker/projects/learnintouch/volumes/engine/api/js/socket/elearning-server.js \
+#      2>&1 >> /home/europasprak/dev/docker/projects/common/volumes/logs/nodejs.log &
+    DEBUG=socket* \
+      node /home/europasprak/dev/docker/projects/learnintouch/volumes/engine/api/js/socket/elearning-server.js \
+      2>&1 >> /home/europasprak/dev/docker/projects/common/volumes/logs/nodejs.log &
+    echo "Starting the Learnintouch Node socket server:"
+    ;;
   stop)
-        killall node
+    killall node
   	;;
   *)
-        echo "Usage: %s {start|stop}\n" "$0"
-        exit 1
+    echo "Usage: %s {start|stop}\n" "$0"
+    exit 1
 	;;
 esac
 
