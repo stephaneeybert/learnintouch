@@ -72,7 +72,6 @@ if ($formSubmitted) {
     }
     printContent($str);
     return;
-
   }
 
 } else {
