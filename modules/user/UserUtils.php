@@ -407,6 +407,15 @@ class UserUtils extends UserDB {
     return($session);
   }
 
+  // Check the email is valid
+  function checkUserEmail($email) {
+    if (LibEmail::validate($email)) {
+      return(true);
+    } else {
+      return(false);
+    }
+  }
+
   // Check the password of the user
   function checkUserPassword($email, $password) {
     if ($user = $this->selectByEmail($email)) {

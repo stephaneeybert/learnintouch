@@ -22,10 +22,18 @@ if ($formSubmitted == 1) {
     array_push($warnings, $websiteText[9]);
   }
 
+  $messageFail = "$CLIENT_IP - Failed user login attempt for " . $email . " at " . $gSetupWebsiteUrl;
+
   // The password is required
   if (!$password) {
     array_push($warnings, $websiteText[12]);
+  } else if ($userUtils->checkUserEmail($email) == false) {
+    // Feed the log for fail2ban IP banning
+    reportWarning($messageFail);
   } else if ($userUtils->checkUserPassword($email, $password) == false) {
+    // Feed the log for fail2ban IP banning
+    reportWarning($messageFail);
+
     // Check that the current password is correct
     array_push($warnings, $websiteText[13]);
   }
