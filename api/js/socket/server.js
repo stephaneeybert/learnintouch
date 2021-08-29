@@ -72,10 +72,6 @@ if (sslKey) {
   });
 }
 
-module.exports.io.use((socket, handler) => {
-  console.log('Hello !! main namespace middleware');
-});
-
 module.exports.io.adapter(ioredis({ host: config.redis.hostname, port: config.redis.port }));
 var redisClient = redis.createClient(config.redis.port, config.redis.hostname);
 
