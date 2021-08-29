@@ -22,6 +22,10 @@ if ($formSubmitted) {
     array_push($warnings, $mlText[5]);
   }
 
+  if ($adminUtils->checkAdminLoginName($login)) {
+    array_push($warnings, $mlText[5]);
+  }
+
   $admin = $adminUtils->selectByLogin($login);
 
   // Check that the password is correct

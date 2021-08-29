@@ -153,6 +153,11 @@ class AdminUtils extends AdminDB {
     $this->userUtils->openSocketSession($this->sessionDuration * 60, "admin");
   }
 
+  // Check the admin login name
+  function checkAdminLoginName($login) {
+    return LibString::isAlphaNum($login);
+  }
+
   // Check that an administrator is logged in
   function checkAdminLogin() {
     global $gAdminUrl, $gRedirectDelay;
