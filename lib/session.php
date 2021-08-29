@@ -6,6 +6,10 @@ class LibSession {
   // To check if a session exists, do not rely on the session id,
   // but rather on a session variable
   static function openSession() {
+    if (headers_sent()) {
+      die("The HTTP headers have already been sent and the session cannot be started");
+    }
+
     if (!session_id()) {
       session_start();
     }
