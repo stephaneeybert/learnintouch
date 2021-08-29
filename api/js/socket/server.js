@@ -38,6 +38,7 @@ if (sslKey) {
   });
 
   module.exports.io = socketio(httpsServer, {
+    maxHttpBufferSize: 1e3,
     cors: {
       origin: '*',
       methods: ["GET", "POST"],
@@ -57,6 +58,7 @@ if (sslKey) {
   });
 
   module.exports.io = socketio(httpServer, {
+    maxHttpBufferSize: 1e3,
     cors: {
       origin: '*',
       methods: ["GET", "POST"],
