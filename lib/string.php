@@ -118,12 +118,12 @@ class LibString {
     $str = str_replace(';', ' ', $str);
     $str = str_replace('.', ' ', $str);
 
-    $str = eregi_replace(' +', ' ', $str);
+    $str = LibString::stripMultipleSpaces($str);
 
     $bits = explode(' ', $str);
 
     for ($i = 0; $i < count($bits); $i++) {
-      if (eregi("[0-9A-Za-zÀ-ÖØ-öø-ÿ]", $bits[$i])) {
+      if (preg_match("/[0-9A-Za-zÀ-ÖØ-öø-ÿ]/", $bits[$i])) {
         $nb++;
         }
       }
@@ -237,19 +237,19 @@ class LibString {
 
   // Strip all script tags, like PHP tags and Javascript tags
   static function stripJavascriptTags($str) {
-    $str = eregi_replace("<script[^>]*>.*</script>", '', $str);
+    $str = preg_replace("<script[^>]*>.*</script>", '', $str);
 
     return($str);
   }
 
-  /*
+/*
   // Strip all script tags, like PHP tags and Javascript tags
   static function stripScriptTags($str) {
-  $str = eregi_replace("<\?php.*\?>", '', $str);
-  $str = eregi_replace("<script[^>]*>.*</script>", '', $str);
+  $str = preg_replace("<\?php.*\?>", '', $str);
+  $str = preg_replace("<script[^>]*>.*</script>", '', $str);
   return($str);
   }
-   */
+*/
 
   // Strip all HTML and PHP tags from a string
   // Also remove the html encoded characters like &amp;
