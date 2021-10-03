@@ -53,6 +53,9 @@ ln -s /home/stephane/learnintouch/engine/cron/refresh_template_models.sh refresh
 
 Create the /home/stephane/learnintouch/www/europasprak/account/setup/specific.php file
 
+Create the /home/stephane/learnintouch/www/europasprak/setenv.sh file
+It is used to specify some environment variables when running PHP from the CLI for the automated backup
+
 Copy some data files
 cd ~/learnintouch/www/
 cp -R lerum/account/data/* lerum/account/data/
