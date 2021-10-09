@@ -39,6 +39,8 @@ if ($backupSuccess == false) {
     LibEmail::sendMail($webmasterEmail, $webmasterName, $strSubject, $strBody, $webmasterEmail, $webmasterName);
   }
 } else {
+  $backupUtils->deleteBackup();
+
   // Generate a unique token and keep it for later use
   $tokenName = BACKUP_TOKEN_NAME;
   $tokenDuration = $adminUtils->getLoginTokenDuration();
