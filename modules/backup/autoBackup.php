@@ -7,6 +7,8 @@ $dbName = DB_NAME;
 $dbName = str_replace("stephane", '', $dbName);
 $dbName = str_replace("eybert", '', $dbName);
 
+$backupUtils->deleteBackup();
+
 // Create the file name
 $dbFilename = $backupUtils->latestBackupFilePath . $backupUtils->backupFilePrefix . $dbName . "_" . date("Y-m-d") . "_" . date("H-i") . ".sql";
 $dbFilename = str_replace("__", "_", $dbFilename);
@@ -16,7 +18,8 @@ $backupSuccess = $backupUtils->backupDatabase($dbFilename, false);
 
 // Check for the backup success
 if ($backupSuccess) {
-  $backupSuccess = $backupUtils->backupDataPath($backupUtils->renderBackupTarFilePath());
+  $backupFilePath = $backupUtils->renderBackupTarFilePath();
+  $backupSuccess = $backupUtils->backupDataPath($backupFilePath);
 }
 
 $webmasterEmail = $profileUtils->getProfileValue("webmaster.email");
@@ -29,8 +32,6 @@ if (!$webmasterName) {
 
 // Check for the backup success
 if ($backupSuccess == false) {
-  $backupUtils->deleteDBBackupFiles();
-
   $strSubject = $mlText[8];
 
   $strBody = "$mlText[9] <a href='mailto:$webmasterEmail'>$webmasterName</a>";
@@ -39,8 +40,6 @@ if ($backupSuccess == false) {
     LibEmail::sendMail($webmasterEmail, $webmasterName, $strSubject, $strBody, $webmasterEmail, $webmasterName);
   }
 } else {
-  $backupUtils->deleteBackup();
-
   // Generate a unique token and keep it for later use
   $tokenName = BACKUP_TOKEN_NAME;
   $tokenDuration = $adminUtils->getLoginTokenDuration();

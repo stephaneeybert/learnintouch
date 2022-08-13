@@ -16,4 +16,4 @@ source /usr/local/learnintouch/expand-secrets.sh
 export MYSQL_HOME=/usr/local/mariadb/install # TODO How to set the PATH in Docker instead ?
 export PATH=$PATH:$MYSQL_HOME/bin
 
-/usr/local/php/install/bin/php -d include_path='/usr/local/learnintouch/engine/setup/' -f /usr/local/learnintouch/engine/system/cron/backup.php $PWD/account/setup/specific.php >> /usr/local/learnintouch/logs/cron.log 2>&1
+/usr/local/php/install/bin/php -d include_path='/usr/local/learnintouch/engine/setup/' -f /usr/local/learnintouch/engine/system/cron/backup.php $PWD/account/setup/specific.php >> /home/stephane/trash/php_error_log 2>&1
