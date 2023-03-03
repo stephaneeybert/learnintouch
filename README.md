@@ -19,4 +19,3 @@ TODO:
 When sending a mailing to a user, his name does not appear in the history of sent mails.
 In the teacher's corner add a warning if creating a participant's subscription for a user that already has a subscription.
 Display the teacher's participants, exercises and lessons when the teacher logs in the admin panel.
-When watching live a participant, if several participants do each a different exercise, have the list of participants on the right of the live watch, so as to be able to switch from one to another, thus allowing the use of the live watch for a class of participants and not for only one participant.
