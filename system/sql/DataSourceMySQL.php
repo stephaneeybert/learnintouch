@@ -4,7 +4,7 @@
 
 class DataSourceMySQL extends DataSource {
 
-  function DataSourceMySQL($host = '', $port = '', $databaseName) {
+  function DataSourceMySQL($host, $port, $databaseName) {
     $this->DataSource($host, $port, $databaseName);
   }
 
