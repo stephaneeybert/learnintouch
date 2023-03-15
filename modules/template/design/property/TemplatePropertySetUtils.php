@@ -22,8 +22,8 @@ class TemplatePropertySetUtils extends TemplatePropertySetDB {
   var $languageUtils;
   var $templatePropertyUtils;
 
-  function TemplatePropertySetUtils() {
-    $this->TemplatePropertySetDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

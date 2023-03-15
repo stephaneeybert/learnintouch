@@ -2,8 +2,8 @@
 
 class ElearningSubjectUtils extends ElearningSubjectDB {
 
-  function ElearningSubjectUtils() {
-    $this->ElearningSubjectDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

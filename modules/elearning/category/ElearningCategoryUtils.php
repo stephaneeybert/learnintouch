@@ -2,8 +2,8 @@
 
 class ElearningCategoryUtils extends ElearningCategoryDB {
 
-  function ElearningCategoryUtils() {
-    $this->ElearningCategoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

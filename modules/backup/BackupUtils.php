@@ -30,8 +30,8 @@ class BackupUtils extends BackupDB {
   var $clockUtils;
   var $websiteUtils;
 
-  function BackupUtils() {
-    $this->BackupDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

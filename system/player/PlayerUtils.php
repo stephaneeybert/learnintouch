@@ -14,7 +14,7 @@ class PlayerUtils {
   // Display the player controls
   var $controls;
 
-  function PlayerUtils() {
+  function __construct() {
     $this->init();
   }
 

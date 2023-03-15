@@ -6,7 +6,7 @@ class FormItemDB {
   var $tableName;
   var $dao;
 
-  function FormItemDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

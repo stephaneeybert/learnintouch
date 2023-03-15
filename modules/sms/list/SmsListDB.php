@@ -6,7 +6,7 @@ class SmsListDB {
   var $tableName;
   var $dao;
 
-  function SmsListDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

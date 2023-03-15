@@ -15,7 +15,7 @@ class Contact {
   var $status;
   var $contactRefererId;
 
-  function Contact($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

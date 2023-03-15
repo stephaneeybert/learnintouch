@@ -6,7 +6,7 @@ class WebsiteSubscriptionDB {
   var $tableName;
   var $dao;
 
-  function WebsiteSubscriptionDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;
@@ -14,13 +14,13 @@ class WebsiteSubscriptionDB {
     $this->tableName = DB_TABLE_WEBSITE_SUBSCRIPTION;
 
     $this->dao = new WebsiteSubscriptionDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function selectById($id) {
     if ($result = $this->dao->selectById($id)) {
@@ -36,9 +36,9 @@ class WebsiteSubscriptionDB {
         $object->setTerminationDate($row['termination_date']);
         $object->setWebsiteId($row['website_id']);
         return($object);
-        }
       }
     }
+  }
 
   function selectByWebsiteId($websiteId) {
     $objects = Array();
@@ -56,36 +56,36 @@ class WebsiteSubscriptionDB {
         $object->setWebsiteId($row['website_id']);
 
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getOpeningDate(), $object->getFee(), $object->getDuration(), $object->getAutoRenewal(), $object->getTerminationDate(), $object->getWebsiteId()));
-    }
+  }
 
   function update($object) {
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getOpeningDate(), $object->getFee(), $object->getDuration(), $object->getAutoRenewal(), $object->getTerminationDate(), $object->getWebsiteId()));
-    }
+  }
 
   function delete($id) {
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

@@ -6,7 +6,7 @@ class TemplateElementDB {
   var $tableName;
   var $dao;
 
-  function TemplateElementDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

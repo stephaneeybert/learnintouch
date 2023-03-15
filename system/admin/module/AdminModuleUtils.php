@@ -11,8 +11,8 @@ class AdminModuleUtils extends AdminModuleDB {
   var $adminOptionUtils;
   var $websiteOptionUtils;
 
-  function AdminModuleUtils() {
-    $this->AdminModuleDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function init() {

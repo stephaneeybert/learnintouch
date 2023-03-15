@@ -6,7 +6,7 @@ class NewsStoryDB {
   var $tableName;
   var $dao;
 
-  function NewsStoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

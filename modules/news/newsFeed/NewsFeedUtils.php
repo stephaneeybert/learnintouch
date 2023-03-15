@@ -20,8 +20,8 @@ class NewsFeedUtils extends NewsFeedDB {
   var $newsEditorUtils;
   var $fileUploadUtils;
 
-  function NewsFeedUtils() {
-    $this->NewsFeedDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

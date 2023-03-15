@@ -4,8 +4,8 @@ class NavlinkDao extends Dao {
 
   var $tableName;
 
-  function NavlinkDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

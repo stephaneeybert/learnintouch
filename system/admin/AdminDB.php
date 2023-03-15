@@ -6,7 +6,7 @@ class AdminDB {
   var $tableName;
   var $dao;
 
-  function AdminDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

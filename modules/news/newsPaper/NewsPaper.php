@@ -12,7 +12,7 @@ class NewsPaper {
   var $notPublished;
   var $newsPublicationId;
 
-  function NewsPaper($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

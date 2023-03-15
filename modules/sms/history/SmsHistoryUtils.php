@@ -2,8 +2,8 @@
 
 class SmsHistoryUtils extends SmsHistoryDB {
 
-  function SmsHistoryUtils() {
-    $this->SmsHistoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

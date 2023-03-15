@@ -7,7 +7,7 @@ class MailList {
   var $description;
   var $autoSubscribe;
 
-  function MailList($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

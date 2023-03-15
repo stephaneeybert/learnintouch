@@ -6,7 +6,7 @@ class LanguageDB {
   var $tableName;
   var $dao;
 
-  function LanguageDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;

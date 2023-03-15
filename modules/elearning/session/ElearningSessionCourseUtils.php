@@ -2,8 +2,8 @@
 
 class ElearningSessionCourseUtils extends ElearningSessionCourseDB {
 
-  function ElearningSessionCourseUtils() {
-    $this->ElearningSessionCourseDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function deleteSessionCourse($elearningSessionId, $elearningCourseId) {

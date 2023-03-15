@@ -13,7 +13,7 @@ class Dynpage {
   var $parentId;
   var $adminId;
 
-  function Dynpage($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

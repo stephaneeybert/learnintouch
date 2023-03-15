@@ -10,8 +10,8 @@ class NewsHeadingUtils extends NewsHeadingDB {
   var $newsHeadingUtils;
   var $newsStoryUtils;
 
-  function NewsHeadingUtils() {
-    $this->NewsHeadingDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

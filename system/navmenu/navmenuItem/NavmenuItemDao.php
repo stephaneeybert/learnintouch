@@ -4,8 +4,8 @@ class NavmenuItemDao extends Dao {
 
   var $tableName;
 
-  function NavmenuItemDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
     }

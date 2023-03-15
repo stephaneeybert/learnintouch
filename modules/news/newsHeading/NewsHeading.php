@@ -9,7 +9,7 @@ class NewsHeading {
   var $listOrder;
   var $newsPublicationId;
 
-  function NewsHeading($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

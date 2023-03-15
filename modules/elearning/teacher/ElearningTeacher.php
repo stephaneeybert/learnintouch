@@ -5,7 +5,7 @@ class ElearningTeacher {
   var $id;
   var $userId;
 
-  function ElearningTeacher($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -5,7 +5,7 @@ class ShopItemImageDao extends Dao {
   var $tableName;
 
   function ShopItemImageDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

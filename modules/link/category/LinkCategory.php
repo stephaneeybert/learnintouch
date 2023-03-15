@@ -7,7 +7,7 @@ class LinkCategory {
   var $description;
   var $listOrder;
 
-  function LinkCategory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

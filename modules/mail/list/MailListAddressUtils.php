@@ -2,8 +2,8 @@
 
 class MailListAddressUtils extends MailListAddressDB {
 
-  function MailListAddressUtils() {
-    $this->MailListAddressDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Subscribe to a mailing list

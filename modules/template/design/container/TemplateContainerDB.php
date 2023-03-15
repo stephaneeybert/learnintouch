@@ -6,7 +6,7 @@ class TemplateContainerDB {
   var $tableName;
   var $dao;
 
-  function TemplateContainerDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

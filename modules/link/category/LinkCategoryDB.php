@@ -6,7 +6,7 @@ class LinkCategoryDB {
   var $tableName;
   var $dao;
 
-  function LinkCategoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

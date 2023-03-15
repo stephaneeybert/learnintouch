@@ -6,7 +6,7 @@ class NewsStoryParagraphUtils extends NewsStoryParagraphDB {
   var $newsStoryUtils;
 
   function NewsStoryParagraphUtils() {
-    $this->NewsStoryParagraphDB();
+    parent::__construct();
   }
 
   // Add a paragraph to a news story

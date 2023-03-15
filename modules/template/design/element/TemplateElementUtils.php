@@ -30,8 +30,8 @@ class TemplateElementUtils extends TemplateElementDB {
   var $templateElementLanguageUtils;
   var $templatePropertySetUtils;
 
-  function TemplateElementUtils() {
-    $this->TemplateElementDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

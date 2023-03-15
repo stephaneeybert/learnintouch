@@ -6,8 +6,8 @@ class ShopAffiliateUtils extends ShopAffiliateDB {
   var $shopItemUtils;
   var $userUtils;
 
-  function ShopAffiliateUtils() {
-    $this->ShopAffiliateDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the user id of an affiliate

@@ -8,8 +8,8 @@ class SmsListUtils extends SmsListDB {
   var $smsListNumberUtils;
   var $smsHistoryUtils;
 
-  function SmsListUtils() {
-    $this->SmsListDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

@@ -2,8 +2,8 @@
 
 class SqlToolsDao extends Dao {
 
-  function SqlToolsDao($dataSource) {
-    $this->Dao($dataSource);
+  function __construct($dataSource) {
+    parent::__construct($dataSource);
   }
 
   function getDatabaseSize() {

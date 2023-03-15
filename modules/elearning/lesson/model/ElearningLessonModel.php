@@ -8,7 +8,7 @@ class ElearningLessonModel {
   var $instructions;
   var $locked;
 
-  function ElearningLessonModel($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

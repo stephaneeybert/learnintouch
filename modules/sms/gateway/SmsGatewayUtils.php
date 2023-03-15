@@ -23,7 +23,7 @@ class SmsGatewayUtils {
   var $preferenceUtils;
   var $profileUtils;
 
-  function SmsGatewayUtils() {
+  function __construct() {
     $this->init();
   }
 

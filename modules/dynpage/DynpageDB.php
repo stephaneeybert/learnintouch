@@ -6,7 +6,7 @@ class DynpageDB {
   var $tableName;
   var $dao;
 
-  function DynpageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

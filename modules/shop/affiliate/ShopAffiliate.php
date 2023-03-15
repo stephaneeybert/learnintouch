@@ -5,7 +5,7 @@ class ShopAffiliate {
   var $id;
   var $userId;
 
-  function ShopAffiliate($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

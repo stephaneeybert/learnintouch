@@ -6,7 +6,7 @@ class MailListDB {
   var $tableName;
   var $dao;
 
-  function MailListDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

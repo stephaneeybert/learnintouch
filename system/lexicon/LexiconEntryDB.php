@@ -6,7 +6,7 @@ class LexiconEntryDB {
   var $tableName;
   var $dao;
 
-  function LexiconEntryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

@@ -20,8 +20,8 @@ class FormUtils extends FormDB {
   var $formValidUtils;
   var $fileUploadUtils;
 
-  function FormUtils() {
-    $this->FormDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

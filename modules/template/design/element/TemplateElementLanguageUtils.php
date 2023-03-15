@@ -13,8 +13,8 @@ class TemplateElementLanguageUtils extends TemplateElementLanguageDB {
   var $linkCategoryUtils;
   var $photoUtils;
 
-  function TemplateElementLanguageUtils() {
-    $this->TemplateElementLanguageDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

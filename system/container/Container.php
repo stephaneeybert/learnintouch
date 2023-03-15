@@ -5,7 +5,7 @@ class Container {
   var $id;
   var $content;
 
-  function Container($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -6,7 +6,7 @@ class ElearningSolution {
   var $elearningQuestion;
   var $elearningAnswer;
 
-  function ElearningSolution($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -7,7 +7,7 @@ class DocumentCategory {
   var $description;
   var $listOrder;
 
-  function DocumentCategory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

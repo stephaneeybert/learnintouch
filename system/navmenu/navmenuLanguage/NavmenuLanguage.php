@@ -7,7 +7,7 @@ class NavmenuLanguage {
   var $navmenuId;
   var $navmenuItemId;
 
-  function Navmenu($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

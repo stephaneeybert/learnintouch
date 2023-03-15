@@ -6,7 +6,7 @@ class WebsiteAddressDB {
   var $tableName;
   var $dao;
 
-  function WebsiteAddressDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;

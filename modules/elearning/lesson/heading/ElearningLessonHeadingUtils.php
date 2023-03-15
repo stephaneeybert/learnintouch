@@ -9,8 +9,8 @@ class ElearningLessonHeadingUtils extends ElearningLessonHeadingDB {
   var $preferenceUtils;
   var $elearningLessonParagraphUtils;
 
-  function ElearningLessonHeadingUtils() {
-    $this->ElearningLessonHeadingDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

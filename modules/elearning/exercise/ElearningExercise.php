@@ -32,7 +32,7 @@ class ElearningExercise {
   var $garbage;
   var $locked;
 
-  function ElearningExercise($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

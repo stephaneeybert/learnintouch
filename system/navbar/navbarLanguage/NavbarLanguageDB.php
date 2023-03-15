@@ -6,7 +6,7 @@ class NavbarLanguageDB {
   var $tableName;
   var $dao;
 
-  function NavbarLanguageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

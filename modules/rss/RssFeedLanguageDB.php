@@ -6,7 +6,7 @@ class RssFeedLanguageDB {
   var $tableName;
   var $dao;
 
-  function RssFeedLanguageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

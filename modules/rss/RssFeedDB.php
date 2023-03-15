@@ -6,7 +6,7 @@ class RssFeedDB {
   var $tableName;
   var $dao;
 
-  function RssFeedDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

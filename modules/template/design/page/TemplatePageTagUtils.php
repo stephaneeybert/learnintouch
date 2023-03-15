@@ -28,8 +28,8 @@ class TemplatePageTagUtils extends TemplatePageTagDB {
   var $elearningTeacherUtils;
   var $elearningSubscriptionUtils;
 
-  function TemplatePageTagUtils() {
-    $this->TemplatePageTagDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

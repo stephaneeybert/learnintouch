@@ -6,7 +6,7 @@ class Property {
   var $name;
   var $value;
 
-  function Property($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

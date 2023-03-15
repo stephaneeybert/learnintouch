@@ -6,7 +6,7 @@ class ShopAffiliateDB {
   var $tableName;
   var $dao;
 
-  function ShopAffiliateDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

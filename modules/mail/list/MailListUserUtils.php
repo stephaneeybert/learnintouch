@@ -2,8 +2,8 @@
 
 class MailListUserUtils extends MailListUserDB {
 
-  function MailListUserUtils() {
-    $this->MailListUserDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

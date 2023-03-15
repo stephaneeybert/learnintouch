@@ -44,8 +44,8 @@ class ShopItemUtils extends ShopItemDB {
   var $shopOrderItemUtils;
   var $shopDiscountUtils;
 
-  function ShopItemUtils() {
-    $this->ShopItemDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

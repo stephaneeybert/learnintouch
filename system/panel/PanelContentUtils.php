@@ -2,12 +2,22 @@
 
 class PanelContentUtils {
 
-  function PanelContentUtils() {
+  var $mlText;
+
+  var $languageUtils;
+
+  function __construct() {
+  }
+
+  function loadLanguageTexts() {
+    $this->mlText = $this->languageUtils->getMlText(__FILE__);
   }
 
   function getOk() {
     global $gCommonImagesUrl;
     global $gImageOk;
+
+    $this->loadLanguageTexts();
 
     $title = $this->mlText[0];
 
@@ -20,6 +30,8 @@ class PanelContentUtils {
     global $gCommonImagesUrl;
     global $gImageTinyOk;
 
+    $this->loadLanguageTexts();
+
     $title = $this->mlText[0];
 
     $str = "<input type='image' border='0' style='vertical-align:middle;' name='okButton' id='okButton' src='$gCommonImagesUrl/$gImageTinyOk' title='$title'>";
@@ -31,6 +43,8 @@ class PanelContentUtils {
     global $gCommonImagesUrl;
     global $gImageCancel;
 
+    $this->loadLanguageTexts();
+
     $title = $this->mlText[1];
 
     $str = "<input type='image' border='0' name='cancelButton' id='cancelButton' src='$gCommonImagesUrl/$gImageCancel' title='$title'>";
@@ -41,6 +55,8 @@ class PanelContentUtils {
   function getTinyCancel() {
     global $gCommonImagesUrl;
     global $gImageTinyCancel;
+
+    $this->loadLanguageTexts();
 
     $title = $this->mlText[1];
 

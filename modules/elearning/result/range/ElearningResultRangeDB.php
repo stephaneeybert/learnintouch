@@ -6,7 +6,7 @@ class ElearningResultRangeDB {
   var $tableName;
   var $dao;
 
-  function ElearningResultRangeDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

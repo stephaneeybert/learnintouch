@@ -21,8 +21,8 @@ class ProfileUtils extends ProfileDB {
   var $preferenceUtils;
   var $propertyUtils;
 
-  function ProfileUtils() {
-    $this->ProfileDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

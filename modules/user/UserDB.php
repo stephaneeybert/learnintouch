@@ -6,7 +6,7 @@ class UserDB {
   var $tableName;
   var $dao;
 
-  function UserDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

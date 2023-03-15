@@ -10,8 +10,8 @@ class MailOutboxUtils extends MailOutboxDB {
   // The property name of a semaphore to check if a mailing is ongoing
   var $propertyMailingOngoing;
 
-  function MailOutboxUtils() {
-    $this->MailOutboxDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

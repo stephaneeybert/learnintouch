@@ -25,8 +25,8 @@ class WebsiteUtils extends WebsiteDB {
   var $websiteOptionUtils;
   var $websiteAddressUtils;
 
-  function WebsiteUtils() {
-    $this->WebsiteDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

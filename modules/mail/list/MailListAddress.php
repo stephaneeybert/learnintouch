@@ -6,7 +6,7 @@ class MailListAddress {
   var $mailListId;
   var $mailAddressId;
 
-  function MailListAddress($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

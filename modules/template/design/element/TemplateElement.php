@@ -9,7 +9,7 @@ class TemplateElement {
   var $listOrder;
   var $hide;
 
-  function TemplateElement($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

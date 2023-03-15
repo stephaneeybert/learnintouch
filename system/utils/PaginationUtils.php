@@ -27,7 +27,7 @@ class PaginationUtils {
 
   var $languageUtils;
 
-  function PaginationUtils($listNbItems, $listStep, $listIndex) {
+  function __construct($listNbItems, $listStep, $listIndex) {
     // Have a default step if none is specified
     if (!$listStep) {
       $listStep = 20;

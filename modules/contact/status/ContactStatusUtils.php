@@ -4,8 +4,8 @@ class ContactStatusUtils extends ContactStatusDB {
 
   var $contactUtils;
 
-  function ContactStatusUtils() {
-    $this->ContactStatusDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the next available list order

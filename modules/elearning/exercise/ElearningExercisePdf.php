@@ -11,7 +11,7 @@ class ElearningExercisePdf extends PdfUtils {
   var $elearningExercisePageUtils;
   var $elearningExercisePagePdf;
 
-  function ElearningExercisePdf() {
+  function __construct() {
   }
 
   function loadLanguageTexts() {

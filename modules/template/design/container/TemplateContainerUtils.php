@@ -7,8 +7,8 @@ class TemplateContainerUtils extends TemplateContainerDB {
   var $templateModelUtils;
   var $templateElementUtils;
 
-  function TemplateContainerUtils() {
-    $this->TemplateContainerDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function getPropertyTypes() {

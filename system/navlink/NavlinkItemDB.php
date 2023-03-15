@@ -6,7 +6,7 @@ class NavlinkItemDB {
   var $tableName;
   var $dao;
 
-  function NavlinkItemDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

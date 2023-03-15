@@ -6,7 +6,7 @@ class TemplatePropertyDB {
   var $tableName;
   var $dao;
 
-  function TemplatePropertyDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

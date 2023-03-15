@@ -8,7 +8,7 @@ class SocialUser {
   var $googleUserId;
   var $userId;
 
-  function SocialUser($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

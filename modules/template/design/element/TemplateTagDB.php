@@ -6,7 +6,7 @@ class TemplateTagDB {
   var $tableName;
   var $dao;
 
-  function TemplateTagDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

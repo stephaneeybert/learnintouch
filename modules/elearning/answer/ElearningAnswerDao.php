@@ -4,8 +4,8 @@ class ElearningAnswerDao extends Dao {
 
   var $tableName;
 
-  function ElearningAnswerDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

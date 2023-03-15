@@ -2,8 +2,8 @@
 
 class ShopOrderItemUtils extends ShopOrderItemDB {
 
-  function ShopOrderItemUtils() {
-    $this->ShopOrderItemDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

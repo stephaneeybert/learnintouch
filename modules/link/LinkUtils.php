@@ -15,8 +15,8 @@ class LinkUtils extends LinkDB {
   var $languageUtils;
   var $preferenceUtils;
 
-  function LinkUtils() {
-    $this->LinkDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

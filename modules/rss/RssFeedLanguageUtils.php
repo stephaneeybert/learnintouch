@@ -2,8 +2,8 @@
 
 class RssFeedLanguageUtils extends RssFeedLanguageDB {
 
-  function RssFeedLanguageUtils() {
-    $this->RssFeedLanguageDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Add a rss feed

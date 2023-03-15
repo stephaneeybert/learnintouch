@@ -2,8 +2,8 @@
 
 class WebsiteAddressUtils extends WebsiteAddressDB {
 
-  function WebsiteAddressUtils() {
-    $this->WebsiteAddressDB();
+  function __construct() {
+    parent::__construct();
     }
 
   }

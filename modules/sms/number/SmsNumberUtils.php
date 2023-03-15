@@ -9,8 +9,8 @@ class SmsNumberUtils extends SmsNumberDB {
   var $smsListNumberUtils;
   var $smsListUtils;
 
-  function SmsNumberUtils() {
-    $this->SmsNumberDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

@@ -8,7 +8,7 @@ class LocationRegion {
   var $upperName;
   var $country;
 
-  function LocationRegion($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -7,7 +7,7 @@ class LexiconEntry {
   var $explanation;
   var $image;
 
-  function LexiconEntry($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

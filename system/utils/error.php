@@ -116,11 +116,13 @@ function reportError($message, $errorType = '', $filename = '', $line = '') {
   $commonUtils = new CommonUtils();
   $ipUrl = $commonUtils->mapIP($REMOTE_ADDR);
 
+  $dateTime =  new DateTime();
+
   $str .= "Error type: $errorType\n"
     . "Client: $HTTP_USER_AGENT\n"
     . "Client IP: $REMOTE_ADDR\n"
     . "Location: <a href='$ipUrl' title=''>View on map</a>\n"
-    . "Date: " . dateTime
+    . "Date: " . $dateTime->format("Y-m-d H:i:s")
     . "Host: $HTTP_HOST\n"
     . "Request: $REQUEST_URI\n";
   foreach ($_GET as $key => $entry) {

@@ -4,8 +4,8 @@ class ProfileDao extends Dao {
 
   var $tableName;
 
-  function ProfileDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

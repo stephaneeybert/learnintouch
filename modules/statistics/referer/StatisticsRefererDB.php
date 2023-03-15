@@ -6,7 +6,7 @@ class StatisticsRefererDB {
   var $tableName;
   var $dao;
 
-  function StatisticsRefererDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class StatisticsRefererDB {
     $this->tableName = DB_TABLE_STATISTICS_REFERER;
 
     $this->dao = new StatisticsRefererDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -35,9 +35,9 @@ class StatisticsRefererDB {
         $object->setDescription($row['description']);
         $object->setUrl($row['url']);
         return($object);
-        }
       }
     }
+  }
 
   function selectByName($name) {
     $this->dataSource->selectDatabase();
@@ -52,9 +52,9 @@ class StatisticsRefererDB {
         $object->setDescription($row['description']);
         $object->setUrl($row['url']);
         return($object);
-        }
       }
     }
+  }
 
   function selectByUrl($url) {
     $this->dataSource->selectDatabase();
@@ -69,9 +69,9 @@ class StatisticsRefererDB {
         $object->setDescription($row['description']);
         $object->setUrl($row['url']);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -88,38 +88,38 @@ class StatisticsRefererDB {
         $object->setUrl($row['url']);
 
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getName(), $object->getDescription(), $object->getUrl()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getUrl()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
-
   }
+
+}
 
 ?>

@@ -7,8 +7,8 @@ class RssFeedUtils extends RssFeedDB {
   var $languageUtils;
   var $rssFeedLanguageUtils;
 
-  function RssFeedUtils() {
-    $this->RssFeedDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

@@ -12,7 +12,7 @@ class Dao {
   // The possible error message
   var $errorMessage;
 
-  function Dao($dataSource) {
+  function __construct($dataSource) {
     $this->dataSource = $dataSource;
   }
 

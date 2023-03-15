@@ -6,7 +6,7 @@ class NewsPaperDB {
   var $tableName;
   var $dao;
 
-  function NewsPaperDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class NewsPaperDB {
     $this->tableName = DB_TABLE_NEWS_PAPER;
 
     $this->dao = new NewsPaperDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -36,8 +36,8 @@ class NewsPaperDB {
       $object->setNewsPublicationId($row['news_publication_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -47,9 +47,9 @@ class NewsPaperDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByTitle($title) {
     $this->dataSource->selectDatabase();
@@ -59,9 +59,9 @@ class NewsPaperDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -72,11 +72,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function countFoundRows() {
     $count = 0;
@@ -88,10 +88,10 @@ class NewsPaperDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function countAll() {
     $count = 0;
@@ -103,10 +103,10 @@ class NewsPaperDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectLikePatternInNewsPaperAndNewsPublication($searchPattern, $systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -117,11 +117,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectRecentReleases($newsPublicationId, $systemDate) {
     $this->dataSource->selectDatabase();
@@ -132,11 +132,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectLikePattern($searchPattern, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -147,11 +147,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByPatternAndNewsPublicationId($searchPattern, $newsPublicationId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -162,11 +162,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByNewsPublicationId($newsPublicationId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -177,11 +177,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByPublished($systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -192,11 +192,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByNewsPublicationAndPublished($newsPublicationId, $systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -207,11 +207,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByArchived($newsPublicationId, $systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -222,11 +222,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByDeferred($newsPublicationId, $systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -237,11 +237,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByNewsPublicationIdAndPublish($newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -252,11 +252,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByNewsPublicationIdAndNotPublish($newsPublicationId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -267,11 +267,11 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectLikePatternAndPublished($searchPattern, $systemDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -282,17 +282,17 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function archiveByReleaseDate($newsPublicationId, $sinceDate, $systemDate) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->archiveByReleaseDate($newsPublicationId, $sinceDate, $systemDate));
-    }
+  }
 
   function selectByPublicationAndArchiveDate($newsPublicationId, $sinceDate, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -303,18 +303,18 @@ class NewsPaperDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $header = $object->getHeader();
     $header = LibString::databaseEscapeQuotes($header);
@@ -322,14 +322,14 @@ class NewsPaperDB {
     $footer = LibString::databaseEscapeQuotes($footer);
 
     return($this->dao->insert($object->getTitle(), $object->getImage(), $header, $footer, $object->getReleaseDate(), $object->getArchive(), $object->getNotPublished(), $object->getNewsPublicationId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $header = $object->getHeader();
     $header = LibString::databaseEscapeQuotes($header);
@@ -337,18 +337,18 @@ class NewsPaperDB {
     $footer = LibString::databaseEscapeQuotes($footer);
 
     return($this->dao->update($object->getId(), $object->getTitle(), $object->getImage(), $header, $footer, $object->getReleaseDate(), $object->getArchive(), $object->getNotPublished(), $object->getNewsPublicationId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

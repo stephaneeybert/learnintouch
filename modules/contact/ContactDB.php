@@ -6,7 +6,7 @@ class ContactDB {
   var $tableName;
   var $dao;
 
-  function ContactDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ContactDB {
     $this->tableName = DB_TABLE_CONTACT;
 
     $this->dao = new ContactDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -39,8 +39,8 @@ class ContactDB {
       $object->setGarbage($row['garbage']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -50,9 +50,9 @@ class ContactDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function countFoundRows() {
     $count = 0;
@@ -63,10 +63,10 @@ class ContactDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectAll($start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -77,11 +77,11 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectNonGarbage($start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -92,11 +92,11 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByStatus($status, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -107,11 +107,11 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectAllByStatusId($status) {
     $this->dataSource->selectDatabase();
@@ -122,11 +122,11 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectAllByRefererId($status) {
     $this->dataSource->selectDatabase();
@@ -137,11 +137,11 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectGarbage() {
     $this->dataSource->selectDatabase();
@@ -152,24 +152,24 @@ class ContactDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function deleteByDate($sinceDate) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->deleteByDate($sinceDate));
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $subject = $object->getSubject();
     $subject = LibString::databaseEscapeQuotes($subject);
@@ -178,14 +178,14 @@ class ContactDB {
     $message = LibString::databaseEscapeQuotes($message);
 
     return($this->dao->insert($object->getFirstname(), $object->getLastname(), $object->getEmail(), $object->getOrganisation(), $object->getTelephone(), $subject, $message, $object->getContactDate(), $object->getStatus(), $object->getContactRefererId(), $object->getGarbage()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $subject = $object->getSubject();
     $subject = LibString::databaseEscapeQuotes($subject);
@@ -194,18 +194,18 @@ class ContactDB {
     $message = LibString::databaseEscapeQuotes($message);
 
     return($this->dao->update($object->getId(), $object->getFirstname(), $object->getLastname(), $object->getEmail(), $object->getOrganisation(), $object->getTelephone(), $subject, $message, $object->getContactDate(), $object->getStatus(), $object->getContactRefererId(), $object->getGarbage()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

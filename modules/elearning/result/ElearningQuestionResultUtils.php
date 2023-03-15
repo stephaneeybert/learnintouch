@@ -5,8 +5,8 @@ class ElearningQuestionResultUtils extends ElearningQuestionResultDB {
   var $elearningAnswerUtils;
   var $elearningQuestionUtils;
 
-  function ElearningQuestionResultUtils() {
-    $this->ElearningQuestionResultDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the participant answers of a question

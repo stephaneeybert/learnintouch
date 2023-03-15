@@ -4,8 +4,8 @@ class SmsOutboxDao extends Dao {
 
   var $tableName;
 
-  function SmsOutboxDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

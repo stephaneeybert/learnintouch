@@ -6,7 +6,7 @@ class ElearningResultRange {
   var $upperRange;
   var $grade;
 
-  function ElearningResultRange($id = '', $upperRange = '', $grade = '') {
+  function __construct($id = '', $upperRange = '', $grade = '') {
     $this->upperRange = $upperRange;
     $this->grade = $grade;
   }

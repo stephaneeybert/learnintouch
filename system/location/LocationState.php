@@ -9,7 +9,7 @@ class LocationState {
   var $region;
   var $country;
 
-  function LocationState($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

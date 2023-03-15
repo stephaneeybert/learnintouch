@@ -6,8 +6,8 @@ class ElearningLevelUtils extends ElearningLevelDB {
 
   var $languageUtils;
 
-  function ElearningLevelUtils() {
-    $this->ElearningLevelDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

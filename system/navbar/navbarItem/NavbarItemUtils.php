@@ -8,8 +8,8 @@ class NavbarItemUtils extends NavbarItemDB {
 
   var $templateUtils;
 
-  function NavbarItemUtils() {
-    $this->NavbarItemDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

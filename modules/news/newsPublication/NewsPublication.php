@@ -20,7 +20,7 @@ class NewsPublication {
   var $autoDelete;
   var $secured;
 
-  function NewsPublication($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

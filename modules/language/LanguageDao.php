@@ -4,8 +4,8 @@ class LanguageDao extends Dao {
 
   var $tableName;
 
-  function LanguageDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

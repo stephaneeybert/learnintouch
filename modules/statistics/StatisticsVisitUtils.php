@@ -39,8 +39,8 @@ class StatisticsVisitUtils extends StatisticsVisitDB {
   var $adminModuleUtils;
   var $propertyUtils;
 
-  function StatisticsVisitUtils() {
-    $this->StatisticsVisitDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

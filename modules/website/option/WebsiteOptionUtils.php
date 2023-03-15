@@ -5,8 +5,8 @@ class WebsiteOptionUtils extends WebsiteOptionDB {
   var $websiteUtils;
   var $moduleUtils;
 
-  function WebsiteOptionUtils() {
-    $this->WebsiteOptionDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the options

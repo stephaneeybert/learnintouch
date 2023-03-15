@@ -6,7 +6,7 @@ class AddressDB {
   var $tableName;
   var $dao;
 
-  function AddressDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

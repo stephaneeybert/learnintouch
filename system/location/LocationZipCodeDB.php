@@ -6,7 +6,7 @@ class LocationZipCodeDB {
   var $tableName;
   var $dao;
 
-  function LocationZipCodeDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;

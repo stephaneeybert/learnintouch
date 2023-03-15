@@ -8,7 +8,7 @@ class ShopCategory {
   var $listOrder;
   var $parentCategoryId;
 
-  function ShopCategory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

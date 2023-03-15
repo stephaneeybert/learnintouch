@@ -8,7 +8,7 @@ class StatisticsVisit {
   var $visitorBrowser;
   var $visitorReferer;
 
-  function StatisticsVisit($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

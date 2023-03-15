@@ -11,7 +11,7 @@ class TemplateContainer {
   var $cell;
   var $templatePropertySetId;
 
-  function TemplateContainer($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

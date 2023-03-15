@@ -5,8 +5,8 @@ class LocationZipCodeUtils extends LocationZipCodeDB {
   var $locationCountryUtils;
   var $locationStateUtils;
 
-  function LocationZipCodeUtils() {
-    $this->LocationZipCodeDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the list of city names

@@ -10,8 +10,8 @@ class ElearningTeacherUtils extends ElearningTeacherDB {
   var $socialUserUtils;
   var $elearningSubscriptionUtils;
 
-  function ElearningTeacherUtils() {
-    $this->ElearningTeacherDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

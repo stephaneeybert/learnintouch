@@ -6,7 +6,7 @@ class MailHistoryDB {
   var $tableName;
   var $dao;
 
-  function MailHistoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

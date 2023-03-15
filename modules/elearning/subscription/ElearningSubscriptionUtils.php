@@ -17,8 +17,8 @@ class ElearningSubscriptionUtils extends ElearningSubscriptionDB {
   var $elearningLessonParagraphUtils;
   var $elearningAssignmentUtils;
 
-  function ElearningSubscriptionUtils() {
-    $this->ElearningSubscriptionDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

@@ -6,7 +6,7 @@ class PeopleCategoryDB {
   var $tableName;
   var $dao;
 
-  function PeopleCategoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

@@ -17,8 +17,8 @@ class PeopleUtils extends PeopleDB {
   var $preferenceUtils;
   var $fileUploadUtils;
 
-  function PeopleUtils() {
-    $this->PeopleDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

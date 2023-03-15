@@ -4,8 +4,8 @@ class ElearningResultRangeUtils extends ElearningResultRangeDB {
 
   var $elearningExerciseUtils;
 
-  function ElearningResultRangeUtils() {
-    $this->ElearningResultRangeDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function renderAverage($nbCorrectAnswers, $nbQuestions) {

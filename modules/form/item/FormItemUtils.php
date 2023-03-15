@@ -6,8 +6,8 @@ class FormItemUtils extends FormItemDB {
   var $formValidUtils;
   var $formItemValueUtils;
 
-  function FormItemUtils() {
-    $this->FormItemDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the list of value text pairs

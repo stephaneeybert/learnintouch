@@ -6,8 +6,8 @@ class TemplatePropertyUtils extends TemplatePropertyDB {
   var $imageUrl;
   var $imageSize;
 
-  function TemplatePropertyUtils() {
-    $this->TemplatePropertyDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

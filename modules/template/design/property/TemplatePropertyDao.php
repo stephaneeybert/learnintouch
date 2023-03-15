@@ -4,8 +4,8 @@ class TemplatePropertyDao extends Dao {
 
   var $tableName;
 
-  function TemplatePropertyDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

@@ -4,7 +4,7 @@ class RssFeed {
 
   var $id;
 
-  function RssFeed($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

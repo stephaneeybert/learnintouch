@@ -3,17 +3,16 @@
 class PopupUtils {
 
   var $mlText;
-  var $websiteText;
 
+  var $languageUtils;
   var $templateUtils;
 
   // Constructor
-  function PopupUtils() {
+  function __construct() {
   }
 
-  function init() {
-    $this->mlText = $languageUtils->getMlText(__FILE__);
-    $this->websiteText = $languageUtils->getWebsiteText(__FILE__);
+  function loadLanguageTexts() {
+    $this->mlText = $this->languageUtils->getMlText(__FILE__);
   }
 
   // Display a dialog popup window
@@ -66,7 +65,9 @@ class PopupUtils {
     global $gCommonImagesUrl;
     global $gImageTinyCancel;
 
-    $title = $this->mlText[1];
+    $this->loadLanguageTexts();
+
+    $title = $this->mlText[0];
     // Remove any line break
     $title = LibString::stripLineBreaks($title);
     $str = "\n<br /><br />"
@@ -127,7 +128,7 @@ class PopupUtils {
     if (!$gIsPhoneClient) {
       $str = "<span class='tooltip' title='$content'>$anchor</span>";
     } else {
-      $str = "<span onclick=\"var contentElement = this.getElementsByTagName('span')[1]; toggleElementInline(contentElement); return false;\" style='cursor:pointer;' title='" . $this->websiteText[5] . "'>"
+      $str = "<span onclick=\"var contentElement = this.getElementsByTagName('span')[1]; toggleElementInline(contentElement); return false;\" style='cursor:pointer;' title=''>"
         . $anchor
         . "<span style='display:none;'>$content</span>"
         . "</span>";

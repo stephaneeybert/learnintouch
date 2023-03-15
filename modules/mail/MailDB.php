@@ -6,7 +6,7 @@ class MailDB {
   var $tableName;
   var $dao;
 
-  function MailDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class MailDB {
     $this->tableName = DB_TABLE_MAIL;
 
     $this->dao = new MailDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -38,8 +38,8 @@ class MailDB {
       $object->setCategoryId($row['category_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -49,9 +49,9 @@ class MailDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll($start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -62,11 +62,11 @@ class MailDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectLikePattern($searchPattern, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -77,11 +77,11 @@ class MailDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByAdminId($adminId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -92,17 +92,17 @@ class MailDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function deleteByDate($sinceDate) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->deleteByDate($sinceDate));
-    }
+  }
 
   function selectByCategoryId($categoryId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -113,11 +113,11 @@ class MailDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByAdminIdAndCategoryId($adminId, $categoryId, $start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -128,11 +128,11 @@ class MailDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function countFoundRows() {
     $count = 0;
@@ -143,17 +143,17 @@ class MailDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $subject = $object->getSubject();
     $subject = LibString::databaseEscapeQuotes($subject);
@@ -162,14 +162,14 @@ class MailDB {
     $body = LibString::databaseEscapeQuotes($body);
 
     return($this->dao->insert($subject, $body, $object->getDescription(), $object->getTextFormat(), $object->getAttachments(), $object->getCreationDate(), $object->getSendDate(), $object->getLocked(), $object->getAdminId(), $object->getCategoryId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $subject = $object->getSubject();
     $subject = LibString::databaseEscapeQuotes($subject);
@@ -178,18 +178,18 @@ class MailDB {
     $body = LibString::databaseEscapeQuotes($body);
 
     return($this->dao->update($object->getId(), $subject, $body, $object->getDescription(), $object->getTextFormat(), $object->getAttachments(), $object->getCreationDate(), $object->getSendDate(), $object->getLocked(), $object->getAdminId(), $object->getCategoryId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

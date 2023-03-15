@@ -26,8 +26,8 @@ class LanguageUtils extends LanguageDB {
   var $propertyUtils;
   var $adminUtils;
 
-  function LanguageUtils() {
-    $this->LanguageDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

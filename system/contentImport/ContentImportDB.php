@@ -6,7 +6,7 @@ class ContentImportDB {
   var $tableName;
   var $dao;
 
-  function ContentImportDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

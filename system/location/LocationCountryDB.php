@@ -6,7 +6,7 @@ class LocationCountryDB {
   var $tableName;
   var $dao;
 
-  function LocationCountryDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;

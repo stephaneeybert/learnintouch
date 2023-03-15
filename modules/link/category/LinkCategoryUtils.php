@@ -11,8 +11,8 @@ class LinkCategoryUtils extends LinkCategoryDB {
   var $linkUtils;
   var $fileUploadUtils;
 
-  function LinkCategoryUtils() {
-    $this->LinkCategoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

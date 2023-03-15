@@ -16,8 +16,8 @@ class PanelUtils extends PanelContentUtils {
 
   var $languageUtils;
 
-  function PanelUtils() {
-    $this->PanelContentUtils();
+  function __construct() {
+    parent::__construct();
 
     $this->header = '';
     $this->parentUrl = '';

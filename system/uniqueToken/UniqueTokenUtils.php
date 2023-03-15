@@ -4,8 +4,8 @@ class UniqueTokenUtils extends UniqueTokenDB {
 
   var $clockUtils;
 
-  function UniqueTokenUtils() {
-    $this->UniqueTokenDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Create and store a token

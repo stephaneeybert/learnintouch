@@ -9,7 +9,7 @@ class ElearningLessonHeading {
   var $image;
   var $elearningLessonModelId;
 
-  function ElearningLessonHeading($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -10,7 +10,7 @@ class ElearningAssignment {
 	var $openingDate;
 	var $closingDate;
 
-	function ElearningAssignment($id = '') {
+	function __construct($id = '') {
 	}
 
 	function getId() {

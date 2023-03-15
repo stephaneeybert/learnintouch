@@ -6,7 +6,7 @@ class FlashDB {
   var $tableName;
   var $dao;
 
-  function FlashDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

@@ -5,7 +5,7 @@ class ShopDiscountDao extends Dao {
   var $tableName;
 
   function ShopDiscountDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

@@ -7,8 +7,8 @@ class ElearningCourseInfoUtils extends ElearningCourseInfoDB {
   var $languageUtils;
   var $elearningCourseUtils;
 
-  function ElearningCourseInfoUtils() {
-    $this->ElearningCourseInfoDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

@@ -8,8 +8,8 @@ class ContainerUtils extends ContainerDB {
 
   var $languageUtils;
 
-  function ContainerUtils() {
-    $this->ContainerDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

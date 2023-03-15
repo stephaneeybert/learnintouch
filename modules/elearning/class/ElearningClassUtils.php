@@ -4,8 +4,8 @@ class ElearningClassUtils extends ElearningClassDB {
 
   var $elearningSubscriptionUtils;
 
-  function ElearningClassUtils() {
-    $this->ElearningClassDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function deleteClass($elearningClassId) {

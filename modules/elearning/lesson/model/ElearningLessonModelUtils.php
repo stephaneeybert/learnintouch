@@ -6,8 +6,8 @@ class ElearningLessonModelUtils extends ElearningLessonModelDB {
   var $elearningLessonUtils;
   var $elearningLessonHeadingUtils;
 
-  function ElearningLessonModelUtils() {
-    $this->ElearningLessonModelDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function deleteModel($elearningLessonModelId) {

@@ -4,8 +4,8 @@ class ContactStatusDao extends Dao {
 
   var $tableName;
 
-  function ContactStatusDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

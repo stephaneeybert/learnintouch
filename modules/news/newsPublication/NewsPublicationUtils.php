@@ -8,8 +8,8 @@ class NewsPublicationUtils extends NewsPublicationDB {
   var $clockUtils;
   var $newsPaperUtils;
 
-  function NewsPublicationUtils() {
-    $this->NewsPublicationDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

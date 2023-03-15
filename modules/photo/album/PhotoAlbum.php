@@ -14,7 +14,7 @@ class PhotoAlbum {
   var $noZoom;
   var $listOrder;
 
-  function PhotoAlbum($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

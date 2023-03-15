@@ -9,8 +9,8 @@ class ShopCategoryUtils extends ShopCategoryDB {
   var $flashUtils;
   var $templateUtils;
 
-  function ShopCategoryUtils() {
-    $this->ShopCategoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function init() {

@@ -2,8 +2,8 @@
 
 class AddressUtils extends AddressDB {
 
-  function AddressUtils() {
-    $this->AddressDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

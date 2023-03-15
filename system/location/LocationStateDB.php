@@ -6,7 +6,7 @@ class LocationStateDB {
   var $tableName;
   var $dao;
 
-  function LocationStateDB() {
+  function __construct() {
     global $gSqlCommonDataSource;
 
     $this->dataSource = $gSqlCommonDataSource;

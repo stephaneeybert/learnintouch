@@ -5,8 +5,8 @@ class StatisticsPageUtils extends StatisticsPageDB {
   var $templateUtils;
   var $clockUtils;
 
-  function StatisticsPageUtils() {
-    $this->StatisticsPageDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Render the page id from a url

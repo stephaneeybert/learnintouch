@@ -6,7 +6,7 @@ class ElearningAssignmentDB {
   var $tableName;
   var $dao;
 
-  function ElearningAssignmentDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

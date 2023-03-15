@@ -9,8 +9,8 @@ class ElearningAssignmentUtils extends ElearningAssignmentDB {
   var $elearningResultUtils;
   var $elearningSubscriptionUtils;
 
-  function ElearningAssignmentUtils() {
-    $this->ElearningAssignmentDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

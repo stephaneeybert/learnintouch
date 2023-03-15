@@ -4,8 +4,8 @@ class AddressDao extends Dao {
 
   var $tableName;
 
-  function AddressDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

@@ -6,7 +6,7 @@ class NavmenuLanguageDB {
   var $tableName;
   var $dao;
 
-  function NavmenuLanguageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

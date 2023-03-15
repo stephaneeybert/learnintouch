@@ -6,7 +6,7 @@ class NavbarDB {
   var $tableName;
   var $dao;
 
-  function NavbarDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

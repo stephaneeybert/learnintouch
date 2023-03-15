@@ -9,7 +9,7 @@ class ElearningQuestionResult {
   var $elearningAnswerText;
   var $elearningAnswerOrder;
 
-  function ElearningQuestionResult($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

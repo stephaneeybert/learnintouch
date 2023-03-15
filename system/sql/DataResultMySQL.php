@@ -7,9 +7,9 @@
 
 class DataResultMySQL extends DataResult {
 
-  function DataResultMySQL($dataSource, $resultId) {
+  function __construct($dataSource, $resultId) {
     // Instanciate the result
-    $this->DataResult($dataSource, $resultId);
+    parent::__construct($dataSource, $resultId);
 
     // Reset the current row
     $this->currentRow = 0;

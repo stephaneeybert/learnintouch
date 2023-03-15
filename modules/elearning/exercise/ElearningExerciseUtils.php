@@ -55,8 +55,8 @@ class ElearningExerciseUtils extends ElearningExerciseDB {
   var $elearningAssignmentUtils;
   var $fileUploadUtils;
 
-  function ElearningExerciseUtils() {
-    $this->ElearningExerciseDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

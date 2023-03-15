@@ -13,7 +13,7 @@ class People {
   var $categoryId;
   var $listOrder;
 
-  function People($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

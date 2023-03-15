@@ -7,7 +7,7 @@ class Preference {
   var $value;
   var $type;
 
-  function Preference($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

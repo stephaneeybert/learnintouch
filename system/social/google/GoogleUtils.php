@@ -11,8 +11,8 @@ class GoogleUtils extends SocialUserDB {
   var $userUtils;
   var $preferenceUtils;
 
-  function GoogleUtils() {
-    $this->SocialUserDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadProperties() {

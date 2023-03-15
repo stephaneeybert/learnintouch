@@ -8,8 +8,8 @@ class NavlinkItemUtils extends NavlinkItemDB {
 
   var $templateUtils;
 
-  function NavlinkItemUtils() {
-    $this->NavlinkItemDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

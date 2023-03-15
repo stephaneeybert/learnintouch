@@ -2,8 +2,8 @@
 
 class PropertyUtils extends PropertyDB {
 
-  function PropertyUtils() {
-    $this->PropertyDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Store a property

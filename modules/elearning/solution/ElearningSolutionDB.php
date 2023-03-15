@@ -6,7 +6,7 @@ class ElearningSolutionDB {
   var $tableName;
   var $dao;
 
-  function ElearningSolutionDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ElearningSolutionDB {
     $this->tableName = DB_TABLE_ELEARNING_SOLUTION;
 
     $this->dao = new ElearningSolutionDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -30,8 +30,8 @@ class ElearningSolutionDB {
       $object->setElearningAnswer($row['elearning_answer_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -41,9 +41,9 @@ class ElearningSolutionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -54,11 +54,11 @@ class ElearningSolutionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByQuestion($elearningQuestion) {
     $this->dataSource->selectDatabase();
@@ -69,11 +69,11 @@ class ElearningSolutionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByQuestionAndAnswer($elearningQuestion, $elearningAnswer) {
     $this->dataSource->selectDatabase();
@@ -83,9 +83,9 @@ class ElearningSolutionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByAnswer($elearningAnswerId) {
     $this->dataSource->selectDatabase();
@@ -95,36 +95,36 @@ class ElearningSolutionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getElearningQuestion(), $object->getElearningAnswer()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getElearningQuestion(), $object->getElearningAnswer()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
-
   }
+
+}
 
 ?>

@@ -6,7 +6,7 @@ class TemplatePageDB {
   var $tableName;
   var $dao;
 
-  function TemplatePageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

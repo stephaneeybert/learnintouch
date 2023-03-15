@@ -4,8 +4,8 @@ class UserDao extends Dao {
 
   var $tableName;
 
-  function UserDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

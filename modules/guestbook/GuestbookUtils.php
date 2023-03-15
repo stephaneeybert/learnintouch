@@ -10,8 +10,8 @@ class GuestbookUtils extends GuestbookDB {
   var $languageUtils;
   var $userUtils;
 
-  function GuestbookUtils() {
-    $this->GuestbookDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

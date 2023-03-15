@@ -6,7 +6,7 @@ class ShopOrderDB {
   var $tableName;
   var $dao;
 
-  function ShopOrderDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

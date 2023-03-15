@@ -5,8 +5,8 @@ class AdminOptionUtils extends AdminOptionDB {
   var $websiteOptionUtils;
   var $websiteUtils;
 
-  function AdminOptionUtils() {
-    $this->AdminOptionDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Check if an option is granted to an administrator

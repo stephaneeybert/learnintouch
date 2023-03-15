@@ -4,7 +4,7 @@ class SocialInviterUtils {
 
   var $profileUtils;
 
-  function SocialInviterUtils() {
+  function __construct() {
   }
 
   function loadProperties() {

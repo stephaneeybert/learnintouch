@@ -6,8 +6,8 @@ class NavmenuItemUtils extends NavmenuItemDB {
   var $imageUrl;
   var $imageSize;
 
-  function NavmenuItemUtils() {
-    $this->NavmenuItemDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

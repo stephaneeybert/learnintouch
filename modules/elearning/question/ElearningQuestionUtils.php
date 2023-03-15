@@ -22,8 +22,8 @@ class ElearningQuestionUtils extends ElearningQuestionDB {
   var $elearningQuestionResultUtils;
   var $fileUploadUtils;
 
-  function ElearningQuestionUtils() {
-    $this->ElearningQuestionDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

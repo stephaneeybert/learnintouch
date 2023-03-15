@@ -35,8 +35,8 @@ class AdminUtils extends AdminDB {
   var $websiteOptionUtils;
   var $propertyUtils;
 
-  function AdminUtils() {
-    $this->AdminDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

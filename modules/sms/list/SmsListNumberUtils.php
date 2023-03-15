@@ -2,8 +2,8 @@
 
 class SmsListNumberUtils extends SmsListNumberDB {
 
-  function SmsListNumberUtils() {
-    $this->SmsListNumberDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

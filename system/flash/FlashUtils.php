@@ -23,8 +23,8 @@ class FlashUtils extends FlashDB {
   var $propertyUtils;
   var $fileUploadUtils;
 
-  function FlashUtils() {
-    $this->FlashDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

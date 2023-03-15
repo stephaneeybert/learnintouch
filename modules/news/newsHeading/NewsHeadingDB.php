@@ -6,7 +6,7 @@ class NewsHeadingDB {
   var $tableName;
   var $dao;
 
-  function NewsHeadingDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class NewsHeadingDB {
     $this->tableName = DB_TABLE_NEWS_HEADING;
 
     $this->dao = new NewsHeadingDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -33,8 +33,8 @@ class NewsHeadingDB {
       $object->setNewsPublicationId($row['news_publication_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -44,9 +44,9 @@ class NewsHeadingDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByNextListOrder($id, $newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -56,9 +56,9 @@ class NewsHeadingDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByPreviousListOrder($id, $newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -68,9 +68,9 @@ class NewsHeadingDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByListOrder($id, $newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -81,11 +81,11 @@ class NewsHeadingDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   // Reset all the list orders some are mistakenly the same
   function resetListOrder($newsPublicationId) {
@@ -97,11 +97,11 @@ class NewsHeadingDB {
             $listOrder = $listOrder + 1;
             $newsHeading->setListOrder($listOrder);
             $this->update($newsHeading);
-            }
           }
         }
       }
     }
+  }
 
   function countDuplicateListOrderRows($newsPublicationId) {
     $count = 0;
@@ -113,10 +113,10 @@ class NewsHeadingDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectByNewsPublicationId($newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -127,11 +127,11 @@ class NewsHeadingDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByNewsPublicationIdOrderById($newsPublicationId) {
     $this->dataSource->selectDatabase();
@@ -142,11 +142,11 @@ class NewsHeadingDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -157,38 +157,38 @@ class NewsHeadingDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getListOrder(), $object->getName(), $object->getDescription(), $object->getImage(), $object->getNewsPublicationId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getListOrder(), $object->getName(), $object->getDescription(), $object->getImage(), $object->getNewsPublicationId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
-
   }
+
+}
 
 ?>

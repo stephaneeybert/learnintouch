@@ -15,8 +15,8 @@ class ClientUtils extends ClientDB {
   var $commonUtils;
   var $fileUploadUtils;
 
-  function ClientUtils() {
-    $this->ClientDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

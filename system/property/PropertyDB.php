@@ -6,7 +6,7 @@ class PropertyDB {
   var $tableName;
   var $dao;
 
-  function PropertyDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

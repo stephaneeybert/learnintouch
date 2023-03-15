@@ -2,8 +2,8 @@
 
 class ContentImportHistoryUtils extends ContentImportHistoryDB {
 
-  function ContentImportHistoryUtils() {
-    $this->ContentImportHistoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

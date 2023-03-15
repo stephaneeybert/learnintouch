@@ -14,7 +14,7 @@ class Mail {
   var $adminId;
   var $categoryId;
 
-  function Mail($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

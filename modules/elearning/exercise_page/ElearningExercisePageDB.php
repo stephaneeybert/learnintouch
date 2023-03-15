@@ -6,7 +6,7 @@ class ElearningExercisePageDB {
   var $tableName;
   var $dao;
 
-  function ElearningExercisePageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ElearningExercisePageDB {
     $this->tableName = DB_TABLE_ELEARNING_EXERCISE_PAGE;
 
     $this->dao = new ElearningExercisePageDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -43,8 +43,8 @@ class ElearningExercisePageDB {
       $object->setListOrder($row['list_order']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -54,9 +54,9 @@ class ElearningExercisePageDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByNextListOrder($elearningExerciseId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -66,9 +66,9 @@ class ElearningExercisePageDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByPreviousListOrder($elearningExerciseId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -78,9 +78,9 @@ class ElearningExercisePageDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByListOrder($elearningExerciseId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -90,9 +90,9 @@ class ElearningExercisePageDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   // Reset the list order of all the objects if some mistakenly share the same list order
   function resetListOrder($elearningExerciseId) {
@@ -104,11 +104,11 @@ class ElearningExercisePageDB {
             $listOrder = $listOrder + 1;
             $elearningExercisePage->setListOrder($listOrder);
             $this->update($elearningExercisePage);
-            }
           }
         }
       }
     }
+  }
 
   // Count the number of objects that have the same list order
   // There should be zero if the ordering of the objects is correct
@@ -122,10 +122,10 @@ class ElearningExercisePageDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -136,11 +136,11 @@ class ElearningExercisePageDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByExerciseIdOrderById($elearningExerciseId) {
     $this->dataSource->selectDatabase();
@@ -151,11 +151,11 @@ class ElearningExercisePageDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByExerciseId($elearningExerciseId) {
     $this->dataSource->selectDatabase();
@@ -166,54 +166,54 @@ class ElearningExercisePageDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
-
-      $text = $object->getText();
-      $text = LibString::databaseEscapeQuotes($text);
-
-      $instructions = $object->getInstructions();
-      $instructions = LibString::databaseEscapeQuotes($instructions);
-
-      return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
     }
+
+    $text = $object->getText();
+    $text = LibString::databaseEscapeQuotes($text);
+
+    $instructions = $object->getInstructions();
+    $instructions = LibString::databaseEscapeQuotes($instructions);
+
+    return($this->dao->insert($object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
-      $text = $object->getText();
-      $text = LibString::databaseEscapeQuotes($text);
+    $text = $object->getText();
+    $text = LibString::databaseEscapeQuotes($text);
 
-      $instructions = $object->getInstructions();
-      $instructions = LibString::databaseEscapeQuotes($instructions);
+    $instructions = $object->getInstructions();
+    $instructions = LibString::databaseEscapeQuotes($instructions);
 
     return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $instructions, $text, $object->getHideText(), $object->getTextMaxHeight(), $object->getImage(), $object->getAudio(), $object->getAutostart(), $object->getVideo(), $object->getVideoUrl(), $object->getQuestionType(), $object->getHintPlacement(), $object->getElearningExerciseId(), $object->getListOrder()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

@@ -10,7 +10,7 @@ class NewsStoryImageUtils extends NewsStoryImageDB {
   var $newsStoryUtils;
 
   function NewsStoryImageUtils() {
-    $this->NewsStoryImageDB();
+    parent::__construct();
 
     $this->init();
   }

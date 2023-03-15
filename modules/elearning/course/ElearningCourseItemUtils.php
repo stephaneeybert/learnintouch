@@ -2,8 +2,8 @@
 
 class ElearningCourseItemUtils extends ElearningCourseItemDB {
 
-  function ElearningCourseItemUtils() {
-    $this->ElearningCourseItemDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the next available list order

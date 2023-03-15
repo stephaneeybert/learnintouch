@@ -8,7 +8,7 @@ class Language {
   var $locale;
   var $image;
 
-  function Language($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

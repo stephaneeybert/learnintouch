@@ -6,7 +6,7 @@ class MailOutboxDB {
   var $tableName;
   var $dao;
 
-  function MailOutboxDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

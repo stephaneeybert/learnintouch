@@ -11,7 +11,7 @@ class MailOutbox {
   var $errorMessage;
   var $metaNames;
 
-  function MailOutbox($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

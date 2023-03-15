@@ -6,7 +6,7 @@ class SmsOutboxDB {
   var $tableName;
   var $dao;
 
-  function SmsOutboxDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class SmsOutboxDB {
     $this->tableName = DB_TABLE_SMS_OUTBOX;
 
     $this->dao = new SmsOutboxDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -34,8 +34,8 @@ class SmsOutboxDB {
       $object->setSent($row['sent']);
 
       return($object);
-      }
     }
+  }
 
   function countAll() {
     $count = 0;
@@ -47,10 +47,10 @@ class SmsOutboxDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function countFailed() {
     $count = 0;
@@ -62,10 +62,10 @@ class SmsOutboxDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectAll($start = false, $rows = false) {
     $this->dataSource->selectDatabase();
@@ -77,11 +77,11 @@ class SmsOutboxDB {
         $object = $this->getObject($row);
 
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectSent() {
     $this->dataSource->selectDatabase();
@@ -93,11 +93,11 @@ class SmsOutboxDB {
         $object = $this->getObject($row);
 
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectUnsent() {
     $this->dataSource->selectDatabase();
@@ -109,50 +109,50 @@ class SmsOutboxDB {
         $object = $this->getObject($row);
 
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getFirstname(), $object->getLastname(), $object->getMobilePhone(), $object->getEmail(), $object->getPassword(), $object->getSent()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getFirstname(), $object->getLastname(),
-    $object->getMobilePhone(), $object->getEmail(), $object->getPassword(), $object->getSent()));
-    }
+      $object->getMobilePhone(), $object->getEmail(), $object->getPassword(), $object->getSent()));
+  }
 
   function deleteAll() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->deleteAll());
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   // Get the id of the last inserted object
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

@@ -6,7 +6,7 @@ class ElearningExerciseDB {
   var $tableName;
   var $dao;
 
-  function ElearningExerciseDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

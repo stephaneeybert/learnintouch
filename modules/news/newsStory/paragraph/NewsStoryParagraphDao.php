@@ -5,7 +5,7 @@ class NewsStoryParagraphDao extends Dao {
   var $tableName;
 
   function NewsStoryParagraphDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

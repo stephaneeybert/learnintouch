@@ -6,7 +6,7 @@ class FormValidDB {
   var $tableName;
   var $dao;
 
-  function FormValidDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

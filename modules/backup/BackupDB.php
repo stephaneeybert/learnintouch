@@ -5,13 +5,13 @@ class BackupDB {
   var $dataSource;
   var $dao;
 
-  function BackupDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
 
     $this->dao = new BackupDao($this->dataSource);
-    }
+  }
 
   // Select the data source to save the common database
   function selectCommonDataSource() {
@@ -20,8 +20,8 @@ class BackupDB {
     $this->dataSource = $gSqlCommonDataSource;
 
     $this->dao = new BackupDao($this->dataSource);
-    }
-
   }
+
+}
 
 ?>

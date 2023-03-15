@@ -11,8 +11,8 @@ class FacebookUtils extends SocialUserDB {
   var $profileUtils;
   var $userUtils;
 
-  function FacebookUtils() {
-    $this->SocialUserDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function init() {

@@ -26,7 +26,7 @@ class DataResult {
 
   // A constructor
   // The database result is passed to this class
-  function DataResult($dataSource, $resultId) {
+  function __construct($dataSource, $resultId) {
     $this->dataSource = $dataSource;
 
     $this->resultId = $resultId;

@@ -6,7 +6,7 @@ class ElearningMatterDB {
   var $tableName;
   var $dao;
 
-  function ElearningMatterDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ElearningMatterDB {
     $this->tableName = DB_TABLE_ELEARNING_MATTER;
 
     $this->dao = new ElearningMatterDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -30,8 +30,8 @@ class ElearningMatterDB {
       $object->setDescription($row['description']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -41,9 +41,9 @@ class ElearningMatterDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -54,38 +54,38 @@ class ElearningMatterDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getName(), $object->getDescription()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getName(), $object->getDescription()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
-
   }
+
+}
 
 ?>

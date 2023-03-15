@@ -4,8 +4,8 @@ class ElearningMatterUtils extends ElearningMatterDB {
 
   var $elearningCourseUtils;
 
-  function ElearningMatterUtils() {
-    $this->ElearningMatterDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function deleteMatter($elearningMatterId) {

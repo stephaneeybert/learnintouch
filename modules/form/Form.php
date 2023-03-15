@@ -14,7 +14,7 @@ class Form {
   var $mailSubject;
   var $mailMessage;
 
-  function Form($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

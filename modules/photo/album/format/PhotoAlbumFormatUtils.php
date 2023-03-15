@@ -3,7 +3,7 @@
 class PhotoAlbumFormatUtils extends PhotoAlbumFormatDB {
 
   function PhotoAlbumFormatUtils() {
-    $this->PhotoAlbumFormatDB();
+    parent::__construct();
   }
 
 }

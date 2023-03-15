@@ -7,7 +7,7 @@ class TemplateElementLanguage {
   var $objectId;
   var $templateElementId;
 
-  function TemplateElementLanguage($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

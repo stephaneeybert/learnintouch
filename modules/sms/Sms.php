@@ -8,7 +8,7 @@ class Sms {
   var $adminId;
   var $categoryId;
 
-  function Sms($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

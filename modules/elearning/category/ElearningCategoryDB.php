@@ -6,7 +6,7 @@ class ElearningCategoryDB {
   var $tableName;
   var $dao;
 
-  function ElearningCategoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

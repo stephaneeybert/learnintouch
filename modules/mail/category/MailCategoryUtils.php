@@ -2,8 +2,8 @@
 
 class MailCategoryUtils extends MailCategoryDB {
 
-  function MailCategoryUtils() {
-    $this->MailCategoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

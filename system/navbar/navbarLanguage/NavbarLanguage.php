@@ -6,7 +6,7 @@ class NavbarLanguage {
   var $language;
   var $navbarId;
 
-  function Navbar($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

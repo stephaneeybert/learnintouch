@@ -7,7 +7,7 @@ class PeopleCategory {
   var $description;
   var $listOrder;
 
-  function PeopleCategory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

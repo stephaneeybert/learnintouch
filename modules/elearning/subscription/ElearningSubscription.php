@@ -16,7 +16,7 @@ class ElearningSubscription {
   var $lastActive;
   var $whiteboard;
 
-  function ElearningSubscription($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

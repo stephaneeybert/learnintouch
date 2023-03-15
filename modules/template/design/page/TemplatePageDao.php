@@ -4,8 +4,8 @@ class TemplatePageDao extends Dao {
 
   var $tableName;
 
-  function TemplatePageDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

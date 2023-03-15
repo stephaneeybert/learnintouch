@@ -10,7 +10,7 @@ class TemplateModel {
   var $templatePropertySetId;
   var $innerTemplatePropertySetId;
 
-  function TemplateModel($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

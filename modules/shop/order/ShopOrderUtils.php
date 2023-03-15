@@ -16,8 +16,8 @@ class ShopOrderUtils extends ShopOrderDB {
   var $shopItemUtils;
   var $shopOrderItemUtils;
 
-  function ShopOrderUtils() {
-    $this->ShopOrderDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

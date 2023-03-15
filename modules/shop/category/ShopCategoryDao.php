@@ -4,8 +4,8 @@ class ShopCategoryDao extends Dao {
 
   var $tableName;
 
-  function ShopCategoryDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

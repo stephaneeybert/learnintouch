@@ -9,7 +9,7 @@ class SmsNumber {
   var $subscribe;
   var $import;
 
-  function SmsNumber($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

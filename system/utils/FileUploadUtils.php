@@ -16,7 +16,7 @@ class FileUploadUtils {
 
   var $languageUtils;
 
-  function FileUploadUtils() {
+  function __construct() {
     $this->init();
   }
 

@@ -14,7 +14,7 @@ class NavbarItem {
   var $listOrder;
   var $navbarLanguageId;
 
-  function NavbarItem($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

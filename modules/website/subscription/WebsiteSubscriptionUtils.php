@@ -13,8 +13,8 @@ class WebsiteSubscriptionUtils extends WebsiteSubscriptionDB {
   var $shopOrderUtils;
   var $shopOrderItemUtils;
 
-  function WebsiteSubscriptionUtils() {
-    $this->WebsiteSubscriptionDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

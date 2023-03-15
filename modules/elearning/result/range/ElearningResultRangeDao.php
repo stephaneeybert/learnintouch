@@ -4,8 +4,8 @@ class ElearningResultRangeDao extends Dao {
 
   var $tableName;
 
-  function ElearningResultRangeDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

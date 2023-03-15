@@ -4,8 +4,8 @@ class ElearningSolutionUtils extends ElearningSolutionDB {
 
   var $elearningAnswerUtils;
 
-  function ElearningSolutionUtils() {
-    $this->ElearningSolutionDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get all the possible solutions to a question

@@ -2,8 +2,8 @@
 
 class FormValidUtils extends FormValidDB {
 
-  function FormValidUtils() {
-    $this->FormValidDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Delete a form validator

@@ -13,7 +13,7 @@ class ShopItemImageUtils extends ShopItemImageDB {
   var $shopItemUtils;
 
   function ShopItemImageUtils() {
-    $this->ShopItemImageDB();
+    parent::__construct();
 
     $this->init();
   }

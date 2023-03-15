@@ -5,7 +5,7 @@ class PhotoAlbumFormatDao extends Dao {
   var $tableName;
 
   function PhotoAlbumFormatDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

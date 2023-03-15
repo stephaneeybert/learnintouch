@@ -18,7 +18,7 @@ class Admin {
   var $profile;
   var $postLoginUrl;
 
-  function Admin($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

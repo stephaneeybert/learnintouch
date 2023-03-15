@@ -7,7 +7,7 @@ class ElearningScoring {
   var $description;
   var $requiredScore;
 
-  function ElearningScoring($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

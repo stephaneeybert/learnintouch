@@ -35,8 +35,8 @@ class ElearningResultUtils extends ElearningResultDB {
   var $elearningResultRangeUtils;
   var $elearningTeacherUtils;
 
-  function ElearningResultUtils() {
-    $this->ElearningResultDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

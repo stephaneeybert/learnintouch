@@ -7,7 +7,7 @@ class FormItemValue {
   var $text;
   var $formItemId;
 
-  function FormItemValue($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

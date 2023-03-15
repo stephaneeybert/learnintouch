@@ -6,7 +6,7 @@ class ContainerDB {
   var $tableName;
   var $dao;
 
-  function ContainerDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

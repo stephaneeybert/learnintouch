@@ -10,7 +10,7 @@ class Link {
   var $categoryId;
   var $listOrder;
 
-  function Link($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

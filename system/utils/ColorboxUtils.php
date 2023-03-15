@@ -7,7 +7,7 @@ class ColorboxUtils {
 
   var $languageUtils;
 
-  function ColorboxUtils() {
+  function __construct() {
   }
 
   function loadLanguageTexts() {

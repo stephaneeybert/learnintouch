@@ -9,7 +9,7 @@ class Client {
   var $url;
   var $listOrder;
 
-  function Client($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

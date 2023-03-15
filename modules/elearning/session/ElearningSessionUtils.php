@@ -7,8 +7,8 @@ class ElearningSessionUtils extends ElearningSessionDB {
   var $elearningSubscriptionUtils;
   var $elearningSessionCourseUtils;
 
-  function ElearningSessionUtils() {
-    $this->ElearningSessionDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

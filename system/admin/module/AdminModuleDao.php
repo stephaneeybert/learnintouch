@@ -4,8 +4,8 @@ class AdminModuleDao extends Dao {
 
   var $tableName;
 
-  function AdminModuleDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

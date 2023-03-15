@@ -11,7 +11,7 @@ class ElearningScoringRange {
   var $linkUrl;
   var $scoringId;
 
-  function ElearningScoringRange($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

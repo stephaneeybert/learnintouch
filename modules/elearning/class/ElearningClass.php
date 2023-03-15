@@ -6,7 +6,7 @@ class ElearningClass {
   var $name;
   var $description;
 
-  function ElearningClass($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

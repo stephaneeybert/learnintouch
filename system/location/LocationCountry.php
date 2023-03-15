@@ -7,7 +7,7 @@ class LocationCountry {
   var $name;
   var $listOrder;
 
-  function LocationCountry($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

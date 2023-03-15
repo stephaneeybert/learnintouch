@@ -18,8 +18,8 @@ class ElearningAnswerUtils extends ElearningAnswerDB {
   var $elearningSolutionUtils;
   var $fileUploadUtils;
 
-  function ElearningAnswerUtils() {
-    $this->ElearningAnswerDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

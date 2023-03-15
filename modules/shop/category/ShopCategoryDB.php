@@ -6,7 +6,7 @@ class ShopCategoryDB {
   var $tableName;
   var $dao;
 
-  function ShopCategoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ShopCategoryDB {
     $this->tableName = DB_TABLE_SHOP_CATEGORY;
 
     $this->dao = new ShopCategoryDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -32,8 +32,8 @@ class ShopCategoryDB {
       $object->setParentCategoryId($row['parent_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -43,9 +43,9 @@ class ShopCategoryDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByNextListOrder($parentCategoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -55,9 +55,9 @@ class ShopCategoryDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByPreviousListOrder($parentCategoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -67,9 +67,9 @@ class ShopCategoryDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByListOrder($parentCategoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -79,9 +79,9 @@ class ShopCategoryDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   // Reset all the list orders some are mistakenly the same
   function resetListOrder($parentCategoryId) {
@@ -93,11 +93,11 @@ class ShopCategoryDB {
             $listOrder = $listOrder + 1;
             $shopCategory->setListOrder($listOrder);
             $this->update($shopCategory);
-            }
           }
         }
       }
     }
+  }
 
   function countDuplicateListOrderRows($parentCategoryId) {
     $count = 0;
@@ -109,10 +109,10 @@ class ShopCategoryDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectByParentCategoryId($parentCategoryId) {
     $this->dataSource->selectDatabase();
@@ -123,11 +123,11 @@ class ShopCategoryDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByParentCategoryIdOrderById($parentCategoryId) {
     $this->dataSource->selectDatabase();
@@ -138,31 +138,31 @@ class ShopCategoryDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getName(), $object->getDescription(), $object->getListOrder(), $object->getParentCategoryId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getListOrder(), $object->getParentCategoryId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
@@ -172,11 +172,11 @@ class ShopCategoryDB {
       foreach ($shopCategories as $shopCategory) {
         $shopCategoryId = $shopCategory->getId();
         $this->delete($shopCategoryId);
-        }
       }
+    }
 
     return($this->dao->delete($id));
-    }
+  }
 
   function countAll() {
     $count = 0;
@@ -188,11 +188,11 @@ class ShopCategoryDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
-
-    return($count);
     }
 
+    return($count);
   }
+
+}
 
 ?>

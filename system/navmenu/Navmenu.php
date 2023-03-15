@@ -5,7 +5,7 @@ class Navmenu {
   var $id;
   var $hide;
 
-  function Navmenu($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

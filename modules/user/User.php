@@ -25,7 +25,7 @@ class User {
   var $creationDateTime;
   var $addressId;
 
-  function User($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -11,8 +11,8 @@ class PreferenceUtils extends PreferenceDB {
 
   var $languageUtils;
 
-  function PreferenceUtils() {
-    $this->PreferenceDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function init($preferences, $parentMenuUrl = '') {

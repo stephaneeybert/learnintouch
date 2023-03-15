@@ -16,7 +16,7 @@ class ShopOrderItem {
   var $shopItemId;
   var $imageUrl;
 
-  function ShopOrderItem($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

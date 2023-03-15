@@ -4,8 +4,8 @@ class NavmenuLanguageUtils extends NavmenuLanguageDB {
 
   var $navmenuItemUtils;
 
-  function NavmenuLanguageUtils() {
-    $this->NavmenuLanguageDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Delete a language

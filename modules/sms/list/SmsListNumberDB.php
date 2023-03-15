@@ -6,7 +6,7 @@ class SmsListNumberDB {
   var $tableName;
   var $dao;
 
-  function SmsListNumberDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class SmsListNumberDB {
     $this->tableName = DB_TABLE_SMS_LIST_NUMBER;
 
     $this->dao = new SmsListNumberDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -30,8 +30,8 @@ class SmsListNumberDB {
       $object->setSmsNumberId($row['sms_number_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -41,9 +41,9 @@ class SmsListNumberDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectBySmsListId($smsListId) {
     $this->dataSource->selectDatabase();
@@ -54,11 +54,11 @@ class SmsListNumberDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectBySmsNumberId($smsNumberId) {
     $this->dataSource->selectDatabase();
@@ -69,11 +69,11 @@ class SmsListNumberDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectBySmsListIdAndSmsNumberId($smsListId, $smsNumberId) {
     $this->dataSource->selectDatabase();
@@ -83,42 +83,42 @@ class SmsListNumberDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getSmsListId(), $object->getSmsNumberId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getSmsListId(), $object->getSmsNumberId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function deleteBySmsListId($smsListId) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->deleteBySmsListId($smsListId));
-    }
-
   }
+
+}
 
 ?>

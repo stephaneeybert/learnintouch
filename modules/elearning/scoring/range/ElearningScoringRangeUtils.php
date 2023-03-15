@@ -2,8 +2,8 @@
 
 class ElearningScoringRangeUtils extends ElearningScoringRangeDB {
 
-  function ElearningScoringRangeUtils() {
-    $this->ElearningScoringRangeDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function deleteScoringRange($elearningScoringRangeId) {

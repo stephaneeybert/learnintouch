@@ -17,8 +17,8 @@ class ElearningLessonParagraphUtils extends ElearningLessonParagraphDB {
   var $elearningExerciseUtils;
   var $fileUploadUtils;
 
-  function ElearningLessonParagraphUtils() {
-    $this->ElearningLessonParagraphDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

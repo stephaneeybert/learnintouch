@@ -16,8 +16,8 @@ class LexiconEntryUtils extends LexiconEntryDB {
   var $commonUtils;
   var $userUtils;
 
-  function LexiconEntryUtils() {
-    $this->LexiconEntryDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

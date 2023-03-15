@@ -12,7 +12,7 @@ class SmsHistory {
   var $sendDate;
   var $nbRecipients;
 
-  function SmsHistory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

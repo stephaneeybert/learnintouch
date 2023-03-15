@@ -6,7 +6,7 @@ class SocialUserDB {
   var $tableName;
   var $dao;
 
-  function SocialUserDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

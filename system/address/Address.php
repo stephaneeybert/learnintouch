@@ -11,7 +11,7 @@ class Address {
   var $country;
   var $postalBox;
 
-  function Address($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -5,7 +5,7 @@ class Navbar {
   var $id;
   var $hide;
 
-  function Navbar($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

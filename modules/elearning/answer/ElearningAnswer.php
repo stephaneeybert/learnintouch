@@ -10,7 +10,7 @@ class ElearningAnswer {
   var $elearningQuestion;
   var $listOrder;
 
-  function ElearningAnswer($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

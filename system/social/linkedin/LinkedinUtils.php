@@ -9,7 +9,7 @@ class LinkedinUtils extends SocialUserDB {
   var $userUtils;
 
   function LinkedinUtils() {
-    $this->SocialUserDB();
+    parent::__construct();
   }
 
   function loadAPIKey() {

@@ -6,7 +6,7 @@ class PhotoDB {
   var $tableName;
   var $dao;
 
-  function PhotoDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

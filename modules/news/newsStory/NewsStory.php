@@ -17,7 +17,7 @@ class NewsStory {
   var $newsHeading;
   var $listOrder;
 
-  function NewsStory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

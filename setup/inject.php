@@ -20,6 +20,7 @@ $googleUtils->preferenceUtils = $preferenceUtils;
 
 $fileUploadUtils->languageUtils = $languageUtils;
 
+$popupUtils->languageUtils = $languageUtils;
 $popupUtils->templateUtils = $templateUtils;
 
 $playerUtils->languageUtils = $languageUtils;
@@ -30,6 +31,9 @@ $lexiconEntryUtils->commonUtils = $commonUtils;
 $lexiconEntryUtils->userUtils = $userUtils;
 
 $socialInviterUtils->profileUtils = $profileUtils;
+
+$panelUtils->languageUtils = $languageUtils;
+$panelContentUtils->languageUtils = $languageUtils;
 
 $contentImportUtils->languageUtils = $languageUtils;
 $contentImportUtils->clockUtils = $clockUtils;

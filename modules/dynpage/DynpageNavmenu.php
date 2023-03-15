@@ -5,7 +5,7 @@ class DynpageNavmenu {
   var $id;
   var $parentId;
 
-  function DynpageNavmenu($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

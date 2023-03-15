@@ -73,7 +73,7 @@ class TemplateUtils {
   var $templateElementLanguageUtils;
   var $rssFeedUtils;
 
-  function TemplateUtils() {
+  function __construct() {
     $this->init();
   }
 

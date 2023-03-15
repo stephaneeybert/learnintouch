@@ -30,7 +30,7 @@ class ShopOrderPdfInvoice extends PdfUtils {
   var $shopOrderItemUtils;
   var $shopItemUtils;
 
-  function ShopOrderPdfInvoice() {
+  function __construct() {
     $this->init();
   }
 

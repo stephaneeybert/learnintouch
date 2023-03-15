@@ -2,8 +2,8 @@
 
 class SmsListUserUtils extends SmsListUserDB {
 
-  function SmsListUserUtils() {
-    $this->SmsListUserDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

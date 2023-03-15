@@ -5,7 +5,7 @@ class SqlToolsDB {
   var $dataSource;
   var $dao;
 
-  function SqlToolsDB($dbName) {
+  function __construct($dbName) {
     $this->dataSource = Sql::initDataSource($dbName);
 
     $this->dao = new SqlToolsDao($this->dataSource);

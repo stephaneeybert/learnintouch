@@ -11,7 +11,7 @@ class ElearningLessonPdf extends PdfUtils {
   var $elearningExerciseUtils;
   var $lexiconEntryUtils;
 
-  function ElearningLessonPdf() {
+  function __construct() {
   }
 
   function loadLanguageTexts() {

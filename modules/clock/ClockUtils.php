@@ -16,7 +16,7 @@ class ClockUtils {
   var $preferenceUtils;
   var $propertyUtils;
 
-  function ClockUtils() {
+  function __construct() {
     $this->init();
   }
 

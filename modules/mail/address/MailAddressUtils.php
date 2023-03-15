@@ -9,7 +9,7 @@ class MailAddressUtils extends MailAddressDB {
   var $mailListUtils;
 
   function MailAddressUtils() {
-    $this->MailAddressDB();
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

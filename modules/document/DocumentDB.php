@@ -6,7 +6,7 @@ class DocumentDB {
   var $tableName;
   var $dao;
 
-  function DocumentDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

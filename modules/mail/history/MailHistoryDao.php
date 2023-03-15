@@ -4,8 +4,8 @@ class MailHistoryDao extends Dao {
 
   var $tableName;
 
-  function MailHistoryDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

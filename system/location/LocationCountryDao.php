@@ -4,8 +4,8 @@ class LocationCountryDao extends Dao {
 
   var $tableName;
 
-  function LocationCountryDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

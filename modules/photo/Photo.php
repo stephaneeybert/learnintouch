@@ -15,7 +15,7 @@ class Photo {
   var $photoFormatId;
   var $listOrder;
 
-  function Photo($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

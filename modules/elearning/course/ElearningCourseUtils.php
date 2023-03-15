@@ -23,8 +23,8 @@ class ElearningCourseUtils extends ElearningCourseDB {
   var $elearningLessonHeadingUtils;
   var $fileUploadUtils;
 
-  function ElearningCourseUtils() {
-    $this->ElearningCourseDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

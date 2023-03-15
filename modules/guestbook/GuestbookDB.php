@@ -6,7 +6,7 @@ class GuestbookDB {
   var $tableName;
   var $dao;
 
-  function GuestbookDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class GuestbookDB {
     $this->tableName = DB_TABLE_GUESTBOOK;
 
     $this->dao = new GuestbookDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -34,8 +34,8 @@ class GuestbookDB {
       $object->setLastname($row['lastname']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -45,9 +45,9 @@ class GuestbookDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -58,11 +58,11 @@ class GuestbookDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByUserId($userId) {
     $this->dataSource->selectDatabase();
@@ -73,42 +73,42 @@ class GuestbookDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getBody(), $object->getReleaseDate(), $object->getUserId(), $object->getEmail(), $object->getFirstname(), $object->getLastname()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getBody(), $object->getReleaseDate(), $object->getUserId(), $object->getEmail(), $object->getFirstname(), $object->getLastname()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

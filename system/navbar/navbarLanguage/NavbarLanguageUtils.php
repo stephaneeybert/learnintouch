@@ -4,8 +4,8 @@ class NavbarLanguageUtils extends NavbarLanguageDB {
 
   var $navbarItemUtils;
 
-  function NavbarLanguageUtils() {
-    $this->NavbarLanguageDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Delete a language

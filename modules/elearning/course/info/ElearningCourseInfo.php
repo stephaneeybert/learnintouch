@@ -8,7 +8,7 @@ class ElearningCourseInfo {
   var $listOrder;
   var $elearningCourseId;
 
-  function ElearningCourseInfo($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

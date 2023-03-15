@@ -13,7 +13,7 @@ class Website {
   var $diskSpace;
   var $package;
 
-  function Website($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

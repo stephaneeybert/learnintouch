@@ -18,8 +18,8 @@ class DocumentUtils extends DocumentDB {
   var $languageUtils;
   var $userUtils;
 
-  function DocumentUtils() {
-    $this->DocumentDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

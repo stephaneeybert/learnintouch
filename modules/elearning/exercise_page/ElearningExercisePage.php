@@ -19,7 +19,7 @@ class ElearningExercisePage {
   var $elearningExerciseId;
   var $listOrder;
 
-  function ElearningExercisePage($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

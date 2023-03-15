@@ -6,7 +6,7 @@ class FormItemValueDB {
   var $tableName;
   var $dao;
 
-  function FormItemValueDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class FormItemValueDB {
     $this->tableName = DB_TABLE_FORM_ITEM_VALUE;
 
     $this->dao = new FormItemValueDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -31,8 +31,8 @@ class FormItemValueDB {
       $object->setFormItemId($row['form_item_id']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -42,9 +42,9 @@ class FormItemValueDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByFormItemId($formItemId) {
     $this->dataSource->selectDatabase();
@@ -55,48 +55,48 @@ class FormItemValueDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
+      }
 
       return($objects);
-      }
     }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $text = $object->getText();
     $text = LibString::databaseEscapeQuotes($text);
 
     return($this->dao->insert($object->getValue(), $text, $object->getFormItemId()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $text = $object->getText();
     $text = LibString::databaseEscapeQuotes($text);
 
     return($this->dao->update($object->getId(), $object->getValue(), $text, $object->getFormItemId()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

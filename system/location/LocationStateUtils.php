@@ -4,8 +4,8 @@ class LocationStateUtils extends LocationStateDB {
 
   var $locationCountryUtils;
 
-  function LocationStateUtils() {
-    $this->LocationStateDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the list of state names

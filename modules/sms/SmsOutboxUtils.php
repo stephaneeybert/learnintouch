@@ -6,8 +6,8 @@ class SmsOutboxUtils extends SmsOutboxDB {
 
   var $currentSmsStatus;
 
-  function SmsOutboxUtils() {
-    $this->SmsOutboxDB();
+  function __construct() {
+    parent::__construct();
 
     $this->currentSmsStatus = "smsCurrentSmsStatus";
   }

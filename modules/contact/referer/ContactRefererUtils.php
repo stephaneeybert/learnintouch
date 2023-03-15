@@ -5,8 +5,8 @@ class ContactRefererUtils extends ContactRefererDB {
   var $languageUtils;
   var $contactUtils;
 
-  function ContactRefererUtils() {
-    $this->ContactRefererDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the next available list order

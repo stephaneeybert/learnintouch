@@ -5,8 +5,8 @@ class ElearningScoringUtils extends ElearningScoringDB {
   var $elearningExerciseUtils;
   var $elearningScoringRangeUtils;
 
-  function ElearningScoringUtils() {
-    $this->ElearningScoringDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Delete a scoring

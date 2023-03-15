@@ -11,7 +11,7 @@ class Document {
   var $categoryId;
   var $listOrder;
 
-  function Document($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

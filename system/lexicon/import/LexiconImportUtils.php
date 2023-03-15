@@ -4,8 +4,8 @@ class LexiconImportUtils extends ContentImportUtils {
 
   var $lexiconEntryUtils;
 
-  function LexiconImportUtils() {
-    $this->ContentImportUtils();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get in an xml string the content of a lexicon entry

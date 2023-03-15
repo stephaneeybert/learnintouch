@@ -23,8 +23,8 @@ class PhotoUtils extends PhotoDB {
   var $shopItemUtils;
   var $fileUploadUtils;
 
-  function PhotoUtils() {
-    $this->PhotoDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

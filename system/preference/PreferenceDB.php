@@ -6,7 +6,7 @@ class PreferenceDB {
   var $tableName;
   var $dao;
 
-  function PreferenceDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

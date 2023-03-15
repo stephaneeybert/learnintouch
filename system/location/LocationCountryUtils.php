@@ -2,8 +2,8 @@
 
 class LocationCountryUtils extends LocationCountryDB {
 
-  function LocationCountryUtils() {
-    $this->LocationCountryDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the name of a country

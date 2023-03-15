@@ -10,8 +10,8 @@ class ContentImportUtils extends ContentImportDB {
   var $uniqueTokenUtils;
   var $profileUtils;
 
-  function ContentImportUtils() {
-    $this->ContentImportDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {

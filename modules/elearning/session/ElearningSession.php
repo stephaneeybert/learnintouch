@@ -9,7 +9,7 @@ class ElearningSession {
   var $closeDate;
   var $closed;
 
-  function ElearningSession($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

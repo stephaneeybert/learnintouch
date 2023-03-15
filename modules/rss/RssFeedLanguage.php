@@ -8,7 +8,7 @@ class RssFeedLanguage {
   var $url;
   var $rssFeedId;
 
-  function RssFeedLanguage($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

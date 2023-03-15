@@ -26,8 +26,8 @@ class NewsPaperUtils extends NewsPaperDB {
   var $newsStoryImageUtils;
   var $newsHeadingUtils;
 
-  function NewsPaperUtils() {
-    $this->NewsPaperDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

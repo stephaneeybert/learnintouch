@@ -19,8 +19,8 @@ class ContactUtils extends ContactDB {
   var $uniqueTokenUtils;
   var $contactRefererUtils;
 
-  function ContactUtils() {
-    $this->ContactDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

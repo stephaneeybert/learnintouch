@@ -6,7 +6,7 @@ class PeopleDB {
   var $tableName;
   var $dao;
 
-  function PeopleDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class PeopleDB {
     $this->tableName = DB_TABLE_PEOPLE;
 
     $this->dao = new PeopleDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -37,8 +37,8 @@ class PeopleDB {
       $object->setListOrder($row['list_order']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -48,9 +48,9 @@ class PeopleDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByNextListOrder($categoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -60,9 +60,9 @@ class PeopleDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByPreviousListOrder($categoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -72,9 +72,9 @@ class PeopleDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByListOrder($categoryId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -85,11 +85,11 @@ class PeopleDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   // Reset all the list orders some are mistakenly the same
   function resetListOrder($categoryId) {
@@ -101,11 +101,11 @@ class PeopleDB {
             $listOrder = $listOrder + 1;
             $people->setListOrder($listOrder);
             $this->update($people);
-            }
           }
         }
       }
     }
+  }
 
   function countDuplicateListOrderRows($categoryId) {
     $count = 0;
@@ -117,10 +117,10 @@ class PeopleDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -131,11 +131,11 @@ class PeopleDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByCategoryId($categoryId) {
     $this->dataSource->selectDatabase();
@@ -146,11 +146,11 @@ class PeopleDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByCategoryIdOrderById($categoryId) {
     $this->dataSource->selectDatabase();
@@ -161,42 +161,42 @@ class PeopleDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->insert($object->getFirstname(), $object->getLastname(), $object->getEmail(), $object->getWorkPhone(), $object->getMobilePhone(), $object->getProfile(), $object->getImage(), $object->getCategoryId(), $object->getListOrder()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     return($this->dao->update($object->getId(), $object->getFirstname(), $object->getLastname(), $object->getEmail(), $object->getWorkPhone(), $object->getMobilePhone(), $object->getProfile(), $object->getImage(), $object->getCategoryId(), $object->getListOrder()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

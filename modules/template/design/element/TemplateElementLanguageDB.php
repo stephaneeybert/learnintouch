@@ -6,7 +6,7 @@ class TemplateElementLanguageDB {
   var $tableName;
   var $dao;
 
-  function TemplateElementLanguageDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

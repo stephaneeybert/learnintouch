@@ -13,8 +13,8 @@ class TemplatePageUtils extends TemplatePageDB {
   var $templatePageTagUtils;
   var $templatePropertySetUtils;
 
-  function TemplatePageUtils() {
-    $this->TemplatePageDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

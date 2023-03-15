@@ -15,7 +15,7 @@ class ElearningLessonParagraph {
   var $elearningExerciseId;
   var $exerciseTitle;
 
-  function ElearningLessonParagraph($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

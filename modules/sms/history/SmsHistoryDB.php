@@ -6,7 +6,7 @@ class SmsHistoryDB {
   var $tableName;
   var $dao;
 
-  function SmsHistoryDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

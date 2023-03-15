@@ -6,7 +6,7 @@ class AdminModule {
   var $module;
   var $admin;
 
-  function AdminModule($id = '') {
+  function __construct($id = '') {
     }
 
   function getId() {

@@ -18,8 +18,8 @@ class ElearningImportUtils extends ContentImportUtils {
   var $elearningSolutionUtils;
   var $elearningLessonParagraphUtils;
 
-  function ElearningImportUtils() {
-    $this->ContentImportUtils();
+  function __construct() {
+    parent::__construct();
   }
 
   // Store the last imported course id

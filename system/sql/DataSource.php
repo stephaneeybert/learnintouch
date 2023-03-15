@@ -31,7 +31,7 @@ class DataSource {
   // The sql statement
   var $sqlStatement;
 
-  function DataSource($host, $port, $databaseName) {
+  function __construct($host, $port, $databaseName) {
     $this->host = $host;
     $this->port = $port;
     $this->databaseName = $databaseName;

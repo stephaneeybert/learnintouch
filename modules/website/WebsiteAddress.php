@@ -16,7 +16,7 @@ class WebsiteAddress {
   var $vatNumber;
   var $website;
 
-  function WebsiteAddress($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

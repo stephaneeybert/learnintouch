@@ -6,7 +6,7 @@ class NavmenuItemDB {
   var $tableName;
   var $dao;
 
-  function NavmenuItemDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

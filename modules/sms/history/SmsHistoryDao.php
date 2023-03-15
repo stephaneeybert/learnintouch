@@ -4,8 +4,8 @@ class SmsHistoryDao extends Dao {
 
   var $tableName;
 
-  function SmsHistoryDao($dataSource, $tableName) {
-    $this->Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

@@ -31,8 +31,8 @@ class ElearningLessonUtils extends ElearningLessonDB {
   var $elearningSubscriptionUtils;
   var $fileUploadUtils;
 
-  function ElearningLessonUtils() {
-    $this->ElearningLessonDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

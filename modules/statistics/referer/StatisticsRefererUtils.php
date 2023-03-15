@@ -2,8 +2,8 @@
 
 class StatisticsRefererUtils extends StatisticsRefererDB {
 
-  function StatisticsRefererUtils() {
-    $this->StatisticsRefererDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

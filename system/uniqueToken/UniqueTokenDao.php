@@ -4,8 +4,8 @@ class UniqueTokenDao extends Dao {
 
   var $tableName;
 
-  function UniqueTokenDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

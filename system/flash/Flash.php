@@ -9,7 +9,7 @@ class Flash {
   var $bgcolor;
   var $wddx;
 
-  function Flash($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

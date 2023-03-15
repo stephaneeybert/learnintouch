@@ -31,8 +31,8 @@ class NewsStoryUtils extends NewsStoryDB {
   var $newsPublicationUtils;
   var $newsEditorUtils;
 
-  function NewsStoryUtils() {
-    $this->NewsStoryDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

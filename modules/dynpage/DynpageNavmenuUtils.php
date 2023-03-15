@@ -4,8 +4,8 @@ class DynpageNavmenuUtils extends DynpageNavmenuDB {
 
   var $dynpageUtils;
 
-  function DynpageNavmenuUtils() {
-    $this->DynpageNavmenuDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Add a dynpage menu

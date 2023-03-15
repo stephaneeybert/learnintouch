@@ -11,8 +11,8 @@ class PeopleCategoryUtils extends PeopleCategoryDB {
   var $preferenceUtils;
   var $peopleUtils;
 
-  function PeopleCategoryUtils() {
-    $this->PeopleCategoryDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

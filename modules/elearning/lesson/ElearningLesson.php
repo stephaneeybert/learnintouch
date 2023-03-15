@@ -19,7 +19,7 @@ class ElearningLesson {
   var $levelId;
   var $subjectId;
 
-  function ElearningLesson($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

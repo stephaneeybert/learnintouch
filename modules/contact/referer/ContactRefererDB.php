@@ -6,7 +6,7 @@ class ContactRefererDB {
   var $tableName;
   var $dao;
 
-  function ContactRefererDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

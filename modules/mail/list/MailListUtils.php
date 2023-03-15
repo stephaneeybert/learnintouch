@@ -8,8 +8,8 @@ class MailListUtils extends MailListDB {
   var $mailHistoryUtils;
   var $mailListAddressUtils;
 
-  function MailListUtils() {
-    $this->MailListDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function init() {

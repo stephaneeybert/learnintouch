@@ -14,7 +14,7 @@ class MailHistory {
   var $adminId;
   var $sendDate;
 
-  function MailHistory($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

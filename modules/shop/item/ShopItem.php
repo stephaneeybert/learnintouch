@@ -18,7 +18,7 @@ class ShopItem {
   var $lastModified;
   var $available;
 
-  function ShopItem($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

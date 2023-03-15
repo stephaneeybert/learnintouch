@@ -6,7 +6,7 @@ class SmsListNumber {
   var $smsListId;
   var $smsNumberId;
 
-  function SmsListNumber($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

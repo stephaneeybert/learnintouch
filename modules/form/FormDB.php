@@ -6,7 +6,7 @@ class FormDB {
   var $tableName;
   var $dao;
 
-  function FormDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class FormDB {
     $this->tableName = DB_TABLE_FORM;
 
     $this->dao = new FormDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -38,8 +38,8 @@ class FormDB {
       $object->setMailMessage($row['mail_message']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -49,9 +49,9 @@ class FormDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByName($name) {
     $this->dataSource->selectDatabase();
@@ -61,9 +61,9 @@ class FormDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -74,11 +74,11 @@ class FormDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function countAll() {
     $count = 0;
@@ -90,17 +90,17 @@ class FormDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $title = $object->getTitle();
     $title = LibString::databaseEscapeQuotes($title);
@@ -112,14 +112,14 @@ class FormDB {
     $acknowledge = LibString::databaseEscapeQuotes($acknowledge);
 
     return($this->dao->insert($object->getName(), $object->getDescription(), $title, $object->getImage(), $object->getEmail(), $instructions, $acknowledge, $object->getWebpageId(), $object->getMailSubject(), $object->getMailMessage()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $title = $object->getTitle();
     $title = LibString::databaseEscapeQuotes($title);
@@ -131,18 +131,18 @@ class FormDB {
     $acknowledge = LibString::databaseEscapeQuotes($acknowledge);
 
     return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $title, $object->getImage(), $object->getEmail(), $instructions, $acknowledge, $object->getWebpageId(), $object->getMailSubject(), $object->getMailMessage()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

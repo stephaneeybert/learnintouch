@@ -7,7 +7,7 @@ class PhotoFormat {
   var $description;
   var $price;
 
-  function PhotoFormat($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

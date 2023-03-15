@@ -5,8 +5,8 @@ class NewsEditorUtils extends NewsEditorDB {
   var $adminUtils;
   var $newsStoryUtils;
 
-  function NewsEditorUtils() {
-    $this->NewsEditorDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Get the firstname of an editor

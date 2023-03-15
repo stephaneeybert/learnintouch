@@ -8,7 +8,7 @@ class FormValid {
   var $boundary;
   var $formItemId;
 
-  function FormValid($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

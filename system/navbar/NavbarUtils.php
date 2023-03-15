@@ -10,8 +10,8 @@ class NavbarUtils extends NavbarDB {
   var $navbarLanguageUtils;
   var $navbarItemUtils;
 
-  function NavbarUtils() {
-    $this->NavbarDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

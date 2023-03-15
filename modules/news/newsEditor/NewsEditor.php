@@ -5,7 +5,7 @@ class NewsEditor {
   var $id;
   var $adminId;
 
-  function NewsEditor($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

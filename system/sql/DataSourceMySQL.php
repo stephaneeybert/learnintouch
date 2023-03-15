@@ -4,8 +4,8 @@
 
 class DataSourceMySQL extends DataSource {
 
-  function DataSourceMySQL($host, $port, $databaseName) {
-    $this->DataSource($host, $port, $databaseName);
+  function __construct($host, $port, $databaseName) {
+    parent::__construct($host, $port, $databaseName);
   }
 
   function connect($username, $password, $type = DB_NON_PERSISTENT) {

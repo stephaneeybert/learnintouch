@@ -50,8 +50,8 @@ class UserUtils extends UserDB {
   var $shopOrderUtils;
   var $fileUploadUtils;
 
-  function UserUtils() {
-    $this->UserDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

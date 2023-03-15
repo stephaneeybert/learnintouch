@@ -20,8 +20,8 @@ class TemplateModelUtils extends TemplateModelDB {
   var $navmenuItemUtils;
   var $documentUtils;
 
-  function TemplateModelUtils() {
-    $this->TemplateModelDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function createDirectories() {

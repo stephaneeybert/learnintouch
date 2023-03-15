@@ -2,8 +2,8 @@
 
 class BackupDao extends Dao {
 
-  function BackupDao($dataSource) {
-    $this->Dao($dataSource);
+  function __construct($dataSource) {
+    parent::__construct($dataSource);
   }
 
   function showCreateTable($tableName) {

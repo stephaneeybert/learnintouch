@@ -29,7 +29,7 @@ class ShopOrder {
   var $paymentTransactionID;
   var $userId;
 
-  function ShopOrder($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

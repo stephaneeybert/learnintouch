@@ -28,7 +28,7 @@ class ElearningResult {
   var $nbNotAnswered;
   var $nbIncorrectAnswers;
 
-  function ElearningResult($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -4,8 +4,8 @@ class PhotoDao extends Dao {
 
   var $tableName;
 
-  function PhotoDao($dataSource, $tableName) {
-    Dao::Dao($dataSource);
+  function __construct($dataSource, $tableName) {
+    parent::__construct($dataSource);
 
     $this->tableName = $tableName;
   }

@@ -14,7 +14,7 @@ class UniqueToken {
   var $creationDateTime;
   var $expirationDateTime;
 
-  function UniqueToken($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

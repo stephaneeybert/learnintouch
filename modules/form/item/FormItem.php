@@ -15,7 +15,7 @@ class FormItem {
   var $mailListId;
   var $formId;
 
-  function FormItem($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -25,7 +25,7 @@ class ElearningCourse {
   var $matterId;
   var $userId;
 
-  function ElearningCourse($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

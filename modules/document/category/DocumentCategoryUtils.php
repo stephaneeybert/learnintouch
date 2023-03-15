@@ -11,8 +11,8 @@ class DocumentCategoryUtils extends DocumentCategoryDB {
   var $preferenceUtils;
   var $documentUtils;
 
-  function DocumentCategoryUtils() {
-    $this->DocumentCategoryDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

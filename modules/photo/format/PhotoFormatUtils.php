@@ -2,8 +2,8 @@
 
 class PhotoFormatUtils extends PhotoFormatDB {
 
-  function PhotoFormatUtils() {
-    $this->PhotoFormatDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

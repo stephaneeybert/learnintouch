@@ -6,7 +6,7 @@ class ElearningQuestionResultDB {
   var $tableName;
   var $dao;
 
-  function ElearningQuestionResultDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;

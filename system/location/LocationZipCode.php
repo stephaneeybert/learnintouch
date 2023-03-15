@@ -7,7 +7,7 @@ class LocationZipCode {
   var $name;
   var $country;
 
-  function LocationZipCode($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

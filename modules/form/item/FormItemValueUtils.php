@@ -5,8 +5,8 @@ class FormItemValueUtils extends FormItemValueDB {
   var $formUtils;
   var $formItemUtils;
 
-  function FormItemValueUtils() {
-    $this->FormItemValueDB();
+  function __construct() {
+    parent::__construct();
   }
 
   // Add a value to a form item

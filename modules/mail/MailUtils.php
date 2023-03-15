@@ -26,8 +26,8 @@ class MailUtils extends MailDB {
   var $profileUtils;
   var $fileUploadUtils;
 
-  function MailUtils() {
-    $this->MailDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

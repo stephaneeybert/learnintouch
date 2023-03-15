@@ -13,8 +13,8 @@ class PhotoAlbumUtils extends PhotoAlbumDB {
   var $photoUtils;
   var $colorboxUtils;
 
-  function PhotoAlbumUtils() {
-    $this->PhotoAlbumDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

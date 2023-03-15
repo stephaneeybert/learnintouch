@@ -2,8 +2,8 @@
 
 class SqlToolsUtils extends SqlToolsDB {
 
-  function SqlToolsUtils($dbName = '') {
-    $this->SqlToolsDB($dbName);
+  function __construct($dbName = '') {
+    parent::__construct($dbName);
   }
 
 }

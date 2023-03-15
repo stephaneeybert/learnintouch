@@ -13,7 +13,7 @@ class NavlinkItem {
   var $templateModelId;
   var $navlinkId;
 
-  function NavlinkItem($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

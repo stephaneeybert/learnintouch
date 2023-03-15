@@ -11,8 +11,8 @@ class TemplateTagUtils extends TemplateTagDB {
   var $templatePropertySetUtils;
   var $profileUtils;
 
-  function TemplateTagUtils() {
-    $this->TemplateTagDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function getTagNames() {

@@ -6,7 +6,7 @@ class ElearningQuestionDB {
   var $tableName;
   var $dao;
 
-  function ElearningQuestionDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class ElearningQuestionDB {
     $this->tableName = DB_TABLE_ELEARNING_QUESTION;
 
     $this->dao = new ElearningQuestionDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -37,8 +37,8 @@ class ElearningQuestionDB {
       $object->setListOrder($row['list_order']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -48,9 +48,9 @@ class ElearningQuestionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByNextListOrder($elearningExercisePageId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -60,9 +60,9 @@ class ElearningQuestionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByPreviousListOrder($elearningExercisePageId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -72,9 +72,9 @@ class ElearningQuestionDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByListOrder($elearningExercisePageId, $listOrder) {
     $this->dataSource->selectDatabase();
@@ -85,11 +85,11 @@ class ElearningQuestionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -100,11 +100,11 @@ class ElearningQuestionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByExercisePageOrderById($elearningExercisePageId) {
     $this->dataSource->selectDatabase();
@@ -115,11 +115,11 @@ class ElearningQuestionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByExercisePage($elearningExercisePageId) {
     $this->dataSource->selectDatabase();
@@ -130,11 +130,11 @@ class ElearningQuestionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectByExercise($elearningExerciseId) {
     $this->dataSource->selectDatabase();
@@ -145,18 +145,18 @@ class ElearningQuestionDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $question = $object->getQuestion();
     $question = LibString::databaseEscapeQuotes($question);
@@ -168,14 +168,14 @@ class ElearningQuestionDB {
     $explanation = LibString::databaseEscapeQuotes($explanation);
 
     return($this->dao->insert($question, $explanation, $object->getElearningExercisePage(), $object->getImage(), $object->getAudio(), $hint, $object->getPoints(), $object->getAnswerNbWords(), $object->getListOrder()));
-    }
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
+    }
 
     $question = $object->getQuestion();
     $question = LibString::databaseEscapeQuotes($question);
@@ -187,18 +187,18 @@ class ElearningQuestionDB {
     $explanation = LibString::databaseEscapeQuotes($explanation);
 
     return($this->dao->update($object->getId(), $question, $explanation, $object->getElearningExercisePage(), $object->getImage(), $object->getAudio(), $hint, $object->getPoints(), $object->getAnswerNbWords(), $object->getListOrder()));
-    }
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
+  }
 
   function getLastInsertId() {
     return($this->dataSource->getLastInsertId());
-    }
-
   }
+
+}
 
 ?>

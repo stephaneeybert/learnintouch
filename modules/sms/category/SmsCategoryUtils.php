@@ -2,8 +2,8 @@
 
 class SmsCategoryUtils extends SmsCategoryDB {
 
-  function SmsCategoryUtils() {
-    $this->SmsCategoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

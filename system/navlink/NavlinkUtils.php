@@ -8,8 +8,8 @@ class NavlinkUtils extends NavlinkDB {
 
   var $languageUtils;
 
-  function NavlinkUtils() {
-    $this->NavlinkDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

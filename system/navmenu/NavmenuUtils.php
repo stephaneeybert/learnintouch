@@ -11,8 +11,8 @@ class NavmenuUtils extends NavmenuDB {
   var $navmenuLanguageUtils;
   var $templateUtils;
 
-  function NavmenuUtils() {
-    $this->NavmenuDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

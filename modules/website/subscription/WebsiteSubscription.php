@@ -10,7 +10,7 @@ class WebsiteSubscription {
   var $terminationDate;
   var $websiteId;
 
-  function WebsiteSubscription($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

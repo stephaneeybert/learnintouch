@@ -2,8 +2,8 @@
 
 class MailHistoryUtils extends MailHistoryDB {
 
-  function MailHistoryUtils() {
-    $this->MailHistoryDB();
+  function __construct() {
+    parent::__construct();
   }
 
 }

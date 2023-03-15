@@ -8,7 +8,7 @@ class Profile {
   var $name;
   var $value;
 
-  function Profile($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

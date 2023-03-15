@@ -6,7 +6,7 @@ class NewsPublicationDB {
   var $tableName;
   var $dao;
 
-  function NewsPublicationDB() {
+  function __construct() {
     global $gSqlDataSource;
 
     $this->dataSource = $gSqlDataSource;
@@ -14,13 +14,13 @@ class NewsPublicationDB {
     $this->tableName = DB_TABLE_NEWS_PUBLICATION;
 
     $this->dao = new NewsPublicationDao($this->dataSource, $this->tableName);
-    }
+  }
 
   function createTable() {
     $this->dataSource->selectDatabase();
 
     return($this->dao->createTable());
-    }
+  }
 
   function getObject($row) {
     if ($row && is_array($row)) {
@@ -40,8 +40,8 @@ class NewsPublicationDB {
       $object->setSecured($row['secured']);
 
       return($object);
-      }
     }
+  }
 
   function selectById($id) {
     $this->dataSource->selectDatabase();
@@ -51,9 +51,9 @@ class NewsPublicationDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectByName($name) {
     $this->dataSource->selectDatabase();
@@ -63,9 +63,9 @@ class NewsPublicationDB {
         $row = $result->getRow(0);
         $object = $this->getObject($row);
         return($object);
-        }
       }
     }
+  }
 
   function selectAll() {
     $this->dataSource->selectDatabase();
@@ -76,11 +76,11 @@ class NewsPublicationDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function selectLikePattern($searchPattern) {
     $this->dataSource->selectDatabase();
@@ -91,11 +91,11 @@ class NewsPublicationDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function countAll() {
     $count = 0;
@@ -107,10 +107,10 @@ class NewsPublicationDB {
     if ($result) {
       $row = $result->getRow(0);
       $count = $row['count'];
-      }
+    }
 
     return($count);
-    }
+  }
 
   function selectByNotPublished() {
     $this->dataSource->selectDatabase();
@@ -121,38 +121,38 @@ class NewsPublicationDB {
         $row = $result->getRow($i);
         $object = $this->getObject($row);
         $objects[$i] = $object;
-        }
       }
+    }
 
     return($objects);
-    }
+  }
 
   function insert($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
-
-      return($this->dao->insert($object->getName(), $object->getDescription(), $object->getNbColumns(), $object->getSlideDown(), $object->getAlign(), $object->getWithArchive(), $object->getWithOthers(), $object->getWithByHeading(), $object->getHideHeading(), $object->getAutoArchive(), $object->getAutoDelete(), $object->getSecured()));
     }
+
+    return($this->dao->insert($object->getName(), $object->getDescription(), $object->getNbColumns(), $object->getSlideDown(), $object->getAlign(), $object->getWithArchive(), $object->getWithOthers(), $object->getWithByHeading(), $object->getHideHeading(), $object->getAutoArchive(), $object->getAutoDelete(), $object->getSecured()));
+  }
 
   function update($object) {
     $this->dataSource->selectDatabase();
 
     if (!$object) {
       return(false);
-      }
-
-      return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getNbColumns(), $object->getSlideDown(), $object->getAlign(), $object->getWithArchive(), $object->getWithOthers(), $object->getWithByHeading(), $object->getHideHeading(), $object->getAutoArchive(), $object->getAutoDelete(), $object->getSecured()));
     }
+
+    return($this->dao->update($object->getId(), $object->getName(), $object->getDescription(), $object->getNbColumns(), $object->getSlideDown(), $object->getAlign(), $object->getWithArchive(), $object->getWithOthers(), $object->getWithByHeading(), $object->getHideHeading(), $object->getAutoArchive(), $object->getAutoDelete(), $object->getSecured()));
+  }
 
   function delete($id) {
     $this->dataSource->selectDatabase();
 
     return($this->dao->delete($id));
-    }
-
   }
+
+}
 
 ?>

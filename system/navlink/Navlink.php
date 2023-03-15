@@ -4,7 +4,7 @@ class Navlink {
 
   var $id;
 
-  function Navlink($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

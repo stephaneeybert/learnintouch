@@ -7,7 +7,7 @@ class ContactStatus {
   var $name;
   var $description;
 
-  function ContactStatus($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

@@ -18,8 +18,8 @@ class DynpageUtils extends DynpageDB {
   var $templateModelUtils;
   var $templateUtils;
 
-  function DynpageUtils() {
-    $this->DynpageDB();
+  function __construct() {
+    parent::__construct();
 
     $this->init();
   }

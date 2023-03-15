@@ -16,7 +16,7 @@ class NewsFeed {
   var $searchTitle;
   var $searchDisplayAsPage;
 
-  function NewsFeed($id = '') {
+  function __construct($id = '') {
   }
 
   function getId() {

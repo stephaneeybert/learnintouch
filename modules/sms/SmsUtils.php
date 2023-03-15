@@ -11,8 +11,8 @@ class SmsUtils extends SmsDB {
   var $preferenceUtils;
   var $smsHistoryUtils;
 
-  function SmsUtils() {
-    $this->SmsDB();
+  function __construct() {
+    parent::__construct();
   }
 
   function loadLanguageTexts() {
